@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 資料中心液冷產業 供應鏈分析報告</title>
+<style>
+  :root{
+    --navy:#1F3A5F; --navy-d:#15233B; --orange:#E8853B;
+    --text:#1E293B; --text-dim:#64748B; --border:#E2E8F0;
+    --bg:#EEF1F5; --paper:#fff;
+    --green:#16A34A; --green-d:#15803D; --green-bg:#F0FDF4;
+    --red:#DC2626; --red-d:#B91C1C; --red-bg:#FEF2F2;
+    --amber:#F59E0B; --amber-d:#92400E; --amber-bg:#FFF8E1;
+    --thead:#EDEEF1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei","Helvetica Neue",Arial,sans-serif;
+    color:var(--text); line-height:1.7; font-size:14px; background:var(--bg);
+  }
+  .page{max-width:1080px;margin:24px auto;background:var(--paper);padding:0 0 40px;}
+  a{color:var(--navy);}
+
+  .banner{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-d) 100%);color:#fff;padding:36px 44px 30px;}
+  .banner .label{font-size:11px;letter-spacing:2.5px;color:#9DB2CE;font-weight:700;}
+  .banner h1{font-size:26px;font-weight:800;margin:8px 0 10px;line-height:1.4;}
+  .banner .sub{font-size:13px;color:#C9D6E8;line-height:1.8;}
+  .banner .badges{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
+  .badge{display:inline-block;font-size:11.5px;font-weight:700;background:rgba(255,255,255,0.12);color:#fff;padding:4px 12px;border-radius:12px;}
+
+  .body-wrap{padding:32px 44px 0;}
+
+  .exec{background:var(--amber-bg);border-left:5px solid var(--amber);border-radius:6px;padding:20px 26px;margin-bottom:8px;}
+  .exec .exec-label{font-size:11px;font-weight:700;color:var(--amber-d);letter-spacing:1.5px;margin-bottom:8px;}
+  .exec p{font-size:14.5px;line-height:1.85;color:#1F2937;}
+  .exec b{color:var(--amber-d);}
+
+  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;}
+  h2.section span{display:block;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-dim);margin-top:2px;}
+  h3.sub{font-size:15px;font-weight:800;color:var(--navy-d);margin:26px 0 12px;}
+
+  p{margin-bottom:10px;text-align:justify;}
+  ul{padding-left:20px;margin-bottom:14px;}
+  ul li{margin-bottom:6px;line-height:1.7;}
+
+  .card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin-bottom:20px;}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0 20px;}
+  .stat{background:#fff;border:1px solid var(--border);border-top:3px solid var(--navy);border-radius:7px;padding:12px 14px;text-align:center;}
+  .stat .v{font-size:19px;font-weight:800;color:var(--navy);line-height:1.2;}
+  .stat .l{font-size:11px;color:var(--text-dim);margin-top:5px;line-height:1.4;}
+
+  table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:12.8px;}
+  thead th{background:var(--thead);color:var(--text);font-weight:700;text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);white-space:nowrap;}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6;}
+  tbody tr:last-child td{border-bottom:none;}
+  .tbl-wrap{overflow-x:auto;}
+
+  .geo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:10px 0 8px;}
+  .geo-card{border:1px solid var(--border);border-top:4px solid var(--navy);border-radius:8px;padding:16px 18px;background:#F8FAFC;}
+  .geo-card.china{border-top-color:#B91C1C;}
+  .geo-card.intl{border-top-color:#0369A1;}
+  .geo-card h4{font-size:13.5px;font-weight:800;color:var(--navy-d);margin-bottom:8px;}
+  .geo-card ul{padding-left:16px;margin-bottom:0;}
+  .geo-card li{font-size:12.5px;line-height:1.65;}
+
+  .g-pos{color:var(--green-d);font-weight:800;}
+  .g-neg{color:var(--red-d);font-weight:800;}
+  .g-flag{background:#FEF3C7;color:var(--amber-d);padding:1px 6px;border-radius:3px;font-size:11px;font-weight:700;margin-left:4px;}
+
+  .timeline{list-style:none;margin:8px 0 4px;padding:0;}
+  .timeline li{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:12px 0;border-bottom:1px dashed var(--border);}
+  .timeline li:last-child{border-bottom:none;}
+  .timeline .t{font-size:12.5px;font-weight:800;color:var(--navy);white-space:nowrap;}
+  .timeline .d{font-size:13px;line-height:1.7;}
+
+  .stage-pill{display:inline-block;background:#FEF3C7;color:var(--amber-d);border:1px solid #FDE68A;font-weight:800;font-size:13px;padding:6px 16px;border-radius:20px;}
+
+  .barrier-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:10px 0 6px;}
+  .barrier{background:#F8FAFC;border:1px solid var(--border);border-radius:7px;padding:12px 13px;}
+  .barrier .b-h{font-size:12px;font-weight:800;color:var(--navy);margin-bottom:6px;}
+  .barrier .b-v{font-size:12px;font-weight:700;margin-bottom:4px;}
+  .barrier .b-v.high{color:var(--red-d);}
+  .barrier .b-v.mid{color:var(--amber-d);}
+  .barrier .b-v.low{color:var(--green-d);}
+  .barrier p{font-size:11.5px;color:var(--text-dim);margin:0;line-height:1.55;}
+
+  .trig{font-size:12px;color:var(--red-d);}
+
+  .insight{background:#EEF2FF;border-left:4px solid #4338CA;border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#312E81;}
+  .insight b{color:#3730A3;}
+
+  .gap-box{background:#FFFBEB;border:1px solid #FDE68A;border-radius:6px;padding:14px 18px;margin:10px 0;}
+  .gap-box ul{margin-bottom:0;}
+  .gap-box li{font-size:12.5px;color:#78350F;}
+
+  .src-list{list-style:none;padding:0;margin:0;columns:2;column-gap:24px;}
+  .src-list li{font-size:12px;line-height:1.8;break-inside:avoid;}
+  .src-list a{color:var(--navy);text-decoration:none;}
+  .src-list a:hover{text-decoration:underline;}
+
+  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;}
+
+  @media (max-width:900px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .geo-grid{grid-template-columns:1fr;}
+    .barrier-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    .banner,.body-wrap{padding-left:20px;padding-right:20px;}
+    footer.foot{padding-left:20px;padding-right:20px;}
+    .stats{grid-template-columns:1fr 1fr;}
+    .barrier-grid{grid-template-columns:1fr;}
+    table{font-size:11.5px;}
+    .src-list{columns:1;}
+    .timeline li{grid-template-columns:80px 1fr;gap:8px;}
+  }
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;max-width:100%;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="banner">
+    <div class="label">SUPPLY CHAIN ANALYSIS · 供應鏈研究</div>
+    <h1>AI 資料中心液冷產業 供應鏈分析報告</h1>
+    <div class="sub">Direct-to-chip 為主流架構，涵蓋冷板、CDU、歧管、快速接頭、均熱片等次系統——供應鏈地圖、歷史復盤、門檻評估、追蹤指標</div>
+    <div class="badges">
+      <span class="badge">產出日期 2026-09-17</span>
+      <span class="badge">框架：地圖 → 歷史 → 門檻 → 指標</span>
+      <span class="badge">主架構：Direct-to-chip</span>
+    </div>
+  </div>
+
+  <div class="body-wrap">
+
+    <div class="exec">
+      <div class="exec-label">EXECUTIVE SUMMARY · 摘要</div>
+      <p>台灣「散熱三雄」（<b>奇鋐、雙鴻、健策</b>）加上台達電，構成從零組件到機櫃系統的完整能力，已直接打入 Meta/AWS/Microsoft/NVIDIA 認證體系。與晶片/PSU 環節不同，液冷屬於<b>非管制周邊設備</b>，中國龍頭英維克因此仍能被 Google 接觸洽談採購。產業目前處於<b>供不應求</b>，但 CDU/機櫃整合冷板模組相對落後（管路/泵浦已超前）；2026 年出現密集的國際併購潮（Ecolab/CoolIT、Eaton/Boyd、Schneider/Motivair），代表產業快速走向大者恆大的成熟基建。<b>需留意估值透支疑慮</b>：奇鋐本淨比已達 23.47 倍、本益比 47.1 倍；健策 2026 Q1 獲利年增僅 +1.99%（遠低於全年 +53.95%），是驗證「Vera Rubin 下半年放量」說法的關鍵觀察標的。</p>
+    </div>
+
+    <!-- ============ STEP 1 ============ -->
+    <h2 class="section">Step 1 — 供應鏈地圖<span>SUPPLY CHAIN MAP</span></h2>
+
+    <div class="stats">
+      <div class="stat"><div class="v">~47%</div><div class="l">2026年 AI晶片液冷滲透率（Direct-to-chip）</div></div>
+      <div class="stat"><div class="v">40-50%</div><div class="l">奇鋐 GB200/GB300 冷板市占率</div></div>
+      <div class="stat"><div class="v">+27.1%</div><div class="l">浸沒式冷卻市場CAGR（成長最快技術路線）</div></div>
+      <div class="stat"><div class="v">$6.3-6.5萬</div><div class="l">VR200每櫃液冷系統價值（美元，較GB300+50%+）</div></div>
+    </div>
+
+    <h3 class="sub">終端產品與 BOM 拆解</h3>
+    <p>終端產品為 AI 伺服器機櫃液冷散熱系統，關鍵零組件：<b>冷板（Cold Plate）</b>貼附CPU/GPU把熱傳給冷卻液；<b>CDU</b>調節流量/溫度/壓力，是系統心臟；<b>歧管（Manifold）</b>分配冷卻液到每個節點；<b>快速接頭（QD）</b>讓節點可熱插拔；<b>冷卻液</b>（direct-to-chip用水基防凍液，浸沒式用3M Novec/Fluorinert等介電流體）。⚠️「2026液冷滲透率76%」與「AI晶片液冷滲透率47%」兩組數字口徑不同，不可直接比較。</p>
+
+    <h3 class="sub">上中下游基本結構</h3>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>層級</th><th>環節</th><th>代表廠商</th></tr></thead>
+      <tbody>
+        <tr><td>上游</td><td>介電冷卻液（近乎壟斷）</td><td>3M（Novec、Fluorinert）⚠️高GWP環保疑慮</td></tr>
+        <tr><td rowspan="6">中游</td><td>冷板</td><td>奇鋐 AVC (3017.TW)　市占40-50%</td></tr>
+        <tr><td>冷板+CDU+快接一條龍</td><td>雙鴻 Auras (3324.TW)　已進Meta/AWS/Microsoft</td></tr>
+        <tr><td>均熱板/導熱元件</td><td>健策 Jentec (3653.TW)</td></tr>
+        <tr><td>QD快速接頭</td><td>富世達 Funtech (6805.TW)</td></tr>
+        <tr><td>水冷機櫃結構件</td><td>晟銘電 Shenmingda (6112.TW)　Meta供應鏈</td></tr>
+        <tr><td>CDU/RDHx</td><td>台達電(2308.TW)、Vertiv、CoolIT(現Ecolab)、Motivair(現Schneider)、LiquidStack、Asetek</td></tr>
+        <tr><td rowspan="2">下游</td><td>ODM機櫃組裝</td><td>Foxconn、Quanta、Wistron、Wiwynn、Supermicro</td></tr>
+        <tr><td>終端雲端客戶</td><td>Google、Meta、AWS、Microsoft——全球供應鏈目前極度緊俏</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="insight"><b>2026年併購潮：</b>Ecolab收購CoolIT(2026/3，~$47.5億)、Eaton收購Boyd熱管理事業(2026/3)、Schneider Electric收購Motivair控股權(2024/10)。傳統工業/電力巨頭大舉併購液冷技術商，代表產業快速從利基技術走向大者恆大的成熟基礎設施。</p>
+
+    <h3 class="sub">橫向比較：國內外供應鏈地位</h3>
+    <div class="geo-grid">
+      <div class="geo-card">
+        <h4>🇹🇼 台灣 — 散熱三雄，全鏈完整能力</h4>
+        <ul>
+          <li>奇鋐(冷板龍頭)、雙鴻(一條龍)、健策(均熱板)</li>
+          <li>外圍：富世達(QD)、晟銘電(水冷機櫃)、台達電(CDU)</li>
+          <li>1.5小時車程內完成晶片封裝→冷板設計→整櫃液冷開發</li>
+        </ul>
+      </div>
+      <div class="geo-card china">
+        <h4>🇨🇳 中國 — 非管制設備，可直接服務國際客戶</h4>
+        <ul>
+          <li><b>關鍵差異</b>：液冷非管制周邊設備，與晶片/PSU環節不同</li>
+          <li>英維克(龍頭，Google傳出接洽採購)；申菱環境/高瀾股份利潤端優於龍頭</li>
+          <li>龍頭因全球化擴產承壓，二線廠靠產品結構調整超車</li>
+        </ul>
+      </div>
+      <div class="geo-card intl">
+        <h4>🌍 國際 — 傳統工業集團密集併購</h4>
+        <ul>
+          <li>3M（冷卻液近乎壟斷）、Vertiv（guidance大幅上修）</li>
+          <li>Ecolab/CoolIT、Eaton/Boyd、Schneider/Motivair三筆已完成收購</li>
+          <li>LG Electronics 600kW CDU取得NVIDIA AI Factory認證</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ============ STEP 2 ============ -->
+    <h2 class="section">Step 2 — 供應鏈歷史<span>HISTORY & CURRENT STAGE</span></h2>
+    <ul class="timeline">
+      <li><div class="t">2026-03-04</div><div class="d"><b>大盤系統性風險，非基本面問題</b>：雙鴻因大盤重挫逾1,400點，股價摜入跌停失守千元大關（收972元），但當時2025年EPS(28.26元創新高)、營收(+47.5%)、毛利率(+58.27%)全部創新高。後續股價重返千元大關。</div></li>
+      <li><div class="t">2025底-2026初</div><div class="d"><b>估值透支爭議浮現</b>：奇鋐2025 Q4已達成原本市場預估的2026年EPS水準，股價估值卻未同步跟上，技術面一度跌破10週線。</div></li>
+    </ul>
+    <p class="insight"><b>啟示：</b>這波液冷超級周期的第一輪主升段可能已被相當程度反映在股價裡，能否續強關鍵不是「需求存不存在」（已是共識），而是能否看到比市場預期更高的下一輪成長數字（如VR200每櫃液冷系統價值躍升逾50%）。</p>
+
+    <p style="margin-top:16px;">目前供需階段判定：</p>
+    <p><span class="stage-pill">⚠ 供不應求，但環節間產能爬坡速度分化</span></p>
+    <ul>
+      <li>全行業滿產滿單，訂單排至年底，龍頭訂單年增翻倍</li>
+      <li>管路結構件/泵浦已超前實現量產；<b>CDU與機櫃整合冷板模組相對落後</b>，仍衝刺Q4放量</li>
+      <li>基本面供不應求 vs. 股價/估值是否還有空間，是兩件需要分開判斷的事</li>
+    </ul>
+
+    <!-- ============ STEP 3 ============ -->
+    <h2 class="section">Step 3 — 供應鏈門檻<span>BARRIERS TO ENTRY</span></h2>
+    <div class="barrier-grid">
+      <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">高</div><p>洩漏風險是天然門檻；UL/IEC 62368-1認證；OCP標準化白皮書；台灣地理群聚護城河</p></div>
+      <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v mid">季度~1年</div><p>CDU交期16-24週；擴產案例約2-3季投產——明顯快於PSU的3-5年</p></div>
+      <div class="barrier"><div class="b-h">資本/技術門檻</div><div class="b-v mid">中高</div><p>技術升級快（均熱片售價估漲3-4倍）；資本門檻遠低於半導體晶圓廠</p></div>
+      <div class="barrier"><div class="b-h">客戶認證</div><div class="b-v mid">數週+</div><p>UL/IEC 2週浸泡測試+靜水壓；Chip-to-Chiller全鏈路驗證時長未量化</p></div>
+      <div class="barrier"><div class="b-h">轉單成本</div><div class="b-v high">高且雙面</div><p>品質記錄是累積性資產，但一次漏液事故可能讓供應商被直接排除</p></div>
+    </div>
+    <p class="insight"><b>與PSU產業對照：</b>卡位邏輯類似（品質記錄+系統整合能力形成護城河），但擴產週期明顯更快，代表液冷供需失衡持續時間可能較短，除非需求成長速度持續快於擴產節奏。</p>
+
+    <!-- ============ STEP 4 ============ -->
+    <h2 class="section">Step 4 — 追蹤指標與財務驗證<span>TRACKING INDICATORS</span></h2>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>指標</th><th>目前讀數（2026-09-17）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
+      <tbody>
+        <tr><td>Vertiv/Ecolab液冷guidance</td><td>Vertiv 2026 guidance $135-140億美元(+30%有機成長)；Ecolab稱CoolIT綜效可捕捉3-5倍營收</td><td class="trig">任一下修 或 再度大幅上修</td></tr>
+        <tr><td>CDU/chiller交期</td><td>CDU 16-24週；chiller 20-30週</td><td class="trig">縮短至12週以下 或 CDU拉長超過30週</td></tr>
+        <tr><td>均熱片/MCL新技術溢價</td><td>業界喊出3-4倍溢價，尚未財報驗證</td><td class="trig">財報證實/證偽此溢價是否反映在ASP/毛利率</td></tr>
+        <tr><td>奇鋐EPS連續成長</td><td>連續8季成長，創40季新高(2026Q1 EPS 20.17元)</td><td class="trig">連續成長中斷</td></tr>
+        <tr><td>健策單季獲利YoY</td><td>2026Q1僅+1.99%(vs全年+53.95%)</td><td class="trig">下半年YoY未回升至兩位數以上</td></tr>
+        <tr><td>奇鋐本淨比/本益比</td><td>P/B 23.47倍、P/E 47.1倍</td><td class="trig">較基準下滑20%以上</td></tr>
+        <tr><td>國際液冷併購動態</td><td>Ecolab/CoolIT、Eaton/Boyd、Schneider/Motivair三筆已完成</td><td class="trig">有新重大併購 或 併購潮停滯超過兩季</td></tr>
+        <tr><td>GTC下一代機櫃液冷系統價值</td><td>VR200較GB300躍升逾50%($3.5萬→$6.3-6.5萬美元/櫃)</td><td class="trig">下次GTC揭露的世代成長率明顯低於50%</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="sub">財務數字驗證</h3>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>指標</th><th>奇鋐 (3017.TW)</th><th>雙鴻 (3324.TW)</th><th>健策 (3653.TW)</th></tr></thead>
+      <tbody>
+        <tr><td>最新單季/年營收</td><td>2026Q1：490.4億元</td><td>2025全年：232.76億元(+47.5%)</td><td>2025全年：202.76億元(+42%)</td></tr>
+        <tr><td>毛利率</td><td>2026Q1：29.77%</td><td>2025全年：27.38%(+58.27%)</td><td>未查到</td></tr>
+        <tr><td>EPS</td><td>2026Q1：20.17元(連8季創高)</td><td>2025全年：28.26元(創新高)</td><td>2026Q1：9.53元(YoY僅+1.99%)</td></tr>
+        <tr><td>本淨比/本益比</td><td>23.47倍 / 47.1倍</td><td>未查到</td><td>未查到</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-dim);">此追蹤表已建立為持久化追蹤器 <code>.claude/skills/supply-chain-analysis/trackers/ai_liquid_cooling.md</code>，並設有每週本機排程自動重新查證。</p>
+
+    <div class="gap-box">
+      <b style="font-size:12.5px;color:#78350F;">資料缺口</b>
+      <ul>
+        <li>雙鴻、健策的本淨比、本益比、存貨、合約負債等數字未查到</li>
+        <li>NVIDIA AI Factory／Chip-to-Chiller全鏈路驗證的具體通過時間未查到</li>
+        <li>CDU交期／均熱片溢價的下一季財報實際兌現數字，仍待驗證</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="foot">
+    <p style="margin-bottom:10px;"><b>參考來源（部分）：</b></p>
+    <ul class="src-list">
+      <li><a href="https://www.digitimes.com.tw/research/report/?v=20260626-187" target="_blank">COMPUTEX 2026 液冷供應鏈觀察 | DIGITIMES</a></li>
+      <li><a href="https://www.gminsights.com/industry-analysis/data-center-liquid-cooling-market" target="_blank">Data Center Liquid Cooling Market | GM Insights</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6392216" target="_blank">液冷革命強勢接棒：奇鋐、雙鴻、富世達、健策 | 鉅亨網</a></li>
+      <li><a href="https://statementdog.com/news/15880" target="_blank">雙鴻AI水冷業務爆發、股價摜入跌停 | 財報狗</a></li>
+      <li><a href="https://vocus.cc/article/696ded22fd89780001e2f84b" target="_blank">散熱三雄估值透支危機分析</a></li>
+      <li><a href="https://eecloud.sgs.com/SEMI_TW/Article.aspx?n=31" target="_blank">一滴冷卻液恐癱瘓億元機櫃 | SGS</a></li>
+      <li><a href="https://seekingalpha.com/article/4890719-vertiv-holdings-the-15-billion-backlog-liquid-cooling-dominance-and-the-ai-infrastructure-trade-wall-street-is-still-underpricing" target="_blank">Vertiv: $15B Backlog | Seeking Alpha</a></li>
+      <li><a href="https://www.ctee.com.tw/news/20260529701470-430201" target="_blank">Vera Rubin放量 健策下半年業績發功 | 工商時報</a></li>
+    </ul>
+    <p style="margin-top:14px;">完整分析全文見同目錄下 <code>step1_供應鏈地圖.md</code>、<code>step2_供應鏈歷史.md</code>、<code>step3_供應鏈門檻.md</code>、<code>step4_追蹤指標.md</code>。本報告依 <code>.claude/skills/supply-chain-analysis</code> 框架產出，僅供研究參考，非投資建議。</p>
+  </footer>
+
+</div>
+</body>
+</html>

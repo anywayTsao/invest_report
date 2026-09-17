@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CCL 供應鏈研究</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,440;0,9..144,600;0,9..144,720;1,9..144,500&family=Libre+Franklin:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#f7f3ea; --surface:#ffffff; --surface-2:#efe7d4;
+    --ink:#201a13; --ink-soft:#5b5142; --ink-faint:#8b7f6a;
+    --line:#ddd0b4; --line-soft:#e9dfc9;
+    --copper:#a8532b; --copper-deep:#7c3b1e; --copper-ink:#ffffff;
+    --green:#1e5c48; --green-soft:#2d7a5f;
+    --amber:#8f5f16; --amber-soft:#c98a2c;
+    --danger:#9c3a2c;
+    --shadow: 0 1px 2px rgba(32,26,19,.06), 0 8px 24px -12px rgba(32,26,19,.18);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#15120d; --surface:#1c160f; --surface-2:#241c12;
+      --ink:#ede4d3; --ink-soft:#b7aa92; --ink-faint:#8a7c65;
+      --line:#3a3122; --line-soft:#2c2517;
+      --copper:#e0975f; --copper-deep:#f0b184; --copper-ink:#1c160f;
+      --green:#5fbb96; --green-soft:#7fcdae;
+      --amber:#dba54c; --amber-soft:#e8bd77;
+      --danger:#e2725f;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 28px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#15120d; --surface:#1c160f; --surface-2:#241c12;
+    --ink:#ede4d3; --ink-soft:#b7aa92; --ink-faint:#8a7c65;
+    --line:#3a3122; --line-soft:#2c2517;
+    --copper:#e0975f; --copper-deep:#f0b184; --copper-ink:#1c160f;
+    --green:#5fbb96; --green-soft:#7fcdae;
+    --amber:#dba54c; --amber-soft:#e8bd77;
+    --danger:#e2725f;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 28px -12px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{background:var(--paper);}
+  body{
+    margin:0; color:var(--ink); background:var(--paper);
+    font-family:"Libre Franklin",system-ui,-apple-system,sans-serif;
+    font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:"Fraunces",Georgia,serif; text-wrap:balance; letter-spacing:-.01em;}
+  .mono, table, .pill, .meta-strip, .kpi-value, .chip{font-family:"IBM Plex Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums;}
+  a{color:var(--copper); text-decoration-thickness:1px; text-underline-offset:2px;}
+  a:hover{color:var(--copper-deep);}
+  .wrap{max-width:920px; margin:0 auto; padding-inline:20px;}
+  .wrap-wide{max-width:1040px; margin:0 auto; padding-inline:20px;}
+
+  /* Masthead */
+  header.masthead{
+    background:
+      linear-gradient(180deg, transparent 0%, var(--paper) 100%),
+      repeating-linear-gradient(90deg, color-mix(in srgb, var(--copper) 7%, transparent) 0 1px, transparent 1px 34px);
+    background-color: var(--surface-2);
+    border-bottom:1px solid var(--line);
+    padding-block: 44px 28px;
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--copper); display:flex; align-items:center; gap:.6em; margin-bottom:14px;
+  }
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--copper);}
+  h1.title{font-size:clamp(1.9rem, 4.4vw, 2.9rem); font-weight:720; margin:0 0 8px; color:var(--ink);}
+  .subtitle{color:var(--ink-soft); font-size:1.02rem; max-width:56ch; margin:0 0 22px;}
+  .meta-strip{
+    display:flex; flex-wrap:wrap; gap:10px 22px; font-size:.82rem; color:var(--ink-soft);
+    border-top:1px solid var(--line); padding-top:16px;
+  }
+  .meta-strip b{color:var(--ink); font-weight:600;}
+  .stage-pill{
+    display:inline-flex; align-items:center; gap:.5em; background:var(--danger); color:#fff;
+    padding:.32em .85em; border-radius:100px; font-family:"IBM Plex Mono",monospace; font-size:.74rem;
+    letter-spacing:.06em; font-weight:600;
+  }
+  .stage-pill::before{content:"●"; font-size:.6em;}
+
+  /* chain diagram (step 1 map) */
+  .chain{display:flex; gap:0; margin-top:24px; overflow-x:auto; padding-bottom:8px;}
+  .chain-node{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px; min-width:158px; flex:1 1 158px;}
+  .chain-node .stage-label{font-family:"IBM Plex Mono",monospace; font-size:.66rem; text-transform:uppercase; letter-spacing:.06em; color:var(--copper); font-weight:600; margin-bottom:7px;}
+  .chain-node .stage-eg{font-size:.82rem; color:var(--ink-soft); line-height:1.5;}
+  .chain-arrow{display:flex; align-items:center; justify-content:center; color:var(--ink-faint); font-size:1.15rem; padding:0 8px; flex:0 0 auto;}
+
+  /* stacked bars (BOM cost structure) */
+  .stackbar-block{margin-top:18px;}
+  .stackbar-label{display:flex; justify-content:space-between; font-size:.76rem; color:var(--ink-faint); margin-bottom:6px;}
+  .stackbar{display:flex; height:30px; border-radius:6px; overflow:hidden; border:1px solid var(--line);}
+  .stackbar-seg{display:flex; align-items:center; justify-content:center; font-size:.68rem; font-weight:600; color:#fff; font-family:"IBM Plex Mono",monospace; white-space:nowrap; overflow:hidden;}
+  .stackbar-seg.neutral{color:var(--ink-soft);}
+
+  /* region comparison cards */
+  .region-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:22px;}
+  @media (max-width:760px){.region-grid{grid-template-columns:1fr;}}
+  .region-card{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px;}
+  .region-card .region-flag{font-family:"IBM Plex Mono",monospace; font-size:.68rem; text-transform:uppercase; letter-spacing:.06em; color:var(--copper); font-weight:600; margin-bottom:8px;}
+  .region-card h4{margin:0 0 8px; font-size:1.02rem; font-family:"Libre Franklin",sans-serif; font-weight:600;}
+  .region-card p{font-size:.86rem; color:var(--ink-soft); margin:0; max-width:none;}
+
+  /* generation ladder */
+  .ladder{display:flex; align-items:center; gap:4px; margin-top:24px; overflow-x:auto; padding-bottom:8px;}
+  .ladder-step{background:var(--surface); border:2px solid var(--copper); border-radius:10px; padding:14px 18px; text-align:center; flex:0 0 auto; min-width:96px;}
+  .ladder-step .grade{font-family:"Fraunces",serif; font-weight:600; font-size:1.35rem; color:var(--copper);}
+  .ladder-step .grade-use{font-size:.68rem; color:var(--ink-faint); margin-top:5px; max-width:112px; line-height:1.35;}
+  .ladder-arrow{display:flex; flex-direction:column; align-items:center; color:var(--ink-faint); flex:0 0 auto; font-size:.7rem; gap:2px; padding:0 2px;}
+  .ladder-arrow .arrow-glyph{font-size:1.25rem; line-height:1; color:var(--ink-faint);}
+  .ladder-arrow .arrow-val{font-family:"IBM Plex Mono",monospace; color:var(--amber); font-weight:600;}
+
+  /* nav */
+  nav.subnav{
+    position:sticky; top:0;
+    background:color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line); z-index:10;
+  }
+  nav.subnav .wrap-wide{display:flex; gap:4px; overflow-x:auto; padding-block:0;}
+  nav.subnav a{
+    white-space:nowrap; color:var(--ink-soft); text-decoration:none; font-size:.82rem;
+    padding:12px 14px; border-bottom:2px solid transparent; font-weight:500;
+  }
+  nav.subnav a:hover{color:var(--ink);}
+
+  section{padding-block:40px;}
+  section + section{border-top:1px solid var(--line-soft);}
+  .section-head{display:flex; align-items:baseline; gap:14px; margin-bottom:22px;}
+  .section-num{font-family:"IBM Plex Mono",monospace; color:var(--copper); font-size:.85rem; font-weight:600;}
+  h2.section-title{font-size:1.5rem; margin:0; font-weight:600;}
+  p{max-width:68ch;}
+  .lede{font-size:1.05rem; color:var(--ink-soft); max-width:68ch;}
+
+  /* KPI tiles */
+  .kpi-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-top:24px;}
+  .kpi{background:var(--surface); padding:18px 16px;}
+  .kpi-label{font-size:.72rem; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-faint); margin-bottom:8px;}
+  .kpi-value{font-size:1.6rem; font-weight:600; color:var(--copper); line-height:1.1;}
+  .kpi-sub{font-size:.78rem; color:var(--ink-soft); margin-top:6px;}
+  @media (max-width:760px){.kpi-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* timeline */
+  .timeline{display:flex; flex-direction:column; gap:0; margin-top:28px;}
+  .cycle{display:grid; grid-template-columns:56px 1fr; gap:18px; position:relative; padding-bottom:30px;}
+  .cycle:last-child{padding-bottom:0;}
+  .cycle-num{
+    font-family:"Fraunces",serif; font-weight:600; font-size:1.5rem; color:var(--copper);
+    display:flex; align-items:flex-start; justify-content:center; padding-top:2px;
+  }
+  .cycle::before{content:""; position:absolute; left:27px; top:34px; bottom:0; width:1px; background:var(--line);}
+  .cycle:last-child::before{display:none;}
+  .cycle-body{border-left:3px solid var(--line); padding-left:18px;}
+  .cycle.current .cycle-body{border-left-color:var(--danger);}
+  .cycle-era{font-family:"IBM Plex Mono",monospace; font-size:.76rem; color:var(--ink-faint); letter-spacing:.04em;}
+  .cycle-title{font-size:1.12rem; font-weight:600; margin:.15em 0 .4em;}
+  .cycle-title .stat{color:var(--copper);}
+  .cycle p{margin:.3em 0 0; color:var(--ink-soft); font-size:.94rem;}
+
+  /* charts */
+  .chart-card{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:20px 22px; margin-top:22px;}
+  .chart-title{font-size:.9rem; font-weight:600; margin-bottom:2px;}
+  .chart-caption{font-size:.78rem; color:var(--ink-faint); margin-bottom:10px;}
+  .chart-row{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media (max-width:760px){.chart-row{grid-template-columns:1fr;}}
+  svg.chart{width:100%; height:auto; display:block; overflow:visible;}
+  svg.chart text{font-family:"IBM Plex Mono",monospace; fill:var(--ink-soft);}
+  svg.chart .axis-line{stroke:var(--line); stroke-width:1;}
+  svg.chart .val-label{fill:var(--ink); font-weight:600; font-size:12px;}
+  svg.chart .grp-label{fill:var(--ink-soft); font-size:11.5px;}
+  .legend{display:flex; gap:16px; font-size:.76rem; color:var(--ink-soft); margin-top:8px;}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .swatch{width:10px; height:10px; border-radius:2px; display:inline-block;}
+
+  /* stat callouts */
+  .stat-row{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:22px;}
+  @media (max-width:760px){.stat-row{grid-template-columns:1fr;}}
+  .stat-card{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px;}
+  .stat-num{font-family:"Fraunces",serif; font-weight:600; font-size:1.9rem; color:var(--green);}
+  .stat-desc{font-size:.84rem; color:var(--ink-soft); margin-top:6px;}
+
+  /* barrier compare table */
+  .compare{width:100%; border-collapse:collapse; margin-top:24px; font-size:.9rem;}
+  .compare caption{text-align:left; font-family:"Libre Franklin",sans-serif; font-size:.78rem; color:var(--ink-faint); margin-bottom:8px;}
+  .compare th, .compare td{border-bottom:1px solid var(--line); padding:11px 14px; text-align:left; vertical-align:top;}
+  .compare thead th{font-family:"Libre Franklin",sans-serif; font-weight:600; color:var(--ink-faint); font-size:.74rem; text-transform:uppercase; letter-spacing:.06em; border-bottom:1px solid var(--ink-faint);}
+  .compare tbody th{font-weight:600; white-space:nowrap; color:var(--ink); font-family:"Libre Franklin",sans-serif;}
+  .table-scroll{overflow-x:auto; margin-top:22px;}
+  table.data{width:100%; border-collapse:collapse; min-width:640px; font-size:.86rem;}
+  table.data th, table.data td{border-bottom:1px solid var(--line); padding:10px 12px; text-align:left; vertical-align:top;}
+  table.data thead th{background:var(--surface-2); font-family:"Libre Franklin",sans-serif; font-weight:600; font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); position:sticky; top:0;}
+  table.data tbody tr:hover{background:color-mix(in srgb, var(--copper) 5%, transparent);}
+
+  .pill{display:inline-block; font-size:.68rem; padding:.22em .6em; border-radius:100px; font-weight:600; letter-spacing:.02em;}
+  .pill.baseline{background:color-mix(in srgb, var(--green) 16%, transparent); color:var(--green);}
+  .pill.watch{background:color-mix(in srgb, var(--amber) 18%, transparent); color:var(--amber);}
+  .pill.gap{background:color-mix(in srgb, var(--danger) 14%, transparent); color:var(--danger);}
+
+  .disputed{border-bottom:1px dashed var(--amber-soft); cursor:help;}
+
+  /* changelog */
+  .log-card{background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--green); border-radius:8px; padding:18px 20px; margin-top:20px;}
+  .log-date{font-family:"IBM Plex Mono",monospace; font-size:.8rem; color:var(--green); font-weight:600; margin-bottom:10px;}
+  .log-card ul{margin:0; padding-left:1.1em; font-size:.9rem; color:var(--ink-soft);}
+  .log-card li{margin-bottom:4px;}
+
+  /* gaps checklist */
+  .gap-list{list-style:none; margin:20px 0 0; padding:0; display:grid; gap:10px;}
+  .gap-list li{display:flex; gap:12px; align-items:flex-start; font-size:.92rem; color:var(--ink-soft); background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:12px 14px;}
+  .gap-list li::before{content:"?"; flex:none; width:20px; height:20px; border-radius:50%; border:1.5px solid var(--amber-soft); color:var(--amber); font-size:.72rem; font-weight:700; display:flex; align-items:center; justify-content:center; font-family:"IBM Plex Mono",monospace;}
+
+  /* sources */
+  .src-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:28px; margin-top:22px;}
+  @media (max-width:760px){.src-grid{grid-template-columns:1fr;}}
+  .src-group h3{font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; color:var(--copper); font-weight:600; margin:0 0 10px; font-family:"Libre Franklin",sans-serif;}
+  .src-group ul{margin:0; padding:0; list-style:none; display:grid; gap:7px;}
+  .src-group li{font-size:.86rem; line-height:1.4;}
+  .src-group a{color:var(--ink-soft);}
+  .src-group a:hover{color:var(--copper);}
+
+  footer{padding-block:32px; text-align:center; color:var(--ink-faint); font-size:.8rem;}
+  .footnote{font-size:.78rem; color:var(--ink-faint); margin-top:10px;}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">供應鏈研究 · Step 1–4</div>
+    <h1 class="title">CCL 供應鏈研究</h1>
+    <p class="subtitle">銅箔基板（Copper Clad Laminate）—— AI 伺服器材料規格升級如何把一個原物料周期股，變成結構性供給短缺的三年故事。</p>
+    <div class="meta-strip">
+      <span>產出日期 <b>2026-09-17</b></span>
+      <span>目前階段 <span class="stage-pill">供不應求 · 結構性缺口</span></span>
+      <span>範圍 <b>Step 1 地圖 · Step 2 歷史 · Step 3 門檻 · Step 4 追蹤指標</b>（完整四步驟）</span>
+    </div>
+  </div>
+</header>
+
+<nav class="subnav">
+  <div class="wrap-wide">
+    <a href="#overview">總覽</a>
+    <a href="#map">供應鏈地圖</a>
+    <a href="#history">歷史周期</a>
+    <a href="#barriers">供應鏈門檻</a>
+    <a href="#indicators">追蹤指標</a>
+    <a href="#changelog">讀數紀錄</a>
+    <a href="#gaps">資料缺口</a>
+    <a href="#sources">參考來源</a>
+  </div>
+</nav>
+
+<main>
+
+  <section id="overview">
+    <div class="wrap">
+      <div class="section-head"><span class="section-num">00</span><h2 class="section-title">總覽</h2></div>
+      <p class="lede">2026 年，CCL 產業第三次進入漲價周期——但這一次的驅動力不是庫存回補，而是 AI 伺服器材料規格從 M7 一路推向 M9，逼著上游銅箔／玻纖布／樹脂同步吃緊。高盛估計，這個結構性缺口會一路延續到 2028 年。</p>
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="kpi-label">台光電 2383 · 8月營收 YoY</div>
+          <div class="kpi-value">+129.85%</div>
+          <div class="kpi-sub">201.46 億元，創單月新高</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">台燿 6274 · 8月營收 YoY</div>
+          <div class="kpi-value">+132.48%</div>
+          <div class="kpi-sub">59.15 億元，創單月新高</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label">上游 HVLP3+ 缺口 · 2027 峰值</div>
+          <div class="kpi-value">39%</div>
+          <div class="kpi-sub">高盛估計，2026/27/28 為 28/39/38%</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">230–240<span style="font-size:.9rem">元/張</span></div>
+          <div class="kpi-label" style="margin-top:8px">FR-4 現貨價</div>
+          <div class="kpi-sub">人民幣，刷新 2021 年前高</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="map">
+    <div class="wrap-wide">
+      <div class="section-head"><span class="section-num">01</span><h2 class="section-title">供應鏈地圖</h2></div>
+      <p class="lede">CCL 本身就是「終端產品」——PCB 的直接原料。地圖要拆的不是一整台伺服器的 BOM，而是銅箔／樹脂／玻纖布這三大主材怎麼堆出一張板子，以及上中下游卡在誰手上。</p>
+
+      <h3 style="font-size:1.02rem; margin:26px 0 4px;">CCL 成本結構 — 兩種資料口徑互相矛盾</h3>
+      <p class="footnote" style="max-width:68ch">三大原材料合計占 CCL 成本超過 80%，銅箔最大宗（兩份來源一致：約 40%）；但「樹脂」與「玻纖布」何者占比更高，兩份來源給出相反的排序，⚠️ 未強行擇一，並列呈現。</p>
+      <div class="chart-card">
+        <div class="stackbar-block">
+          <div class="stackbar-label"><span>資料來源 A（前瞻產業研究院／中金系）</span><span>樹脂 &gt; 玻纖布</span></div>
+          <div class="stackbar">
+            <div class="stackbar-seg" style="width:40%; background:var(--copper)">銅箔 40%</div>
+            <div class="stackbar-seg" style="width:26.1%; background:var(--green)">樹脂 26.1%</div>
+            <div class="stackbar-seg" style="width:19.1%; background:var(--amber)">玻纖布 19.1%</div>
+            <div class="stackbar-seg neutral" style="width:14.8%; background:var(--surface-2)">其他 14.8%</div>
+          </div>
+        </div>
+        <div class="stackbar-block" style="margin-top:20px;">
+          <div class="stackbar-label"><span>資料來源 B（PCB輔材全梳理，AI伺服器高多層板口徑）</span><span>玻纖布 &gt; 樹脂</span></div>
+          <div class="stackbar">
+            <div class="stackbar-seg" style="width:40%; background:var(--copper)">銅箔 40%</div>
+            <div class="stackbar-seg" style="width:27.5%; background:var(--amber)">玻纖布 25–30%</div>
+            <div class="stackbar-seg" style="width:17.5%; background:var(--green)">樹脂 15–20%</div>
+            <div class="stackbar-seg neutral" style="width:7.5%; background:var(--surface-2)">矽微粉 5–10%</div>
+            <div class="stackbar-seg neutral" style="width:7.5%; background:var(--line-soft)">其他</div>
+          </div>
+        </div>
+        <p class="footnote">CCL 又占 PCB 總成本 35%–40%（AI 伺服器高多層板口徑），是 PCB 板材第一大成本項；CCL 產業本身毛利率水準約 30%–35%（中國口徑，2024 年）。</p>
+      </div>
+
+      <h3 style="font-size:1.02rem; margin:30px 0 4px;">供應鏈流向</h3>
+      <div class="chain">
+        <div class="chain-node">
+          <div class="stage-label">上游 · 原料/設備</div>
+          <div class="stage-eg">三井金屬、北川精機（日）<br>中國巨石、台玻（電子布）<br>三菱瓦斯化學（樹脂）</div>
+        </div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-node">
+          <div class="stage-label">中游 · CCL 製造</div>
+          <div class="stage-eg">台光電·台燿·聯茂（台）<br>生益·建滔（中）<br>Doosan·Isola（國際）</div>
+        </div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-node">
+          <div class="stage-label">下游 · PCB 製造</div>
+          <div class="stage-eg">欣興·臻鼎·華通·金像電<br>TTM·深南電路</div>
+        </div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-node">
+          <div class="stage-label">ODM 系統整合</div>
+          <div class="stage-eg">鴻海·廣達<br>緯創·緯穎</div>
+        </div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-node">
+          <div class="stage-label">終端客戶</div>
+          <div class="stage-eg">NVIDIA·AWS<br>Google·Meta</div>
+        </div>
+      </div>
+
+      <div class="table-scroll">
+        <table class="data">
+          <thead><tr><th>環節</th><th>廠商</th><th>地區</th></tr></thead>
+          <tbody>
+            <tr><td>電解銅箔／HVLP 高頻銅箔</td><td>三井金屬 Mitsui Kinzoku（龍頭）、古河電工</td><td>日本</td></tr>
+            <tr><td>電解銅箔（第二供應商）</td><td>金居開發 Co-Tech (8358.TW)</td><td>台灣</td></tr>
+            <tr><td>電解銅箔（電子電路）</td><td>諾德股份、銅冠銅箔、德福科技、中一科技</td><td>中國</td></tr>
+            <tr><td>電子玻纖布（Low-Dk）</td><td>中國巨石 (600176.SH，全球市占24%第一)</td><td>中國</td></tr>
+            <tr><td>電子玻纖布（Low-Dk）</td><td>台玻（全球第三家掌握 Low-Dk 技術，已進 NVIDIA 供應鏈）</td><td>台灣</td></tr>
+            <tr><td>低損耗樹脂（PPE）</td><td>三菱瓦斯化學 MGC（與聯茂合資）</td><td>日本</td></tr>
+            <tr><td>電子樹脂</td><td>東材科技、圣泉集團、宏昌電子、同宇新材、呈和科技</td><td>中國</td></tr>
+            <tr><td>CCL 成型設備（真空壓合機）</td><td>北川精機 Kitagawa Seiki (TSE 6327，全球市佔領先)</td><td>日本</td></tr>
+            <tr><td>CCL 三雄</td><td>台光電 2383·台燿 6274·聯茂 6213</td><td>台灣</td></tr>
+            <tr><td>其他台廠</td><td>南亞塑膠 1303·騰輝-KY 6672</td><td>台灣</td></tr>
+            <tr><td>CCL 龍頭／規模領先</td><td>生益科技 600183·建滔積層板 1888.HK</td><td>中國</td></tr>
+            <tr><td>其他陸廠</td><td>南亞新材（<span class="disputed" title="中國公司，與台灣南亞塑膠名稱相近但為不同企業">⚠️非台灣南亞塑膠</span>）·華正新材·金安國紀</td><td>中國</td></tr>
+            <tr><td>國際 CCL 廠</td><td>Doosan（韓）·Isola（美）·Ventec（聯茂集團）·AGC·Panasonic（日）</td><td>多國</td></tr>
+            <tr><td>PCB 製造（台）</td><td>欣興 3037·臻鼎 4958·華通 2313·金像電 2368</td><td>台灣</td></tr>
+            <tr><td>PCB 製造（國際/中）</td><td>TTM Technologies·深南電路 Shennan Circuits</td><td>美／中</td></tr>
+            <tr><td>ODM 系統整合</td><td>鴻海 2317·廣達 2382·緯創 3231·緯穎 6669</td><td>台灣</td></tr>
+            <tr><td>終端客戶</td><td>NVIDIA·AWS·Google·Meta·Microsoft</td><td>美國為主</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size:1.02rem; margin:30px 0 4px;">橫向比較：誰卡在哪個位置</h3>
+      <div class="region-grid">
+        <div class="region-card">
+          <div class="region-flag">台灣</div>
+          <h4>成品 + 下游 PCB 雙卡位</h4>
+          <p>同時把持 CCL 三雄與下游 PCB 龍頭（欣興、臻鼎、華通、金像電），但高階銅箔仍仰賴日廠三井金屬，僅金居開發打入第二供應商位置；台玻 Low-Dk 技術是少數成功打入上游材料的案例。</p>
+        </div>
+        <div class="region-card">
+          <div class="region-flag">中國</div>
+          <h4>內需龐大 + 上游快速國產化</h4>
+          <p>生益科技、建滔積層板規模龍頭；中國巨石電子玻纖布全球市占 24% 第一。但最高階 Low-Dk 特種布仍多為標準布，中國巨石本身低介電特種布⚠️尚未形成訂單及收入，最高階材料國產替代仍落後一截。</p>
+        </div>
+        <div class="region-card">
+          <div class="region-flag">國際（日／韓）</div>
+          <h4>材料與設備寡占才是真話語權</h4>
+          <p>三井金屬（銅箔）、三菱瓦斯化學（樹脂）、北川精機（壓合設備）三家日廠形成技術寡占，CCL 成品廠自己想擴產也繞不開；Doosan（韓）加碼泰國新產能因應 AI 資料中心需求。</p>
+        </div>
+      </div>
+
+      <h3 style="font-size:1.02rem; margin:30px 0 4px;">材料世代的價格階梯（可選）</h3>
+      <div class="chart-card">
+        <div class="chart-caption">材料等級每升一階，ASP 概略跳增區間（非逐代精確數字，見下方註記）</div>
+        <div class="ladder">
+          <div class="ladder-step"><div class="grade">M6</div><div class="grade-use">業界極低損耗基準</div></div>
+          <div class="ladder-arrow"><span class="arrow-glyph">→</span><span class="arrow-val">+20–30%</span></div>
+          <div class="ladder-step"><div class="grade">M7</div><div class="grade-use">多數 AI 伺服器主板</div></div>
+          <div class="ladder-arrow"><span class="arrow-glyph">→</span><span class="arrow-val">+20–30%</span></div>
+          <div class="ladder-step"><div class="grade">M8</div><div class="grade-use">AI ASIC・800G 交換器主流</div></div>
+          <div class="ladder-arrow"><span class="arrow-glyph">→</span><span class="arrow-val">+20–30%</span></div>
+          <div class="ladder-step" style="border-color:var(--danger)"><div class="grade" style="color:var(--danger)">M9</div><div class="grade-use">1.6T 交換器・VR200・Trainium 3</div></div>
+        </div>
+        <p class="footnote" style="margin-top:14px">800G/1.6T 交換器用含石英玻璃的頂級材料，均價達 M8 的 <b style="color:var(--ink)">2–3 倍</b>。⚠️「+20–30%」為單一資料來源給出的概略區間，非逐代精確數字，僅供數量級參考；與 Step 2 提到「單台 AI 伺服器 PCB 總價值量從 3.51 萬美元升至 11.67 萬美元（+233%）」量級方向一致，但口徑不同（材料單價 vs. 整片 PCB 總價值量），不可直接互相推算。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="history">
+    <div class="wrap">
+      <div class="section-head"><span class="section-num">02</span><h2 class="section-title">供應鏈歷史 — 三次周期</h2></div>
+      <p class="lede">過去兩輪漲價潮都在 1–2 年內見頂回落；這一輪不一樣，資料上看不到終點。</p>
+
+      <div class="timeline">
+        <div class="cycle">
+          <div class="cycle-num">01</div>
+          <div class="cycle-body">
+            <div class="cycle-era">2016 — 2017</div>
+            <div class="cycle-title">供給端驅動，漲幅 <span class="stat">＋30%</span></div>
+            <p>中國電解銅箔轉產鋰電銅箔（加工費更高），電路用銅箔供給收縮，疊加玻纖布／環氧樹脂同步吃緊，三大主材共振推升價格。</p>
+          </div>
+        </div>
+        <div class="cycle">
+          <div class="cycle-num">02</div>
+          <div class="cycle-body">
+            <div class="cycle-era">2018 H2 — 2019：需求下行　→　2019 Q4：反轉</div>
+            <div class="cycle-title">終端疲弱 + 去庫存 + 貿易戰，價格走跌</div>
+            <p>電子業去庫存壓力與 CCL 擴產壓力於 2019 Q4 同步緩解，5G 題材浮現，市場轉向樂觀，下游 PCB 廠回補庫存。（⚠️ 精確反轉月份與跌幅未查到數字，列為資料缺口）</p>
+          </div>
+        </div>
+        <div class="cycle">
+          <div class="cycle-num">03</div>
+          <div class="cycle-body">
+            <div class="cycle-era">2020 — 2021</div>
+            <div class="cycle-title">原物料 + 旺季需求，價格衝上 <span class="stat">約 230 元/張</span></div>
+            <p>銅箔、玻纖布、環氧樹脂供需缺口疊加終端旺季，通用 FR-4 價格衝上歷史高點。見頂後的下行時間點與跌幅同樣未查到具體數字。</p>
+          </div>
+        </div>
+        <div class="cycle current">
+          <div class="cycle-num">04</div>
+          <div class="cycle-body">
+            <div class="cycle-era">2026 — 現在進行式</div>
+            <div class="cycle-title">AI 材料規格升級，<span class="stat">結構性</span>供不應求</div>
+            <p>驅動力從「原物料成本轉嫁」變成「材料規格升級」（M7→M8→M9）。年內四輪統一調價，FR-4 累計漲幅突破 40%，現貨價刷新 2021 前高；單台 AI 伺服器 PCB 價值量從 3.51 萬美元飆升至 11.67 萬美元（＋233%）。多家機構估計缺口延續至 2028 年——這是過去兩輪都沒有的性質。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title">台廠雙雄營收年增率</div>
+        <div class="chart-caption">2026 年 8 月單月 vs. 前 8 月累計，年增率（%）</div>
+        <svg class="chart" viewBox="0 0 480 232" role="img" aria-label="台光電與台燿的8月單月與前8月累計營收年增率長條圖">
+          <line class="axis-line" x1="60" y1="40" x2="60" y2="190"/>
+          <line class="axis-line" x1="60" y1="190" x2="450" y2="190"/>
+          <g>
+            <line class="axis-line" x1="56" y1="190" x2="450" y2="190"/>
+            <line class="axis-line" x1="56" y1="152.5" x2="450" y2="152.5" stroke-dasharray="2 3"/>
+            <line class="axis-line" x1="56" y1="115" x2="450" y2="115" stroke-dasharray="2 3"/>
+            <line class="axis-line" x1="56" y1="77.5" x2="450" y2="77.5" stroke-dasharray="2 3"/>
+            <line class="axis-line" x1="56" y1="40" x2="450" y2="40" stroke-dasharray="2 3"/>
+            <text x="50" y="193" text-anchor="end" font-size="10.5">0%</text>
+            <text x="50" y="155.5" text-anchor="end" font-size="10.5">35%</text>
+            <text x="50" y="118" text-anchor="end" font-size="10.5">70%</text>
+            <text x="50" y="80.5" text-anchor="end" font-size="10.5">105%</text>
+            <text x="50" y="43" text-anchor="end" font-size="10.5">140%</text>
+          </g>
+          <rect x="100" y="50.9" width="50" height="139.1" rx="3" fill="var(--copper)"/>
+          <text class="val-label" x="125" y="43" text-anchor="middle">+129.85%</text>
+          <rect x="160" y="88.0" width="50" height="102.0" rx="3" fill="var(--green)"/>
+          <text class="val-label" x="185" y="81" text-anchor="middle">+95.18%</text>
+          <text class="grp-label" x="155" y="208" text-anchor="middle">台光電 2383</text>
+          <rect x="320" y="48.1" width="50" height="141.9" rx="3" fill="var(--copper)"/>
+          <text class="val-label" x="345" y="41" text-anchor="middle">+132.48%</text>
+          <rect x="380" y="86.1" width="50" height="103.9" rx="3" fill="var(--green)"/>
+          <text class="val-label" x="405" y="79" text-anchor="middle">+97.01%</text>
+          <text class="grp-label" x="375" y="208" text-anchor="middle">台燿 6274</text>
+        </svg>
+        <div class="legend">
+          <span><i class="swatch" style="background:var(--copper)"></i>2026/08 單月 YoY</span>
+          <span><i class="swatch" style="background:var(--green)"></i>2026 前 8 月累計 YoY</span>
+        </div>
+        <p class="footnote">聯茂（6213）僅查到 2026 Q1 單季 YoY +20.6%，與上兩家公司的期間口徑不同，故未併入此圖，避免誤導比較。</p>
+      </div>
+
+      <p style="margin-top:24px">台光電目前為全球最大 CCL 廠，市占率一說 <span class="disputed" title="不同文章分別引用18.9%與16.2%，可能來自不同時間點或統計機構，兩者不可直接比較">18.9%（另一資料來源為 16.2%）</span>；台燿、聯茂緊追在後，三者合稱「CCL 三雄」。中國陣營由生益科技與建滔積層板領軍，2026 上半年生益覆銅板業務營收年增近 50%、毛利率提升 5.47 個百分點至 29.16%。</p>
+    </div>
+  </section>
+
+  <section id="barriers">
+    <div class="wrap">
+      <div class="section-head"><span class="section-num">03</span><h2 class="section-title">供應鏈門檻</h2></div>
+      <p class="lede">CCL 本身的門檻分層明顯；真正卡死供給的，是上游被兩家公司寡占的高階銅箔。</p>
+
+      <table class="compare">
+        <caption>低階 vs 高階 CCL 的門檻落差</caption>
+        <thead>
+          <tr><th></th><th>低階 CCL（通用 FR-4）</th><th>高階 CCL（M7 以上，高頻高速）</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>市場結構</th><td>紅海競爭，進入門檻低</td><td>寡占市場，新進者難切入</td></tr>
+          <tr><th>擴產週期</th><td>成品產線約 1–2 年可完成</td><td>受限上游設備，交期近 2 年，訂單排到 2028 Q1</td></tr>
+          <tr><th>客戶認證</th><td>相對快速</td><td>長達 2–3 年，通過後訂單穩固</td></tr>
+          <tr><th>轉單成本</th><td>低</td><td>高——材料規格與板卡設計深度綁定</td></tr>
+        </tbody>
+      </table>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-num">50–60%</div>
+          <div class="stat-desc">三井金屬＋金居開發合計，未來三年僅能滿足 HVLP3+ 產業總需求的比例</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">10–20%</div>
+          <div class="stat-desc">既有 HVLP3 產線轉換為 HVLP4/5 時，每次發生的產能損耗</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2–3 年</div>
+          <div class="stat-desc">高階 CCL 產品的客戶驗證週期，也是最深的護城河來源</div>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-title">HVLP3+ 高階銅箔供給缺口（高盛估計）</div>
+        <div class="chart-caption">產業需求缺口，% · 2026–2028</div>
+        <svg class="chart" viewBox="0 0 360 220" role="img" aria-label="HVLP3+高階銅箔2026至2028年供給缺口百分比長條圖">
+          <line class="axis-line" x1="56" y1="180" x2="330" y2="180"/>
+          <line class="axis-line" x1="56" y1="142.5" x2="330" y2="142.5" stroke-dasharray="2 3"/>
+          <line class="axis-line" x1="56" y1="105" x2="330" y2="105" stroke-dasharray="2 3"/>
+          <line class="axis-line" x1="56" y1="67.5" x2="330" y2="67.5" stroke-dasharray="2 3"/>
+          <line class="axis-line" x1="56" y1="30" x2="330" y2="30" stroke-dasharray="2 3"/>
+          <text x="50" y="183" text-anchor="end" font-size="10.5">0%</text>
+          <text x="50" y="145.5" text-anchor="end" font-size="10.5">10%</text>
+          <text x="50" y="108" text-anchor="end" font-size="10.5">20%</text>
+          <text x="50" y="70.5" text-anchor="end" font-size="10.5">30%</text>
+          <text x="50" y="33" text-anchor="end" font-size="10.5">40%</text>
+
+          <rect x="86" y="75" width="60" height="105" rx="3" fill="var(--amber)"/>
+          <text class="val-label" x="116" y="68" text-anchor="middle">28%</text>
+          <text class="grp-label" x="116" y="198" text-anchor="middle">2026</text>
+
+          <rect x="176" y="33.75" width="60" height="146.25" rx="3" fill="var(--amber)"/>
+          <text class="val-label" x="206" y="27" text-anchor="middle">39%</text>
+          <text class="grp-label" x="206" y="198" text-anchor="middle">2027</text>
+
+          <rect x="266" y="37.5" width="60" height="142.5" rx="3" fill="var(--amber)"/>
+          <text class="val-label" x="296" y="31" text-anchor="middle">38%</text>
+          <text class="grp-label" x="296" y="198" text-anchor="middle">2028</text>
+        </svg>
+        <p class="footnote">2026 下半年 HVLP4 需求較上半年成長近 100%，月需求超過 560 噸，已超過龍頭三井金屬單月約 490 噸的產能上限。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="indicators">
+    <div class="wrap-wide">
+      <div class="section-head"><span class="section-num">04</span><h2 class="section-title">追蹤指標與觸發閾值</h2></div>
+      <p class="lede">以下 9 項指標的基準值取自 2026-09-17 建檔當下；日後重新追蹤時，任一指標跨過「觸發條件」欄，回覆須在開頭明確標示。</p>
+
+      <div class="chart-row">
+        <div class="chart-card" style="margin-top:22px">
+          <div class="chart-title">Q2 毛利率比較</div>
+          <div class="chart-caption">2026 年第二季，%</div>
+          <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="台光電與台燿2026年第二季毛利率比較長條圖">
+            <line class="axis-line" x1="46" y1="130" x2="240" y2="130"/>
+            <line class="axis-line" x1="46" y1="102.5" x2="240" y2="102.5" stroke-dasharray="2 3"/>
+            <line class="axis-line" x1="46" y1="75" x2="240" y2="75" stroke-dasharray="2 3"/>
+            <line class="axis-line" x1="46" y1="47.5" x2="240" y2="47.5" stroke-dasharray="2 3"/>
+            <line class="axis-line" x1="46" y1="20" x2="240" y2="20" stroke-dasharray="2 3"/>
+            <text x="40" y="133" text-anchor="end" font-size="10">0%</text>
+            <text x="40" y="105.5" text-anchor="end" font-size="10">10%</text>
+            <text x="40" y="78" text-anchor="end" font-size="10">20%</text>
+            <text x="40" y="50.5" text-anchor="end" font-size="10">30%</text>
+            <text x="40" y="23" text-anchor="end" font-size="10">40%</text>
+            <rect x="76" y="36.8" width="48" height="93.2" rx="3" fill="var(--copper)"/>
+            <text class="val-label" x="100" y="30" text-anchor="middle" font-size="11">33.9%</text>
+            <text class="grp-label" x="100" y="145" text-anchor="middle">台光電</text>
+            <rect x="156" y="48.3" width="48" height="81.7" rx="3" fill="var(--copper)"/>
+            <text class="val-label" x="180" y="41.5" text-anchor="middle" font-size="11">29.7%</text>
+            <text class="grp-label" x="180" y="145" text-anchor="middle">台燿</text>
+          </svg>
+        </div>
+        <div class="chart-card" style="margin-top:22px; display:flex; flex-direction:column; justify-content:center;">
+          <div class="chart-title">缺料等級的物理刻度</div>
+          <div class="chart-caption">設備與材料交期拉長幅度</div>
+          <div style="display:grid; gap:14px; margin-top:6px;">
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:.82rem; color:var(--ink-soft);"><span>HVLP3+ 設備交期</span><b style="color:var(--ink)">8 個月 → 近 2 年</b></div>
+              <div style="height:8px; border-radius:5px; background:var(--surface-2); margin-top:6px; overflow:hidden;"><div style="width:92%; height:100%; background:var(--amber)"></div></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:.82rem; color:var(--ink-soft);"><span>低 Dk 玻纖布交期</span><b style="color:var(--ink)">30 週以上</b></div>
+              <div style="height:8px; border-radius:5px; background:var(--surface-2); margin-top:6px; overflow:hidden;"><div style="width:70%; height:100%; background:var(--amber)"></div></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:.82rem; color:var(--ink-soft);"><span>單台 AI 伺服器 PCB 價值量</span><b style="color:var(--ink)">3.51万→11.67万美元</b></div>
+              <div style="height:8px; border-radius:5px; background:var(--surface-2); margin-top:6px; overflow:hidden;"><div style="width:100%; height:100%; background:var(--copper)"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-scroll">
+        <table class="data">
+          <thead>
+            <tr><th>#</th><th>指標</th><th>基準值（2026-09-17）</th><th>觸發條件（任一即觸發）</th><th>觸發意義</th><th>狀態</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>上游 HVLP3+ 供給缺口</td><td>2026–28：28/39/38%；三井＋金居合計滿足 50–60% 需求</td><td>缺口估計下修至 20% 以下；或新增大型產能開出</td><td>瓶頸緩解的早期訊號</td><td><span class="pill baseline">基準值</span></td></tr>
+            <tr><td>2</td><td>FR-4 現貨報價</td><td>約 230–240 元/張（人民幣）</td><td>再創新高；或跌破 200 元/張</td><td>判斷漲價周期是否見頂</td><td><span class="pill baseline">基準值</span></td></tr>
+            <tr><td>3</td><td>HVLP3+ 銅箔設備交期</td><td>近 2 年，能見度到 2028 Q1</td><td>縮短至 1 年內；或繼續拉長</td><td>供需鬆動 vs. 瓶頸加劇</td><td><span class="pill baseline">基準值</span></td></tr>
+            <tr><td>4</td><td>低 Dk 玻纖布/T-Glass 交期</td><td>30 週以上</td><td>降到 20 週以下</td><td>上游材料緊張度緩解</td><td><span class="pill baseline">基準值</span></td></tr>
+            <tr><td>5</td><td>台光電/台燿單月營收 YoY</td><td>+129.85% / +132.48%（2026/08）</td><td>任一家較基準下滑超過 40 個百分點</td><td>AI 硬體需求動能減弱訊號</td><td><span class="pill baseline">基準值</span></td></tr>
+            <tr><td>6</td><td>台光電/台燿 Q2 毛利率</td><td>33.9% / 29.7%</td><td>連續兩季下滑超過 5 個百分點</td><td>報價轉嫁能力下降</td><td><span class="pill baseline">基準值</span></td></tr>
+            <tr><td>7</td><td>聯茂 M7/M8/M9 認證進度</td><td>對第二家雲端服務商送樣認證中，預計明年貢獻營收</td><td>公開宣布通過認證出貨；或認證延遲</td><td>訂單能見度變化</td><td><span class="pill baseline">基準值</span></td></tr>
+            <tr><td>8</td><td>M9/1.6T 交換器材料放量時點</td><td>預期 2026 H2 至 2027</td><td>主要客戶提前或延後放量</td><td>材料升級周期時程重估</td><td><span class="pill baseline">基準值</span></td></tr>
+            <tr><td>9</td><td>存貨／合約負債／本淨比</td><td class="pill gap" style="display:inline-block">資料缺口</td><td>下次追蹤補齊後設定閾值</td><td>訂單能見度與資產面驗證</td><td><span class="pill watch">待建檔</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="changelog">
+    <div class="wrap">
+      <div class="section-head"><span class="section-num">05</span><h2 class="section-title">歷史讀數紀錄</h2></div>
+      <div class="log-card">
+        <div class="log-date">2026-09-17 — 首次建檔（基準值）</div>
+        <ul>
+          <li>上游供給缺口：高盛估計 2026–2028 為 28% / 39% / 38%</li>
+          <li>FR-4 現貨報價 230–240 元/張，刷新 2021 前高</li>
+          <li>HVLP3+ 銅箔設備交期近 2 年，訂單能見度到 2028 Q1；玻纖布交期 30 週以上</li>
+          <li>台光電 2026/08 營收 201.46 億元（YoY +129.85%）；前 8 月累計 1,196.95 億元（YoY +95.18%）；Q2 毛利率 33.9%</li>
+          <li>台燿 2026/08 營收 59.15 億元（YoY +132.48%）；前 8 月累計 361.78 億元（YoY +97.01%）；Q2 毛利率 29.7%、營業利益率 23.5%（歷史高點）</li>
+          <li>聯茂 2026 Q1 營收 91.43 億元（YoY +20.6%），正對第二家雲端服務商送樣 M7/M8/M9</li>
+          <li>建滔 M6 產品預計 2026 年底進入頭部 PCB 廠驗證</li>
+          <li><b style="color:var(--ink)">本次無指標觸發</b>（基準建檔，無前值可比較）</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="gaps">
+    <div class="wrap">
+      <div class="section-head"><span class="section-num">06</span><h2 class="section-title">資料缺口</h2></div>
+      <p class="lede">誠實列出這次查證沒有找到的數字，下次追蹤時優先補齊。</p>
+      <ul class="gap-list">
+        <li>聯茂（6213）2026 年 8 月單月營收，以及 Q2 毛利率／營業利益率</li>
+        <li>三家公司（台光電、台燿、聯茂）的存貨水位、周轉天數、合約負債成長率</li>
+        <li>三家公司的本淨比（P/B）數字</li>
+        <li>三井金屬、金居開發的財報數字（僅查到產能推估，未查到營收/毛利率）</li>
+        <li>2018–2019 年跌價周期的精確反轉月份與跌幅；2021 高點後下行周期的反轉時間點與跌幅</li>
+        <li>台光電市占率「18.9%」與「16.2%」兩種數字的口徑差異來源</li>
+        <li>CCL 成品廠新建高階產線的標準化資本支出金額（每萬張產能）</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="sources">
+    <div class="wrap">
+      <div class="section-head"><span class="section-num">07</span><h2 class="section-title">參考來源</h2></div>
+      <div class="src-grid">
+        <div class="src-group">
+          <h3>台灣廠商 / 產業</h3>
+          <ul>
+            <li><a href="https://www.ctee.com.tw/news/20251206700151-439901" target="_blank" rel="noopener">工商時報 — AI伺服器帶旺 台系CCL全面起飛</a></li>
+            <li><a href="https://www.storm.mg/article/11164365" target="_blank" rel="noopener">風傳媒 — M9進入放量、M10提前卡位</a></li>
+            <li><a href="https://news.cnyes.com/news/id/6447232" target="_blank" rel="noopener">鉅亨網 — 台光電CCL拿下全球近19%市占</a></li>
+            <li><a href="https://www.ftnn.com.tw/news/566505" target="_blank" rel="noopener">FTNN — 銅箔基板大廠市占率攀升至16.2%</a></li>
+            <li><a href="https://news.cnyes.com/news/id/6597599" target="_blank" rel="noopener">鉅亨網 — 台光電8月營收201.46億元</a></li>
+            <li><a href="https://news.cnyes.com/news/id/6597745" target="_blank" rel="noopener">鉅亨網 — 台燿8月營收59.15億元</a></li>
+            <li><a href="https://vocus.cc/article/6a6c26e5fd89780001fb4fb5" target="_blank" rel="noopener">台燿法說會（2026/07/30）— Q2大幅擊敗預期</a></li>
+            <li><a href="https://uanalyze.com.tw/articles/9219952430" target="_blank" rel="noopener">優分析 — 台光電Q2獲利98.7億元改寫新高</a></li>
+            <li><a href="https://statementdog.com/analysis/2383/profit-margin" target="_blank" rel="noopener">財報狗 — 台光電毛利率/淨利率</a></li>
+            <li><a href="https://blog.fugle.tw/post/earnings-call-6213-2026-05-28" target="_blank" rel="noopener">富果 — 聯茂法說會重點備忘</a></li>
+            <li><a href="https://uanalyze.com.tw/articles/3345851616" target="_blank" rel="noopener">優分析 — 聯茂訂單多到做不完</a></li>
+          </ul>
+        </div>
+        <div class="src-group">
+          <h3>中國廠商</h3>
+          <ul>
+            <li><a href="https://finance.sina.com.cn/stock/aigc/agcbld/2026-08-15/doc-ininikcc2628248.shtml" target="_blank" rel="noopener">新浪財經 — 生益科技上半年淨利暴增130.42%</a></li>
+            <li><a href="https://news.qq.com/rain/a/20260406A066V500" target="_blank" rel="noopener">騰訊新聞 — 建滔積層板，覆銅板龍頭</a></li>
+            <li><a href="https://www.jiepei.com/design/10372.html" target="_blank" rel="noopener">捷配 — 生益科技45億布局松山湖</a></li>
+            <li><a href="https://www.cls.cn/detail/2341583" target="_blank" rel="noopener">財聯社 — PCB上游覆銅板再現漲價潮</a></li>
+            <li><a href="https://www.jiepei.com/design/10806.html" target="_blank" rel="noopener">捷配 — 覆銅板年內四輪漲價累計超40%</a></li>
+            <li><a href="https://zhuanlan.zhihu.com/p/384019426" target="_blank" rel="noopener">知乎 — 生益科技VS建滔積層板 2021年6月跟蹤</a></li>
+          </ul>
+        </div>
+        <div class="src-group">
+          <h3>國際廠商 / 市場</h3>
+          <ul>
+            <li><a href="https://www.atlaspcb.com/news/news-doosan-ccl-thailand-ai-2026/" target="_blank" rel="noopener">AtlasPCB — Doosan投資1800億韓元泰國CCL新廠</a></li>
+            <li><a href="https://www.atlaspcb.com/blog/ai-server-pcb-material-supply-chain-shortage-2026/" target="_blank" rel="noopener">AtlasPCB — AI伺服器需求衝擊PCB材料供應鏈</a></li>
+            <li><a href="https://tspasemiconductor.substack.com/p/from-ai-servers-to-high-speed-pcbs" target="_blank" rel="noopener">From AI Servers to High-Speed PCBs</a></li>
+          </ul>
+          <h3 style="margin-top:20px">研究報告 / 高盛</h3>
+          <ul>
+            <li><a href="https://www.163.com/dy/article/KTD6OIER05198NMR.html" target="_blank" rel="noopener">網易 — 高盛：高端銅箔供應缺口成三年新常態</a></li>
+            <li><a href="https://finance.sina.com.cn/stock/t/2026-05-20/doc-inhyqcsf6815828.shtml" target="_blank" rel="noopener">新浪財經 — 高盛高端銅箔報告全文</a></li>
+            <li><a href="https://tw.stock.yahoo.com/news/ai%E9%AB%98%E9%80%9F%E6%9D%90%E6%96%99%E5%A4%A7%E7%BC%BA%E8%B2%A8-%E9%AB%98%E7%9B%9B%E5%96%8A%E5%8F%B0%E7%87%BF1888%E5%85%83-%E9%87%91%E5%B1%85900%E5%85%83-%E5%8F%B0%E5%BB%A0%E7%8B%82%E5%90%9E%E5%85%A8%E7%90%8337-%E5%B8%82%E5%8D%A0-062000755.html" target="_blank" rel="noopener">Yahoo股市 — 高盛喊台燿1888元、金居900元</a></li>
+            <li><a href="https://www.sinotrade.com.tw/richclub/hotstock/2026-PCB-%E5%85%A8%E9%9D%A2%E7%BC%BA%E8%B2%A8%E6%BC%B2%E5%83%B9%E5%AE%8C%E6%95%B4%E8%A7%A3%E6%9E%90-%E5%9B%9B%E5%A4%A7%E6%88%B0%E7%95%A5%E7%89%A9%E8%B3%87%E7%9F%AD%E7%BC%BA-ABF-%E8%BC%89%E6%9D%BF%E8%B6%85%E7%B4%9A%E5%BE%AA%E7%92%B0%E8%88%87%E5%8F%B0%E7%81%A3%E4%BE%9B%E6%87%89%E9%8F%88%E6%8A%95%E8%B3%87%E5%9C%B0%E5%9C%96-%E8%82%A1%E5%B8%82%E8%A9%B1%E9%A1%8C-6a226b1f6c6d82bf0a7d4803" target="_blank" rel="noopener">豐雲學堂 — 2026 PCB全面缺貨漲價完整解析</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    完整分析全文另存於 <span class="mono">supply_chain_analysis/ccl/</span>；持久化追蹤器見 <span class="mono">.claude/skills/supply-chain-analysis/trackers/ccl.md</span>
+    <div class="footnote">本報告依 supply-chain-analysis 框架產出，Step 1–4，資料截至 2026-09-17。標記 ⚠️ 之數字表示跨來源存在出入，僅供數量級參考。</div>
+  </div>
+</footer>
+
+</body>
+</html>

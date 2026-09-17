@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 光通訊產業 供應鏈分析報告</title>
+<style>
+  :root{
+    --navy:#1F3A5F; --navy-d:#15233B; --orange:#E8853B;
+    --text:#1E293B; --text-dim:#64748B; --border:#E2E8F0;
+    --bg:#EEF1F5; --paper:#fff;
+    --green:#16A34A; --green-d:#15803D; --green-bg:#F0FDF4;
+    --red:#DC2626; --red-d:#B91C1C; --red-bg:#FEF2F2;
+    --amber:#F59E0B; --amber-d:#92400E; --amber-bg:#FFF8E1;
+    --thead:#EDEEF1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei","Helvetica Neue",Arial,sans-serif;
+    color:var(--text); line-height:1.7; font-size:14px; background:var(--bg);
+  }
+  .page{max-width:1080px;margin:24px auto;background:var(--paper);padding:0 0 40px;}
+  a{color:var(--navy);}
+
+  .banner{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-d) 100%);color:#fff;padding:36px 44px 30px;}
+  .banner .label{font-size:11px;letter-spacing:2.5px;color:#9DB2CE;font-weight:700;}
+  .banner h1{font-size:26px;font-weight:800;margin:8px 0 10px;line-height:1.4;}
+  .banner .sub{font-size:13px;color:#C9D6E8;line-height:1.8;}
+  .banner .badges{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
+  .badge{display:inline-block;font-size:11.5px;font-weight:700;background:rgba(255,255,255,0.12);color:#fff;padding:4px 12px;border-radius:12px;}
+
+  .body-wrap{padding:32px 44px 0;}
+
+  .exec{background:var(--amber-bg);border-left:5px solid var(--amber);border-radius:6px;padding:20px 26px;margin-bottom:8px;}
+  .exec .exec-label{font-size:11px;font-weight:700;color:var(--amber-d);letter-spacing:1.5px;margin-bottom:8px;}
+  .exec p{font-size:14.5px;line-height:1.85;color:#1F2937;}
+  .exec b{color:var(--amber-d);}
+
+  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;}
+  h2.section span{display:block;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-dim);margin-top:2px;}
+  h3.sub{font-size:15px;font-weight:800;color:var(--navy-d);margin:26px 0 12px;}
+
+  p{margin-bottom:10px;text-align:justify;}
+  ul{padding-left:20px;margin-bottom:14px;}
+  ul li{margin-bottom:6px;line-height:1.7;}
+
+  .card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin-bottom:20px;}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0 20px;}
+  .stat{background:#fff;border:1px solid var(--border);border-top:3px solid var(--navy);border-radius:7px;padding:12px 14px;text-align:center;}
+  .stat .v{font-size:18px;font-weight:800;color:var(--navy);line-height:1.2;}
+  .stat .l{font-size:11px;color:var(--text-dim);margin-top:5px;line-height:1.4;}
+
+  table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:12.8px;}
+  thead th{background:var(--thead);color:var(--text);font-weight:700;text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);white-space:nowrap;}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6;}
+  tbody tr:last-child td{border-bottom:none;}
+  .tbl-wrap{overflow-x:auto;}
+
+  .geo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:10px 0 8px;}
+  .geo-card{border:1px solid var(--border);border-top:4px solid var(--navy);border-radius:8px;padding:16px 18px;background:#F8FAFC;}
+  .geo-card.china{border-top-color:#B91C1C;}
+  .geo-card.intl{border-top-color:#0369A1;}
+  .geo-card h4{font-size:13.5px;font-weight:800;color:var(--navy-d);margin-bottom:8px;}
+  .geo-card ul{padding-left:16px;margin-bottom:0;}
+  .geo-card li{font-size:12.5px;line-height:1.65;}
+
+  .g-pos{color:var(--green-d);font-weight:800;}
+  .g-neg{color:var(--red-d);font-weight:800;}
+  .g-flag{background:#FEF3C7;color:var(--amber-d);padding:1px 6px;border-radius:3px;font-size:11px;font-weight:700;margin-left:4px;}
+
+  .timeline{list-style:none;margin:8px 0 4px;padding:0;}
+  .timeline li{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:12px 0;border-bottom:1px dashed var(--border);}
+  .timeline li:last-child{border-bottom:none;}
+  .timeline .t{font-size:12.5px;font-weight:800;color:var(--navy);white-space:nowrap;}
+  .timeline .d{font-size:13px;line-height:1.7;}
+
+  .stage-pill{display:inline-block;background:#FEF3C7;color:var(--amber-d);border:1px solid #FDE68A;font-weight:800;font-size:13px;padding:6px 16px;border-radius:20px;}
+
+  .barrier-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:10px 0 6px;}
+  .barrier{background:#F8FAFC;border:1px solid var(--border);border-radius:7px;padding:12px 13px;}
+  .barrier .b-h{font-size:12px;font-weight:800;color:var(--navy);margin-bottom:6px;}
+  .barrier .b-v{font-size:12px;font-weight:700;margin-bottom:4px;}
+  .barrier .b-v.high{color:var(--red-d);}
+  .barrier .b-v.mid{color:var(--amber-d);}
+  .barrier p{font-size:11.5px;color:var(--text-dim);margin:0;line-height:1.55;}
+
+  .trig{font-size:12px;color:var(--red-d);}
+
+  .insight{background:#EEF2FF;border-left:4px solid #4338CA;border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#312E81;}
+  .insight b{color:#3730A3;}
+
+  .warn-box{background:#FEF2F2;border:1px solid #FECACA;border-left:4px solid var(--red);border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#7F1D1D;}
+  .warn-box b{color:var(--red-d);}
+
+  .gap-box{background:#FFFBEB;border:1px solid #FDE68A;border-radius:6px;padding:14px 18px;margin:10px 0;}
+  .gap-box ul{margin-bottom:0;}
+  .gap-box li{font-size:12.5px;color:#78350F;}
+
+  .src-list{list-style:none;padding:0;margin:0;columns:2;column-gap:24px;}
+  .src-list li{font-size:12px;line-height:1.8;break-inside:avoid;}
+  .src-list a{color:var(--navy);text-decoration:none;}
+  .src-list a:hover{text-decoration:underline;}
+
+  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;}
+
+  @media (max-width:900px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .geo-grid{grid-template-columns:1fr;}
+    .barrier-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    .banner,.body-wrap{padding-left:20px;padding-right:20px;}
+    footer.foot{padding-left:20px;padding-right:20px;}
+    .stats{grid-template-columns:1fr 1fr;}
+    .barrier-grid{grid-template-columns:1fr;}
+    table{font-size:11.5px;}
+    .src-list{columns:1;}
+    .timeline li{grid-template-columns:90px 1fr;gap:8px;}
+  }
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;max-width:100%;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="banner">
+    <div class="label">SUPPLY CHAIN ANALYSIS · 供應鏈研究</div>
+    <h1>AI 光通訊產業 供應鏈分析報告</h1>
+    <div class="sub">800G/1.6T 可插拔光模組與 CPO 共封裝光學——供應鏈地圖、歷史復盤、門檻評估、追蹤指標</div>
+    <div class="badges">
+      <span class="badge">產出日期 2026-09-17</span>
+      <span class="badge">框架：地圖 → 歷史 → 門檻 → 指標</span>
+      <span class="badge">兩條路線：Pluggable 800G/1.6T ＋ CPO</span>
+    </div>
+  </div>
+
+  <div class="body-wrap">
+
+    <div class="exec">
+      <div class="exec-label">EXECUTIVE SUMMARY · 摘要</div>
+      <p>與先前研究的 PSU、AI 液冷產業不同，光通訊產業裡<b>台灣不是整機組裝龍頭</b>，而是扮演「磊晶代工（全新）＋ CPO 最難的精密光纖耦合環節（矽光子七劍客）」角色；整機模組組裝全球龍頭是<b>中國廠</b>（中際旭創市占23.4%、新易盛第二），DSP 與雷射/CPO 生態系主導權則在<b>美國</b>（Marvell、Broadcom、Coherent、Lumentum，NVIDIA 各投資 $20 億美元直接鎖料）。產業目前<b>供不應求</b>（EML雷射交期已排到2027年後、InP基板缺口逾70%），但同時存在 2027 年前後可能出現產能過剩、CPO商轉恐延至2028-2029的中期雙重風險。<b>最大不確定性是美國FCC於2026/7/22投票通過的光模組進口禁令擴大提案</b>——中際旭創61.7%營收來自美國、另一中國龍頭海外營收占比逾94%，禁令一旦定案衝擊面極大，且截至目前尚未最終確認。</p>
+    </div>
+
+    <!-- ============ STEP 1 ============ -->
+    <h2 class="section">Step 1 — 供應鏈地圖<span>SUPPLY CHAIN MAP</span></h2>
+
+    <div class="stats">
+      <div class="stat"><div class="v">2.6倍</div><div class="l">2026年800G+光模組出貨量成長（2,400萬→6,300萬支）</div></div>
+      <div class="stat"><div class="v">23.4%</div><div class="l">中際旭創全球光模組市占率（連3年#1）</div></div>
+      <div class="stat"><div class="v">&gt;70%</div><div class="l">2026年磷化銦(InP)基板供需缺口</div></div>
+      <div class="stat"><div class="v">$40億</div><div class="l">NVIDIA對Coherent+Lumentum投資總額</div></div>
+    </div>
+
+    <h3 class="sub">終端產品與 BOM 拆解</h3>
+    <p>終端產品並存兩條技術路線：<b>可插拔光模組</b>（800G主流，1.6T於2026年開始放量）與<b>CPO共封裝光學</b>（NVIDIA定調2026為矽光子商轉元年，TSMC COUPE目標2H26量產）。關鍵零組件：雷射晶粒(EML/DFB或CW雷射)、光電二極體(PD)、<b>DSP晶片</b>、矽光子光引擎、MPO/MMC連接器與FAU(光纖陣列)、磷化銦(InP)基板。</p>
+
+    <h3 class="sub">上中下游基本結構</h3>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>層級</th><th>環節</th><th>代表廠商</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="2">上游</td><td>磊晶代工/雷射晶粒</td><td>全新(2455.TW)磊晶龍頭；Lumentum/Coherent(EML產能已被NVIDIA包下)；源杰科技(中)</td></tr>
+        <tr><td>DSP晶片</td><td>Marvell(40%+市占)、Broadcom(Bailly CPO平台)、Credo、MaxLinear</td></tr>
+        <tr><td rowspan="3">中游</td><td>光模組組裝(絕對龍頭在中國)</td><td>中際旭創(23.4%市占)、新易盛(1.6T已過NVIDIA認證)、光迅科技、天孚通信(CPO光引擎龍頭)</td></tr>
+        <tr><td>高階代工</td><td>Fabrinet(泰國，大舉擴產至$98億)</td></tr>
+        <tr><td>CPO精密光學元件</td><td>台灣「矽光子七劍客」：聯亞、波若威、上詮、聯鈞、眾達-KY、華星光、光聖、IET-KY</td></tr>
+        <tr><td rowspan="2">下游</td><td>矽光子交換器平台</td><td>NVIDIA(Spectrum-X/Quantum-X)、Broadcom(Bailly)</td></tr>
+        <tr><td>封裝平台/終端客戶</td><td>TSMC(COUPE)；Google、Meta、Microsoft、Amazon</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="sub">橫向比較：國內外供應鏈地位</h3>
+    <p class="insight"><b>⚠️ 重要結構差異：</b>與 PSU、液冷產業不同，台灣<b>不是</b>整機組裝龍頭，而是「磊晶代工＋CPO最難的精密光纖耦合環節」；整機組裝龍頭是中國廠，DSP與雷射/CPO生態系主導權在美國。</p>
+    <div class="geo-grid">
+      <div class="geo-card">
+        <h4>🇹🇼 台灣 — 磊晶代工＋CPO最難環節</h4>
+        <ul>
+          <li>全新：全球GaAs/InP磊晶代工龍頭</li>
+          <li>矽光子七劍客：卡位光纖耦合與對位（5奈米級精度）</li>
+          <li>台積電CPO試產線是本波族群大漲催化劑</li>
+        </ul>
+      </div>
+      <div class="geo-card china">
+        <h4>🇨🇳 中國 — 模組組裝龍頭，但地緣政治風險最大</h4>
+        <ul>
+          <li>中際旭創23.4%全球市占、新易盛第二</li>
+          <li>⚠️美國FCC擬禁止進口含管制實體晶片的光模組</li>
+          <li>中際旭創美國營收占比61.7%；另一龍頭海外&gt;94%</li>
+          <li>因應對策：提前赴泰國、馬來西亞設廠</li>
+        </ul>
+      </div>
+      <div class="geo-card intl">
+        <h4>🌍 國際 — DSP與CPO生態系主導權</h4>
+        <ul>
+          <li>Marvell/Broadcom：DSP雙雄</li>
+          <li>Coherent/Lumentum：NVIDIA各投資$20億美元鎖料</li>
+          <li>Fabrinet(泰國)：高階代工，大舉擴產</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ============ STEP 2 ============ -->
+    <h2 class="section">Step 2 — 供應鏈歷史<span>HISTORY & CURRENT STAGE</span></h2>
+    <ul class="timeline">
+      <li><div class="t">催化事件</div><div class="d"><b>台積電宣布建置CPO試產線</b>——引爆台股矽光子/CPO族群大漲的關鍵催化劑，帶動聯亞、波若威、上詮、眾達-KY、光聖齊揚。</div></li>
+      <li><div class="t">歷史包袱</div><div class="d">「光通訊鬼故事」：2000年網通泡沫記憶，市場對本產業重複興衰週期存有戒心。2020-2026年台灣光通訊概念股年化報酬62.5%、<b>最大回撤-47.1%</b>，波動度遠高於大盤。</div></li>
+      <li><div class="t">2026-07-22</div><div class="d"><b>美國FCC投票通過擴大提案</b>，擬禁止進口含「受管制實體」邏輯晶片的光模組（不論是否中國組裝）。中際旭創61.7%營收來自美國，另一中國龍頭海外營收&gt;94%。中國廠商已提前赴泰國、馬來西亞設廠因應。⚠️尚未最終定案。</div></li>
+    </ul>
+    <p class="warn-box"><b>與PSU/液冷產業的關鍵差異：</b>這裡的逆風不是技術驗證延遲或大盤系統性風險，而是<b>貨真價實的地緣政治監管風險</b>，且直接命中份額最大的中國模組廠。投資這個產業，「供應商所在地與終端客戶地區」的地緣政治風險，需要當作跟基本面同等重要的變數。</p>
+
+    <p style="margin-top:16px;">目前供需階段判定：</p>
+    <p><span class="stage-pill">⚠ 供不應求，但中期存在產能過剩與CPO延遲雙重風險</span></p>
+    <ul>
+      <li>短期：EML雷射交期已排到2027年後、InP基板缺口逾70%——上游硬瓶頸最確定</li>
+      <li>中期(2027前後)：主要廠商大舉擴產，一旦供給追上或超過需求，價格與毛利率可能反轉向下</li>
+      <li>CPO商轉時程各機構估計落差極大（2026-2027 vs 2028-2029）</li>
+    </ul>
+
+    <!-- ============ STEP 3 ============ -->
+    <h2 class="section">Step 3 — 供應鏈門檻<span>BARRIERS TO ENTRY</span></h2>
+    <div class="barrier-grid">
+      <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">高</div><p>CPO光纖耦合對位是最難物理組裝環節，5奈米級精度要求，異質整合良率是成本瓶頸</p></div>
+      <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v high">1-2年+</div><p>EML交期已排到2027年後；InP基板/MOCVD設備依賴進口，交期長</p></div>
+      <div class="barrier"><div class="b-h">資本/技術門檻</div><div class="b-v high">技術高/資本中高</div><p>精密光纖耦合+熱管理技術門檻高；轉CPO需更換專用機台，資本門檻低於晶圓廠</p></div>
+      <div class="barrier"><div class="b-h">客戶認證</div><div class="b-v mid">耗時未量化</div><p>新易盛1.6T通過NVIDIA認證後，訂單直接排到2028年——認證後的訂單能見度是關鍵價值</p></div>
+      <div class="barrier"><div class="b-h">轉單成本</div><div class="b-v high">極高(資本綁定)</div><p>NVIDIA對Coherent/Lumentum各投資$20億+多年採購承諾，用股權直接鎖死供應商</p></div>
+    </div>
+    <p class="insight"><b>與PSU/液冷產業最大不同：</b>這裡的護城河不是靠品質記錄或系統整合能力慢慢累積，而是被NVIDIA用<b>資本直接鎖死</b>——押注哪家供應商的風險，更集中在「有沒有拿到NVIDIA的資本綁定」，而不是單純比較技術能力。</p>
+
+    <!-- ============ STEP 4 ============ -->
+    <h2 class="section">Step 4 — 追蹤指標與財務驗證<span>TRACKING INDICATORS</span></h2>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>指標</th><th>目前讀數（2026-09-17）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
+      <tbody>
+        <tr><td>中游模組廠向上游預付貨款行為</td><td>中際旭創/新易盛/光迅2026Q1皆大規模預付</td><td class="trig">預付行為明顯減少或消失</td></tr>
+        <tr><td>Lumentum窄線寬雷射/EML營收QoQ</td><td>連9季成長，最新+120%YoY</td><td class="trig">連續成長中斷</td></tr>
+        <tr><td>EML雷射交期</td><td>已排到2027年後</td><td class="trig">縮短至2026年內可交 或 再拉長</td></tr>
+        <tr><td>InP基板供需缺口</td><td>逾70%</td><td class="trig">收斂至50%以下</td></tr>
+        <tr><td>CW雷射滲透率/需求成長</td><td>預期2026年較2025年翻倍</td><td class="trig">實際成長明顯不如預期</td></tr>
+        <tr><td><b>美國FCC光模組進口禁令</b></td><td>2026/7/22投票通過擴大提案，尚未定案</td><td class="trig">最終規則公布（範圍/生效時程確定）</td></tr>
+        <tr><td>中國模組廠美國營收占比</td><td>中際旭創61.7%；另一龍頭&gt;94%</td><td class="trig">占比不降反升</td></tr>
+        <tr><td>台灣七劍客EPS年增率</td><td>聯亞/波若威2026Q1皆年增逾300%</td><td class="trig">年增率大幅回落（如降至100%以下）</td></tr>
+        <tr><td>Coherent/Lumentum/Marvell guidance</td><td>皆處於上修階段</td><td class="trig">任一下修guidance</td></tr>
+        <tr><td>2027年新產能釋出規模</td><td>僅定性描述「大舉擴產」</td><td class="trig">具體擴產規模數字公布</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="sub">財務數字驗證</h3>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>指標</th><th>聯亞 (3081.TW)</th><th>波若威 (3163.TW)</th><th>Lumentum (LITE)</th><th>Coherent (COHR)</th></tr></thead>
+      <tbody>
+        <tr><td>營收/guidance</td><td>2026年估+141.3%達53.15億元</td><td>未查到年度數字</td><td>FY26Q4 guidance $960M-1,010M</td><td>FY27Q1 guidance $22-24億美元</td></tr>
+        <tr><td>毛利率</td><td>2026年估51.8%</td><td>2026Q1：18.86%</td><td>未查到</td><td>未查到</td></tr>
+        <tr><td>EPS/YoY</td><td>2026Q1：3.44元(YoY+647.83%)</td><td>2026Q1：3.03元(YoY+396.72%)</td><td>FY26Q4營收+109%YoY</td><td>FY26Q4資料中心營收+59%YoY</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-dim);">此追蹤表已建立為持久化追蹤器 <code>.claude/skills/supply-chain-analysis/trackers/ai_optical_communication.md</code>，並設有每週本機排程自動重新查證。</p>
+
+    <div class="gap-box">
+      <b style="font-size:12.5px;color:#78350F;">資料缺口</b>
+      <ul>
+        <li>中際旭創、天孚通信、光迅科技等中國龍頭的本淨比、存貨、合約負債數字未查到</li>
+        <li>台灣七劍客中上詮、聯鈞、眾達-KY、華星光、光聖、IET-KY的具體財務數字較薄弱</li>
+        <li>FCC禁令最終規則內容與生效時程——這是本產業最大不確定性來源，仍在發展中</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="foot">
+    <p style="margin-bottom:10px;"><b>參考來源（部分）：</b></p>
+    <ul class="src-list">
+      <li><a href="https://readmo.cmoney.tw/article/69113220-ae33-499e-9b50-a7203304f9d2" target="_blank">800G打底1.6T起飛 | 鉅亨網</a></li>
+      <li><a href="https://technews.tw/2026/03/17/tawian-optical-communication-industry/" target="_blank">2026迎矽光子元年、CPO加速商轉 | TechNews</a></li>
+      <li><a href="https://www.21jingji.com/article/20260503/herald/cbdd6cc2ee8be8fa2cac353b5f2dd4ea.html" target="_blank">光模块三巨头的甜蜜的烦恼 | 21经济网</a></li>
+      <li><a href="https://newtalk.tw/news/view/2025-12-09/1008700" target="_blank">Nvidia壟斷EML雷射 | Newtalk</a></li>
+      <li><a href="https://futurumgroup.com/insights/nvidias-4b-optics-bet-signals-photonics-as-ais-next-bottleneck/" target="_blank">NVIDIA's $4B Optics Bet | Futurum</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6425423" target="_blank">CPO物理組裝最困難的一關 | 鉅亨網</a></li>
+      <li><a href="https://www.163.com/dy/article/L3H3M2PJ05198ETO.html" target="_blank">突发，事关中国光模块 | 网易</a></li>
+      <li><a href="https://statementdog.com/analysis/3081/eps-growth-rate" target="_blank">聯亞(3081)EPS年增率 | 財報狗</a></li>
+      <li><a href="https://industrialanalyst.substack.com/p/optical-networking-earnings-recap" target="_blank">Optical Networking Earnings Recap</a></li>
+    </ul>
+    <p style="margin-top:14px;">完整分析全文見同目錄下 <code>step1_供應鏈地圖.md</code>、<code>step2_供應鏈歷史.md</code>、<code>step3_供應鏈門檻.md</code>、<code>step4_追蹤指標.md</code>。本報告依 <code>.claude/skills/supply-chain-analysis</code> 框架產出，僅供研究參考，非投資建議。</p>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NVIDIA Vera Rubin NVL72 供應鏈分析報告</title>
+<style>
+  :root{
+    --navy:#1F3A5F; --navy-d:#15233B; --orange:#E8853B;
+    --text:#1E293B; --text-dim:#64748B; --border:#E2E8F0;
+    --bg:#EEF1F5; --paper:#fff;
+    --green:#16A34A; --green-d:#15803D; --green-bg:#F0FDF4;
+    --red:#DC2626; --red-d:#B91C1C; --red-bg:#FEF2F2;
+    --amber:#F59E0B; --amber-d:#92400E; --amber-bg:#FFF8E1;
+    --thead:#EDEEF1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei","Helvetica Neue",Arial,sans-serif;
+    color:var(--text); line-height:1.7; font-size:14px; background:var(--bg);
+  }
+  .page{max-width:1080px;margin:24px auto;background:var(--paper);padding:0 0 40px;}
+  a{color:var(--navy);}
+
+  /* Banner */
+  .banner{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-d) 100%);color:#fff;padding:36px 44px 30px;}
+  .banner .label{font-size:11px;letter-spacing:2.5px;color:#9DB2CE;font-weight:700;}
+  .banner h1{font-size:26px;font-weight:800;margin:8px 0 10px;line-height:1.4;}
+  .banner .sub{font-size:13px;color:#C9D6E8;line-height:1.8;}
+  .banner .badges{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
+  .badge{display:inline-block;font-size:11.5px;font-weight:700;background:rgba(255,255,255,0.12);color:#fff;padding:4px 12px;border-radius:12px;}
+
+  .body-wrap{padding:32px 44px 0;}
+
+  /* Exec summary */
+  .exec{background:var(--amber-bg);border-left:5px solid var(--amber);border-radius:6px;padding:20px 26px;margin-bottom:8px;}
+  .exec .exec-label{font-size:11px;font-weight:700;color:var(--amber-d);letter-spacing:1.5px;margin-bottom:8px;}
+  .exec p{font-size:14.5px;line-height:1.85;color:#1F2937;}
+  .exec b{color:var(--amber-d);}
+
+  /* Section headers */
+  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;}
+  h2.section span{display:block;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-dim);margin-top:2px;}
+  h3.sub{font-size:15px;font-weight:800;color:var(--navy-d);margin:26px 0 12px;}
+  h4.sub2{font-size:13.5px;font-weight:700;color:var(--text);margin:18px 0 8px;}
+
+  p{margin-bottom:10px;text-align:justify;}
+  ul{padding-left:20px;margin-bottom:14px;}
+  ul li{margin-bottom:6px;line-height:1.7;}
+
+  /* Cards */
+  .card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin-bottom:20px;}
+
+  /* Stat row */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0 20px;}
+  .stat{background:#fff;border:1px solid var(--border);border-top:3px solid var(--navy);border-radius:7px;padding:12px 14px;text-align:center;}
+  .stat .v{font-size:19px;font-weight:800;color:var(--navy);line-height:1.2;}
+  .stat .l{font-size:11px;color:var(--text-dim);margin-top:5px;line-height:1.4;}
+
+  /* Tables */
+  table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:12.8px;}
+  thead th{background:var(--thead);color:var(--text);font-weight:700;text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);white-space:nowrap;}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6;}
+  tbody tr:last-child td{border-bottom:none;}
+  .tbl-wrap{overflow-x:auto;}
+  td.num{font-variant-numeric:tabular-nums;white-space:nowrap;}
+
+  /* geo grid */
+  .geo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:10px 0 8px;}
+  .geo-card{border:1px solid var(--border);border-top:4px solid var(--navy);border-radius:8px;padding:16px 18px;background:#F8FAFC;}
+  .geo-card.china{border-top-color:#B91C1C;}
+  .geo-card.intl{border-top-color:#0369A1;}
+  .geo-card h4{font-size:13.5px;font-weight:800;color:var(--navy-d);margin-bottom:8px;}
+  .geo-card ul{padding-left:16px;margin-bottom:0;}
+  .geo-card li{font-size:12.5px;line-height:1.65;}
+
+  /* pill badges for growth direction */
+  .g-pos{color:var(--green-d);font-weight:800;}
+  .g-neg{color:var(--red-d);font-weight:800;}
+  .g-flag{background:#FEF3C7;color:var(--amber-d);padding:1px 6px;border-radius:3px;font-size:11px;font-weight:700;}
+
+  /* timeline */
+  .timeline{list-style:none;margin:8px 0 4px;padding:0;}
+  .timeline li{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:12px 0;border-bottom:1px dashed var(--border);}
+  .timeline li:last-child{border-bottom:none;}
+  .timeline .t{font-size:12.5px;font-weight:800;color:var(--navy);white-space:nowrap;}
+  .timeline .d{font-size:13px;line-height:1.7;}
+
+  /* stage pill */
+  .stage-pill{display:inline-block;background:var(--red-bg);color:var(--red-d);border:1px solid #FCA5A5;font-weight:800;font-size:13px;padding:6px 16px;border-radius:20px;}
+
+  /* barrier grid */
+  .barrier-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:10px 0 6px;}
+  .barrier{background:#F8FAFC;border:1px solid var(--border);border-radius:7px;padding:12px 13px;}
+  .barrier .b-h{font-size:12px;font-weight:800;color:var(--navy);margin-bottom:6px;}
+  .barrier .b-v{font-size:12px;font-weight:700;margin-bottom:4px;}
+  .barrier .b-v.high{color:var(--red-d);}
+  .barrier .b-v.mid{color:var(--amber-d);}
+  .barrier p{font-size:11.5px;color:var(--text-dim);margin:0;line-height:1.55;}
+
+  /* threshold table trigger col */
+  .trig{font-size:12px;color:var(--red-d);}
+
+  /* key insight box */
+  .insight{background:#EEF2FF;border-left:4px solid #4338CA;border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#312E81;}
+  .insight b{color:#3730A3;}
+
+  /* data gap */
+  .gap-box{background:#FFFBEB;border:1px solid #FDE68A;border-radius:6px;padding:14px 18px;margin:10px 0;}
+  .gap-box ul{margin-bottom:0;}
+  .gap-box li{font-size:12.5px;color:#78350F;}
+
+  /* sources */
+  .src-list{list-style:none;padding:0;margin:0;columns:2;column-gap:24px;}
+  .src-list li{font-size:12px;line-height:1.8;break-inside:avoid;}
+  .src-list a{color:var(--navy);text-decoration:none;}
+  .src-list a:hover{text-decoration:underline;}
+
+  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;}
+
+  @media (max-width:900px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .geo-grid{grid-template-columns:1fr;}
+    .barrier-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    .banner,.body-wrap{padding-left:20px;padding-right:20px;}
+    footer.foot{padding-left:20px;padding-right:20px;}
+    .stats{grid-template-columns:1fr 1fr;}
+    .barrier-grid{grid-template-columns:1fr;}
+    table{font-size:11.5px;}
+    .src-list{columns:1;}
+    .timeline li{grid-template-columns:80px 1fr;gap:8px;}
+  }
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;max-width:100%;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="banner">
+    <div class="label">SUPPLY CHAIN ANALYSIS · 供應鏈研究</div>
+    <h1>NVIDIA Vera Rubin NVL72 供應鏈分析報告</h1>
+    <div class="sub">供應鏈地圖與 BOM 世代比較，並深入研究其中的 PSU（電源供應器）產業——歷史復盤、門檻評估、追蹤指標</div>
+    <div class="badges">
+      <span class="badge">產出日期 2026-09-17</span>
+      <span class="badge">框架：地圖 → 歷史 → 門檻 → 指標</span>
+      <span class="badge">聚焦環節：PSU 電源供應器</span>
+    </div>
+  </div>
+
+  <div class="body-wrap">
+
+    <div class="exec">
+      <div class="exec-label">EXECUTIVE SUMMARY · 摘要</div>
+      <p><b>Vera Rubin NVL72 的供應鏈規模是 Blackwell 世代的兩倍</b>（150+ 家台灣夥伴、350+ 座工廠），機櫃<b>記憶體總帳單成長 435%</b> 是本世代最大的 BOM 成長引擎，其次是 NVLink 顆數/頻寬、DPU 吞吐量與液冷流量，均達 <b>+100%</b> 的世代成長。深入研究其中的 <b>PSU（電源供應器）環節</b>：產業目前處於<b>供不應求</b>階段，台達電/光寶科雙雄合計供貨集中度達 <b>7 成</b>，但 2026 Q2 本淨比已升至 14.86 倍／5.85 倍，代表題材已有相當程度反映在股價裡，接下來的驗證重點在於供給端能否維持議價力、以及上游 SiC/GaN 晶圓產能（3-5 年擴產週期）何時真正緩解缺貨。</p>
+    </div>
+
+    <!-- ============ STEP 1: 供應鏈地圖 ============ -->
+    <h2 class="section">Step 1 — 供應鏈地圖<span>SUPPLY CHAIN MAP</span></h2>
+
+    <div class="stats">
+      <div class="stat"><div class="v">7 顆晶片</div><div class="l">Rubin GPU / Vera CPU / NVLink6 Switch / ConnectX-9 / BlueField-4 / Spectrum-6 / Quantum-3(推測)</div></div>
+      <div class="stat"><div class="v">72+36</div><div class="l">每櫃 Rubin GPU + Vera CPU 數量</div></div>
+      <div class="stat"><div class="v">&gt;$4,800</div><div class="l">單 GPU HBM4 內容成本（美元）</div></div>
+      <div class="stat"><div class="v">150+ 家</div><div class="l">台灣供應鏈夥伴數（NVIDIA 官方數字）</div></div>
+    </div>
+
+    <h3 class="sub">終端產品與 BOM 拆解</h3>
+    <p>終端產品為 DGX Vera Rubin NVL72 機櫃級運算單元。核心成本驅動是 <b>GPU + CoWoS-L/SoIC 封裝 + HBM4</b>：每顆 Rubin GPU 搭載 8 顆 HBM4，單顆報價 &gt;$600，單 GPU 的 HBM 內容價值 &gt;$4,800，乘以每櫃 72 顆 GPU，單櫃 HBM 成本即超過 $34.5 萬美元。其餘環節（PCB/基板、電源、液冷、連接器、光通訊）目前查無可信的成本占比數字。</p>
+
+    <h3 class="sub">上中下游基本結構</h3>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>層級</th><th>環節</th><th>代表廠商</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="4">上游</td><td>晶圓代工</td><td>TSMC（GPU/CPU/交換晶片全代工）</td></tr>
+        <tr><td>HBM4 記憶體</td><td>SK Hynix（主力）、Samsung、Micron</td></tr>
+        <tr><td>ABF 載板 / CCL</td><td>Ibiden、Shinko、Unimicron、Nan Ya PCB、AT&amp;S；CCL：Doosan、Shengyi（中）</td></tr>
+        <tr><td>SOCAMM2 socket（唯一供應商）</td><td>Lotes (3533.TW)</td></tr>
+        <tr><td rowspan="4">中游</td><td>PCB 製造</td><td>Unimicron (3037.TW)、Zhen Ding (4958.TW)、TTM、Ibiden/Shinko</td></tr>
+        <tr><td>機櫃電源</td><td>Delta (2308.TW)、Lite-On (2301.TW)、Flex、Vertiv</td></tr>
+        <tr><td>液冷冷板/CDU</td><td>AVC (3017.TW)、Auras (3324.TW)、Boyd、CoolIT；中：Envicool</td></tr>
+        <tr><td>連接器/光學</td><td>Amphenol、TE Connectivity、FIT、BizLink；光學：Coherent、Lumentum</td></tr>
+        <tr><td rowspan="2">下游</td><td>ODM 系統組裝</td><td>Foxconn (2317.TW)、Quanta (2382.TW)、Wistron (3231.TW)、Wiwynn (6669.TW)</td></tr>
+        <tr><td>測試/BMC</td><td>King Yuan Electronics (2449.TW)、ASPEED (5274.TW)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="insight"><b>結構性轉移：</b>Vera Rubin 由 GB200/GB300 世代的「NVLink 銅纜背板」（&gt;5,000 條銅纜）改為 <b>PCB 中板（cableless midplane）+ 盲插連接器</b>，組裝時間從近 2 小時降到 5 分鐘。銅纜供應商（Amphenol 等）內容占比下降，PCB/基板供應商（Unimicron、Zhen Ding 等）內容占比上升。</p>
+
+    <h3 class="sub">橫向比較：國內外供應鏈地位</h3>
+    <div class="geo-grid">
+      <div class="geo-card">
+        <h4>🇹🇼 台灣 — 組裝與封裝雙核心</h4>
+        <ul>
+          <li>晶圓代工/先進封裝（TSMC，不可替代）</li>
+          <li>ODM 組裝四強：Foxconn、Quanta、Wistron、Wiwynn</li>
+          <li>PCB/液冷/電源/連接器/BMC 全鏈完整</li>
+          <li><b>Wiwynn（緯穎）</b>被 Morgan Stanley 列為本輪 ODM 首選，超越 Wistron/Quanta/Foxconn</li>
+        </ul>
+      </div>
+      <div class="geo-card china">
+        <h4>🇨🇳 中國 — 零組件配角，非系統整合中心</h4>
+        <ul>
+          <li>受出口管制影響，非整機終端市場</li>
+          <li>Shengyi（CCL）、TFC Optical（光纖組件）、Envicool（液冷，主要綁 Google）</li>
+          <li>Luxshare、Shennan Circuits 等常見概念股<b>未查到直接證實</b>綁定本供應鏈</li>
+        </ul>
+      </div>
+      <div class="geo-card intl">
+        <h4>🌍 國際 — 美/韓/日/歐材料與光學上游</h4>
+        <ul>
+          <li>美：Micron、Amphenol/TE、Coherent/Lumentum（NVIDIA 各入股 $20億鎖料）</li>
+          <li>韓：SK Hynix + Samsung（HBM4 雙雄，合計&gt;80%）</li>
+          <li>日：Ibiden/Shinko（載板）、Ajinomoto（ABF樹脂近乎獨家）</li>
+          <li>歐：Infineon、STMicroelectronics、TE Connectivity（瑞士）</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ============ STEP 1 EXT: 縱向比較 ============ -->
+    <h2 class="section">Step 1 延伸 — BOM 縱向比較<span>GB200/GB300 → VERA RUBIN 世代成長率</span></h2>
+    <p>對照上一代 GB200/GB300 NVL72，觀察各零組件的世代成長率，藉此找出這波升級週期裡「單位含金量」成長最快的環節。</p>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>項目</th><th>GB300（上一代）</th><th>Vera Rubin（新一代）</th><th>成長率</th></tr></thead>
+      <tbody>
+        <tr><td>GPU / CPU 數量／機櫃</td><td>72 / 36</td><td>72 / 36</td><td>0%</td></tr>
+        <tr><td>單 GPU HBM 內容成本</td><td>~$3,250（HBM3e）</td><td>&gt;$4,800（HBM4，地板值）</td><td class="g-pos">≥+47.7%</td></tr>
+        <tr><td><b>機櫃記憶體總帳單</b>（HBM+系統記憶體）</td><td>基準</td><td>$2,001,600</td><td class="g-pos">＋435%</td></tr>
+        <tr><td>CoWoS 封裝成本/顆</td><td>~$1,100</td><td>~$900–1,000（估）</td><td class="g-neg">-9%~-18%</td></tr>
+        <tr><td>NVLink Switch 顆數／機櫃</td><td>18（9tray×2，NVLink5）</td><td>36（9tray×4，NVLink6）</td><td class="g-pos">+100%</td></tr>
+        <tr><td>NVLink 機櫃內聚合頻寬</td><td>130 TB/s</td><td>~260 TB/s</td><td class="g-pos">+100%</td></tr>
+        <tr><td>DPU 網路吞吐量</td><td>400 Gb/s（BF-3）</td><td>800 Gb/s（BF-4）</td><td class="g-pos">+100%</td></tr>
+        <tr><td>機櫃總電力</td><td>264kW（8×33kW）</td><td>440kW（4×110kW）</td><td class="g-pos">+67%</td></tr>
+        <tr><td>單顆 PSU 功率</td><td>5.5kW</td><td>18.3kW</td><td class="g-pos">+233%</td></tr>
+        <tr><td>Power whip 額定電流</td><td>60A</td><td>100A</td><td class="g-pos">+67%</td></tr>
+        <tr><td>液冷流量（TCS flow）</td><td>基準</td><td>近乎倍增</td><td class="g-pos">~+100%</td></tr>
+        <tr><td>機櫃風冷需求</td><td>基準</td><td>全面無風扇</td><td class="g-neg">-80%</td></tr>
+        <tr><td>NVLink 機櫃內銅纜數量</td><td>&gt;5,000 條</td><td>~0（改PCB中板）</td><td class="g-neg">-100%<span class="g-flag">結構轉移</span></td></tr>
+        <tr><td>整機 BOM 成本估計／機櫃</td><td>~$3–4M（市場售價推估）</td><td>~$7.8M（BOM成本估計）</td><td>+95~160%<span class="g-flag">口徑不同</span></td></tr>
+        <tr><td>ODM 組裝毛利率</td><td>~2.7%</td><td>~1.9%</td><td class="g-neg">-30%（相對）</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="insight"><b>重點解讀：</b>記憶體帳單 +435% 是本世代最大 BOM 成長引擎，遠超其他任何單一零組件；NVLink/網路頻寬/電力規格則同步翻倍，代表液冷、電源、連接器三個次系統的「規格升級」比「數量增加」更關鍵；ODM 毛利率下滑但絕對獲利估計反而 +35~40%，是「以價補量」邏輯。</p>
+
+    <!-- ============ PSU 深入研究 ============ -->
+    <h2 class="section">深入研究：PSU（電源供應器）產業<span>NARROWED FROM STEP 1 MAP · FULL STEP 1-4</span></h2>
+    <p>從 Step 1 地圖收斂出「電源」環節，針對 <b>台達電(2308.TW)、光寶科(2301.TW)、康舒(6282.TW)、群電(6412.TW)、全漢(3015.TW)</b> 及國際 Wolfspeed／onsemi／Navitas／Infineon／TI 等上游 SiC/GaN 廠，補上 PSU 產業自身的 Step 1 供應鏈地圖，並完整跑過 Step 2-4。</p>
+
+    <h3 class="sub">Step 1 — 供應鏈地圖（PSU 產業專屬）</h3>
+    <p>終端產品為 AI 伺服器 <b>800VDC 電力櫃</b>（Power Shelf + BBU）。摩根大通估算一座 660kW 電力櫃總成本約 <b>25.8 萬美元</b>，Power Shelf（45%）與 BBU（35%）合計占 <b>80%</b>，是最主要的成本中心；再往下一層（功率半導體/PCB/電容各自占比）查無精確數字，列為資料缺口。</p>
+
+    <div class="stats">
+      <div class="stat"><div class="v">$25.8萬</div><div class="l">660kW／800VDC 電力櫃總成本（美元）</div></div>
+      <div class="stat"><div class="v">80%</div><div class="l">Power Shelf(45%)+BBU(35%) 佔電力櫃成本比重</div></div>
+      <div class="stat"><div class="v">&gt;70%</div><div class="l">SiC 五強（ST/onsemi/Infineon/Wolfspeed/ROHM）合計市占</div></div>
+      <div class="stat"><div class="v">16 週</div><div class="l">信昌電(6173) 高壓 MLCC 交期，Q1 毛利率 28.4%</div></div>
+    </div>
+
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>層級</th><th>環節</th><th>代表廠商</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="4">上游</td><td>SiC 功率半導體（合計&gt;70%市占）</td><td>STMicroelectronics、onsemi、Infineon、Wolfspeed、ROHM</td></tr>
+        <tr><td>GaN 功率半導體</td><td>Innoscience（中，量產龍頭）、Navitas、Power Integrations</td></tr>
+        <tr><td>電源管理IC／類比晶片</td><td>Texas Instruments、Monolithic Power Systems (MPS)、Vicor、Analog Devices</td></tr>
+        <tr><td>高壓 MLCC／電感／電解電容</td><td>信昌電子陶瓷 (6173.TW)、奇力新 (2456.TW)、Nichicon（日）</td></tr>
+        <tr><td rowspan="2">中游</td><td>PSU／電源架系統廠</td><td>台達電 (2308.TW)、光寶科 (2301.TW)、康舒 (6282.TW)、群光電能 (6412.TW)、全漢 (3015.TW)</td></tr>
+        <tr><td>系統整合</td><td>Flex（美）、Vertiv（美）</td></tr>
+        <tr><td rowspan="2">下游</td><td>ODM 系統組裝</td><td>Foxconn (2317.TW)、Quanta (2382.TW)、Wistron (3231.TW)、Wiwynn (6669.TW)</td></tr>
+        <tr><td>終端客戶</td><td>NVIDIA、AWS、Google、Meta、Microsoft</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="geo-grid">
+      <div class="geo-card">
+        <h4>🇹🇼 台灣 — 系統組裝＋部分被動元件，上游功率半導體缺席</h4>
+        <ul>
+          <li>PSU 系統組裝：台達電、光寶科合計對大型 CSP 供貨比達 7 成</li>
+          <li>高階被動元件：信昌電（高壓 MLCC）、奇力新（電感）</li>
+          <li><b>上游 SiC/GaN 功率半導體幾乎沒有台廠身影</b>——與 CCL/PCB 環節台廠掌握關鍵材料話語權的格局不同</li>
+        </ul>
+      </div>
+      <div class="geo-card intl">
+        <h4>🇺🇸 美國 — 功率半導體與類比 IC 絕對主導</h4>
+        <ul>
+          <li>SiC 五強中 ST、onsemi、Wolfspeed 三家美系（或美掛牌）</li>
+          <li>GaN：Navitas、Power Integrations；類比 IC：TI、MPS、Vicor、ADI 全數美廠</li>
+          <li>系統整合國際玩家 Flex、Vertiv 同樣位於美國</li>
+        </ul>
+      </div>
+      <div class="geo-card china">
+        <h4>🌍 國際（歐／日／中）— 材料與量產規模互補</h4>
+        <ul>
+          <li>歐：Infineon（德）、STMicroelectronics（法/義），Infineon 已與 NVIDIA 合作開發 800VDC 架構</li>
+          <li>日：ROHM（SiC 五強之一）、Nichicon（電解電容）</li>
+          <li>中：Innoscience 為 GaN 出貨量最大廠商，但主攻中低階應用，尚未在 800V 以上高功率站穩</li>
+        </ul>
+      </div>
+    </div>
+    <p class="insight"><b>與 CCL/PCB 環節最大的差異：</b>PSU 供應鏈裡台灣把持系統組裝與部分被動元件，但<b>核心功率半導體（SiC/GaN）完全仰賴美/歐/日廠</b>，這是判斷 PSU 雙雄長期護城河時，比 800VDC 標準碎片化更根本的結構性限制——即使台廠系統整合能力再強，材料端的定價權仍在上游半導體廠手上。</p>
+
+    <div class="gap-box">
+      <b style="font-size:12.5px;color:#78350F;">Step 1 資料缺口</b>
+      <ul>
+        <li>Power Shelf／BBU 內部各元件類別（功率半導體/被動元件/PCB/機構件）精確成本占比，只查到電力櫃層級的兩大模組占比</li>
+        <li>銅排（Busbar）與連接器的明確供應商名單未查到</li>
+        <li>GaN／SiC 在 PSU 內部各電壓段的實際滲透率或替代進度未查到量化數字</li>
+      </ul>
+    </div>
+
+    <h3 class="sub">Step 2 — 供應鏈歷史</h3>
+    <ul class="timeline">
+      <li><div class="t">2024</div><div class="d">GB200 NVL72 發表，48V/54V 架構題材起漲，台達電/光寶科切入訂單。</div></li>
+      <li><div class="t">2024Q4–25Q1</div><div class="d"><b>Blackwell 過熱/基板翹曲事件</b>：NVIDIA 重新設計機架，Microsoft 減單、Meta 延後建置、Google 加速 TPU v6e 替代，出貨延遲 2-3 季。</div></li>
+      <li><div class="t">2025 中</div><div class="d">改採 direct-to-chip 液冷＋新冷板設計後解決，分析師稱「過熱問題已大致解決」，題材恢復。</div></li>
+      <li><div class="t">2025下-2026</div><div class="d">GB300、Vera Rubin 接力發表，48V→800VDC 路徑明確，雙雄股價創高（台達電1385元／光寶科193.5元）。</div></li>
+    </ul>
+    <p class="insight"><b>啟示：</b>這是一次「產業趨勢未變、執行面出現技術性延遲」的案例——族群股價當時受衝擊，但沒有跌破產業趨勢，2-3 季後題材恢復並創高。熱-機械-電氣協同設計的複雜度本身就是隱性技術門檻。</p>
+
+    <p style="margin-top:16px;">目前供需階段判定：</p>
+    <p><span class="stage-pill">⚠ 供不應求（供給端策略性稀缺操作）</span></p>
+    <ul>
+      <li>雙雄合計供貨比 ~7 成，客戶已表達過度集中疑慮；光寶科刻意控管擴產幅度以維持供需缺口</li>
+      <li>高功率模組交期已拉長至 30 週以上，反映 GaN/SiC 功率半導體仍是瓶頸</li>
+      <li>雙雄營收與獲利連續創新高，量價齊揚——符合供不應求階段的典型財務特徵</li>
+    </ul>
+
+    <h3 class="sub">Step 3 — 供應鏈門檻</h3>
+    <div class="barrier-grid">
+      <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">高</div><p>系統整合能力＋800VDC標準碎片化（預估2028-29才收斂）＋財務體質是隱性篩選條件</p></div>
+      <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v high">3-5年</div><p>台廠組裝快（季度級），但上游 SiC/GaN 晶圓廠才是真正瓶頸</p></div>
+      <div class="barrier"><div class="b-h">資本/技術門檻</div><div class="b-v high">皆高</div><p>熱-機械-電氣協同設計失誤代價高；海外建廠前期高投入無訂單的資金壓力</p></div>
+      <div class="barrier"><div class="b-h">客戶認證</div><div class="b-v mid">~1個月+</div><p>NVIDIA系統級驗證約1個月；PSU元件AVL認證時程未查到公開數字</p></div>
+      <div class="barrier"><div class="b-h">轉單成本</div><div class="b-v high">高</div><p>系統一旦整合，換供應商=重新系統整合驗證；但供給過度集中也促使客戶扶植備胎</p></div>
+    </div>
+    <p class="insight"><b>小結：</b>卡位一旦成功護城河偏強，但卡位本身很難（標準未定、技術複雜、資本密集）。真正的產業硬約束在上游 SiC/GaN 晶圓產能（3-5年擴產週期），是判斷供不應求何時緩解的關鍵變數。</p>
+
+    <h3 class="sub">Step 4 — 追蹤指標與財務驗證</h3>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>指標</th><th>目前讀數（2026-09-17）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
+      <tbody>
+        <tr><td>上游SiC/GaN廠AI DC營收QoQ</td><td>Wolfspeed+20%、Navitas+50%、onsemi「倍增以上」</td><td class="trig">轉個位數/負成長 或 再度大幅上修</td></tr>
+        <tr><td>功率半導體漲價動作</td><td>2026年已兩輪，各10-20%</td><td class="trig">連續一季未再發漲價函 或 出現降價</td></tr>
+        <tr><td>主流功率半導體交期</td><td>30週以上，部分12-52週</td><td class="trig">降到25週以下 或 拉長超過52週</td></tr>
+        <tr><td>SiC 12吋晶圓新產能</td><td>Infineon居林廠已滿產</td><td class="trig">有新增12吋SiC晶圓廠稼動消息</td></tr>
+        <tr><td>台達電/光寶科單季營收YoY</td><td>台達電+31.76%(25全年)；光寶科+29.56%(5月)</td><td class="trig">較前一季下滑超過10個百分點</td></tr>
+        <tr><td>台達電/光寶科毛利率</td><td>光寶科27.2%（台達電未查到）</td><td class="trig">連續兩季下滑</td></tr>
+        <tr><td>本淨比(P/B)</td><td>台達電14.86倍、光寶科5.85倍</td><td class="trig">較基準下滑20%以上</td></tr>
+        <tr><td>客戶集中度/第二三供應商動態</td><td>雙雄合計~7成，尚無二線廠取得大單消息</td><td class="trig">康舒/群電/全漢任一取得CSP大單或關鍵認證</td></tr>
+        <tr><td>800VDC標準收斂進度</td><td>預估2028-2029全面收斂</td><td class="trig">標準機構宣布提前收斂 或 出現超越800VDC新規格</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-dim);">此追蹤表已建立為持久化追蹤器 <code>.claude/skills/supply-chain-analysis/trackers/psu_ai_server.md</code>，並設有每週本機排程自動重新查證。</p>
+
+    <div class="gap-box">
+      <b style="font-size:12.5px;color:#78350F;">資料缺口</b>
+      <ul>
+        <li>PCB 中板具體增量成本、Victory Giant 是否退出 Rubin 世代供應鏈——未查到直接證實</li>
+        <li>整機 BOM 成本口徑差異（市場售價 vs BOM 成本估計）無法算出精確漲幅</li>
+        <li>台達電毛利率、雙雄存貨/合約負債數字，PSU元件AVL認證具體時程——皆未查到公開數字</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="foot">
+    <p style="margin-bottom:10px;"><b>參考來源（部分）：</b></p>
+    <ul class="src-list">
+      <li><a href="https://developer.nvidia.com/blog/nvidia-vera-rubin-pod-seven-chips-five-rack-scale-systems-one-ai-supercomputer/" target="_blank">NVIDIA Vera Rubin POD | NVIDIA Technical Blog</a></li>
+      <li><a href="https://blogs.nvidia.com/blog/taiwan-ecosystem-ai-infrastructure/" target="_blank">Taiwan's Industry Titans | NVIDIA Blog</a></li>
+      <li><a href="https://newsletter.semianalysis.com/p/vera-rubin-extreme-co-design-an-evolution" target="_blank">Vera Rubin – Extreme Co-Design | SemiAnalysis</a></li>
+      <li><a href="https://transurfing-volatility.com/vera-rubin-decoded-pt6/" target="_blank">Vera Rubin Decoded Pt.6 | Supply Chain Master Reference</a></li>
+      <li><a href="https://finance.biggo.com/news/l88UTp4BX0tZvRTv39Or" target="_blank">Morgan Stanley "Rubin Fab Five" | BigGo Finance</a></li>
+      <li><a href="https://wccftech.com/nvidia-vera-rubin-rack-hit-with-memory-price-surge-pushing-hbm4-lpddr5x-bill-to-2m-of-7-8m-total/" target="_blank">Vera Rubin 435% Memory Price Surge | wccftech</a></li>
+      <li><a href="https://money.udn.com/money/story/5612/9109934" target="_blank">台達電、光寶 AI 電源供貨比7成 | 經濟日報</a></li>
+      <li><a href="https://www.techpowerup.com/328931/nvidia-blackwell-nvl72-servers-reportedly-require-redesign-amid-overheating-problems" target="_blank">Blackwell NVL72 Overheating Redesign | TechPowerUp</a></li>
+      <li><a href="https://www.understandtech.co.uk/ai-data-centre-power-demand-gpu-psu-shortages-memory-prices-2026/" target="_blank">AI Data Centre Power Demand & PSU Shortages | Understand Tech</a></li>
+      <li><a href="https://tw.stock.yahoo.com/news/800vdc%E9%9B%BB%E5%8A%9B%E6%AB%83%E6%8B%86%E8%A7%A3%EF%BC%81-%E3%80%8C2%E9%85%8D%E4%BB%B6%E3%80%8D%E6%88%90%E6%9C%AC%E7%8B%82%E5%8D%A08%E6%88%90-%E4%B8%8B%E6%B3%A2%E6%9A%B4%E5%AF%8C%E5%AF%86%E7%A2%BC%E6%9B%9D%E5%85%89-035700750.html" target="_blank">800VDC電力櫃拆解！「2配件」成本狂占8成 | Yahoo股市</a></li>
+      <li><a href="https://newsletter.semianalysis.com/p/inside-the-800vdc-revolution-part" target="_blank">Inside the 800VDC Revolution – Part 1 | SemiAnalysis</a></li>
+      <li><a href="https://internet-pros.com/blog/wide-bandgap-semiconductors-gan-sic-2026/" target="_blank">Wide-Bandgap Semiconductors 2026 - GaN & SiC Power Chips</a></li>
+      <li><a href="https://uanalyze.com.tw/articles/3605251570" target="_blank">信昌電法說會／AI伺服器帶動高壓MLCC需求 | 優分析UAnalyze</a></li>
+    </ul>
+    <p style="margin-top:14px;">完整分析全文見同目錄下 <code>step1_供應鏈地圖.md</code>（Vera Rubin NVL72 整體地圖）、<code>step1_供應鏈地圖_PSU產業.md</code>（PSU 產業專屬地圖）、<code>step1_BOM縱向比較_GB200GB300_vs_VeraRubin.md</code>、<code>step2~4_*_PSU產業.md</code>。本報告依 <code>.claude/skills/supply-chain-analysis</code> 框架產出，僅供研究參考，非投資建議。</p>
+  </footer>
+
+</div>
+</body>
+</html>

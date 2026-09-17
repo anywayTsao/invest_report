@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CoWoS 先進封裝產業 供應鏈分析報告</title>
+<style>
+  :root{
+    --navy:#1F3A5F; --navy-d:#15233B; --orange:#E8853B;
+    --text:#1E293B; --text-dim:#64748B; --border:#E2E8F0;
+    --bg:#EEF1F5; --paper:#fff;
+    --green:#16A34A; --green-d:#15803D; --green-bg:#F0FDF4;
+    --red:#DC2626; --red-d:#B91C1C; --red-bg:#FEF2F2;
+    --amber:#F59E0B; --amber-d:#92400E; --amber-bg:#FFF8E1;
+    --thead:#EDEEF1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei","Helvetica Neue",Arial,sans-serif;
+    color:var(--text); line-height:1.7; font-size:14px; background:var(--bg);
+  }
+  .page{max-width:1080px;margin:24px auto;background:var(--paper);padding:0 0 40px;}
+  a{color:var(--navy);}
+
+  .banner{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-d) 100%);color:#fff;padding:36px 44px 30px;}
+  .banner .label{font-size:11px;letter-spacing:2.5px;color:#9DB2CE;font-weight:700;}
+  .banner h1{font-size:26px;font-weight:800;margin:8px 0 10px;line-height:1.4;}
+  .banner .sub{font-size:13px;color:#C9D6E8;line-height:1.8;}
+  .banner .badges{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
+  .badge{display:inline-block;font-size:11.5px;font-weight:700;background:rgba(255,255,255,0.12);color:#fff;padding:4px 12px;border-radius:12px;}
+
+  .body-wrap{padding:32px 44px 0;}
+
+  .exec{background:var(--amber-bg);border-left:5px solid var(--amber);border-radius:6px;padding:20px 26px;margin-bottom:8px;}
+  .exec .exec-label{font-size:11px;font-weight:700;color:var(--amber-d);letter-spacing:1.5px;margin-bottom:8px;}
+  .exec p{font-size:14.5px;line-height:1.85;color:#1F2937;}
+  .exec b{color:var(--amber-d);}
+
+  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;}
+  h2.section span{display:block;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-dim);margin-top:2px;}
+  h3.sub{font-size:15px;font-weight:800;color:var(--navy-d);margin:26px 0 12px;}
+
+  p{margin-bottom:10px;text-align:justify;}
+  ul{padding-left:20px;margin-bottom:14px;}
+  ul li{margin-bottom:6px;line-height:1.7;}
+
+  .card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin-bottom:20px;}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0 20px;}
+  .stat{background:#fff;border:1px solid var(--border);border-top:3px solid var(--navy);border-radius:7px;padding:12px 14px;text-align:center;}
+  .stat .v{font-size:18px;font-weight:800;color:var(--navy);line-height:1.2;}
+  .stat .l{font-size:11px;color:var(--text-dim);margin-top:5px;line-height:1.4;}
+
+  table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:12.8px;}
+  thead th{background:var(--thead);color:var(--text);font-weight:700;text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);white-space:nowrap;}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6;}
+  tbody tr:last-child td{border-bottom:none;}
+  .tbl-wrap{overflow-x:auto;}
+
+  .geo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:10px 0 8px;}
+  .geo-card{border:1px solid var(--border);border-top:4px solid var(--navy);border-radius:8px;padding:16px 18px;background:#F8FAFC;}
+  .geo-card.china{border-top-color:#B91C1C;}
+  .geo-card.intl{border-top-color:#0369A1;}
+  .geo-card h4{font-size:13.5px;font-weight:800;color:var(--navy-d);margin-bottom:8px;}
+  .geo-card ul{padding-left:16px;margin-bottom:0;}
+  .geo-card li{font-size:12.5px;line-height:1.65;}
+
+  .g-pos{color:var(--green-d);font-weight:800;}
+  .g-neg{color:var(--red-d);font-weight:800;}
+  .g-flag{background:#FEF3C7;color:var(--amber-d);padding:1px 6px;border-radius:3px;font-size:11px;font-weight:700;margin-left:4px;}
+
+  .timeline{list-style:none;margin:8px 0 4px;padding:0;}
+  .timeline li{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:12px 0;border-bottom:1px dashed var(--border);}
+  .timeline li:last-child{border-bottom:none;}
+  .timeline .t{font-size:12.5px;font-weight:800;color:var(--navy);white-space:nowrap;}
+  .timeline .d{font-size:13px;line-height:1.7;}
+
+  .stage-pill{display:inline-block;background:#FEF3C7;color:var(--amber-d);border:1px solid #FDE68A;font-weight:800;font-size:13px;padding:6px 16px;border-radius:20px;}
+
+  .barrier-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:10px 0 6px;}
+  .barrier{background:#F8FAFC;border:1px solid var(--border);border-radius:7px;padding:12px 13px;}
+  .barrier .b-h{font-size:12px;font-weight:800;color:var(--navy);margin-bottom:6px;}
+  .barrier .b-v{font-size:12px;font-weight:700;margin-bottom:4px;}
+  .barrier .b-v.high{color:var(--red-d);}
+  .barrier .b-v.mid{color:var(--amber-d);}
+  .barrier p{font-size:11.5px;color:var(--text-dim);margin:0;line-height:1.55;}
+
+  .trig{font-size:12px;color:var(--red-d);}
+
+  .insight{background:#EEF2FF;border-left:4px solid #4338CA;border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#312E81;}
+  .insight b{color:#3730A3;}
+
+  .gap-box{background:#FFFBEB;border:1px solid #FDE68A;border-radius:6px;padding:14px 18px;margin:10px 0;}
+  .gap-box ul{margin-bottom:0;}
+  .gap-box li{font-size:12.5px;color:#78350F;}
+
+  .src-list{list-style:none;padding:0;margin:0;columns:2;column-gap:24px;}
+  .src-list li{font-size:12px;line-height:1.8;break-inside:avoid;}
+  .src-list a{color:var(--navy);text-decoration:none;}
+  .src-list a:hover{text-decoration:underline;}
+
+  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;}
+
+  @media (max-width:900px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .geo-grid{grid-template-columns:1fr;}
+    .barrier-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    .banner,.body-wrap{padding-left:20px;padding-right:20px;}
+    footer.foot{padding-left:20px;padding-right:20px;}
+    .stats{grid-template-columns:1fr 1fr;}
+    .barrier-grid{grid-template-columns:1fr;}
+    table{font-size:11.5px;}
+    .src-list{columns:1;}
+    .timeline li{grid-template-columns:90px 1fr;gap:8px;}
+  }
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;max-width:100%;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="banner">
+    <div class="label">SUPPLY CHAIN ANALYSIS · 供應鏈研究</div>
+    <h1>CoWoS 先進封裝產業 供應鏈分析報告</h1>
+    <div class="sub">TSMC CoWoS——除EUV微影外半導體業最具戰略性的供應鏈瓶頸——供應鏈地圖、歷史復盤、門檻評估、追蹤指標</div>
+    <div class="badges">
+      <span class="badge">產出日期 2026-09-17</span>
+      <span class="badge">框架：地圖 → 歷史 → 門檻 → 指標</span>
+      <span class="badge">CoWoS-S → CoWoS-L → CoPoS</span>
+    </div>
+  </div>
+
+  <div class="body-wrap">
+
+    <div class="exec">
+      <div class="exec-label">EXECUTIVE SUMMARY · 摘要</div>
+      <p>CoWoS 是每一顆 NVIDIA GPU、AMD 加速器都依賴的全球唯一封裝瓶頸，<b>台灣在這個產業是絕對核心</b>（TSMC本尊、日月光首度承接OSAT委外、載板三雄欣興/南電/景碩、設備商弘塑/辛耘），與光通訊產業「台灣只占配角」的結構明顯不同；本次研究也<b>幾乎查無中國廠商參與此生態系</b>的資料。月產能持續高速擴充（2024底3.5萬片 → 2026底目標11.5-13萬片 → 2028目標26萬片，資本支出CAGR超過80%），但仍供不應求，且<b>瓶頸正從封裝產能本身擴散到ABF載板</b>（缺口預估從2026H2的8-10%惡化到2028年的42-51%）。護城河機制獨特：CoWoS是TSMC獨門技術，客戶（NVIDIA/Broadcom）幾乎「無從轉單」，不同於PSU/液冷靠品質記錄、光通訊靠NVIDIA資本綁定的護城河邏輯。歷史上曾因分析師對設備出貨時程的解讀分歧（2025/5麥格理降評），引發族群一次性集體重挫，但基本面很快用財報數字自我修正。</p>
+    </div>
+
+    <!-- ============ STEP 1 ============ -->
+    <h2 class="section">Step 1 — 供應鏈地圖<span>SUPPLY CHAIN MAP</span></h2>
+
+    <div class="stats">
+      <div class="stat"><div class="v">3.5萬→26萬</div><div class="l">CoWoS月產能規劃（2024底→2028底，片/月）</div></div>
+      <div class="stat"><div class="v">&gt;80%</div><div class="l">CoWoS資本支出2022-2027年CAGR</div></div>
+      <div class="stat"><div class="v">&gt;98%</div><div class="l">5.5倍光罩尺寸CoWoS良率(2026)</div></div>
+      <div class="stat"><div class="v">8-10%→42-51%</div><div class="l">ABF載板供需缺口惡化軌跡(2026H2→2028)</div></div>
+    </div>
+
+    <h3 class="sub">終端產品與 BOM 拆解</h3>
+    <p>CoWoS（Chip-on-Wafer-on-Substrate）是目前全球AI晶片最主流的標準封裝技術。技術路線從<b>CoWoS-S</b>（全矽中介層，逐步淘汰）演進到<b>CoWoS-L</b>（局部矽互連，現行主流），下一代<b>CoPoS</b>（面板級封裝）2026年設試產線、2027年送樣、2028底-2029H1量產。關鍵瓶頸：TSV（矽穿孔，與HBM共同瓶頸）、Hybrid Bonding（sub-10微米間距）、ABF載板（因die尺寸放大出現翹曲/熱應力問題而結構性缺貨）。</p>
+
+    <h3 class="sub">上中下游基本結構</h3>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>層級</th><th>環節</th><th>代表廠商</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="3">上游</td><td>CoWoS封裝本尊</td><td>TSMC（近乎壟斷）</td></tr>
+        <tr><td>ABF載板</td><td>Ibiden、Shinko(日)；欣興(3037)、南電(8046)、景碩(台)</td></tr>
+        <tr><td>Hybrid Bonding設備</td><td>BESI+Applied Materials(Kynex D2W)；ASMPT</td></tr>
+        <tr><td rowspan="2">中游</td><td>TSMC自有產線</td><td>嘉義AP7、南科AP8</td></tr>
+        <tr><td><b>首度委外OSAT</b></td><td>日月光投控(3711)、矽品；力成受惠</td></tr>
+        <tr><td rowspan="2">下游</td><td>主要客戶</td><td>NVIDIA、Broadcom(新產能開出前幾乎預訂完畢)；聯發科分配餘量</td></tr>
+        <tr><td>外溢受惠</td><td>聯電UMC、Amkor</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="sub">橫向比較：國內外供應鏈地位</h3>
+    <p class="insight"><b>⚠️ 與光通訊產業形成鮮明對比：</b>光通訊產業台灣只占「上游+CPO精密元件」配角；CoWoS產業台灣是<b>絕對核心</b>——TSMC本尊、日月光、載板三雄、設備商全在台灣。</p>
+    <div class="geo-grid">
+      <div class="geo-card">
+        <h4>🇹🇼 台灣 — CoWoS生態系絕對核心</h4>
+        <ul>
+          <li>TSMC：技術壟斷者</li>
+          <li>日月光：首度承接OSAT委外</li>
+          <li>載板三雄：欣興、南電、景碩</li>
+          <li>設備商：弘塑(濕製程龍頭)、辛耘</li>
+        </ul>
+      </div>
+      <div class="geo-card china">
+        <h4>🇨🇳 中國 — 幾乎缺席</h4>
+        <ul>
+          <li>本次查證範圍內幾乎查無中國廠商參與CoWoS生態系</li>
+          <li>反映先進封裝是受出口管制影響最深的環節之一</li>
+          <li>此為觀察結果，不代表確定完全缺席</li>
+        </ul>
+      </div>
+      <div class="geo-card intl">
+        <h4>🌍 國際 — 設備與載板材料</h4>
+        <ul>
+          <li>日本：Ibiden、Shinko(ABF載板兩大龍頭)</li>
+          <li>荷/美：BESI+Applied Materials(Hybrid Bonding)</li>
+          <li>港/中：ASMPT(先進封裝營收占比~25%)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub">縱向比較：CoWoS 產能擴充節奏</h3>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>時間點</th><th>月產能</th><th>成長率</th></tr></thead>
+      <tbody>
+        <tr><td>2024年底</td><td>3.5萬片</td><td>基準</td></tr>
+        <tr><td>2025年底</td><td>~7萬片</td><td class="g-pos">+100%</td></tr>
+        <tr><td>2026年底(目標)</td><td>11.5-13萬片</td><td class="g-pos">+64~86%</td></tr>
+        <tr><td>2027年</td><td>~18-20萬片</td><td class="g-pos">+38~54%</td></tr>
+        <tr><td>2028年底(目標)</td><td>26萬片</td><td class="g-pos">+30~44%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-dim);">⚠️ 另有報導指2025年4月產能一度下修至10萬片，與上表2025年底~7萬片的說法存在跨來源出入，不代表確定矛盾，僅並列呈現。</p>
+
+    <!-- ============ STEP 2 ============ -->
+    <h2 class="section">Step 2 — 供應鏈歷史<span>HISTORY & CURRENT STAGE</span></h2>
+    <ul class="timeline">
+      <li><div class="t">2025-05</div><div class="d"><b>麥格理降評引發族群集體崩跌</b>：因CoWoS設備出貨延遲，下調弘塑(3131)、辛耘(3583)評等。</div></li>
+      <li><div class="t">收尾</div><div class="d">弘塑公布2025全年EPS 45.48元創新高＋台積電上調資本支出至$520-560億，外資估值基礎翻轉，族群復甦。</div></li>
+    </ul>
+    <p class="insight"><b>啟示：</b>CoWoS族群股價對「出貨時程」類消息特別敏感，分析師解讀分歧可能引發族群性重挫，即便基本面沒問題——與PSU(技術延遲)、液冷(大盤風險)、光通訊(地緣政治)三種逆風類型都不同。</p>
+
+    <p style="margin-top:16px;">目前供需階段判定：</p>
+    <p><span class="stage-pill">⚠ 供不應求，瓶頸正從封裝產能擴散到ABF載板</span></p>
+    <ul>
+      <li>台積電首度委外部分CoW/oS製程給日月光/矽品——產能極限的直接證據</li>
+      <li>ABF載板缺口逐年惡化（非收斂）：2026H2 8-10% → 2027 21-34% → 2028 42-51%</li>
+    </ul>
+
+    <!-- ============ STEP 3 ============ -->
+    <h2 class="section">Step 3 — 供應鏈門檻<span>BARRIERS TO ENTRY</span></h2>
+    <div class="barrier-grid">
+      <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">極高</div><p>CoWoS是TSMC獨門技術；Hybrid Bonding需sub-10微米精度；TSV是HBM/CoWoS共同瓶頸</p></div>
+      <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v high">持續但仍供不應求</div><p>資本支出CAGR>80%，仍供不應求；ABF載板擴產速度跟不上封裝產能</p></div>
+      <div class="barrier"><div class="b-h">資本/技術門檻</div><div class="b-v high">皆極高</div><p>良率要求嚴苛(98%+)；5.5倍光罩尺寸級大面積封裝精度要求極高</p></div>
+      <div class="barrier"><div class="b-h">客戶認證</div><div class="b-v mid">既定信任關係</div><p>新產能開出前幾乎被NVIDIA/Broadcom預訂完畢，關係已是既定事實</p></div>
+      <div class="barrier"><div class="b-h">轉單成本</div><div class="b-v high">無從轉單</div><p>CoWoS是獨門生意，客戶幾乎沒有對等替代供應商可選</p></div>
+    </div>
+    <p class="insight"><b>與其他三個產業的護城河機制對照：</b>PSU靠品質記錄、AI液冷靠品質記錄+資本門檻、光通訊靠NVIDIA資本綁定上游供應商——CoWoS的護城河<b>不靠關係或資本綁定，而是技術能力本身的絕對稀缺性</b>，這是四個產業中護城河最純粹、最難撼動的一個。</p>
+
+    <!-- ============ STEP 4 ============ -->
+    <h2 class="section">Step 4 — 追蹤指標與財務驗證<span>TRACKING INDICATORS</span></h2>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>指標</th><th>目前讀數（2026-09-17）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
+      <tbody>
+        <tr><td>ABF載板供需缺口預估軌跡</td><td>2026H2:8-10%→2027:21-34%→2028:42-51%</td><td class="trig">缺口預估不再擴大，甚至開始收斂</td></tr>
+        <tr><td>BESI hybrid bonding backlog</td><td>最新一季YoY+105%</td><td class="trig">成長率明顯放緩或轉負</td></tr>
+        <tr><td>ABF載板交期</td><td>12-14個月</td><td class="trig">縮短至9個月以下 或 再拉長超過14個月</td></tr>
+        <tr><td>CoWoS產能客戶分配比例</td><td>幾乎全被NVIDIA/Broadcom包辦</td><td class="trig">次要客戶(如聯發科)分配比例明顯提升</td></tr>
+        <tr><td>OSAT委外比例(日月光/矽品)</td><td>首度開放，比例未知</td><td class="trig">委外比例明顯擴大 或 TSMC收回委外</td></tr>
+        <tr><td>TSMC CoWoS產能目標</td><td>2026底目標11.5-13萬片/月</td><td class="trig">目標上修或下修</td></tr>
+        <tr><td>CoPoS進度</td><td>2026試產線、2027送樣、2028底-2029H1量產</td><td class="trig">時程提前或延後</td></tr>
+        <tr><td>分析師解讀敏感度事件</td><td>2025/5曾因麥格理降評引發族群重挫</td><td class="trig">出現類似設備出貨時程降評消息</td></tr>
+        <tr><td>日月光/南電/弘塑EPS與毛利率</td><td>皆呈上升趨勢</td><td class="trig">任一龍頭EPS年增率轉負</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="sub">財務數字驗證</h3>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>指標</th><th>日月光投控 (3711.TW)</th><th>南電 (8046.TW)</th><th>弘塑 (3131.TW)</th><th>精材 (3374.TW)</th></tr></thead>
+      <tbody>
+        <tr><td>最新EPS</td><td>2026Q1：3.24元(YoY+85.14%)</td><td>未查到具體數字</td><td>2025全年：45.48元(創新高)</td><td>2026Q1：1.42元(QoQ-25.04%)</td></tr>
+        <tr><td>毛利率</td><td>Q2：21.0%(YoY+4個百分點)</td><td>估2026-28 ABF/BT毛利率突破50%/30%</td><td>未查到</td><td>未查到</td></tr>
+        <tr><td>訂單能見度</td><td>Q3 guidance大幅上修</td><td>產品漲價幅度估領先同業</td><td>訂單排到2026上半年</td><td>未查到</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="font-size:12px;color:var(--text-dim);">此追蹤表已建立為持久化追蹤器 <code>.claude/skills/supply-chain-analysis/trackers/cowos_advanced_packaging.md</code>，並設有每週本機排程自動重新查證。</p>
+
+    <div class="gap-box">
+      <b style="font-size:12.5px;color:#78350F;">資料缺口</b>
+      <ul>
+        <li>南電、景碩具體EPS/本淨比數字未查到</li>
+        <li>日月光近四季EPS數字跨來源不一致（10.77元 vs 25.44元），未查證</li>
+        <li>OSAT委外給日月光/矽品的具體良率與比例數字未查到</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="foot">
+    <p style="margin-bottom:10px;"><b>參考來源（部分）：</b></p>
+    <ul class="src-list">
+      <li><a href="https://blog.fugle.tw/post/cowos-industry-analysis" target="_blank">2026年先進封裝產業深度報告 | 富果直送</a></li>
+      <li><a href="https://statementdog.com/news/15201" target="_blank">大摩：台積電2026年CoWoS擴產 | 財報狗</a></li>
+      <li><a href="https://newsletter.semianalysis.com/p/hybrid-bonding-process-flow-advanced" target="_blank">Hybrid Bonding Process Flow | SemiAnalysis</a></li>
+      <li><a href="https://finance.technews.tw/2026/08/28/cowososat" target="_blank">CoWoS瓶頸掀ABF產能競標戰 | TechNews</a></li>
+      <li><a href="https://technews.tw/2026/09/12/tsmc-cowos-capacity" target="_blank">台積電CoWoS產能供不應求 | TechNews</a></li>
+      <li><a href="https://cmnews.com.tw/article/cmoney-fc187c2d-7cb1-11f0-b3d6-817c34ea318f" target="_blank">弘塑率先攻漲停 | CMoney</a></li>
+      <li><a href="https://statementdog.com/analysis/3711/eps" target="_blank">日月光投控(3711)EPS | 財報狗</a></li>
+      <li><a href="https://globaltechresearch.substack.com/p/the-bonder-war-an-update-on-asmpt" target="_blank">The Bonder War | Global Technology Research</a></li>
+    </ul>
+    <p style="margin-top:14px;">完整分析全文見同目錄下 <code>step1_供應鏈地圖.md</code>、<code>step2_供應鏈歷史.md</code>、<code>step3_供應鏈門檻.md</code>、<code>step4_追蹤指標.md</code>。本報告依 <code>.claude/skills/supply-chain-analysis</code> 框架產出，僅供研究參考，非投資建議。</p>
+  </footer>
+
+</div>
+</body>
+</html>
