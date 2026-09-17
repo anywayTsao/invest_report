@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>產業追蹤報告 — 投資研究報告</title>
+<style>
+  :root{
+    --bg:#f7f7f5; --surface:#ffffff; --ink:#1a1a1a; --ink-soft:#666;
+    --line:#e3e2de; --accent:#2b5fa8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#15161a; --surface:#1c1e24; --ink:#e8e8e6; --ink-soft:#9a9a9a; --line:#2c2e35; --accent:#7aa8e0; }
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif;
+    line-height:1.6;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:48px 20px 60px;}
+  .back{font-size:.85rem; color:var(--ink-soft); text-decoration:none;}
+  .back:hover{color:var(--accent);}
+  h1{font-size:1.6rem; margin:14px 0 6px;}
+  .sub{color:var(--ink-soft); font-size:.92rem; margin:0 0 24px;}
+  .search-box{margin:0 0 24px;}
+  .search-box input{
+    width:100%; padding:12px 16px; font-size:1rem; border-radius:10px;
+    border:1px solid var(--line); background:var(--surface); color:var(--ink);
+    font-family:inherit;
+  }
+  .search-box input:focus{outline:none; border-color:var(--accent);}
+  .list{display:grid; gap:14px;}
+  a.card{
+    display:block; background:var(--surface); border:1px solid var(--line); border-radius:10px;
+    padding:18px 20px; text-decoration:none; color:inherit;
+  }
+  a.card:hover{border-color:var(--accent);}
+  .card .name{font-weight:600; font-size:1.05rem; margin-bottom:4px;}
+  .card .name::after{content:" →"; color:var(--accent);}
+  .card .path{font-size:.78rem; color:var(--ink-soft); font-family:ui-monospace,monospace;}
+  .empty{color:var(--ink-soft); font-size:.9rem;}
+  .no-match{color:var(--ink-soft); font-size:.9rem; display:none;}
+  footer{margin-top:40px; font-size:.78rem; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 回首頁</a>
+  <h1>產業追蹤報告</h1>
+  <p class="sub">依 industry-tracker 框架（地圖 → 歷史 → 門檻 → 追蹤指標）建立並持續追蹤更新。僅供研究參考，非投資建議。</p>
+
+  <div class="search-box">
+    <input type="search" id="q" placeholder="輸入產業名稱搜尋，例如 CCL 或 液冷" autocomplete="off">
+  </div>
+
+  <div class="list" id="list">
+<!-- INDUSTRY_TRACKER:START -->
+    <a class="card" href="ccl/report.html">
+      <div class="name">CCL（銅箔基板）產業追蹤報告</div>
+      <div class="path">supply_chain_analysis/ccl/</div>
+    </a>
+    <a class="card" href="ai_psu/report.html">
+      <div class="name">AI 伺服器 PSU（電源供應器）產業追蹤報告</div>
+      <div class="path">supply_chain_analysis/ai_psu/</div>
+    </a>
+    <a class="card" href="cowos_advanced_packaging/report.html">
+      <div class="name">CoWoS 先進封裝產業 產業追蹤報告</div>
+      <div class="path">supply_chain_analysis/cowos_advanced_packaging/</div>
+    </a>
+    <a class="card" href="ai_optical_communication/report.html">
+      <div class="name">AI 光通訊產業 產業追蹤報告</div>
+      <div class="path">supply_chain_analysis/ai_optical_communication/</div>
+    </a>
+    <a class="card" href="ai_liquid_cooling/report.html">
+      <div class="name">AI 資料中心液冷產業 產業追蹤報告</div>
+      <div class="path">supply_chain_analysis/ai_liquid_cooling/</div>
+    </a>
+<!-- INDUSTRY_TRACKER:END -->
+  </div>
+  <p class="no-match" id="noMatch">找不到符合的產業。</p>
+
+  <footer>最後更新：2026-09-18</footer>
+</div>
+<script>
+  (function(){
+    var q = document.getElementById('q');
+    var list = document.getElementById('list');
+    var noMatch = document.getElementById('noMatch');
+    function apply(){
+      var v = q.value.trim().toLowerCase();
+      var cards = list.querySelectorAll('a.card');
+      var shown = 0;
+      cards.forEach(function(c){
+        var hit = !v || c.textContent.toLowerCase().indexOf(v) !== -1;
+        c.style.display = hit ? '' : 'none';
+        if (hit) shown++;
+      });
+      noMatch.style.display = shown === 0 ? '' : 'none';
+    }
+    q.addEventListener('input', apply);
+    apply();
+  })();
+</script>
+</body>
+</html>

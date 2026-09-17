@@ -24,16 +24,14 @@
   .list{display:grid; gap:14px;}
   a.card{
     display:block; background:var(--surface); border:1px solid var(--line); border-radius:10px;
-    padding:18px 20px; text-decoration:none; color:inherit;
+    padding:20px 22px; text-decoration:none; color:inherit;
   }
   a.card:hover{border-color:var(--accent);}
-  .card .name{font-weight:600; font-size:1.05rem; margin-bottom:4px;}
+  .card .name{font-weight:600; font-size:1.15rem; margin-bottom:6px;}
   .card .name::after{content:" →"; color:var(--accent);}
-  .card .path{font-size:.78rem; color:var(--ink-soft); font-family:ui-monospace,monospace;}
+  .card .desc{font-size:.85rem; color:var(--ink-soft);}
+  .card .count{font-size:.78rem; color:var(--ink-soft); font-family:ui-monospace,monospace; margin-top:6px;}
   footer{margin-top:40px; font-size:.78rem; color:var(--ink-soft);}
-  h2.cat{font-size:1.15rem; margin:36px 0 4px;}
-  .cat-sub{color:var(--ink-soft); font-size:.85rem; margin:0 0 14px;}
-  .empty{color:var(--ink-soft); font-size:.9rem;}
 </style>
 </head>
 <body>
@@ -41,64 +39,19 @@
   <h1>投資研究報告</h1>
   <p class="sub">研究產出總覽，依類別分區。僅供研究參考，非投資建議。</p>
 
-  <h2 class="cat">產業追蹤報告</h2>
-  <p class="cat-sub">依 industry-tracker 框架（地圖 → 歷史 → 門檻 → 追蹤指標）建立並持續追蹤更新。</p>
   <div class="list">
-    <a class="card" href="supply_chain_analysis/ccl/report.html">
-      <div class="name">CCL（銅箔基板）產業追蹤報告</div>
-      <div class="path">supply_chain_analysis/ccl/</div>
+    <a class="card" href="simple-analysis/index.html">
+      <div class="name">簡易分析（個股報告）</div>
+      <div class="desc">依 simple-analysis workflow（五大商業邏輯＋市場估值框架）產出的個股投資重點深掘報告，可用股票代號或名稱搜尋。</div>
+      <div class="count">simple-analysis/</div>
     </a>
-    <a class="card" href="supply_chain_analysis/ai_psu/report.html">
-      <div class="name">AI 伺服器 PSU（電源供應器）產業追蹤報告</div>
-      <div class="path">supply_chain_analysis/ai_psu/</div>
-    </a>
-    <a class="card" href="supply_chain_analysis/cowos_advanced_packaging/report.html">
-      <div class="name">CoWoS 先進封裝產業 產業追蹤報告</div>
-      <div class="path">supply_chain_analysis/cowos_advanced_packaging/</div>
-    </a>
-    <a class="card" href="supply_chain_analysis/ai_optical_communication/report.html">
-      <div class="name">AI 光通訊產業 產業追蹤報告</div>
-      <div class="path">supply_chain_analysis/ai_optical_communication/</div>
-    </a>
-    <a class="card" href="supply_chain_analysis/ai_liquid_cooling/report.html">
-      <div class="name">AI 資料中心液冷產業 產業追蹤報告</div>
-      <div class="path">supply_chain_analysis/ai_liquid_cooling/</div>
+    <a class="card" href="supply_chain_analysis/index.html">
+      <div class="name">產業追蹤報告</div>
+      <div class="desc">依 industry-tracker 框架（地圖 → 歷史 → 門檻 → 追蹤指標）建立並持續追蹤更新的供應鏈報告，可用產業名稱搜尋。</div>
+      <div class="count">supply_chain_analysis/</div>
     </a>
   </div>
-  <h2 class="cat">簡易分析</h2>
-  <p class="cat-sub">依 simple-analysis workflow（五大商業邏輯＋市場估值框架）產出的個股投資重點深掘報告。檔名帶產出日期，同一檔股票可能有多個日期版本，最新在最上面。僅供研究參考，非投資建議。</p>
-  <div class="list">
-<!-- SIMPLE_ANALYSIS:START -->
-    <a class="card" href="simple-analysis/2368_金像電_20260918.html">
-      <div class="name">2368 金像電 簡易分析</div>
-      <div class="path">2026-09-18 · simple-analysis/2368_金像電_20260918.html</div>
-    </a>
-    <a class="card" href="simple-analysis/6274_台燿科技_20260918.html">
-      <div class="name">6274 台燿科技 簡易分析</div>
-      <div class="path">2026-09-18 · simple-analysis/6274_台燿科技_20260918.html</div>
-    </a>
-    <a class="card" href="simple-analysis/8358_金居_20260918.html">
-      <div class="name">8358 金居 簡易分析</div>
-      <div class="path">2026-09-18 · simple-analysis/8358_金居_20260918.html</div>
-    </a>
-    <a class="card" href="simple-analysis/2454_聯發科_20260917.html">
-      <div class="name">2454 聯發科 簡易分析</div>
-      <div class="path">2026-09-17 · simple-analysis/2454_聯發科_20260917.html</div>
-    </a>
-    <a class="card" href="simple-analysis/3017_奇鋐_20260917.html">
-      <div class="name">3017 奇鋐 簡易分析</div>
-      <div class="path">2026-09-17 · simple-analysis/3017_奇鋐_20260917.html</div>
-    </a>
-    <a class="card" href="simple-analysis/7769_鴻勁_20260917.html">
-      <div class="name">7769 鴻勁 簡易分析</div>
-      <div class="path">2026-09-17 · simple-analysis/7769_鴻勁_20260917.html</div>
-    </a>
-    <a class="card" href="simple-analysis/8155_博智_20260917.html">
-      <div class="name">8155 博智 簡易分析</div>
-      <div class="path">2026-09-17 · simple-analysis/8155_博智_20260917.html</div>
-    </a>
-<!-- SIMPLE_ANALYSIS:END -->
-  </div>
+
   <footer>最後更新：2026-09-18</footer>
 </div>
 </body>
