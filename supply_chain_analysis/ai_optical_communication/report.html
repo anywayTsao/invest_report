@@ -33,6 +33,8 @@
   nav.subnav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 44px;}
   nav.subnav a{white-space:nowrap;color:var(--text-dim);text-decoration:none;font-size:12.5px;font-weight:700;padding:13px 12px;border-bottom:2px solid transparent;}
   nav.subnav a:hover{color:var(--navy);border-bottom-color:var(--orange);}
+  nav.subnav a.home-link{color:var(--navy);border-right:1px solid var(--border);margin-right:6px;padding-right:16px;}
+  nav.subnav a.home-link:hover{color:var(--orange);border-bottom-color:var(--orange);}
 
   .body-wrap{padding:32px 44px 0;}
 
@@ -169,6 +171,7 @@
 
   <!-- 錨點導覽列 -->
   <nav class="subnav">
+    <a class="home-link" href="../../index.html">← 回首頁</a>
     <a href="#overview">總覽</a>
     <a href="#map">供應鏈地圖</a>
     <a href="#history">歷史周期</a>
