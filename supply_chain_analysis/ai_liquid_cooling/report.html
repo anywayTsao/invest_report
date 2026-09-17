@@ -48,7 +48,7 @@
 
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0 20px;}
   .stat{background:#fff;border:1px solid var(--border);border-top:3px solid var(--navy);border-radius:7px;padding:12px 14px;text-align:center;}
-  .stat .v{font-size:19px;font-weight:800;color:var(--navy);line-height:1.2;}
+  .stat .v{font-size:18px;font-weight:800;color:var(--navy);line-height:1.2;}
   .stat .l{font-size:11px;color:var(--text-dim);margin-top:5px;line-height:1.4;}
 
   table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:12.8px;}
@@ -70,7 +70,7 @@
   .g-flag{background:#FEF3C7;color:var(--amber-d);padding:1px 6px;border-radius:3px;font-size:11px;font-weight:700;margin-left:4px;}
 
   .timeline{list-style:none;margin:8px 0 4px;padding:0;}
-  .timeline li{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:12px 0;border-bottom:1px dashed var(--border);}
+  .timeline li{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:12px 0;border-bottom:1px dashed var(--border);}
   .timeline li:last-child{border-bottom:none;}
   .timeline .t{font-size:12.5px;font-weight:800;color:var(--navy);white-space:nowrap;}
   .timeline .d{font-size:13px;line-height:1.7;}
@@ -83,13 +83,15 @@
   .barrier .b-v{font-size:12px;font-weight:700;margin-bottom:4px;}
   .barrier .b-v.high{color:var(--red-d);}
   .barrier .b-v.mid{color:var(--amber-d);}
-  .barrier .b-v.low{color:var(--green-d);}
   .barrier p{font-size:11.5px;color:var(--text-dim);margin:0;line-height:1.55;}
 
   .trig{font-size:12px;color:var(--red-d);}
 
   .insight{background:#EEF2FF;border-left:4px solid #4338CA;border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#312E81;}
   .insight b{color:#3730A3;}
+
+  .warn-box{background:#FEF2F2;border:1px solid #FECACA;border-left:4px solid var(--red);border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#7F1D1D;}
+  .warn-box b{color:var(--red-d);}
 
   .gap-box{background:#FFFBEB;border:1px solid #FDE68A;border-radius:6px;padding:14px 18px;margin:10px 0;}
   .gap-box ul{margin-bottom:0;}
@@ -102,10 +104,31 @@
 
   footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;}
 
+  .log-card{background:#F8FAFC;border:1px solid var(--border);border-left:4px solid var(--navy);border-radius:8px;padding:16px 20px;margin-bottom:16px;}
+  .log-card.latest{border-left-color:var(--orange);}
+  .log-date{font-size:12.5px;font-weight:800;color:var(--navy-d);margin-bottom:8px;}
+  .log-card ul{margin:0;padding-left:18px;}
+  .log-card li{font-size:12.5px;line-height:1.7;color:var(--text);margin-bottom:4px;}
+  .log-trigger{display:inline-block;background:var(--red-bg);color:var(--red-d);font-weight:800;font-size:11.5px;padding:3px 10px;border-radius:12px;margin-bottom:8px;}
+
+  .chart-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:18px 22px;margin:14px 0 20px;}
+  .chart-card .chart-title{font-size:13px;font-weight:800;color:var(--navy-d);margin-bottom:2px;}
+  .chart-card .chart-caption{font-size:11.5px;color:var(--text-dim);margin-bottom:10px;}
+  .chart-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  svg.chart{width:100%;height:auto;display:block;overflow:visible;}
+  svg.chart text{font-family:"Noto Sans TC",Arial,sans-serif;fill:var(--text-dim);}
+  svg.chart .axis-line{stroke:var(--border);stroke-width:1;}
+  svg.chart .val-label{fill:var(--navy-d);font-weight:700;font-size:11px;}
+  svg.chart .grp-label{fill:var(--text-dim);font-size:11px;}
+  .chart-legend{display:flex;gap:16px;font-size:11.5px;color:var(--text-dim);margin-top:8px;}
+  .chart-legend span{display:inline-flex;align-items:center;gap:6px;}
+  .chart-swatch{width:10px;height:10px;border-radius:2px;display:inline-block;}
+
   @media (max-width:900px){
     .stats{grid-template-columns:repeat(2,1fr);}
     .geo-grid{grid-template-columns:1fr;}
     .barrier-grid{grid-template-columns:1fr 1fr;}
+    .chart-row{grid-template-columns:1fr;}
   }
   @media (max-width:640px){
     .banner,.body-wrap{padding-left:20px;padding-right:20px;}
@@ -114,7 +137,7 @@
     .barrier-grid{grid-template-columns:1fr;}
     table{font-size:11.5px;}
     .src-list{columns:1;}
-    .timeline li{grid-template-columns:80px 1fr;gap:8px;}
+    .timeline li{grid-template-columns:90px 1fr;gap:8px;}
   }
   @media print{
     body{background:#fff;}
@@ -132,118 +155,188 @@
     <div class="badges">
       <span class="badge">產出日期 2026-09-17</span>
       <span class="badge">框架：地圖 → 歷史 → 門檻 → 指標</span>
-      <span class="badge">主架構：Direct-to-chip</span>
+      <span class="badge">目前階段：明確供不應求（交期轉緊）</span>
     </div>
   </div>
 
   <div class="body-wrap">
 
+    <!-- ============ 00 總覽 ============ -->
+    <h2 class="section">總覽<span>OVERVIEW</span></h2>
     <div class="exec">
       <div class="exec-label">EXECUTIVE SUMMARY · 摘要</div>
-      <p>台灣「散熱三雄」（<b>奇鋐、雙鴻、健策</b>）加上台達電，構成從零組件到機櫃系統的完整能力，已直接打入 Meta/AWS/Microsoft/NVIDIA 認證體系。與晶片/PSU 環節不同，液冷屬於<b>非管制周邊設備</b>，中國龍頭英維克因此仍能被 Google 接觸洽談採購。產業目前處於<b>供不應求</b>，但 CDU/機櫃整合冷板模組相對落後（管路/泵浦已超前）；2026 年出現密集的國際併購潮（Ecolab/CoolIT、Eaton/Boyd、Schneider/Motivair），代表產業快速走向大者恆大的成熟基建。<b>需留意估值透支疑慮</b>：奇鋐本淨比已達 23.47 倍、本益比 47.1 倍；健策 2026 Q1 獲利年增僅 +1.99%（遠低於全年 +53.95%），是驗證「Vera Rubin 下半年放量」說法的關鍵觀察標的。</p>
+      <p>AI資料中心液冷供應鏈本次追蹤更新出現<b>兩項明確觸發訊號</b>，凸顯產業正從「需求旺盛」進一步收斂為「實體供給瓶頸」：其一，<b>CDU與冰水主機（chiller）交期同步顯著拉長</b>——CDU 由基準 16-24 週拉長至 26-40 週（1-3MW 新單交期已達 6-10 個月）、chiller 由 20-30 週拉長至 40-60 週，產業報導稱此瓶頸屬「結構性、非暫時性」，新增產能最快要等 2027 年才會到位；其二，<b>健策（3653.TW）均熱片／MCL 新技術「3-4 倍溢價」的傳言，已被 2026 Q2 財報證實</b>——公司明確歸因於「均熱片報價調漲」，單季稅後純益季增 65.8%、年增 107%，一舉扭轉 Q1 僅 +1.99% 的年增放緩疑慮。台灣「散熱三雄」（奇鋐、雙鴻、健策）加上台達電構成從零組件到機櫃系統的完整能力，已直接打入 Meta/AWS/Microsoft/NVIDIA 認證體系；與晶片/PSU 環節不同，液冷屬<b>非管制周邊設備</b>，中國龍頭英維克因此仍傳出被 Google 接觸洽談採購（尚未官方證實）。國際傳統工業巨頭密集併購（Ecolab/CoolIT、Eaton/Boyd、Schneider/Motivair）顯示產業快速走向大者恆大的成熟基建。<b>最大不確定性仍是估值</b>：奇鋐本益比雖已從基準 47.1 倍回落至 41.52 倍（尚未觸及 20% 下滑的觸發門檻），「散熱三雄估值透支」的爭議仍待市場進一步驗證。</p>
     </div>
-
-    <!-- ============ STEP 1 ============ -->
-    <h2 class="section">Step 1 — 供應鏈地圖<span>SUPPLY CHAIN MAP</span></h2>
-
     <div class="stats">
-      <div class="stat"><div class="v">~47%</div><div class="l">2026年 AI晶片液冷滲透率（Direct-to-chip）</div></div>
-      <div class="stat"><div class="v">40-50%</div><div class="l">奇鋐 GB200/GB300 冷板市占率</div></div>
-      <div class="stat"><div class="v">+27.1%</div><div class="l">浸沒式冷卻市場CAGR（成長最快技術路線）</div></div>
-      <div class="stat"><div class="v">$6.3-6.5萬</div><div class="l">VR200每櫃液冷系統價值（美元，較GB300+50%+）</div></div>
+      <div class="stat"><div class="v">26-40週</div><div class="l">CDU交期（基準16-24週；chiller同步拉長至40-60週，本次觸發）</div></div>
+      <div class="stat"><div class="v">+107%</div><div class="l">健策(3653) 2026Q2稅後純益YoY（均熱片溢價經財報證實，本次觸發）</div></div>
+      <div class="stat"><div class="v">40-50%</div><div class="l">奇鋐(3017) GB200/GB300冷板市占率</div></div>
+      <div class="stat"><div class="v">$150億+</div><div class="l">Vertiv訂單backlog，能見度已達2027年</div></div>
     </div>
+
+    <!-- ============ 01 供應鏈地圖（Step 1）============ -->
+    <h2 class="section">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
 
     <h3 class="sub">終端產品與 BOM 拆解</h3>
-    <p>終端產品為 AI 伺服器機櫃液冷散熱系統，關鍵零組件：<b>冷板（Cold Plate）</b>貼附CPU/GPU把熱傳給冷卻液；<b>CDU</b>調節流量/溫度/壓力，是系統心臟；<b>歧管（Manifold）</b>分配冷卻液到每個節點；<b>快速接頭（QD）</b>讓節點可熱插拔；<b>冷卻液</b>（direct-to-chip用水基防凍液，浸沒式用3M Novec/Fluorinert等介電流體）。⚠️「2026液冷滲透率76%」與「AI晶片液冷滲透率47%」兩組數字口徑不同，不可直接比較。</p>
+    <p>終端產品為 AI 伺服器機櫃液冷散熱系統，主流架構是 <b>direct-to-chip（冷板直觸式）</b>，輔以機櫃背門熱交換器（RDHx）作為氣冷轉液冷的過渡方案，浸沒式（immersion）則是成長最快但滲透率仍相對小的技術路線。關鍵零組件：<b>冷板</b>貼附CPU/GPU把熱傳給冷卻液；<b>CDU（冷卻分配單元）</b>調節流量/溫度/壓力，是系統的「心臟」；<b>歧管（Manifold）</b>把CDU送出的冷卻液分配到每個節點；<b>快速接頭（QD）</b>讓節點可熱插拔；<b>冷卻液</b>（direct-to-chip多用水基防凍液，浸沒式用3M Novec/Fluorinert等介電流體）。⚠️ 各零組件在整體BOM中的精確成本占比查無數字，不強行湊百分比；「2026液冷滲透率直衝76%」與「2026年AI晶片液冷滲透率約47%」兩組數字口徑不同，不可直接比較。</p>
 
     <h3 class="sub">上中下游基本結構</h3>
     <div class="tbl-wrap">
     <table>
       <thead><tr><th>層級</th><th>環節</th><th>代表廠商</th></tr></thead>
       <tbody>
-        <tr><td>上游</td><td>介電冷卻液（近乎壟斷）</td><td>3M（Novec、Fluorinert）⚠️高GWP環保疑慮</td></tr>
-        <tr><td rowspan="6">中游</td><td>冷板</td><td>奇鋐 AVC (3017.TW)　市占40-50%</td></tr>
-        <tr><td>冷板+CDU+快接一條龍</td><td>雙鴻 Auras (3324.TW)　已進Meta/AWS/Microsoft</td></tr>
-        <tr><td>均熱板/導熱元件</td><td>健策 Jentec (3653.TW)</td></tr>
-        <tr><td>QD快速接頭</td><td>富世達 Funtech (6805.TW)</td></tr>
-        <tr><td>水冷機櫃結構件</td><td>晟銘電 Shenmingda (6112.TW)　Meta供應鏈</td></tr>
-        <tr><td>CDU/RDHx</td><td>台達電(2308.TW)、Vertiv、CoolIT(現Ecolab)、Motivair(現Schneider)、LiquidStack、Asetek</td></tr>
+        <tr><td rowspan="2">上游</td><td>介電冷卻液（浸沒式，近乎壟斷）</td><td>3M（Novec、Fluorinert系列，美國）⚠️高GWP環保疑慮</td></tr>
+        <tr><td>冷板材料（銅/鋁/不鏽鋼）、管路聚合物材料</td><td>未查到具體專屬供應商名單（資料缺口）</td></tr>
+        <tr><td rowspan="8">中游</td><td>冷板</td><td>奇鋐 AVC（3017.TW，台灣）　GB200/GB300市占40-50%</td></tr>
+        <tr><td>冷板＋CDU＋快接一條龍</td><td>雙鴻 Auras（3324.TW，台灣）　已進Meta/AWS/Microsoft</td></tr>
+        <tr><td>均熱板/導熱元件</td><td>健策 Jentec（3653.TW，台灣）</td></tr>
+        <tr><td>快速接頭（QD）</td><td>富世達 Funtech（6805.TW，台灣）　NVIDIA GB200/GB300認證</td></tr>
+        <tr><td>水冷機櫃/結構件</td><td>晟銘電 Shenmingda（6112.TW，台灣）　Meta供應鏈</td></tr>
+        <tr><td>CDU（機房級/百萬瓦級）</td><td>台達電 Delta（2308.TW，台灣）　橫跨PSU與液冷兩環節</td></tr>
+        <tr><td>CDU/RDHx（國際）</td><td>Vertiv、CoolIT(現Ecolab)、Motivair(現Schneider Electric)、Boyd(現Eaton)、LiquidStack、nVent、Asetek、Iceotope</td></tr>
+        <tr><td>液冷系統整合（中國）</td><td>英維克 Envicool（002837.SZ，龍頭）；申菱環境、高瀾股份、中鼎股份、鼎通科技、中科曙光等</td></tr>
         <tr><td rowspan="2">下游</td><td>ODM機櫃組裝</td><td>Foxconn、Quanta、Wistron、Wiwynn、Supermicro</td></tr>
-        <tr><td>終端雲端客戶</td><td>Google、Meta、AWS、Microsoft——全球供應鏈目前極度緊俏</td></tr>
+        <tr><td>終端雲端客戶</td><td>Google（傳接觸英維克）、Meta（晟銘電/雙鴻供應鏈）、AWS、Microsoft（雙鴻供應鏈）——供應鏈目前極度緊俏</td></tr>
       </tbody>
     </table>
     </div>
-    <p class="insight"><b>2026年併購潮：</b>Ecolab收購CoolIT(2026/3，~$47.5億)、Eaton收購Boyd熱管理事業(2026/3)、Schneider Electric收購Motivair控股權(2024/10)。傳統工業/電力巨頭大舉併購液冷技術商，代表產業快速從利基技術走向大者恆大的成熟基礎設施。</p>
+    <p class="insight"><b>兩個潛在瓶頸值得留意：</b>其一，介電冷卻液幾乎由3M（Novec/Fluorinert系列）壟斷，且該材料存在高GWP（全球暖化潛勢）環保疑慮，是浸沒式技術路線的潛在監理風險；其二，中游CDU與機櫃整合冷板模組的量產進度，相對管路/泵浦等前段零組件明顯落後——這也是2026年密集併購潮（Ecolab/CoolIT、Eaton/Boyd、Schneider/Motivair）集中在CDU/系統整合領域的原因，傳統工業巨頭正搶進這個相對稀缺的環節。</p>
 
     <h3 class="sub">橫向比較：國內外供應鏈地位</h3>
     <div class="geo-grid">
       <div class="geo-card">
-        <h4>🇹🇼 台灣 — 散熱三雄，全鏈完整能力</h4>
+        <h4>🇹🇼 台灣 — 散熱三雄，從零組件到機櫃系統全鏈完整</h4>
         <ul>
-          <li>奇鋐(冷板龍頭)、雙鴻(一條龍)、健策(均熱板)</li>
-          <li>外圍：富世達(QD)、晟銘電(水冷機櫃)、台達電(CDU)</li>
-          <li>1.5小時車程內完成晶片封裝→冷板設計→整櫃液冷開發</li>
+          <li>「散熱三雄」奇鋐（冷板龍頭）、雙鴻（一條龍）、健策（均熱板），加上外圍富世達（QD）、晟銘電（水冷機櫃）、台達電（CDU）</li>
+          <li>已直接打入Meta、AWS、Microsoft、NVIDIA認證體系，不是單純代工角色</li>
+          <li>1.5小時車程內完成晶片封裝→冷板設計→整櫃液冷系統開發，是其他地區短期難複製的地理協同優勢</li>
         </ul>
       </div>
       <div class="geo-card china">
         <h4>🇨🇳 中國 — 非管制設備，可直接服務國際客戶</h4>
         <ul>
-          <li><b>關鍵差異</b>：液冷非管制周邊設備，與晶片/PSU環節不同</li>
-          <li>英維克(龍頭，Google傳出接洽採購)；申菱環境/高瀾股份利潤端優於龍頭</li>
-          <li>龍頭因全球化擴產承壓，二線廠靠產品結構調整超車</li>
+          <li><b>關鍵差異</b>：液冷屬非管制周邊設備，與晶片/PSU環節不同，中國廠商可直接切入國際供應鏈</li>
+          <li>英維克（龍頭）傳出被Google接觸洽談採購液冷設備（僅媒體報導，未經官方證實）</li>
+          <li>「龍頭承壓、二線超車」：申菱環境、高瀾股份因產品結構調整+規模效應，利潤端已優於龍頭英維克</li>
         </ul>
       </div>
       <div class="geo-card intl">
-        <h4>🌍 國際 — 傳統工業集團密集併購</h4>
+        <h4>🌍 國際 — 傳統工業集團密集併購布局</h4>
         <ul>
-          <li>3M（冷卻液近乎壟斷）、Vertiv（guidance大幅上修）</li>
-          <li>Ecolab/CoolIT、Eaton/Boyd、Schneider/Motivair三筆已完成收購</li>
-          <li>LG Electronics 600kW CDU取得NVIDIA AI Factory認證</li>
+          <li>3M（冷卻液近乎壟斷，但有環保疑慮）、Vertiv（guidance大幅上修，backlog看到2027年）</li>
+          <li>2026年三筆併購已完成：Ecolab/CoolIT（~$47.5億）、Eaton/Boyd（~$95億）、Schneider/Motivair控股</li>
+          <li>LG Electronics 600kW CDU取得NVIDIA AI Factory認證，顯示非傳統資料中心設備商也跨入賽局</li>
         </ul>
       </div>
     </div>
 
-    <!-- ============ STEP 2 ============ -->
-    <h2 class="section">Step 2 — 供應鏈歷史<span>HISTORY & CURRENT STAGE</span></h2>
+    <!-- ============ 02 歷史周期（Step 2）============ -->
+    <h2 class="section">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
     <ul class="timeline">
-      <li><div class="t">2026-03-04</div><div class="d"><b>大盤系統性風險，非基本面問題</b>：雙鴻因大盤重挫逾1,400點，股價摜入跌停失守千元大關（收972元），但當時2025年EPS(28.26元創新高)、營收(+47.5%)、毛利率(+58.27%)全部創新高。後續股價重返千元大關。</div></li>
+      <li><div class="t">2026-03-04</div><div class="d"><b>大盤系統性風險，非基本面問題</b>：雙鴻因大盤重挫逾1,400點，股價摜入跌停失守千元大關（收972元），但當時2025年EPS(28.26元創新高)、營收(+47.5%)、毛利率(+58.27%)全部創新高；後續股價重返千元大關。</div></li>
       <li><div class="t">2025底-2026初</div><div class="d"><b>估值透支爭議浮現</b>：奇鋐2025 Q4已達成原本市場預估的2026年EPS水準，股價估值卻未同步跟上，技術面一度跌破10週線。</div></li>
+      <li><div class="t">2026-現在</div><div class="d"><b>最新一輪：供給端訊號比需求端訊號更受關注</b>：本次追蹤更新確認CDU/chiller交期結構性拉長，且健策2026 Q2財報首度證實均熱片溢價確有反映在獲利上——代表題材焦點正從「液冷需求存不存在」轉向「實體供給能不能跟上」。</div></li>
     </ul>
-    <p class="insight"><b>啟示：</b>這波液冷超級周期的第一輪主升段可能已被相當程度反映在股價裡，能否續強關鍵不是「需求存不存在」（已是共識），而是能否看到比市場預期更高的下一輪成長數字（如VR200每櫃液冷系統價值躍升逾50%）。</p>
+    <p class="insight"><b>啟示：</b>這波液冷超級周期的第一輪主升段可能已被相當程度反映在股價裡，能否續強關鍵不是「需求存不存在」（已是共識），而是能否持續看到比市場預期更高的下一輪成長數字，以及供給瓶頸是否真的轉化為更高的訂價權（如健策2026 Q2財報所驗證的均熱片溢價）。</p>
+
+    <div class="chart-card">
+      <div class="chart-title">奇鋐與健策 2026 Q2 單季表現：營收年增 vs. 稅後純益年增</div>
+      <div class="chart-caption">2026年第二季，年增率（%）——稅後純益增速明顯快於營收，反映毛利率同步擴張（均熱片溢價、產品組合優化）</div>
+      <svg class="chart" viewBox="0 0 480 220" role="img" aria-label="奇鋐與健策2026年第二季營收年增率與稅後純益年增率比較長條圖">
+        <line class="axis-line" x1="50" y1="180" x2="450" y2="180"/>
+        <line class="axis-line" x1="50" y1="142.5" x2="450" y2="142.5" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="105" x2="450" y2="105" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="67.5" x2="450" y2="67.5" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="30" x2="450" y2="30" stroke-dasharray="2 3"/>
+        <text x="45" y="183" text-anchor="end" font-size="10">0%</text>
+        <text x="45" y="145.5" text-anchor="end" font-size="10">40%</text>
+        <text x="45" y="108" text-anchor="end" font-size="10">80%</text>
+        <text x="45" y="70.5" text-anchor="end" font-size="10">120%</text>
+        <text x="45" y="33" text-anchor="end" font-size="10">160%</text>
+        <rect x="80" y="118.1" width="40" height="61.9" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="100" y="111.1" text-anchor="middle">+65.98%</text>
+        <rect x="125" y="49.4" width="40" height="130.6" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="145" y="42.4" text-anchor="middle">+139.35%</text>
+        <text class="grp-label" x="122" y="198" text-anchor="middle">奇鋐 3017</text>
+        <rect x="270" y="142.1" width="40" height="37.9" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="290" y="135.1" text-anchor="middle">+40.4%</text>
+        <rect x="315" y="79.7" width="40" height="100.3" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="335" y="72.7" text-anchor="middle">+107%</text>
+        <text class="grp-label" x="312" y="198" text-anchor="middle">健策 3653</text>
+      </svg>
+      <div class="chart-legend">
+        <span><i class="chart-swatch" style="background:var(--navy)"></i>營收YoY</span>
+        <span><i class="chart-swatch" style="background:var(--orange)"></i>稅後純益YoY</span>
+      </div>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">雙鴻（3324）2026年單季數字本次仍未查到，僅有2025全年數字（EPS 28.26元創新高、營收+47.5%），故未併入此圖以避免跨期比較失真。</p>
+    </div>
 
     <p style="margin-top:16px;">目前供需階段判定：</p>
-    <p><span class="stage-pill">⚠ 供不應求，但環節間產能爬坡速度分化</span></p>
+    <p><span class="stage-pill">⚠ 明確供不應求，且供給瓶頸正在轉趨結構性</span></p>
     <ul>
       <li>全行業滿產滿單，訂單排至年底，龍頭訂單年增翻倍</li>
-      <li>管路結構件/泵浦已超前實現量產；<b>CDU與機櫃整合冷板模組相對落後</b>，仍衝刺Q4放量</li>
-      <li>基本面供不應求 vs. 股價/估值是否還有空間，是兩件需要分開判斷的事</li>
+      <li>管路結構件/泵浦等前段零組件已超前實現量產；CDU與機櫃整合冷板模組相對落後，仍衝刺Q4放量</li>
+      <li><b>【本次觸發】</b>CDU交期16-24週→26-40週、chiller交期20-30週→40-60週，同步顯著拉長，報導稱瓶頸屬「結構性、非暫時性」，新增產能最快2027年才會到位</li>
+      <li><b>【本次觸發】</b>健策2026 Q2毛利34.05億元創新高，公司公開歸因於「均熱片報價調漲」，證實了先前僅是業界傳言的3-4倍溢價說法正開始轉換為實際財報數字</li>
+      <li>基本面供不應求 vs. 股價/估值是否還有空間，仍是兩件需要分開判斷的事——奇鋐本益比已從基準47.1倍略降至41.52倍（尚未觸及20%下滑之觸發門檻）</li>
     </ul>
 
-    <!-- ============ STEP 3 ============ -->
-    <h2 class="section">Step 3 — 供應鏈門檻<span>BARRIERS TO ENTRY</span></h2>
+    <!-- ============ 03 供應鏈門檻（Step 3）============ -->
+    <h2 class="section">供應鏈門檻<span>STEP 3 · BARRIERS TO ENTRY</span></h2>
     <div class="barrier-grid">
-      <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">高</div><p>洩漏風險是天然門檻；UL/IEC 62368-1認證；OCP標準化白皮書；台灣地理群聚護城河</p></div>
-      <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v mid">季度~1年</div><p>CDU交期16-24週；擴產案例約2-3季投產——明顯快於PSU的3-5年</p></div>
-      <div class="barrier"><div class="b-h">資本/技術門檻</div><div class="b-v mid">中高</div><p>技術升級快（均熱片售價估漲3-4倍）；資本門檻遠低於半導體晶圓廠</p></div>
-      <div class="barrier"><div class="b-h">客戶認證</div><div class="b-v mid">數週+</div><p>UL/IEC 2週浸泡測試+靜水壓；Chip-to-Chiller全鏈路驗證時長未量化</p></div>
-      <div class="barrier"><div class="b-h">轉單成本</div><div class="b-v high">高且雙面</div><p>品質記錄是累積性資產，但一次漏液事故可能讓供應商被直接排除</p></div>
+      <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">高</div><p>洩漏風險是天然門檻，Tier 1雲端業者品質要求遠高於比價；UL/IEC 62368-1認證＋OCP標準化白皮書；台灣地理群聚是短期難複製的優勢</p></div>
+      <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v high">季度~1年，持續拉長</div><p>CDU交期16-24週→最新26-40週；chiller 20-30週→40-60週，較基準顯著拉長且報導稱屬結構性瓶頸；絕對週期仍快於PSU上游晶圓廠3-5年，但方向正在惡化</p></div>
+      <div class="barrier"><div class="b-h">資本/技術門檻</div><div class="b-v mid">中高，技術升級快</div><p>均熱片/MCL新技術單價估現有產品3-4倍，已於健策2026 Q2財報獲得初步驗證；資本門檻遠低於半導體晶圓廠</p></div>
+      <div class="barrier"><div class="b-h">客戶認證</div><div class="b-v mid">數週至數月</div><p>UL/IEC 62368-1需85°C浸泡2週+靜水壓測試；LG 600kW CDU已取得NVIDIA AI Factory認證；Chip-to-Chiller全鏈路驗證時長未量化（資料缺口）</p></div>
+      <div class="barrier"><div class="b-h">轉單成本</div><div class="b-v high">高且雙面</div><p>品質記錄是累積性資產，一次漏液事故可能讓供應商被直接排除，需重新走完整驗證週期才能恢復信任</p></div>
     </div>
-    <p class="insight"><b>與PSU產業對照：</b>卡位邏輯類似（品質記錄+系統整合能力形成護城河），但擴產週期明顯更快，代表液冷供需失衡持續時間可能較短，除非需求成長速度持續快於擴產節奏。</p>
+    <p class="insight"><b>最新證據：交期不但沒有隨產能爬坡縮短，反而持續拉長。</b>2026年7月數據顯示CDU/chiller交期較基準明顯走闊（CDU 16-24週→26-40週；chiller 20-30週→40-60週），報導指出瓶頸「結構性、非暫時性」，新增產能最快2027年才會到位——這修正了先前「擴產週期快於PSU、供需失衡持續時間可能較短」的初步判斷：雖然絕對週期仍以「季度到一年」計（遠快於PSU上游晶圓廠3-5年），但趨勢方向正在惡化，代表這一輪供需吃緊可能比原先預期更持久。</p>
 
-    <!-- ============ STEP 4 ============ -->
-    <h2 class="section">Step 4 — 追蹤指標與財務驗證<span>TRACKING INDICATORS</span></h2>
+    <div class="chart-card">
+      <div class="chart-title">CDU／Chiller 交期拉長趨勢</div>
+      <div class="chart-caption">基準值（2026-09-17建檔）vs. 最新讀數（2026-09追蹤更新），週數中位數估算 · ⚠ 已觸及追蹤器閾值</div>
+      <svg class="chart" viewBox="0 0 480 220" role="img" aria-label="CDU與chiller交期基準值與最新讀數比較長條圖">
+        <line class="axis-line" x1="50" y1="180" x2="450" y2="180"/>
+        <line class="axis-line" x1="50" y1="142.5" x2="450" y2="142.5" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="105" x2="450" y2="105" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="67.5" x2="450" y2="67.5" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="30" x2="450" y2="30" stroke-dasharray="2 3"/>
+        <text x="45" y="183" text-anchor="end" font-size="10">0週</text>
+        <text x="45" y="145.5" text-anchor="end" font-size="10">15週</text>
+        <text x="45" y="108" text-anchor="end" font-size="10">30週</text>
+        <text x="45" y="70.5" text-anchor="end" font-size="10">45週</text>
+        <text x="45" y="33" text-anchor="end" font-size="10">60週</text>
+        <rect x="80" y="130" width="40" height="50" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="100" y="123" text-anchor="middle">~20週</text>
+        <rect x="125" y="97.5" width="40" height="82.5" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="145" y="90.5" text-anchor="middle">~33週</text>
+        <text class="grp-label" x="122" y="198" text-anchor="middle">CDU交期</text>
+        <rect x="270" y="117.5" width="40" height="62.5" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="290" y="110.5" text-anchor="middle">~25週</text>
+        <rect x="315" y="55" width="40" height="125" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="335" y="48" text-anchor="middle">~50週</text>
+        <text class="grp-label" x="312" y="198" text-anchor="middle">Chiller交期</text>
+      </svg>
+      <div class="chart-legend">
+        <span><i class="chart-swatch" style="background:var(--navy)"></i>基準值（2026-09-17建檔，16-24週／20-30週區間中位數）</span>
+        <span><i class="chart-swatch" style="background:var(--orange)"></i>最新讀數（26-40週／40-60週區間中位數，已觸發）</span>
+      </div>
+    </div>
+
+    <!-- ============ 04 追蹤指標（Step 4）============ -->
+    <h2 class="section">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
     <div class="tbl-wrap">
     <table>
       <thead><tr><th>指標</th><th>目前讀數（2026-09-17）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
       <tbody>
-        <tr><td>Vertiv/Ecolab液冷guidance</td><td>Vertiv 2026 guidance $135-140億美元(+30%有機成長)；Ecolab稱CoolIT綜效可捕捉3-5倍營收</td><td class="trig">任一下修 或 再度大幅上修</td></tr>
-        <tr><td>CDU/chiller交期</td><td>CDU 16-24週；chiller 20-30週</td><td class="trig">縮短至12週以下 或 CDU拉長超過30週</td></tr>
-        <tr><td>均熱片/MCL新技術溢價</td><td>業界喊出3-4倍溢價，尚未財報驗證</td><td class="trig">財報證實/證偽此溢價是否反映在ASP/毛利率</td></tr>
-        <tr><td>奇鋐EPS連續成長</td><td>連續8季成長，創40季新高(2026Q1 EPS 20.17元)</td><td class="trig">連續成長中斷</td></tr>
-        <tr><td>健策單季獲利YoY</td><td>2026Q1僅+1.99%(vs全年+53.95%)</td><td class="trig">下半年YoY未回升至兩位數以上</td></tr>
-        <tr><td>奇鋐本淨比/本益比</td><td>P/B 23.47倍、P/E 47.1倍</td><td class="trig">較基準下滑20%以上</td></tr>
-        <tr><td>國際液冷併購動態</td><td>Ecolab/CoolIT、Eaton/Boyd、Schneider/Motivair三筆已完成</td><td class="trig">有新重大併購 或 併購潮停滯超過兩季</td></tr>
-        <tr><td>GTC下一代機櫃液冷系統價值</td><td>VR200較GB300躍升逾50%($3.5萬→$6.3-6.5萬美元/櫃)</td><td class="trig">下次GTC揭露的世代成長率明顯低於50%</td></tr>
+        <tr><td>Vertiv/Ecolab液冷guidance</td><td>Vertiv 2026 guidance維持$135-140億美元(+30%有機成長)，backlog翻倍至逾$150億美元(12-18個月能見度)；Ecolab目標2026Q3完成CoolIT收購，仍稱3-5倍營收捕捉</td><td class="trig">任一下修guidance 或 綜效/backlog再度大幅上修</td></tr>
+        <tr><td>CDU/chiller交期</td><td><b style="color:var(--red-d);">⚠已觸發</b>：CDU 26-40週(1-3MW新單6-10個月)；chiller(500噸以上) 40-60週</td><td class="trig">CDU拉長超過30週 或 chiller拉長超過40週</td></tr>
+        <tr><td>均熱片/MCL溢價兌現</td><td><b style="color:var(--red-d);">⚠已觸發</b>：健策2026Q2毛利34.05億元創新高，公司公開歸因於「均熱片報價調漲」</td><td class="trig">財報/法說會證實或證偽溢價是否反映於ASP/毛利率</td></tr>
+        <tr><td>奇鋐EPS連續成長</td><td>連續9季成長未中斷，2026Q2 EPS 24.37元(稅後純益YoY+139.35%)</td><td class="trig">連續成長中斷（QoQ或YoY轉負）</td></tr>
+        <tr><td>健策單季獲利YoY</td><td>2026Q2 YoY+107%(季增65.8%)，較Q1+1.99%大幅回升，但屬H1而非閾值定義的「下半年」數字</td><td class="trig">2026下半年YoY未回升至兩位數以上</td></tr>
+        <tr><td>奇鋐本淨比/本益比</td><td>本益比41.52倍（較基準47.1倍下滑約11.8%，未達20%門檻）；最新本淨比本次查無資料</td><td class="trig">較基準下滑20%以上</td></tr>
+        <tr><td>國際液冷併購動態</td><td>Eaton/Boyd已完成(2026/3，~$95億)；Schneider/Motivair推出105kW-2.5MW整合產品線；未見新的重大併購，亦未見停滯訊號</td><td class="trig">有新重大併購宣布 或 併購潮停滯超過兩季</td></tr>
+        <tr><td>GTC下一代機櫃液冷系統價值</td><td>Rubin Ultra/NVL144液冷成本約$57,710，較前代僅+17%（遠低於VR200時逾50%）——⚠口徑可能不同（液冷成本子項 vs 機櫃液冷系統價值），非正式觸發，待GTC官方數字覆核</td><td class="trig">下次GTC揭露的世代成長率明顯低於50%</td></tr>
       </tbody>
     </table>
     </div>
@@ -253,39 +346,107 @@
     <table>
       <thead><tr><th>指標</th><th>奇鋐 (3017.TW)</th><th>雙鴻 (3324.TW)</th><th>健策 (3653.TW)</th></tr></thead>
       <tbody>
-        <tr><td>最新單季/年營收</td><td>2026Q1：490.4億元</td><td>2025全年：232.76億元(+47.5%)</td><td>2025全年：202.76億元(+42%)</td></tr>
-        <tr><td>毛利率</td><td>2026Q1：29.77%</td><td>2025全年：27.38%(+58.27%)</td><td>未查到</td></tr>
-        <tr><td>EPS</td><td>2026Q1：20.17元(連8季創高)</td><td>2025全年：28.26元(創新高)</td><td>2026Q1：9.53元(YoY僅+1.99%)</td></tr>
-        <tr><td>本淨比/本益比</td><td>23.47倍 / 47.1倍</td><td>未查到</td><td>未查到</td></tr>
+        <tr><td>最新單季/年營收</td><td>2026 Q2：491.21億元（YoY+65.98%）</td><td>2025全年：232.76億元（YoY+47.5%）⚠2026數字本次未查到</td><td>2026 Q2：72.75億元（YoY+40.4%）</td></tr>
+        <tr><td>毛利率</td><td>2026 Q2：32.57%（YoY+8.16pp）</td><td>2025全年：27.38%（YoY+58.27%）</td><td>未查到毛利率%，僅毛利金額34.05億元（QoQ+53.6%、YoY+58.4%）</td></tr>
+        <tr><td>稅後純益</td><td>2026 Q2：95.67億元（YoY+139.35%）</td><td>未查到2026數字</td><td>2026 Q2：23.18億元（YoY+107%，創新高）</td></tr>
+        <tr><td>EPS</td><td>2026 Q2：24.37元（上半年44.54元）</td><td>2025全年：28.26元（創新高）</td><td>2026 Q2：15.8元（上半年累計25.33元創同期新高）</td></tr>
+        <tr><td>本益比/本淨比</td><td>P/E 41.52倍（較基準47.1倍下滑約11.8%）</td><td>未查到</td><td>未查到</td></tr>
       </tbody>
     </table>
     </div>
-    <p style="font-size:12px;color:var(--text-dim);">此追蹤表已建立為持久化追蹤器 <code>.claude/skills/supply-chain-analysis/trackers/ai_liquid_cooling.md</code>，並設有每週本機排程自動重新查證。</p>
 
-    <div class="gap-box">
-      <b style="font-size:12.5px;color:#78350F;">資料缺口</b>
+    <div class="chart-card">
+      <div class="chart-title">奇鋐與健策 EPS 比較</div>
+      <div class="chart-caption">2026年第二季，元</div>
+      <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="奇鋐與健策2026年第二季EPS比較長條圖">
+        <line class="axis-line" x1="46" y1="130" x2="240" y2="130"/>
+        <line class="axis-line" x1="46" y1="102.5" x2="240" y2="102.5" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="75" x2="240" y2="75" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="47.5" x2="240" y2="47.5" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="20" x2="240" y2="20" stroke-dasharray="2 3"/>
+        <text x="40" y="133" text-anchor="end" font-size="10">0元</text>
+        <text x="40" y="105.5" text-anchor="end" font-size="10">10元</text>
+        <text x="40" y="78" text-anchor="end" font-size="10">20元</text>
+        <text x="40" y="50.5" text-anchor="end" font-size="10">30元</text>
+        <text x="40" y="23" text-anchor="end" font-size="10">40元</text>
+        <rect x="70" y="62.98" width="48" height="67.02" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="94" y="55.98" text-anchor="middle">24.37元</text>
+        <text class="grp-label" x="94" y="145" text-anchor="middle">奇鋐</text>
+        <rect x="150" y="86.55" width="48" height="43.45" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="174" y="79.55" text-anchor="middle">15.8元</text>
+        <text class="grp-label" x="174" y="145" text-anchor="middle">健策</text>
+      </svg>
+    </div>
+
+    <p style="font-size:12px;color:var(--text-dim);">此追蹤表已建立為持久化追蹤器 <code>.claude/skills/supply-chain-analysis/trackers/ai_liquid_cooling.md</code>，並設有本機排程自動重新查證。</p>
+
+    <!-- ============ 05 讀數紀錄（Changelog）============ -->
+    <h2 class="section">讀數紀錄<span>CHANGELOG</span></h2>
+    <p>以下逐次列出每次追蹤查證的讀數，來源直接對應 tracker 檔案「歷史讀數紀錄」區塊，最新一筆在最上面，不覆蓋舊紀錄。</p>
+    <div class="log-card latest">
+      <div class="log-date">2026-09-17（第一次追蹤更新）</div>
+      <span class="log-trigger">⚠ 本次觸發：CDU/chiller交期、均熱片溢價兌現</span>
       <ul>
-        <li>雙鴻、健策的本淨比、本益比、存貨、合約負債等數字未查到</li>
-        <li>NVIDIA AI Factory／Chip-to-Chiller全鏈路驗證的具體通過時間未查到</li>
-        <li>CDU交期／均熱片溢價的下一季財報實際兌現數字，仍待驗證</li>
+        <li>Vertiv：2026 Q2 EPS季增53%（調整後+60%），全年guidance維持$135-140億美元（+30%有機成長、+51%獲利成長），backlog翻倍至逾$150億美元（涵蓋約12-18個月營收能見度）；Q3 guidance營收$36.5-38.5億美元</li>
+        <li>Ecolab：CoolIT收購案（約$47.5億美元）目標2026 Q3完成、2027年前毛利率衝20%以上，仍稱可帶動客戶支出擴大3-5倍，CoolIT未來12個月營收估約$5.5億美元</li>
+        <li><b>觸發①</b> CDU/chiller交期明顯轉緊：據《The Cooling Report》2026 Data Center Cooling Supply Chain Guide，截至2026年7月CDU/chiller普遍落在26-40週，1-3MW新單交期拉長至6-10個月；chiller（500噸以上）延長至40-60週；報導稱瓶頸為「結構性、非暫時性」，新增產能最快2027年才會到位——已觸及追蹤器閾值（CDU&gt;30週、chiller&gt;40週）</li>
+        <li><b>觸發②</b> 健策(3653) 2026 Q2：營收72.75億元（QoQ+37.1%、YoY+40.4%）創新高、毛利34.05億元（QoQ+53.6%、YoY+58.4%）、稅後純益23.18億元（QoQ+65.8%、YoY+107%）創新高、EPS 15.8元；公司明確指出成長動能來自「均熱片報價調漲及產品世代轉換」；上半年累計EPS 25.33元創同期新高，YoY已由Q1的+1.99%大幅回升至三位數，為「Vera Rubin放量」論述提供強力領先佐證</li>
+        <li>奇鋐(3017) 2026 Q2：營收491.21億元（QoQ+0.17%、YoY+65.98%）、毛利率32.57%（QoQ+2.8pp、YoY+8.16pp）、稅後純益95.67億元（QoQ+20.86%、YoY+139.35%）、EPS 24.37元，連續成長未中斷（延伸至第9季）；上半年EPS 44.54元；法說會稱2025為「液冷元年」、2026為「ASIC元年」；股價2026/9/16收3,175元，本益比41.52倍（較基準值47.1倍下滑約11.8%，未達20%下滑之觸發門檻）</li>
+        <li>國際併購：Eaton/Boyd Thermal已於2026年3月完成（約$95億美元），Boyd預估2026全年營收17億美元（其中15億為液冷）；Schneider/Motivair已於2026年初推出CDU 105kW-2.5MW整合產品線；三筆併購案維持已完成/推進狀態，本次查證未發現新的重大併購案，亦未見併購潮停滯訊號</li>
+        <li>NVIDIA下一代機櫃液冷（Rubin Ultra/NVL144）液冷成本約US$57,710，較前代NVL72（VR200）僅+17%，遠低於VR200相對GB300當時逾50%的躍升——此為觀察訊號但非正式觸發：口徑（「液冷成本」子項 vs. 基準值「機櫃液冷系統價值」）可能不同，建議下次以NVIDIA官方GTC/法說會揭露數字覆核後再判定是否觸發</li>
+        <li>資料缺口：雙鴻、健策的本淨比/本益比/存貨/合約負債數字本次仍查無資料；奇鋐最新本淨比（P/B）本次查無資料，僅取得本益比</li>
+      </ul>
+    </div>
+    <div class="log-card">
+      <div class="log-date">2026-09-17（首次建檔，基準值）</div>
+      <ul>
+        <li>Vertiv 2026 guidance：$135-140億美元淨銷售額（+30%有機成長、+51%獲利成長），backlog逾$150億美元看到2027年</li>
+        <li>Ecolab 2026/7/2完成CoolIT收購（~$47.5億美元），稱可捕捉3-5倍營收/資料中心</li>
+        <li>CDU交期16-24週；chiller交期20-30週</li>
+        <li>奇鋐 2026 Q1：營收490.4億元、毛利率29.77%、EPS 20.17元（QoQ+21.05%，連續8季成長創40季新高）、P/B 23.47倍、P/E 47.1倍</li>
+        <li>雙鴻 2025全年：EPS 28.26元創新高、營收232.76億元(YoY+47.5%)、毛利率27.38%(YoY+58.27%)</li>
+        <li>健策 2025全年：EPS 36.75元、營收202.76億元(YoY+42%)；2026 Q1稅後純益YoY僅+1.99%（明顯放緩）；MCL新技術單價估現有均熱片3-4倍</li>
+        <li>國際併購：Ecolab/CoolIT、Eaton/Boyd(2026/3)、Schneider/Motivair(2024/10)三筆已完成</li>
+        <li><b>本次無指標觸發</b>（此為基準建檔，無「前值」可比較）</li>
+      </ul>
+    </div>
+
+    <!-- ============ 06 資料缺口 ============ -->
+    <h2 class="section">資料缺口<span>DATA GAPS</span></h2>
+    <div class="gap-box">
+      <ul>
+        <li>冷板材料（銅/鋁/不鏽鋼）與管路聚合物材料的專屬供應商名單未查到，這塊資料缺口以現有搜尋結果無法補齊</li>
+        <li>各零組件（冷板/CDU/歧管/快接/冷卻液）在整體液冷系統BOM中的精確成本占比未查到，故無法製作BOM成本結構堆疊圖</li>
+        <li>「2026液冷滲透率直衝76%」與「AI晶片液冷滲透率47%」兩組數字的統計口徑差異未查到原始報告說明</li>
+        <li>Google接洽英維克採購液冷設備一事，僅為媒體報導傳聞，未查到雙方官方證實</li>
+        <li>雙鴻、健策的本淨比、本益比、存貨、合約負債等數字，本次追蹤仍查無資料</li>
+        <li>NVIDIA AI Factory／Chip-to-Chiller全鏈路驗證的具體通過時間，未查到公開數字</li>
+        <li>Rubin Ultra/NVL144「液冷成本US$57,710」與VR200基準「機櫃液冷系統價值」口徑是否一致，需下次以NVIDIA官方GTC數字覆核</li>
       </ul>
     </div>
 
   </div>
 
+  <!-- ============ 07 參考來源 ============ -->
   <footer class="foot">
     <p style="margin-bottom:10px;"><b>參考來源（部分）：</b></p>
     <ul class="src-list">
-      <li><a href="https://www.digitimes.com.tw/research/report/?v=20260626-187" target="_blank">COMPUTEX 2026 液冷供應鏈觀察 | DIGITIMES</a></li>
-      <li><a href="https://www.gminsights.com/industry-analysis/data-center-liquid-cooling-market" target="_blank">Data Center Liquid Cooling Market | GM Insights</a></li>
-      <li><a href="https://news.cnyes.com/news/id/6392216" target="_blank">液冷革命強勢接棒：奇鋐、雙鴻、富世達、健策 | 鉅亨網</a></li>
+      <li><a href="https://www.digitimes.com.tw/research/report/?v=20260626-187" target="_blank">COMPUTEX 2026 AI解熱需求持續爆發 液冷供應鏈進入規格整合 | DIGITIMES</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6423986" target="_blank">2026液冷滲透率直衝76%！單櫃產值跳升4倍 | 鉅亨網</a></li>
+      <li><a href="https://www.gminsights.com/industry-analysis/data-center-liquid-cooling-market" target="_blank">Data Center Liquid Cooling Market Size & Share | GM Insights</a></li>
+      <li><a href="https://tw.stock.yahoo.com/news/%E8%B0%B7%E6%AD%8C%E5%82%B3%E6%8E%A5%E8%A7%B8%E8%8B%B1%E7%B6%AD%E5%85%8B%E7%AD%89%E4%B8%AD%E4%BC%81%E8%B3%BC%E6%B6%B2%E5%86%B7%E8%A8%AD%E5%82%99-ai%E6%95%B8%E6%93%9A%E4%B8%AD%E5%BF%83%E6%95%A3%E7%86%B1%E4%BE%9B%E6%87%89%E9%8F%88%E5%86%8D%E6%88%90%E7%84%A6%E9%BB%9E-010417973.html" target="_blank">谷歌傳接觸英維克等中企購液冷設備 | Yahoo股市</a></li>
+      <li><a href="https://cj.sina.com.cn/articles/view/1496813671/5937906700101dg0c" target="_blank">A股液冷「三強」：英維克、申菱環境、高瀾股份誰能借勢突圍 | 新浪財經</a></li>
+      <li><a href="https://news.cnyes.com/news/id/6392216" target="_blank">液冷革命強勢接棒！散熱戰場直衝太空 | 鉅亨網</a></li>
       <li><a href="https://statementdog.com/news/15880" target="_blank">雙鴻AI水冷業務爆發、股價摜入跌停 | 財報狗</a></li>
-      <li><a href="https://vocus.cc/article/696ded22fd89780001e2f84b" target="_blank">散熱三雄估值透支危機分析</a></li>
-      <li><a href="https://eecloud.sgs.com/SEMI_TW/Article.aspx?n=31" target="_blank">一滴冷卻液恐癱瘓億元機櫃 | SGS</a></li>
-      <li><a href="https://seekingalpha.com/article/4890719-vertiv-holdings-the-15-billion-backlog-liquid-cooling-dominance-and-the-ai-infrastructure-trade-wall-street-is-still-underpricing" target="_blank">Vertiv: $15B Backlog | Seeking Alpha</a></li>
-      <li><a href="https://www.ctee.com.tw/news/20260529701470-430201" target="_blank">Vera Rubin放量 健策下半年業績發功 | 工商時報</a></li>
+      <li><a href="https://vocus.cc/article/696ded22fd89780001e2f84b" target="_blank">散熱三雄｜營收創高背後的「估值透支」危機？| vocus</a></li>
+      <li><a href="https://eecloud.sgs.com/SEMI_TW/Article.aspx?n=31" target="_blank">一滴冷卻液恐癱瘓億元機櫃！液冷系統品質維護與監測之重要性 | SGS</a></li>
+      <li><a href="https://www.thediligencestack.com/p/liquid-cooling-the-thermal-prerequisite" target="_blank">Liquid Cooling: The Other Binding Constraint on AI Infrastructure</a></li>
+      <li><a href="https://seekingalpha.com/article/4890719-vertiv-holdings-the-15-billion-backlog-liquid-cooling-dominance-and-the-ai-infrastructure-trade-wall-street-is-still-underpricing" target="_blank">Vertiv Stock: The $15 Billion Backlog, Liquid Cooling Dominance | Seeking Alpha</a></li>
+      <li><a href="https://www.ctee.com.tw/news/20260529701470-430201" target="_blank">《電零組》Vera Rubin放量 健策下半年業績發功 | 工商時報</a></li>
+      <li><a href="https://finance.yahoo.com/markets/stocks/articles/ecolab-inc-q2-2026-earnings-205605161.html" target="_blank">Ecolab Inc. Q2 2026 Earnings Call Summary | Yahoo Finance</a></li>
+      <li><a href="https://www.thecoolingreport.com/" target="_blank">2026 Data Center Cooling Supply Chain Guide | The Cooling Report</a></li>
     </ul>
-    <p style="margin-top:14px;">完整分析全文見同目錄下 <code>step1_供應鏈地圖.md</code>、<code>step2_供應鏈歷史.md</code>、<code>step3_供應鏈門檻.md</code>、<code>step4_追蹤指標.md</code>。本報告依 <code>.claude/skills/supply-chain-analysis</code> 框架產出，僅供研究參考，非投資建議。</p>
+    <p style="margin-top:14px;">完整分析全文見同目錄下 <code>step1_供應鏈地圖.md</code>、<code>step2_供應鏈歷史.md</code>、<code>step3_供應鏈門檻.md</code>、<code>step4_追蹤指標.md</code>；持久化追蹤器見 <code>.claude/skills/supply-chain-analysis/trackers/ai_liquid_cooling.md</code>。本報告依 <code>.claude/skills/supply-chain-analysis</code> 框架產出，僅供研究參考，非投資建議。</p>
   </footer>
 
 </div>

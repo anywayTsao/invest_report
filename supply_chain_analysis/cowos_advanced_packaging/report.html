@@ -90,6 +90,9 @@
   .insight{background:#EEF2FF;border-left:4px solid #4338CA;border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#312E81;}
   .insight b{color:#3730A3;}
 
+  .warn-box{background:#FEF2F2;border:1px solid #FECACA;border-left:4px solid var(--red);border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#7F1D1D;}
+  .warn-box b{color:var(--red-d);}
+
   .gap-box{background:#FFFBEB;border:1px solid #FDE68A;border-radius:6px;padding:14px 18px;margin:10px 0;}
   .gap-box ul{margin-bottom:0;}
   .gap-box li{font-size:12.5px;color:#78350F;}
@@ -101,10 +104,33 @@
 
   footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;}
 
+  /* ---- 讀數紀錄（Changelog）---- */
+  .log-card{background:#F8FAFC;border:1px solid var(--border);border-left:4px solid var(--navy);border-radius:8px;padding:16px 20px;margin-bottom:16px;}
+  .log-card.latest{border-left-color:var(--orange);}
+  .log-date{font-size:12.5px;font-weight:800;color:var(--navy-d);margin-bottom:8px;}
+  .log-card ul{margin:0;padding-left:18px;}
+  .log-card li{font-size:12.5px;line-height:1.7;color:var(--text);margin-bottom:4px;}
+  .log-trigger{display:inline-block;background:var(--red-bg);color:var(--red-d);font-weight:800;font-size:11.5px;padding:3px 10px;border-radius:12px;margin-bottom:8px;}
+
+  /* ---- 圖表卡（比較數字時用來輔助閱讀，取代/補充純表格）---- */
+  .chart-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:18px 22px;margin:14px 0 20px;}
+  .chart-card .chart-title{font-size:13px;font-weight:800;color:var(--navy-d);margin-bottom:2px;}
+  .chart-card .chart-caption{font-size:11.5px;color:var(--text-dim);margin-bottom:10px;}
+  .chart-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  svg.chart{width:100%;height:auto;display:block;overflow:visible;}
+  svg.chart text{font-family:"Noto Sans TC",Arial,sans-serif;fill:var(--text-dim);}
+  svg.chart .axis-line{stroke:var(--border);stroke-width:1;}
+  svg.chart .val-label{fill:var(--navy-d);font-weight:700;font-size:11px;}
+  svg.chart .grp-label{fill:var(--text-dim);font-size:11px;}
+  .chart-legend{display:flex;gap:16px;font-size:11.5px;color:var(--text-dim);margin-top:8px;}
+  .chart-legend span{display:inline-flex;align-items:center;gap:6px;}
+  .chart-swatch{width:10px;height:10px;border-radius:2px;display:inline-block;}
+
   @media (max-width:900px){
     .stats{grid-template-columns:repeat(2,1fr);}
     .geo-grid{grid-template-columns:1fr;}
     .barrier-grid{grid-template-columns:1fr 1fr;}
+    .chart-row{grid-template-columns:1fr;}
   }
   @media (max-width:640px){
     .banner,.body-wrap{padding-left:20px;padding-right:20px;}
@@ -127,33 +153,34 @@
   <div class="banner">
     <div class="label">SUPPLY CHAIN ANALYSIS · 供應鏈研究</div>
     <h1>CoWoS 先進封裝產業 供應鏈分析報告</h1>
-    <div class="sub">TSMC CoWoS——除EUV微影外半導體業最具戰略性的供應鏈瓶頸——供應鏈地圖、歷史復盤、門檻評估、追蹤指標</div>
+    <div class="sub">TSMC CoWoS——除EUV微影外半導體業最具戰略性的供應鏈瓶頸——產能目標與OSAT委外規模同步大幅上修，供給仍追不上需求</div>
     <div class="badges">
       <span class="badge">產出日期 2026-09-17</span>
       <span class="badge">框架：地圖 → 歷史 → 門檻 → 指標</span>
-      <span class="badge">CoWoS-S → CoWoS-L → CoPoS</span>
+      <span class="badge">目前階段：供不應求，缺口持續擴大</span>
     </div>
   </div>
 
   <div class="body-wrap">
 
+    <!-- ============ 00 總覽 ============ -->
+    <h2 class="section">總覽<span>OVERVIEW</span></h2>
     <div class="exec">
       <div class="exec-label">EXECUTIVE SUMMARY · 摘要</div>
-      <p>CoWoS 是每一顆 NVIDIA GPU、AMD 加速器都依賴的全球唯一封裝瓶頸，<b>台灣在這個產業是絕對核心</b>（TSMC本尊、日月光首度承接OSAT委外、載板三雄欣興/南電/景碩、設備商弘塑/辛耘），與光通訊產業「台灣只占配角」的結構明顯不同；本次研究也<b>幾乎查無中國廠商參與此生態系</b>的資料。月產能持續高速擴充（2024底3.5萬片 → 2026底目標11.5-13萬片 → 2028目標26萬片，資本支出CAGR超過80%），但仍供不應求，且<b>瓶頸正從封裝產能本身擴散到ABF載板</b>（缺口預估從2026H2的8-10%惡化到2028年的42-51%）。護城河機制獨特：CoWoS是TSMC獨門技術，客戶（NVIDIA/Broadcom）幾乎「無從轉單」，不同於PSU/液冷靠品質記錄、光通訊靠NVIDIA資本綁定的護城河邏輯。歷史上曾因分析師對設備出貨時程的解讀分歧（2025/5麥格理降評），引發族群一次性集體重挫，但基本面很快用財報數字自我修正。</p>
+      <p>CoWoS 是每一顆 NVIDIA GPU、AMD 加速器都依賴的全球唯一封裝瓶頸，<b>台灣在這個產業是絕對核心</b>（TSMC本尊、日月光首度承接OSAT委外、載板三雄欣興/南電/景碩、設備商弘塑/辛耘），與光通訊產業「台灣只占配角」的結構明顯不同，本次查證也幾乎查無中國廠商參與此生態系的資料。最新一次追蹤（2026-09-17）出現兩項值得注意的多頭訊號：<b>台積電再度上修CoWoS產能目標</b>——2027年目標首度明確訂在<b>至少20萬片/月</b>，2028年目標倍增至<b>26萬片/月</b>；同時<b>日月光/矽品的OSAT委外規劃大幅擴大</b>——月產能規劃由現況約4萬片一舉上修到2026年底目標約10萬片，增幅高達<b>約150%</b>。兩項訊號合在一起看，代表即使產能目標持續上修、台積電也持續向外部OSAT借力，供給仍追不上需求；瓶頸正同時從封裝產能本身、擴散到下游的ABF載板環節（缺口預估從2026下半年約10%惡化到2028年可能超過40%）。族群財務表現同步走強：日月光2026Q2 EPS年增達<b>+176%</b>，弘塑上半年累計EPS年增<b>+73%</b>，BESI hybrid bonding訂單年增加速到<b>+128.8%</b>。<b>最大長期不確定性</b>在於：CoPoS（下一代面板級封裝）量產時程主流預期為2028年底至2029年上半年，但市場上仍有單一來源稱2027年即可量產；加上ABF載板交期本身也出現12個月與26週兩種互相矛盾的說法——顯示這個產業的中期展望仍存在不小的資訊雜訊，需持續追蹤收斂。</p>
     </div>
-
-    <!-- ============ STEP 1 ============ -->
-    <h2 class="section">Step 1 — 供應鏈地圖<span>SUPPLY CHAIN MAP</span></h2>
-
     <div class="stats">
-      <div class="stat"><div class="v">3.5萬→26萬</div><div class="l">CoWoS月產能規劃（2024底→2028底，片/月）</div></div>
-      <div class="stat"><div class="v">&gt;80%</div><div class="l">CoWoS資本支出2022-2027年CAGR</div></div>
-      <div class="stat"><div class="v">&gt;98%</div><div class="l">5.5倍光罩尺寸CoWoS良率(2026)</div></div>
-      <div class="stat"><div class="v">8-10%→42-51%</div><div class="l">ABF載板供需缺口惡化軌跡(2026H2→2028)</div></div>
+      <div class="stat"><div class="v">≥20萬片/月</div><div class="l">2027年CoWoS產能目標（本次首度明確、上修）</div></div>
+      <div class="stat"><div class="v">+150%</div><div class="l">日月光OSAT委外月產能規劃增幅（4萬→10萬片/月）</div></div>
+      <div class="stat"><div class="v">26萬片/月</div><div class="l">2028年CoWoS月產能目標（較2024年3.5萬片翻逾7倍）</div></div>
+      <div class="stat"><div class="v">42-51%</div><div class="l">2028年ABF載板供需缺口估計（2026H2僅8-10%）</div></div>
     </div>
+
+    <!-- ============ 01 供應鏈地圖（Step 1）============ -->
+    <h2 class="section">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
 
     <h3 class="sub">終端產品與 BOM 拆解</h3>
-    <p>CoWoS（Chip-on-Wafer-on-Substrate）是目前全球AI晶片最主流的標準封裝技術。技術路線從<b>CoWoS-S</b>（全矽中介層，逐步淘汰）演進到<b>CoWoS-L</b>（局部矽互連，現行主流），下一代<b>CoPoS</b>（面板級封裝）2026年設試產線、2027年送樣、2028底-2029H1量產。關鍵瓶頸：TSV（矽穿孔，與HBM共同瓶頸）、Hybrid Bonding（sub-10微米間距）、ABF載板（因die尺寸放大出現翹曲/熱應力問題而結構性缺貨）。</p>
+    <p>CoWoS（Chip-on-Wafer-on-Substrate）是目前全球AI晶片最主流的標準封裝技術，被形容為「除EUV微影外，半導體產業最具戰略性的供應鏈瓶頸」——每一顆NVIDIA H系列/B系列/Rubin GPU、AMD MI300/MI400系列加速器，以及多數雲端業者自研AI晶片，都依賴CoWoS產能分配。技術路線從<b>CoWoS-S</b>（全矽中介層，材質易脆裂、成本高昂，正被淘汰）演進到現行主流的<b>CoWoS-L</b>（局部矽互連）與<b>CoWoS-R</b>（RDL中介層），下一代<b>CoPoS</b>（面板級封裝）2026年設立首條試產線、2027年進入送樣階段，量產時程主流預期落在2028年底至2029年上半年（⚠️另有單一來源稱2027年即可量產，兩種說法明顯不一致，詳見「資料缺口」）。關鍵瓶頸環節：<b>TSV</b>（矽穿孔，同時是HBM與CoWoS共同瓶頸）、<b>Hybrid Bonding</b>（sub-10微米間距3D整合所需）、<b>ABF載板</b>（因晶片尺寸持續放大——目前已量產全球最大5.5倍光罩尺寸CoWoS——翹曲與熱應力問題導致需求結構性激增）。良率方面，2026年台積電5.5倍光罩尺寸CoWoS良率已>98%，但委外給OSAT夥伴後的實際良率仍未查到公開數字，本次未強行估算。</p>
 
     <h3 class="sub">上中下游基本結構</h3>
     <div class="tbl-wrap">
@@ -161,102 +188,158 @@
       <thead><tr><th>層級</th><th>環節</th><th>代表廠商</th></tr></thead>
       <tbody>
         <tr><td rowspan="3">上游</td><td>CoWoS封裝本尊</td><td>TSMC（近乎壟斷）</td></tr>
-        <tr><td>ABF載板</td><td>Ibiden、Shinko(日)；欣興(3037)、南電(8046)、景碩(台)</td></tr>
-        <tr><td>Hybrid Bonding設備</td><td>BESI+Applied Materials(Kynex D2W)；ASMPT</td></tr>
-        <tr><td rowspan="2">中游</td><td>TSMC自有產線</td><td>嘉義AP7、南科AP8</td></tr>
-        <tr><td><b>首度委外OSAT</b></td><td>日月光投控(3711)、矽品；力成受惠</td></tr>
-        <tr><td rowspan="2">下游</td><td>主要客戶</td><td>NVIDIA、Broadcom(新產能開出前幾乎預訂完畢)；聯發科分配餘量</td></tr>
-        <tr><td>外溢受惠</td><td>聯電UMC、Amkor</td></tr>
+        <tr><td>ABF載板</td><td>Ibiden、Shinko（日）；欣興(3037.TW)、南電(8046.TW)、景碩（台）</td></tr>
+        <tr><td>Hybrid Bonding設備</td><td>BESI + Applied Materials（Kynex D2W系統）；ASMPT（先進封裝營收占比約25%）</td></tr>
+        <tr><td rowspan="2">中游</td><td>TSMC自有CoWoS產線</td><td>嘉義AP7、南科AP8等新廠持續擴建</td></tr>
+        <tr><td><b>首度委外OSAT封測夥伴</b></td><td>日月光投控 ASE(3711.TW)、矽品 SPIL；力成 Powertech 相關受惠</td></tr>
+        <tr><td rowspan="2">下游</td><td>主要客戶</td><td>NVIDIA、Broadcom（新產能開出前幾乎預訂完畢）；聯發科僅分配到部分餘量</td></tr>
+        <tr><td>產能吃緊外溢受惠</td><td>聯電 UMC、Amkor（承接外溢的AI封裝訂單）</td></tr>
       </tbody>
     </table>
     </div>
+    <p class="insight"><b>供應鏈流向的關鍵瓶頸正在位移：</b>台積電本身產能持續大幅擴充，仍供不應求；而其首度開放的OSAT委外規模，最新一次追蹤已從現況約4萬片/月大舉上修到2026年底目標約10萬片/月（增幅約150%），且傳出日月光承接CoWoS-S後段oS製程約40-50%比重——顯示台積電正加速向外部借力因應需求，是供給持續吃緊的直接證據，也呼應本次追蹤的兩項核心觸發訊號之一。</p>
 
     <h3 class="sub">橫向比較：國內外供應鏈地位</h3>
-    <p class="insight"><b>⚠️ 與光通訊產業形成鮮明對比：</b>光通訊產業台灣只占「上游+CPO精密元件」配角；CoWoS產業台灣是<b>絕對核心</b>——TSMC本尊、日月光、載板三雄、設備商全在台灣。</p>
+    <p class="insight"><b>⚠️ 與光通訊產業形成鮮明對比：</b>光通訊產業台灣只占「上游磊晶+CPO精密元件」配角角色；CoWoS產業台灣是<b>絕對核心</b>——TSMC本尊（封裝技術壟斷者）、日月光（首度承接OSAT委外的封測夥伴）、載板三雄（欣興、南電、景碩）、關鍵設備商（弘塑、辛耘）全部都在台灣。</p>
     <div class="geo-grid">
       <div class="geo-card">
         <h4>🇹🇼 台灣 — CoWoS生態系絕對核心</h4>
         <ul>
-          <li>TSMC：技術壟斷者</li>
-          <li>日月光：首度承接OSAT委外</li>
+          <li>TSMC：技術壟斷者，2027年產能目標本次首度明確化為≥20萬片/月，2028年目標倍增至26萬片/月</li>
+          <li>日月光：首度承接OSAT委外，委外月產能規劃由現況約4萬片一舉上修至2026年底目標約10萬片（+150%）</li>
           <li>載板三雄：欣興、南電、景碩</li>
-          <li>設備商：弘塑(濕製程龍頭)、辛耘</li>
+          <li>設備商：弘塑（濕製程龍頭）、辛耘</li>
         </ul>
       </div>
       <div class="geo-card china">
         <h4>🇨🇳 中國 — 幾乎缺席</h4>
         <ul>
-          <li>本次查證範圍內幾乎查無中國廠商參與CoWoS生態系</li>
-          <li>反映先進封裝是受出口管制影響最深的環節之一</li>
-          <li>此為觀察結果，不代表確定完全缺席</li>
+          <li>本次查證範圍內幾乎查無中國廠商參與CoWoS生態系的具體角色</li>
+          <li>反映先進封裝（尤其與TSMC尖端製程綁定的CoWoS）是受美國出口管制影響最深的環節之一</li>
+          <li>此為觀察結果，不代表確定完全缺席，僅本次查證範圍內未查到證據</li>
         </ul>
       </div>
       <div class="geo-card intl">
-        <h4>🌍 國際 — 設備與載板材料</h4>
+        <h4>🌍 國際 — 關鍵設備與載板材料</h4>
         <ul>
-          <li>日本：Ibiden、Shinko(ABF載板兩大龍頭)</li>
-          <li>荷/美：BESI+Applied Materials(Hybrid Bonding)</li>
-          <li>港/中：ASMPT(先進封裝營收占比~25%)</li>
+          <li>日本：Ibiden、Shinko——ABF載板兩大龍頭，因應缺貨已宣布大規模擴產</li>
+          <li>荷/美：BESI + Applied Materials——Hybrid Bonding設備雙強合作，2026Q2訂單年增已加速至+128.8%（客戶數增至21家）</li>
+          <li>港/中：ASMPT——先進封裝營收占比約25%</li>
         </ul>
       </div>
     </div>
 
-    <h3 class="sub">縱向比較：CoWoS 產能擴充節奏</h3>
-    <div class="tbl-wrap">
-    <table>
-      <thead><tr><th>時間點</th><th>月產能</th><th>成長率</th></tr></thead>
-      <tbody>
-        <tr><td>2024年底</td><td>3.5萬片</td><td>基準</td></tr>
-        <tr><td>2025年底</td><td>~7萬片</td><td class="g-pos">+100%</td></tr>
-        <tr><td>2026年底(目標)</td><td>11.5-13萬片</td><td class="g-pos">+64~86%</td></tr>
-        <tr><td>2027年</td><td>~18-20萬片</td><td class="g-pos">+38~54%</td></tr>
-        <tr><td>2028年底(目標)</td><td>26萬片</td><td class="g-pos">+30~44%</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <p style="font-size:12px;color:var(--text-dim);">⚠️ 另有報導指2025年4月產能一度下修至10萬片，與上表2025年底~7萬片的說法存在跨來源出入，不代表確定矛盾，僅並列呈現。</p>
-
-    <!-- ============ STEP 2 ============ -->
-    <h2 class="section">Step 2 — 供應鏈歷史<span>HISTORY & CURRENT STAGE</span></h2>
+    <!-- ============ 02 歷史周期（Step 2）============ -->
+    <h2 class="section">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
     <ul class="timeline">
-      <li><div class="t">2025-05</div><div class="d"><b>麥格理降評引發族群集體崩跌</b>：因CoWoS設備出貨延遲，下調弘塑(3131)、辛耘(3583)評等。</div></li>
-      <li><div class="t">收尾</div><div class="d">弘塑公布2025全年EPS 45.48元創新高＋台積電上調資本支出至$520-560億，外資估值基礎翻轉，族群復甦。</div></li>
+      <li><div class="t">2024</div><div class="d">CoWoS-L量產起步，全球AI晶片（NVIDIA H系列/B系列、AMD MI300系列）加速綁定CoWoS產能，月產能約3.5萬片。</div></li>
+      <li><div class="t">2025-05</div><div class="d"><b>麥格理降評引發族群集體崩跌</b>：因CoWoS設備出貨延遲的解讀分歧，麥格理下調弘塑(3131)、辛耘(3583)評等，引發整個CoWoS概念股族群系統性重挫。</div></li>
+      <li><div class="t">收尾</div><div class="d">弘塑隨後公布2025全年EPS 45.48元創歷史新高，加上台積電上調資本支出至$520-560億美元，外資估值基礎完全翻轉，族群從谷底復甦——顯示這是分析師解讀分歧、而非產業趨勢本身出狀況。</div></li>
+      <li><div class="t">2026-現在</div><div class="d"><b>供不應求延續、瓶頸持續位移</b>：台積電史上首度將部分CoW/oS製程委外給日月光、矽品；最新一次追蹤（2026-09-17）確認台積電再度上修產能目標（2027年首度明確≥20萬片/月、2028年倍增至26萬片/月），且日月光OSAT委外規劃大幅擴大（+150%）——顯示即便產能目標一路上修，供給仍持續追不上需求。</div></li>
     </ul>
-    <p class="insight"><b>啟示：</b>CoWoS族群股價對「出貨時程」類消息特別敏感，分析師解讀分歧可能引發族群性重挫，即便基本面沒問題——與PSU(技術延遲)、液冷(大盤風險)、光通訊(地緣政治)三種逆風類型都不同。</p>
+    <p class="insight"><b>啟示：</b>這是一次「單一利空消息（分析師對供應鏈時程的解讀分歧）引發整個概念股族群系統性重挫，但基本面很快用財報數字自我修正」的案例——與PSU「技術性延遲」、AI液冷「大盤系統性風險」、光通訊「地緣政治監管風險」三種逆風類型都不同。這代表CoWoS族群股價對「出貨時程」類消息特別敏感，任何關於設備/產能時程delay的傳言都可能引發族群性重挫，即便最終基本面沒有問題。</p>
+
+    <div class="chart-card">
+      <div class="chart-title">族群獲利/訂單成長率比較：Q1→Q2 加速</div>
+      <div class="chart-caption">日月光EPS年增率 vs. BESI hybrid bonding訂單年增率，2026年Q1→Q2（%）</div>
+      <svg class="chart" viewBox="0 0 480 220" role="img" aria-label="日月光EPS年增率與BESI訂單年增率，2026年第一季與第二季比較長條圖">
+        <line class="axis-line" x1="50" y1="180" x2="450" y2="180"/>
+        <line class="axis-line" x1="50" y1="142.5" x2="450" y2="142.5" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="105" x2="450" y2="105" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="67.5" x2="450" y2="67.5" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="30" x2="450" y2="30" stroke-dasharray="2 3"/>
+        <text x="45" y="183" text-anchor="end" font-size="10">0%</text>
+        <text x="45" y="145.5" text-anchor="end" font-size="10">50%</text>
+        <text x="45" y="108" text-anchor="end" font-size="10">100%</text>
+        <text x="45" y="70.5" text-anchor="end" font-size="10">150%</text>
+        <text x="45" y="33" text-anchor="end" font-size="10">200%</text>
+        <rect x="80" y="116.1" width="40" height="63.9" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="100" y="110" text-anchor="middle">+85.14%</text>
+        <rect x="125" y="48.0" width="40" height="132.0" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="145" y="42" text-anchor="middle">+176%</text>
+        <text class="grp-label" x="122" y="198" text-anchor="middle">日月光 3711</text>
+        <rect x="270" y="101.2" width="40" height="78.8" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="290" y="95" text-anchor="middle">+105%</text>
+        <rect x="315" y="83.4" width="40" height="96.6" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="335" y="77" text-anchor="middle">+128.8%</text>
+        <text class="grp-label" x="312" y="198" text-anchor="middle">BESI backlog</text>
+      </svg>
+      <div class="chart-legend">
+        <span><i class="chart-swatch" style="background:var(--navy)"></i>2026 Q1 YoY（基準值）</span>
+        <span><i class="chart-swatch" style="background:var(--orange)"></i>2026 Q2 YoY（最新，成長加速）</span>
+      </div>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">弘塑（3131）2026上半年累計EPS年增+73%，因僅有半年累計數字、期間口徑與上二者不同，未併入此圖以避免誤導比較。</p>
+    </div>
 
     <p style="margin-top:16px;">目前供需階段判定：</p>
-    <p><span class="stage-pill">⚠ 供不應求，瓶頸正從封裝產能擴散到ABF載板</span></p>
+    <p><span class="stage-pill">⚠ 供不應求持續加劇：產能目標一路上修仍追不上需求，瓶頸擴散至ABF載板</span></p>
     <ul>
-      <li>台積電首度委外部分CoW/oS製程給日月光/矽品——產能極限的直接證據</li>
-      <li>ABF載板缺口逐年惡化（非收斂）：2026H2 8-10% → 2027 21-34% → 2028 42-51%</li>
+      <li>台積電首度委外部分CoW/oS製程給日月光/矽品，且委外規模最新一次追蹤已上修約150%——產能極限的直接證據</li>
+      <li>ABF載板缺口逐年惡化（非收斂）：2026H2最新估約10%（基準8-10%）→2027約20%（基準21-34%）→2028恐超過40%（基準42-51%）</li>
+      <li>台積電產能目標持續上修：2027年目標本次首度明確≥20萬片/月，2028年目標倍增至26萬片/月，顯示官方對需求的預期同步在上調</li>
     </ul>
 
-    <!-- ============ STEP 3 ============ -->
-    <h2 class="section">Step 3 — 供應鏈門檻<span>BARRIERS TO ENTRY</span></h2>
+    <!-- ============ 03 供應鏈門檻（Step 3）============ -->
+    <h2 class="section">供應鏈門檻<span>STEP 3 · BARRIERS TO ENTRY</span></h2>
     <div class="barrier-grid">
-      <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">極高</div><p>CoWoS是TSMC獨門技術；Hybrid Bonding需sub-10微米精度；TSV是HBM/CoWoS共同瓶頸</p></div>
-      <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v high">持續但仍供不應求</div><p>資本支出CAGR>80%，仍供不應求；ABF載板擴產速度跟不上封裝產能</p></div>
-      <div class="barrier"><div class="b-h">資本/技術門檻</div><div class="b-v high">皆極高</div><p>良率要求嚴苛(98%+)；5.5倍光罩尺寸級大面積封裝精度要求極高</p></div>
-      <div class="barrier"><div class="b-h">客戶認證</div><div class="b-v mid">既定信任關係</div><p>新產能開出前幾乎被NVIDIA/Broadcom預訂完畢，關係已是既定事實</p></div>
-      <div class="barrier"><div class="b-h">轉單成本</div><div class="b-v high">無從轉單</div><p>CoWoS是獨門生意，客戶幾乎沒有對等替代供應商可選</p></div>
+      <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">極高</div><p>CoWoS是TSMC獨門技術；Hybrid Bonding需sub-10微米精度，集中在BESI+應材一組合作關係手上；TSV是HBM/CoWoS共同瓶頸</p></div>
+      <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v high">持續擴產仍供不應求</div><p>月產能規劃3.5萬→7萬→12.7-13萬→≥20萬→26萬片(2024-2028)，資本支出CAGR>80%，仍持續供不應求</p></div>
+      <div class="barrier"><div class="b-h">資本/技術門檻</div><div class="b-v high">皆極高</div><p>良率要求嚴苛(TSMC自有產線98%+)；5.5倍光罩尺寸級大面積封裝對精度與良率控制要求都遠高於傳統封裝</p></div>
+      <div class="barrier"><div class="b-h">客戶認證</div><div class="b-v mid">既定信任關係</div><p>具體認證耗時未查到公開數字，但新產能開出前幾乎被NVIDIA/Broadcom預訂完畢，代表信任關係已是既定事實</p></div>
+      <div class="barrier"><div class="b-h">轉單成本</div><div class="b-v high">無從轉單</div><p>CoWoS是獨門生意，客戶（NVIDIA/Broadcom/AMD）幾乎沒有對等規模與成熟度的替代供應商可選</p></div>
     </div>
-    <p class="insight"><b>與其他三個產業的護城河機制對照：</b>PSU靠品質記錄、AI液冷靠品質記錄+資本門檻、光通訊靠NVIDIA資本綁定上游供應商——CoWoS的護城河<b>不靠關係或資本綁定，而是技術能力本身的絕對稀缺性</b>，這是四個產業中護城河最純粹、最難撼動的一個。</p>
+    <p class="insight"><b>比CoWoS廠更硬的瓶頸正在下游材料：</b>即使台積電本身持續大舉擴產，ABF載板的擴產速度明顯跟不上封裝產能擴充速度，缺口逐年惡化而非收斂。與PSU（靠品質記錄）、AI液冷（品質記錄+資本門檻）、光通訊（NVIDIA資本綁定上游供應商）三種護城河機制都不同，CoWoS的護城河<b>不靠關係或資本綁定，而是技術能力本身的絕對稀缺性</b>——這是目前研究過的產業中，護城河最純粹、最難撼動的一個。</p>
 
-    <!-- ============ STEP 4 ============ -->
-    <h2 class="section">Step 4 — 追蹤指標與財務驗證<span>TRACKING INDICATORS</span></h2>
+    <div class="chart-card">
+      <div class="chart-title">TSMC CoWoS 產能目標逐年變化</div>
+      <div class="chart-caption">月產能，萬片/月 · 2024-2025為實際/市場估計，2026-2028為官方或媒體目標（2027、2028為本次追蹤上修後數字）</div>
+      <svg class="chart" viewBox="0 0 460 200" role="img" aria-label="TSMC CoWoS月產能2024年至2028年逐年變化長條圖">
+        <line class="axis-line" x1="40" y1="170" x2="420" y2="170"/>
+        <line class="axis-line" x1="40" y1="120" x2="420" y2="120" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="40" y1="70" x2="420" y2="70" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="40" y1="20" x2="420" y2="20" stroke-dasharray="2 3"/>
+        <text x="34" y="173" text-anchor="end" font-size="10">0</text>
+        <text x="34" y="123" text-anchor="end" font-size="10">10萬</text>
+        <text x="34" y="73" text-anchor="end" font-size="10">20萬</text>
+        <text x="34" y="23" text-anchor="end" font-size="10">30萬</text>
+        <rect x="55" y="152.5" width="42" height="17.5" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="76" y="146.5" text-anchor="middle">3.5萬</text>
+        <text class="grp-label" x="76" y="188" text-anchor="middle">2024</text>
+        <rect x="130" y="135.0" width="42" height="35.0" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="151" y="129.0" text-anchor="middle">~7萬</text>
+        <text class="grp-label" x="151" y="188" text-anchor="middle">2025</text>
+        <rect x="205" y="105.0" width="42" height="65.0" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="226" y="99.0" text-anchor="middle">12.7-13萬</text>
+        <text class="grp-label" x="226" y="188" text-anchor="middle">2026(目標)</text>
+        <rect x="280" y="70.0" width="42" height="100.0" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="301" y="64.0" text-anchor="middle">≥20萬</text>
+        <text class="grp-label" x="301" y="188" text-anchor="middle">2027(目標)</text>
+        <rect x="355" y="40.0" width="42" height="130.0" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="376" y="34.0" text-anchor="middle">26萬</text>
+        <text class="grp-label" x="376" y="188" text-anchor="middle">2028(目標)</text>
+      </svg>
+      <div class="chart-legend">
+        <span><i class="chart-swatch" style="background:var(--navy)"></i>已實現/市場估計（2024-2025）</span>
+        <span><i class="chart-swatch" style="background:var(--orange)"></i>官方/媒體目標（2026-2028）</span>
+      </div>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">⚠️ 2025年產能數字跨來源存在落差：另有報導稱2025年4月一度下修至10萬片，與本圖採用的~7萬片說法不同，可能是不同時間點快照或機構統計口徑差異，本圖不代替判斷何者更準確。2026年目標由基準值11.5-13萬片/月，最新一次追蹤上修至約12.7-13萬片/月；2027年目標本次首度明確化為「至少20萬片/月」（先前僅有18-20萬片/月的區間估計）；2028年目標維持26萬片/月，相對2024年3.5萬片，等於三年半內成長逾6倍。</p>
+    </div>
+
+    <!-- ============ 04 追蹤指標（Step 4）============ -->
+    <h2 class="section">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
     <div class="tbl-wrap">
     <table>
       <thead><tr><th>指標</th><th>目前讀數（2026-09-17）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
       <tbody>
-        <tr><td>ABF載板供需缺口預估軌跡</td><td>2026H2:8-10%→2027:21-34%→2028:42-51%</td><td class="trig">缺口預估不再擴大，甚至開始收斂</td></tr>
-        <tr><td>BESI hybrid bonding backlog</td><td>最新一季YoY+105%</td><td class="trig">成長率明顯放緩或轉負</td></tr>
-        <tr><td>ABF載板交期</td><td>12-14個月</td><td class="trig">縮短至9個月以下 或 再拉長超過14個月</td></tr>
-        <tr><td>CoWoS產能客戶分配比例</td><td>幾乎全被NVIDIA/Broadcom包辦</td><td class="trig">次要客戶(如聯發科)分配比例明顯提升</td></tr>
-        <tr><td>OSAT委外比例(日月光/矽品)</td><td>首度開放，比例未知</td><td class="trig">委外比例明顯擴大 或 TSMC收回委外</td></tr>
-        <tr><td>TSMC CoWoS產能目標</td><td>2026底目標11.5-13萬片/月</td><td class="trig">目標上修或下修</td></tr>
-        <tr><td>CoPoS進度</td><td>2026試產線、2027送樣、2028底-2029H1量產</td><td class="trig">時程提前或延後</td></tr>
-        <tr><td>分析師解讀敏感度事件</td><td>2025/5曾因麥格理降評引發族群重挫</td><td class="trig">出現類似設備出貨時程降評消息</td></tr>
-        <tr><td>日月光/南電/弘塑EPS與毛利率</td><td>皆呈上升趨勢</td><td class="trig">任一龍頭EPS年增率轉負</td></tr>
+        <tr><td>ABF載板供需缺口預估軌跡</td><td>2026H2約10%→2027約20%→2028恐超過40%（方向與基準一致，持續惡化）</td><td class="trig">缺口預估不再擴大，甚至開始收斂</td></tr>
+        <tr><td>BESI hybrid bonding backlog</td><td>2026Q2訂單年增+128.8%（優於基準Q1的+105%），客戶數由15家增至21家</td><td class="trig">成長率明顯放緩或轉負</td></tr>
+        <tr><td>ABF載板交期</td><td>來源分歧：部分報導稱仍約12個月，另有報導稱已縮短至約26週(~6個月)，⚠資料衝突待釐清</td><td class="trig">縮短至9個月以下 或 再拉長超過14個月</td></tr>
+        <tr><td>CoWoS產能客戶分配比例</td><td>NVIDIA仍鎖定新增產能逾5成；Broadcom訂單21萬→23萬片；聯發科CoWoS-S訂單1萬→2萬片（基期小，未達門檻）</td><td class="trig">次要客戶（如聯發科）分配比例明顯提升</td></tr>
+        <tr><td>OSAT委外比例（日月光/矽品）</td><td><b>⚠ 本次觸發</b> — 委外月產能規劃4萬→2026年底目標10萬片/月（+150%），承接CoWoS-S後段oS製程約40-50%比重</td><td class="trig">委外比例明顯擴大 或 TSMC收回委外</td></tr>
+        <tr><td>TSMC CoWoS產能目標</td><td><b>⚠ 本次觸發</b> — 2026底目標上修至約12.7-13萬片/月；2027年首度明確≥20萬片/月；2028年倍增至26萬片/月</td><td class="trig">目標上修或下修</td></tr>
+        <tr><td>CoPoS進度</td><td>多數來源維持2026試產、2028底-2029H1量產；⚠單一來源稱2027年即可量產，與主流時程不一致，待釐清</td><td class="trig">時程提前或延後</td></tr>
+        <tr><td>分析師解讀敏感度事件</td><td>本次未查得類似2025/5麥格理降評事件；反查到高盛上調萬潤目標價、大摩重申CoWoS/HBM需求不減</td><td class="trig">出現類似設備出貨時程降評消息</td></tr>
+        <tr><td>日月光/南電/弘塑EPS與毛利率</td><td>日月光Q2 EPS 4.80元(YoY+176%)；南電H1 EPS 5.53元創近3年同期新高；弘塑H1累計EPS 27.27元(YoY+73%)，均延續成長</td><td class="trig">任一龍頭EPS年增率轉負</td></tr>
       </tbody>
     </table>
     </div>
@@ -266,38 +349,111 @@
     <table>
       <thead><tr><th>指標</th><th>日月光投控 (3711.TW)</th><th>南電 (8046.TW)</th><th>弘塑 (3131.TW)</th><th>精材 (3374.TW)</th></tr></thead>
       <tbody>
-        <tr><td>最新EPS</td><td>2026Q1：3.24元(YoY+85.14%)</td><td>未查到具體數字</td><td>2025全年：45.48元(創新高)</td><td>2026Q1：1.42元(QoQ-25.04%)</td></tr>
-        <tr><td>毛利率</td><td>Q2：21.0%(YoY+4個百分點)</td><td>估2026-28 ABF/BT毛利率突破50%/30%</td><td>未查到</td><td>未查到</td></tr>
-        <tr><td>訂單能見度</td><td>Q3 guidance大幅上修</td><td>產品漲價幅度估領先同業</td><td>訂單排到2026上半年</td><td>未查到</td></tr>
+        <tr><td>最新EPS</td><td>2026Q2：4.80元(YoY+176%)</td><td>2026H1：5.53元(創近3年同期新高)</td><td>2026H1累計：27.27元(YoY+73%)</td><td>2026Q1：1.42元(QoQ-25.04%)</td></tr>
+        <tr><td>毛利率</td><td>Q2：21.0%(YoY+4個百分點)</td><td>Q2：24.75%(創13季新高)；估2026-28年ABF/BT毛利率分別突破50%/30%</td><td>未查到</td><td>未查到</td></tr>
+        <tr><td>訂單能見度/其他</td><td>Q3 guidance大幅上修</td><td>產品漲價幅度估領先同業</td><td>訂單排到2026上半年</td><td>近四季EPS 5.14元</td></tr>
       </tbody>
     </table>
     </div>
+
+    <div class="chart-card">
+      <div class="chart-title">族群最新EPS快照（跨公司，注意統計期間不同）</div>
+      <div class="chart-caption">日月光/南電/弘塑/精材最新公布EPS，元（⚠️ 統計期間不同：日月光為2026Q2單季、南電/弘塑為2026上半年累計、精材為2026Q1單季，僅供規模參考，不可直接橫向比較單季獲利能力）</div>
+      <svg class="chart" viewBox="0 0 320 150" role="img" aria-label="日月光、南電、弘塑、精材最新公布EPS比較長條圖">
+        <line class="axis-line" x1="34" y1="130" x2="310" y2="130"/>
+        <line class="axis-line" x1="34" y1="93.3" x2="310" y2="93.3" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="34" y1="56.7" x2="310" y2="56.7" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="34" y1="20" x2="310" y2="20" stroke-dasharray="2 3"/>
+        <text x="30" y="133" text-anchor="end" font-size="10">0</text>
+        <text x="30" y="96.3" text-anchor="end" font-size="10">10</text>
+        <text x="30" y="59.7" text-anchor="end" font-size="10">20</text>
+        <text x="30" y="23" text-anchor="end" font-size="10">30</text>
+        <rect x="55" y="112.4" width="40" height="17.6" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="75" y="106" text-anchor="middle">4.80</text>
+        <text class="grp-label" x="75" y="145" text-anchor="middle">日月光</text>
+        <rect x="125" y="109.7" width="40" height="20.3" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="145" y="104" text-anchor="middle">5.53</text>
+        <text class="grp-label" x="145" y="145" text-anchor="middle">南電</text>
+        <rect x="195" y="30.0" width="40" height="100.0" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="215" y="24" text-anchor="middle">27.27</text>
+        <text class="grp-label" x="215" y="145" text-anchor="middle">弘塑</text>
+        <rect x="265" y="124.8" width="40" height="5.2" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="285" y="119" text-anchor="middle">1.42</text>
+        <text class="grp-label" x="285" y="145" text-anchor="middle">精材</text>
+      </svg>
+    </div>
+
     <p style="font-size:12px;color:var(--text-dim);">此追蹤表已建立為持久化追蹤器 <code>.claude/skills/supply-chain-analysis/trackers/cowos_advanced_packaging.md</code>，並設有每週本機排程自動重新查證。</p>
 
-    <div class="gap-box">
-      <b style="font-size:12.5px;color:#78350F;">資料缺口</b>
+    <!-- ============ 05 讀數紀錄（Changelog）============ -->
+    <h2 class="section">讀數紀錄<span>CHANGELOG</span></h2>
+    <p>以下逐次列出每次追蹤查證的讀數，來源直接對應 tracker 檔案「歷史讀數紀錄」區塊，最新一筆在最上面，不覆蓋舊紀錄。</p>
+    <div class="log-card latest">
+      <div class="log-date">2026-09-17（追蹤更新）</div>
+      <span class="log-trigger">⚠ 本次觸發：①TSMC CoWoS產能目標上修（2027首度明確≥20萬片/月、2028倍增至26萬片/月）；②日月光/矽品OSAT委外比例大幅擴大（規劃增幅約150%）</span>
       <ul>
-        <li>南電、景碩具體EPS/本淨比數字未查到</li>
-        <li>日月光近四季EPS數字跨來源不一致（10.77元 vs 25.44元），未查證</li>
-        <li>OSAT委外給日月光/矽品的具體良率與比例數字未查到</li>
+        <li>TSMC CoWoS產能目標：2026年底目標由11.5-13萬片/月上修至約12.7-13萬片/月，並首度明確2027年目標「至少20萬片/月」、2028年倍增至約26萬片/月，多家台媒稱「台積電再度上調2026~2027 CoWoS產能目標」</li>
+        <li>OSAT委外比例：日月光CoWoS委外月產能規劃由現況約4萬片/月大舉上修到2026年底目標約10萬片/月（增幅約150%），且傳出日月光承接CoWoS-S後段oS製程約40-50%比重</li>
+        <li>ABF載板缺口：Counterpoint等估2026H2約10%、2027約20%、2028恐超過40%——仍呈逐年擴大軌跡，方向與基準值一致（指標1未觸發）</li>
+        <li>BESI hybrid bonding：2026Q2訂單年增128.8%（優於基準值Q1的+105%，成長加速而非放緩），hybrid bonding客戶數由2025年底15家增至2026Q2的21家（指標2未觸發）</li>
+        <li>ABF載板交期：來源分歧——部分報導稱仍約12個月（與基準一致），另有報導稱已縮短至約26週(~6個月)；本次無法確認單一穩定數字，列為資料衝突待下次查證（指標3待查證）</li>
+        <li>CoWoS產能客戶分配：NVIDIA仍鎖定新增產能逾5成、Broadcom訂單由21萬片增至23萬片；聯發科CoWoS-S訂單估由1萬片增至2萬片，雖倍增但基期極小，尚未達「明顯提升」門檻（指標4未觸發）</li>
+        <li>CoPoS進度：多數來源仍維持「2026試產、2028底-2029H1量產」；另有單一來源稱「2027年導入量產」，與主流時程明顯不一致，列為存疑待下次查證（指標7待查證）</li>
+        <li>分析師動態：本次未查得類似2025/5麥格理降評的族群性利空事件；反而查到高盛上調萬潤目標價至1,550元、大摩重申CoWoS/HBM需求不減，市場情緒偏多（指標8未觸發）</li>
+        <li>日月光2026Q2 EPS 4.80元(YoY+176%)、毛利率21.0%(+4pp)；南電2026H1 EPS 5.53元創近3年同期新高、Q2毛利率24.75%創13季高；弘塑2026H1累計EPS 27.27元(YoY+73%)——三雄EPS與毛利率均延續成長趨勢，未見反轉（指標9未觸發）</li>
+      </ul>
+    </div>
+    <div class="log-card">
+      <div class="log-date">2026-09-17（首次建檔，基準值）</div>
+      <ul>
+        <li>ABF載板缺口：2026H2估8-10%，2027估21-34%，2028估42-51%</li>
+        <li>BESI backlog最新一季YoY+105%</li>
+        <li>ABF載板交期12-14個月</li>
+        <li>CoWoS產能幾乎全被NVIDIA/Broadcom包辦，聯發科僅分配餘量</li>
+        <li>TSMC 2026底CoWoS產能目標11.5-13萬片/月；2028目標26萬片/月</li>
+        <li>CoPoS：2026試產線、2027送樣、2028底-2029H1量產</li>
+        <li>日月光投控2026Q1 EPS 3.24元(YoY+85.14%)；弘塑2025全年EPS45.48元創新高</li>
+        <li><b>本次無指標觸發</b>（此為基準建檔，無前值可比較）</li>
+      </ul>
+    </div>
+
+    <!-- ============ 06 資料缺口 ============ -->
+    <h2 class="section">資料缺口<span>DATA GAPS</span></h2>
+    <div class="gap-box">
+      <ul>
+        <li><b>資料衝突待釐清 ①</b>：ABF載板交期出現兩種說法——部分報導稱仍約12個月，另有報導稱已縮短至約26週(~6個月)，本檔不代替判斷何者正確，下次追蹤需優先確認</li>
+        <li><b>資料衝突待釐清 ②</b>：CoPoS量產時程主流預期為2028年底至2029年上半年，但另有單一來源稱2027年即可量產，與主流時程明顯不一致，尚待釐清何者可信</li>
+        <li>南電、景碩具體本淨比（P/B）數字仍未查到</li>
+        <li>日月光近四季EPS數字跨來源不一致（10.77元 vs 25.44元），未查證何者正確</li>
+        <li>OSAT委外給日月光/矽品的具體良率與比例數字未查到公開資料</li>
+        <li>CoWoS歷史產能數字跨來源存在落差（如2025年是~7萬片還是10萬片），需持續留意後續報導如何收斂</li>
+        <li>CoWoS客戶認證的具體耗時天數/流程細節未查到公開數字</li>
+        <li>Intel EMIB、Samsung X-Cube等替代技術路線目前的產能規模與客戶採用程度，本次研究未深入比較，僅提及作為背景</li>
       </ul>
     </div>
 
   </div>
 
+  <!-- ============ 07 參考來源 ============ -->
   <footer class="foot">
     <p style="margin-bottom:10px;"><b>參考來源（部分）：</b></p>
     <ul class="src-list">
       <li><a href="https://blog.fugle.tw/post/cowos-industry-analysis" target="_blank">2026年先進封裝產業深度報告 | 富果直送</a></li>
-      <li><a href="https://statementdog.com/news/15201" target="_blank">大摩：台積電2026年CoWoS擴產 | 財報狗</a></li>
+      <li><a href="https://statementdog.com/news/15201" target="_blank">大摩：台積電2026年CoWoS擴產 輝達、博通吃下多數產能 | 財報狗</a></li>
+      <li><a href="https://www.chinatimes.com/newspapers/20260812000179-260202" target="_blank">台積先進封裝 全面晉級 | 工商時報</a></li>
+      <li><a href="https://hao.cnyes.com/post/249444" target="_blank">台積電再度上調2026~2027的CoWoS產能目標 | 鉅亨網</a></li>
+      <li><a href="https://www.digitimes.com.tw/tech/dt/n/shwnws.asp?id=0000758962_JM8LNQ2Y5FVI793XXKPAW" target="_blank">傳2027年CoWoS月產能至少20萬片 | DIGITIMES</a></li>
+      <li><a href="https://technews.tw/2026/09/12/tsmc-cowos-capacity" target="_blank">台積電CoWoS產能供不應求，聯電、Amkor等受惠 | TechNews</a></li>
       <li><a href="https://newsletter.semianalysis.com/p/hybrid-bonding-process-flow-advanced" target="_blank">Hybrid Bonding Process Flow | SemiAnalysis</a></li>
-      <li><a href="https://finance.technews.tw/2026/08/28/cowososat" target="_blank">CoWoS瓶頸掀ABF產能競標戰 | TechNews</a></li>
-      <li><a href="https://technews.tw/2026/09/12/tsmc-cowos-capacity" target="_blank">台積電CoWoS產能供不應求 | TechNews</a></li>
-      <li><a href="https://cmnews.com.tw/article/cmoney-fc187c2d-7cb1-11f0-b3d6-817c34ea318f" target="_blank">弘塑率先攻漲停 | CMoney</a></li>
+      <li><a href="https://www.trendforce.com/news/2026/03/23/news-asml-reportedly-eyes-hybrid-bonding-equipment-precision-edge-may-reshape-advanced-packaging-landscape/" target="_blank">ASML Reportedly Eyes Hybrid Bonding Equipment | TrendForce</a></li>
+      <li><a href="https://finance.technews.tw/2026/08/28/cowososat" target="_blank">AI出貨關鍵大洗牌！法人揭CoWoS瓶頸掀ABF產能競標戰 | TechNews</a></li>
+      <li><a href="https://cmnews.com.tw/article/cmoney-fc187c2d-7cb1-11f0-b3d6-817c34ea318f" target="_blank">弘塑(3131)率先攻漲停，CoWoS設備廠捲土重來？| CMoney</a></li>
       <li><a href="https://statementdog.com/analysis/3711/eps" target="_blank">日月光投控(3711)EPS | 財報狗</a></li>
-      <li><a href="https://globaltechresearch.substack.com/p/the-bonder-war-an-update-on-asmpt" target="_blank">The Bonder War | Global Technology Research</a></li>
+      <li><a href="https://cmnews.com.tw/article/cmoney-00d4670e-8c1a-11f1-853d-662240246660" target="_blank">日月光投控(3711) 2026 Q2財報法說 | CMoney</a></li>
+      <li><a href="https://globaltechresearch.substack.com/p/the-bonder-war-an-update-on-asmpt" target="_blank">The Bonder War：An Update on ASMPT | Global Technology Research</a></li>
+      <li><a href="https://blog.wistock.ai/ai-investment-analysis-examples/unimicron-abf-shortage-investment-analysis/" target="_blank">ABF載板缺貨投資機會：欣興供需反轉與3層傳導鏈分析 | Wistock</a></li>
     </ul>
-    <p style="margin-top:14px;">完整分析全文見同目錄下 <code>step1_供應鏈地圖.md</code>、<code>step2_供應鏈歷史.md</code>、<code>step3_供應鏈門檻.md</code>、<code>step4_追蹤指標.md</code>。本報告依 <code>.claude/skills/supply-chain-analysis</code> 框架產出，僅供研究參考，非投資建議。</p>
+    <p style="margin-top:14px;">完整分析全文見同目錄下 <code>step1_供應鏈地圖.md</code>、<code>step2_供應鏈歷史.md</code>、<code>step3_供應鏈門檻.md</code>、<code>step4_追蹤指標.md</code>；持久化追蹤器見 <code>.claude/skills/supply-chain-analysis/trackers/cowos_advanced_packaging.md</code>。本報告依 <code>.claude/skills/supply-chain-analysis</code> 框架產出，僅供研究參考，非投資建議。</p>
   </footer>
 
 </div>
