@@ -29,6 +29,11 @@
   .banner .badges{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
   .badge{display:inline-block;font-size:11.5px;font-weight:700;background:rgba(255,255,255,0.12);color:#fff;padding:4px 12px;border-radius:12px;}
 
+  /* 錨點導覽列：黏在頂部，方便使用者跳到任一章節 */
+  nav.subnav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 44px;}
+  nav.subnav a{white-space:nowrap;color:var(--text-dim);text-decoration:none;font-size:12.5px;font-weight:700;padding:13px 12px;border-bottom:2px solid transparent;}
+  nav.subnav a:hover{color:var(--navy);border-bottom-color:var(--orange);}
+
   .body-wrap{padding:32px 44px 0;}
 
   .exec{background:var(--amber-bg);border-left:5px solid var(--amber);border-radius:6px;padding:20px 26px;margin-bottom:8px;}
@@ -36,7 +41,7 @@
   .exec p{font-size:14.5px;line-height:1.85;color:#1F2937;}
   .exec b{color:var(--amber-d);}
 
-  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;}
+  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;scroll-margin-top:54px;}
   h2.section span{display:block;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-dim);margin-top:2px;}
   h3.sub{font-size:15px;font-weight:800;color:var(--navy-d);margin:26px 0 12px;}
 
@@ -102,7 +107,7 @@
   .src-list a{color:var(--navy);text-decoration:none;}
   .src-list a:hover{text-decoration:underline;}
 
-  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;}
+  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;scroll-margin-top:54px;}
 
   .log-card{background:#F8FAFC;border:1px solid var(--border);border-left:4px solid var(--navy);border-radius:8px;padding:16px 20px;margin-bottom:16px;}
   .log-card.latest{border-left-color:var(--orange);}
@@ -132,6 +137,7 @@
   }
   @media (max-width:640px){
     .banner,.body-wrap{padding-left:20px;padding-right:20px;}
+    nav.subnav{padding-left:20px;padding-right:20px;}
     footer.foot{padding-left:20px;padding-right:20px;}
     .stats{grid-template-columns:1fr 1fr;}
     .barrier-grid{grid-template-columns:1fr;}
@@ -142,6 +148,7 @@
   @media print{
     body{background:#fff;}
     .page{margin:0;max-width:100%;}
+    nav.subnav{display:none;}
   }
 </style>
 </head>
@@ -159,10 +166,22 @@
     </div>
   </div>
 
+  <!-- 錨點導覽列 -->
+  <nav class="subnav">
+    <a href="#overview">總覽</a>
+    <a href="#map">供應鏈地圖</a>
+    <a href="#history">歷史周期</a>
+    <a href="#barriers">供應鏈門檻</a>
+    <a href="#indicators">追蹤指標</a>
+    <a href="#changelog">讀數紀錄</a>
+    <a href="#gaps">資料缺口</a>
+    <a href="#sources">參考來源</a>
+  </nav>
+
   <div class="body-wrap">
 
     <!-- ============ 00 總覽 ============ -->
-    <h2 class="section">總覽<span>OVERVIEW</span></h2>
+    <h2 class="section" id="overview">總覽<span>OVERVIEW</span></h2>
     <div class="exec">
       <div class="exec-label">EXECUTIVE SUMMARY · 摘要</div>
       <p>AI 伺服器電力架構正從 48V/54V 快速推進到 800VDC 世代，對應 NVIDIA GB200→GB300→Vera Rubin NVL72 三代機櫃電源子系統同步升級，帶動電力櫃層級 BOM 大幅墊高（660kW／800VDC 電力櫃約 25.8 萬美元，Power Shelf＋BBU 合計占比高達 <b>80%</b>）。中游 PSU 雙雄台達電、光寶科合計對大型 CSP 供貨比達 <b>約7成</b>，2026 年營收獲利同步創高（台達電 H1 EPS 17.59 元、7月單月營收年增 47.7%；光寶科 Q2 營收 527 億元創單季新高、毛利率 27.2%），但真正的產業硬約束在上游 <b>SiC/GaN 功率半導體晶圓產能</b>——新建晶圓廠從動土到量產需 3-5 年，Wolfspeed／onsemi／Navitas 等上游廠商 AI 資料中心營收 QoQ 成長 20%-50%，明顯領先下游組裝廠，是判斷這波供不應求何時緩解的關鍵領先指標。功率半導體年內已歷經兩輪漲價（各 10%-20%），主流品項交期拉長到 12-52 週，供需仍在收緊、尚未反轉。<b>最大長期不確定性</b>在於 800VDC 標準（UL／CSA／IEC）尚未統一，預估要到 2028-2029 年才會全面收斂，加上雙雄 7 成的供貨集中度已促使客戶主動要求扶植第二三供應商（康舒已透過併購取得 800VDC 技術並規劃 72kW Power Shelf 於 2027 年推出），代表現在的高護城河未必能無限期維持。</p>
@@ -175,7 +194,7 @@
     </div>
 
     <!-- ============ 01 供應鏈地圖（Step 1）============ -->
-    <h2 class="section">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
+    <h2 class="section" id="map">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
 
     <h3 class="sub">終端產品與 BOM 拆解</h3>
     <p>終端產品為 AI 伺服器 800VDC 電力櫃（Power Cabinet），由 Power Shelf（電源架）＋ BBU（電池備援模組）組成，是目前機櫃供電架構的主流形態。摩根大通估算一台 660kW／800VDC 電力櫃總成本約 25.8 萬美元，其中 Power Shelf（110kW×6）約占 45%、BBU（80kW×6）約占 35%，兩者合計占電力櫃總成本約 <b>80%</b>，是最主要的成本中心；其餘銅排／機構／其他約占 20%。⚠️ 再往下一層（Power Shelf／BBU 內部各元件類別的精確成本占比）查無數字，只能定性列出關鍵元件類別，不硬湊百分比：功率半導體與控制 IC（MOSFET、PMIC、Driver IC，材料含 Si／SiC／GaN）、高壓大尺寸 MLCC 與電感等被動元件、變壓器等磁性元件、PCB／CCL（AI 伺服器高多層板中 CCL 占板材成本 35%-40%，詳見 <code>supply_chain_analysis/ccl/</code>）、銅排（Busbar，800VDC 架構下用量顯著提升）、機構與散熱模組。架構路徑為 48V/54V → 400V → 800VDC，SemiAnalysis 規劃 2026-2029 分四階段推進，過渡期（2026-2027）「機架列級 HVDC 電源側櫃」均價達 40-50 萬美元/台；800VDC 可將資料中心供電效率從傳統 88% 提升至 92% 以上，並減少銅用量 45%。材料/電壓分工上，GaN 主要應用於 48V-650V、1-10kW 區間，SiC 則專攻 800V 以上、&gt;10kW 超高功率領域，這解釋了為何 800VDC 世代會讓 SiC 的重要性系統性超越 GaN。</p>
@@ -239,7 +258,7 @@
     </div>
 
     <!-- ============ 02 歷史周期（Step 2）============ -->
-    <h2 class="section">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
+    <h2 class="section" id="history">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
     <ul class="timeline">
       <li><div class="t">2024</div><div class="d"><b>起漲</b>：NVIDIA GB200 NVL72發表，機櫃電源架構轉向48V/54V高壓直流，台達電、光寶科等切入訂單，AI電源題材成形，股價開始起漲。</div></li>
       <li><div class="t">2024 Q4-2025 Q1</div><div class="d"><b>逆風／黑天鵝</b>：Blackwell GPU爆出過熱／基板翹曲問題，NVIDIA被迫重新設計72-GPU機架；Microsoft減少GB200訂單、Meta延後大規模叢集建置、Google加速部署自研TPU v6e替代，長期解法轉向direct-to-chip液冷＋新冷板設計，導致2-3季出貨延遲。</div></li>
@@ -284,7 +303,7 @@
     </ul>
 
     <!-- ============ 03 供應鏈門檻（Step 3）============ -->
-    <h2 class="section">供應鏈門檻<span>STEP 3 · BARRIERS TO ENTRY</span></h2>
+    <h2 class="section" id="barriers">供應鏈門檻<span>STEP 3 · BARRIERS TO ENTRY</span></h2>
     <div class="barrier-grid">
       <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">高</div><p>系統整合能力＋熱-機械-電氣協同設計能力＋800VDC標準未定（預估2028-2029才收斂）＋NVIDIA生態系入場券三重疊加</p></div>
       <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v high">3-5年（上游硬約束）</div><p>台廠組裝端可季度級擴產，但上游SiC/GaN晶圓廠從動土到量產需3-5年（最快壓縮到1.5-2年，不含良率爬坡）</p></div>
@@ -295,7 +314,7 @@
     <p class="insight"><b>真正硬約束在上游：</b>台廠組裝端可以較快跟上訂單成長，但真正卡住整個供應鏈擴產速度的是上游SiC/GaN晶圓產能——這是3-5年尺度的硬約束，比任何台廠自身的資本支出決策都更難加速，是判斷這一波供不應求何時緩解的關鍵變數。</p>
 
     <!-- ============ 04 追蹤指標（Step 4）============ -->
-    <h2 class="section">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
+    <h2 class="section" id="indicators">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
     <div class="tbl-wrap">
     <table>
       <thead><tr><th>指標</th><th>目前讀數（2026-09-17）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
@@ -354,7 +373,7 @@
     <p style="font-size:12px;color:var(--text-dim);">此追蹤表已建立為持久化追蹤器 <code>.claude/skills/supply-chain-analysis/trackers/psu_ai_server.md</code>，並設有本機排程自動重新查證。</p>
 
     <!-- ============ 05 讀數紀錄（Changelog）============ -->
-    <h2 class="section">讀數紀錄<span>CHANGELOG</span></h2>
+    <h2 class="section" id="changelog">讀數紀錄<span>CHANGELOG</span></h2>
     <p>以下逐次列出每次追蹤查證的讀數，來源直接複製 tracker 檔案「歷史讀數紀錄」區塊，最新一筆在最上面，不覆蓋舊紀錄。</p>
     <div class="log-card latest">
       <div class="log-date">2026-09-17（追蹤複查，同日補齊資料缺口）</div>
@@ -385,7 +404,7 @@
     </div>
 
     <!-- ============ 06 資料缺口 ============ -->
-    <h2 class="section">資料缺口<span>DATA GAPS</span></h2>
+    <h2 class="section" id="gaps">資料缺口<span>DATA GAPS</span></h2>
     <div class="gap-box">
       <ul>
         <li>Power Shelf／BBU內部各元件類別（功率半導體、被動元件、磁性元件、PCB、機構件）的精確成本占比，只查到電力櫃層級Power Shelf vs. BBU兩大模組的占比，未查到再往下一層的元件級拆解</li>
@@ -403,7 +422,7 @@
   </div>
 
   <!-- ============ 07 參考來源 ============ -->
-  <footer class="foot">
+  <footer class="foot" id="sources">
     <p style="margin-bottom:10px;"><b>參考來源（部分）：</b></p>
     <ul class="src-list">
       <li><a href="https://tw.stock.yahoo.com/news/800vdc%E9%9B%BB%E5%8A%9B%E6%AB%83%E6%8B%86%E8%A7%A3%EF%BC%81-%E3%80%8C2%E9%85%8D%E4%BB%B6%E3%80%8D%E6%88%90%E6%9C%AC%E7%8B%82%E5%8D%A08%E6%88%90-%E4%B8%8B%E6%B3%A2%E6%9A%B4%E5%AF%8C%E5%AF%86%E7%A2%BC%E6%9B%9D%E5%85%89-035700750.html" target="_blank">800VDC電力櫃拆解！「2配件」成本狂占8成 | Yahoo股市</a></li>

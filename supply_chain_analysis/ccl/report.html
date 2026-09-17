@@ -29,6 +29,11 @@
   .banner .badges{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
   .badge{display:inline-block;font-size:11.5px;font-weight:700;background:rgba(255,255,255,0.12);color:#fff;padding:4px 12px;border-radius:12px;}
 
+  /* 錨點導覽列：黏在頂部，方便使用者跳到任一章節 */
+  nav.subnav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 44px;}
+  nav.subnav a{white-space:nowrap;color:var(--text-dim);text-decoration:none;font-size:12.5px;font-weight:700;padding:13px 12px;border-bottom:2px solid transparent;}
+  nav.subnav a:hover{color:var(--navy);border-bottom-color:var(--orange);}
+
   .body-wrap{padding:32px 44px 0;}
 
   .exec{background:var(--amber-bg);border-left:5px solid var(--amber);border-radius:6px;padding:20px 26px;margin-bottom:8px;}
@@ -36,7 +41,7 @@
   .exec p{font-size:14.5px;line-height:1.85;color:#1F2937;}
   .exec b{color:var(--amber-d);}
 
-  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;}
+  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;scroll-margin-top:54px;}
   h2.section span{display:block;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-dim);margin-top:2px;}
   h3.sub{font-size:15px;font-weight:800;color:var(--navy-d);margin:26px 0 12px;}
 
@@ -102,7 +107,7 @@
   .src-list a{color:var(--navy);text-decoration:none;}
   .src-list a:hover{text-decoration:underline;}
 
-  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;}
+  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;scroll-margin-top:54px;}
 
   .log-card{background:#F8FAFC;border:1px solid var(--border);border-left:4px solid var(--navy);border-radius:8px;padding:16px 20px;margin-bottom:16px;}
   .log-card.latest{border-left-color:var(--orange);}
@@ -132,6 +137,7 @@
   }
   @media (max-width:640px){
     .banner,.body-wrap{padding-left:20px;padding-right:20px;}
+    nav.subnav{padding-left:20px;padding-right:20px;}
     footer.foot{padding-left:20px;padding-right:20px;}
     .stats{grid-template-columns:1fr 1fr;}
     .barrier-grid{grid-template-columns:1fr;}
@@ -142,6 +148,7 @@
   @media print{
     body{background:#fff;}
     .page{margin:0;max-width:100%;}
+    nav.subnav{display:none;}
   }
 </style>
 </head>
@@ -159,10 +166,22 @@
     </div>
   </div>
 
+  <!-- 錨點導覽列 -->
+  <nav class="subnav">
+    <a href="#overview">總覽</a>
+    <a href="#map">供應鏈地圖</a>
+    <a href="#history">歷史周期</a>
+    <a href="#barriers">供應鏈門檻</a>
+    <a href="#indicators">追蹤指標</a>
+    <a href="#changelog">讀數紀錄</a>
+    <a href="#gaps">資料缺口</a>
+    <a href="#sources">參考來源</a>
+  </nav>
+
   <div class="body-wrap">
 
     <!-- ============ 00 總覽 ============ -->
-    <h2 class="section">總覽<span>OVERVIEW</span></h2>
+    <h2 class="section" id="overview">總覽<span>OVERVIEW</span></h2>
     <div class="exec">
       <div class="exec-label">EXECUTIVE SUMMARY · 摘要</div>
       <p>2026 年，CCL 產業第三次進入漲價周期——但這一次的驅動力不是庫存回補，而是<b>AI 伺服器材料規格從 M7 一路推向 M9</b>，逼著上游銅箔／玻纖布／樹脂同步吃緊。年內已完成四輪統一調價，通用 FR-4 現貨價刷新 2021 年前高，台廠三雄台光電、台燿 8 月營收年增率分別達 <b>+129.85%／+132.48%</b>，Q2 毛利率同步創高。真正的硬約束在上游：HVLP3+ 高階銅箔被三井金屬與金居開發寡占，兩者合計未來三年僅能滿足產業總需求的 <b>50%-60%</b>，高盛估計此結構性缺口將延續至 2028 年。<b>最大長期不確定性</b>是市場傳言：若 CPO（共同封裝光學）普及，交換器電性走線大幅縮短，材料規格需求可能不必衝到 M9——查證後發現這個說法被過度簡化，至少一份產業媒體認為 CPO 反而會拉高高速 CCL 的單機價值，且 CPO 商轉時程本身在市場上仍高度分歧，尚不足以推翻現有多頭論點，但值得持續追蹤。</p>
@@ -175,7 +194,7 @@
     </div>
 
     <!-- ============ 01 供應鏈地圖（Step 1）============ -->
-    <h2 class="section">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
+    <h2 class="section" id="map">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
 
     <h3 class="sub">終端產品與 BOM 拆解</h3>
     <p>CCL 本身即是「終端產品」——PCB 的直接原料，而非最終消費性產品。三大原材料合計占 CCL 成本超過 80%，銅箔最大宗（約 40%）；但「樹脂」與「玻纖布」何者占比更高，兩份資料來源給出相反排序，⚠️ 未強行擇一，並列呈現如下。CCL 又占 PCB 板材總成本 35%-40%（AI伺服器高多層板口徑），是 PCB 第一大成本項；CCL 產業本身毛利率水準約 30%-35%（中國口徑，2024年）。材料世代升級（M6→M7→M8→M9）帶動 ASP 每階跳增 20%-30%，800G/1.6T 交換器用含石英玻璃頂級材料均價更達 M8 的 2-3 倍。</p>
@@ -246,7 +265,7 @@
     </div>
 
     <!-- ============ 02 歷史周期（Step 2）============ -->
-    <h2 class="section">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
+    <h2 class="section" id="history">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
     <ul class="timeline">
       <li><div class="t">2016-2017</div><div class="d"><b>第一輪漲價潮，＋30%</b>：中國電解銅箔轉產鋰電銅箔（加工費更高），電路用銅箔供給收縮，疊加玻纖布/環氧樹脂同步吃緊，三大主材共振推升價格。</div></li>
       <li><div class="t">2018H2-2019</div><div class="d">終端創新動能疲弱、電子業去庫存＋中美貿易戰，CCL 進入需求下行、價格走跌。⚠️精確反轉月份與跌幅未查到數字。</div></li>
@@ -297,7 +316,7 @@
     </ul>
 
     <!-- ============ 03 供應鏈門檻（Step 3）============ -->
-    <h2 class="section">供應鏈門檻<span>STEP 3 · BARRIERS TO ENTRY</span></h2>
+    <h2 class="section" id="barriers">供應鏈門檻<span>STEP 3 · BARRIERS TO ENTRY</span></h2>
     <div class="barrier-grid">
       <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">分層明顯</div><p>低階CCL(通用FR-4)紅海競爭，門檻低；中高階CCL(M7以上)呈寡占市場，新進者難切入</p></div>
       <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v high">近2年</div><p>CCL成品產線約1-2年可完成，但受限上游HVLP3+設備交期近2年，訂單排到2028Q1</p></div>
@@ -333,7 +352,7 @@
     </div>
 
     <!-- ============ 04 追蹤指標（Step 4）============ -->
-    <h2 class="section">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
+    <h2 class="section" id="indicators">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
     <div class="tbl-wrap">
     <table>
       <thead><tr><th>指標</th><th>目前讀數（2026-09-17）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
@@ -390,7 +409,7 @@
     <p style="font-size:12px;color:var(--text-dim);">此追蹤表已建立為持久化追蹤器 <code>.claude/skills/supply-chain-analysis/trackers/ccl.md</code>，並設有本機排程自動重新查證。</p>
 
     <!-- ============ 05 讀數紀錄（Changelog）============ -->
-    <h2 class="section">讀數紀錄<span>CHANGELOG</span></h2>
+    <h2 class="section" id="changelog">讀數紀錄<span>CHANGELOG</span></h2>
     <div class="log-card latest">
       <div class="log-date">2026-09-17（同日追蹤查證，補齊資料缺口）</div>
       <ul>
@@ -417,7 +436,7 @@
     </div>
 
     <!-- ============ 06 資料缺口 ============ -->
-    <h2 class="section">資料缺口<span>DATA GAPS</span></h2>
+    <h2 class="section" id="gaps">資料缺口<span>DATA GAPS</span></h2>
     <div class="gap-box">
       <ul>
         <li>聯茂（6213）2026年8月單月營收數字，本次僅查到Q1/Q2季度數字</li>
@@ -432,7 +451,7 @@
   </div>
 
   <!-- ============ 07 參考來源 ============ -->
-  <footer class="foot">
+  <footer class="foot" id="sources">
     <p style="margin-bottom:10px;"><b>參考來源（部分）：</b></p>
     <ul class="src-list">
       <li><a href="https://www.ctee.com.tw/news/20251206700151-439901" target="_blank">AI伺服器帶旺 台系CCL全面起飛 | 工商時報</a></li>

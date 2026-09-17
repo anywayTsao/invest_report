@@ -29,6 +29,11 @@
   .banner .badges{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
   .badge{display:inline-block;font-size:11.5px;font-weight:700;background:rgba(255,255,255,0.12);color:#fff;padding:4px 12px;border-radius:12px;}
 
+  /* 錨點導覽列：黏在頂部，方便使用者跳到任一章節 */
+  nav.subnav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 44px;}
+  nav.subnav a{white-space:nowrap;color:var(--text-dim);text-decoration:none;font-size:12.5px;font-weight:700;padding:13px 12px;border-bottom:2px solid transparent;}
+  nav.subnav a:hover{color:var(--navy);border-bottom-color:var(--orange);}
+
   .body-wrap{padding:32px 44px 0;}
 
   .exec{background:var(--amber-bg);border-left:5px solid var(--amber);border-radius:6px;padding:20px 26px;margin-bottom:8px;}
@@ -36,7 +41,7 @@
   .exec p{font-size:14.5px;line-height:1.85;color:#1F2937;}
   .exec b{color:var(--amber-d);}
 
-  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;}
+  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;scroll-margin-top:54px;}
   h2.section span{display:block;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-dim);margin-top:2px;}
   h3.sub{font-size:15px;font-weight:800;color:var(--navy-d);margin:26px 0 12px;}
 
@@ -102,7 +107,7 @@
   .src-list a{color:var(--navy);text-decoration:none;}
   .src-list a:hover{text-decoration:underline;}
 
-  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;}
+  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;scroll-margin-top:54px;}
 
   .log-card{background:#F8FAFC;border:1px solid var(--border);border-left:4px solid var(--navy);border-radius:8px;padding:16px 20px;margin-bottom:16px;}
   .log-card.latest{border-left-color:var(--orange);}
@@ -132,6 +137,7 @@
   }
   @media (max-width:640px){
     .banner,.body-wrap{padding-left:20px;padding-right:20px;}
+    nav.subnav{padding-left:20px;padding-right:20px;}
     footer.foot{padding-left:20px;padding-right:20px;}
     .stats{grid-template-columns:1fr 1fr;}
     .barrier-grid{grid-template-columns:1fr;}
@@ -142,6 +148,7 @@
   @media print{
     body{background:#fff;}
     .page{margin:0;max-width:100%;}
+    nav.subnav{display:none;}
   }
 </style>
 </head>
@@ -160,10 +167,22 @@
     </div>
   </div>
 
+  <!-- 錨點導覽列 -->
+  <nav class="subnav">
+    <a href="#overview">總覽</a>
+    <a href="#map">供應鏈地圖</a>
+    <a href="#history">歷史周期</a>
+    <a href="#barriers">供應鏈門檻</a>
+    <a href="#indicators">追蹤指標</a>
+    <a href="#changelog">讀數紀錄</a>
+    <a href="#gaps">資料缺口</a>
+    <a href="#sources">參考來源</a>
+  </nav>
+
   <div class="body-wrap">
 
     <!-- ============ 00 總覽 ============ -->
-    <h2 class="section">總覽<span>OVERVIEW</span></h2>
+    <h2 class="section" id="overview">總覽<span>OVERVIEW</span></h2>
     <div class="exec">
       <div class="exec-label">EXECUTIVE SUMMARY · 摘要</div>
       <p>AI 光通訊產業目前處於供不應求的第二年（EML 雷射交期已排到 2027 年後、InP 基板缺口逾 70%），驅動力是 NVIDIA／CSP 資本支出對 800G/1.6T 光模組與 CPO 共封裝光學的雙軌需求；台灣族群（聯亞、波若威等「矽光子七劍客」）2026 上半年 EPS 年增普遍逾 300%-700%。但 2026 年 9 月出現兩項重要轉折，牽動這個產業最大的兩個長期風險：其一，<b>美國 FCC 於 9 月 11 日就「元件認證」規則正式定案，明確將光收發器排除在此次規範之外</b>——這對美國營收占比動輒逾 90% 的中國模組龍頭（中際旭創、新易盛）是短期利多，但另一項專門鎖定中國新型號光模組的獨立禁令提案仍在白宮／FCC 研擬中，尚未定案，曝險並未歸零；其二，<b>2027 年新產能釋出規模首度出現具體量化數字</b>——聯亞 2027 年產能較 2026 年估增約 1.5 倍、全新加購 5 台 MOCVD 機台預計 2026Q3 投產，Step 2/3 判定的「中期產能過剩」風險正從定性描述轉為可驗證的具體數字。與此同時，產業<b>最大的長期不確定性仍未解決：CPO 商轉時程市場高度分歧</b>——SemiAnalysis（2026/6/9 報告）看衰 CPO 大規模量產恐延至 2028-2029 年（報告發布當日美國光通訊股重挫），NVIDIA 則於 Computex 2026 反駁稱 2026 下半年即將大量出貨，雙方看法尚未收斂，需持續以實際出貨數字驗證。</p>
@@ -176,7 +195,7 @@
     </div>
 
     <!-- ============ 01 供應鏈地圖（Step 1）============ -->
-    <h2 class="section">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
+    <h2 class="section" id="map">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
 
     <h3 class="sub">終端產品與 BOM 拆解</h3>
     <p>終端產品並存兩條技術路線：<b>可插拔光收發模組（Pluggable Transceiver）</b>——規格已從 400G 全面轉向 800G，1.6T 預期 2026 年開始放量、大規模放量較可能在 2027 年以後；以及<b>共封裝光學（CPO）</b>——NVIDIA 將 2026 年定調為矽光子（SiPh）商轉元年，TSMC「COUPE on Substrate」目標 2026 下半年量產。關鍵零組件包括雷射晶粒（EML/DFB 或 CW 雷射）、光電二極體（PD）、DSP 晶片、矽光子光引擎、MPO/MMC 連接器與 FAU（光纖陣列單元）、磷化銦（InP）基板。⚠️ 未查到跨零組件的精確成本占比拆解數字（BOM 結構不像 CCL 產業有明確的「三大原材料合計占比」可用），本次誠實列為資料缺口，不硬湊百分比。市場規模上，2025 年全球 800G+ 光收發模組出貨 2,400 萬支，2026 年預估近 6,300 萬支（<b>+2.6 倍</b>）；CPO 市場至 2030 年 CAGR 估計可超過 170%。</p>
@@ -228,7 +247,7 @@
     </div>
 
     <!-- ============ 02 歷史周期（Step 2）============ -->
-    <h2 class="section">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
+    <h2 class="section" id="history">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
     <ul class="timeline">
       <li><div class="t">催化事件</div><div class="d"><b>台積電宣布建置CPO試產線</b>——引爆台股矽光子/CPO族群大漲的關鍵催化劑，帶動聯亞、波若威、上詮、眾達-KY、光聖齊揚。</div></li>
       <li><div class="t">歷史包袱</div><div class="d">「光通訊鬼故事」：2000年網通泡沫記憶，市場對本產業重複興衰週期存有戒心。2020-2026年台灣光通訊概念股年化報酬62.5%、最大回撤<b>-47.1%</b>，波動度遠高於大盤(0050基準30.4%/-34.0%)。</div></li>
@@ -280,7 +299,7 @@
     </ul>
 
     <!-- ============ 03 供應鏈門檻（Step 3）============ -->
-    <h2 class="section">供應鏈門檻<span>STEP 3 · BARRIERS TO ENTRY</span></h2>
+    <h2 class="section" id="barriers">供應鏈門檻<span>STEP 3 · BARRIERS TO ENTRY</span></h2>
     <div class="barrier-grid">
       <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">高</div><p>CPO光纖耦合對位是最難物理組裝環節，5奈米級精度要求，異質整合良率是成本瓶頸</p></div>
       <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v high">1-2年以上</div><p>EML交期已排到2027年後；InP基板/MOCVD設備依賴進口，交期長、全球搶購</p></div>
@@ -313,7 +332,7 @@
     </div>
 
     <!-- ============ 04 追蹤指標（Step 4）============ -->
-    <h2 class="section">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
+    <h2 class="section" id="indicators">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
     <div class="tbl-wrap">
     <table>
       <thead><tr><th>指標</th><th>目前讀數（2026-09-17）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
@@ -371,7 +390,7 @@
     <p style="font-size:12px;color:var(--text-dim);">此追蹤表已建立為持久化追蹤器 <code>.claude/skills/supply-chain-analysis/trackers/ai_optical_communication.md</code>，並設有本機排程自動重新查證。</p>
 
     <!-- ============ 05 讀數紀錄（Changelog）============ -->
-    <h2 class="section">讀數紀錄<span>CHANGELOG</span></h2>
+    <h2 class="section" id="changelog">讀數紀錄<span>CHANGELOG</span></h2>
     <p>以下逐次列出每次追蹤查證的讀數，來源直接取自 tracker 檔案「歷史讀數紀錄」區塊，最新一筆在最上面，不覆蓋舊紀錄。</p>
     <div class="log-card latest">
       <div class="log-date">2026-09-17（追蹤更新）</div>
@@ -401,7 +420,7 @@
     </div>
 
     <!-- ============ 06 資料缺口 ============ -->
-    <h2 class="section">資料缺口<span>DATA GAPS</span></h2>
+    <h2 class="section" id="gaps">資料缺口<span>DATA GAPS</span></h2>
     <div class="gap-box">
       <ul>
         <li>光通訊模組跨零組件的精確BOM成本占比拆解，未查到公開數字，不同於CCL產業有明確的「三大原材料占比」可用</li>
@@ -417,7 +436,7 @@
   </div>
 
   <!-- ============ 07 參考來源 ============ -->
-  <footer class="foot">
+  <footer class="foot" id="sources">
     <p style="margin-bottom:10px;"><b>參考來源（部分）：</b></p>
     <ul class="src-list">
       <li><a href="https://readmo.cmoney.tw/article/69113220-ae33-499e-9b50-a7203304f9d2" target="_blank">800G打底1.6T起飛 | 鉅亨網</a></li>

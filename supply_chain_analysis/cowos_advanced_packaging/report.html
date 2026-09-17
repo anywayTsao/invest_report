@@ -29,6 +29,11 @@
   .banner .badges{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
   .badge{display:inline-block;font-size:11.5px;font-weight:700;background:rgba(255,255,255,0.12);color:#fff;padding:4px 12px;border-radius:12px;}
 
+  /* 錨點導覽列：黏在頂部，方便使用者跳到任一章節 */
+  nav.subnav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 44px;}
+  nav.subnav a{white-space:nowrap;color:var(--text-dim);text-decoration:none;font-size:12.5px;font-weight:700;padding:13px 12px;border-bottom:2px solid transparent;}
+  nav.subnav a:hover{color:var(--navy);border-bottom-color:var(--orange);}
+
   .body-wrap{padding:32px 44px 0;}
 
   .exec{background:var(--amber-bg);border-left:5px solid var(--amber);border-radius:6px;padding:20px 26px;margin-bottom:8px;}
@@ -36,7 +41,7 @@
   .exec p{font-size:14.5px;line-height:1.85;color:#1F2937;}
   .exec b{color:var(--amber-d);}
 
-  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;}
+  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;scroll-margin-top:54px;}
   h2.section span{display:block;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-dim);margin-top:2px;}
   h3.sub{font-size:15px;font-weight:800;color:var(--navy-d);margin:26px 0 12px;}
 
@@ -102,7 +107,7 @@
   .src-list a{color:var(--navy);text-decoration:none;}
   .src-list a:hover{text-decoration:underline;}
 
-  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;}
+  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;scroll-margin-top:54px;}
 
   /* ---- 讀數紀錄（Changelog）---- */
   .log-card{background:#F8FAFC;border:1px solid var(--border);border-left:4px solid var(--navy);border-radius:8px;padding:16px 20px;margin-bottom:16px;}
@@ -134,6 +139,7 @@
   }
   @media (max-width:640px){
     .banner,.body-wrap{padding-left:20px;padding-right:20px;}
+    nav.subnav{padding-left:20px;padding-right:20px;}
     footer.foot{padding-left:20px;padding-right:20px;}
     .stats{grid-template-columns:1fr 1fr;}
     .barrier-grid{grid-template-columns:1fr;}
@@ -144,6 +150,7 @@
   @media print{
     body{background:#fff;}
     .page{margin:0;max-width:100%;}
+    nav.subnav{display:none;}
   }
 </style>
 </head>
@@ -161,10 +168,22 @@
     </div>
   </div>
 
+  <!-- 錨點導覽列 -->
+  <nav class="subnav">
+    <a href="#overview">總覽</a>
+    <a href="#map">供應鏈地圖</a>
+    <a href="#history">歷史周期</a>
+    <a href="#barriers">供應鏈門檻</a>
+    <a href="#indicators">追蹤指標</a>
+    <a href="#changelog">讀數紀錄</a>
+    <a href="#gaps">資料缺口</a>
+    <a href="#sources">參考來源</a>
+  </nav>
+
   <div class="body-wrap">
 
     <!-- ============ 00 總覽 ============ -->
-    <h2 class="section">總覽<span>OVERVIEW</span></h2>
+    <h2 class="section" id="overview">總覽<span>OVERVIEW</span></h2>
     <div class="exec">
       <div class="exec-label">EXECUTIVE SUMMARY · 摘要</div>
       <p>CoWoS 是每一顆 NVIDIA GPU、AMD 加速器都依賴的全球唯一封裝瓶頸，<b>台灣在這個產業是絕對核心</b>（TSMC本尊、日月光首度承接OSAT委外、載板三雄欣興/南電/景碩、設備商弘塑/辛耘），與光通訊產業「台灣只占配角」的結構明顯不同，本次查證也幾乎查無中國廠商參與此生態系的資料。最新一次追蹤（2026-09-17）出現兩項值得注意的多頭訊號：<b>台積電再度上修CoWoS產能目標</b>——2027年目標首度明確訂在<b>至少20萬片/月</b>，2028年目標倍增至<b>26萬片/月</b>；同時<b>日月光/矽品的OSAT委外規劃大幅擴大</b>——月產能規劃由現況約4萬片一舉上修到2026年底目標約10萬片，增幅高達<b>約150%</b>。兩項訊號合在一起看，代表即使產能目標持續上修、台積電也持續向外部OSAT借力，供給仍追不上需求；瓶頸正同時從封裝產能本身、擴散到下游的ABF載板環節（缺口預估從2026下半年約10%惡化到2028年可能超過40%）。族群財務表現同步走強：日月光2026Q2 EPS年增達<b>+176%</b>，弘塑上半年累計EPS年增<b>+73%</b>，BESI hybrid bonding訂單年增加速到<b>+128.8%</b>。<b>最大長期不確定性</b>在於：CoPoS（下一代面板級封裝）量產時程主流預期為2028年底至2029年上半年，但市場上仍有單一來源稱2027年即可量產；加上ABF載板交期本身也出現12個月與26週兩種互相矛盾的說法——顯示這個產業的中期展望仍存在不小的資訊雜訊，需持續追蹤收斂。</p>
@@ -177,7 +196,7 @@
     </div>
 
     <!-- ============ 01 供應鏈地圖（Step 1）============ -->
-    <h2 class="section">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
+    <h2 class="section" id="map">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
 
     <h3 class="sub">終端產品與 BOM 拆解</h3>
     <p>CoWoS（Chip-on-Wafer-on-Substrate）是目前全球AI晶片最主流的標準封裝技術，被形容為「除EUV微影外，半導體產業最具戰略性的供應鏈瓶頸」——每一顆NVIDIA H系列/B系列/Rubin GPU、AMD MI300/MI400系列加速器，以及多數雲端業者自研AI晶片，都依賴CoWoS產能分配。技術路線從<b>CoWoS-S</b>（全矽中介層，材質易脆裂、成本高昂，正被淘汰）演進到現行主流的<b>CoWoS-L</b>（局部矽互連）與<b>CoWoS-R</b>（RDL中介層），下一代<b>CoPoS</b>（面板級封裝）2026年設立首條試產線、2027年進入送樣階段，量產時程主流預期落在2028年底至2029年上半年（⚠️另有單一來源稱2027年即可量產，兩種說法明顯不一致，詳見「資料缺口」）。關鍵瓶頸環節：<b>TSV</b>（矽穿孔，同時是HBM與CoWoS共同瓶頸）、<b>Hybrid Bonding</b>（sub-10微米間距3D整合所需）、<b>ABF載板</b>（因晶片尺寸持續放大——目前已量產全球最大5.5倍光罩尺寸CoWoS——翹曲與熱應力問題導致需求結構性激增）。良率方面，2026年台積電5.5倍光罩尺寸CoWoS良率已>98%，但委外給OSAT夥伴後的實際良率仍未查到公開數字，本次未強行估算。</p>
@@ -230,7 +249,7 @@
     </div>
 
     <!-- ============ 02 歷史周期（Step 2）============ -->
-    <h2 class="section">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
+    <h2 class="section" id="history">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
     <ul class="timeline">
       <li><div class="t">2024</div><div class="d">CoWoS-L量產起步，全球AI晶片（NVIDIA H系列/B系列、AMD MI300系列）加速綁定CoWoS產能，月產能約3.5萬片。</div></li>
       <li><div class="t">2025-05</div><div class="d"><b>麥格理降評引發族群集體崩跌</b>：因CoWoS設備出貨延遲的解讀分歧，麥格理下調弘塑(3131)、辛耘(3583)評等，引發整個CoWoS概念股族群系統性重挫。</div></li>
@@ -280,7 +299,7 @@
     </ul>
 
     <!-- ============ 03 供應鏈門檻（Step 3）============ -->
-    <h2 class="section">供應鏈門檻<span>STEP 3 · BARRIERS TO ENTRY</span></h2>
+    <h2 class="section" id="barriers">供應鏈門檻<span>STEP 3 · BARRIERS TO ENTRY</span></h2>
     <div class="barrier-grid">
       <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">極高</div><p>CoWoS是TSMC獨門技術；Hybrid Bonding需sub-10微米精度，集中在BESI+應材一組合作關係手上；TSV是HBM/CoWoS共同瓶頸</p></div>
       <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v high">持續擴產仍供不應求</div><p>月產能規劃3.5萬→7萬→12.7-13萬→≥20萬→26萬片(2024-2028)，資本支出CAGR>80%，仍持續供不應求</p></div>
@@ -326,7 +345,7 @@
     </div>
 
     <!-- ============ 04 追蹤指標（Step 4）============ -->
-    <h2 class="section">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
+    <h2 class="section" id="indicators">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
     <div class="tbl-wrap">
     <table>
       <thead><tr><th>指標</th><th>目前讀數（2026-09-17）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
@@ -386,7 +405,7 @@
     <p style="font-size:12px;color:var(--text-dim);">此追蹤表已建立為持久化追蹤器 <code>.claude/skills/supply-chain-analysis/trackers/cowos_advanced_packaging.md</code>，並設有每週本機排程自動重新查證。</p>
 
     <!-- ============ 05 讀數紀錄（Changelog）============ -->
-    <h2 class="section">讀數紀錄<span>CHANGELOG</span></h2>
+    <h2 class="section" id="changelog">讀數紀錄<span>CHANGELOG</span></h2>
     <p>以下逐次列出每次追蹤查證的讀數，來源直接對應 tracker 檔案「歷史讀數紀錄」區塊，最新一筆在最上面，不覆蓋舊紀錄。</p>
     <div class="log-card latest">
       <div class="log-date">2026-09-17（追蹤更新）</div>
@@ -418,7 +437,7 @@
     </div>
 
     <!-- ============ 06 資料缺口 ============ -->
-    <h2 class="section">資料缺口<span>DATA GAPS</span></h2>
+    <h2 class="section" id="gaps">資料缺口<span>DATA GAPS</span></h2>
     <div class="gap-box">
       <ul>
         <li><b>資料衝突待釐清 ①</b>：ABF載板交期出現兩種說法——部分報導稱仍約12個月，另有報導稱已縮短至約26週(~6個月)，本檔不代替判斷何者正確，下次追蹤需優先確認</li>
@@ -435,7 +454,7 @@
   </div>
 
   <!-- ============ 07 參考來源 ============ -->
-  <footer class="foot">
+  <footer class="foot" id="sources">
     <p style="margin-bottom:10px;"><b>參考來源（部分）：</b></p>
     <ul class="src-list">
       <li><a href="https://blog.fugle.tw/post/cowos-industry-analysis" target="_blank">2026年先進封裝產業深度報告 | 富果直送</a></li>

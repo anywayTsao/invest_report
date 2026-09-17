@@ -29,6 +29,11 @@
   .banner .badges{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
   .badge{display:inline-block;font-size:11.5px;font-weight:700;background:rgba(255,255,255,0.12);color:#fff;padding:4px 12px;border-radius:12px;}
 
+  /* 錨點導覽列：黏在頂部，方便使用者跳到任一章節 */
+  nav.subnav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 44px;}
+  nav.subnav a{white-space:nowrap;color:var(--text-dim);text-decoration:none;font-size:12.5px;font-weight:700;padding:13px 12px;border-bottom:2px solid transparent;}
+  nav.subnav a:hover{color:var(--navy);border-bottom-color:var(--orange);}
+
   .body-wrap{padding:32px 44px 0;}
 
   .exec{background:var(--amber-bg);border-left:5px solid var(--amber);border-radius:6px;padding:20px 26px;margin-bottom:8px;}
@@ -36,7 +41,7 @@
   .exec p{font-size:14.5px;line-height:1.85;color:#1F2937;}
   .exec b{color:var(--amber-d);}
 
-  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;}
+  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;scroll-margin-top:54px;}
   h2.section span{display:block;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-dim);margin-top:2px;}
   h3.sub{font-size:15px;font-weight:800;color:var(--navy-d);margin:26px 0 12px;}
 
@@ -102,7 +107,7 @@
   .src-list a{color:var(--navy);text-decoration:none;}
   .src-list a:hover{text-decoration:underline;}
 
-  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;}
+  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;scroll-margin-top:54px;}
 
   .log-card{background:#F8FAFC;border:1px solid var(--border);border-left:4px solid var(--navy);border-radius:8px;padding:16px 20px;margin-bottom:16px;}
   .log-card.latest{border-left-color:var(--orange);}
@@ -132,6 +137,7 @@
   }
   @media (max-width:640px){
     .banner,.body-wrap{padding-left:20px;padding-right:20px;}
+    nav.subnav{padding-left:20px;padding-right:20px;}
     footer.foot{padding-left:20px;padding-right:20px;}
     .stats{grid-template-columns:1fr 1fr;}
     .barrier-grid{grid-template-columns:1fr;}
@@ -142,6 +148,7 @@
   @media print{
     body{background:#fff;}
     .page{margin:0;max-width:100%;}
+    nav.subnav{display:none;}
   }
 </style>
 </head>
@@ -159,10 +166,22 @@
     </div>
   </div>
 
+  <!-- 錨點導覽列 -->
+  <nav class="subnav">
+    <a href="#overview">總覽</a>
+    <a href="#map">供應鏈地圖</a>
+    <a href="#history">歷史周期</a>
+    <a href="#barriers">供應鏈門檻</a>
+    <a href="#indicators">追蹤指標</a>
+    <a href="#changelog">讀數紀錄</a>
+    <a href="#gaps">資料缺口</a>
+    <a href="#sources">參考來源</a>
+  </nav>
+
   <div class="body-wrap">
 
     <!-- ============ 00 總覽 ============ -->
-    <h2 class="section">總覽<span>OVERVIEW</span></h2>
+    <h2 class="section" id="overview">總覽<span>OVERVIEW</span></h2>
     <div class="exec">
       <div class="exec-label">EXECUTIVE SUMMARY · 摘要</div>
       <p>AI資料中心液冷供應鏈本次追蹤更新出現<b>兩項明確觸發訊號</b>，凸顯產業正從「需求旺盛」進一步收斂為「實體供給瓶頸」：其一，<b>CDU與冰水主機（chiller）交期同步顯著拉長</b>——CDU 由基準 16-24 週拉長至 26-40 週（1-3MW 新單交期已達 6-10 個月）、chiller 由 20-30 週拉長至 40-60 週，產業報導稱此瓶頸屬「結構性、非暫時性」，新增產能最快要等 2027 年才會到位；其二，<b>健策（3653.TW）均熱片／MCL 新技術「3-4 倍溢價」的傳言，已被 2026 Q2 財報證實</b>——公司明確歸因於「均熱片報價調漲」，單季稅後純益季增 65.8%、年增 107%，一舉扭轉 Q1 僅 +1.99% 的年增放緩疑慮。台灣「散熱三雄」（奇鋐、雙鴻、健策）加上台達電構成從零組件到機櫃系統的完整能力，已直接打入 Meta/AWS/Microsoft/NVIDIA 認證體系；與晶片/PSU 環節不同，液冷屬<b>非管制周邊設備</b>，中國龍頭英維克因此仍傳出被 Google 接觸洽談採購（尚未官方證實）。國際傳統工業巨頭密集併購（Ecolab/CoolIT、Eaton/Boyd、Schneider/Motivair）顯示產業快速走向大者恆大的成熟基建。<b>最大不確定性仍是估值</b>：奇鋐本益比雖已從基準 47.1 倍回落至 41.52 倍（尚未觸及 20% 下滑的觸發門檻），「散熱三雄估值透支」的爭議仍待市場進一步驗證。</p>
@@ -175,7 +194,7 @@
     </div>
 
     <!-- ============ 01 供應鏈地圖（Step 1）============ -->
-    <h2 class="section">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
+    <h2 class="section" id="map">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
 
     <h3 class="sub">終端產品與 BOM 拆解</h3>
     <p>終端產品為 AI 伺服器機櫃液冷散熱系統，主流架構是 <b>direct-to-chip（冷板直觸式）</b>，輔以機櫃背門熱交換器（RDHx）作為氣冷轉液冷的過渡方案，浸沒式（immersion）則是成長最快但滲透率仍相對小的技術路線。關鍵零組件：<b>冷板</b>貼附CPU/GPU把熱傳給冷卻液；<b>CDU（冷卻分配單元）</b>調節流量/溫度/壓力，是系統的「心臟」；<b>歧管（Manifold）</b>把CDU送出的冷卻液分配到每個節點；<b>快速接頭（QD）</b>讓節點可熱插拔；<b>冷卻液</b>（direct-to-chip多用水基防凍液，浸沒式用3M Novec/Fluorinert等介電流體）。⚠️ 各零組件在整體BOM中的精確成本占比查無數字，不強行湊百分比；「2026液冷滲透率直衝76%」與「2026年AI晶片液冷滲透率約47%」兩組數字口徑不同，不可直接比較。</p>
@@ -231,7 +250,7 @@
     </div>
 
     <!-- ============ 02 歷史周期（Step 2）============ -->
-    <h2 class="section">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
+    <h2 class="section" id="history">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
     <ul class="timeline">
       <li><div class="t">2026-03-04</div><div class="d"><b>大盤系統性風險，非基本面問題</b>：雙鴻因大盤重挫逾1,400點，股價摜入跌停失守千元大關（收972元），但當時2025年EPS(28.26元創新高)、營收(+47.5%)、毛利率(+58.27%)全部創新高；後續股價重返千元大關。</div></li>
       <li><div class="t">2025底-2026初</div><div class="d"><b>估值透支爭議浮現</b>：奇鋐2025 Q4已達成原本市場預估的2026年EPS水準，股價估值卻未同步跟上，技術面一度跌破10週線。</div></li>
@@ -282,7 +301,7 @@
     </ul>
 
     <!-- ============ 03 供應鏈門檻（Step 3）============ -->
-    <h2 class="section">供應鏈門檻<span>STEP 3 · BARRIERS TO ENTRY</span></h2>
+    <h2 class="section" id="barriers">供應鏈門檻<span>STEP 3 · BARRIERS TO ENTRY</span></h2>
     <div class="barrier-grid">
       <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">高</div><p>洩漏風險是天然門檻，Tier 1雲端業者品質要求遠高於比價；UL/IEC 62368-1認證＋OCP標準化白皮書；台灣地理群聚是短期難複製的優勢</p></div>
       <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v high">季度~1年，持續拉長</div><p>CDU交期16-24週→最新26-40週；chiller 20-30週→40-60週，較基準顯著拉長且報導稱屬結構性瓶頸；絕對週期仍快於PSU上游晶圓廠3-5年，但方向正在惡化</p></div>
@@ -324,7 +343,7 @@
     </div>
 
     <!-- ============ 04 追蹤指標（Step 4）============ -->
-    <h2 class="section">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
+    <h2 class="section" id="indicators">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
     <div class="tbl-wrap">
     <table>
       <thead><tr><th>指標</th><th>目前讀數（2026-09-17）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
@@ -381,7 +400,7 @@
     <p style="font-size:12px;color:var(--text-dim);">此追蹤表已建立為持久化追蹤器 <code>.claude/skills/supply-chain-analysis/trackers/ai_liquid_cooling.md</code>，並設有本機排程自動重新查證。</p>
 
     <!-- ============ 05 讀數紀錄（Changelog）============ -->
-    <h2 class="section">讀數紀錄<span>CHANGELOG</span></h2>
+    <h2 class="section" id="changelog">讀數紀錄<span>CHANGELOG</span></h2>
     <p>以下逐次列出每次追蹤查證的讀數，來源直接對應 tracker 檔案「歷史讀數紀錄」區塊，最新一筆在最上面，不覆蓋舊紀錄。</p>
     <div class="log-card latest">
       <div class="log-date">2026-09-17（第一次追蹤更新）</div>
@@ -412,7 +431,7 @@
     </div>
 
     <!-- ============ 06 資料缺口 ============ -->
-    <h2 class="section">資料缺口<span>DATA GAPS</span></h2>
+    <h2 class="section" id="gaps">資料缺口<span>DATA GAPS</span></h2>
     <div class="gap-box">
       <ul>
         <li>冷板材料（銅/鋁/不鏽鋼）與管路聚合物材料的專屬供應商名單未查到，這塊資料缺口以現有搜尋結果無法補齊</li>
@@ -428,7 +447,7 @@
   </div>
 
   <!-- ============ 07 參考來源 ============ -->
-  <footer class="foot">
+  <footer class="foot" id="sources">
     <p style="margin-bottom:10px;"><b>參考來源（部分）：</b></p>
     <ul class="src-list">
       <li><a href="https://www.digitimes.com.tw/research/report/?v=20260626-187" target="_blank">COMPUTEX 2026 AI解熱需求持續爆發 液冷供應鏈進入規格整合 | DIGITIMES</a></li>
