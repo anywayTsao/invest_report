@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>產業追蹤報告</title>
+<title>投資研究報告</title>
 <style>
   :root{
     --bg:#f7f7f5; --surface:#ffffff; --ink:#1a1a1a; --ink-soft:#666;
@@ -31,12 +31,18 @@
   .card .name::after{content:" →"; color:var(--accent);}
   .card .path{font-size:.78rem; color:var(--ink-soft); font-family:ui-monospace,monospace;}
   footer{margin-top:40px; font-size:.78rem; color:var(--ink-soft);}
+  h2.cat{font-size:1.15rem; margin:36px 0 4px;}
+  .cat-sub{color:var(--ink-soft); font-size:.85rem; margin:0 0 14px;}
+  .empty{color:var(--ink-soft); font-size:.9rem;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>產業追蹤報告</h1>
-  <p class="sub">依 industry-tracker 框架（地圖 → 歷史 → 門檻 → 追蹤指標）建立並持續追蹤更新，僅供研究參考，非投資建議。</p>
+  <h1>投資研究報告</h1>
+  <p class="sub">研究產出總覽，依類別分區。僅供研究參考，非投資建議。</p>
+
+  <h2 class="cat">產業追蹤報告</h2>
+  <p class="cat-sub">依 industry-tracker 框架（地圖 → 歷史 → 門檻 → 追蹤指標）建立並持續追蹤更新。</p>
   <div class="list">
     <a class="card" href="supply_chain_analysis/ccl/report.html">
       <div class="name">CCL（銅箔基板）產業追蹤報告</div>
@@ -58,6 +64,13 @@
       <div class="name">AI 資料中心液冷產業 產業追蹤報告</div>
       <div class="path">supply_chain_analysis/ai_liquid_cooling/</div>
     </a>
+  </div>
+  <h2 class="cat">簡易分析</h2>
+  <p class="cat-sub">依 simple-analysis workflow（五大商業邏輯＋市場估值框架）產出的個股投資重點深掘報告。檔名帶產出日期，同一檔股票可能有多個日期版本，最新在最上面。僅供研究參考，非投資建議。</p>
+  <div class="list">
+<!-- SIMPLE_ANALYSIS:START -->
+    <p class="empty">（尚無簡易分析報告）</p>
+<!-- SIMPLE_ANALYSIS:END -->
   </div>
   <footer>最後更新：2026-09-17</footer>
 </div>
