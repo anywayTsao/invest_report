@@ -104,10 +104,31 @@
 
   footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;}
 
+  .log-card{background:#F8FAFC;border:1px solid var(--border);border-left:4px solid var(--navy);border-radius:8px;padding:16px 20px;margin-bottom:16px;}
+  .log-card.latest{border-left-color:var(--orange);}
+  .log-date{font-size:12.5px;font-weight:800;color:var(--navy-d);margin-bottom:8px;}
+  .log-card ul{margin:0;padding-left:18px;}
+  .log-card li{font-size:12.5px;line-height:1.7;color:var(--text);margin-bottom:4px;}
+  .log-trigger{display:inline-block;background:var(--red-bg);color:var(--red-d);font-weight:800;font-size:11.5px;padding:3px 10px;border-radius:12px;margin-bottom:8px;}
+
+  .chart-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:18px 22px;margin:14px 0 20px;}
+  .chart-card .chart-title{font-size:13px;font-weight:800;color:var(--navy-d);margin-bottom:2px;}
+  .chart-card .chart-caption{font-size:11.5px;color:var(--text-dim);margin-bottom:10px;}
+  .chart-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  svg.chart{width:100%;height:auto;display:block;overflow:visible;}
+  svg.chart text{font-family:"Noto Sans TC",Arial,sans-serif;fill:var(--text-dim);}
+  svg.chart .axis-line{stroke:var(--border);stroke-width:1;}
+  svg.chart .val-label{fill:var(--navy-d);font-weight:700;font-size:11px;}
+  svg.chart .grp-label{fill:var(--text-dim);font-size:11px;}
+  .chart-legend{display:flex;gap:16px;font-size:11.5px;color:var(--text-dim);margin-top:8px;}
+  .chart-legend span{display:inline-flex;align-items:center;gap:6px;}
+  .chart-swatch{width:10px;height:10px;border-radius:2px;display:inline-block;}
+
   @media (max-width:900px){
     .stats{grid-template-columns:repeat(2,1fr);}
     .geo-grid{grid-template-columns:1fr;}
     .barrier-grid{grid-template-columns:1fr 1fr;}
+    .chart-row{grid-template-columns:1fr;}
   }
   @media (max-width:640px){
     .banner,.body-wrap{padding-left:20px;padding-right:20px;}
@@ -140,23 +161,43 @@
 
   <div class="body-wrap">
 
+    <!-- ============ 00 總覽 ============ -->
+    <h2 class="section">總覽<span>OVERVIEW</span></h2>
     <div class="exec">
       <div class="exec-label">EXECUTIVE SUMMARY · 摘要</div>
       <p>2026 年，CCL 產業第三次進入漲價周期——但這一次的驅動力不是庫存回補，而是<b>AI 伺服器材料規格從 M7 一路推向 M9</b>，逼著上游銅箔／玻纖布／樹脂同步吃緊。年內已完成四輪統一調價，通用 FR-4 現貨價刷新 2021 年前高，台廠三雄台光電、台燿 8 月營收年增率分別達 <b>+129.85%／+132.48%</b>，Q2 毛利率同步創高。真正的硬約束在上游：HVLP3+ 高階銅箔被三井金屬與金居開發寡占，兩者合計未來三年僅能滿足產業總需求的 <b>50%-60%</b>，高盛估計此結構性缺口將延續至 2028 年。<b>最大長期不確定性</b>是市場傳言：若 CPO（共同封裝光學）普及，交換器電性走線大幅縮短，材料規格需求可能不必衝到 M9——查證後發現這個說法被過度簡化，至少一份產業媒體認為 CPO 反而會拉高高速 CCL 的單機價值，且 CPO 商轉時程本身在市場上仍高度分歧，尚不足以推翻現有多頭論點，但值得持續追蹤。</p>
     </div>
-
-    <!-- ============ STEP 1 ============ -->
-    <h2 class="section">Step 1 — 供應鏈地圖<span>SUPPLY CHAIN MAP</span></h2>
-
     <div class="stats">
-      <div class="stat"><div class="v">~40%</div><div class="l">銅箔占 CCL 成本比重（兩份資料來源一致）</div></div>
-      <div class="stat"><div class="v">35%-40%</div><div class="l">CCL 占 PCB 板材總成本比重（AI伺服器高多層板口徑）</div></div>
-      <div class="stat"><div class="v">39%</div><div class="l">上游 HVLP3+ 銅箔供給缺口（2027 峰值，高盛估計）</div></div>
-      <div class="stat"><div class="v">+20-30%</div><div class="l">材料等級每升一階（M6→M9）ASP 概略跳增區間</div></div>
+      <div class="stat"><div class="v">+129.85%</div><div class="l">台光電(2383) 2026/08 營收 YoY</div></div>
+      <div class="stat"><div class="v">+132.48%</div><div class="l">台燿(6274) 2026/08 營收 YoY</div></div>
+      <div class="stat"><div class="v">39%</div><div class="l">上游 HVLP3+ 銅箔供給缺口（2027峰值，高盛估計）</div></div>
+      <div class="stat"><div class="v">230-240元</div><div class="l">FR-4 現貨價／張（人民幣，刷新2021前高）</div></div>
     </div>
 
+    <!-- ============ 01 供應鏈地圖（Step 1）============ -->
+    <h2 class="section">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
+
     <h3 class="sub">終端產品與 BOM 拆解</h3>
-    <p>CCL 本身即是「終端產品」——PCB 的直接原料，而非最終消費性產品。三大原材料合計占 CCL 成本超過 80%，銅箔最大宗（約 40%）；但「樹脂」與「玻纖布」何者占比更高，兩份資料來源給出相反排序（前瞻產業研究院系：樹脂26.1%＞玻纖布19.1%；PCB輔材梳理系：玻纖布25-30%＞樹脂15-20%），⚠️ 未強行擇一。CCL 產業本身毛利率水準約 30%-35%（中國口徑，2024年）。材料世代升級（M6→M7→M8→M9）帶動 ASP 每階跳增 20%-30%，800G/1.6T 交換器用含石英玻璃頂級材料均價更達 M8 的 2-3 倍。</p>
+    <p>CCL 本身即是「終端產品」——PCB 的直接原料，而非最終消費性產品。三大原材料合計占 CCL 成本超過 80%，銅箔最大宗（約 40%）；但「樹脂」與「玻纖布」何者占比更高，兩份資料來源給出相反排序，⚠️ 未強行擇一，並列呈現如下。CCL 又占 PCB 板材總成本 35%-40%（AI伺服器高多層板口徑），是 PCB 第一大成本項；CCL 產業本身毛利率水準約 30%-35%（中國口徑，2024年）。材料世代升級（M6→M7→M8→M9）帶動 ASP 每階跳增 20%-30%，800G/1.6T 交換器用含石英玻璃頂級材料均價更達 M8 的 2-3 倍。</p>
+
+    <div class="chart-card">
+      <div class="chart-title">CCL 成本結構 — 兩種資料口徑</div>
+      <div class="chart-caption">三大原材料占比，%（⚠️ 樹脂與玻纖布何者占比更高，兩份來源互相矛盾，並列呈現）</div>
+      <p style="font-size:11.5px;color:var(--text-dim);margin-bottom:4px;">資料來源 A（前瞻產業研究院／中金系）：樹脂 &gt; 玻纖布</p>
+      <div style="display:flex;height:26px;border-radius:5px;overflow:hidden;border:1px solid var(--border);">
+        <div style="width:40%;background:var(--navy);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">銅箔 40%</div>
+        <div style="width:26.1%;background:var(--orange);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">樹脂 26.1%</div>
+        <div style="width:19.1%;background:#0369A1;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">玻纖布 19.1%</div>
+        <div style="width:14.8%;background:#CBD5E1;color:var(--text);font-size:11px;display:flex;align-items:center;justify-content:center;">其他 14.8%</div>
+      </div>
+      <p style="font-size:11.5px;color:var(--text-dim);margin:14px 0 4px;">資料來源 B（PCB輔材全梳理，AI伺服器高多層板口徑）：玻纖布 &gt; 樹脂</p>
+      <div style="display:flex;height:26px;border-radius:5px;overflow:hidden;border:1px solid var(--border);">
+        <div style="width:40%;background:var(--navy);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">銅箔 40%</div>
+        <div style="width:27.5%;background:#0369A1;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">玻纖布 25-30%</div>
+        <div style="width:17.5%;background:var(--orange);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">樹脂 15-20%</div>
+        <div style="width:15%;background:#CBD5E1;color:var(--text);font-size:11px;display:flex;align-items:center;justify-content:center;">矽微粉/其他</div>
+      </div>
+    </div>
 
     <h3 class="sub">上中下游基本結構</h3>
     <div class="tbl-wrap">
@@ -204,8 +245,8 @@
       </div>
     </div>
 
-    <!-- ============ STEP 2 ============ -->
-    <h2 class="section">Step 2 — 供應鏈歷史<span>HISTORY & CURRENT STAGE</span></h2>
+    <!-- ============ 02 歷史周期（Step 2）============ -->
+    <h2 class="section">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
     <ul class="timeline">
       <li><div class="t">2016-2017</div><div class="d"><b>第一輪漲價潮，＋30%</b>：中國電解銅箔轉產鋰電銅箔（加工費更高），電路用銅箔供給收縮，疊加玻纖布/環氧樹脂同步吃緊，三大主材共振推升價格。</div></li>
       <li><div class="t">2018H2-2019</div><div class="d">終端創新動能疲弱、電子業去庫存＋中美貿易戰，CCL 進入需求下行、價格走跌。⚠️精確反轉月份與跌幅未查到數字。</div></li>
@@ -215,6 +256,38 @@
     </ul>
     <p class="insight"><b>與過去兩輪周期最大的差異：</b>2016-17、2020-21兩輪都在1-2年內見頂回落，驅動力是原物料成本轉嫁與消費電子庫存周期；2026這一輪是結構性材料升級，高盛等機構估計缺口將持續到2028年，性質上更接近「材料世代轉換」而非單純庫存周期。</p>
 
+    <div class="chart-card">
+      <div class="chart-title">台廠雙雄營收年增率比較</div>
+      <div class="chart-caption">2026年8月單月 vs. 前8月累計，年增率（%）</div>
+      <svg class="chart" viewBox="0 0 480 220" role="img" aria-label="台光電與台燿的8月單月與前8月累計營收年增率長條圖">
+        <line class="axis-line" x1="50" y1="180" x2="450" y2="180"/>
+        <line class="axis-line" x1="50" y1="142.5" x2="450" y2="142.5" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="105" x2="450" y2="105" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="67.5" x2="450" y2="67.5" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="30" x2="450" y2="30" stroke-dasharray="2 3"/>
+        <text x="45" y="183" text-anchor="end" font-size="10">0%</text>
+        <text x="45" y="145.5" text-anchor="end" font-size="10">35%</text>
+        <text x="45" y="108" text-anchor="end" font-size="10">70%</text>
+        <text x="45" y="70.5" text-anchor="end" font-size="10">105%</text>
+        <text x="45" y="33" text-anchor="end" font-size="10">140%</text>
+        <rect x="80" y="40.9" width="40" height="139.1" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="100" y="34" text-anchor="middle">+129.85%</text>
+        <rect x="125" y="78.0" width="40" height="102.0" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="145" y="71" text-anchor="middle">+95.18%</text>
+        <text class="grp-label" x="122" y="198" text-anchor="middle">台光電 2383</text>
+        <rect x="270" y="38.1" width="40" height="141.9" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="290" y="32" text-anchor="middle">+132.48%</text>
+        <rect x="315" y="76.1" width="40" height="103.9" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="335" y="69" text-anchor="middle">+97.01%</text>
+        <text class="grp-label" x="312" y="198" text-anchor="middle">台燿 6274</text>
+      </svg>
+      <div class="chart-legend">
+        <span><i class="chart-swatch" style="background:var(--navy)"></i>2026/08 單月 YoY</span>
+        <span><i class="chart-swatch" style="background:var(--orange)"></i>2026 前8月累計 YoY</span>
+      </div>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">聯茂（6213）僅查到2026 Q1單季YoY +20.6%，與上兩家公司期間口徑不同，未併入此圖以避免誤導比較。</p>
+    </div>
+
     <p style="margin-top:16px;">目前供需階段判定：</p>
     <p><span class="stage-pill">⚠ 明確供不應求，配額供貨、即產即銷</span></p>
     <ul>
@@ -223,8 +296,8 @@
       <li>台廠三雄月營收年增率均在95%-132%區間，創歷史新高，量價齊揚——符合供不應求階段的典型財務特徵</li>
     </ul>
 
-    <!-- ============ STEP 3 ============ -->
-    <h2 class="section">Step 3 — 供應鏈門檻<span>BARRIERS TO ENTRY</span></h2>
+    <!-- ============ 03 供應鏈門檻（Step 3）============ -->
+    <h2 class="section">供應鏈門檻<span>STEP 3 · BARRIERS TO ENTRY</span></h2>
     <div class="barrier-grid">
       <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">分層明顯</div><p>低階CCL(通用FR-4)紅海競爭，門檻低；中高階CCL(M7以上)呈寡占市場，新進者難切入</p></div>
       <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v high">近2年</div><p>CCL成品產線約1-2年可完成，但受限上游HVLP3+設備交期近2年，訂單排到2028Q1</p></div>
@@ -234,8 +307,33 @@
     </div>
     <p class="insight"><b>比CCL廠更硬的瓶頸在上游：</b>三井金屬＋金居開發合計，未來三年僅能滿足HVLP3+產業總需求的50%-60%；既有HVLP3產線轉換為HVLP4/5時，每次還會發生10%-20%的產能損耗，進一步加劇整體供給緊張。即使CCL成品廠想擴產因應需求，仍會被上游材料的供給天花板卡住。</p>
 
-    <!-- ============ STEP 4 ============ -->
-    <h2 class="section">Step 4 — 追蹤指標與財務驗證<span>TRACKING INDICATORS</span></h2>
+    <div class="chart-card">
+      <div class="chart-title">上游 HVLP3+ 高階銅箔供給缺口</div>
+      <div class="chart-caption">產業需求缺口，% · 高盛估計 · 2026-2028</div>
+      <svg class="chart" viewBox="0 0 360 200" role="img" aria-label="HVLP3+高階銅箔2026至2028年供給缺口百分比長條圖">
+        <line class="axis-line" x1="46" y1="170" x2="330" y2="170"/>
+        <line class="axis-line" x1="46" y1="120" x2="330" y2="120" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="70" x2="330" y2="70" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="20" x2="330" y2="20" stroke-dasharray="2 3"/>
+        <text x="40" y="173" text-anchor="end" font-size="10">0%</text>
+        <text x="40" y="123" text-anchor="end" font-size="10">13%</text>
+        <text x="40" y="73" text-anchor="end" font-size="10">27%</text>
+        <text x="40" y="23" text-anchor="end" font-size="10">40%</text>
+        <rect x="80" y="65" width="55" height="105" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="107" y="58" text-anchor="middle">28%</text>
+        <text class="grp-label" x="107" y="188" text-anchor="middle">2026</text>
+        <rect x="170" y="23.75" width="55" height="146.25" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="197" y="17" text-anchor="middle">39%</text>
+        <text class="grp-label" x="197" y="188" text-anchor="middle">2027</text>
+        <rect x="260" y="27.5" width="55" height="142.5" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="287" y="21" text-anchor="middle">38%</text>
+        <text class="grp-label" x="287" y="188" text-anchor="middle">2028</text>
+      </svg>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">2026下半年HVLP4需求較上半年成長近100%，月需求超過560噸，已超過龍頭三井金屬單月約490噸的產能上限。</p>
+    </div>
+
+    <!-- ============ 04 追蹤指標（Step 4）============ -->
+    <h2 class="section">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
     <div class="tbl-wrap">
     <table>
       <thead><tr><th>指標</th><th>目前讀數（2026-09-17）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
@@ -265,21 +363,75 @@
       </tbody>
     </table>
     </div>
-    <p style="font-size:12px;color:var(--text-dim);">此追蹤表已建立為持久化追蹤器 <code>.claude/skills/supply-chain-analysis/trackers/ccl.md</code>，並設有每週本機排程自動重新查證。</p>
 
+    <div class="chart-card">
+      <div class="chart-title">Q2 毛利率比較</div>
+      <div class="chart-caption">2026年第二季，%</div>
+      <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="台光電與台燿2026年第二季毛利率比較長條圖">
+        <line class="axis-line" x1="46" y1="130" x2="240" y2="130"/>
+        <line class="axis-line" x1="46" y1="102.5" x2="240" y2="102.5" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="75" x2="240" y2="75" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="47.5" x2="240" y2="47.5" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="20" x2="240" y2="20" stroke-dasharray="2 3"/>
+        <text x="40" y="133" text-anchor="end" font-size="10">0%</text>
+        <text x="40" y="105.5" text-anchor="end" font-size="10">10%</text>
+        <text x="40" y="78" text-anchor="end" font-size="10">20%</text>
+        <text x="40" y="50.5" text-anchor="end" font-size="10">30%</text>
+        <text x="40" y="23" text-anchor="end" font-size="10">40%</text>
+        <rect x="70" y="36.9" width="48" height="93.1" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="94" y="30" text-anchor="middle">33.85%</text>
+        <text class="grp-label" x="94" y="145" text-anchor="middle">台光電</text>
+        <rect x="150" y="48.3" width="48" height="81.7" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="174" y="41.5" text-anchor="middle">29.7%</text>
+        <text class="grp-label" x="174" y="145" text-anchor="middle">台燿</text>
+      </svg>
+    </div>
+
+    <p style="font-size:12px;color:var(--text-dim);">此追蹤表已建立為持久化追蹤器 <code>.claude/skills/supply-chain-analysis/trackers/ccl.md</code>，並設有本機排程自動重新查證。</p>
+
+    <!-- ============ 05 讀數紀錄（Changelog）============ -->
+    <h2 class="section">讀數紀錄<span>CHANGELOG</span></h2>
+    <div class="log-card latest">
+      <div class="log-date">2026-09-17（同日追蹤查證，補齊資料缺口）</div>
+      <ul>
+        <li><b>本次無指標觸發</b>（同日內查證，數字與基準值一致，僅補齊缺口資料）</li>
+        <li>【補齊第9項缺口】本淨比（P/B）基準值已建立：台光電 &gt;30倍；台燿約23-27倍（不同來源落差大，以股價1,415元÷每股淨值62.54元換算約22.6倍為主要參考）；聯茂約3.49倍。存貨/合約負債絕對金額仍查無資料（僅取得台光電2026Q1存貨周轉天數73.84天、台燿2026Q2存貨周轉天數90.27天、合約負債/股本比2.1%）</li>
+        <li>上游供給：金居（8358）HVLP3/4現況月產能約100噸，2026下半年目標提升至150噸；雲林三廠陸續開出、預計2027上半年量產，全開後月產能上看800-1,000噸；訂單能見度已到2028年——與基準一致，缺口尚無緩解訊號；三井金屬本次仍查無財報數字</li>
+        <li>台光電、台燿2026年9月單月營收尚未公布（週期未到），Q2數字與基準一致：台光電Q2毛利率33.85%（創40季新高）、上半年EPS 42.46元；台燿Q2 EPS 8.04元（QoQ+84%、YoY+241%）</li>
+        <li>聯茂M9材料放量時點更新為「2027年上半年起逐步放量出貨予美系AI GPU大廠」（原基準僅寫「明年」），Q2毛利率回升至22.02%、EPS 3.52元；8月單月營收數字本次仍未查到</li>
+        <li>CCL三雄股價持續走高：台光電2026/09/16收5,085元、台燿收1,415元，反映評價持續擴張，非追蹤指標定義的觸發項目，僅供參考</li>
+      </ul>
+    </div>
+    <div class="log-card">
+      <div class="log-date">2026-09-17（首次建檔，基準值）</div>
+      <ul>
+        <li>上游供給缺口：高盛估計2026-2028缺口28%/39%/38%，三井金屬＋金居合計僅滿足未來三年50%-60%需求</li>
+        <li>FR-4現貨報價：約230-240元人民幣/張，刷新2021前高</li>
+        <li>HVLP3+銅箔設備交期：近2年，訂單能見度到2028Q1；低Dk玻纖布交期30週以上</li>
+        <li>台光電2026/08營收201.46億元（YoY+129.85%）；前8月累計1,196.95億元（YoY+95.18%）；Q2毛利率33.9%</li>
+        <li>台燿2026/08營收59.15億元（YoY+132.48%）；前8月累計361.78億元（YoY+97.01%）；Q2毛利率29.7%、營業利益率23.5%（歷史高點）</li>
+        <li>聯茂2026Q1營收91.43億元（YoY+20.6%）；正對第二家雲端服務商進行M7/M8/M9送樣認證</li>
+        <li>建滔M6產品預計2026年底進入頭部PCB廠驗證</li>
+        <li><b>本次無指標觸發</b>（此為基準建檔，無前值可比較）</li>
+      </ul>
+    </div>
+
+    <!-- ============ 06 資料缺口 ============ -->
+    <h2 class="section">資料缺口<span>DATA GAPS</span></h2>
     <div class="gap-box">
-      <b style="font-size:12.5px;color:#78350F;">資料缺口</b>
       <ul>
         <li>聯茂（6213）2026年8月單月營收數字，本次僅查到Q1/Q2季度數字</li>
         <li>台光電、台燿、聯茂三家存貨、合約負債的絕對金額（千元），僅補到部分周轉天數/比率</li>
         <li>台燿本淨比在不同來源間落差極大（22.6～76.28倍），下次追蹤需以官方財報每股淨值重新換算校正</li>
         <li>三井金屬（Mitsui Kinzoku）財報數字（營收、毛利率、HVLP產能）本次完全查無公開資料</li>
         <li>2018-2019年跌價周期、2021年前波高點後下行周期的精確反轉時間點與跌幅未查到數字</li>
+        <li>台光電市占率「18.9%」與「16.2%」兩種數字的口徑差異來源</li>
       </ul>
     </div>
 
   </div>
 
+  <!-- ============ 07 參考來源 ============ -->
   <footer class="foot">
     <p style="margin-bottom:10px;"><b>參考來源（部分）：</b></p>
     <ul class="src-list">
@@ -296,7 +448,7 @@
       <li><a href="https://www.digitimes.com.tw/tech/dt/n/shwnws.asp?id=0000752161_RDH29R6Z5HB6AU2JTPU13" target="_blank">CCL漲勢未完待續 | DigiTimes</a></li>
       <li><a href="https://www.businessweekly.com.tw/business/blog/3021651" target="_blank">CPO故事破滅了？要不要砍光通訊部位 | 商周</a></li>
     </ul>
-    <p style="margin-top:14px;">完整分析全文見同目錄下 <code>step1_供應鏈地圖.md</code>、<code>step2_供應鏈歷史.md</code>、<code>step3_供應鏈門檻.md</code>、<code>step4_追蹤指標.md</code>。本報告依 <code>.claude/skills/supply-chain-analysis</code> 框架產出，僅供研究參考，非投資建議。</p>
+    <p style="margin-top:14px;">完整分析全文見同目錄下 <code>step1_供應鏈地圖.md</code>、<code>step2_供應鏈歷史.md</code>、<code>step3_供應鏈門檻.md</code>、<code>step4_追蹤指標.md</code>；持久化追蹤器見 <code>.claude/skills/supply-chain-analysis/trackers/ccl.md</code>。本報告依 <code>.claude/skills/supply-chain-analysis</code> 框架產出，僅供研究參考，非投資建議。</p>
   </footer>
 
 </div>
