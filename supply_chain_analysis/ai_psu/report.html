@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI 伺服器 PSU（電源供應器）供應鏈分析報告</title>
+<title>AI 伺服器 PSU（電源供應器）產業追蹤報告</title>
 <style>
   :root{
     --navy:#1F3A5F; --navy-d:#15233B; --orange:#E8853B;
@@ -158,8 +158,8 @@
 <div class="page">
 
   <div class="banner">
-    <div class="label">SUPPLY CHAIN ANALYSIS · 供應鏈研究</div>
-    <h1>AI 伺服器 PSU（電源供應器）供應鏈分析報告</h1>
+    <div class="label">INDUSTRY TRACKER · 產業追蹤</div>
+    <h1>AI 伺服器 PSU（電源供應器）產業追蹤報告</h1>
     <div class="sub">800VDC 電力架構升級周期——PSU 供應鏈地圖、歷史復盤、門檻評估、追蹤指標</div>
     <div class="badges">
       <span class="badge">產出日期 2026-09-17</span>
@@ -200,7 +200,7 @@
     <h2 class="section" id="map">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
 
     <h3 class="sub">終端產品與 BOM 拆解</h3>
-    <p>終端產品為 AI 伺服器 800VDC 電力櫃（Power Cabinet），由 Power Shelf（電源架）＋ BBU（電池備援模組）組成，是目前機櫃供電架構的主流形態。摩根大通估算一台 660kW／800VDC 電力櫃總成本約 25.8 萬美元，其中 Power Shelf（110kW×6）約占 45%、BBU（80kW×6）約占 35%，兩者合計占電力櫃總成本約 <b>80%</b>，是最主要的成本中心；其餘銅排／機構／其他約占 20%。⚠️ 再往下一層（Power Shelf／BBU 內部各元件類別的精確成本占比）查無數字，只能定性列出關鍵元件類別，不硬湊百分比：功率半導體與控制 IC（MOSFET、PMIC、Driver IC，材料含 Si／SiC／GaN）、高壓大尺寸 MLCC 與電感等被動元件、變壓器等磁性元件、PCB／CCL（AI 伺服器高多層板中 CCL 占板材成本 35%-40%，詳見 <code>supply_chain_analysis/ccl/</code>）、銅排（Busbar，800VDC 架構下用量顯著提升）、機構與散熱模組。架構路徑為 48V/54V → 400V → 800VDC，SemiAnalysis 規劃 2026-2029 分四階段推進，過渡期（2026-2027）「機架列級 HVDC 電源側櫃」均價達 40-50 萬美元/台；800VDC 可將資料中心供電效率從傳統 88% 提升至 92% 以上，並減少銅用量 45%。材料/電壓分工上，GaN 主要應用於 48V-650V、1-10kW 區間，SiC 則專攻 800V 以上、&gt;10kW 超高功率領域，這解釋了為何 800VDC 世代會讓 SiC 的重要性系統性超越 GaN。</p>
+    <p>終端產品為 AI 伺服器 800VDC 電力櫃（Power Cabinet），由 Power Shelf（電源架）＋ BBU（電池備援模組）組成，是目前機櫃供電架構的主流形態。摩根大通估算一台 660kW／800VDC 電力櫃總成本約 25.8 萬美元，其中 Power Shelf（110kW×6）約占 45%、BBU（80kW×6）約占 35%，兩者合計占電力櫃總成本約 <b>80%</b>，是最主要的成本中心；其餘銅排／機構／其他約占 20%。⚠️ 再往下一層（Power Shelf／BBU 內部各元件類別的精確成本占比）查無數字，只能定性列出關鍵元件類別，不硬湊百分比：功率半導體與控制 IC（MOSFET、PMIC、Driver IC，材料含 Si／SiC／GaN）、高壓大尺寸 MLCC 與電感等被動元件、變壓器等磁性元件、PCB／CCL（AI 伺服器高多層板中 CCL 占板材成本 35%-40%，詳見 <code>assets/supply_chain_analysis/ccl/</code>）、銅排（Busbar，800VDC 架構下用量顯著提升）、機構與散熱模組。架構路徑為 48V/54V → 400V → 800VDC，SemiAnalysis 規劃 2026-2029 分四階段推進，過渡期（2026-2027）「機架列級 HVDC 電源側櫃」均價達 40-50 萬美元/台；800VDC 可將資料中心供電效率從傳統 88% 提升至 92% 以上，並減少銅用量 45%。材料/電壓分工上，GaN 主要應用於 48V-650V、1-10kW 區間，SiC 則專攻 800V 以上、&gt;10kW 超高功率領域，這解釋了為何 800VDC 世代會讓 SiC 的重要性系統性超越 GaN。</p>
 
     <div class="chart-card">
       <div class="chart-title">660kW／800VDC 電力櫃 BOM 成本結構</div>
