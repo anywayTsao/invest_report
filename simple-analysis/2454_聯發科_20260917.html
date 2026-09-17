@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2454 聯發科　投資重點深掘版</title>
+  <meta property="og:title" content="2454 聯發科　投資重點深掘版">
+  <meta property="og:description" content="半導體 IC 設計 · 智慧邊緣平台 53%（網通/運算/車用/TV/資料中心 ASIC）· 手機 SoC 41% · 電源 IC 6%（2Q26）· 主要客戶：中國安卓 OEM、三星、Google（雲端 ASIC）、NVIDIA（RTX ">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="2454 聯發科　投資重點深掘版">
+  <meta name="twitter:description" content="半導體 IC 設計 · 智慧邊緣平台 53%（網通/運算/車用/TV/資料中心 ASIC）· 手機 SoC 41% · 電源 IC 6%（2Q26）· 主要客戶：中國安卓 OEM、三星、Google（雲端 ASIC）、NVIDIA（RTX ">
+  <style>
+    :root {
+      --navy: #1F3A5F;
+      --text: #2C3E50;
+      --text-dim: #555E68;
+      --muted: #888;
+      --thead: #EDEEF1;
+      --border: #D7D9DC;
+      --gap: #F0E68C;
+      --paper: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "Source Han Sans TC", "PingFang TC",
+        "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 14px;
+      background: #E8EAEE;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 40px 60px 56px;
+    }
+
+    /* ========= Header banner ========= */
+    .banner {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 6px;
+      padding: 32px 36px;
+      margin-bottom: 28px;
+    }
+
+    .banner h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      line-height: 1.4;
+    }
+
+    .banner .subtitle {
+      font-size: 13px;
+      opacity: 0.85;
+      margin-top: 10px;
+      line-height: 1.7;
+    }
+
+    /* ========= Intro paragraph ========= */
+    .intro {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.85;
+      margin-bottom: 8px;
+      text-align: justify;
+    }
+
+    .intro+.intro {
+      margin-top: 12px;
+    }
+
+    /* ========= Core thesis card ========= */
+    .thesis-card {
+      background: #FFF8E1;
+      border-left: 4px solid #F59E0B;
+      border-radius: 4px;
+      padding: 22px 26px;
+      margin: 0 0 28px 0;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .thesis-card .thesis-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #92400E;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .thesis-card .thesis-headline {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1F2937;
+      line-height: 1.7;
+      margin: 0 0 16px 0;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #FDE68A;
+    }
+
+    .thesis-card .thesis-grid {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 10px 18px;
+      margin: 0;
+    }
+
+    .thesis-card .thesis-grid dt {
+      font-size: 13px;
+      font-weight: 700;
+      color: #92400E;
+      white-space: nowrap;
+      padding-top: 3px;
+    }
+
+    .thesis-card .thesis-grid dd {
+      font-size: 14px;
+      color: #1F2937;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .thesis-card .thesis-grid dd strong {
+      color: #92400E;
+    }
+
+    .thesis-card .thesis-grid dd ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .thesis-card .thesis-grid dd ul li {
+      position: relative;
+      padding-left: 14px;
+      margin: 0 0 6px 0;
+      line-height: 1.7;
+    }
+
+    .thesis-card .thesis-grid dd ul li:last-child {
+      margin-bottom: 0;
+    }
+
+    .thesis-card .thesis-grid dd ul li::before {
+      content: "•";
+      color: #C9A227;
+      font-weight: 700;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    @media (max-width: 600px) {
+      .thesis-card .thesis-grid {
+        grid-template-columns: 1fr;
+        gap: 4px 0;
+      }
+
+      .thesis-card .thesis-grid dt {
+        margin-top: 8px;
+      }
+
+      .thesis-card .thesis-grid dt:first-child {
+        margin-top: 0;
+      }
+    }
+
+    /* ========= Section titles ========= */
+    h2.section {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text);
+      border-left: 4px solid var(--navy);
+      padding-left: 14px;
+      margin: 36px 0 18px;
+      line-height: 1.4;
+    }
+
+    h3.sub {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 22px 0 10px;
+    }
+
+    /* ========= Body text ========= */
+    p {
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+
+    ul {
+      list-style: disc outside;
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+      line-height: 1.75;
+    }
+
+    strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    /* ========= Tables ========= */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 18px;
+      font-size: 13px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 600;
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.7;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ========= Trend table ========= */
+    table.trend {
+      font-size: 12.5px;
+      margin: 6px 0 0;
+    }
+
+    table.trend thead th {
+      padding: 8px 10px;
+      white-space: nowrap;
+    }
+
+    table.trend tbody td {
+      padding: 7px 10px;
+    }
+
+    table.trend tbody td:first-child {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ========= Inline highlight ========= */
+    .hl-navy {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .hl-gold {
+      background: #FFF3CD;
+      color: #92400E;
+      padding: 0 4px;
+      border-radius: 3px;
+      font-weight: 700;
+    }
+
+    .hl-neg {
+      color: #DC2626;
+      font-weight: 700;
+    }
+
+    /* ========= Star rating ========= */
+    .stars {
+      color: var(--navy);
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-right: 4px;
+    }
+
+    /* ========= Data-gap label ========= */
+    .data-gap {
+      display: inline-block;
+      background: var(--gap);
+      color: #5b4a00;
+      font-size: 12px;
+      padding: 1px 8px;
+      border-radius: 3px;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    /* ========= Card layout ========= */
+    .card {
+      background: #fff;
+      border: 1px solid #D5D8DD;
+      border-radius: 4px;
+      padding: 24px 30px 22px;
+      margin-bottom: 28px;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05), 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+
+    .card.intro-card {
+      padding: 22px 30px;
+      margin-bottom: 30px;
+    }
+
+    .card>h2.section:first-child {
+      margin-top: 0;
+    }
+
+    .card>h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    /* ========= 重磅產品專欄卡 ========= */
+    .spotlight-card {
+      background: #F8FAFC;
+      border: 1px solid #D5D8DD;
+      border-left: 4px solid var(--navy);
+      border-radius: 4px;
+      padding: 22px 26px;
+      margin-bottom: 28px;
+    }
+
+    .spotlight-card .spotlight-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .spotlight-card .spotlight-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #E2E5EA;
+    }
+
+    .spotlight-card dl {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      gap: 10px 18px;
+      margin: 0;
+      font-size: 13.5px;
+    }
+
+    .spotlight-card dt {
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    .spotlight-card dd {
+      margin: 0;
+      line-height: 1.75;
+    }
+
+    /* ========= 戰略階梯 ========= */
+    .strategy-ladder {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 8px 0 0;
+    }
+
+    .ladder-step {
+      flex: 1 1 calc(25% - 12px);
+      min-width: 160px;
+      background: #F7F8FA;
+      border: 1px solid #D5D8DD;
+      border-radius: 4px;
+      padding: 14px 16px;
+    }
+
+    .ladder-step.done {
+      background: #ECFDF5;
+      border-color: #A7F3D0;
+    }
+
+    .ladder-step.now {
+      background: #FEF3C7;
+      border-color: #FDE68A;
+    }
+
+    .ladder-step.next {
+      background: #F3F4F6;
+      border-color: #D1D5DB;
+    }
+
+    .ladder-step .step-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-dim);
+      letter-spacing: 1.5px;
+      margin-bottom: 4px;
+    }
+
+    .ladder-step .step-status {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .ladder-step.done .step-status {
+      background: #065F46;
+      color: #fff;
+    }
+
+    .ladder-step.now .step-status {
+      background: #92400E;
+      color: #fff;
+    }
+
+    .ladder-step.next .step-status {
+      background: #374151;
+      color: #fff;
+    }
+
+    .ladder-step .step-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .ladder-step .step-desc {
+      font-size: 12px;
+      color: var(--text-dim);
+      line-height: 1.55;
+    }
+
+    /* ========= 催化劑時間軸 ========= */
+    .catalyst-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .catalyst-list li {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 14px;
+      padding: 10px 0;
+      border-bottom: 1px dashed #E2E5EA;
+      align-items: baseline;
+    }
+
+    .catalyst-list li:last-child {
+      border-bottom: none;
+    }
+
+    .catalyst-list .ts {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .catalyst-list .desc {
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /* ========= Footer ========= */
+    footer.report-foot {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      text-align: left;
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ========= Print ========= */
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        padding: 24mm 22mm;
+        max-width: 100%;
+        box-shadow: none;
+      }
+
+      h2.section {
+        page-break-after: avoid;
+      }
+
+      table,
+      tr,
+      td,
+      th {
+        page-break-inside: avoid;
+      }
+    }
+
+    /* === RWD: tablet & mobile === */
+    @media (max-width: 760px) {
+      .page {
+        padding: 24px 18px;
+        margin: 12px auto;
+      }
+
+      .banner {
+        padding: 22px 20px;
+      }
+
+      .banner h1 {
+        font-size: 22px;
+        line-height: 1.35;
+      }
+
+      .banner .subtitle {
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      .card {
+        padding: 18px 16px;
+      }
+
+      h2.section {
+        font-size: 17px;
+        margin: 28px 0 14px;
+      }
+
+      h3.sub {
+        font-size: 13px;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      table.trend {
+        font-size: 12px;
+      }
+
+      .spotlight-card {
+        padding: 18px 16px;
+      }
+
+      .spotlight-card .spotlight-title {
+        font-size: 16px;
+      }
+
+      .spotlight-card dl {
+        font-size: 12.5px;
+      }
+
+      .ladder-step {
+        flex: 1 1 calc(50% - 12px);
+        min-width: 0;
+      }
+
+      .catalyst-list li {
+        grid-template-columns: 90px 1fr;
+        gap: 10px;
+      }
+
+      .catalyst-list .ts {
+        font-size: 11.5px;
+      }
+
+      .catalyst-list .desc {
+        font-size: 12.5px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        font-size: 13px;
+      }
+
+      .page {
+        padding: 16px 12px;
+        margin: 8px auto;
+      }
+
+      .banner {
+        padding: 18px 14px;
+        border-radius: 4px;
+        margin-bottom: 18px;
+      }
+
+      .banner h1 {
+        font-size: 18px;
+        letter-spacing: 0.2px;
+      }
+
+      .banner .subtitle {
+        font-size: 11px;
+        margin-top: 8px;
+      }
+
+      .intro {
+        font-size: 13px;
+        line-height: 1.75;
+      }
+
+      h2.section {
+        font-size: 15.5px;
+        padding-left: 10px;
+        margin: 24px 0 12px;
+      }
+
+      h3.sub {
+        font-size: 12.5px;
+        margin: 18px 0 8px;
+      }
+
+      .card {
+        padding: 14px 12px;
+        margin-bottom: 18px;
+        border-radius: 4px;
+      }
+
+      .card.intro-card {
+        padding: 14px 12px;
+      }
+
+      ul {
+        padding-left: 18px;
+      }
+
+      ul li {
+        margin-bottom: 6px;
+        line-height: 1.65;
+      }
+
+      .thesis-card {
+        padding: 16px 14px;
+      }
+
+      .thesis-card .thesis-headline {
+        font-size: 14.5px;
+        line-height: 1.65;
+        margin-bottom: 12px;
+        padding-bottom: 10px;
+      }
+
+      .thesis-card .thesis-grid {
+        grid-template-columns: 1fr;
+        gap: 4px 0;
+      }
+
+      .thesis-card .thesis-grid dt {
+        margin-top: 10px;
+        font-size: 12px;
+      }
+
+      .thesis-card .thesis-grid dt:first-child {
+        margin-top: 0;
+      }
+
+      .thesis-card .thesis-grid dd {
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .thesis-card .thesis-grid dd ul li {
+        padding-left: 12px;
+        margin-bottom: 4px;
+        font-size: 12.5px;
+      }
+
+      .spotlight-card {
+        padding: 14px 12px;
+        margin-bottom: 18px;
+      }
+
+      .spotlight-card .spotlight-title {
+        font-size: 14.5px;
+        padding-bottom: 8px;
+        margin-bottom: 10px;
+      }
+
+      .spotlight-card dl {
+        grid-template-columns: 1fr;
+        gap: 4px 0;
+        font-size: 12.5px;
+      }
+
+      .spotlight-card dt {
+        margin-top: 8px;
+        padding-top: 0;
+      }
+
+      .spotlight-card dt:first-child {
+        margin-top: 0;
+      }
+
+      .spotlight-card dd {
+        line-height: 1.65;
+      }
+
+      .strategy-ladder {
+        gap: 8px;
+        flex-direction: column;
+      }
+
+      .ladder-step {
+        flex: 1 1 auto;
+        width: 100%;
+        padding: 12px 14px;
+      }
+
+      .ladder-step .step-title {
+        font-size: 13px;
+      }
+
+      .ladder-step .step-desc {
+        font-size: 11.5px;
+      }
+
+      .catalyst-list li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 8px 0;
+      }
+
+      .catalyst-list .ts {
+        font-size: 11.5px;
+      }
+
+      .catalyst-list .desc {
+        font-size: 12.5px;
+        line-height: 1.6;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+
+      table.trend {
+        font-size: 11px;
+      }
+
+      thead th {
+        padding: 8px 8px;
+        font-size: 11px;
+      }
+
+      tbody td {
+        padding: 7px 8px;
+        line-height: 1.55;
+      }
+
+      table.trend thead th,
+      table.trend tbody td {
+        padding: 6px 8px;
+      }
+
+      footer.report-foot {
+        font-size: 10.5px;
+        padding-top: 12px;
+        margin-top: 28px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .page {
+        padding: 12px 10px;
+      }
+
+      .banner h1 {
+        font-size: 16px;
+      }
+
+      .thesis-card .thesis-headline {
+        font-size: 13.5px;
+      }
+
+      h2.section {
+        font-size: 14.5px;
+      }
+    }
+
+    /* === EQUITY MEMO 一頁式儀表板定版 === */
+    .page {
+      max-width: 1100px;
+    }
+
+    .card.core {
+      background: #FFF8E1;
+      border-left: 4px solid #F59E0B;
+    }
+
+    .src-cat {
+      display: block;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    .src-cat:first-child {
+      margin-top: 0;
+    }
+
+    .src-li {
+      display: flex;
+      line-height: 1.7;
+    }
+
+    .src-bul {
+      flex: 0 0 1.2em;
+    }
+
+    .src-txt {
+      flex: 1;
+      min-width: 0;
+    }
+
+    @media (max-width:760px) {
+
+      .card table,
+      .memo-tbl table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
+    /* ===== 精簡版視覺工具組 ===== */
+    .exec {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-left: 5px solid #1E3A5F;
+      border-radius: 10px;
+      padding: 16px 20px;
+    }
+
+    .exec .thesis {
+      font-size: 16.5px;
+      font-weight: 700;
+      line-height: 1.75;
+      color: #1E293B;
+      margin: 0;
+    }
+
+    /* 生命週期定位條 */
+    .lifecycle {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 14px 0 4px;
+    }
+
+    .lifecycle .stage {
+      font-size: 12px;
+      padding: 4px 11px;
+      border-radius: 14px;
+      background: #EEF2F7;
+      color: #7A8699;
+    }
+
+    .lifecycle .stage.on {
+      background: #1E3A5F;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .lifecycle-note {
+      font-size: 12.5px;
+      color: #64748B;
+      margin: 2px 0 0;
+    }
+
+    /* 關鍵數字卡列 */
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0 4px;
+    }
+
+    .stat {
+      flex: 1 1 130px;
+      background: #fff;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 10px 13px;
+    }
+
+    .stat .v {
+      font-size: 19px;
+      font-weight: 800;
+      color: #1E3A5F;
+      line-height: 1.2;
+    }
+
+    .stat .l {
+      font-size: 12px;
+      color: #64748B;
+      margin-top: 3px;
+    }
+
+    .stat .d {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .up {
+      color: #16A34A;
+    }
+
+    .down {
+      color: #DC2626;
+    }
+
+    .flat {
+      color: #CA8A04;
+    }
+
+    /* 多空對照 */
+    .bb {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 12px 0 4px;
+    }
+
+    .bull {
+      border-left: 4px solid #16A34A;
+      background: #F0FDF4;
+      padding: 11px 15px;
+      border-radius: 6px;
+    }
+
+    .bear {
+      border-left: 4px solid #DC2626;
+      background: #FEF2F2;
+      padding: 11px 15px;
+      border-radius: 6px;
+    }
+
+    .bb h4 {
+      margin: 0 0 6px;
+      font-size: 13px;
+      letter-spacing: .5px;
+    }
+
+    .bull h4 {
+      color: #15803D;
+    }
+
+    .bear h4 {
+      color: #B91C1C;
+    }
+
+    .bb p {
+      margin: 0;
+      font-size: 13.5px;
+      line-height: 1.65;
+    }
+
+    /* 五大邏輯：方向 chip */
+    .dir {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 11px;
+      border-radius: 12px;
+      margin-left: 8px;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    .dir.tail {
+      background: #DCFCE7;
+      color: #15803D;
+    }
+
+    .dir.head {
+      background: #FEE2E2;
+      color: #B91C1C;
+    }
+
+    .dir.neutral {
+      background: #FEF9C3;
+      color: #A16207;
+    }
+
+    .dir.mixed {
+      background: #E0E7FF;
+      color: #4338CA;
+    }
+
+    /* 一句判讀 */
+    .verdict {
+      font-weight: 700;
+      color: #0F2540;
+      margin: 4px 0 8px;
+      font-size: 14.5px;
+    }
+
+    /* 觀察清單 */
+    .watch {
+      list-style: none;
+      padding: 0;
+      margin: 6px 0 2px;
+    }
+
+    .watch li {
+      padding: 9px 0 9px 30px;
+      border-bottom: 1px dashed #E2E8F0;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .watch li:last-child {
+      border-bottom: none;
+    }
+
+    .watch li::before {
+      content: "▢";
+      position: absolute;
+      left: 5px;
+      top: 8px;
+      color: #1E3A5F;
+      font-size: 15px;
+    }
+
+    /* tag chips */
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      background: #EEF2F7;
+      color: #475569;
+      padding: 2px 9px;
+      border-radius: 10px;
+      margin: 2px 5px 2px 0;
+    }
+
+    @media (max-width:640px) {
+      .bb {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        flex-basis: 44%;
+      }
+    }
+
+    /* ===== EQUITY MEMO 一頁式儀表板 ===== */
+    .page.crux {
+      max-width: 1000px;
+    }
+
+    .memo-top {
+      border-top: 4px solid #E8853B;
+      background: #fff;
+      border-bottom: 1px solid #E2E8F0;
+      padding: 14px 0 13px;
+      margin: -8px 0 16px;
+    }
+
+    .memo-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .memo-label {
+      font-size: 10.5px;
+      letter-spacing: 2px;
+      color: #94A3B8;
+      font-weight: 700;
+    }
+
+    /* 回首頁連結：固定指回公開網站 invest_report 根目錄的 index.html。
+       報告在公開網站的路徑固定是 simple-analysis/{檔名}.html，所以相對路徑一律 ../index.html，不用依個股調整。 */
+    .home-link {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--navy);
+      text-decoration: none;
+      margin-bottom: 6px;
+    }
+
+    .home-link:hover {
+      color: #E8853B;
+    }
+
+    @media print {
+      .home-link {
+        display: none;
+      }
+    }
+
+    .memo-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #15233B;
+      margin: 5px 0 5px;
+      line-height: 1.3;
+    }
+
+    .memo-code {
+      color: #E8853B;
+      font-size: 17px;
+      font-weight: 800;
+      margin-left: 5px;
+    }
+
+    .memo-sub {
+      font-size: 12px;
+      color: #64748B;
+      line-height: 1.55;
+    }
+
+    .memo-hero {
+      text-align: right;
+      flex: 0 0 auto;
+      min-width: 148px;
+      max-width: 260px;
+      overflow-wrap: break-word;
+    }
+
+    .memo-hero-v {
+      font-size: 38px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .memo-hero-v.pos {
+      color: #15803D;
+    }
+
+    .memo-hero-v.neg {
+      color: #DC2626;
+    }
+
+    .memo-hero-l {
+      font-size: 10.5px;
+      color: #64748B;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    .memo-hero-l2 {
+      font-size: 11.5px;
+      color: #1F3A5F;
+      font-weight: 700;
+      margin-top: 3px;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+
+    /* 論述段 */
+    .memo-thesis {
+      background: #F1F5F9;
+      border-radius: 8px;
+      padding: 13px 18px;
+      font-size: 13.5px;
+      line-height: 1.72;
+      color: #1E293B;
+      margin: 0 0 16px;
+    }
+
+    .memo-thesis b {
+      color: #15233B;
+    }
+
+    .memo-thesis .g {
+      color: #15803D;
+      font-weight: 700;
+    }
+
+    .memo-thesis .r {
+      color: #DC2626;
+      font-weight: 700;
+    }
+
+    /* KPI 6 卡 */
+    .kpi {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 9px;
+      margin: 0 0 18px;
+    }
+
+    .kpi-c {
+      background: #fff;
+      border: 1px solid #E2E8F0;
+      border-top: 3px solid #94A3B8;
+      border-radius: 7px;
+      padding: 11px 8px;
+      text-align: center;
+    }
+
+    .kpi-c.pos {
+      border-top-color: #16A34A;
+    }
+
+    .kpi-c.neg {
+      border-top-color: #DC2626;
+    }
+
+    .kpi-c.warn {
+      border-top-color: #E8853B;
+    }
+
+    .kpi-v {
+      font-size: 18px;
+      font-weight: 800;
+      color: #1F3A5F;
+      line-height: 1.15;
+    }
+
+    .kpi-c.pos .kpi-v,
+    .kpi-v.pos {
+      color: #15803D;
+    }
+
+    .kpi-c.neg .kpi-v,
+    .kpi-v.neg {
+      color: #DC2626;
+    }
+
+    .kpi-c.warn .kpi-v,
+    .kpi-v.warn {
+      color: #C2660C;
+    }
+
+    .kpi-l {
+      font-size: 10.5px;
+      color: #64748B;
+      margin-top: 5px;
+      line-height: 1.4;
+    }
+
+    /* 區段標頭 */
+    .memo-sec {
+      margin: 0 0 17px;
+    }
+
+    .memo-h {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #1F3A5F;
+      border-left: 4px solid #1F3A5F;
+      padding-left: 9px;
+      margin: 0 0 11px;
+    }
+
+    .memo-h span {
+      color: #94A3B8;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      margin-left: 7px;
+    }
+
+    /* 三大支柱 */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .pillar {
+      border: 1px solid #E2E8F0;
+      border-top: 3px solid #1F3A5F;
+      border-radius: 7px;
+      padding: 13px 15px;
+      background: #fff;
+    }
+
+    .pillar .p-h {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #15233B;
+    }
+
+    .pillar .p-sub {
+      font-size: 9.5px;
+      letter-spacing: 1px;
+      color: #94A3B8;
+      font-weight: 700;
+      margin-top: 3px;
+    }
+
+    .pillar .p-key {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: #15803D;
+      margin: 9px 0 7px;
+    }
+
+    .pillar ul {
+      margin: 0;
+      padding-left: 17px;
+    }
+
+    .pillar li {
+      font-size: 12.5px;
+      line-height: 1.65;
+      color: #334155;
+    }
+
+    /* 雙表並排 */
+    .memo-tables {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .memo-tbl table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+
+    .memo-tbl th,
+    .memo-tbl td {
+      border: 1px solid #E2E8F0;
+      padding: 5px 8px;
+      text-align: right;
+    }
+
+    .memo-tbl th:first-child,
+    .memo-tbl td:first-child {
+      text-align: left;
+    }
+
+    .memo-tbl thead th {
+      background: #EDEEF1;
+      color: #1F3A5F;
+      font-weight: 700;
+    }
+
+    .memo-tbl tbody tr:last-child td {
+      border-bottom: 1px solid #E2E8F0;
+    }
+
+    .tbl-note {
+      font-size: 11px;
+      color: #94A3B8;
+      margin: 6px 0 0;
+      line-height: 1.5;
+    }
+
+    /* KEY WATCH 深藍帶 */
+    .keywatch {
+      background: #1F3A5F;
+      color: #E8EEF6;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 0 0 16px;
+    }
+
+    .keywatch .kw-h {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
+      margin: 0 0 10px;
+    }
+
+    .keywatch .kw-h span {
+      color: #9DB2CE;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      margin-left: 7px;
+    }
+
+    .kw-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px 22px;
+    }
+
+    .kw-grid div {
+      font-size: 12.5px;
+      line-height: 1.6;
+      padding-left: 17px;
+      position: relative;
+    }
+
+    .kw-grid div::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: #E8853B;
+    }
+
+    /* 催化 / 風險 */
+    .catrisk {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 0 0 16px;
+    }
+
+    .cat,
+    .risk {
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 12px 16px;
+    }
+
+    .cat {
+      border-top: 3px solid #15803D;
+    }
+
+    .risk {
+      border-top: 3px solid #DC2626;
+    }
+
+    .cat-h {
+      font-size: 13px;
+      font-weight: 800;
+      color: #15803D;
+      margin: 0 0 9px;
+      letter-spacing: .5px;
+    }
+
+    .risk-h {
+      font-size: 13px;
+      font-weight: 800;
+      color: #B91C1C;
+      margin: 0 0 9px;
+      letter-spacing: .5px;
+    }
+
+    .cat ul,
+    .risk ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .cat li,
+    .risk li {
+      font-size: 12.5px;
+      line-height: 1.7;
+      color: #334155;
+    }
+
+    .cat .st {
+      font-size: 10.5px;
+      color: #94A3B8;
+    }
+
+    /* footer */
+    .memo-foot {
+      font-size: 10.5px;
+      color: #94A3B8;
+      line-height: 1.75;
+      border-top: 1px solid #E2E8F0;
+      padding-top: 11px;
+      margin-top: 4px;
+    }
+
+    .memo-foot b {
+      color: #64748B;
+    }
+
+    @media (max-width:760px) {
+      .kpi {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .memo-tables {
+        grid-template-columns: 1fr;
+      }
+
+      .catrisk {
+        grid-template-columns: 1fr;
+      }
+
+      .kw-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .memo-head {
+        flex-direction: column;
+      }
+
+      .memo-hero {
+        text-align: left;
+      }
+    }
+  </style>
+  <script>try { if (window.self !== window.top || location.search.indexOf("embed") > -1) { var s = document.createElement("style"); s.textContent = ".docnav{display:none!important}"; document.head.appendChild(s); } } catch (e) { }</script>
+</head>
+
+<body>
+
+  <div class="page crux">
+
+    <!-- ===================================================
+       頂部標頭
+       ==================================================== -->
+    <div class="memo-top">
+      <div class="memo-head">
+        <div class="memo-headL">
+          <!-- 回首頁：固定內容，不是 placeholder，產報告時逐字保留（相對路徑說明見 CSS .home-link 註解） -->
+          <a class="home-link" href="../index.html">← 回首頁</a>
+          <div class="memo-label">EQUITY MEMO · INVESTMENT IDEA</div>
+          <!-- 聯發科 = 公司名稱，例如：日電貿 -->
+          <!-- 聯發科 · 全球手機 SoC 龍頭轉型智慧邊緣 · AI ASIC 4Q26 量產驅動再估值 = 標題描述，例如：日電貿 · 被動元件專業通路代理 · AI 伺服器高階 MLCC 量價組合三軸受惠 -->
+          <!-- 2454 = 股票代號，例如：3090.TW -->
+          <h1 class="memo-title">聯發科 · 全球手機 SoC 龍頭轉型智慧邊緣 · AI ASIC 4Q26 量產驅動再估值 <span class="memo-code">2454.TW</span></h1>
+          <!-- 半導體 IC 設計 · 智慧邊緣平台 53%（網通/運算/車用/TV/資料中心 ASIC）· 手機 SoC 41% · 電源 IC 6%（2Q26）· 主要客戶：中國安卓 OEM、三星、Google（雲端 ASIC）、NVIDIA（RTX Spark PC）· 成長中期再啟動（手機成熟 → AI ASIC 二次曲線） = 副標描述，例如：電子通路／被動元件代理 · 陶瓷電容45.44%／固態26.31% -->
+          <div class="memo-sub">半導體 IC 設計 · 智慧邊緣平台 53%（網通/運算/車用/TV/資料中心 ASIC）· 手機 SoC 41% · 電源 IC 6%（2Q26）· 主要客戶：中國安卓 OEM、三星、Google（雲端 ASIC）、NVIDIA（RTX Spark PC）· 成長中期再啟動（手機成熟 → AI ASIC 二次曲線）</div>
+        </div>
+        <div class="memo-hero">
+          <!-- 66.16 = 最新 EPS 數值，正數用 pos，負數用 neg -->
+          <div class="memo-hero-v pos">66.16</div>
+          <!-- 2025 = EPS 年份，例如：2025 -->
+          <!-- 2026-09 = 報告截止月份，例如：2026-06 -->
+          <div class="memo-hero-l">2025 EPS（元）· 截至 2026-09</div>
+          <!-- 2024 EPS 66.92｜2026Q2 EPS 15.28（YoY −12.7%）｜2025 營收 5,959.7 億 YoY +12.3% 創高、EPS 66.16 微降 1.1% = 歷史對比與最新季資料，例如：2024 EPS 4.52｜2026Q1 EPS 1.70｜2025 營收 +29.54% 創高 -->
+          <div class="memo-hero-l2">2024 EPS 66.92｜2026Q2 EPS 15.28（YoY −12.7%）｜2025 營收 5,959.7 億 YoY +12.3% 創高、EPS 66.16 微降 1.1%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================
+       核心投資論述段
+       <b>聯發科</b>是全球出貨量最大的手機 SoC 供應商（2025 營收 5,959.7 億、YoY +12.3% 創高），正從手機週期股轉型為<b>智慧邊緣 + AI ASIC</b> 成長股：2Q26 智慧邊緣平台營收 YoY +26%、占比 53% <span class="g">首度超越手機</span>，首顆 AI ASIC 4Q26 量產，2026 資料中心營收目標 >US$20 億、2027 目標取得 US$800 億市場 15–20% 份額，市場共識 2027E EPS 130 元（約倍增）。核心張力在於<span class="r">本業仍在衰退</span>——2Q26 手機營收 YoY −20%、毛利率 46.2%（−2.9pp）、EPS 15.28（−12.7%），近四季 EPS 60.68 對應靜態 PE 74x，股價 2026 YTD +171% 已提前反映 ASIC 兌現。成敗關鍵為 4Q26 ASIC 量產放量與毛利率守住 46%；管理層近兩季指引 6/6 達標、2Q26 營收超標指引上緣 2%，<span class="g">言行一致性高</span>。 = 完整論述，使用 <b>粗體</b> / <span class="g">正面綠色</span> / <span class="r">負面紅色</span>
+       ==================================================== -->
+    <p class="memo-thesis"><b>聯發科</b>是全球出貨量最大的手機 SoC 供應商（2025 營收 5,959.7 億、YoY +12.3% 創高），正從手機週期股轉型為<b>智慧邊緣 + AI ASIC</b> 成長股：2Q26 智慧邊緣平台營收 YoY +26%、占比 53% <span class="g">首度超越手機</span>，首顆 AI ASIC 4Q26 量產，2026 資料中心營收目標 >US$20 億、2027 目標取得 US$800 億市場 15–20% 份額，市場共識 2027E EPS 130 元（約倍增）。核心張力在於<span class="r">本業仍在衰退</span>——2Q26 手機營收 YoY −20%、毛利率 46.2%（−2.9pp）、EPS 15.28（−12.7%），近四季 EPS 60.68 對應靜態 PE 74x，股價 2026 YTD +171% 已提前反映 ASIC 兌現。成敗關鍵為 4Q26 ASIC 量產放量與毛利率守住 46%；管理層近兩季指引 6/6 達標、2Q26 營收超標指引上緣 2%，<span class="g">言行一致性高</span>。</p>
+
+    <!-- ===================================================
+       KPI 六宮格
+       class: pos=綠邊（正面）、neg=紅邊（負面）、warn=橘邊（警示）、無 class=灰邊（中性）
+       ==================================================== -->
+    <div class="kpi">
+      <div class="kpi-c pos">
+        <div class="kpi-v">5,959.7億</div>
+        <div class="kpi-l">2025 營收<br>YoY +12.3% 創歷史新高</div>
+      </div>
+      <div class="kpi-c neg">
+        <div class="kpi-v">46.2%</div>
+        <div class="kpi-l">2026Q2 毛利率<br>YoY −2.9pp，連三季落在 46% 區間</div>
+      </div>
+      <div class="kpi-c neg">
+        <div class="kpi-v">15.0%</div>
+        <div class="kpi-l">2026Q2 營益率<br>YoY −4.5pp，營業利益 YoY −22.2%</div>
+      </div>
+      <div class="kpi-c pos">
+        <div class="kpi-v">53%</div>
+        <div class="kpi-l">2Q26 智慧邊緣平台占比<br>YoY +26%，首度超越手機（41%）</div>
+      </div>
+      <div class="kpi-c warn">
+        <div class="kpi-v">74x</div>
+        <div class="kpi-l">靜態 PE（4,500 / 近四季 EPS 60.68）<br>2026E 66.5x、2027E 34.5x</div>
+      </div>
+      <div class="kpi-c warn">
+        <div class="kpi-v">984億</div>
+        <div class="kpi-l">2Q26 存貨 YoY +77%<br>DIO 102 天（去年同期 66 天）</div>
+      </div>
+    </div>
+
+    <!-- ===================================================
+       三大勝負手（成長 / 護城河 / 風險）
+       ==================================================== -->
+    <div class="memo-sec">
+      <!-- 三大勝負手 = 標題，例如：三大勝負手 -->
+      <div class="memo-h">三大勝負手 <span>KEY SWING FACTORS</span></div>
+      <div class="pillars">
+
+        <!-- 支柱一：成長驅動 -->
+        <div class="pillar">
+          <!-- AI ASIC + 智慧邊緣雙引擎 = 例如：AI 量價組合三軸 -->
+          <div class="p-h">AI ASIC + 智慧邊緣雙引擎</div>
+          <div class="p-sub">GROWTH</div>
+          <!-- 2Q26 智慧邊緣占比 53% 首超手機；2026 資料中心 >US$20 億 → 2027 目標 US$120–160 億 = 一句核心數字，例如：2026Q1 三率創高 -->
+          <div class="p-key">2Q26 智慧邊緣占比 53% 首超手機；2026 資料中心 >US$20 億 → 2027 目標 US$120–160 億</div>
+          <ul>
+            <li>智慧邊緣平台 2Q26 營收 QoQ +19%、YoY +26%，占比 53% 首度超越手機；排除資料中心 ASIC 貢獻仍維持雙位數年成長（Wi-Fi 8 網通、運算、車用 Dimensity Auto、TV SoC 單價提升）。</li>
+            <li>AI ASIC 首案 4Q26 量產，2026 資料中心營收目標由 >US$10 億上修至 >US$20 億（約占營收 10%），2027 目標在 US$800 億市場取得 15–20% 份額（隱含 US$120–160 億）；第二顆先進封裝 ASIC 2028 放量；已核准 US$50 億彈性信貸額度備戰。</li>
+            <li>Factset 共識（25 位分析師，7/28）EPS 2026E 67.67 → 2027E 130.44 → 2028E 259.86，隱含 2025–2028 CAGR 約 58%；NVIDIA RTX Spark Windows PC 處理器 2026 年底假期上市，開啟 Windows on Arm 新賽道。</li>
+          </ul>
+        </div>
+
+        <!-- 支柱二：護城河 / 競爭優勢 -->
+        <div class="pillar">
+          <div class="p-h">規模 + IP + 客戶黏著</div>
+          <div class="p-sub">MOAT</div>
+          <div class="p-key">手機 SoC 出貨量全球第一；2025 研發費用 1,483 億（占營收 24.9%）</div>
+          <ul>
+            <li>經濟規模：2025 營收 5,960 億、研發 1,483 億（占 24.9%），全球僅高通可比；具 2nm 先進製程首發能力（Dimensity 9600 Pro 9/15 發表），製程領先轉化為性能與成本優勢。</li>
+            <li>專利與轉換成本：5G 數據機、多媒體 SoC、Wi-Fi/藍牙連網完整 IP 組合，SoC design-in 週期 2–3 年，客戶（中國安卓 OEM、三星、Google）轉換成本高；ASIC 業務再利用 SerDes、先進封裝、CPU 子系統 IP，與 NVIDIA NVLink Fusion 生態綁定。</li>
+            <li>弱點：ASIC 屬客製化服務業務，毛利率低於自有產品且客戶高度集中（單一雲端客戶專案主導），面對博通、Marvell、世芯競爭；手機端受高通與中國 OEM 自研晶片壓力，訂價權有限、毛利率由 49.6%（2024）降至 46% 區間。</li>
+          </ul>
+        </div>
+
+        <!-- 支柱三：主要風險 -->
+        <div class="pillar">
+          <div class="p-h">本業衰退 vs 估值前跑</div>
+          <div class="p-sub">RISK</div>
+          <div class="p-key">近四季 EPS 60.68 → 靜態 PE 74x，股價 2026 YTD +171%</div>
+          <ul>
+            <li>獲利下滑：2Q26 營業利益 228.7 億 YoY −22.2%、營益率 15.0%（YoY −4.5pp）、EPS 15.28（YoY −12.7%）；1H26 EPS 30.45 YoY −15.3%，2026E EPS 67.67 僅約與 2025 持平。</li>
+            <li>估值透支：4,500 元對應靜態 PE 74x、2026E PE 66.5x、2027E PE 34.5x；PEG 依 G 口徑 1.15–1.65（合理偏高至昂貴）；52 週區間 1,415–4,970 元，市值約 7.2 兆，任何 ASIC 時程延誤都可能觸發 PE 收斂。</li>
+            <li>營運品質：存貨 984 億（YoY +77%、DIO 102 天 vs 66 天），1H26 營業現金流僅 66 億 vs 淨利 490 億（轉換率 13%）；2026 全球智慧手機出貨預估 −16%，記憶體漲價壓縮客戶 BOM，手機（占比 41%）仍是最大單一業務。</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================================================
+       損益軌跡（雙表並排：年度 ＋ 近 5 季）
+       ==================================================== -->
+    <div class="memo-sec">
+      <!-- FY2023 → 26Q2 = 期間描述，例如：FY2021 → 2026Q1 -->
+      <div class="memo-h">損益軌跡 <span>FY2023 → 26Q2</span></div>
+      <div class="memo-tables">
+
+        <!-- 年度損益表 -->
+        <div class="memo-tbl">
+          <table>
+            <thead>
+              <tr>
+                <th>項目</th>
+                <!-- 2023 2024 2025 = 年度欄位，例如：2023 / 2024 / 2025 -->
+                <!-- 26Q2 = 最新季別，例如：26Q1 -->
+                <th>2023</th>
+                <th>2024</th>
+                <th>2025</th>
+                <th>26Q2</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>營收(億)</td>
+                <td>4,334.5</td>
+                <td>5,305.9</td>
+                <td>5,959.7</td>
+                <td>1,521.8</td>
+              </tr>
+              <tr>
+                <td>毛利率</td>
+                <td>47.8%</td>
+                <td>49.6%</td>
+                <td>47.5%</td>
+                <td>46.2%</td>
+              </tr>
+              <tr>
+                <td>營益率</td>
+                <td>16.6%</td>
+                <td>19.3%</td>
+                <td>17.4%</td>
+                <td>15.0%</td>
+              </tr>
+              <tr>
+                <td>EPS(元)</td>
+                <td>48.51</td>
+                <td>66.92</td>
+                <td>66.16</td>
+                <td>15.28</td>
+              </tr>
+              <tr>
+                <td>ROE</td>
+                <td>19.1%</td>
+                <td>27.8%</td>
+                <td>26.4%</td>
+                <td>—</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- 2025 營收創高但 EPS 微降 1.1%：毛利率 −2.1pp、營業費用 +11.6%（研發 1,483 億）。指引 vs 實際：1Q26 營收指引 1,412–1,502 億 → 實際 1,491.5 億（達標，落在上半部）；2Q26 指引 1,402–1,492 億 → 實際 1,521.8 億（超標上緣 +2.0%）；兩季毛利率 46.3%/46.2% 均落在 46%±1.5% 內。來源出入：2025 營益率官方簡報 17.4% vs 玩股網 16.3%（玩股網季度資料加總亦為 17.4%，採官方）；ROE 取自豐存股，玩股網 2024 ROE 19.0% 與淨利 +39% 不符未採。 = 年度表補充說明 -->
+          <p class="tbl-note">2025 營收創高但 EPS 微降 1.1%：毛利率 −2.1pp、營業費用 +11.6%（研發 1,483 億）。指引 vs 實際：1Q26 營收指引 1,412–1,502 億 → 實際 1,491.5 億（達標，落在上半部）；2Q26 指引 1,402–1,492 億 → 實際 1,521.8 億（超標上緣 +2.0%）；兩季毛利率 46.3%/46.2% 均落在 46%±1.5% 內。來源出入：2025 營益率官方簡報 17.4% vs 玩股網 16.3%（玩股網季度資料加總亦為 17.4%，採官方）；ROE 取自豐存股，玩股網 2024 ROE 19.0% 與淨利 +39% 不符未採。</p>
+        </div>
+
+        <!-- 近 5 季損益表 -->
+        <div class="memo-tbl">
+          <table>
+            <thead>
+              <tr>
+                <th>季別</th>
+                <th>營收(億)</th>
+                <th>毛利率</th>
+                <th>EPS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 2025Q2 ~ 2026Q2 = 季別，例如：2025Q1 -->
+              <tr>
+                <td>2025Q2</td>
+                <td>1,503.7</td>
+                <td>49.1%</td>
+                <td>17.50</td>
+              </tr>
+              <tr>
+                <td>2025Q3</td>
+                <td>1,421.0</td>
+                <td>46.5%</td>
+                <td>15.84</td>
+              </tr>
+              <tr>
+                <td>2025Q4</td>
+                <td>1,501.9</td>
+                <td>46.1%</td>
+                <td>14.39</td>
+              </tr>
+              <tr>
+                <td>2026Q1</td>
+                <td>1,491.5</td>
+                <td>46.3%</td>
+                <td>15.17</td>
+              </tr>
+              <tr>
+                <td>2026Q2</td>
+                <td>1,521.8</td>
+                <td>46.2%</td>
+                <td>15.28</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- 2025Q2 毛利率 49.1% 為近期高點（含一次性收入認列，使 2Q26 YoY 基期偏高）；其後手機需求轉弱與產品組合變化使毛利率降至 46% 區間並連三季持穩（46.1%–46.3%），與 46%±1.5% 指引一致。2025Q3 營收 1,421 億為低點（手機 QoQ 下滑）；2026Q2 營收 1,521.8 億超越指引上緣 1,492 億約 2%，主因智慧邊緣平台 QoQ +19%、手機 QoQ −14%。EPS 由 2025Q1 高點 18.43 一路降至 2025Q4 14.39，2026 上半年連兩季回升至 15.28，但 YoY 仍 −12.7%。3Q26 指引 1,522–1,598 億（YoY +7–12%），7–8 月營收已達 1,126.5 億、8 月單月 641.8 億 YoY +44%。 = 季度表補充說明 -->
+          <p class="tbl-note">2025Q2 毛利率 49.1% 為近期高點（含一次性收入認列，使 2Q26 YoY 基期偏高）；其後手機需求轉弱與產品組合變化使毛利率降至 46% 區間並連三季持穩（46.1%–46.3%），與 46%±1.5% 指引一致。2025Q3 營收 1,421 億為低點（手機 QoQ 下滑）；2026Q2 營收 1,521.8 億超越指引上緣 1,492 億約 2%，主因智慧邊緣平台 QoQ +19%、手機 QoQ −14%。EPS 由 2025Q1 高點 18.43 一路降至 2025Q4 14.39，2026 上半年連兩季回升至 15.28，但 YoY 仍 −12.7%。3Q26 指引 1,522–1,598 億（YoY +7–12%），7–8 月營收已達 1,126.5 億、8 月單月 641.8 億 YoY +44%。</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================================================
+       關鍵觀察點（KEY WATCH 深藍帶）
+       最多 6 條；不足時刪除多餘的 <div>
+       ==================================================== -->
+    <div class="keywatch">
+      <div class="kw-h">KEY WATCH <span>關鍵觀察點</span></div>
+      <div class="kw-grid">
+        <div>4Q26 首顆 AI ASIC 量產出貨進度與 2026 資料中心營收能否達 >US$20 億（約新台幣 640 億，多數需在下半年兌現），這是 2027E EPS 130 元（YoY +93%）的前提，也是目前 74x 靜態 PE 的唯一支撐。</div>
+        <div>毛利率能否守住 46%±1.5% 指引：2Q26 46.2%（YoY −2.9pp），ASIC 占比提升將持續稀釋毛利率，需觀察營益率是否止跌於 15% 並隨營收規模回升（研發費用率 25.9% 為主要壓力）。</div>
+        <div>手機業務底部：2Q26 手機營收 YoY −20%、占比降至 41%，2026 全球智慧手機出貨預估 −16%，記憶體成本上漲壓縮 BOM；觀察 2nm Dimensity 9600 Pro（9/15 發表、3Q 末出貨）能否讓 3Q 手機營收由「持平至中個位數下滑」在 4Q 轉正。</div>
+        <div>存貨與現金轉換：2Q26 存貨 984 億（YoY +77%、DIO 102 天 vs 66 天），1H26 營業現金流僅 66 億 vs 淨利 490 億；若 4Q26 ASIC 與 2nm 旗艦出貨未能消化存貨，將有跌價損失與現金流惡化風險。</div>
+        <div>近 2 場已驗證法說會指引達成率 6/6：1Q26 營收 1,491.5 億（指引 1,412–1,502 億上半部，達標）、毛利率 46.3%（達標 +0.3pp）、費用率 30.9%（達標）；2Q26 營收 1,521.8 億（超標指引上緣 2.0%）、毛利率 46.2%（達標）、費用率 31.2%（達標）；3Q26 指引 1,522–1,598 億待驗證（7–8 月已達 1,126.5 億、占下緣 74%），全年美元營收指引由「中至高個位數」上修至「高個位數」；管理層可信度：高。</div>
+        <!-- <div>{{WATCH6}}</div> -->
+      </div>
+    </div>
+
+    <!-- ===================================================
+       催化劑 ＋ 主要風險
+       催化劑條目格式：文字後可加 <span class="st">（進行中）</span> 等狀態標籤
+       ==================================================== -->
+    <div class="catrisk">
+      <div class="cat">
+        <div class="cat-h">催化劑 CATALYSTS</div>
+        <ul>
+          <li>首顆 AI ASIC（雲端客戶專案）4Q26 進入量產，2026 資料中心營收目標由 >US$10 億上修至 >US$20 億，2027 目標在 US$800 億市場取得 15–20% 份額（US$120–160 億），第二顆先進封裝 ASIC 2028 放量<span class="st">（進行中）</span></li>
+          <li>NVIDIA 合作全面深化：RTX Spark Windows 11 PC 處理器 2026 年底假期上市（6/1 宣布）；8/31 宣布採用 NVLink Fusion 平台共建雲端 AI 工廠、邊緣 AI 與車用平台；市場傳 NVIDIA 以 US$35 億認購聯發科 ECB（金額待確認）<span class="st">（待驗證）</span></li>
+          <li>3Q26 營收指引 1,522–1,598 億（YoY +7–12%）：8 月營收 641.8 億 MoM +32%、YoY +44%，7–8 月合計 1,126.5 億已達指引下緣 74%，Dimensity 9600 Pro 2nm 旗艦 9/15 發表、3Q 末出貨帶動 4Q 手機 ASP 回升<span class="st">（待驗證）</span></li>
+          <li>智慧邊緣平台結構性成長：2Q26 YoY +26%、占比 53% 首超手機，排除 ASIC 仍雙位數成長；Wi-Fi 8 網通、車用（Dimensity Auto、FOXTRON 合作、與 NVIDIA GPU 整合座艙）、TV SoC 單價提升與微軟合作 MicroLED 主動光纜等新產品線陸續量產<span class="st">（結構性）</span></li>
+          <li>2026 全年美元營收指引由 4 月「中至高個位數（4–9%）」上修至 7 月「高個位數」成長並創歷史新高；外資目標價全面上修（高盛 7,000 元買進、大摩/花旗/BofA/UBS 同步調升，Factset 共識目標價 5,300 元）<span class="st">（已兌現）</span></li>
+        </ul>
+      </div>
+      <div class="risk">
+        <div class="risk-h">主要風險 KEY RISKS</div>
+        <ul>
+          <li>手機 SoC 衰退：2Q26 手機營收 YoY −20%、QoQ −14%，2026 全球智慧手機出貨預估 −16%，手機仍占營收 41%，3Q 指引僅「持平至中個位數下滑」；中國安卓 OEM 自研與高通競爭壓縮訂價權。</li>
+          <li>毛利率結構性下滑：2Q26 毛利率 46.2%（vs 2Q25 49.1%，−2.9pp）、營益率 15.0%（−4.5pp）、營業利益 YoY −22.2%；ASIC 占比提升將持續稀釋毛利率，指引僅 46%±1.5%，營益率含金量已落至框架「低」區（10–20%）。</li>
+          <li>估值風險：靜態 PE 74x、2026E PE 66.5x，股價 2026 YTD +171%（52 週 1,415 → 4,970 元），市值約 7.2 兆；2027E EPS 130 元需 YoY +93%，若 4Q26 ASIC 量產延後或共識下修，PE 由 74x 收斂至 40x 即對應 −45% 空間。</li>
+          <li>ASIC 客戶集中與競爭：資料中心營收高度倚賴單一雲端客戶專案，面對博通、Marvell、世芯競爭與 CSP 自研/轉單風險；AI 資本支出週期波動大，高盛 2027 ASIC 占比 48% 的預估對單一專案敏感度極高。</li>
+          <li>存貨與盈餘品質：存貨 984 億（YoY +77%、DIO 102 天 vs 66 天），1Q26 營業現金流 −176.6 億、1H26 合計僅 66 億（淨利 490 億的 13%），應收帳款 792.5 億；若需求不如預期恐有存貨跌價損失。</li>
+          <li>地緣政治與匯率：主要手機客戶為中國安卓 OEM，受美中出口管制、關稅與 AI 晶片管制影響；營收以美元計價，3Q26 指引假設 USD/TWD 32，新台幣每升值 1 元約影響新台幣營收 3%，2Q26 平均匯率 31.60 已低於指引假設 31.5–32。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===================================================
+       頁腳免責聲明
+       成長中期再啟動（手機 SoC 進入成熟期、智慧邊緣與 AI ASIC 開啟二次成長曲線）；股價週期：多頭上漲（順向波段持有，但 PEG 1.2–1.7 已接近多頭出貨警戒區，需 4Q26 ASIC 量產放量驗證） = 生命週期描述，例如：成長中期（被動元件通路代理、AI 驅動結構性升級）
+       靜態 PE 74x（4,500 / 近四季 EPS 60.68）、2026E 66.5x、2027E 34.5x、2028E 17.3x；PEG 以 2025–2028 共識 CAGR 58% 計為 1.15（合理偏高），以 2025–2027 CAGR 40% 計為 1.65（昂貴）。PEG 適用前提是 3–5 年成長軌跡可預測，但 2027E EPS 倍增仰賴單一雲端客戶 ASIC 專案，G 不確定性高；宜以 2027E PE 30–40x（3,900–5,200 元）為基準區間，Factset 共識 5,300 元、高盛 7,000 元屬樂觀情境。目前 PE 已超出框架 20–40x 常態帶，市場情緒落在「樂觀開心～貪婪興奮」區，主要風險為永久虧損而非錯失機會，採防禦戰略、不追高，回測 2027E PE 30x（約 3,900 元）以下再評估分批佈局。 = 估值提醒
+       深掘自 web 公開資訊 · 非投資建議。 = 資料來源說明
+       ==================================================== -->
+    <div class="memo-foot">
+      <b>估值提醒</b>：靜態 PE 74x（4,500 / 近四季 EPS 60.68）、2026E 66.5x、2027E 34.5x、2028E 17.3x；PEG 以 2025–2028 共識 CAGR 58% 計為 1.15（合理偏高），以 2025–2027 CAGR 40% 計為 1.65（昂貴）。PEG 適用前提是 3–5 年成長軌跡可預測，但 2027E EPS 倍增仰賴單一雲端客戶 ASIC 專案，G 不確定性高；宜以 2027E PE 30–40x（3,900–5,200 元）為基準區間，Factset 共識 5,300 元、高盛 7,000 元屬樂觀情境。目前 PE 已超出框架 20–40x 常態帶，市場情緒落在「樂觀開心～貪婪興奮」區，主要風險為永久虧損而非錯失機會，採防禦戰略、不追高，回測 2027E PE 30x（約 3,900 元）以下再評估分批佈局。｜ <b>生命週期</b>：成長中期再啟動（手機 SoC 進入成熟期、智慧邊緣與 AI ASIC 開啟二次成長曲線）；股價週期：多頭上漲（順向波段持有，但 PEG 1.2–1.7 已接近多頭出貨警戒區，需 4Q26 ASIC 量產放量驗證）。｜ 深掘自 web 公開資訊 · 非投資建議。
+    </div>
+
+  </div><!-- /.page.crux -->
+
+</body>
+
+</html>
