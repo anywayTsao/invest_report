@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>8155 博智電子　投資邏輯深度分析</title>
+  <meta property="og:title" content="8155 博智電子　投資邏輯深度分析">
+  <meta property="og:description" content="博智電子(8155)深度分析：AI伺服器高層板與越南新產能帶動基本面加速成長，惟股價回檔逾三成、技術面尚在打底，估值落於合理價區間下緣，建議試單倉分批布局並嚴設停損。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="8155 博智電子　投資邏輯深度分析">
+  <meta name="twitter:description" content="博智電子(8155)深度分析：AI伺服器高層板與越南新產能帶動基本面加速成長，惟股價回檔逾三成、技術面尚在打底，估值落於合理價區間下緣，建議試單倉分批布局並嚴設停損。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>8155 博智電子 — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：約322元（2026/09/18收盤317.5元，隔日盤中約321-323元，各即時報價網站略有差異） TWD　|　當前 PE：約26-27倍（以近四季EPS約12.45元估算，wantgoo/nStock顯示27.37倍；部分平台因股本/EPS更新時點不同顯示24-37倍區間，需留意資料落差，詳見dataCaveat）　|　52 週區間：約114.5-146.5元（Yahoo股市顯示114.5元，鉅亨網顯示146.5元，來源略有差異） – 480元</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-09-19</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：3 多頭底部</span>
+        <span class="badge">建議戰略：分批進場</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>（資料不足：部分維度資料不足或跨來源不一致，已採最保守/最可驗證數字並於相關欄位註明：(1) 近四季EPS在不同財經網站顯示8.82元、12.45元(逐季加總)、25.44元三種數字，PE相應顯示24-37倍、PB顯示3-5.2倍，差異可能源於近期股本調整或資料更新時點不同，本分析採逐季加總12.45元為主要依據；(2) 50/150/200日均線精確數值、200日均線斜率、VCP收縮T數與凹洞量訊號無法從公開頁面直接驗證(Goodinfo等來源遭反爬蟲阻擋)，僅能以季線乖離(-2%)、52週高低區間、近期價量新聞做方向性判斷；(3) OCF/NI比率、現金循環天數、逐年資本支出/營收比等會計細節未查得精確數字；(4) 52週高點480元/低點114.5-146.5元之精確發生日期未確認。以上不影響整體方向性結論，但降低技術面與估值細節的判斷信心。）博智(8155)受惠AI伺服器高層板/厚銅板升級與越南新產能布局，基本面加速成長(2026H1 EPS已達6.66元、年增逾150%)，但股價自高點480元回檔逾30%且技術面尚在打底整理，目前落於合理價區間下緣，適合以試單倉小額分批布局並嚴設停損，而非追高。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">優質</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">合理</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">3 多頭底部</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">試單倉 約2%（視回檔情況可加碼至3-5%）</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>優質</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>合理（PEG ≈ 約0.8-1.0（動態PE約20倍÷G 25%≈0.8；靜態PE約26倍÷G 27.5%≈0.95），落在「過渡階段」合理區間下緣）</td><td>中</td></tr>
+            <tr><td>股價階段</td><td>3 多頭底部</td><td>中</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill pos">分批進場</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>試單倉 約2%（視回檔情況可加碼至3-5%）</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>AI伺服器需求循環性風險：終端應用高度集中(伺服器占營收88%，其中AI伺服器占伺服器營收60-70%以上)，若CSP資本支出成長放緩或客戶轉單，營收/EPS可能大幅回落</li><li>折舊成本壓力：台灣新廠與越南新廠陸續開出，折舊占毛利比重已達約30%，若稼動率不如預期將持續侵蝕毛利率</li><li>資本市場與稀釋風險：公司規劃50億元發債並持續投入越南廠擴產，未來若進行現金增資，可能稀釋每股獲利</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>AI伺服器板層數持續往20層以上、厚銅板升級，帶動ASP與毛利率同步提升</li><li>越南新廠(與日商Meiko合資，博智持股70%)預定2027Q2量產，擴大長期產能天花板</li><li>工業電腦客戶自2025年下半年庫存去化結束後訂單回溫，形成第二成長引擎</li></ul>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>中高：法說會(2026/3、2026/6)主動揭露伺服器/AI伺服器營收占比(88%、60-70%)、產能利用率(月產能5億元尚未滿載)、越南廠時程(2026/7內部裝修完成、2027Q2量產)、毛利率變化原因(調價+產品組合優化)等關鍵指標；但具體毛利率/EPS目標未正式對外揭露，屬「主動說明方向但未量化承諾」</li>
+          <li><b>言行一致性：</b>中：2026年3月與6月兩場法說會對「下半年營收優於上半年」「越南廠2027Q2量產」的說法一致，且2025年全年營收+37%、2026H1 EPS已達6.66元的實際表現與先前樂觀展望方向相符；但受限於公開資料，未能完整覆核近8季全部指引達成率，信心中等</li>
+          <li><b>資本配置：</b>以「專注本業、強化優勢」為主軸：持續投入台灣新廠擴建與越南Meiko合資設廠（博智持股70%，投資上限約美金8,000萬元/約新台幣24億元）擴充高層板產能，並規劃50億元發債支應；同時維持約70-75%現金股利發放率（2025年配息5.16元/EPS 6.88元）。屬成長導向資本配置，但發債+潛在現金增資存在EPS稀釋風險</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>成長期（放量成長期）：AI伺服器帶動高層數/厚銅板PCB需求快速放量，台灣2026年Q1 PCB產值創歷年同期新高(年增19.6%)，全球CCL市場2026年估年增34.2%，CSP資本支出2026年估年增近90%，產業仍處於供給持續追趕需求的高速成長階段，尚未進入成熟穩定期</li>
+          <li><b>市場規模：</b>TAM 全球PCB市場2026年產值估上看US$1,050-1,120億美元；受AI伺服器帶動的銅箔基板(CCL)市場規模2026年估突破215億美元(年增34.2%)；台灣PCB業2026年全年產值挑戰新台幣1.05兆元，Q1即達2,456億元(年增19.6%，歷年同期新高) ／ SAM 博智聚焦之高層數(14層以上)、厚銅板、高頻高速PCB利基市場，應用於AI/一般伺服器、工業電腦、網通、電動車、5G基地台；受惠CSP資本支出超級週期(2026年估年增近90%)及伺服器板規格持續升層(10層以上升至20層以上)帶動的高階板需求 ／ SOM 博智2025年營收約49.5-49.6億元(年增37%)，其中伺服器板占營收88%（AI伺服器占伺服器營收60-70%以上，2026年比重持續提升）；20層以上高層板占比2024年約24%且逐年拉升，為公司實際可取得、具訂價權的利基市場</li>
+          <li><b>競爭格局：</b>同業包括華通電腦、欣興電子、臻鼎科技控股、高技企業、定穎投資控股、健鼎科技、瀚宇博德等，多為規模更大、產品線更廣的PCB廠。博智差異化定位在能穩定量產2-72層(商用最高約30層)、厚銅、高頻高速板的少數廠商，客戶對品質要求高、不易砍價；但技術門檻非絕對排他，大型同業具能力跟進，競爭強度中等，市占率數字未查得公開精確統計</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>提供高層數、厚銅板、高頻高速印刷電路板，解決AI/高階伺服器主機板在高功率傳輸與訊號完整性上的設計難題，技術與品質門檻使公司在此利基市場擁有一定訂價權</li>
+          <li><b>目標客群與通路：</b>AI/一般伺服器ODM與系統廠（含美超微供應鏈夥伴關係）、NVIDIA/AMD/ASIC平台板卡製造商、工業電腦與網通設備客戶、電動車與5G基地台客戶；透過與仁寶、研華集團股東關係建立的B2B設計導入(design-in)通路銷售</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>14.72%（最新公開期間；2025Q4因調價與產品組合優化較前期提升）（含金量 低）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>資料不足，未查得精確數字。方向性判斷：因近期資本支出擴產、存貨與應收帳款可能隨營收快速成長增加，加上折舊占毛利比重已達約30%，營業現金流/稅後淨利比率可能低於100%（產能擴張期常見現象），需待正式財報現金流量表覆核</td></tr>
+            <tr><td>資本支出／營收</td><td>資料不足，未查得逐年精確資本支出/營收比。管理層過去曾指引資本支出約占營收10%，但目前同時進行台灣新廠擴建、越南Meiko合資設廠（投資上限約新台幣24億元）並規劃50億元發債，實際資本支出占營收比重可能顯著高於10%，需待2026年報確認</td></tr>
+            <tr><td>現金循環天數</td><td>資料不足，未查得精確存貨/應收/應付帳款週轉天數。方向性判斷：下游多為大型伺服器ODM/系統廠，付款週期通常較長，加上產能擴張期存貨墊高，現金循環天數可能偏長，需待年報財報比率分析確認</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>技術門檻（高層數2-72層、厚銅板、高頻高速製程能力）＋轉換成本（客戶認證週期長、品質要求高）＋集團關係（仁寶、研華為主要策略股東，合計持股近37%，帶來訂單與資源挹注）</li>
+          <li><b>強度與期間：</b>中高：能穩定量產30層以上高階板且良率穩定的競爭者稀少，客戶對品質要求高、不易砍價，具一定訂價權；但非絕對排他型護城河，欣興、臻鼎、健鼎等大型同業具技術能力可跟進，優勢預估可持續約3-5年，需持續資本支出維持技術領先</li>
+          <li><b>ROE 軌跡：</b>近四季ROE估算約20%（近四季EPS約12.45元 ÷ 每股淨值約61.6元），較2024年之前明顯改善，主因AI伺服器帶動EPS高速成長（2026Q1 EPS年增153%）；配息率約70-75%，保留盈餘持續墊高淨值；精確歷史逐年ROE走勢因公開資料不足未能逐年覆核</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>銷量×ASP邏輯：AI伺服器帶動板層數自10層以上升至20層以上，ASP大幅提升；產品結構上伺服器占營收88%(2025年)，其中AI伺服器占伺服器營收60-70%以上且持續攀升；工業電腦自2025年下半年庫存去化結束後訂單回溫，形成第二成長引擎，帶動多元客戶/產品結構</li>
+          <li><b>毛利率改善動能：</b>訂價權提升（客戶對原物料及售價調漲接受度提高）＋產品組合優化（高層板/厚銅板占比提升）＋稼動率提升（新產能陸續開出，惟目前月產能5億元尚未100%滿載，仍有提升空間）；但同時面臨折舊成本上升（折舊占毛利比重約30%）部分抵銷毛利改善</li>
+          <li><b>EPS 三大引擎：</b>ROE估算約20%，隨保留盈餘（配息率約70-75%）持續墊高股東權益；EPS高速成長主要來自稅後淨利成長（獲利能力提升），非流通股數縮減；流通股數約6,069萬股，惟公司規劃50億元發債及越南廠增資，未來若涉及現金增資將稀釋每股獲利，需留意</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>10-15%</td><td>若AI伺服器需求成長放緩、同業競爭加劇侵蝕訂價權，且折舊壓力持續侵蝕毛利，企業價值成長趨緩，估值中樞可能下修至PE 15-20倍區間，屬防守線水準，企業價值判斷降級為平庸</td></tr>
+            <tr><td>高機率</td><td>25-30%</td><td>在AI伺服器結構性成長與越南新產能2027年起逐步貢獻下，企業價值持續成長，可支撐PE 20-30倍，屬優質成長股定位，為目前基準情境</td></tr>
+            <tr><td>樂觀</td><td>40-50%</td><td>若CSP資本支出超級週期延續、高層板/厚銅板滲透率超預期提升、越南廠提前放量且工業電腦同步強復甦，企業價值大幅躍升，市場情緒可能進入樂觀開心甚至貪婪興奮區間，PE有望上看30-40倍</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：約12.4-12.5元（近四季逐季加總：2025Q3 2.26元＋2025Q4 3.53元＋2026Q1 3.29元＋2026Q2 3.37元＝12.45元；注意部分財經網站顯示8.82元或25.44元等不同數字，可能為股本調整或資料更新時點差異所致，本分析採逐季加總12.45元）</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：約25-30%（未來3-5年EPS CAGR，屬「高機率」基準情境） — 依據：依據：2025年營收年增37%、2026年Q1/Q2 EPS年增逾150%（雖含2025Q2低基期效應）；產業層面台灣PCB產值2026年Q1創同期新高(年增19.6%)、全球CCL市場2026年估年增34.2%、CSP資本支出2026年估年增近90%；越南新廠2027Q2量產將延伸長期產能天花板。已考量基期效應正常化與折舊負擔上升等抑制因素，故未採信更高的樂觀估計</li>
+          <li><b>靜態 PE：</b>約26倍（以近四季滾動EPS約12.45元計算；若改採最近一個完整年度2025年EPS 6.88元計算則靜態PE高達約47倍，兩者差距反映2026年獲利加速成長，故採近四季滾動EPS更具代表性）</li>
+          <li><b>動態 PE：</b>約20-21倍（以2026年全年EPS預估約15-16元計算：上半年EPS已達6.66元，且管理層guidance下半年營收優於上半年）</li>
+          <li><b>PEG：</b>約0.8-1.0（動態PE約20倍÷G 25%≈0.8；靜態PE約26倍÷G 27.5%≈0.95），落在「過渡階段」合理區間下緣</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr><td>貪婪興奮</td><td>1.5–2.0</td><td></td></tr>
+            <tr><td>樂觀開心</td><td>1.2–1.5</td><td></td></tr>
+            <tr class="current"><td>過渡階段</td><td>0.8–1.2</td><td>✓</td></tr>
+            <tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr>
+            <tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">過渡階段</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：約20倍 – 約38倍</li>
+          <li>對應股價區間：約250元 – 約470元</li>
+          <li>便宜價：約135-200元（對應PEG 0.4-0.6「恐懼絕望」區間，以近四季EPS 12.45元估算）　|　合理價：約270-400元（對應PEG 0.8-1.2「過渡階段」區間）　|　偏高價：約400-505元（對應PEG 1.2-1.5「樂觀開心」區間）　|　昂貴價：約505-670元（對應PEG 1.5-2.0「貪婪興奮」區間）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>目前股價(約322元)落於「合理價」區間(約270-400元)下半段，距「便宜價」(135-200元)尚有約30-40%下檔空間，距「昂貴價」(505元以上)則有50%以上上檔空間；市場估值面安全邊際中等偏小，不算便宜也未過熱</td></tr>
+            <tr><td>企業價值 MOS</td><td>若未來3年依「高機率」情境EPS CAGR 25-30%成長且維持PE 25-30倍，3年後理論股價約可達650-900元附近，較現價322元有倍數空間；企業價值安全邊際大，但伴隨AI伺服器資本支出循環性、客戶集中度高、折舊壓力等較高不確定性，須以攻擊/防守兩情境並重看待</td></tr>
+            <tr><td>投資組合 MOS</td><td>因屬台股中小型PCB利基廠，單一終端應用(AI伺服器)依存度高、成交量偏低（日均僅數十至數百張）、波動大(Beta約1.23)，建議投組占比不宜過高，作為衛星/試單倉配置，單一標的占投組比重宜控制在2-5%，並搭配10-30檔多元化配置分散非系統性風險</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：股價(約322元)略低於季線(約60日均線)約2-2.3%，短期呈盤整格局；50/150/200日均線精確數值因公開頁面反爬蟲限制未能直接取得，屬資料缺口，僅能以季線乖離與52週高低區間位置間接推論</li>
+          <li>200 DMA 趨勢：上揚</li>
+          <li>近 6 個月波段高低點：盤整</li>
+          <li>量價型態：近期成交量明顯萎縮（單日僅約60-230張，遠低於股價衝高480元時期水準），回檔過程呈量縮價跌，尚未出現恐慌性放量或帶量反彈訊號，符合修正後打底整理初期特徵</li>
+          <li>股價乖離（季線）：約-2%至-2.3%（股價略低於季線，屬中性乖離，未達超買(>50%)或明顯超賣區間）</li>
+          <li>是否出現特定型態：疑似打底整理型態：自52週高點480元回檔約33%後量縮盤整，尚未確認為標準VCP多重收縮或W底，亦未見雙重頂/頭肩頂頸線跌破之明確訊號；技術型態證據不足（日/週K圖精確數據未能取得，股價於過去一年自52週低點114.5-146.5元大幅上漲至480元高點後回檔至現價322元，累計仍較年初大幅墊高，200日均線推估仍處上揚趨勢但精確斜率數據缺），列為資料缺口，需持續觀察後續是否形成更小幅度的第二次收縮。近期價格於2026/09/03曾單日下跌5.69%、連2跌約8.97%，短期於300-350元區間震盪整理，未創52週新低亦未創新高</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">3 多頭底部</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：中</li>
+          <li>錯失機會風險：中</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <h3 class="sub">4.1 VCP結構檢視</h3>
+        <ul>
+          <li><b>VCP 判定級別：</b>週K（初步觀察，缺乏完整日K/週K圖數據佐證，信心中低）</li>
+          <li><b>收縮次數(T)：</b>目前僅觀察到1T（自480元高點修正至約300-320元，跌幅約33%），尚未出現後續更小幅度的第2T收縮，完整VCP型態尚未成形</li>
+          <li><b>每次收縮跌幅是否遞減：</b>不適用（目前僅有1T修正波，無法比較跌幅是否遞減）</li>
+          <li><b>最後一次收縮跌幅是否&lt;5%：</b>否，目前唯一一波修正跌幅約33%，遠高於&lt;5%的理想收尾條件，型態尚未收斂完成</li>
+          <li><b>凹洞量訊號：</b>未觀察到明確凹洞量訊號；近期成交量呈現量縮盤整（單日約60-230張），法人測試訊號尚不明顯，資料不足以確認</li>
+          <li><b>是否創新高：</b>否，目前股價約322元僅為52週高點480元的約67%，未創歷史新高</li>
+          <li><b>量價型態：</b>部分符合：近期回檔呈量縮價跌，但尚未觀察到後續量增價漲的收縮完成訊號，屬打底整理初期而非完整「量增價漲＋量縮價跌」交替型態</li>
+        </ul>
+
+        <h3 class="sub">4.2 可能進場點</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>進場點</th><th>條件是否成立</th><th>對應停損</th><th>建議下注</th></tr>
+            <tr><td>凹洞量能點</td><td>尚未成立——需觀察到第2T波動收縮於第1T中段或偏低位置、且2T波動幅度&lt;10%並較1T明顯量縮，目前僅見1T大幅修正(約33%)，尚無第二次更小幅度收縮訊號出現</td><td>若未來出現凹洞量訊號，停損設於凹洞量當日股價最低點（初估約300-310元支撐區，需以實際型態確認）</td><td>約20%</td></tr>
+            <tr><td>帶量突破點</td><td>尚未成立——股價目前(約322元)仍遠低於前波高點480元，且未見帶量突破近期整理區間上緣的訊號</td><td>若未來出現帶量突破，停損設於突破當日紅K最低價或VCP頸線（初估約300元附近，需以實際整理區間確認）</td><td>約50%</td></tr>
+            <tr><td>回測成功點</td><td>尚未成立——回測需先有帶量突破事件，目前尚無突破可供回測驗證</td><td>若未來出現回測三盤過，停損設於帶量三盤過當下三盤最低價</td><td>約30%</td></tr>
+          </table>
+        </div>
+
+        <h3 class="sub">4.3 七大供需轉折訊號</h3>
+        <ul class="checklist">
+          <li>極限大量</li>
+          <li>超買反轉（季線乖離 &gt;50% / 80%）</li>
+          <li>產業逆風</li>
+          <li class="checked">利多不漲</li>
+          <li>利空下跌</li>
+          <li>量價背離</li>
+          <li>大量黑K</li>
+        </ul>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>試單倉</li>
+          <li><b>建議週期：</b>約3-8個月（波段試單倉觀點），若越南新廠2027Q2量產進度與AI伺服器成長動能持續超預期，可延長至12個月以上重新評估</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：約30-35%（VCP型態尚未完整成形，採波段投資中低勝率估計）</li>
+          <li>估計賠率：約2-3倍（參考VCP波段賠率2-4區間，因型態尚未完全確立故取偏保守值）</li>
+          <li>1/4 凱利公式下的最大下注比重：約3-5%（1/4凱利估算：勝率約32%、賠率約2.5，Kelly≈32%-68%/2.5≈4.8%，1/4後約1.2%，實務上採框架試單倉建議區間2-8%的下緣3-5%）</li>
+          <li><b>目前建議買入：</b>目前股價(約322元)落於合理價區間(270-400元)下半段，可先布局約2%試單倉；若回落至偏低價(約200-270元)可加碼至3%；若跌至便宜價(<200元，但須留意此價位是否伴隨基本面轉差)可加碼至5%，總計不超過1/4凱利估算之3-5%上限</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>若AI伺服器高層板/厚銅板技術優勢遭競爭對手快速複製，導致訂價權喪失、毛利率大幅且非短期性跌破20%</td></tr>
+            <tr><td>買進理由消失</td><td>若AI伺服器資本支出週期提前結束或主要客戶轉單，導致單季營收年增率轉負，或連續兩季EPS年減</td></tr>
+            <tr><td>市場估值過高</td><td>股價漲破約470-505元（對應PEG&gt;1.5貪婪興奮區）且未伴隨相應EPS上調時，應分批減碼</td></tr>
+            <tr><td>機會成本過高</td><td>若市場出現成長性/估值更佳的AI伺服器供應鏈標的（PEG更低、G更高），且本持股比重已偏高時，應考慮換股</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>AI伺服器晶片平台(NVIDIA/AMD/ASIC)世代交替持續帶動板層數與規格升級</li><li>CSP資本支出超級週期(2026年估年增近90%)的延續性</li><li>高層板/厚銅板技術門檻提高，抑制新進者稀釋既有訂價權</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告（依歷史節奏推測約2026年11月前後，需留意公司正式公告）</li>
+          <li>下次財報公布：2026年第3季財報，依上櫃公司申報期限推測約2026年11月中旬公告，確切日期待公司正式公告</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>月營收年增率變化，尤其AI伺服器占比是否持續提升</li><li>季度毛利率/營業利益率變化，觀察折舊占毛利比重是否隨稼動率提升而下降</li><li>越南廠(Allied Circuit Meiko Vietnam)建廠與2027Q2量產進度是否如期</li><li>20層以上高層板產品營收占比提升速度</li><li>客戶集中度變化，是否過度依賴單一AI伺服器ODM或晶片平台</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>股價若有效跌破約270-300元合理價區間下緣且無基本面惡化訊號，視為加碼機會</li><li>股價若帶量突破前高480元並站穩，視為多頭上漲趨勢確立訊號</li><li>單季營收年增率轉負或連續兩季EPS年減，須立即重新評估企業價值假設</li><li>越南廠量產進度若大幅延後(較2027Q2延遲兩季以上)，須下修樂觀情境權重</li><li>毛利率若連續兩季低於20%且非短期因素，須檢視訂價權是否喪失</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>鉅亨網 cnyes.com、Yahoo股市 tw.stock.yahoo.com、Goodinfo!台灣股市資訊網、玩股網 wantgoo.com、nStock股市資訊、財報狗 statementdog.com、富果直送 Fugle 法說會備忘錄、UAnalyze 優分析、口袋學堂 Pocket、蕃新聞 yam.com、工商時報 ctee.com.tw、Newtalk新聞、壹蘋新聞網 nextapple.com、digitimes.com.tw、istock 愛玩股</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-09-19</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
