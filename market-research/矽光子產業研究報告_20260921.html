@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>矽光子產業研究報告</title>
+  <meta property="og:title" content="矽光子產業研究報告">
+  <meta property="og:description" content="日期基準：2026-09-21">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="矽光子產業研究報告">
+  <meta name="twitter:description" content="日期基準：2026-09-21">
+  <style>
+    /* 設計系統與 industry-tracker / deep-analysis 共用（navy/orange，白底字卡）。
+       body-wrap 內的內容是由 market-research 報告的 Markdown 機械轉換而來（見下方 body-wrap 區塊的插入點）。 */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 880px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 24px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    a.back {
+      display: inline-block;
+      margin: 16px 0 0 44px;
+      font-size: .85rem;
+      color: var(--text-dim);
+      text-decoration: none;
+    }
+
+    a.back:hover {
+      color: var(--navy);
+    }
+
+    .body-wrap {
+      padding: 20px 44px 0;
+    }
+
+    .body-wrap h1 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 30px 0 14px;
+    }
+
+    .body-wrap h2 {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 12px;
+      margin: 38px 0 16px;
+    }
+
+    .body-wrap h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 22px 0 10px;
+    }
+
+    .body-wrap p {
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+
+    .body-wrap ul,
+    .body-wrap ol {
+      padding-left: 22px;
+      margin-bottom: 14px;
+    }
+
+    .body-wrap li {
+      margin-bottom: 8px;
+      line-height: 1.75;
+    }
+
+    .body-wrap hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 28px 0;
+    }
+
+    .body-wrap b,
+    .body-wrap strong {
+      color: var(--navy-d);
+    }
+
+    .body-wrap code {
+      background: var(--thead);
+      border-radius: 3px;
+      padding: 1px 5px;
+      font-family: ui-monospace, monospace;
+      font-size: 12.5px;
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+      margin: 10px 0 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.8px;
+    }
+
+    th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px 0;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap,
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      a.back {
+        margin-left: 20px;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <a class="back" href="../index.html">← 回首頁</a>
+
+    <div class="banner">
+      <div class="label">MARKET RESEARCH · 產業研究</div>
+      <h1>矽光子產業研究報告</h1>
+      <div class="sub">產出日期 2026-09-21　|　全程 WebSearch 查證，每項數據附來源</div>
+    </div>
+
+    <div class="body-wrap">
+      <h1>矽光子（Silicon Photonics）產業研究報告</h1>
+<p><b>日期基準：2026-09-21</b></p>
+<p>本報告已用 WebSearch／WebFetch 查證，每項數據均附來源；未經查證的數字不予採用，僅以原始來源引用方式呈現。</p>
+<p><b>產業範疇</b>：矽光子（Silicon Photonics）產業，將光波導、調變器、光偵測器等光子元件整合進矽晶圓 CMOS 製程的技術，主要應用為 AI 資料中心的共封裝光學（CPO）／光學引擎與 800G／1.6T 高速光收發模組，並延伸至電信網路、光學 I/O、LiDAR 等；產業鏈涵蓋雷射光源磊晶、矽光子晶圓代工平台、光被動元件（FAU 等）、光收發模組／DSP、CPO 交換器系統整合與封裝測試。</p>
+<h2>資料限制聲明</h2>
+<ul><li>本報告所引用之股價、市值、本益比等時效性數據，均為查證當下（多集中於 2026 年 9 月 17–20 日前後）之快照，<b>正式使用前需重新拉取最新數據</b>。</li><li>多項數據在不同來源（財報狗、Yahoo 股市、鉅亨網、東方財富、Yahoo Finance、stockanalysis.com 等）之間存在明顯出入，尤其是本益比（TTM vs Forward、計算基期不同）與股價／市值（擷取交易日不同），本報告採「並列標註、不擅自擇一」原則處理，請讀者自行判斷或以官方公告為準。</li><li>部分公司（如光迅科技 002281.SZ、光庫科技 300620.SZ）因查證當下 WebSearch 額度已耗盡，改用 WebFetch 抓取動態渲染頁面失敗，故關鍵財務與估值數字<b>無法查證</b>，已於第 5 節列出。</li><li>CPO／矽光子商轉時程本身存在業界分歧（見下方 SemiAnalysis vs globalsemiresearch 之爭），並非已有共識的定論，投資人應留意此為未決爭議點。</li></ul>
+<hr>
+<h2>1. 產業概況與市場規模</h2>
+<h3>市場規模（各家估算並列，範疇定義不同，不強行統一）</h3>
+<ul><li>Yole Group《Silicon Photonics 2026》報告：狹義「矽光子」市場（元件／晶片層級）預估從 2024 年 2.78 億美元成長至 2030 年 27 億美元，CAGR 約 46%（<a href="https://www.yolegroup.com/product/report/silicon-photonics-2026" target="_blank" rel="noopener">Yole Group 新聞稿</a>，2026 年）。</li><li>Yole Group：若以「矽光子模組」（含收發模組整體）計，市場規模預估從 2024 年 42 億美元成長至 2030 年 248 億美元，CAGR 約 35%——與上一項狹義口徑差距約 10 倍，反映 Yole 自己也依「晶片」vs「模組」兩種範疇分開估算（<a href="https://www.yolegroup.com/press-release/silicon-photonics-accelerating-growth-in-the-race-for-high-speed-optical-interconnects/" target="_blank" rel="noopener">Yole Group 新聞稿：Silicon photonics: accelerating growth</a>，2026 年）。</li><li>Yole 另一份報告則稱矽光子整體市場 2025 年將達 39 億美元（<a href="https://www.yolegroup.com/press-release/silicon-photonics-and-co-packaged-optics-at-the-heart-of-next-generation-ai-driven-data-infrastructure/" target="_blank" rel="noopener">Yole Group — Silicon photonics and co-packaged optics at the heart of next-generation AI-driven data infrastructure</a>，經多家財經媒體引述，2026 年）。</li><li>TrendForce：全球 AI 專用光收發模組市場規模預估從 2025 年 165 億美元擴大至 2026 年 260 億美元，年增逾 57%；800G 以上光收發模組出貨量預估從 2025 年 2,400 萬支成長至 2026 年近 6,300 萬組（<a href="https://technews.tw/2026/07/18/trendforce-counterpoint-research-see-ai-datacenter/" target="_blank" rel="noopener">TechNews 科技新報引述 TrendForce</a>，2026 年 7 月 18 日）。</li><li>TrendForce（2026 年 6 月估）：全球 CPO／NPO（共同封裝光學）市場規模至 2030 年有望突破 390 億美元，明顯放量期集中在 2028–2029 年（TrendForce，2026 年 6 月）。</li><li>泛用型市調機構（GM Insights、MarketsandMarkets、Precedence Research、Persistence Market Research 等）對「矽光子市場」2026 年基期與 CAGR 估計差異極大，並列如下、不強行統一： (a) 2026 年 23 億美元 → 2031 年 70 億美元 → 2035 年 178 億美元，CAGR 25.3%； (b) 2026 年 40.3 億美元 → 2034 年 222.9 億美元，CAGR 23.83%； (c) 2026 年 24 億美元 → 2033 年 118 億美元，CAGR 25.5%。 差異主因是各家對「矽光子」範疇（晶片／模組／系統）定義不同。</li><li>共同封裝光學（CPO）狹義市場規模估計各家落差同樣極大：2026 年估值從 1.6 億美元（Mordor Intelligence）到 29 億美元（Market Growth Reports）不等，反映「CPO 市場」定義（純光引擎晶片 vs 含交換器系統）不一致，查證時應註明各數字對應的範疇。</li><li>中國市場：多家中國財經媒體（引述產業預測）稱 2027 年中國新建資料中心 CPO 滲透率將超 60%，2033 年全球 CPO 市場規模估破 260 億美元、CAGR 約 46%——此數字未標明原始機構，來源可信度較低，<b>列為「待查證」而非權威機構原始估計</b>（東方財富網／新浪財經，2026 年）。</li></ul>
+<h3>產業驅動因子</h3>
+<ul><li><b>需求出海口確立</b>：NVIDIA 於 GTC 2025（2025 年 3 月）發表 Quantum-X Photonics（144 埠 800G InfiniBand CPO 交換器）與 Spectrum-X Photonics 乙太網路交換器，前者 2025 下半年出貨、後者 2026 年由各系統廠推出，單次部署可降低約 40MW 用電——是矽光子／CPO 在 AI 資料中心的關鍵需求驗證事件（<a href="https://nvidianews.nvidia.com/news/nvidia-spectrum-x-co-packaged-optics-networking-switches-ai-factories" target="_blank" rel="noopener">NVIDIA Newsroom</a>，2025–2026 年）。</li><li><b>晶圓代工端放量</b>：台積電 COUPE 矽光子平台於 2025 年 9 月 SEMICON Taiwan 首度公開亮相，並依 TrendForce 報導於 2026 年進入 CoWoS 架構的 CPO 量產整合階段，三星 CPO turnkey 則落後至 2029 年——確立台積電在矽光子晶圓代工的先行地位（<a href="https://www.trendforce.com/news/2025/09/09/news-silicon-photonics-in-the-spotlight-tsmc-lifts-the-curtain-on-coupe-at-semicon-taiwan/" target="_blank" rel="noopener">TrendForce 2025/9/9</a>／<a href="https://www.trendforce.com/news/2026/04/01/news-silicon-photonics-race-intensifies-as-tsmc-targets-2026-coupe-production-samsung-eyes-2029-cpo-turnkey/" target="_blank" rel="noopener">TrendForce 2026/4/1</a>）。</li><li><b>系統與標準化雙軌推進</b>：Broadcom 已交付 51.2T CPO 乙太網路交換器 Bailly 給客戶，並將於 OFC 2026 展示 102.4T CPO 交換器；同時 OCP（開放運算計畫）於 2026 年 8 月 13 日由 20 家廠商組成聯盟啟動 CPO 標準化工作小組，訂出 2026 年 Q4 發布 300 頁架構藍圖的期限，採用者名單含 CoreWeave、Lambda、Meta、Microsoft、OCI——降低系統整合風險，是產業化的正向結構訊號（<a href="https://investors.broadcom.com/news-releases/news-release-details/broadcom-delivers-industrys-first-512-tbps-co-packaged-optics" target="_blank" rel="noopener">Broadcom Investor News</a>／<a href="https://www.techtimes.com/articles/324563/20260815/co-packaged-optics-standard-gets-q4-deadline-ocp-blueprint-targets-wasted-ai-compute.htm" target="_blank" rel="noopener">TechTimes 2026</a>）。</li><li><b>供給面瓶頸（逆風）</b>：磷化銦（InP）雷射磊晶產能是目前公認最緊的環節，據報導光收發模組需求已達供給的約 2 倍；Coherent 正擴建美國 Sherman, Texas 的 6 吋 InP 新廠、目標產能達現有 5 倍，AXT 則募資逾 6.3 億美元擴充 InP 產能——顯示上游材料仍是 2026 年出貨的硬約束（<a href="https://futurumgroup.com/insights/coherent-q4-fy-2026-earnings-1-6t-transceivers-ramp-cpo-revenue-approaches/" target="_blank" rel="noopener">Futurum Group</a>／<a href="https://compoundsemiconductor.net/article/124087/AXT_raises_over_630m_to_increase_InP_capacity" target="_blank" rel="noopener">compoundsemiconductor.net</a>，2026 年）。</li><li><b>時程爭議（逆風）</b>：SemiAnalysis 於 2026 年 6 月發布報告《Powered Down, Lights Off》，主張 CPO scale-out 出貨將延至 2027 年後、scale-up 更遞延至 2029 年，報告發布後 Lumentum、Coherent、Applied Optoelectronics、Corning、Marvell 股價應聲下跌；但此結論遭其他分析機構（如 globalsemiresearch）公開反駁，<b>顯示 CPO 商轉時程本身在業界仍有分歧，投資人須留意此為未有共識的爭議點而非定論</b>（<a href="https://www.kucoin.com/news/flash/semianalysis-report-sparks-debate-on-cpo-timeline-optical-stocks-drop" target="_blank" rel="noopener">KuCoin News</a>／<a href="https://globalsemiresearch.substack.com/p/co-packaged-optics-is-not-delayed" target="_blank" rel="noopener">globalsemiresearch.substack.com</a>，2026 年 6 月）。</li><li><b>下游營收已實際反映</b>：台廠聯亞（3081）2026 年 2 月單月營收年增 91.44%（財報狗），法人預估聯亞 2026 全年營收年增逾 140%、EPS 大幅成長，主要受惠 NVIDIA CPO 平台放量；中國中際旭創 800G／1.6T 矽光子產品出貨占比持續提升，但同業光迅科技自研 CPO 光引擎良率仍低於 30%、2026 上半年產能僅月 5 萬只——顯示需求已轉化為兩岸供應鏈實際財報數字，但良率／產能爬升速度仍參差不齊（財報狗／<a href="https://caifuhao.eastmoney.com/news/20260331180600633355730" target="_blank" rel="noopener">東方財富網</a>，2026 年）。</li></ul>
+<hr>
+<h2>2. 競爭格局地圖</h2>
+<h3>產業鏈分層</h3>
+<ol><li><b>系統整合／CPO 交換器層</b>：NVIDIA（Quantum-X Photonics、Spectrum-X Photonics，2026 年 6 月量產）、Broadcom（Bailly 51.2Tbps、Tomahawk 6-Davisson 102.4Tbps）、Cisco 為代表；此層掌握終端客戶關係與系統規格定義權，競爭要素是系統級功耗／頻寬密度、生態綁定（NVIDIA InfiniBand／NVLink vs. Broadcom 乙太網陣營）、量產良率與交付時程掌控力。</li><li><b>技術世代區分</b>：高整合度的 CPO（共同封裝光學，NVIDIA／Broadcom 力推，用於 AI 資料中心最先進機櫃）vs. 過渡性的 LPO／可插拔模組（風險與資本支出較低，中國模組廠與部分北美廠商仍大量採用）；兩者的分野決定了下游模組廠與雷射廠的產品組合與資本配置策略。</li><li><b>晶圓代工／先進封裝平台層</b>：台積電（COUPE 平台，NVIDIA 兩代交換器均採用）、Intel Foundry（IFS，仍保有矽光子晶圓廠但已將可插拔收發器業務移交 Jabil）、GlobalFoundries（2025 年 11 月併購新加坡矽光子代工廠 AMF 後力拚年營收破 10 億美元）、Tower Semiconductor、意法半導體（STMicroelectronics）；此層是 CPO 能否放量的關鍵瓶頸，競爭要素為製程良率、與封裝夥伴（如日月光）協同能力、產能爬坡速度。</li><li><b>雷射光源／InP 磊晶與化合物半導體層</b>：Coherent、Lumentum（2026 年 3 月各獲 NVIDIA 20 億美元、合計 40 億美元策略投資與多年採購承諾）、台廠聯亞（雷射磊晶，2026 年 6 月營收年增 128%）；TrendForce 指出 2026 年 CPO 放量的主要瓶頸正是光學引擎良率與 InP 雷射產能爬坡，而非晶片設計本身。</li><li><b>光引擎／PIC 組件與利基技術層</b>：POET Technologies（Optical Interposer 異質整合方案，與 Lumilens 簽約含 5,000 萬美元初始訂單）、SCINTIL Photonics（法國，市場研究機構點名的新興領導者）、Sicoya、SiFotonics（中國，矽光子晶片擴產中）；此層的競爭要素是技術差異化能否吸引系統大廠併購或策略結盟——2025-2026 年已發生多起併購（Molex 併 Teramount、Credo 併 DustPhotonics、FormFactor 併 Keystone Photonics）。</li><li><b>模組／封裝與測試代工層——台廠 vs 陸廠</b>：台灣：聯鈞（3450，串連源傑雷射封裝到矽光子模組，2026 年 4-5 月營收年增逾 45%）、上詮（3363）、波若威（3163）、日月光（先進封裝）；中國：中際旭創、光迅科技、新易盛、華工科技（2026 年中國模組代工產能約占全球 56%，其中北美外銷型廠商約占 46%）。競爭要素為 800G／1.6T 模組出貨良率、客戶認證週期，以及在美中出口管制升溫下的地緣政治風險分散能力。</li></ol>
+<h3>近期重大事件</h3>
+<ul><li><b>2026/3/2</b>：NVIDIA 對 Coherent 與 Lumentum 分別策略投資 20 億美元（合計 40 億美元），並簽署多年雷射元件採購承諾（<a href="https://www.cnbc.com/2026/03/02/nvidia-investment-coherent-lumentum.html" target="_blank" rel="noopener">CNBC</a>）。</li><li><b>2026/5/28</b>：Credo Technology 以 13 億美元收購矽光子 PIC 廠 DustPhotonics，補齊從 SerDes、DSP 到矽光子與系統整合的垂直整合佈局（<a href="https://investors.credosemi.com/news-events/news/news-details/2026/Credo-Completes-Acquisition-of-DustPhotonics/default.aspx" target="_blank" rel="noopener">Credo Technology 投資人新聞稿</a>）。</li><li><b>2026/4/15</b>：Molex 宣布併購 Teramount，取得可拆式光纖對晶片（fiber-to-chip）連接技術（<a href="https://www.optica-opn.org/home/industry/2026/may/molex_looks_to_silicon_photonics_with_teramount_acquisition/" target="_blank" rel="noopener">Optica-OPN</a>）。</li><li><b>2025/11/18</b>：GlobalFoundries 以 4.53 億美元完成收購新加坡矽光子晶圓代工廠 AMF，目標 2026 年新增逾 7,500 萬美元營收、十年內矽光子年營收破 10 億美元（<a href="https://www.eetimes.com/gf-targets-1-billion-silicon-photonics-revenue-with-amf-acquisition/" target="_blank" rel="noopener">EE Times</a>）。</li><li><b>2025/12/15</b>：FormFactor 以 2,060 萬美元收購 Keystone Photonics，取得矽光子／CPO 元件光學探測測試技術（FormFactor 2026 年 10-Q 申報文件）。</li><li><b>2025/10</b>：Broadcom 發表次世代 CPO 交換器 Tomahawk 6-Davisson，交換容量 102.4Tbps，採台積電 COUPE 封裝方案；前代 Bailly（51.2Tbps）已於 2026 年進入量產並由 Delta Electronics、Micas Networks 協力出貨（Broadcom 官方新聞稿、<a href="https://technews.tw/2025/12/04/cpo-nvidia-broadcom-tsmc/" target="_blank" rel="noopener">TechNews 科技新報</a>，2025/12/4 引述）。</li><li><b>2026/6</b>：NVIDIA Spectrum-X Photonics 矽光子乙太網路交換器（採台積電 COUPE 封裝）正式進入量產，與 Broadcom Tomahawk 6 同步將 CPO 推向商轉（TechNews 科技新報／<a href="https://www.bnext.com.tw/article/91166/silicon-photonics-2026-mass-production-nvidia-cpo-tsmc-coupe-taiwan-stocks" target="_blank" rel="noopener">數位時代 BusinessNext</a>）。</li><li><b>2026/7/27</b>：TrendForce 發布報告指出 NVIDIA 與 Broadcom CPO 交換器已開始放量出貨，但光學引擎良率與先進封裝產能正成為擴產的主要瓶頸（<a href="https://www.trendforce.com/presscenter/news/20260727-13151.html" target="_blank" rel="noopener">TrendForce 新聞中心</a>）。</li><li><b>2026/5/18 與 7/21</b>：中國局部鬆動關鍵材料（稀土等）出口限制，同時美國簽署行政命令強化對非盟國關鍵礦產／材料採購管制，並傳出美方研議限制中國製光模組進口（<b>此項限制措施仍屬研議階段，尚未經證實定案</b>）；TrendForce 估算中國模組代工產能仍占全球約 56%，短期供應鏈難以脫鉤（<a href="https://technews.tw/2026/05/18/china-rare-earth-might-open/" target="_blank" rel="noopener">TechNews 5/18</a>、<a href="https://technews.tw/2026/07/21/us-seeks-to-limit-key-materials-from-china/" target="_blank" rel="noopener">TechNews 7/21</a>、<a href="https://money.udn.com/money/story/5612/9672999" target="_blank" rel="noopener">經濟日報</a>，內容含未經證實傳言）。</li><li><b>查證更新（避免舊印象）</b>：曾於 2023 年 1 月申請 Chapter 11 破產保護的穿戴式感測矽光子廠 Rockley Photonics，已於 2023 年 7 月以 3,500 萬美元新資金完成重整並退出破產程序，<b>2026 年仍以重整後實體正常營運，非仍處於破產狀態</b>（<a href="https://www.lightwaveonline.com/business/companies/article/14294933/rockley-photonics-leaves-chapter-11-bankruptcy-with-new-funding" target="_blank" rel="noopener">Lightwave Online</a>，歷史查證，用於澄清現況而非近期新事件）。</li></ul>
+<hr>
+<h2>3. 同業可比公司估值分析</h2>
+<p>&gt; 以下數字均為查證當下快照，不同來源之間的落差已在各公司「查證缺口」段落中並列標註，正式決策前請重新拉取最新數據。</p>
+<h3>3.1 國際／其他地區同業</h3>
+<h4>台灣積體電路製造股份有限公司（台積電，TSMC）｜2330.TW｜台灣</h4>
+<ul><li><b>股價／市值</b>：來源不一致，並列標註：Yahoo 股市顯示 2026-09-17 收盤價 2,425 元；新光證券台股盤前晨報顯示 2026-09-18 總市值約 63.8 兆元；Investing.com／TradingEconomics 顯示 2026-09-14 收盤價 2,380 元、市值約 62.50 兆元。查詢日（2026-09-20）當日精確收盤價與市值未查得。（<a href="https://tw.stock.yahoo.com/quote/2330.TW/technical-analysis" target="_blank" rel="noopener">Yahoo 股市</a>、<a href="https://www.skis.com.tw/Report/market/TSM20260901.html" target="_blank" rel="noopener">新光證券</a>、<a href="https://www.investing.com/equities/taiwan-semicon" target="_blank" rel="noopener">Investing.com</a>、<a href="https://tradingeconomics.com/2330:tt" target="_blank" rel="noopener">TradingEconomics</a>）</li><li><b>財務摘要</b>：2026Q2（2026-07-17 發布）合併營收約 402 億美元（新台幣 1 兆 2,703.8 億元），QoQ+12.0%、YoY+36.0%，創單季新高；毛利率 67.7%、營業利益率 60.3% 均創歷史新高；EPS 新台幣 27.25 元創新高，稅後純益季增 23.4%；先進製程（7 奈米以下）占營收 77%，2 奈米首度貢獻 3% 營收。2026 年 8 月合併營收新台幣 514.8 億元，首度單月突破 5,000 億元創歷史新高，YoY+53.3%；2026 年 1-8 月累計營收約新台幣 3.39 兆元，YoY+39.3%（2026-09-10 發布）。全年美元營收成長展望由「超過 30%」上修至「略高於 40%」。（<a href="https://www.bitget.com/zh-TC/news/detail/12560605507784" target="_blank" rel="noopener">Bitget 新聞</a>、<a href="https://tw.stock.yahoo.com/news/%E5%A4%AA%E5%8E%B2%E5%AE%B3-%E5%8F%B0%E7%A9%8D%E9%9B%BBq2-eps-27-25%E5%85%83-055400344.html" target="_blank" rel="noopener">Yahoo 股市新聞</a>、<a href="https://investor.tsmc.com/english/quarterly-results/2026/q2" target="_blank" rel="noopener">TSMC IR</a>、<a href="https://www.ctee.com.tw/news/20260910701508-430503" target="_blank" rel="noopener">工商時報</a>、<a href="https://news.cnyes.com/news/id/6603050" target="_blank" rel="noopener">鉅亨網</a>）</li><li><b>主要進展</b>：台積電 COUPE 矽光子平台鎖定 2026 年推進 CPO 量產：透過 SoIC-X 將電子 IC 與光子 IC 堆疊整合進封裝，目標較插拔式方案提升 2-4 倍功耗效率、降低 90% 以上延遲；全球首款 COUPE 架構 200Gbps 微環調變器（MRM）規劃 2026 年量產（2026-04-22 北美技術論壇發布；<a href="https://pr.tsmc.com/english/news/3136" target="_blank" rel="noopener">台積電官方新聞稿</a>、<a href="https://www.trendforce.com/news/2026/04/01/news-silicon-photonics-race-intensifies-as-tsmc-targets-2026-coupe-production-samsung-eyes-2029-cpo-turnkey/" target="_blank" rel="noopener">TrendForce</a>、<a href="https://money.udn.com/money/story/124512/7795813" target="_blank" rel="noopener">經濟日報</a>）。CoWoS 先進封裝持續擴產：目前已量產 5.5-reticle 尺寸 CoWoS，14-reticle 尺寸規劃 2028 年量產（<a href="https://semiwiki.com/semiconductor-manufacturers/tsmc/368690-tsmc-technology-symposium-2026-overview/" target="_blank" rel="noopener">Semiwiki</a>、<a href="https://optics.org/news/15/5/6" target="_blank" rel="noopener">optics.org</a>）。</li><li><b>估值</b>：本益比在不同來源間落差明顯，並列標註：財報狗顯示 32.6 倍（自述低於 26.21% 同業）；Google 財經顯示 27.75 倍；另有財經媒體轉引外媒於股價 2,080 元價位時估算「本益比 30 倍」（日期不明，對應股價已與當前不同）。三者差異可能源自 TTM／預估基礎不同、股價快照日期不同，未能判定單一「正確」數字。建議後續比較優先採用 Forward P/E 與外資目標價區間（約 2,330～2,400 元，另有單一機構喊至 4,200 元的高估值），而非單一 TTM P/E。（<a href="https://statementdog.com/analysis/2330/pe" target="_blank" rel="noopener">財報狗</a>、<a href="https://www.google.com/finance/beta/quote/2330:TPE?hl=zh-TW" target="_blank" rel="noopener">Google 財經</a>、<a href="https://tw.stock.yahoo.com/news/%E8%B2%A1%E5%A0%B1%E9%96%8B%E7%8D%8E%E5%85%88%E5%8D%A1%E4%BD%8D-%E5%8F%B0%E7%A9%8D%E9%9B%BB%E8%A1%9D2080%E5%85%83%E9%82%84%E8%83%BD%E8%BF%BD-%E5%A4%96%E5%AA%92%E6%8F%AD-%E6%9C%AC%E7%9B%8A%E6%AF%9430%E5%80%8D-%E4%BB%8D%E5%A7%94%E5%B1%88-080000337.html" target="_blank" rel="noopener">Yahoo 股市新聞</a>）</li><li><b>資料缺口</b>：查詢日 2026-09-20 當日精確收盤價／市值未查得；本益比三來源互有出入；矽光子供應鏈同業（聯亞、聯鈞、新煒科技等）之本益比本次未查證；COUPE／CPO 量產的具體訂單量、良率、單價、財務貢獻金額，公開來源僅揭露技術路線圖與量產時程，未見具體財務數字。</li></ul>
+<h4>鴻海科技集團（鴻海精密工業）｜2317.TW｜台灣</h4>
+<ul><li><b>股價／市值</b>：不同來源有出入：財報狗顯示股價 259.5 元；另一搜尋摘要顯示股價 262.0 元、市值約 35,259.74 億元；玩股網即時行情顯示 250.50 元（漲 1.01%，未標明日期）。三者查詢日不完全一致，無法確認單一交易日精確收盤價與市值。（<a href="https://statementdog.com/analysis/2317" target="_blank" rel="noopener">財報狗</a>、<a href="https://www.wantgoo.com/stock/2317" target="_blank" rel="noopener">玩股網</a>）</li><li><b>財務摘要</b>：2026 年第二季合併營收達 2.53 兆元，季增 19%、年增 41%；EPS 4.27 元，創同期新高，年增 35%；毛利率 6.12%（季減 0.06 個百分點、年減 0.21 個百分點）；營業利益率 3.75%；歸屬母公司業主淨利 599.74 億元，季增 20%、年增 35%。成長動能主要來自工業富聯 AI 伺服器出貨強勁及高速交換器業務。（<a href="https://fnc.ebc.net.tw/fncnews/stock/216254" target="_blank" rel="noopener">東森財經新聞</a>、<a href="https://ec.ltn.com.tw/article/breakingnews/5537274" target="_blank" rel="noopener">自由財經</a>）</li><li><b>主要進展</b>：CPO 交換器 2026 年開始量產出貨，董事長劉揚偉於股東會表示今年出貨上看 1 萬台，2027 年出貨量將呈數倍成長；鴻海為 NVIDIA CPO 交換機與 AI 機櫃整合代工夥伴，已切入光網路交換器設計、組裝與系統整合，規劃 2026 年第 3 季量產出貨；鴻海研究院 2026 年 5 月揭露矽光子／CPO 新戰場布局，以「Light at Scale」為主題舉辦 FIT Tech Day 2026。（<a href="https://www.wealth.com.tw/articles/5b0d23c9-899f-4bfb-9474-b82eb1a9ad76" target="_blank" rel="noopener">財訊雙週刊</a>、<a href="https://news.nextapple.com/finance/20260510/FDF0B6EF32F4CAA994DC2D7C57D0E820" target="_blank" rel="noopener">壹蘋新聞網</a>、<a href="https://vocus.cc/article/6aaa3fb1fd89780001b0fd7e" target="_blank" rel="noopener">vocus</a>）</li><li><b>估值</b>：本益比落在約 16.5–17.7 倍區間（財報狗最新 17.0 倍、河流圖 17.68 倍；另一來源 2026/9/18 為 16.51 倍），屬其歷史區間中偏低位置。鴻海為集團型 EMS 代工廠，估值仍主要反映伺服器／組裝代工本業邏輯，矽光子／CPO 題材目前僅為成長性加分項、尚未在本益比上明顯溢價。（<a href="https://statementdog.com/analysis/2317/pe" target="_blank" rel="noopener">財報狗 PE</a>、<a href="https://statementdog.com/analysis/2317/pe-band" target="_blank" rel="noopener">財報狗 PE-Band</a>）</li><li><b>資料缺口</b>：股價／市值三來源不一；本益比三種數字未標明完全一致基期；未查得矽光子／CPO 業務獨立揭露之營收貢獻（併入雲端網路產品事業群）；WebSearch 額度用盡，未能取得矽光子同業本益比以供並列比較。</li></ul>
+<h4>聯亞光電工業股份有限公司｜3081.TWO｜台灣（上櫃）</h4>
+<ul><li><b>股價／市值</b>：Yahoo 股市顯示 2026/09/17 收盤價 2,720 元（+3.03%）；另一查詢時點顯示 2,805 元（+4.86%）、市值約 2,855.5 億元（wantgoo）或 2,854.62 億元（另一來源）；Yahoo Finance 英文版一度顯示 2,935 元。無法確認單一權威基準日數字。（<a href="https://tw.stock.yahoo.com/quote/3081.TWO" target="_blank" rel="noopener">Yahoo 股市</a>、<a href="https://www.wantgoo.com/stock/3081" target="_blank" rel="noopener">wantgoo</a>、<a href="https://finance.yahoo.com/quote/3081.TWO/history/" target="_blank" rel="noopener">Yahoo Finance</a>）</li><li><b>財務摘要</b>：2026 年第 2 季營收 12.21 億元，季增 35.1%、年增 120.8%；毛利率 57%（另一來源 57.45%），季增 2 個百分點、年增 14 個百分點；單季 EPS 4.62 元，創歷史新高。累計 2026 上半年淨利 7.86 億元，年增 465%，EPS 達 7.75 元；第 1 季 EPS 為 3.44 元，季增 67.22%。（<a href="https://statementdog.com/analysis/3081/eps" target="_blank" rel="noopener">財報狗 EPS</a>、<a href="https://statementdog.com/analysis/3081/profit-margin" target="_blank" rel="noopener">財報狗毛利率</a>）</li><li><b>主要進展</b>：2026/08/12 法說會：Q2 EPS 4.62 元創單季新高，毛利率攀升至 57%，主要受矽光（SiPh）產品放量挹注，1.6T 矽光雷射已正式量產出貨，3.2T 及更高速規格產品正與客戶合作開發驗證中；累計已公告資本支出近新台幣 60 億元，主要投入磊晶片（AP 端）產能擴充，預計 2027 年前段產能將較 2026 年底增加 100% 以上、全年產能較 2026 年增加 2.5 倍；2026 年新增 1 家美國大型雲端服務供應商（CSP）客戶開始直接出貨，並新增 3-4 家資料中心模組客戶。（<a href="https://news.cnyes.com/news/id/6573688" target="_blank" rel="noopener">鉅亨網</a>、<a href="https://www.simpletechtrend.com/post/landmark-3081-2026-q2-earnings-cw-laser-siph" target="_blank" rel="noopener">simpletechtrend</a>、<a href="https://cmnews.com.tw/article/cmoney-8a17d207-965d-11f1-b316-b0672ee7e75f" target="_blank" rel="noopener">CMoney</a>）</li><li><b>估值</b>：三個來源的本益比差異極大：43.4 倍（財報狗，相對產業平均 25.31 倍偏高）、81.04 倍（財報狗河流圖，不同計算基準）、265.5 倍（依股價 2,805 元搭配較舊 EPS 基期推算）。此差異可能源自 trailing EPS 採計期間是否已納入 2026 Q2 單季獲利爆發（H1 淨利 YoY+465%），建議優先參考 QoQ／YoY 營收與毛利率改善趨勢及未來 Forward EPS。（<a href="https://statementdog.com/analysis/3081/pe" target="_blank" rel="noopener">財報狗 PE</a>、<a href="https://statementdog.com/analysis/3081/pe-band" target="_blank" rel="noopener">財報狗 PE-Band</a>）</li><li><b>資料缺口</b>：股價與市值因不同財經網站擷取時間點不一致而衝突；本益比差異達 3 倍以上；未能取得同業（聯鈞、新煒科技等）估值數字進行直接比較；未直接取得公司官方新聞稿或法說會簡報 PDF 原文連結，法說會重點均引用自財經媒體與部落格整理報導。</li></ul>
+<h4>波若威科技（Browave Corporation）｜3163.TWO｜台灣（上櫃）</h4>
+<ul><li><b>股價／市值</b>：收盤價 NT$665 元（2026-09-18，漲 1.99%，成交金額約 11.67 億元）。市值搜尋摘要給出「740.99 億元」一說，但與公司股本（8.05 億元）換算後明顯兜不攏，判斷該數字不可靠，精確市值請以證交所／Goodinfo 即時頁面為準。（<a href="https://goodinfo.tw/tw/StockDetail.asp?STOCK_ID=3163" target="_blank" rel="noopener">Goodinfo!</a>、<a href="https://tw.stock.yahoo.com/quote/3163.TWO" target="_blank" rel="noopener">Yahoo 股市</a>）</li><li><b>財務摘要</b>：2026 年 Q1 EPS 3.03 元（季增 4.27%、年增 396.72%），Q1 毛利率 18.86%、淨利率 37.15%；2026 年 Q2 EPS 0.47 元（季減 84%、年增 771%），使上半年累計 EPS 達 3.50 元（年增 548%）；2026 年 7 月單月營收 2.10 億元，月增 15.94%、年增 28.65%。Q2 毛利率／稅後淨利具體數字未查得。（<a href="https://statementdog.com/analysis/3163/eps" target="_blank" rel="noopener">財報狗 EPS</a>、<a href="https://shop.nstock.tw/stock_info?stock_id=3163&amp;status=6" target="_blank" rel="noopener">nStock</a>）</li><li><b>主要進展</b>：CPO 為 2026 年法說會主軸，主力產品（Shuffle Box 等）預計下半年完成驗證後小量出貨，2026 年正式量產，Q4 月產能目標約 1,000 顆，挑戰 2027 年 Q1 月產 10,000 顆；波若威為台灣加入 NVIDIA CPO 矽光子生態系的四家廠商之一（另三家為台積電、鴻海、日月光），供應 Vera Rubin 平台的光纖陣列單元（FAU）；因應訂單成長，菲律賓主要生產基地規劃擴增廠區面積 2-3 倍。（<a href="https://news.cnyes.com/news/id/5904365" target="_blank" rel="noopener">鉅亨網</a>、<a href="https://udn.com/news/story/6850/9717572" target="_blank" rel="noopener">聯合新聞網</a>、<a href="https://vocus.cc/article/69f81d57fd89780001da71c9" target="_blank" rel="noopener">vocus</a>）</li><li><b>估值</b>：本益比出現兩個不同來源數字：財報狗顯示 91.8 倍；另一分析站顯示 67.86 倍，同業平均 64.86 倍。另有估值文章推算「應得價」約 162 元，慣常本益比隱含合理區間約 315-540 元，現價（665 元）高於該區間上緣約 41%，意味目前評價偏貴。因公司正處 CPO 量產爬升期，獲利波動大，本益比容易失真。（<a href="https://statementdog.com/analysis/3163/pe" target="_blank" rel="noopener">財報狗 PE</a>、<a href="https://winvest.tw/Stock/Symbol/Comment/3163" target="_blank" rel="noopener">Win 投資</a>）</li><li><b>資料缺口</b>：精確總市值未能確認（搜尋摘要與股本換算兜不攏）；Q2 單季毛利率／營業利益率／稅後淨利金額均未查得；本益比與近四季 EPS 各出現兩個不同數字；未查得法人機構對 FY2026/FY2027 的預估 EPS 或 Forward P/E 共識數字；矽光子同業本益比並列對照表未查得具體數字。</li></ul>
+<h4>上詮光纖通信股份有限公司（FOCI）｜3363.TWO｜台灣（上櫃）</h4>
+<ul><li><b>股價／市值</b>：近期不同交易日／不同來源數字有出入：Goodinfo／Yahoo 股市顯示 2026/9/17 收盤約 655.29 元；另一查詢時點鉅亨網頁面顯示 683.00 元（惟該頁面「資料日期」欄位顯示為 2024/09/18，疑似系統顯示異常）；亦有資料顯示 2026/9/9 區間介於 701~756 元。市值視股價來源不同，介於約 744.3 億元～776.2 億元之間。</li><li><b>財務摘要</b>：2026 年第 2 季轉為虧損：單季 EPS 約 -0.22 元、毛利率僅約 0.2%，主因泰國新廠產線設備到位延遲、稼動率偏低；月營收方面，3 月 1.17 億元（年減 26%）、6 月合併營收 1.57 億元（年減 15.7%），但 8 月營收已回升至 2.04 億元（年增 13.2%）；近四季累計 EPS 約為 -1.18~-1.21 元，仍處虧損狀態。（<a href="https://money.udn.com/money/story/11074/9675441" target="_blank" rel="noopener">經濟日報</a>、<a href="https://statementdog.com/analysis/3363/monthly-revenue-growth-rate" target="_blank" rel="noopener">財報狗營收成長率</a>）</li><li><b>主要進展</b>：2025/11/24 法說會：前三季轉虧為盈，董事會通過現金增資約 1 萬張（預計籌資約 25 億元），並核准 2026 年資本支出預算合計 17.5 億元，全力擴充 CPO 自動化量產線與無塵室；斥資 15.38 億元擴產 FAU 生產線，第 3 季起依客戶需求交貨 3.2T 產品，規劃 2026 年推進至 6.4T 規格；核心產品 ReLFACon™ FAU LPO 與 CPO（1.6T）已進入試產線，法人估 FAU 業務 2026~2028 年三年累計營收貢獻上看約 70 億元。（<a href="https://vocus.cc/article/6a087afdfd8978000149d641" target="_blank" rel="noopener">vocus</a>、<a href="https://uanalyze.com.tw/articles/9030549200" target="_blank" rel="noopener">優分析 UAnalyze</a>）</li><li><b>估值</b>：因近四季 EPS 為負，TTM 本益比無意義（多數平台顯示為「--」）。本淨比（PB）約 13.57 倍、殖利率僅 0.15%，反映市場已對矽光子／CPO（FAU）未來成長性重度定價，而非反映目前獲利。多篇報導指出上詮、聯鈞（3450）估值明顯高於同業，並對照大立光（3008）P/E 約 15 倍、台積電 P/E 低於 20 倍作為「便宜」基準。（<a href="https://wantrich.chinatimes.com/news/20260424900680-420101" target="_blank" rel="noopener">旺得富理財網</a>）</li><li><b>資料缺口</b>：精確股價與市值無法鎖定單一可信盤後價；本益比因 TTM EPS 為負無可靠 Forward P/E 數字；2026 上半年累計合併營收總額未查得官方公告加總數字；2026 全年 EPS／營收官方財測數字未附精確目標；同業精確本益比並列比較缺乏具體數字表格。</li></ul>
+<h4>NVIDIA Corporation（輝達）｜NVDA｜美國</h4>
+<ul><li><b>股價／市值</b>：股價約 US$222.27（2026/9/18 收盤，前一交易日收盤 $219.34）；市值約 US$5.37 兆，為全球市值最高企業（2026 年 9 月）。不同來源股價快照散布在 $212–222 區間；另有較舊來源提及「$3.6 兆」里程碑報導，屬較早期股價階段的歷史新聞，非當前市值。（<a href="https://stockanalysis.com/stocks/nvda/market-cap/" target="_blank" rel="noopener">stockanalysis.com</a>、<a href="https://companiesmarketcap.com/nvidia/marketcap/" target="_blank" rel="noopener">companiesmarketcap.com</a>）</li><li><b>財務摘要</b>：最近一季為 FY2027 Q2（截至 2026/7/26，2026/8/26 公布）：營收 US$96.22B，YoY+105.85%，優於財測中值 $91.0B（+5.7%）；資料中心營收 $89.0B，占總營收 92%。Non-GAAP EPS $2.22（優於市場共識 $2.09），GAAP 稀釋 EPS $2.46。毛利率 75.0%。FY2026 全年營收 $215.94B，YoY+65.47%；TTM 營收 $302.97B，YoY+83.38%。公司同時預告 Q3 毛利率將降至 74.0%（±50bp）、Q4 探底 71-72%，主因記憶體與零組件成本上升。（<a href="https://www.stocktitan.net/news/NVDA/nvidia-announces-financial-results-for-second-quarter-fiscal-98x41cxh35vk.html" target="_blank" rel="noopener">StockTitan</a>、<a href="https://www.cnbc.com/2026/08/26/nvidia-nvda-earnings-report-q2-2027-live-updates.html" target="_blank" rel="noopener">CNBC</a>）</li><li><b>主要進展</b>：矽光子／CPO 產品線：2025 年 3 月 GTC 發表 Quantum-X Photonics（InfiniBand，800Tb/s scale-out）與 Spectrum-X Photonics（Ethernet）共同封裝光學交換器，採台積電 3D 混合鍵合封裝技術，號稱全球首款 3D 堆疊矽光子引擎，雷射數量減少 4 倍、功耗效率提升 3.5 倍、訊號完整性提升 63 倍。Q3 FY2027 財測營收指引 $108B。（<a href="https://nvidianews.nvidia.com/news/nvidia-spectrum-x-co-packaged-optics-networking-switches-ai-factories" target="_blank" rel="noopener">NVIDIA Newsroom</a>、<a href="https://www.hpcwire.com/2026/03/17/huang-shares-nvidia-roadmap-showing-more-chips-nvl1152-scale-up-cpo/" target="_blank" rel="noopener">HPCwire</a>）</li><li><b>估值</b>：本益比不同來源落差極大，無法採信單一數字：Forward P/E 各家分歧——gurufocus.com（2026/8/19）報 24.50x、valueinvesting.io（2026/9/13）報 48.30x，另有來源列 18.2x／23.8x／25.64x 等，差異疑因擷取時間、EPS 估計基期不同。建議優先觀察環比毛利率與資料中心營收成長趨勢，而非單一 P/E 快照。（<a href="https://fullratio.com/stocks/nasdaq-nvda/pe-ratio" target="_blank" rel="noopener">fullratio.com</a>、<a href="https://www.gurufocus.com/term/forward-pe-ratio/NVDA" target="_blank" rel="noopener">gurufocus.com</a>）</li><li><b>資料缺口</b>：Forward P/E 無法給出單一可信數字；與矽光子供應鏈同業（Broadcom、Coherent、Lumentum、TSMC）之估值倍數直接比較本次未及完成；股價／市值為 9/18 收盤快照，非查詢日（9/20）當日即時數字。</li></ul>
+<h4>Broadcom Inc.｜AVGO｜美股（NASDAQ）</h4>
+<ul><li><b>股價／市值</b>：收盤價 $357.61（2026/9/18，單日+2.97%），盤後 $356.96；市值約 $1.71 兆美元（stockanalysis.com，9/18）；另一來源 9/4 顯示市值約 $1.7 兆美元、9 月稍早另有 $1.645 兆美元的口徑。（<a href="https://stockanalysis.com/stocks/avgo/" target="_blank" rel="noopener">stockanalysis.com</a>、<a href="https://companiesmarketcap.com/broadcom/marketcap/" target="_blank" rel="noopener">companiesmarketcap.com</a>）</li><li><b>財務摘要</b>：FY2026 Q3（法說會日期 2026/9/2）合併營收創新高達 $296 億美元，YoY+86%；毛利率約 75%（季減 210 bps）；Non-GAAP EPS $3.32（YoY+96%），GAAP 稀釋 EPS $2.68。AI 半導體營收 $167 億美元，YoY+221%、QoQ+54%，占總營收 56%。（<a href="https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2026-financial" target="_blank" rel="noopener">Broadcom IR</a>、<a href="https://www.cnbc.com/2026/09/02/broadcom-avgo-q3-earnings-report-2026.html" target="_blank" rel="noopener">CNBC</a>）</li><li><b>主要進展</b>：2026/9/2 法說會管理層上修全年 AI 營收指引至約 $580 億美元，並首度給出 FY2027 AI 營收展望約 $1,150 億美元、FY2028 約 $2,300 億美元；矽光子／CPO 產品線持續放量：51.2Tbps Bailly CPO 乙太網路交換器已進入量產，並發表次世代 102.4Tbps Tomahawk 6 Davisson CPO 交換器。（<a href="https://www.techtimes.com/articles/326405/20260903/broadcom-custom-ai-chip-revenue-surges-221-167b-q4-guidance-disappoints.htm" target="_blank" rel="noopener">techtimes.com</a>、<a href="https://www.trendforce.com/presscenter/news/20260727-13151.html" target="_blank" rel="noopener">TrendForce</a>）</li><li><b>估值</b>：本益比不同來源落差大：Trailing P/E 45.65（9/18）；Forward P/E 三家不一——GuruFocus 18.90（判定「適度低估」）、stockanalysis.com 23.55、financecharts.com 37.59（疑為較舊資料）。PEG ratio 約 0.50（GuruFocus）。（<a href="https://www.gurufocus.com/term/forward-pe-ratio/AVGO" target="_blank" rel="noopener">GuruFocus</a>）</li><li><b>資料缺口</b>：Broadcom 矽光子／CPO 業務的獨立營收貢獻或占比未揭露；與 Coherent、Lumentum 等同業的可比 P/E 交叉比對本次未執行；市值精確值因擷取時間點／股本基礎不同，$1.645 兆～$1.71 兆美元區間並列。</li></ul>
+<h4>Marvell Technology, Inc.｜MRVL｜美股（NASDAQ）</h4>
+<ul><li><b>股價／市值</b>：收盤價 $244.25（+1.45%），市值約 $214.19B，企業價值約 $215.54B（截至 2026-09-18）；52 週區間 $70.69–$329.88，Beta 2.25。（<a href="https://stockanalysis.com/stocks/MRVL/" target="_blank" rel="noopener">stockanalysis.com</a>）</li><li><b>財務摘要</b>：最新單季（Q2 FY2027，2026-08-27 發布）：淨營收 $27.39 億，YoY+37%；資料中心業務營收 $21.71 億，YoY+46%（占總營收 79%）；GAAP 毛利率 53.1%／Non-GAAP 毛利率 58.9%；GAAP 稀釋 EPS $0.33／Non-GAAP 稀釋 EPS $0.94。TTM 口徑：營收 $9.45B（+30.6% YoY）、EPS(GAAP,TTM) $2.98——與單季 non-GAAP EPS 口徑不同，不可直接相加比較。（<a href="https://investor.marvell.com/news-events/press-releases/detail/1031/marvell-technology-inc-reports-second-quarter-of-fiscal-year-2027-financial-results" target="_blank" rel="noopener">Marvell IR</a>）</li><li><b>主要進展</b>：2026-06-01 發布業界首款 102.4 Tbps 交換機 Teralynx T100：3nm 製程、功耗低於 1000W，提供 BGA／共封銅（CPC）／共封光學（CPO）三種封裝選項；2026-09-09~17 於 AI Infra Summit 2026 展示 Photonic Fabric™ 光學互連技術與 RELIANT™ 光電連結即時遙測平台。（<a href="https://investor.marvell.com/news-events/press-releases/detail/1024/marvell-announces-availability-of-industrys-first-102-4-tbps-switch-purpose-built-for-ai-and-cloud-data-center-infrastructure" target="_blank" rel="noopener">Marvell IR 產品新聞稿</a>）</li><li><b>估值</b>：Trailing P/E 82.06x、Forward P/E 44.76x、PEG 0.98x。Trailing P/E 偏高主因 FY2024/FY2025 GAAP EPS 曾為負值，數字容易失真；應優先看 Forward P/E 與 PEG，兩者反映 Q3 FY2027 財測 non-GAAP EPS 較上季續揚至 $1.10（季增約 17%）的加速獲利改善趨勢。</li><li><b>資料缺口</b>：本次任務執行時 WebSearch 額度已用罄，改以 WebFetch 直接存取已知網址；未取得同業（Broadcom、Coherent、Lumentum 等）P/E 並列比較數字；Marvell 並未單獨揭露矽光子／CPO 產品線的營收貢獻或出貨量。</li></ul>
+<h4>Coherent Corp｜COHR｜美國（NYSE）</h4>
+<ul><li><b>股價／市值</b>：317.36 美元（2026/9/18 收盤，單日+7.22%）；市值約 621.5 億美元；52 週股價區間 102.14–440.00 美元。（<a href="https://stockanalysis.com/stocks/cohr/" target="_blank" rel="noopener">stockanalysis.com</a>、<a href="https://finance.yahoo.com/quote/COHR/" target="_blank" rel="noopener">Yahoo Finance</a>）</li><li><b>財務摘要</b>：FY2026（截至 2026/6/30）全年營收 71.18 億美元，YoY+22.51%；毛利率逐年改善至 37.50%；FY2026 全年 EPS 轉虧為盈達 4.12 美元。最近一季（FY2026 Q4，2026/8/12 公布）營收 20.5 億美元優於市場預期 19.8 億美元，EPS 1.74 美元優於預期 1.62 美元，為連續第 7 季創營收新高。（<a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;company=coherent+corp&amp;type=8-K&amp;dateb=&amp;owner=include&amp;count=10" target="_blank" rel="noopener">SEC EDGAR 8-K 列表</a>）</li><li><b>主要進展</b>：2026/8/17 宣布開始向客戶送樣 300mm 高熱傳導碳化矽（SiC）基板；2026/8/31 Deutsche Bank 首次覆蓋給予買進評等，稱其為「參與 1.6T 光收發模組加速上量的較乾淨標的」；2026/9/17 擴大可插拔光學線路系統產品組合，新增全 C-Band 放大功能。</li><li><b>估值</b>：追蹤本益比 77.03 倍——因先前虧損谷底期基期極低，此數字易失真。預估本益比（Forward P/E）約 31–34 倍（stockanalysis.com 33.70 倍 vs Yahoo Finance 31.25 倍，並列標註）。分析師共識（23 位機構）給予「買進」評等，平均 12 個月目標價 415.36 美元，較現價有約 30.9% 上檔空間。</li><li><b>資料缺口</b>：Coherent 官方 IR 新聞稿頁多次連線逾時，官網 newsroom 僅回傳過期快取；預估本益比二來源不一致；未取得各業務分部矽光子／CPO 相關營收占比的官方拆分數字；未逐一查證 Lumentum、Broadcom 等同業最新數字以供橫向比較。</li></ul>
+<h4>Lumentum Holdings Inc.｜LITE｜美國（NASDAQ）</h4>
+<ul><li><b>股價／市值</b>：930.91 美元（2026/9/18 收盤，當日+4.17%）；市值約 835.0 億美元；52 週區間 144.52–1,085.68 美元。未能取得第二家即時報價來源交叉核對（403/逾時），僅以 stockanalysis.com 單一來源為準。（<a href="https://stockanalysis.com/stocks/LITE/" target="_blank" rel="noopener">stockanalysis.com</a>）</li><li><b>財務摘要</b>：FY2026 全年（截至 2026/6/27）營收 30.14 億美元，YoY+83.2%；Q4 FY2026 單季營收 10.06 億美元，YoY+109.3%／QoQ+24.5%，Non-GAAP 毛利率 50.4%（GAAP 47.4%），Non-GAAP EPS：Q4 為 3.23 美元、全年為 8.67 美元。GAAP 口徑因疑似大額非現金項目導致全年 GAAP 淨損高達約 69.4 億美元（EPS 約 -92.96 美元）——<b>此數字未經官方逐字證實確切原因，請勿逕自引用為經營面惡化的結論</b>。（<a href="https://www.stocktitan.net/news/LITE/" target="_blank" rel="noopener">StockTitan</a>）</li><li><b>主要進展</b>：2026/8/11 公布 Q4 FY2026 財報，同時發布 Q1 FY2027 財測；2026/9/15 於 ECOC 2026 發表「800G 與 1.6T 矽光子發射器量產進展」及「應用於 AI 資料中心的 1060nm VCSEL 陣列」技術報告；2026/5 月納入 Nasdaq-100 指數。</li><li><b>估值</b>：Forward P/E 42.96 倍、PEG 0.40、EV/EBITDA 102.95 倍、EV/Revenue 27.35 倍。PEG 僅 0.40 顯示相對於分析師預估之未來成長，股價未必過度昂貴；但 EV/EBITDA 破百倍反映市場已高度 price in 高成長情境。分析師共識評等為 Buy（26 位分析師），目標價中位數 1,149.38 美元（較現價高 23.47%）。</li><li><b>資料缺口</b>：GAAP 全年淨損原因未經官方證實；Lumentum 官方 IR 網站與 Nasdaq/CNBC 股價頁均無法直接讀取；與 Coherent、Broadcom 等同業的估值比較未完成；未取得矽光子業務占總營收比重的官方拆分數據。</li></ul>
+<h4>Tower Semiconductor｜TSEM｜美國那斯達克上市／以色列註冊</h4>
+<ul><li><b>股價／市值</b>：223.60 美元（2026/9/18 收盤，較前日+1.99%）；市值約 252.7 億美元。（<a href="https://stockanalysis.com/stocks/tsem/" target="_blank" rel="noopener">stockanalysis.com</a>）</li><li><b>財務摘要</b>：Q2 2026（2026/8/4 公布）營收創新高達 4.60 億美元（YoY+23.66%~24%），毛利率 29.95%，EPS 0.79 美元；FY2025 全年營收 15.66 億美元（YoY+9.05%）；TTM 營收 17.10 億美元（YoY+14.90%）。公司同步揭露<b>矽光子業務年化營收 run rate 已達 6.8 億美元</b>——為本報告中少數直接揭露矽光子業務財務數字的公司。（<a href="https://www.stocktitan.net/news/TSEM/" target="_blank" rel="noopener">stocktitan.net</a>）</li><li><b>主要進展</b>：2026/7/14 宣布在日本進行策略性擴產：獲日本政府約 10 億美元補助，公司自身投資約 30 億美元，用於矽光子（SiPho）與 SiGe 產能擴充；2026/9/17 NewPhotonics 與 Tower 宣布開始大量出貨雷射整合光學引擎 PIC；2026/8/11 OpenLight 與 Tower 擴大 PH18DA 矽光子製程平台生態系（PDK）；與 Marvell 合作之同調光子 IC 出貨已突破 500 萬顆里程碑。</li><li><b>估值</b>：追蹤本益比 88.42 倍、預估（Forward）本益比 43.86 倍。與特殊製程晶圓代工同業比較：UMC 追蹤 23.65 倍／預估 25.52 倍、GlobalFoundries 追蹤 37.35 倍／預估 22.06 倍。TSEM 無論追蹤或預估本益比均明顯高於兩家同業，估值溢價對應其較高成長率及矽光子平台題材，惟此溢價目前主要建立在財測與 run rate 揭露上，Q3 實際數字尚未公布。（<a href="https://stockanalysis.com/stocks/umc/" target="_blank" rel="noopener">UMC</a>、<a href="https://stockanalysis.com/stocks/gfs/" target="_blank" rel="noopener">GFS</a>）</li><li><b>資料缺口</b>：同業比較僅取得代工同業 UMC、GFS 數字，未取得光學元件廠（Coherent、Lumentum）本益比做跨環節比較；Tower 官方 IR 新聞稿頁兩次擷取皆逾時，近期動態改採 stocktitan.net 彙整；Q3 2026 實際財報尚未公布（僅財測 guidance $520M）。</li></ul>
+<h4>Cisco Systems, Inc.（思科系統）｜CSCO｜美國（NASDAQ）</h4>
+<ul><li><b>股價／市值</b>：股價 $109.51（單日跌 0.66%），市值約 $431.75B，資料擷取時間為 2026/9/18-19；52 週區間 $66.81–$130.37，Beta 0.99。（<a href="https://stockanalysis.com/stocks/CSCO/" target="_blank" rel="noopener">stockanalysis.com</a>）</li><li><b>財務摘要</b>：FY2026 第四季（截至 2026/7/25，2026/8/12 公告）營收 $17.3B，YoY+18%；GAAP EPS $0.97（YoY+52%）、Non-GAAP EPS $1.22（YoY+23%）。FY2026 全年營收 $63.3B，YoY+12%。公司給出 FY2027 Q1 營收指引 $18.0-18.2B；FY2027 全年營收指引 $72.2-73.4B。（<a href="https://s21.q4cdn.com/812015656/files/doc_earnings/2026/q4/earnings-result/Q4FY26-Press-Release.pdf" target="_blank" rel="noopener">Cisco 官方新聞稿 PDF</a>）</li><li><b>主要進展</b>：FY2026 Q4 單季來自超大規模資料中心（hyperscaler）客戶的 AI 基礎建設訂單達 $4B，全年 AI 訂單累計達 $9.3B；2026 年 8 月底 AMD、Cisco 與沙烏地阿拉伯 HUMAIN 宣布擴大沙國 AI 基礎建設合作，採用 Cisco Silicon One 網通晶片平台搭配 AMD Instinct MI355X GPU。（<a href="https://ir.amd.com/news-events/press-releases/detail/1298/amd-cisco-and-humain-expand-saudi-arabias-ai-infrastructure-as-amd-instinct-systems-go-live" target="_blank" rel="noopener">AMD IR</a>）</li><li><b>估值</b>：P/E（TTM）32.89x；Forward P/E（預估）21.29x。分析師（28 位）平均目標價 $137.63，隱含上行空間約 25.7%。<b>注意</b>：Cisco 本業為網通設備／資安整合商，Silicon One 為自研網通交換晶片平台，並非矽光子／CPO 零組件供應商本身，在矽光子產業同業比較中應歸類為「下游應用／資料中心客戶端」而非「矽光子供應鏈環節」。</li><li><b>資料缺口</b>：股價／市值為 9/18-19 快照，非查詢當日即時價；未取得矽光子同業（Broadcom、Lumentum、Coherent）P/E 的直接並列比較數字；未能逐一查證 Cisco 在矽光子／CPO 領域的專屬報導。</li></ul>
+<h4>中際旭創股份有限公司（Suzhou Innolight / Zhongji Innolight）｜300308.SZ｜中國大陸（深交所創業板＋2026/7 新增 H 股）</h4>
+<ul><li><b>股價／市值</b>：收盤價約人民幣 926.43 元；總市值約人民幣 1.09 兆元（約 1,091,250,828,711 元）、流通市值約 1.03 兆元（東方財富即時行情，2026-09-20 查詢，當日漲跌幅約 +3.4%~+6.08%）；Yahoo Finance 資料顯示 2026-09-18 收盤同為 926.43 元、市值 1.091 兆元，兩來源可互相印證。</li><li><b>財務摘要</b>：2026 年上半年（H1）營收人民幣 417.78 億元，YoY+182.49%；歸屬母公司淨利潤 136.51 億元，YoY+241.7%；毛利率 46.25%（較 2025 全年 42.04% 再提升）；基本 EPS 12.31 元。2025 全年營收 382.40 億元（YoY+60.25%）、淨利潤 107.97 億元、EPS 9.8 元。（<a href="https://pdf.dfcfw.com/pdf/H2_AN202608231828345475_1.pdf?1787528563000.pdf" target="_blank" rel="noopener">中際旭創投資者關係活動記錄表 2026-008</a>）</li><li><b>主要進展</b>：2026-08-23 電話會議（逾 160 家機構參與）：管理層揭露 26Q2 營收環比 Q1 增長約 15%、毛利率續揚，<b>明確將毛利率提升歸因於矽光技術滲透率提升</b>；2027 年主要客戶已給出 1.6T／800G 訂單指引且較 2026 年續增，新產品 2.4T／NPO／XPO 預計 2027 下半年量產、2028 年放量出貨；2026 年 7 月完成港股（H 股）掛牌並募資約 70 億美元；上游核心物料（光芯片、電芯片、3nm DSP、PCB）供給仍偏緊張。</li><li><b>估值</b>：東方財富（2026-09-20）顯示 PE（動態）約 39.97 倍、市淨率約 27.38 倍；Yahoo Finance（2026-09-18 收盤）顯示 PE（TTM）約 50.51 倍。兩者併陳、不擅自擇一：差異主要因「動態」PE 以最新單期年化推估，而「TTM」PE 採用最近四季實際獲利加總。由於公司近期獲利呈爆發式成長，回溯型 PE 容易因成長基期效應而偏高，建議優先參考環比毛利率與淨利率趨勢；<b>淨利成長部分含供應鏈股權投資公允價值變動等非經常性收益，需留意扣除後的真實獲利品質</b>。</li><li><b>資料缺口</b>：未取得同業（光迅科技、新易盛等）PE 數字可供並列比較；本次未廣泛搜尋 SemiAnalysis／Stratechery／Coatue／Yole 等產業研究網站對中際旭創個股層級的專題報導，僅完成公司自身財報與官方 IR 公告的一手資料查證；未取得券商一致預期（Forward P/E、2026E/2027E EPS consensus）數字。</li></ul>
+<h4>新易盛（成都新易盛通信技術股份有限公司，Eoptolink Technology）｜300502.SZ｜中國大陸（深交所創業板）</h4>
+<ul><li><b>股價／市值</b>：東方財富網即時行情（2026-09-18 收盤）：股價 445.00 元人民幣，當日漲跌+4.87%；總市值約 6,206.58 億元人民幣，流通市值約 5,583.52 億元。Yahoo Finance 同日資料交叉印證股價 445.00 元、總市值 620.658 億元、52 週區間 205.22–618.87 元、分析師平均目標價 652.48 元。<b>另新浪財經頁面顯示股價 21.47 元、市值 139,473.73 億元，與上述差距達 20 倍以上，研判為頁面動態數據載入異常，未採信。</b></li><li><b>財務摘要</b>：2026 年上半年營業收入 209.10 億元人民幣，YoY+100.34%；歸母淨利潤 75.29 億元，YoY+90.98%；銷售毛利率 50.78%；每股收益（基本，累計）5.41 元。2026Q1：營收 83.38 億元（YoY+105.76%）、淨利潤 27.80 億元（YoY+76.80%）；以 H1 減 Q1 推算，Q2 單季營收約 125.7 億元、淨利潤約 47.5 億元。2025 全年營收 248.42 億元（YoY+187.29%），顯示成長動能延續但年增率邊際趨緩。（<a href="https://pdf.dfcfw.com/pdf/H2_AN202609121829313091_1.pdf" target="_blank" rel="noopener">新易盛投資者關係活動記錄表 2026-005</a>）</li><li><b>主要進展</b>：2026 年 9 月 11 日半年度業績說明會：800G 為今年出貨主力產品，1.6T 光模塊 Q2 出貨量較 Q1 明顯增長、預計下半年放量節奏加快；<b>矽光子產品份額持續提升、增長趨勢強勁，預計 2027 年持續走強</b>；已布局 NPO、OCS、LPO、CPO、XPO、相干等下一代技術方向，NPO 預計 2027 年開始批量交付、2028 年規模化放量。</li><li><b>估值</b>：PE（TTM）因來源而異：東方財富 41.22 倍、Yahoo Finance 47.39 倍（並列不擇一）；PB 約 25.54 倍。同業比較（均取 2026-09-18 收盤）：中際旭創 PE（TTM）約 39.97 倍、總市值約 10,912.5 億元，估值與新易盛相近；光迅科技 PE（TTM）約 138.93 倍、總市值約 1,617.6 億元，估值明顯偏高但獲利基期較低使 PE 易失真，不宜直接類比。</li><li><b>資料缺口</b>：本次全程改以 WebFetch 直接擷取財經網站/官方公告，未能涵蓋 SemiAnalysis、Stratechery、Coatue Insights、Yole Group 等指定產業消息來源對新易盛的具體報導；分析師一致預估 EPS／Forward P/E 無可靠來源。</li></ul>
+<h4>光迅科技（武漢光迅科技股份有限公司 / Accelink Technologies）｜002281.SZ｜中國</h4>
+<ul><li><b>股價／市值／財務／估值：無法查證</b>——本次任務指派時，WebSearch 額度已在其他子任務中耗盡（200/200），改用 WebFetch 直接存取東方財富、新浪財經、同花順、雪球、百度財經、MarketScreener、WSJ 等頁面，均因股價／市值數據為前端 JS 動態渲染而抓不到實際數字。故本項<b>不填入任何未經證實的數字</b>。</li><li><b>主要進展</b>：2026/09/07–09（CIOE 2026）：發表 5 項技術成果——單波 400G 技術示範、基於先進封裝的 6.4T NPO 產品（32×200G 通道）、320×320 大端口 OCS 全光交換、空芯光纖 OTDR 檢測方案、800G L-band 通感一體解決方案；2026/09/10 公司研發平台負責人公開說明光互聯技術三層布局：NPO（現階段功耗／密度／供應鏈成熟度綜合最優）、CPO（理論功耗最低但產業鏈配套未成熟）、OIO（遠期儲備），強調公司具備橫跨 InP、GaAs、矽光（SiPh）三大晶片平台的垂直自研能力。（<a href="https://www.accelink.com/lighting_your_dreams/2097980012266291201.html" target="_blank" rel="noopener">光迅科技官網</a>）</li><li><b>資料缺口</b>：股價、總市值、本益比、EPS、最新一季／半年度營收與毛利率等關鍵財務數字，本次<b>全數無法查證</b>（WebSearch 額度耗盡 + 目標網站 JS 動態渲染導致 WebFetch 無法取得數字）。建議待 WebSearch 額度重置後，優先以「光迅科技 002281 2026 年半年報」等關鍵詞重新搜尋，或直接查閱巨潮資訊網公告原文（PDF）。</li></ul>
+<h4>光库科技（苏州光库科技股份有限公司 / GLSUN Science and Technology）｜300620.SZ｜中國</h4>
+<ul><li><b>股價／市值</b>：股價約 11.43 元人民幣（新浪財經，約 2026-09-20，但同頁 PE 欄位為未解析佔位符，可靠度存疑）；總股本約 24,918.05 萬股（≈2.49 億股）；以此推算總市值約 28.5 億元人民幣（≈4.0 億美元）——<b>此為以股價×股本推算，非頁面直接顯示之市值數字，且股價本身未能交叉驗證，可信度低</b>。搜狐證券頁面顯示的「一年高低價」（48.60 元／413.30 元）與上述股價明顯矛盾，判斷該頁面欄位標籤有解析錯誤，未採用其價格數據。</li><li><b>財務摘要</b>：僅取得每股收益數據：截至 2026-06-30 EPS 約 0.60 元（搜狐證券）／0.5955 元（新浪財經），兩來源大致一致。營業收入、YoY 成長率、毛利率均未能查得可靠來源數字。每股淨資產兩來源出現顯著差異（搜狐 4.7761 元 vs 新浪 9.0594 元），無法判斷何者正確。</li><li><b>主要進展</b>：近期法說會重點、併購、新產能、新客戶或產品發表等重大消息<b>本次均無法查證</b>（WebSearch 額度耗盡，WebFetch 對指定產業來源均未能取得與光库科技相關的可用文章內容）。</li><li><b>估值</b>：本益比（PE）<b>無法查證</b>：東方財富行情頁面所有欄位皆顯示為「-」，新浪財經頁面 PE 欄位為未解析的「@pe@」佔位符。</li><li><b>資料缺口</b>：完全未能取得可信的即時股價與市值（頁面原始顯示值，非推算）、營業收入、YoY 成長率、毛利率、追蹤／預估本益比、與同業的估值比較，或任何近期法說會重點／併購／擴產／新客戶／新產品等重大消息。建議待 WebSearch 額度重置後，或改用具備金融數據 API 存取權限的工具重新查證。</li></ul>
+<h3>3.2 台灣同業</h3>
+<h4>智邦科技（Accton Technology）｜2345.TW｜台灣</h4>
+<ul><li><b>股價／市值</b>：收盤價 NT$1,855（9/18 收盤，+3.06%／+55 元），市值約 1.04 兆元，股本 56.11 億元，本益比（TTM）29.14 倍、同業平均 66.37 倍（Yahoo 股市、鉅亨網，9/18 盤後資料）。另有部分搜尋快取頁面顯示股價 2,300～2,375 元、市值 1.13 兆元，經與 9/18 兩個獨立即時來源交叉核對後研判為較舊或未即時更新的快取數字，未查到智邦有股票分割／減資紀錄可解釋此落差，兩組數字並列標註，以 1,855 元／1.04 兆為主要採用值。（<a href="https://tw.stock.yahoo.com/quote/2345.TW" target="_blank" rel="noopener">Yahoo 股市</a>、<a href="https://www.cnyes.com/twstock/2345" target="_blank" rel="noopener">鉅亨網</a>）</li><li><b>財務摘要</b>：2026Q2 合併營收 955.38 億元（QoQ+36.25%、YoY+57.64%），毛利率 19.7%（連 3 季走升，創 5 季新高），淨利率 11.56%，單季 EPS 19.78 元（QoQ+33%、YoY+120%，創歷史新高）；2026Q1 營收 701.2 億元（YoY+64%）、EPS 14.0～14.92 元（不同來源略有差異），上半年合計 EPS 34.7 元同創新高；8 月合併營收 408.73 億元（YoY+59.42%、MoM+3.55%），單月首度突破 400 億元創新高，1-8 月累計營收 2,460.04 億元（YoY+61.86%）。（<a href="https://statementdog.com/analysis/2345/eps" target="_blank" rel="noopener">財報狗 EPS</a>、<a href="https://finance.technews.tw/2026/09/07/accton-2345-202608-financial-report" target="_blank" rel="noopener">TechNews</a>）</li><li><b>主要進展</b>：法說會揭露 CPO 定義已擴大為矽光整合：智邦先從 Transceiver CPO 與 DSP-based CPO 切入以累積製造經驗，全交換晶片整合式 CPO 仍需較長時間；2026 年 800G 為交換器主流，1.6T 可望自下半年放量，目標成為市場首批出貨業者之一；營運模式升級：不再僅出貨板卡（L6），2026 年起進一步挑戰機櫃整合（L11）；FactSet 最新調查（10 位分析師）將 2026 年 EPS 預估中位數自 87.47 元下修至 86.43 元，目標價中位數 3,500 元；摩根大通預估 2026 年 EPS 約 82.63 元；另有單一券商 6/25 評等目標價 3,600 元。（<a href="https://vocus.cc/article/692955acfd89780001a12a77" target="_blank" rel="noopener">vocus 法說會摘要</a>、<a href="https://news.cnyes.com/news/id/6610539" target="_blank" rel="noopener">鉅亨網 FactSet 調查</a>、<a href="https://www.cmoney.tw/notes/note-detail.aspx?nid=1224612" target="_blank" rel="noopener">CMoney</a>）</li><li><b>估值</b>：TTM 本益比 29.14 倍，同業（網通／光通訊族群）平均 66.37 倍，智邦估值明顯低於同業平均，需留意同業比較樣本是否含獲利谷底期個股致平均值失真。Forward 估值：以 FactSet 預估 2026 年 EPS 中位數 86.43 元計算，約 21.5 倍 Forward P/E；以摩根大通預估 82.63 元計算約 22.4 倍，均較 TTM 本益比明顯收斂。目標價區間 3,500～3,600 元，對現價存在顯著上行空間，但缺乏最新（9 月）券商報告佐證，暫列為參考區間而非結論。</li><li><b>資料缺口</b>：股價與市值兩組數字出處不同且無法判定快取頁面的實際資料日期；查無直接點名智邦的矽光子產業鏈特定指定來源具體報導或數字（台積電 COUPE 平台、SEMICON Taiwan、SemiAnalysis 等），未能查得智邦專屬的矽光子營收貢獻、產能布局金額或是否為台積電 COUPE 平台客戶等具體資訊；Q1 2026 EPS 在財報狗（14.92 元）與 Simply Wall St 整理（14.00 元）之間有微幅差異；併購、新產能、新客戶等法說會重點僅查得產業策略方向敘述，未查得具體金額或客戶名稱。</li></ul>
+<hr>
+<h2>4. 主題性投資標的清單</h2>
+<div class="tbl-wrap"><table><tr><th>代號</th><th>名稱</th><th>投資邏輯</th><th>主要風險</th></tr><tr><td>2330.TW</td><td>台灣積體電路製造（台積電）</td><td>COUPE 矽光子平台是 CPO 放量的關鍵封裝技術，NVIDIA 兩代 CPO 交換器（Quantum-X Photonics、Spectrum-X Photonics）均採用；2026Q2 營收 402 億美元、毛利率 67.7%、EPS 27.25 元均創歷史新高，2026 年 8 月合併營收 514.8 億元首度單月破 5000 億元（YoY+53.3%），先進製程占營收 77%</td><td>COUPE／CPO 業務財務貢獻金額未單獨揭露，本益比因來源不同介於 27.75~32.6 倍，成長預期已高度定價於股價</td></tr><tr><td>3081.TWO</td><td>聯亞光電</td><td>台廠中最純粹的矽光子雷射曝險標的，1.6T 矽光雷射已正式量產出貨，2026Q2 營收年增 120.8%、毛利率 57%、EPS 4.62 元創新高，上半年淨利年增 465%；資本支出近 60 億元擴充 InP 磊晶產能，目標 2027 年前產能較 2026 年底增加 100% 以上，並新增美國大型 CSP 客戶直接出貨</td><td>本益比因 trailing EPS 基期效應在 43~265 倍間因來源劇烈分歧，屬高波動、題材溢價明顯的成長股</td></tr><tr><td>COHR</td><td>Coherent Corp</td><td>站在 InP 雷射磊晶產能瓶頸（多方報導列為 CPO 放量最緊環節）的供給端，正擴建 Sherman Texas 新廠目標產能達現有 5 倍；FY2026Q4 營收 20.5 億美元、EPS 1.74 美元均優於市場預期，為連續第 7 季創營收新高，2026 年 3 月獲 NVIDIA 20 億美元策略投資及多年採購承諾，Deutsche Bank 於 8/31 首次覆蓋給予買進評等</td><td>追蹤本益比 77 倍因先前虧損基期失真，且 SemiAnalysis 曾質疑 CPO 時程延後導致股價下跌，時程本身業界尚無共識</td></tr><tr><td>LITE</td><td>Lumentum Holdings</td><td>與 Coherent 同獲 NVIDIA 合計 40 億美元策略投資中的 20 億美元，FY2026Q4 營收 10.06 億美元年增 109.3%、Non-GAAP EPS 3.23 美元；2026 年 9 月 ECOC 展會發表 800G 與 1.6T 矽光子發射器量產進展及 AI 資料中心用 1060nm VCSEL 陣列技術，分析師共識目標價較現價有 23.47% 上行空間</td><td>GAAP 財報出現約 69.4 億美元鉅額帳面淨損（疑與可轉債公允價值重估相關但未經官方證實），EV/EBITDA 已達 102.95 倍，估值已高度反映成長情境</td></tr><tr><td>TSEM</td><td>Tower Semiconductor</td><td>少數直接揭露矽光子業務財務數字的公司——年化營收 run rate 已達 6.8 億美元；2026 年 7 月宣布獲日本政府約 10 億美元補助、自身加碼投資 30 億美元擴充 SiPho／SiGe 產能，Q2 2026 營收創新高 4.60 億美元（YoY+23.66%），並與 OpenLight 擴大矽光子製程平台生態系</td><td>Forward P/E 43.86 倍明顯高於特殊製程晶圓代工同業 UMC（25.52 倍）、GlobalFoundries（22.06 倍），估值溢價主要建立在財測與 run rate 揭露上，Q3 實際數字尚待驗證</td></tr><tr><td>AVGO</td><td>Broadcom Inc.</td><td>CPO 交換器系統端領導者，51.2Tbps Bailly CPO 乙太網路交換器已量產（Delta Electronics、Micas Networks 協力生產），並發表次世代 102.4Tbps Tomahawk 6 Davisson；FY2026Q3 AI 半導體營收 167 億美元年增 221%、季增 54%，管理層上修 FY2027 AI 營收展望至約 1,150 億美元</td><td>矽光子／CPO 業務未單獨揭露營收貢獻，Forward P/E 因來源不同介於 18.9~37.59 倍，對 AI 資本支出永續性依賴度高</td></tr><tr><td>300308.SZ</td><td>中際旭創</td><td>管理層於 2026/8/23 法說會明確將毛利率提升歸因於矽光技術滲透率提升，H1 2026 營收人民幣 417.78 億元年增 182.49%、淨利 136.51 億元年增 241.7%、毛利率 46.25%（較 2025 全年 42.04% 再提升），2027 年主要客戶 1.6T／800G 訂單指引較 2026 年續增</td><td>動態本益比 39.97 倍與 TTM 本益比 50.51 倍因基期不同差異逾 10 倍，且淨利成長部分含供應鏈股權投資公允價值變動等非經常性收益，需留意扣除後的真實獲利品質</td></tr><tr><td>3163.TWO</td><td>波若威科技</td><td>聯合新聞網報導其為台灣加入 NVIDIA CPO 矽光子生態系的四家廠商之一（另三家為台積電、鴻海、日月光），供應 Vera Rubin 平台光纖陣列單元（FAU）；法說會揭露 CPO 主力產品預計 2026 年正式量產，Q4 月產能目標約 1,000 顆、挑戰 2027 年 Q1 月產 10,000 顆</td><td>證據集中在產能目標而非已兌現財報，2026Q2 EPS 季減 84%（僅 0.47 元）波動劇烈，估值文章推算現價已高於同業迴歸「應得價」上緣約 41%，題材溢價風險明顯</td></tr></table></div>
+<hr>
+<h2>5. 待辦與資料缺口</h2>
+<p>以下彙整各公司查證段落中揭露的資料缺口，正式使用本報告數據前建議人工覆核：</p>
+<h3>5.1 股價／市值類（幾乎所有公司皆有此問題）</h3>
+<ul><li>多數公司的股價、市值在不同財經網站（財報狗、Yahoo 股市、鉅亨網、Goodinfo、東方財富、新浪財經、stockanalysis.com、companiesmarketcap.com 等）之間因<b>擷取交易日或查詢時點不同</b>而互相矛盾，且查詢日（2026-09-20/21）當日精確收盤價多數未查得，僅能取得 9/17~9/19 前後的快照。受影響公司包含：台積電、鴻海、聯亞、波若威、上詮、NVIDIA、Broadcom、智邦等。</li><li>光库科技的市值為「股價 × 股本」推算值，非頁面直接顯示數字，可信度低；新易盛的新浪財經頁面股價（21.47 元）與東方財富／Yahoo Finance（445.00 元）差距達 20 倍以上，判斷為頁面異常，已排除不採信。</li></ul>
+<h3>5.2 本益比／估值類</h3>
+<ul><li>幾乎所有公司的本益比（PE）在不同來源、不同計算基期（TTM vs Forward、GAAP vs Non-GAAP、動態 vs 河流圖）之間出現顯著差異，尤其聯亞光電（43.4／81.04／265.5 倍）、波若威（67.86／91.8 倍）、NVIDIA Forward P/E（18.2x~48.3x）、Broadcom Forward P/E（18.9x~37.59x）落差最大，均已在各公司段落並列標註，<b>未強行擇一為準</b>。</li><li>上詮光纖因近四季 EPS 為負，TTM 本益比無意義，需待轉盈後才有參考價值。</li></ul>
+<h3>5.3 完全無法查證的公司（需優先補查）</h3>
+<ul><li><b>光迅科技（002281.SZ）</b>：股價、市值、本益比、EPS、最新財報數字<b>全數無法查證</b>——WebSearch 額度於任務執行前已耗盡，WebFetch 對東方財富、新浪財經、同花順、雪球、百度財經、MarketScreener、WSJ 等頁面均因 JS 動態渲染而抓不到數字。</li><li><b>光库科技（300620.SZ）</b>：可信的即時股價與市值、營業收入、YoY 成長率、毛利率、本益比、近期法說會重點或併購動態<b>全數無法查證</b>，同樣受 WebSearch 額度耗盡＋目標網站動態渲染影響。</li></ul>
+<h3>5.4 業務拆分類</h3>
+<ul><li>多家公司（鴻海、Broadcom、Marvell、Lumentum、Coherent）<b>未單獨揭露矽光子／CPO 業務的營收貢獻或占比</b>，僅能引用定性產品敘述；僅 Tower Semiconductor 直接揭露矽光子業務年化營收 run rate（6.8 億美元）。</li><li>Lumentum FY2026 GAAP 全年淨損約 69.4 億美元的確切原因（疑與可轉債／衍生負債公允價值重估有關）<b>未經官方新聞稿或法說會逐字稿證實</b>，不應逕自引用為經營面惡化的結論。</li></ul>
+<h3>5.5 跨公司同業比較缺口</h3>
+<ul><li>多數公司的查證均聚焦單一公司本身，<b>同業間本益比、估值倍數的直接橫向比較大量缺失</b>（例如台積電未比矽光子供應鏈台廠、鴻海未比聯亞／聯鈞、NVIDIA／Broadcom 未比 Coherent／Lumentum 等），主要受限於單次查證任務的 WebSearch 額度分配。若需完整同業比較表，建議另開查證任務逐一補齊。</li></ul>
+<h3>5.6 產業層級待查證項目</h3>
+<ul><li>中國財經媒體引述「2027 年中國新建資料中心 CPO 滲透率將超 60%、2033 年全球 CPO 市場規模破 260 億美元」之數字<b>未標明原始機構</b>，可信度較低，列為待查證而非權威估計。</li><li>CPO／矽光子商轉時程（SemiAnalysis《Powered Down, Lights Off》主張延後 vs globalsemiresearch 反駁）<b>業界尚無共識</b>，本報告不代入任何一方結論，僅呈現爭議本身。</li><li>美方是否將正式限制中國製光模組進口，<b>目前仍屬研議階段，尚未經證實定案</b>，不應視為已發生事實。</li></ul>
+<hr>
+<p>*本報告依已查證資料組裝而成，數字均附來源；查證缺口已如實揭露，供投資決策參考時請自行覆核最新數據。*</p>
+    </div>
+
+    <footer class="foot">
+      <p>本報告依 market-research workflow（市場規模／競爭格局／同業估值／主題投資標的）產出，僅供研究參考，非投資建議。</p>
+    </footer>
+  </div>
+</body>
+
+</html>

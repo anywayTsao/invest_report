@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>產業研究 — 投資研究報告</title>
+<style>
+  :root{
+    --bg:#f7f7f5; --surface:#ffffff; --ink:#1a1a1a; --ink-soft:#666;
+    --line:#e3e2de; --accent:#2b5fa8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#15161a; --surface:#1c1e24; --ink:#e8e8e6; --ink-soft:#9a9a9a; --line:#2c2e35; --accent:#7aa8e0; }
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif;
+    line-height:1.6;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:48px 20px 60px;}
+  .back{font-size:.85rem; color:var(--ink-soft); text-decoration:none;}
+  .back:hover{color:var(--accent);}
+  h1{font-size:1.6rem; margin:14px 0 6px;}
+  .sub{color:var(--ink-soft); font-size:.92rem; margin:0 0 24px;}
+  .search-box{margin:0 0 24px;}
+  .search-box input{
+    width:100%; padding:12px 16px; font-size:1rem; border-radius:10px;
+    border:1px solid var(--line); background:var(--surface); color:var(--ink);
+    font-family:inherit;
+  }
+  .search-box input:focus{outline:none; border-color:var(--accent);}
+  .list{display:grid; gap:14px;}
+  a.card{
+    display:block; background:var(--surface); border:1px solid var(--line); border-radius:10px;
+    padding:18px 20px; text-decoration:none; color:inherit;
+  }
+  a.card:hover{border-color:var(--accent);}
+  .card .name{font-weight:600; font-size:1.05rem; margin-bottom:4px;}
+  .card .name::after{content:" →"; color:var(--accent);}
+  .card .path{font-size:.78rem; color:var(--ink-soft); font-family:ui-monospace,monospace;}
+  .empty{color:var(--ink-soft); font-size:.9rem;}
+  .no-match{color:var(--ink-soft); font-size:.9rem; display:none;}
+  footer{margin-top:40px; font-size:.78rem; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../index.html">← 回首頁</a>
+  <h1>產業研究報告</h1>
+  <p class="sub">依 market-research workflow（市場規模／競爭格局／同業估值／主題投資標的）產出的產業研究報告，全程 WebSearch 查證並附來源。檔名帶產出日期，同一產業可能有多個日期版本，最新在最上面。僅供研究參考，非投資建議。</p>
+
+  <div class="search-box">
+    <input type="search" id="q" placeholder="輸入產業名稱搜尋，例如 矽光子 或 CoWoS" autocomplete="off">
+  </div>
+
+  <div class="list" id="list">
+<!-- MARKET_RESEARCH:START -->
+    <a class="card" href="矽光子產業研究報告_20260921.html">
+      <div class="name">矽光子產業研究</div>
+      <div class="path">2026-09-21 · market-research/矽光子產業研究報告_20260921.html</div>
+    </a>
+<!-- MARKET_RESEARCH:END -->
+  </div>
+  <p class="no-match" id="noMatch">沒有符合的報告。</p>
+
+  <footer>最後更新：2026-09-21</footer>
+</div>
+<script>
+  const q = document.getElementById('q');
+  const cards = Array.from(document.querySelectorAll('#list a.card'));
+  const noMatch = document.getElementById('noMatch');
+  q.addEventListener('input', () => {
+    const term = q.value.trim().toLowerCase();
+    let shown = 0;
+    cards.forEach(c => {
+      const hit = c.textContent.toLowerCase().includes(term);
+      c.style.display = hit ? '' : 'none';
+      if (hit) shown++;
+    });
+    noMatch.style.display = shown === 0 ? '' : 'none';
+  });
+</script>
+</body>
+</html>
