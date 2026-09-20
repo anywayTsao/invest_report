@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>6620 漢達生技　投資邏輯深度分析</title>
+  <meta property="og:title" content="6620 漢達生技　投資邏輯深度分析">
+  <meta property="og:description" content="漢達生技：漢達受惠HND-039腎癌新藥取得FDA暫時性許可與Phyrago放量認列雙重催化，股價由52週低點30.1元噴出近4倍至149元，惟季線乖離已達+56.9%觸發超買停利訊號、PEG落入貪婪興奮/昂貴區間，且2026上半年EPS年">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="6620 漢達生技　投資邏輯深度分析">
+  <meta name="twitter:description" content="漢達生技：漢達受惠HND-039腎癌新藥取得FDA暫時性許可與Phyrago放量認列雙重催化，股價由52週低點30.1元噴出近4倍至149元，惟季線乖離已達+56.9%觸發超買停利訊號、PEG落入貪婪興奮/昂貴區間，且2026上半年EPS年">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>6620 漢達生技 — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：149.00元（2026/09/18收盤，為最近一個交易日資料；09/19-09/20為假日無交易） TWD　|　當前 PE：約48.4倍（現價149元 ÷ 近4季EPS 3.08元）　|　52 週區間：30.10元 – 155.00元</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-09-20</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：4 多頭上漲</span>
+        <span class="badge">建議戰略：分批出場</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>（資料不足：下列維度公開免費資料不足，僅能以方向性描述替代精確數字：(1) 現金流量表細節（營業現金流/稅後淨利比、資本支出/營收比、現金循環天數）未揭露；(2) 精確ROE歷史序列與流通股數變化明細（含神隆私募增資後的稀釋比例）未取得；(3) 完整週K/日K OHLC數據不足，故VCP收縮波數(T數)、凹洞量、量價細節僅能依可得新聞價位點位粗略推估，未能逐項精確驗證；(4) 目前僅中國信託證券單一券商出具研究報告(目標價73元，明顯發布於股價大漲前、已過時)，市場對2026-2027年EPS預估分歧大且能見度低。其餘構面（公司定位、催化劑時程、產業格局、估值區間、生命週期階段判讀）已依框架搜尋足夠公開新聞與財經網站資料完成分析。）漢達受惠HND-039腎癌新藥取得FDA暫時性許可與Phyrago放量認列雙重催化，股價由52週低點30.1元噴出近4倍至149元，惟季線乖離已達+56.9%觸發超買停利訊號、PEG落入貪婪興奮/昂貴區間，且2026上半年EPS年減逾九成顯示獲利常態化能見度仍低，建議既有部位分批獲利了結、新資金不宜追高。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">平庸</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">昂貴</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">4 多頭上漲</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">試單倉／建議既有部位分批減碼觀望，新資金不宜追高</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>平庸</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>昂貴（PEG ≈ 約1.4–2.4（採動態PE 34.6倍對G 20-30%估算得1.2-1.7；採靜態PE 48.4倍對G 15-20%估算則達2.4-3.2，區間隨採用假設不同而異，詳見gBasis））</td><td>低</td></tr>
+            <tr><td>股價階段</td><td>4 多頭上漲</td><td>中</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill warn">分批出場</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>試單倉／建議既有部位分批減碼觀望，新資金不宜追高</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>單一新藥(HND-039)/單一產品(Phyrago)營收集中度過高，任一環節不如預期即大幅衝擊獲利</li><li>專利訴訟與法規時程風險（雖Exelixis訴訟已撤回，不排除未來再生訴訟或FDA最終許可延宕）</li><li>獲利品質波動極大：2025年獲利高度依賴一次性里程碑金，2026上半年獲利年減逾9成，常態化獲利能見度低，易致估值錯判</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>HND-039於2026/7/29取得FDA暫時性許可(TA)，原廠專利2026/8/14到期後可望於未來1-2季內取得最終許可(FA)並啟動美國市場商業化</li><li>Phyrago自2025年10月上市、2026年3月起認列分潤/權利金收入，病患數與滲透率持續成長，可望成為2026年重要營收來源</li><li>引進台灣神隆為策略股東(私募最高2,200萬股)，強化原料藥到製劑垂直整合，有助後續505(b)(2)產品線開發效率</li></ul>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>管理層有定期自結並主動公告月營收/單季EPS（如自結7月EPS 0.02元、近四季3.08元），並於法說會回應市場尖銳提問（如2026年1月法說會回應18大提問，含Phyrago取得FDA核准逾一年未放量、神隆入股用意等敏感議題）；重大進度（HND-039 FDA審查時程7/29、專利訴訟受告知與原告嗣後撤回訴訟）均即時公告。惟里程碑金/權利金認列金額與時點屬性質上難以事前精準預告，2025年營收暴增108%、EPS達4.85元後，2026年上半年在高基期下年減逾9成，顯示財測穩定度與領先指引仍有落差，屬「主動揭露但財測波動大」型態。</li>
+          <li><b>言行一致性：</b>公司多年來一貫執行「高技術門檻學名藥+505(b)(2)新藥雙引擎」轉型策略，主要里程碑大致如期推進：Phyrago於2025年10月如期在美上市並自2026年3月起認列分潤；HND-039依原訂2026年7月29日FDA審查時間點取得暫時性許可(TA)，時程掌握度尚可。惟財測達成率待觀察：唯一出具預估的中國信託證券預估2026年EPS約4.31元，但實際上半年僅實現0.65元(0.46+0.19)，達成率明顯落後，需視HND-039下半年商業化進度是否能大幅拉升下半年獲利以驗證管理層先前釋出的樂觀基調是否兌現。</li>
+          <li><b>資本配置：</b>資本配置以「強化本業、引進策略夥伴」為主軸：透過私募普通股（最高2,200萬股，約當13%股本）引進台灣神隆(1789)為策略股東，換取原料藥到製劑的垂直整合資源，屬五大資本配置中「成功併購/策略投資取得優勢」層級，成長空間大但伴隨股本稀釋疑慮；同時仍配發現金股利(2026年除息2.073元、殖利率約2.02%)回饋股東，顯示在持續投入新藥研發之餘，並未偏廢股東報酬，資本配置優先順序大致符合「本業強化＞策略併購＞股利」的合理排序。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>成長期－商業化初期邁向放量成長：核心產品Phyrago(血癌用藥)於2025年10月才在美國上市、2026年3月起方開始認列權利金/分潤收入，病患滲透率仍在逐月爬升階段；次一代新藥HND-039(腎癌用藥)則仍在等待FDA最終許可(FA)與正式商業化，尚未貢獻營收。整體公司仍處於「新藥剛開始放量、尚未進入穩定成熟收成期」的成長初期偏放量成長過渡階段，非成熟或衰退期。</li>
+          <li><b>市場規模：</b>TAM HND-039所鎖定之美國腎癌用藥市場，依公司法說揭露，其對應原廠品項美國年銷售額逾20億美元，即為漢達切入之總潛在市場(TAM)量級參考。 ／ SAM 扣除原廠專屬市場保護期與其他505(b)(2)/ANDA競爭者瓜分後，漢達透過HND-039可服務市場(SAM)僅為前述逾20億美元市場中的一部分，公司未提供精確可服務市場規模估計（資料不足，僅能定性描述：預期為原廠市場的個位數至十位數百分比量級）。 ／ SOM 短期可取得市場(SOM)須視HND-039取得最終許可(FA)後之上市時程、是否簽署美國市場獨家銷售授權合約(公司於2026年2月18日董事會授權洽談中)、以及Phyrago目前病患滲透率的斜率而定；公司尚未揭露具體滲透率或市占率目標，短期SOM能見度低（資料不足）。</li>
+          <li><b>競爭格局：</b>台灣同業於高技術門檻學名藥/505(b)(2)新藥領域包括台灣神隆(1789，現為漢達策略股東，原料藥切入製劑)、台耀化學(4746)、中裕新藥(4147)、保瑞藥業(6472，CDMO+品牌併購模式)等；國際上則面對原廠藥廠(如HND-039對應腎癌原廠藥廠Exelixis，2026年7月曾對漢達提起專利侵權訴訟、嗣後撤回)與其他505(b)(2)/ANDA申請者的專利與時程競爭。整體屬利基型特殊劑型/改良新藥市場，非大宗學名藥的價格戰模式，競爭強度中等但法規/專利訴訟不確定性高。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>以505(b)(2)法規途徑，針對已上市原廠藥進行劑型/療效改良（如口服化、複方化、新適應症），相較全新藥物開發大幅縮短時程與風險，同時可在原廠專利到期前後取得市場空窗期的先占卡位優勢（如HND-039銜接原廠參考藥品2026/8/14專利到期）。</li>
+          <li><b>目標客群與通路：</b>美國腫瘤科/血液腫瘤科醫師與病患（Phyrago為血癌用藥、HND-039鎖定腎細胞癌用藥），通路以美國專科藥局、特殊藥品經銷商及授權合作夥伴（現正洽談HND-039美國市場獨家銷售授權對象）為主。</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>約23.25%（最新可得單季資料），惟受單季營收年減逾70%影響，波動度遠高於常態年度水準（2025全年在里程碑金挹注下毛利率一度逾85-87%）。（含金量 中）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>資料不足：公開免費來源未揭露完整現金流量表數字，無法精確計算OCF/稅後淨利比。因獲利結構含高比重里程碑金與權利金認列，現金收付時點常集中於合約約定日、與損益認列時點未必同步，建議查閱完整年報現金流量表以驗證盈餘品質。</td></tr>
+            <tr><td>資本支出／營收</td><td>資料不足：漢達屬新藥研發/學名藥廠，資本支出結構偏輕資產（以臨床試驗與藥證申請費用為主，非重大廠房設備投資），公開資料未揭露精確資本支出金額；依商業模式推估資本支出/營收比重應低於30%（輕資產模式），但無法確認精確數字。</td></tr>
+            <tr><td>現金循環天數</td><td>資料不足：未取得存貨、應收帳款、應付帳款明細，無法計算傳統現金循環天數；且營收結構中權利金/授權收入比重高，現金收付邏輯與傳統銷貨週期不同，傳統現金循環天數指標的適用性亦需保留。</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>專利權（505(b)(2)方法/劑型專利）+ 特許權（FDA藥證審批門檻）+ 部分轉換成本（醫師處方信賴與臨床證據累積）</li>
+          <li><b>強度與期間：</b>中度：505(b)(2)路徑可取得一定期間的市場獨占與專利保護空間（如HND-039銜接原廠參考藥品2026/8/14專利到期後的空窗期），但仍持續面臨原廠或其他學名藥廠的專利訴訟威脅（如2026年7月Exelixis提告，雖已撤回）及後進競爭者風險。護城河可持續期估計約3–7年，強度中等偏易受單一訴訟或法規審查結果牽動，非長期寬闊型護城河。</li>
+          <li><b>ROE 軌跡：</b>近期ROE波動劇烈：2025年因認列高額一次性里程碑金，稅後淨利達7.498億元、EPS 4.85元（創歷史次高），ROE顯著墊高；惟2026年上半年獲利年減逾9成（H1 EPS僅0.65元），加上私募增資（神隆最高認購2,200萬股）擴大股本/淨值基期，ROE同步大幅回落。精確歷史ROE數列及保留盈餘率公開資料不足，僅能方向性判斷：波動大、不具穩定成長軌跡，屬事件驅動型獲利而非穩定複利型。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>營收結構非傳統銷量×ASP模式，而是「既有學名藥基本盤 + 新藥權利金/分潤收入 + 不定期一次性里程碑金」三段式組合：Phyrago(血癌用藥)自2025年10月美國上市、2026年3月起開始認列分潤，病患數與滲透率逐月成長為近期主要驅動；HND-039(腎癌新藥)尚未貢獻營收，待取得最終許可後可望比照模式認列權利金或自行銷售；2025年營收/EPS大幅墊高主要來自單一大額里程碑金認列（如2025年4月單月營收即達5.61億元），非常態性營收，2026年在高基期下呈現年減，需留意產品/客戶集中度偏高之風險。</li>
+          <li><b>毛利率改善動能：</b>訂價權：505(b)(2)新藥享有一定訂價彈性（差異化療效/劑型，非純價格競爭學名藥）；產品組合優化：由傳統學名藥轉向新藥權利金/授權收入模式，理論上毛利率可望提升（權利金/授權收入毛利率趨近100%），2025年毛利率一度達85-87%即反映此效應；規模經濟與稼動率提升則主要適用於既有學名藥產線，邊際貢獻相對有限。</li>
+          <li><b>EPS 三大引擎：</b>股本因引進神隆私募（最高2,200萬股，約13%股本）而擴大，短期對每股數據具稀釋效果；若HND-039、Phyrago後續順利放量推升稅後淨利，理論上可抵銷股數增加的稀釋並帶動ROE與EPS回升，但2026年上半年獲利明顯低於2025年同期（EPS年減逾9成），顯示EPS三大引擎（ROE、股東權益成長、流通股數）短期同步承壓，未來成長動能高度依賴下半年及2027年新藥放量能否驗證，能見度偏低。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>約 -10%至0%（若HND-039最終許可(FA)延宕或商業化不如預期、Phyrago滲透率停滯，獲利回落至常態學名藥獲利水準）</td><td>企業價值面臨下修風險，目前股價隱含的高成長預期恐無法兌現，安全邊際轉負，企業價值評等趨向平庸下緣甚至弱勢</td></tr>
+            <tr><td>高機率</td><td>約 20%–30%（Phyrago穩定放量、HND-039如期取得最終許可並展開商業化，但排除不可持續的一次性里程碑金）</td><td>企業價值可望隨新藥放量逐步提升，惟目前股價可能已提前反應多數樂觀預期，安全邊際有限，需持續驗證里程碑兌現度</td></tr>
+            <tr><td>樂觀</td><td>約 50%以上（HND-039快速搶佔部分逾20億美元原廠腎癌用藥市場，並持續有新一輪授權/里程碑金挹注）</td><td>企業價值大幅躍升，若成功複製Phyrago模式並擴大美國腫瘤利基布局，估值有機會維持高檔甚至進一步上修，惟此情境對執行力與時程要求極高、機率相對低</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：3.08元（近4季合計：2025Q3 1.34 + 2025Q4 1.09 + 2026Q1 0.46 + 2026Q2 0.19）</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：約20%–30%（高機率情境；情境分歧極大，悲觀情境約-10%~0%，樂觀情境可上看50%以上，詳見三情境分析） — 依據：Phyrago自2026年3月起認列分潤且滲透率持續提升；HND-039已於2026/7/29取得FDA暫時性許可(TA)，原廠參考藥品化合物專利於2026/8/14到期，Exelixis專利訴訟已撤回，公司預期完成最終許可(FA)並啟動商業化。惟2025年獲利含高額一次性里程碑金使基期異常墊高，2026年迄今年增率大幅衰退（Q2 EPS年減90.78%、8月營收年減79.92%），故G之估算需排除一次性收入干擾、改以Phyrago+HND-039常態化營運估算，屬高度不確定性推估，僅唯一券商(中國信託)提供2026年EPS預估4.31元且該預估已明顯落後上半年實際數，能見度低。</li>
+          <li><b>靜態 PE：</b>約48.4倍（現價149元 ÷ 近4季EPS 3.08元）</li>
+          <li><b>動態 PE：</b>約34.6倍（現價149元 ÷ 券商預估2026年EPS 4.31元；惟該預估發布時股價遠低於現價、且上半年實際僅達成0.65元，達成率存疑，此動態PE可信度偏低）</li>
+          <li><b>PEG：</b>約1.4–2.4（採動態PE 34.6倍對G 20-30%估算得1.2-1.7；採靜態PE 48.4倍對G 15-20%估算則達2.4-3.2，區間隨採用假設不同而異，詳見gBasis）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr class="current"><td>貪婪興奮</td><td>1.5–2.0</td><td>✓</td></tr><tr><td>樂觀開心</td><td>1.2–1.5</td><td></td></tr><tr><td>過渡階段</td><td>0.8–1.2</td><td></td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">貪婪興奮</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：20倍 – 40倍</li>
+          <li>對應股價區間：約80元（PE 20倍 × 常態化EPS估算約4元） – 約160元（PE 40倍 × 常態化EPS估算約4元）</li>
+          <li>便宜價：約50元（PEG 0.4-0.6，PE 10-15倍）　|　合理價：約100元（PEG 0.8-1.2，PE 20-30倍）　|　偏高價：約135元（PEG 1.2-1.5，PE 30-37.5倍）　|　昂貴價：約175元（PEG 1.5-2.0，PE 37.5-50倍）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>約-49元（估算合理企業價值約100元 − 目前股價149元；股價已高於估算合理區間，市場估值安全邊際為負）</td></tr>
+            <tr><td>企業價值 MOS</td><td>約+31至+171元（若HND-039成功商業化，樂觀情境下3年後EPS上看6-8元、對應PE 30-40倍，未來企業價值約180-320元 − 目前股價149元；區間極寬，反映情境不確定性極高，需嚴格追蹤里程碑兌現度）</td></tr>
+            <tr><td>投資組合 MOS</td><td>建議控制在總投組5%以內（屬試單倉/波段性質），不宜作為核心倉位，並搭配10-30檔多元配置以分散單一新藥事件驅動型風險。</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：現價149元，站上近期均價147.91元；季線乖離達+56.9%（乖離金額約54.03元），嚴重超買。50/150/200 DMA精確數值未能取得（資料不足），但由52週低點30.10元大漲至現價149元（漲幅近4倍），推估200 DMA應已由底部翻揚並持續上揚。</li>
+          <li>200 DMA 趨勢：上揚</li>
+          <li>近 6 個月波段高低點：墊高</li>
+          <li>量價型態：近期呈現帶量噴出：9/16走出長紅、9/17攻上漲停(147元)，成交量明顯放大(近日約9,800-9,900張)；惟隨後股價由高點155元小幅拉回至149元，須觀察是否出現「量增價跌」的初步背離跡象，屬近期須密切留意的轉折訊號。</li>
+          <li>股價乖離（季線）：+56.9%（乖離金額約54.03元），已超越框架中「超買(>50%)」門檻，逼近「貪婪(>80%)」門檻。</li>
+          <li>是否出現特定型態：VCP（不完整/待驗證）：由公開新聞價位點位推估，2026年1-5月股價於70元附近盤整打底(多頭底部)，7月帶量突破至109元，隨後拉回至96.3元(約一組收縮波)，9月再度帶量攻上147-155元創波段新高；惟因缺乏完整週K OHLC數據，無法逐一驗證是否達3-4T中勝率標準，僅能辨識約1組收縮回檔。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">4 多頭上漲</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：很高</li>
+          <li>錯失機會風險：很低</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <h3 class="sub">4.1 VCP 結構檢視</h3>
+        <ul>
+          <li><b>判讀等級：</b>週K（依可得公開價位點位判讀，屬中低把握度，未能取得完整週K數據逐一驗證）</li>
+          <li><b>收縮波數：</b>約1T（依可得價位7月高點109元→7月底低點96.3元估算，資料不完整，無法確認是否達3-4T中勝率標準）</li>
+          <li><b>跌幅逐波遞減：</b>無法完整驗證（資料不足，僅能辨識一組收縮波，無多波比較基礎）</li>
+          <li><b>最後一波跌幅 &lt;5%：</b>不確定（近期波動仍大，8月營收年減近80%等基本面雜訊可能造成非典型深度回調，暫難判定最後一波跌幅是否<5%）</li>
+          <li><b>凹洞量：</b>未能取得日內成交量細節以確認是否出現凹洞量（資料不足）</li>
+          <li><b>創新高：</b>接近但未完全確認：52週高點155元為近一年最高，惟公司更早期(2023年以前)股價歷史資料未完整取得，無法100%確認是否為「歷史」新高，暫以52週新高視之</li>
+          <li><b>量價型態：</b>部分符合：近期出現帶量攻漲停(9/16-9/17)，惟缺乏連續多日日K數據驗證「量增價漲+量縮價跌」交替是否完整成立，資料有限</li>
+        </ul>
+
+        <h3 class="sub">4.2 可能進場點</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>進場點</th><th>條件是否成立</th><th>對應停損</th><th>建議下注</th></tr>
+            <tr><td>凹洞量能點</td><td>尚未觀察到明確凹洞量訊號（公開資料無法取得日內量能細節），暫不成立</td><td>若採用，停損設於凹洞量出現當日最低點；因缺乏日內數據，暫參考近期波段支撐140.5元</td><td>約20%</td></tr><tr><td>帶量突破點</td><td>已成立：9/16-9/17帶量攻上漲停(147元)，突破7-8月整理區間(96-109元)</td><td>跌破本次突破區間頸線或近期紅K最低價，約140-145元附近</td><td>約50%</td></tr><tr><td>回測成功點</td><td>尚未成立：突破後尚未出現明顯量縮價跌回測，須待後續拉回時觀察是否出現帶量三盤過</td><td>若未來出現回測，停損設於回測期間帶量三盤過之三盤最低價；目前暫參考7-8月整理區間96-109元為潛在支撐</td><td>約30%</td></tr>
+          </table>
+        </div>
+
+        <h3 class="sub">4.3 七大供需轉折訊號</h3>
+        <ul class="checklist"><li>極限大量</li><li class="checked">超買反轉（季線乖離 >50% / 80%）</li><li>產業逆風</li><li>利多不漲</li><li>利空下跌</li><li>量價背離</li><li>大量黑K</li></ul>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>試單倉</li>
+          <li><b>建議週期：</b>3–8個月（波段操作，非長期核心持有）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：約30%-35%（中低勝率，VCP型態未完整驗證，事件驅動型波動大）</li>
+          <li>估計賠率：約2.5-3倍（中等賠率，取決於HND-039後續商業化進度與市場反應）</li>
+          <li>1/4 凱利公式下的最大下注比重：約3%（以勝率35%、賠率3倍估算：全額凱利=0.35-0.65/3≈13.3%，取1/4≈3.3%；因勝率賠率估算誤差大，建議進一步保守至2-3%）</li>
+          <li><b>目前建議買入：</b>金字塔節奏：合理價(~100元)2%、偏低價(~80元)3%、便宜價(~50元)5%；惟目前股價149元已處於昂貴/貪婪興奮區間且技術面嚴重超買，暫不建議依此節奏加碼，既有部位應優先評估分批減碼。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>若HND-039最終未能如期取得FDA最終許可(FA)，或Phyrago銷售滲透率不如預期持續下滑，顯示對成長動能的判斷有誤</td></tr><tr><td>買進理由消失</td><td>若HND-039取得藥證後商業化進度大幅落後(例如遲遲未能簽署美國市場獨家銷售授權合約)、或專利訴訟捲土重來並致上市延宕或市場排除</td></tr><tr><td>市場估值過高</td><td>PEG持續處於1.5以上貪婪興奮區間、股價乖離季線持續>50-80%，且動態PE明顯超出過去歷史區間上緣而基本面未同步跟上</td></tr><tr><td>機會成本過高</td><td>出現成長動能更明確、PEG更低(<0.8)的同業或其他生技股，投資價值明顯優於持續持有漢達</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>HND-039美國市場銷售授權合約簽訂對象與條件公布</li><li>Phyrago病患滲透率/分潤金額超預期成長速度</li><li>神隆合作下新一輪505(b)(2)產品線佈局是否有具體時間表</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告（近期僅參與券商邀約之實體座談會，如2026/9/16凱基證券場，尚無正式排定之下一場法說會日期）</li>
+          <li>下次財報公布：預估2026年11月中旬前（台灣上櫃公司2026年Q3季報法定公告期限），確切日期待公告</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>HND-039 FDA最終許可(FA)取得時間與美國上市時間表</li><li>Phyrago月病患數/滲透率與認列權利金金額</li><li>月營收年增率是否回歸正成長軌道(排除2025年一次性里程碑金基期干擾後)</li><li>毛利率/營益率能否維持20%以上常態水準</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>股價若跌破前波支撐96-109元區間(7-8月整理區)，視為技術面轉弱訊號，須重新評估多頭延續性</li><li>股價若進一步上攻使季線乖離擴大至>80%(貪婪絕望門檻)，應優先執行停利減碼</li><li>HND-039若FA審查時程延宕超過2026年底，或原廠/其他競爭者重啟專利訴訟，應重新檢視企業價值假設與持股比重</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>Goodinfo!台灣股市資訊網、鉅亨網 cnyes、玩股網 wantgoo、財報狗 statementdog、股市爆料同學會 cmoney、生技投資第一站 Genet觀點、GeneOnline News、工商時報、經濟日報/聯合新聞網 udn、環球生技月刊 GBI Monthly、Yahoo股市、MoneyDJ理財網、優分析 UAnalyze、Healthcare+ B2B 全球醫療採購網、nstock股市資訊、口袋學堂</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-09-20</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
