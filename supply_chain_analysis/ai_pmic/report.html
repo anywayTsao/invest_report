@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI PMIC（AI 伺服器電源管理 IC）產業追蹤報告</title>
+<style>
+  :root{
+    --navy:#1F3A5F; --navy-d:#15233B; --orange:#E8853B;
+    --text:#1E293B; --text-dim:#64748B; --border:#E2E8F0;
+    --bg:#EEF1F5; --paper:#fff;
+    --green:#16A34A; --green-d:#15803D; --green-bg:#F0FDF4;
+    --red:#DC2626; --red-d:#B91C1C; --red-bg:#FEF2F2;
+    --amber:#F59E0B; --amber-d:#92400E; --amber-bg:#FFF8E1;
+    --thead:#EDEEF1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei","Helvetica Neue",Arial,sans-serif;
+    color:var(--text); line-height:1.7; font-size:14px; background:var(--bg);
+  }
+  .page{max-width:1080px;margin:24px auto;background:var(--paper);padding:0 0 40px;}
+  a{color:var(--navy);}
+
+  .banner{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-d) 100%);color:#fff;padding:36px 44px 30px;}
+  .banner .label{font-size:11px;letter-spacing:2.5px;color:#9DB2CE;font-weight:700;}
+  .banner h1{font-size:26px;font-weight:800;margin:8px 0 10px;line-height:1.4;}
+  .banner .sub{font-size:13px;color:#C9D6E8;line-height:1.8;}
+  .banner .badges{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
+  .badge{display:inline-block;font-size:11.5px;font-weight:700;background:rgba(255,255,255,0.12);color:#fff;padding:4px 12px;border-radius:12px;}
+
+  nav.subnav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 44px;}
+  nav.subnav a{white-space:nowrap;color:var(--text-dim);text-decoration:none;font-size:12.5px;font-weight:700;padding:13px 12px;border-bottom:2px solid transparent;}
+  nav.subnav a:hover{color:var(--navy);border-bottom-color:var(--orange);}
+  nav.subnav a.home-link{color:var(--navy);border-right:1px solid var(--border);margin-right:6px;padding-right:16px;}
+  nav.subnav a.home-link:hover{color:var(--orange);border-bottom-color:var(--orange);}
+
+  .body-wrap{padding:32px 44px 0;}
+
+  .exec{background:var(--amber-bg);border-left:5px solid var(--amber);border-radius:6px;padding:20px 26px;margin-bottom:8px;}
+  .exec .exec-label{font-size:11px;font-weight:700;color:var(--amber-d);letter-spacing:1.5px;margin-bottom:8px;}
+  .exec p{font-size:14.5px;line-height:1.85;color:#1F2937;}
+  .exec b{color:var(--amber-d);}
+
+  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;scroll-margin-top:54px;}
+  h2.section span{display:block;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-dim);margin-top:2px;}
+  h3.sub{font-size:15px;font-weight:800;color:var(--navy-d);margin:26px 0 12px;}
+
+  p{margin-bottom:10px;text-align:justify;}
+  ul{padding-left:20px;margin-bottom:14px;}
+  ul li{margin-bottom:6px;line-height:1.7;}
+
+  .card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin-bottom:20px;}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0 20px;}
+  .stat{background:#fff;border:1px solid var(--border);border-top:3px solid var(--navy);border-radius:7px;padding:12px 14px;text-align:center;}
+  .stat .v{font-size:18px;font-weight:800;color:var(--navy);line-height:1.2;}
+  .stat .l{font-size:11px;color:var(--text-dim);margin-top:5px;line-height:1.4;}
+
+  table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:12.8px;}
+  thead th{background:var(--thead);color:var(--text);font-weight:700;text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);white-space:nowrap;}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6;}
+  tbody tr:last-child td{border-bottom:none;}
+  .tbl-wrap{overflow-x:auto;}
+
+  .geo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:10px 0 8px;}
+  .geo-card{border:1px solid var(--border);border-top:4px solid var(--navy);border-radius:8px;padding:16px 18px;background:#F8FAFC;}
+  .geo-card.china{border-top-color:#B91C1C;}
+  .geo-card.intl{border-top-color:#0369A1;}
+  .geo-card h4{font-size:13.5px;font-weight:800;color:var(--navy-d);margin-bottom:8px;}
+  .geo-card ul{padding-left:16px;margin-bottom:0;}
+  .geo-card li{font-size:12.5px;line-height:1.65;}
+
+  .g-pos{color:var(--green-d);font-weight:800;}
+  .g-neg{color:var(--red-d);font-weight:800;}
+  .g-flag{background:#FEF3C7;color:var(--amber-d);padding:1px 6px;border-radius:3px;font-size:11px;font-weight:700;margin-left:4px;}
+
+  .timeline{list-style:none;margin:8px 0 4px;padding:0;}
+  .timeline li{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:12px 0;border-bottom:1px dashed var(--border);}
+  .timeline li:last-child{border-bottom:none;}
+  .timeline .t{font-size:12.5px;font-weight:800;color:var(--navy);white-space:nowrap;}
+  .timeline .d{font-size:13px;line-height:1.7;}
+
+  .stage-pill{display:inline-block;background:#FEF3C7;color:var(--amber-d);border:1px solid #FDE68A;font-weight:800;font-size:13px;padding:6px 16px;border-radius:20px;}
+
+  .barrier-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:10px 0 6px;}
+  .barrier{background:#F8FAFC;border:1px solid var(--border);border-radius:7px;padding:12px 13px;}
+  .barrier .b-h{font-size:12px;font-weight:800;color:var(--navy);margin-bottom:6px;}
+  .barrier .b-v{font-size:12px;font-weight:700;margin-bottom:4px;}
+  .barrier .b-v.high{color:var(--red-d);}
+  .barrier .b-v.mid{color:var(--amber-d);}
+  .barrier p{font-size:11.5px;color:var(--text-dim);margin:0;line-height:1.55;}
+
+  .trig{font-size:12px;color:var(--red-d);}
+
+  .insight{background:#EEF2FF;border-left:4px solid #4338CA;border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#312E81;}
+  .insight b{color:#3730A3;}
+
+  .warn-box{background:#FEF2F2;border:1px solid #FECACA;border-left:4px solid var(--red);border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#7F1D1D;}
+  .warn-box b{color:var(--red-d);}
+
+  .gap-box{background:#FFFBEB;border:1px solid #FDE68A;border-radius:6px;padding:14px 18px;margin:10px 0;}
+  .gap-box ul{margin-bottom:0;}
+  .gap-box li{font-size:12.5px;color:#78350F;}
+
+  .src-list{list-style:none;padding:0;margin:0;columns:2;column-gap:24px;}
+  .src-list li{font-size:12px;line-height:1.8;break-inside:avoid;}
+  .src-list a{color:var(--navy);text-decoration:none;}
+  .src-list a:hover{text-decoration:underline;}
+
+  .src-tier{display:inline-block;font-size:9.5px;font-weight:800;padding:1px 6px;border-radius:3px;margin-right:6px;vertical-align:1px;}
+  .src-tier.t1{background:var(--green-bg);color:var(--green-d);}
+  .src-tier.t2{background:#EEF2FF;color:#3730A3;}
+  .src-tier.t3{background:var(--amber-bg);color:var(--amber-d);}
+  .src-tier.t4{background:var(--red-bg);color:var(--red-d);}
+  .src-legend{font-size:11px;color:var(--text-dim);margin-bottom:10px;line-height:1.8;}
+
+  .falsify-box{background:#F5F3FF;border:1px solid #DDD6FE;border-left:4px solid #6D28D9;border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#4C1D95;}
+  .falsify-box b{color:#5B21B6;}
+  .falsify-box ul{margin:6px 0 0;}
+  .falsify-box li{margin-bottom:6px;}
+
+  .tbl-filters{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px;}
+  .tbl-filter-btn{font-size:11.5px;font-weight:700;color:var(--text-dim);background:#F1F5F9;border:1px solid var(--border);border-radius:14px;padding:5px 13px;cursor:pointer;font-family:inherit;}
+  .tbl-filter-btn.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+
+  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;scroll-margin-top:54px;}
+
+  .log-card{background:#F8FAFC;border:1px solid var(--border);border-left:4px solid var(--navy);border-radius:8px;padding:16px 20px;margin-bottom:16px;}
+  .log-card.latest{border-left-color:var(--orange);}
+  .log-date{font-size:12.5px;font-weight:800;color:var(--navy-d);margin-bottom:8px;}
+  .log-card ul{margin:0;padding-left:18px;}
+  .log-card li{font-size:12.5px;line-height:1.7;color:var(--text);margin-bottom:4px;}
+  .log-trigger{display:inline-block;background:var(--red-bg);color:var(--red-d);font-weight:800;font-size:11.5px;padding:3px 10px;border-radius:12px;margin-bottom:8px;}
+
+  .chart-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:18px 22px;margin:14px 0 20px;}
+  .chart-card .chart-title{font-size:13px;font-weight:800;color:var(--navy-d);margin-bottom:2px;}
+  .chart-card .chart-caption{font-size:11.5px;color:var(--text-dim);margin-bottom:10px;}
+  .chart-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  svg.chart{width:100%;height:auto;display:block;overflow:visible;}
+  svg.chart text{font-family:"Noto Sans TC",Arial,sans-serif;fill:var(--text-dim);}
+  svg.chart .axis-line{stroke:var(--border);stroke-width:1;}
+  svg.chart .val-label{fill:var(--navy-d);font-weight:700;font-size:11px;}
+  svg.chart .grp-label{fill:var(--text-dim);font-size:11px;}
+  .chart-legend{display:flex;gap:16px;font-size:11.5px;color:var(--text-dim);margin-top:8px;}
+  .chart-legend span{display:inline-flex;align-items:center;gap:6px;}
+  .chart-swatch{width:10px;height:10px;border-radius:2px;display:inline-block;}
+
+  @media (max-width:900px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .geo-grid{grid-template-columns:1fr;}
+    .barrier-grid{grid-template-columns:1fr 1fr;}
+    .chart-row{grid-template-columns:1fr;}
+  }
+  @media (max-width:640px){
+    .banner,.body-wrap{padding-left:20px;padding-right:20px;}
+    nav.subnav{padding-left:20px;padding-right:20px;}
+    footer.foot{padding-left:20px;padding-right:20px;}
+    .stats{grid-template-columns:1fr 1fr;}
+    .barrier-grid{grid-template-columns:1fr;}
+    table{font-size:11.5px;}
+    .src-list{columns:1;}
+    .timeline li{grid-template-columns:90px 1fr;gap:8px;}
+  }
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;max-width:100%;}
+    nav.subnav{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="banner">
+    <div class="label">INDUSTRY TRACKER · 產業追蹤</div>
+    <h1>AI PMIC（AI 伺服器電源管理 IC）產業追蹤報告</h1>
+    <div class="sub">GPU 電流從 1,500A 衝向 2,875A：多相控制器、智慧功率級與垂直供電的份額爭奪，以及 8 吋 BCD 產能轉緊下的「雙速市場」</div>
+    <div class="badges">
+      <span class="badge">產出日期 2026-09-23</span>
+      <span class="badge">框架：地圖 → 歷史 → 門檻 → 指標</span>
+      <span class="badge">目前階段：AI 供不應求／一般 PMIC 平淡（雙速）</span>
+    </div>
+  </div>
+
+  <nav class="subnav">
+    <a class="home-link" href="../../index.html">← 回首頁</a>
+    <a href="#overview">總覽</a>
+    <a href="#map">供應鏈地圖</a>
+    <a href="#history">歷史周期</a>
+    <a href="#barriers">供應鏈門檻</a>
+    <a href="#indicators">追蹤指標</a>
+    <a href="#changelog">讀數紀錄</a>
+    <a href="#gaps">資料缺口</a>
+    <a href="#sources">參考來源</a>
+  </nav>
+
+  <div class="body-wrap">
+
+    <h2 class="section" id="overview">總覽<span>OVERVIEW</span></h2>
+    <div class="exec">
+      <div class="exec-label">EXECUTIVE SUMMARY · 摘要</div>
+      <p>AI PMIC 是<b>雙速市場</b>：AI 核心供電供不應求，MPS 企業資料營收 <b>YoY +164%</b>、全年成長下限一年內從 30-40% 上修到 <b>130%</b>，TI 資料中心營收 YoY 翻倍，台達電的出貨甚至被電源 IC 缺料卡住；但一般/消費性 PMIC 需求平淡，茂達 8 月營收 YoY 只有 <b>+2.5%</b>，矽力 Q2 毛利率 <b>47%</b> 未達共識，原因是 8 吋代工漲價 5-20% 轉嫁不了給非 AI 客戶。護城河是「俱樂部」層級：能做 NVIDIA 等級多相 VR 的只有 MPS、Infineon、Renesas 等少數幾家，但 NVIDIA 刻意多源，<b>俱樂部內的份額每一代重排</b>（2024 Q4 MPS 因 Blackwell 品質問題一季跌約 34%，Rubin 世代又被賣方估回約 70%）。近期硬約束在 8 吋 BCD 與 IDM 產能；台廠的命題是能不能從消費性引擎換到 AI 引擎。</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="v">+164%</div><div class="l">MPS 企業資料營收 YoY<br>（2026 Q2，3.806 億美元）</div></div>
+      <div class="stat"><div class="v">~70%</div><div class="l">MPS 在 Vera Rubin 份額<br>（賣方估，⚠️ 未證實）</div></div>
+      <div class="stat"><div class="v">35-40 週</div><div class="l">PMIC 交期<br>6-7 月漲價最高約 15%</div></div>
+      <div class="stat"><div class="v">47%</div><div class="l">矽力 Q2 毛利率<br>（共識 50.2%）</div></div>
+    </div>
+
+    <h2 class="section" id="map">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
+
+    <h3 class="sub">終端產品與 BOM 拆解</h3>
+    <p>GPU 核心電壓只有約 0.8V，電流卻極大：<b>B200 約 1,500A、Rubin 約 2,875A</b>（Rubin 額定 2,300W）。要在 1,500A 下把壓降控制在 20mV 以內，穩壓器到晶片的路徑電阻要壓到約 13 微歐姆，所以供電正走向「垂直供電」（把穩壓器放到晶片正下方）。賣方估 Rubin 世代 VR 的 <b>ASP 比上一代高約 60%</b>；Morgan Stanley 估 Kyber 機櫃電源方案價值可能比 GB200 高 10 倍以上（⚠️ 無基準金額）。</p>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>級</th><th>功能</th><th>關鍵晶片</th><th>主要供應商</th></tr></thead>
+      <tbody>
+        <tr><td>① IBC</td><td>48V/54V → 12V/6V</td><td>48V 模組、LLC 控制器</td><td>Vicor、MPS、Infineon、Delta、Renesas、ADI、TI</td></tr>
+        <tr><td>② 多相控制器</td><td>數位多相控制、PMBus 遙測</td><td>GB300 採 16 相 OpenVReg16</td><td>MPS、Infineon、Renesas、AOS、TI、ADI；台：力智、立錡</td></tr>
+        <tr><td>③ 功率級</td><td>每相一顆，承載電流</td><td>DrMOS／SPS（30-90A+）</td><td>MPS、Infineon、Renesas、AOS、onsemi；台：茂達、力智、矽力（試產）；中：杰華特、晶豐明源</td></tr>
+        <tr><td>④ VPD</td><td>功率級移到晶片背面</td><td>整合式電源模組</td><td>Infineon＋Delta（Blackwell 已商用）、Vicor 第 2 代、MPS</td></tr>
+        <tr><td>⑤ 周邊 PMIC</td><td>記憶體/SSD/光模組</td><td>DDR5/MRDIMM PMIC、eFuse</td><td>Renesas、立錡、MPS、TI；台：致新、茂達、矽力</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">MPS 營收結構：AI 已是最大引擎</div>
+      <div class="chart-caption">2026 Q2 營收 9.806 億美元，各終端市場占比（公司財報）；每顆 GPU 的電源 IC BOM 金額查無公開拆解，故以龍頭營收結構替代</div>
+      <div style="display:flex;height:26px;border-radius:5px;overflow:hidden;border:1px solid var(--border);">
+        <div style="width:38.8%;background:var(--navy);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">企業資料 38.8%</div>
+        <div style="width:20.4%;background:var(--orange);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">儲存運算 20.4%</div>
+        <div style="width:16.0%;background:var(--green);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">車用 16%</div>
+        <div style="width:13.4%;background:#94A3B8;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">通訊 13.4%</div>
+        <div style="width:11.4%;background:#CBD5E1;color:var(--text);font-size:11px;display:flex;align-items:center;justify-content:center;">工業+消費</div>
+      </div>
+      <div class="chart-legend">
+        <span><i class="chart-swatch" style="background:var(--navy)"></i>企業資料 YoY +164.3%</span>
+        <span><i class="chart-swatch" style="background:var(--orange)"></i>儲存運算 +2.3%</span>
+        <span><i class="chart-swatch" style="background:#CBD5E1"></i>工業 5.6% ＋ 消費 5.8%（消費 YoY -4.8%）</span>
+      </div>
+    </div>
+    <p class="warn-box"><b>⚠️ 市場規模口徑差近 6 倍：</b>外資估 2026 年 AI 伺服器電源 IC TAM 約 150 億美元（廣義，含 IBC、功率元件、周邊），Mordor 估 GPU/AI 伺服器 VRM 模組 2026 年 26.5 億美元（狹義）。兩者不可比較，本報告以公司財報為準。</p>
+
+    <h3 class="sub">上中下游基本結構</h3>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>層級</th><th>環節</th><th>代表廠商</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="3">上游</td><td>8 吋 BCD／類比代工</td><td>台積電（2027 前淡出部分 8 吋）、世界先進 5347、力積電 6770、聯電 2303、中芯、華虹</td></tr>
+        <tr><td>IDM 自有晶圓廠</td><td>TI（Richardson、Sherman、Lehi 300mm）、ADI、Infineon、Renesas、onsemi</td></tr>
+        <tr><td>功率 MOSFET／GaN</td><td>大中 6435、富鼎 8261、杰力 5299、尼克森 3317；Infineon、Navitas</td></tr>
+        <tr><td rowspan="3">中游</td><td>多相控制器＋功率級</td><td>MPS、Infineon、Renesas、TI、ADI、AOS、onsemi、Vicor</td></tr>
+        <tr><td>台灣 PMIC 設計</td><td>矽力-KY 6415、致新 8081、茂達 6138、力智 6719、立錡、通嘉 3588</td></tr>
+        <tr><td>中國 PMIC</td><td>杰華特 688141、晶豐明源 688368、南芯 688484、聖邦 300661</td></tr>
+        <tr><td rowspan="2">下游</td><td>GPU/ASIC 平台</td><td>NVIDIA（GB300、Vera Rubin）、AMD、Google TPU、AWS Trainium</td></tr>
+        <tr><td>伺服器 ODM／電源廠</td><td>鴻海、廣達、緯穎；台達電（Q3 受電源 IC 缺料壓抑）</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="insight"><b>IDM 在缺料時代占優勢：</b>TI 在景氣低迷時蓋好的 300mm 產能與庫存，讓它能在對手報長交期時接單，資料中心營收翻倍；IC 設計公司則要跟 8 吋代工搶產能，而 8 吋正在漲價 5-20%、產能不增反減（全球 -2.4%）。</p>
+
+    <h3 class="sub">橫向比較：國內外供應鏈地位</h3>
+    <div class="geo-grid">
+      <div class="geo-card">
+        <h4>🇹🇼 台灣 — 周邊穩健，核心 VR 剛起步</h4>
+        <ul>
+          <li>矽力：資料中心占 15-16%，AI 伺服器電源 IC YoY &gt;100%；Vcore 驗證中、SPS Q4 試產；但 Q2 毛利率 47%</li>
+          <li>力智：多相控制器＋SPS，AI 伺服器占 5%，目標年內破雙位數</li>
+          <li>茂達：前 8 月營收 54.08 億元（+10.6%），H1 EPS 7.64 元，小幅漲價</li>
+          <li>致新：運算類占 Q1 約 32%；8 月 YoY +10.57%</li>
+        </ul>
+      </div>
+      <div class="geo-card china">
+        <h4>🇨🇳 中國 — DrMOS 國產替代加速</h4>
+        <ul>
+          <li>杰華特：H1 營收 17.18 億人民幣（+44.72%）但淨損 5.2 億；DrMOS H1 約 2.5 億、海外驗證中；2027 目標國內市佔破 5 成</li>
+          <li>晶豐明源：第二代 DrMOS 量產，號稱取得 NVIDIA OpenVReg 認證（⚠️ 待官方確認）</li>
+          <li>南芯：DrMOS＋數位電源</li>
+        </ul>
+      </div>
+      <div class="geo-card intl">
+        <h4>🌍 國際 — 寡占核心 VR</h4>
+        <ul>
+          <li>MPS：Q2 營收 9.806 億美元（+47.6%），Q3 指引 11.4-11.6 億，非 GAAP 毛利率 55.6%</li>
+          <li>TI：Q2 營收 54.6 億美元（+23%），資料中心翻倍，2026 年三次調價</li>
+          <li>Infineon：FY26 AI 資料中心電源 &gt;16 億歐元；Blackwell 份額 60-70%</li>
+          <li>Renesas：Q2 營收 4,053 億日圓（+24.8%）；Vicor：積壓 3.797 億美元</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub">公司地圖總表（可篩選）</h3>
+    <div class="tbl-filters" id="mapFilters">
+      <button class="tbl-filter-btn active" data-filter="all">全部環節</button>
+      <button class="tbl-filter-btn" data-filter="核心VR">核心 VR（控制器＋功率級）</button>
+      <button class="tbl-filter-btn" data-filter="VPD/IBC">VPD／IBC</button>
+      <button class="tbl-filter-btn" data-filter="周邊PMIC">周邊 PMIC</button>
+      <button class="tbl-filter-btn" data-filter="上游">上游代工/MOSFET</button>
+    </div>
+    <div class="tbl-wrap">
+    <table id="mapTable">
+      <thead><tr><th>公司</th><th>環節</th><th>地區</th><th>供應鏈地位</th></tr></thead>
+      <tbody>
+        <tr data-stage="核心VR"><td>MPS（MPWR）</td><td>核心VR</td><td>國際</td><td>AI 核心供電龍頭，Rubin 賣方估約 70%</td></tr>
+        <tr data-stage="核心VR"><td>Infineon（IFX）</td><td>核心VR</td><td>國際</td><td>Blackwell 份額 60-70%</td></tr>
+        <tr data-stage="核心VR"><td>Renesas（6723.T）</td><td>核心VR</td><td>國際</td><td>Blackwell 補位；數位多相</td></tr>
+        <tr data-stage="核心VR"><td>TI（TXN）</td><td>核心VR</td><td>國際</td><td>IDM，資料中心翻倍，類比定價者</td></tr>
+        <tr data-stage="核心VR"><td>AOS（AOSL）</td><td>核心VR</td><td>國際</td><td>OpenVReg16 首發（GB300）</td></tr>
+        <tr data-stage="核心VR"><td>力智 6719</td><td>核心VR</td><td>台灣</td><td>多相控制器＋SPS，AI 伺服器占 5%</td></tr>
+        <tr data-stage="核心VR"><td>杰華特 688141</td><td>核心VR</td><td>中國</td><td>DrMOS 國產替代龍頭</td></tr>
+        <tr data-stage="核心VR"><td>晶豐明源 688368</td><td>核心VR</td><td>中國</td><td>第二代 DrMOS，OpenVReg 認證（待確認）</td></tr>
+        <tr data-stage="VPD/IBC"><td>Vicor（VICR）</td><td>VPD/IBC</td><td>國際</td><td>第 2 代 VPD，需求超過產能</td></tr>
+        <tr data-stage="VPD/IBC"><td>台達電 2308</td><td>VPD/IBC</td><td>台灣</td><td>與 Infineon 合作 VPD；本身也是電源 IC 買方</td></tr>
+        <tr data-stage="周邊PMIC"><td>矽力-KY 6415</td><td>周邊PMIC</td><td>台灣</td><td>資料中心占 15-16%，SPS Q4 試產</td></tr>
+        <tr data-stage="周邊PMIC"><td>致新 8081</td><td>周邊PMIC</td><td>台灣</td><td>運算類 PMIC 占 Q1 約 32%</td></tr>
+        <tr data-stage="周邊PMIC"><td>茂達 6138</td><td>周邊PMIC</td><td>台灣</td><td>PMIC、DrMOS、風扇馬達驅動</td></tr>
+        <tr data-stage="周邊PMIC"><td>立錡（聯發科）</td><td>周邊PMIC</td><td>台灣</td><td>NVIDIA 800VDC 14 家矽夥伴之一</td></tr>
+        <tr data-stage="上游"><td>世界先進 5347／力積電 6770</td><td>上游</td><td>台灣</td><td>8 吋 BCD 代工，漲價 5-20%</td></tr>
+        <tr data-stage="上游"><td>大中 6435／富鼎 8261／杰力 5299</td><td>上游</td><td>台灣</td><td>低壓大電流 MOSFET</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h2 class="section" id="history">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
+    <ul class="timeline">
+      <li><div class="t">2023</div><div class="d">NVIDIA H100 的 48V 供電由 MPS 取代 Vicor 成為主力，確立「多相控制器＋功率級」路線勝出；Vicor 轉攻 VPD 與授權</div></li>
+      <li><div class="t">2024-10/11</div><div class="d">MPS 10/30 未上修指引 <span class="g-neg">單日 -17%</span>；11/11 Edgewater 指 Blackwell 配額因 VRM/PMIC 品質問題有風險 <span class="g-neg">再 -15%</span>，Q4 累計約 <span class="g-neg">-34%</span>。Oppenheimer 估 MPS 在 NVIDIA 份額 100% → 50%，Infineon（60-70%）與 Renesas 補位</div></li>
+      <li><div class="t">2025-10</div><div class="d">MPS Q3 優於預期、2026 企業資料指引 +30-40%；KeyBanc 看 MPS 成為 Vera Rubin 主力、份額約 70%</div></li>
+      <li><div class="t">2025-12～2026-06</div><div class="d">類比漲價循環：ADI 2 月起漲 10-30%、TI/NXP 6-7 月第二次漲價；8 吋代工漲 5-20%、利用率 75-80% → 85-90%；PMIC 交期 35-40 週、6-7 月最高漲約 15%</div></li>
+      <li><div class="t">2026-07-30</div><div class="d">MPS Q2 營收創新高，企業資料 <span class="g-pos">YoY +164%</span>，全年下限 85% → <b>130%</b>；TI 資料中心翻倍；TI 2026 年股價漲約 55%</div></li>
+      <li><div class="t">2026-08/09</div><div class="d"><b>現在這一輪</b>：矽力 Q2 毛利率 47% 未達共識，外資以「成熟製程代工成本轉嫁不了給非 AI 客戶」給減碼；TI 9/1 第三次調價；台廠 8 月營收月減（致新 -4.06%、茂達 -4.97%）；台達電 Q3 出貨被電源 IC 卡住</div></li>
+    </ul>
+    <p class="insight"><b>與過去周期最大的差異：</b>2021 年是全面缺貨、所有 PMIC 一起漲；這一輪的漲價由 IDM（TI/ADI）與 8 吋代工主導，<b>沒有 AI 產品的 IC 設計公司反而被成本夾擊</b>。另外，AI 插槽高度集中，單一平台的份額移轉就能讓龍頭一季跌三成，所以「NVIDIA 份額」必須獨立追蹤。</p>
+
+    <div class="chart-card">
+      <div class="chart-title">雙速市場：AI 業務 vs 整體 vs 台廠</div>
+      <div class="chart-caption">最新一期營收年增率（%）。MPS、TI 為 2026 Q2；台廠為 2026 年 8 月單月；TI 資料中心「翻倍」以 +100% 繪製</div>
+      <svg class="chart" viewBox="0 0 480 220" role="img" aria-label="營收年增率：MPS 企業資料 164.3%、TI 資料中心約 100%、MPS 整體 47.6%、TI 整體 23%、致新 8 月 10.57%、茂達 8 月 2.5%">
+        <line class="axis-line" x1="50" y1="180" x2="450" y2="180"/>
+        <line class="axis-line" x1="50" y1="130" x2="450" y2="130" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="80" x2="450" y2="80" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="30" x2="450" y2="30" stroke-dasharray="2 3"/>
+        <text x="45" y="183" text-anchor="end" font-size="10">0%</text>
+        <text x="45" y="133" text-anchor="end" font-size="10">60%</text>
+        <text x="45" y="83" text-anchor="end" font-size="10">120%</text>
+        <text x="45" y="33" text-anchor="end" font-size="10">180%</text>
+        <rect x="70" y="43.1" width="45" height="136.9" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="92.5" y="35" text-anchor="middle">164%</text>
+        <text class="grp-label" x="92.5" y="198" text-anchor="middle">MPS 企業資料</text>
+        <rect x="135" y="96.7" width="45" height="83.3" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="157.5" y="88.7" text-anchor="middle">~100%</text>
+        <text class="grp-label" x="157.5" y="198" text-anchor="middle">TI 資料中心</text>
+        <rect x="200" y="140.3" width="45" height="39.7" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="222.5" y="132.3" text-anchor="middle">47.6%</text>
+        <text class="grp-label" x="222.5" y="198" text-anchor="middle">MPS 整體</text>
+        <rect x="265" y="160.8" width="45" height="19.2" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="287.5" y="152.8" text-anchor="middle">23%</text>
+        <text class="grp-label" x="287.5" y="198" text-anchor="middle">TI 整體</text>
+        <rect x="330" y="171.2" width="45" height="8.8" rx="3" fill="#94A3B8"/>
+        <text class="val-label" x="352.5" y="163.2" text-anchor="middle">10.6%</text>
+        <text class="grp-label" x="352.5" y="198" text-anchor="middle">致新 8月</text>
+        <rect x="395" y="177.9" width="45" height="2.1" rx="1" fill="#94A3B8"/>
+        <text class="val-label" x="417.5" y="169.9" text-anchor="middle">2.5%</text>
+        <text class="grp-label" x="417.5" y="198" text-anchor="middle">茂達 8月</text>
+      </svg>
+      <div class="chart-legend">
+        <span><i class="chart-swatch" style="background:var(--navy)"></i>AI／資料中心業務</span>
+        <span><i class="chart-swatch" style="background:var(--orange)"></i>公司整體</span>
+        <span><i class="chart-swatch" style="background:#94A3B8"></i>台廠（以消費/周邊為主）</span>
+      </div>
+    </div>
+
+    <p style="margin-top:16px;">目前供需階段判定：</p>
+    <p><span class="stage-pill">⚠ 雙速市場：AI 核心供電供不應求；一般 PMIC 需求平淡＋成本上升</span></p>
+    <ul>
+      <li><b>AI 供不應求</b>：MPS 企業資料 QoQ +44.8%、全年下限 +130%；Vicor VPD 需求超過產能、積壓 QoQ +26%；台達電 Q3 出貨被電源 IC 卡住；杰華特稱國內 Q2 缺貨</li>
+      <li><b>價格上行</b>：TI 2026 年三次調價（往年每年降幾個百分點）、ADI 漲 10-30%、PMIC 交期 35-40 週</li>
+      <li><b>一般 PMIC 平淡</b>：致新前 8 月 YoY +1.63%、茂達 8 月 YoY +2.5%；矽力轉嫁不了成本給非 AI 客戶，Q2 毛利率 47%</li>
+    </ul>
+
+    <h2 class="section" id="barriers">供應鏈門檻<span>STEP 3 · BARRIERS TO ENTRY</span></h2>
+    <div class="barrier-grid">
+      <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">極高</div><p>1,500-2,875A 下的瞬態響應、遙測、熱管理，BCD 製程要跟設計一起優化；能做 NVIDIA 等級的只有少數幾家</p></div>
+      <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v high">8 吋在縮不在擴</div><p>台積電、三星縮減 8 吋，全球產能 -2.4%；IDM 自建 300mm 廠要數年；Vicor 需要第二座晶圓廠才能擴 VPD</p></div>
+      <div class="barrier"><div class="b-h">資本/技術門檻</div><div class="b-v high">高</div><p>MPS、Infineon、TI 掌握自有製程或晶圓廠；台廠矽力有自有製程能力，但毛利率受代工成本壓縮</p></div>
+      <div class="barrier"><div class="b-h">客戶認證</div><div class="b-v mid">長</div><p>NVIDIA 平台認證（OpenVReg、參考設計）；矽力 Vcore 仍在驗證、SPS Q4 才試產；Vicor 第 2 代 VPD 2027 Q3-Q4 進量產系統</p></div>
+      <div class="barrier"><div class="b-h">轉單成本</div><div class="b-v mid">中（俱樂部內低）</div><p>NVIDIA 刻意多源、OpenVReg 標準化腳位，出品質問題時份額一代內就能移轉（2024 MPS 100%→50%）</p></div>
+    </div>
+    <p class="insight"><b>最硬的瓶頸在哪一層：</b>近期是 <b>8 吋 BCD 代工與 IDM 產能</b>——8 吋在縮不在擴，所以有自有 300mm 廠的 TI 能在缺料時搶單，台達電的出貨則被電源 IC 卡住。護城河是「俱樂部」層級：進俱樂部很難，但俱樂部內的座位每一代都會重排，所以產業總需求和平台份額要分開追。台廠較可能的切入點是客製 ASIC 的 CPU/周邊 Vcore，NVIDIA GPU 主供電短期仍是 MPS/Infineon/Renesas 的天下；中國國產替代對台廠的威脅大於對國際大廠。</p>
+
+    <div class="chart-card">
+      <div class="chart-title">上游轉緊：全球 8 吋晶圓代工平均產能利用率</div>
+      <div class="chart-caption">TrendForce（經濟日報轉述），取區間中值繪製；⚠️ 縱軸從 60% 起算</div>
+      <svg class="chart" viewBox="0 0 360 200" role="img" aria-label="8 吋代工產能利用率：2025 年 75-80%、2026 年預估 85-90%">
+        <line class="axis-line" x1="46" y1="170" x2="330" y2="170"/>
+        <line class="axis-line" x1="46" y1="95" x2="330" y2="95" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="20" x2="330" y2="20" stroke-dasharray="2 3"/>
+        <text x="40" y="173" text-anchor="end" font-size="10">60%</text>
+        <text x="40" y="98" text-anchor="end" font-size="10">80%</text>
+        <text x="40" y="23" text-anchor="end" font-size="10">100%</text>
+        <rect x="100" y="104.4" width="60" height="65.6" rx="3" fill="#CBD5E1"/>
+        <text class="val-label" x="130" y="96.4" text-anchor="middle">75-80%</text>
+        <text class="grp-label" x="130" y="188" text-anchor="middle">2025</text>
+        <rect x="220" y="66.9" width="60" height="103.1" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="250" y="58.9" text-anchor="middle">85-90%</text>
+        <text class="grp-label" x="250" y="188" text-anchor="middle">2026E（漲價 5-20%）</text>
+      </svg>
+    </div>
+
+    <h2 class="section" id="indicators">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
+    <p><b>領先順序</b>：MPS 企業資料營收（AI 核心供電最純的讀數）→ TI 調價與資料中心營收（類比價格的定價者）→ 8 吋代工價格與利用率（成本端）→ 台廠月營收／毛利率（落後、驗證是否換到 AI 引擎）。</p>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>指標</th><th>目前讀數（2026-09-23）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
+      <tbody>
+        <tr><td>1. MPS 企業資料營收</td><td>Q2 3.806 億美元，QoQ +44.8%；全年下限 +130%；Q3 總營收指引 11.4-11.6 億</td><td class="trig">企業資料 QoQ 轉負或全年下限下修；Q3 總營收 &lt; 11.4 億；反向：下限再上修 ≥20 個百分點</td></tr>
+        <tr><td>2. NVIDIA Rubin 份額</td><td>賣方估 MPS 約 70%；Blackwell 由 Infineon 60-70%</td><td class="trig">可信報導指 MPS 在 Rubin &lt; 50%，或任一主力供應商出現品質/配額問題</td></tr>
+        <tr><td>3. TI 資料中心營收與調價</td><td>資料中心 YoY 翻倍；2026 年三次調價</td><td class="trig">資料中心 YoY &lt; +30%；或 TI 降價／連續兩季未調價</td></tr>
+        <tr><td>4. PMIC／類比交期</td><td>35-40 週</td><td class="trig">&lt; 20 週，或 &gt; 52 週</td></tr>
+        <tr><td>5. 8 吋代工利用率／價格</td><td>85-90%；2026 年漲 5-20%</td><td class="trig">利用率 &lt; 80% 或降價；或 2027 年再漲 ≥10%</td></tr>
+        <tr><td>6. Vicor 積壓訂單</td><td>3.797 億美元（QoQ +26%）</td><td class="trig">季減，或第 2 代 VPD 量產延到 2027 Q4 以後</td></tr>
+        <tr><td>7. 台廠 AI 滲透率</td><td>矽力資料中心 15-16%；力智 AI 伺服器 5%</td><td class="trig">正向：矽力 ≥ 20%、力智 ≥ 10%，或 SPS/Vcore 通過 GPU/ASIC 量產；負向：矽力 SPS Q4 試產延後</td></tr>
+        <tr><td>8. 矽力毛利率</td><td>Q2 47%</td><td class="trig">連續兩季 &lt; 47%；或回到 ≥ 50%</td></tr>
+        <tr><td>9. FactSet 共識</td><td>矽力 2027 EPS 16.85 元（2026-09-02）</td><td class="trig">變動超過 ±8%（約 ±1.3 元）</td></tr>
+        <tr><td>10. 中國 DrMOS 國產替代</td><td>杰華特 DrMOS H1 約 2.5 億人民幣、海外驗證中</td><td class="trig">杰華特/晶豐明源成為海外 CSP 或 NVIDIA 量產供應商，或 DrMOS H2 ≥ H1 的 2 倍</td></tr>
+        <tr><td>11. 台廠 PMIC 月營收 YoY</td><td>8 月：致新 +10.57%、茂達 +2.50%</td><td class="trig">致新與茂達同時連續兩個月 YoY 轉負</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="sub">財務數字驗證</h3>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>指標</th><th>MPS</th><th>TI</th><th>矽力-KY</th><th>茂達</th><th>致新</th></tr></thead>
+      <tbody>
+        <tr><td>最新營收</td><td>Q2 9.806 億美元（+47.6%）</td><td>Q2 54.6 億美元（+23%）</td><td>—</td><td>前 8 月 54.08 億元（+10.6%）</td><td>前 8 月 59.92 億元（+1.63%）</td></tr>
+        <tr><td>AI/資料中心</td><td>企業資料 +164%，占 38.8%</td><td>資料中心翻倍</td><td>資料中心占 15-16%</td><td>—</td><td>運算類占約 32%</td></tr>
+        <tr><td>毛利率</td><td>非 GAAP 55.6%</td><td>61%</td><td>47% <span class="g-flag">低於共識</span></td><td>—</td><td>—</td></tr>
+        <tr><td>存貨</td><td>6.758 億美元，140 天</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        <tr><td>EPS</td><td>Q2 調整後 6.50 美元</td><td>—</td><td>—</td><td>H1 7.64 元</td><td>—</td></tr>
+        <tr><td>FactSet／共識（預估）</td><td>⚠️ 2026 EPS 約 22.53 美元（口徑存疑）</td><td>—</td><td>2026 EPS 11.87、2027 EPS 16.85、2028 EPS 24.56 元；目標價 610 元</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="warn-box"><b>⚠️ 矽力的分歧：</b>FactSet 共識目標價 610 元（9/2，14 位分析師），同一週有外資給「減碼」、目標價 388 元（8/31）。市場對「AI 能否抵銷消費性成本壓力」看法分裂，所以毛利率（指標 8）是關鍵驗證。</p>
+
+    <div class="chart-card">
+      <div class="chart-title">矽力-KY FactSet EPS 共識：市場押注 AI 轉型</div>
+      <div class="chart-caption">FactSet 分析師預估中位數（非實際財報），14 位分析師，2026-09-02 調查；單位：元</div>
+      <svg class="chart" viewBox="0 0 360 200" role="img" aria-label="矽力 FactSet EPS 預估中位數：2026 年 11.87 元、2027 年 16.85 元、2028 年 24.56 元">
+        <line class="axis-line" x1="46" y1="170" x2="330" y2="170"/>
+        <line class="axis-line" x1="46" y1="95" x2="330" y2="95" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="20" x2="330" y2="20" stroke-dasharray="2 3"/>
+        <text x="40" y="173" text-anchor="end" font-size="10">0</text>
+        <text x="40" y="98" text-anchor="end" font-size="10">15</text>
+        <text x="40" y="23" text-anchor="end" font-size="10">30</text>
+        <rect x="80" y="110.6" width="55" height="59.4" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="107" y="102.6" text-anchor="middle">11.87</text>
+        <text class="grp-label" x="107" y="188" text-anchor="middle">2026E</text>
+        <rect x="170" y="85.8" width="55" height="84.2" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="197" y="77.8" text-anchor="middle">16.85（+42%）</text>
+        <text class="grp-label" x="197" y="188" text-anchor="middle">2027E</text>
+        <rect x="260" y="47.2" width="55" height="122.8" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="287" y="39.2" text-anchor="middle">24.56（+46%）</text>
+        <text class="grp-label" x="287" y="188" text-anchor="middle">2028E</text>
+      </svg>
+    </div>
+
+    <h3 class="sub">情境失效測試：什麼數據出現代表現在的判斷是錯的</h3>
+    <div class="falsify-box">
+      <b>誠實面對反方證據，不是只找支持論點的資料。</b>目前的判斷是「AI 核心供電供不應求、一般 PMIC 平淡＋成本上升、MPS 在 Rubin 奪回主力」，以下任一情況出現就要承認判斷錯誤：
+      <ul>
+        <li><b>「AI 供不應求」錯了：</b>MPS 企業資料 QoQ 轉負，且庫存天數升到 160 天以上（Q2 為 140 天）——代表是庫存堆積，不是缺貨</li>
+        <li><b>「漲價循環」錯了：</b>兩季內 TI 沒有再調價或出現降價，同時 PMIC 交期降到 20 週以下</li>
+        <li><b>「MPS 奪回 Rubin」錯了：</b>Rubin 在 2026 H2 放量後，MPS 企業資料季增率連續兩季低於 Infineon AI 資料中心營收季增率，或出現份額 &lt; 50% 的可信報導</li>
+      </ul>
+    </div>
+
+    <h2 class="section" id="changelog">讀數紀錄<span>CHANGELOG</span></h2>
+    <p>以下逐次列出每次追蹤查證的讀數，內容取自 tracker 檔案 <code>trackers/ai_pmic.md</code> 的「歷史讀數紀錄」，最新一筆在最上面，不覆蓋舊紀錄。</p>
+    <div class="log-card latest">
+      <div class="log-date">2026-09-23（首次建檔，基準值）</div>
+      <ul>
+        <li>MPS：Q2 營收 9.806 億美元，企業資料 3.806 億美元（QoQ +44.8%、YoY +164.3%）；全年下限 85% → 130%；Q3 指引 11.4-11.6 億；庫存 140 天</li>
+        <li>份額：賣方估 MPS 在 Rubin 約 70%、ASP 高約 60%；Blackwell 由 Infineon 60-70%（⚠️ 說法不一）</li>
+        <li>TI：Q2 營收 54.6 億美元（+23%），資料中心翻倍；9/1 第三次調價通知</li>
+        <li>交期/價格：PMIC 35-40 週、6-7 月最高漲約 15%；8 吋利用率 85-90%、漲價 5-20%</li>
+        <li>Vicor：積壓 3.797 億美元（QoQ +26%）</li>
+        <li>台廠：矽力毛利率 47%、資料中心 15-16%；力智 AI 伺服器 5%；致新 8 月 YoY +10.57%；茂達 8 月 YoY +2.50%</li>
+        <li>FactSet：矽力 2027 EPS 16.85 元、目標價 610 元；中國杰華特 DrMOS H1 約 2.5 億人民幣</li>
+        <li><b>本次無指標觸發</b>（基準建檔）</li>
+      </ul>
+    </div>
+
+    <h2 class="section" id="gaps">資料缺口<span>DATA GAPS</span></h2>
+    <div class="gap-box">
+      <ul>
+        <li>每顆 GPU／每櫃的相數、功率級數量與電源 IC BOM 金額（查無公開拆解）</li>
+        <li>Rubin 世代實際份額：MPS 約 70% 屬賣方估計，NVIDIA 與 MPS 都沒有揭露</li>
+        <li>MPS FactSet 共識（Simply Wall St 的 2026 EPS 22.53 美元口徑存疑，H1 調整後已 11.60）</li>
+        <li>台廠 AI 伺服器營收金額（只有占比）；力智 8 月營收；茂達、致新、力智的 FactSet 覆蓋</li>
+        <li>SOCAMM2（JEDEC JESD328，2026-06 發布）的 PMIC 供應商</li>
+        <li>晶豐明源 NVIDIA 推薦名單資格的官方來源</li>
+        <li>2020-2023 台灣 PMIC 族群股價高低點與跌幅</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="foot" id="sources">
+    <p style="margin-bottom:10px;"><b>參考來源（部分）：</b></p>
+    <p class="src-legend">可信度分級：<span class="src-tier t1">I</span>公司原始揭露（財報/年報/官網）　<span class="src-tier t2">II</span>官方機構/海關/產業公協會統計　<span class="src-tier t3">III</span>券商研報/媒體報導　<span class="src-tier t4">IV</span>供應鏈訪查/市場傳言（未證實，需自行進一步查證）</p>
+    <ul class="src-list">
+      <li><span class="src-tier t1">I</span><a href="https://www.globenewswire.com/news-release/2026/07/30/3336393/0/en/Monolithic-Power-Systems-Reports-Second-Quarter-Results-on-July-30-2026.html" target="_blank">MPS Q2 2026 Results | GlobeNewswire</a></li>
+      <li><span class="src-tier t1">I</span><a href="https://investor.ti.com/news-releases/news-release-details/ti-reports-second-quarter-2026-financial-results-and-shareholder" target="_blank">TI Q2 2026 results | TI IR</a></li>
+      <li><span class="src-tier t1">I</span><a href="https://www.infineon.com/press-release/2026/infpr202608-125" target="_blank">Q3 FY2026 record sales | Infineon</a></li>
+      <li><span class="src-tier t1">I</span><a href="https://www.renesas.com/en/about/newsroom/renesas-gen-3-mrdimm-chipset-solutions-advance-ddr5-memory-performance-16000-mts-next-gen-ai-and-hpc" target="_blank">Renesas Gen 3 MRDIMM Chipset | Renesas</a></li>
+      <li><span class="src-tier t1">I</span><a href="https://developer.nvidia.com/blog/building-the-800-vdc-ecosystem-for-efficient-scalable-ai-factories/" target="_blank">800 VDC Ecosystem（14 家矽夥伴）| NVIDIA</a></li>
+      <li><span class="src-tier t1">I</span><a href="https://news.skhynix.com/en/mass-production-socamm2-192gb/" target="_blank">192GB SOCAMM2 Mass Production | SK hynix</a></li>
+      <li><span class="src-tier t1">I</span><a href="https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E8%87%B4%E6%96%B0-2026%E5%B9%B48%E6%9C%88%E5%90%88%E4%BD%B5%E7%87%9F%E6%94%B68-05%E5%84%84%E5%85%83-%E5%B9%B4%E5%A2%9E10-061302819.html" target="_blank">【公告】致新 2026年8月合併營收 | Yahoo 股市</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://nuttycld.substack.com/p/the-ai-power-crisis-part-3" target="_blank">AI GPU VRM: The Last Few Centimeters | Nutty Substack</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://newsletter.semianalysis.com/p/energizing-ai-power-delivery-competition" target="_blank">Energizing AI: Power Delivery Competition | SemiAnalysis</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://futurumgroup.com/insights/texas-instruments-q2-fy-2026-earnings-climb-on-broad-based-analog-growth/" target="_blank">TI Q2 FY 2026 Earnings | Futurum</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://finance.yahoo.com/news/monolithic-power-falls-amid-risk-205430868.html" target="_blank">MPS Falls Amid Risk to Nvidia Allocation | Yahoo Finance</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.benzinga.com/markets/equities/25/02/43726442/these-2-tech-stocks-are-surging-back-after-a-q4-2024-plunge" target="_blank">Tech Stocks Surging Back After Q4 2024 Plunge | Benzinga</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.tipranks.com/news/the-fly/monolithic-power-price-target-raised-to-1300-from-1250-at-keybanc-thefly" target="_blank">MPS price target raised at KeyBanc | TheFly</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.trendforce.com/news/2025/12/19/news-analog-devices-reportedly-plans-10-30-price-hike-from-feb-2026-following-tis-lead/" target="_blank">ADI 10–30% Price Hike | TrendForce</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.trendforce.com/news/2026/05/11/news-chip-price-hike-wave-builds-as-nxp-ti-reportedly-prepare-their-second-increases-this-year-for-june-and-july/" target="_blank">NXP, TI Second Increases | TrendForce</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://money.udn.com/money/story/5612/9262724" target="_blank">8吋晶圓代工產能利用率看升 醞釀漲價 | 經濟日報</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.ctee.com.tw/news/20260908700176-430501" target="_blank">德儀漲聲鼓勵 PMIC族群績昂 | 工商時報</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.ctee.com.tw/news/20260831700728-430201" target="_blank">外資續看淡矽力-KY | 工商時報</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://technews.tw/2026/08/31/ai-servers-boost-pmic-demand-silergy-targets-20-data-center-revenue-share" target="_blank">矽力-KY 資料中心占比拚破 20% | TechNews</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://news.cnyes.com/news/id/6595139" target="_blank">Factset：矽力-KY EPS預估上修至11.87元 | 鉅亨網</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://money.udn.com/money/story/11074/9763744" target="_blank">茂達2026年業績挑戰新高 | 經濟日報</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://vocus.cc/article/69f9aabbfd897800010ff2d6" target="_blank">力智 26年Q1 AI伺服器占比5% | vocus</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://tw.stock.yahoo.com/news/%E7%AE%97%E5%8A%9B%E6%80%AA%E7%8D%B8%E7%9A%84-%E7%B2%BE%E5%AF%86%E9%96%A5%E9%96%80-%E5%A4%A7%E7%BC%BA%E8%B2%A8-%E4%BA%A4%E6%9C%9F%E5%BE%97%E7%AD%8940%E9%80%B1-%E9%80%99%E7%BE%A4%E4%BA%BA%E6%AD%A3%E9%BB%98%E9%BB%98%E5%88%86%E9%A3%9F%E7%99%BE%E5%84%84%E8%82%A5%E8%82%89-015600455.html" target="_blank">「精密閥門」大缺貨 交期40週 | Yahoo 股市</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.ctee.com.tw/news/20260919700132-439901" target="_blank">台達電HVDC出貨 樂觀Q4營運 | 工商時報</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://finance.yahoo.com/technology/ai/articles/vicor-q2-earnings-call-highlights-133000709.html" target="_blank">Vicor Q2 Earnings Call Highlights | Yahoo Finance</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://news.qq.com/rain/a/20260827A05S3200" target="_blank">杰华特2026年半年度营收17.18亿元 | 腾讯新闻</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.mordorintelligence.com/industry-reports/power-delivery-module-vrm-market-for-gpu-and-ai-servers" target="_blank">VRM Market For GPU And AI Servers | Mordor Intelligence</a></li>
+      <li><span class="src-tier t4">IV</span><a href="https://www.sina.cn/news/detail/5295514649363684.html" target="_blank">DrMOS 核心上市公司（晶豐明源 NVIDIA 推薦名單）| 新浪</a></li>
+    </ul>
+    <p style="margin-top:12px;">本報告為產業研究框架整理，非投資建議。FactSet 數字為分析師共識預估，非公司實際財報。</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var wrap = document.getElementById('mapFilters');
+  if(!wrap) return;
+  wrap.addEventListener('click', function(e){
+    var btn = e.target.closest('.tbl-filter-btn');
+    if(!btn) return;
+    wrap.querySelectorAll('.tbl-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    var f = btn.dataset.filter;
+    document.querySelectorAll('#mapTable tbody tr').forEach(function(tr){
+      tr.style.display = (f === 'all' || tr.dataset.stage === f) ? '' : 'none';
+    });
+  });
+})();
+</script>
+</body>
+</html>
