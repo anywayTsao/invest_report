@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 高壓供電（800VDC／HVDC）產業追蹤報告</title>
+<style>
+  :root{
+    --navy:#1F3A5F; --navy-d:#15233B; --orange:#E8853B;
+    --text:#1E293B; --text-dim:#64748B; --border:#E2E8F0;
+    --bg:#EEF1F5; --paper:#fff;
+    --green:#16A34A; --green-d:#15803D; --green-bg:#F0FDF4;
+    --red:#DC2626; --red-d:#B91C1C; --red-bg:#FEF2F2;
+    --amber:#F59E0B; --amber-d:#92400E; --amber-bg:#FFF8E1;
+    --thead:#EDEEF1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei","Helvetica Neue",Arial,sans-serif;
+    color:var(--text); line-height:1.7; font-size:14px; background:var(--bg);
+  }
+  .page{max-width:1080px;margin:24px auto;background:var(--paper);padding:0 0 40px;}
+  a{color:var(--navy);}
+
+  .banner{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-d) 100%);color:#fff;padding:36px 44px 30px;}
+  .banner .label{font-size:11px;letter-spacing:2.5px;color:#9DB2CE;font-weight:700;}
+  .banner h1{font-size:26px;font-weight:800;margin:8px 0 10px;line-height:1.4;}
+  .banner .sub{font-size:13px;color:#C9D6E8;line-height:1.8;}
+  .banner .badges{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
+  .badge{display:inline-block;font-size:11.5px;font-weight:700;background:rgba(255,255,255,0.12);color:#fff;padding:4px 12px;border-radius:12px;}
+
+  nav.subnav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 44px;}
+  nav.subnav a{white-space:nowrap;color:var(--text-dim);text-decoration:none;font-size:12.5px;font-weight:700;padding:13px 12px;border-bottom:2px solid transparent;}
+  nav.subnav a:hover{color:var(--navy);border-bottom-color:var(--orange);}
+  nav.subnav a.home-link{color:var(--navy);border-right:1px solid var(--border);margin-right:6px;padding-right:16px;}
+  nav.subnav a.home-link:hover{color:var(--orange);border-bottom-color:var(--orange);}
+
+  .body-wrap{padding:32px 44px 0;}
+
+  .exec{background:var(--amber-bg);border-left:5px solid var(--amber);border-radius:6px;padding:20px 26px;margin-bottom:8px;}
+  .exec .exec-label{font-size:11px;font-weight:700;color:var(--amber-d);letter-spacing:1.5px;margin-bottom:8px;}
+  .exec p{font-size:14.5px;line-height:1.85;color:#1F2937;}
+  .exec b{color:var(--amber-d);}
+
+  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;scroll-margin-top:54px;}
+  h2.section span{display:block;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-dim);margin-top:2px;}
+  h3.sub{font-size:15px;font-weight:800;color:var(--navy-d);margin:26px 0 12px;}
+
+  p{margin-bottom:10px;text-align:justify;}
+  ul{padding-left:20px;margin-bottom:14px;}
+  ul li{margin-bottom:6px;line-height:1.7;}
+
+  .card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin-bottom:20px;}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0 20px;}
+  .stat{background:#fff;border:1px solid var(--border);border-top:3px solid var(--navy);border-radius:7px;padding:12px 14px;text-align:center;}
+  .stat .v{font-size:18px;font-weight:800;color:var(--navy);line-height:1.2;}
+  .stat .l{font-size:11px;color:var(--text-dim);margin-top:5px;line-height:1.4;}
+
+  table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:12.8px;}
+  thead th{background:var(--thead);color:var(--text);font-weight:700;text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);white-space:nowrap;}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6;}
+  tbody tr:last-child td{border-bottom:none;}
+  .tbl-wrap{overflow-x:auto;}
+
+  .geo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:10px 0 8px;}
+  .geo-card{border:1px solid var(--border);border-top:4px solid var(--navy);border-radius:8px;padding:16px 18px;background:#F8FAFC;}
+  .geo-card.china{border-top-color:#B91C1C;}
+  .geo-card.intl{border-top-color:#0369A1;}
+  .geo-card h4{font-size:13.5px;font-weight:800;color:var(--navy-d);margin-bottom:8px;}
+  .geo-card ul{padding-left:16px;margin-bottom:0;}
+  .geo-card li{font-size:12.5px;line-height:1.65;}
+
+  .g-pos{color:var(--green-d);font-weight:800;}
+  .g-neg{color:var(--red-d);font-weight:800;}
+  .g-flag{background:#FEF3C7;color:var(--amber-d);padding:1px 6px;border-radius:3px;font-size:11px;font-weight:700;margin-left:4px;}
+
+  .timeline{list-style:none;margin:8px 0 4px;padding:0;}
+  .timeline li{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:12px 0;border-bottom:1px dashed var(--border);}
+  .timeline li:last-child{border-bottom:none;}
+  .timeline .t{font-size:12.5px;font-weight:800;color:var(--navy);white-space:nowrap;}
+  .timeline .d{font-size:13px;line-height:1.7;}
+
+  .stage-pill{display:inline-block;background:#FEF3C7;color:var(--amber-d);border:1px solid #FDE68A;font-weight:800;font-size:13px;padding:6px 16px;border-radius:20px;}
+
+  .barrier-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:10px 0 6px;}
+  .barrier{background:#F8FAFC;border:1px solid var(--border);border-radius:7px;padding:12px 13px;}
+  .barrier .b-h{font-size:12px;font-weight:800;color:var(--navy);margin-bottom:6px;}
+  .barrier .b-v{font-size:12px;font-weight:700;margin-bottom:4px;}
+  .barrier .b-v.high{color:var(--red-d);}
+  .barrier .b-v.mid{color:var(--amber-d);}
+  .barrier p{font-size:11.5px;color:var(--text-dim);margin:0;line-height:1.55;}
+
+  .trig{font-size:12px;color:var(--red-d);}
+
+  .insight{background:#EEF2FF;border-left:4px solid #4338CA;border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#312E81;}
+  .insight b{color:#3730A3;}
+
+  .warn-box{background:#FEF2F2;border:1px solid #FECACA;border-left:4px solid var(--red);border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#7F1D1D;}
+  .warn-box b{color:var(--red-d);}
+
+  .gap-box{background:#FFFBEB;border:1px solid #FDE68A;border-radius:6px;padding:14px 18px;margin:10px 0;}
+  .gap-box ul{margin-bottom:0;}
+  .gap-box li{font-size:12.5px;color:#78350F;}
+
+  .src-list{list-style:none;padding:0;margin:0;columns:2;column-gap:24px;}
+  .src-list li{font-size:12px;line-height:1.8;break-inside:avoid;}
+  .src-list a{color:var(--navy);text-decoration:none;}
+  .src-list a:hover{text-decoration:underline;}
+
+  .src-tier{display:inline-block;font-size:9.5px;font-weight:800;padding:1px 6px;border-radius:3px;margin-right:6px;vertical-align:1px;}
+  .src-tier.t1{background:var(--green-bg);color:var(--green-d);}
+  .src-tier.t2{background:#EEF2FF;color:#3730A3;}
+  .src-tier.t3{background:var(--amber-bg);color:var(--amber-d);}
+  .src-tier.t4{background:var(--red-bg);color:var(--red-d);}
+  .src-legend{font-size:11px;color:var(--text-dim);margin-bottom:10px;line-height:1.8;}
+
+  .falsify-box{background:#F5F3FF;border:1px solid #DDD6FE;border-left:4px solid #6D28D9;border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#4C1D95;}
+  .falsify-box b{color:#5B21B6;}
+  .falsify-box ul{margin:6px 0 0;}
+  .falsify-box li{margin-bottom:6px;}
+
+  .tbl-filters{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px;}
+  .tbl-filter-btn{font-size:11.5px;font-weight:700;color:var(--text-dim);background:#F1F5F9;border:1px solid var(--border);border-radius:14px;padding:5px 13px;cursor:pointer;font-family:inherit;}
+  .tbl-filter-btn.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+
+  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;scroll-margin-top:54px;}
+
+  .log-card{background:#F8FAFC;border:1px solid var(--border);border-left:4px solid var(--navy);border-radius:8px;padding:16px 20px;margin-bottom:16px;}
+  .log-card.latest{border-left-color:var(--orange);}
+  .log-date{font-size:12.5px;font-weight:800;color:var(--navy-d);margin-bottom:8px;}
+  .log-card ul{margin:0;padding-left:18px;}
+  .log-card li{font-size:12.5px;line-height:1.7;color:var(--text);margin-bottom:4px;}
+  .log-trigger{display:inline-block;background:var(--red-bg);color:var(--red-d);font-weight:800;font-size:11.5px;padding:3px 10px;border-radius:12px;margin-bottom:8px;}
+
+  .chart-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:18px 22px;margin:14px 0 20px;}
+  .chart-card .chart-title{font-size:13px;font-weight:800;color:var(--navy-d);margin-bottom:2px;}
+  .chart-card .chart-caption{font-size:11.5px;color:var(--text-dim);margin-bottom:10px;}
+  .chart-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  svg.chart{width:100%;height:auto;display:block;overflow:visible;}
+  svg.chart text{font-family:"Noto Sans TC",Arial,sans-serif;fill:var(--text-dim);}
+  svg.chart .axis-line{stroke:var(--border);stroke-width:1;}
+  svg.chart .val-label{fill:var(--navy-d);font-weight:700;font-size:11px;}
+  svg.chart .grp-label{fill:var(--text-dim);font-size:11px;}
+  .chart-legend{display:flex;gap:16px;font-size:11.5px;color:var(--text-dim);margin-top:8px;}
+  .chart-legend span{display:inline-flex;align-items:center;gap:6px;}
+  .chart-swatch{width:10px;height:10px;border-radius:2px;display:inline-block;}
+
+  @media (max-width:900px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .geo-grid{grid-template-columns:1fr;}
+    .barrier-grid{grid-template-columns:1fr 1fr;}
+    .chart-row{grid-template-columns:1fr;}
+  }
+  @media (max-width:640px){
+    .banner,.body-wrap{padding-left:20px;padding-right:20px;}
+    nav.subnav{padding-left:20px;padding-right:20px;}
+    footer.foot{padding-left:20px;padding-right:20px;}
+    .stats{grid-template-columns:1fr 1fr;}
+    .barrier-grid{grid-template-columns:1fr;}
+    table{font-size:11.5px;}
+    .src-list{columns:1;}
+    .timeline li{grid-template-columns:90px 1fr;gap:8px;}
+  }
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;max-width:100%;}
+    nav.subnav{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="banner">
+    <div class="label">INDUSTRY TRACKER · 產業追蹤</div>
+    <h1>AI 高壓供電（800VDC／HVDC）產業追蹤報告</h1>
+    <div class="sub">AI 機櫃功率從 140kW 衝向 1MW，資料中心供電從 54V 升級到 ±400V／800V 直流：Sidecar 電源櫃 → 高壓 BBU → 固態變壓器（SST）的價值遷移</div>
+    <div class="badges">
+      <span class="badge">產出日期 2026-09-23</span>
+      <span class="badge">框架：地圖 → 歷史 → 門檻 → 指標</span>
+      <span class="badge">目前階段：導入初期（元件層供不應求）</span>
+    </div>
+  </div>
+
+  <nav class="subnav">
+    <a class="home-link" href="../../index.html">← 回首頁</a>
+    <a href="#overview">總覽</a>
+    <a href="#map">供應鏈地圖</a>
+    <a href="#history">歷史周期</a>
+    <a href="#barriers">供應鏈門檻</a>
+    <a href="#indicators">追蹤指標</a>
+    <a href="#changelog">讀數紀錄</a>
+    <a href="#gaps">資料缺口</a>
+    <a href="#sources">參考來源</a>
+  </nav>
+
+  <div class="body-wrap">
+
+    <!-- ============ 00 總覽 ============ -->
+    <h2 class="section" id="overview">總覽<span>OVERVIEW</span></h2>
+    <div class="exec">
+      <div class="exec-label">EXECUTIVE SUMMARY · 摘要</div>
+      <p>AI 高壓供電目前處於<b>架構導入初期</b>：台達電 ±400V／800V 已陸續出貨但 2026 年規模有限，光寶 800V Power Rack 11 月才小量生產，兩家與順達、Eaton 的時程都指向 <b>2027 年放量</b>。這一輪的瓶頸不在系統產能，而在兩端：上游<b>電源 IC 缺料</b>（台達電明說 Q3 營收因此被壓抑、缺料會持續多季，PMIC 交期 35-40 週），以及下游的<b>架構選擇與法規</b>（NVIDIA 推單極 800V、OCP 推 ±400V；NEC 要到 2029 年才完整涵蓋 800VDC）。SemiAnalysis 估算每 MW 電氣設備總成本幾乎不變（約 $3.8M→$4.0-4.3M），<b>真正發生的是價值從機櫃內 PSU 搬到 Sidecar 電源櫃，最後再搬到 SST</b>。2026 年 6 月的「800V 延後」傳聞讓台達電一個月內 -30%，但 FactSet 目標價只下修 3.21%，屬於「趨勢不變、時程波動」的型態。最大的長期不確定性是 ±400V 與 800V 誰會成為主流。</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="v">2027</div><div class="l">台達電／光寶科 800V 放量年<br>（2026 年規模有限）</div></div>
+      <div class="stat"><div class="v">$11B</div><div class="l">Sidecar 電源櫃 TAM 高峰（2028）<br>SemiAnalysis 估</div></div>
+      <div class="stat"><div class="v">35-40 週</div><div class="l">PMIC 交期<br>台達電 Q3 受缺料壓抑</div></div>
+      <div class="stat"><div class="v">2.9x</div><div class="l">Vertiv book-to-bill<br>積壓訂單 150 億美元</div></div>
+    </div>
+
+    <!-- ============ 01 供應鏈地圖 ============ -->
+    <h2 class="section" id="map">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
+
+    <h3 class="sub">終端產品與 BOM 拆解</h3>
+    <p>在 600kW 機櫃下，把電壓從 54V 升到 800V，電流約降 15 倍、電阻損耗約降 220 倍（SemiAnalysis）；台達電稱匯流排尺寸可縮小約 14 倍。目前 800VDC 的轉換路徑是 <b>中壓 AC → 800VDC →（機櫃內）54V → 12V/6V → 0.65V</b>；NVIDIA 的終局是中壓 AC（約 13.8kV）經 SST 直接轉成 800VDC，機櫃內再用 64:1 LLC 直接降到 12V。</p>
+    <p>HVDC 是一套架構而不是單一產品，所以「BOM」改用<b>每 MW IT 負載的電氣設備成本</b>來拆（SemiAnalysis 四階段模型）。總成本幾乎不變，差別在價值落在哪一層：</p>
+
+    <div class="chart-card">
+      <div class="chart-title">每 MW 電氣設備成本結構：Sidecar 階段 vs SST 終局</div>
+      <div class="chart-caption">SemiAnalysis 估算，單位 $M/MW；SST 取 $1.0-1.5M 的中值 1.25；其餘設施電氣＝總額扣除標示項目</div>
+      <p style="font-size:12px;margin-bottom:4px;"><b>階段 1-2：Sidecar 電源櫃</b>（合計約 $4.3M/MW）</p>
+      <div style="display:flex;height:26px;border-radius:5px;overflow:hidden;border:1px solid var(--border);margin-bottom:12px;">
+        <div style="width:88%;background:#CBD5E1;color:var(--text);font-size:11px;display:flex;align-items:center;justify-content:center;">既有設施電氣（變壓器/UPS/整流）~$3.8M 88%</div>
+        <div style="width:12%;background:var(--orange);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">電源櫃 12%</div>
+      </div>
+      <p style="font-size:12px;margin-bottom:4px;"><b>階段 4：SST 終局</b>（合計約 $4.0M/MW）</p>
+      <div style="display:flex;height:26px;border-radius:5px;overflow:hidden;border:1px solid var(--border);">
+        <div style="width:64%;background:#CBD5E1;color:var(--text);font-size:11px;display:flex;align-items:center;justify-content:center;">其餘設施電氣 ~$2.55M 64%</div>
+        <div style="width:31%;background:var(--navy);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">SST ~$1.25M 31%</div>
+        <div style="width:5%;background:var(--green);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;"></div>
+      </div>
+      <div class="chart-legend">
+        <span><i class="chart-swatch" style="background:var(--orange)"></i>HVDC 電源櫃 ~$0.5M</span>
+        <span><i class="chart-swatch" style="background:var(--navy)"></i>SST</span>
+        <span><i class="chart-swatch" style="background:var(--green)"></i>電池櫃 ~$0.2M（5%）</span>
+      </div>
+    </div>
+    <p class="warn-box"><b>⚠️ 口徑爭議：</b>經濟日報／理財周刊（2026-06-04）稱「HVDC 電源櫃均價是傳統設備的 10 倍、約 5,000 萬美元/MW」，與 SemiAnalysis 的「電源櫃約 $0.5M/MW、電氣總額約 $4M/MW」差了兩個數量級，推測是把整座機房電氣或整筆合約金額誤當成每 MW 單價。本報告採用 SemiAnalysis 口徑；「10 倍均價」只當作「電源櫃 ASP 遠高於單顆 PSU」的定性參考。</p>
+
+    <h3 class="sub">上中下游基本結構</h3>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>層級</th><th>環節</th><th>代表廠商</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="3">上游</td><td>SiC 基板／磊晶／元件</td><td>Wolfspeed、onsemi、Infineon、ST、ROHM；台：漢磊 3707、嘉晶 3016、環球晶 6488</td></tr>
+        <tr><td>GaN 元件</td><td>Navitas、Infineon、英諾賽科 Innoscience、EPC、TI</td></tr>
+        <tr><td>控制／驅動／電源管理 IC</td><td>TI、ADI、Infineon、Renesas、MPS、立錡、AOS、Power Integrations（NVIDIA 800VDC 14 家矽夥伴）</td></tr>
+        <tr><td rowspan="5">中游</td><td>Sidecar／HVDC 電源櫃</td><td>台達電 2308、光寶科 2301、康舒 6282、Flex、Vertiv、麥格米特 002851</td></tr>
+        <tr><td>固態變壓器（SST）</td><td>Eaton（併購 Resilient Power）、ABB（投資 DG Matrix）、Heron Power、Amperesand、台達電、中恒电气</td></tr>
+        <tr><td>高壓 BBU／備援</td><td>AES-KY 6781、順達 3211、新盛力 4931、光寶科、台達電</td></tr>
+        <tr><td>高壓線束／連接器／Busway</td><td>貿聯-KY 3665（BizLink）、健和興 3003、Lead Wealth、ABB、LS Electric、Legrand</td></tr>
+        <tr><td>DC 保護（斷路器、SSCB）</td><td>ABB（SACE Infinitus）、LS Electric、Siemens、Schneider、Eaton</td></tr>
+        <tr><td rowspan="3">下游</td><td>設施級電力（中壓配電/UPS）</td><td>Schneider、Eaton、Vertiv、GE Vernova、Hitachi Energy；台：華城 1519、士電 1503、中興電 1513（間接受惠）</td></tr>
+        <tr><td>GPU／機櫃平台</td><td>NVIDIA Kyber（Rubin Ultra，首個原生 800VDC）；Google/Meta/Microsoft OCP Mt. Diablo（±400V）</td></tr>
+        <tr><td>AI 資料中心</td><td>超大型 CSP；CoreWeave、Lambda、Nebius、OCI 等 20+ 家</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="insight"><b>兩條電壓路線並存：</b>NVIDIA 主推單極 800VDC（導體 2 條、線徑小）；OCP Mt. Diablo 採 ±400VDC 雙極，借用電動車供應鏈規模。台達電透露有兩家客戶先在 NVIDIA 機櫃上 ±400V、之後再轉 800V，另有三家超大型業者在評估 400V。對供應商來說，同時具備兩套電壓產品線是基本門票。</p>
+
+    <h3 class="sub">橫向比較：國內外供應鏈地位</h3>
+    <div class="geo-grid">
+      <div class="geo-card">
+        <h4>🇹🇼 台灣 — 電源櫃與 BBU 系統整合主力</h4>
+        <ul>
+          <li>台達電：唯一 800V／±400V／50V 全系列，SST 已完成工程驗證，台美有示範場域</li>
+          <li>光寶科：500kW 機櫃電源 Q2 放量；800V Power Rack 11 月小量、2027Q1 放量；AI 營收占比約 30%</li>
+          <li>BBU 三雄：AES-KY（BBU 占比預期破 8 成）、順達（與台達合作 800V BBU，2027 量產）、新盛力（UL9540A 認證中）</li>
+          <li>貿聯-KY、健和興（高壓線束/連接器）；漢磊、嘉晶（SiC）</li>
+        </ul>
+      </div>
+      <div class="geo-card china">
+        <h4>🇨🇳 中國 — 自成體系的 HVDC 市場</h4>
+        <ul>
+          <li>中恒电气：中國資料中心 HVDC 市佔約 5 成，阿里/騰訊供應商；2026-04 寧德時代約 41 億人民幣入股，4 連板創新高</li>
+          <li>麥格米特：NVIDIA 800VDC 電源系統元件夥伴</li>
+          <li>英諾賽科：GaN，NVIDIA 14 家矽夥伴之一</li>
+        </ul>
+      </div>
+      <div class="geo-card intl">
+        <h4>🌍 國際 — 設施電力與關鍵半導體</h4>
+        <ul>
+          <li>Eaton：資料中心營收 YoY +65%，近 20 個 SST 試點，800V 訂單預期 2026 H2</li>
+          <li>Vertiv：積壓訂單 150 億美元，book-to-bill 2.9 倍</li>
+          <li>Infineon：FY26 AI 資料中心電源營收 >16 億歐元，FY27 >25 億歐元</li>
+          <li>Navitas：800V 題材情緒指標；ABB/Schneider/Siemens：DC 保護與設施電力</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub">公司地圖總表（可篩選）</h3>
+    <div class="tbl-filters" id="mapFilters">
+      <button class="tbl-filter-btn active" data-filter="all">全部環節</button>
+      <button class="tbl-filter-btn" data-filter="電源櫃/SST">電源櫃/SST</button>
+      <button class="tbl-filter-btn" data-filter="BBU">高壓 BBU</button>
+      <button class="tbl-filter-btn" data-filter="連接/保護">連接/保護</button>
+      <button class="tbl-filter-btn" data-filter="功率半導體">功率半導體</button>
+      <button class="tbl-filter-btn" data-filter="設施電力">設施電力</button>
+    </div>
+    <div class="tbl-wrap">
+    <table id="mapTable">
+      <thead><tr><th>公司</th><th>環節</th><th>地區</th><th>供應鏈地位</th></tr></thead>
+      <tbody>
+        <tr data-stage="電源櫃/SST"><td>台達電 2308</td><td>電源櫃/SST</td><td>台灣</td><td>全系列方案龍頭，SST 已完成工程驗證，2027 放量</td></tr>
+        <tr data-stage="電源櫃/SST"><td>光寶科 2301</td><td>電源櫃/SST</td><td>台灣</td><td>800V Power Rack 2026-11 小量、2027Q1 放量</td></tr>
+        <tr data-stage="電源櫃/SST"><td>康舒 6282</td><td>電源櫃/SST</td><td>台灣</td><td>1MW HVDC 系統（400V/800V）送樣中</td></tr>
+        <tr data-stage="電源櫃/SST"><td>中恒电气 002364</td><td>電源櫃/SST</td><td>中國</td><td>中國 HVDC 市佔約 5 成，布局 SST</td></tr>
+        <tr data-stage="電源櫃/SST"><td>麥格米特 002851</td><td>電源櫃/SST</td><td>中國</td><td>NVIDIA 800VDC 元件夥伴</td></tr>
+        <tr data-stage="BBU"><td>AES-KY 6781</td><td>BBU</td><td>台灣</td><td>BBU 營收純度最高，擴建高壓產線</td></tr>
+        <tr data-stage="BBU"><td>順達 3211</td><td>BBU</td><td>台灣</td><td>與台達合作 800V BBU，2027 量產</td></tr>
+        <tr data-stage="BBU"><td>新盛力 4931</td><td>BBU</td><td>台灣</td><td>UL9540A 高壓認證中，Q4 推 HVDC 產品</td></tr>
+        <tr data-stage="連接/保護"><td>貿聯-KY 3665</td><td>連接/保護</td><td>台灣</td><td>NVIDIA 800VDC 元件夥伴（BizLink），HVDC 線束</td></tr>
+        <tr data-stage="連接/保護"><td>健和興 3003</td><td>連接/保護</td><td>台灣</td><td>高壓連接器</td></tr>
+        <tr data-stage="連接/保護"><td>ABB／LS Electric</td><td>連接/保護</td><td>國際</td><td>SSCB（SACE Infinitus）／首款 UL 認證 1500V DC MCCB</td></tr>
+        <tr data-stage="功率半導體"><td>Infineon IFX</td><td>功率半導體</td><td>國際</td><td>AI 電源營收 FY26 >16 億歐元</td></tr>
+        <tr data-stage="功率半導體"><td>Navitas NVTS</td><td>功率半導體</td><td>國際</td><td>GaN/SiC，800V 題材情緒指標</td></tr>
+        <tr data-stage="功率半導體"><td>onsemi ON／Wolfspeed WOLF</td><td>功率半導體</td><td>國際</td><td>SiC，NVIDIA 800V 協作夥伴</td></tr>
+        <tr data-stage="功率半導體"><td>漢磊 3707／嘉晶 3016</td><td>功率半導體</td><td>台灣</td><td>8 吋 SiC 晶圓代工／磊晶</td></tr>
+        <tr data-stage="設施電力"><td>Eaton ETN</td><td>設施電力</td><td>國際</td><td>SST 近 20 個試點，800V 訂單預期 H2 2026</td></tr>
+        <tr data-stage="設施電力"><td>Vertiv VRT</td><td>設施電力</td><td>國際</td><td>積壓訂單 150 億美元</td></tr>
+        <tr data-stage="設施電力"><td>Schneider／Siemens／GE Vernova</td><td>設施電力</td><td>國際</td><td>NVIDIA 800VDC 設施電力夥伴</td></tr>
+        <tr data-stage="設施電力"><td>華城 1519／士電 1503／中興電 1513</td><td>設施電力</td><td>台灣</td><td>中壓設備，資料中心用電擴張的間接受惠者</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <!-- ============ 02 歷史周期 ============ -->
+    <h2 class="section" id="history">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
+    <ul class="timeline">
+      <li><div class="t">2025-05</div><div class="d">NVIDIA 宣布 800V HVDC 架構並與 Navitas 合作 → <span class="g-pos">Navitas 盤後一度 +190%</span>，但 2025 全年只剩 +100%：題材先行、營收落後的第一個樣本</div></li>
+      <li><div class="t">2025-10</div><div class="d">OCP 大會公布 800VDC 生態（14 家矽＋6 家電源系統＋9 家設施電力，台達/光寶/貿聯/麥格米特入列）；Google/Meta/Microsoft 推 ±400V Mt. Diablo。產業形成「2027 年隨 Kyber 全面量產」的時間錨</div></li>
+      <li><div class="t">2025H2-2026H1</div><div class="d">BBU 成為 GB200/GB300 標配、規格往 8-12kW 與 400-800V 升級，BBU 三雄大漲；2025-12 已有投顧示警「炒過頭」。2026 年 BBU 產值預估成長 30-50%</div></li>
+      <li><div class="t">2026-04</div><div class="d">寧德時代約 41 億人民幣入股中恒电气 → 一字漲停、4 連板創歷史新高</div></li>
+      <li><div class="t">2026-06</div><div class="d"><b>800V 延後傳聞</b>：SemiAnalysis 稱延到 2028+（Rubin 仍用 50V 輸入，CSP 覺得 ±400V 更務實）→ <span class="g-neg">台達電從約 2,585 元跌到 1,790 元（-30%）</span>。收尾：供應鏈稱布局不變，市場解讀為「400V 先行、800V 未取消」</div></li>
+      <li><div class="t">2026-07-28</div><div class="d">AI 循環融資疑慮、台股盤中重挫逾 1,800 點 → <span class="g-neg">台達電跌停 1,580 元</span>；FactSet 目標價中位數只由 2,650 下修到 2,565 元（-3.21%），21 位分析師有 20 位看多</div></li>
+      <li><div class="t">2026-07～09</div><div class="d"><b>現在這一輪</b>：法說確認 ±400V 今年出貨、800V 2027 放量；光寶 Q2 EPS 3.14 元創新高。9/10 台達電因 8 月營收 MoM -3.7% 與電容問題傳聞再跌 6%；9/19 公司說明 Q3 受<b>電源 IC 缺料</b>壓抑、Q4 仍預期雙位數季增</div></li>
+    </ul>
+    <p class="insight"><b>與過去周期最大的差異：</b>這不是「產能不夠」的缺貨週期，而是「架構換代」週期。股價波動來自<b>時程</b>（800V 何時放量、選 400V 還是 800V），不是需求本身消失——跟 PSU 追蹤器記錄的 2024Q4 Blackwell 延遲案例是同一種型態：趨勢不變、執行面延遲。</p>
+
+    <div class="chart-card">
+      <div class="chart-title">上游溫度計：Infineon AI 資料中心電源營收</div>
+      <div class="chart-caption">單位：十億歐元（€B）；FY2026、FY2027 為公司目標（「超過」），非實際數</div>
+      <svg class="chart" viewBox="0 0 480 220" role="img" aria-label="Infineon AI 資料中心電源營收 FY2024 0.25、FY2025 0.7、FY2026 目標 1.6、FY2027 目標 2.5 十億歐元">
+        <line class="axis-line" x1="50" y1="180" x2="450" y2="180"/>
+        <line class="axis-line" x1="50" y1="130" x2="450" y2="130" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="80" x2="450" y2="80" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="30" x2="450" y2="30" stroke-dasharray="2 3"/>
+        <text x="45" y="183" text-anchor="end" font-size="10">0</text>
+        <text x="45" y="133" text-anchor="end" font-size="10">1.0</text>
+        <text x="45" y="83" text-anchor="end" font-size="10">2.0</text>
+        <text x="45" y="33" text-anchor="end" font-size="10">3.0</text>
+        <rect x="80" y="167.5" width="50" height="12.5" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="105" y="160" text-anchor="middle">0.25</text>
+        <text class="grp-label" x="105" y="198" text-anchor="middle">FY2024</text>
+        <rect x="180" y="145" width="50" height="35" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="205" y="137" text-anchor="middle">&gt;0.7</text>
+        <text class="grp-label" x="205" y="198" text-anchor="middle">FY2025</text>
+        <rect x="280" y="100" width="50" height="80" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="305" y="92" text-anchor="middle">&gt;1.6</text>
+        <text class="grp-label" x="305" y="198" text-anchor="middle">FY2026 目標</text>
+        <rect x="380" y="55" width="50" height="125" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="405" y="47" text-anchor="middle">&gt;2.5</text>
+        <text class="grp-label" x="405" y="198" text-anchor="middle">FY2027 預估</text>
+      </svg>
+      <div class="chart-legend">
+        <span><i class="chart-swatch" style="background:var(--navy)"></i>實際</span>
+        <span><i class="chart-swatch" style="background:var(--orange)"></i>公司目標／預估</span>
+      </div>
+    </div>
+
+    <p style="margin-top:16px;">目前供需階段判定：</p>
+    <p><span class="stage-pill">⚠ 架構導入初期：系統需求 2027 年兌現，元件層供不應求</span></p>
+    <ul>
+      <li><b>元件層供不應求</b>：台達電 Q3 營收受電源 IC 缺料壓抑、缺料會持續多季；PMIC 交期 35-40 週，6-7 月漲價最高約 15%；GaN-on-Si 普遍受產能限制</li>
+      <li><b>系統層尚未兌現</b>：台達電 ±400V/800V 已出貨但 2026 規模有限；光寶 800V 11 月才小量；Eaton SST 仍在試點，出貨要到 2027 年底至 2028 年初</li>
+      <li><b>設施端訂單積壓</b>：Vertiv 積壓 150 億美元（YoY 翻倍以上）、book-to-bill 2.9 倍；Eaton 電氣積壓 YoY +43%</li>
+    </ul>
+
+    <!-- ============ 03 供應鏈門檻 ============ -->
+    <h2 class="section" id="barriers">供應鏈門檻<span>STEP 3 · BARRIERS TO ENTRY</span></h2>
+    <div class="barrier-grid">
+      <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">高</div><p>電源櫃要同時懂電網側與 IT 側、同時做 800V 與 ±400V；SST 要懂中壓電力電子＋併網法規；DC 保護要處理直流電沒有過零點的電弧問題</p></div>
+      <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v mid">系統 1-2 年／晶片 3-5 年</div><p>電源櫃、BBU 是組裝線，1-2 年可擴；真正慢的是上游 SiC/GaN 晶圓廠（3-5 年）</p></div>
+      <div class="barrier"><div class="b-h">資本/技術門檻</div><div class="b-v high">高</div><p>光寶赴美投資約 300 億元；Eaton 以併購 Resilient Power 取得 SST 技術、ABB 投資 DG Matrix</p></div>
+      <div class="barrier"><div class="b-h">客戶認證＋法規</div><div class="b-v high">1-2 年＋NEC 2029</div><p>光寶 H2 送 CSP 驗證、最快 2027 切入；NEC 要到 2029 年才完整涵蓋 800VDC，之前每個場址都要個別 AHJ 核准＋UL 認證；SemiAnalysis 估法規完全成熟要到 2032-2035</p></div>
+      <div class="barrier"><div class="b-h">轉單成本</div><div class="b-v high">高（SST 極高）</div><p>整櫃系統綁定機房設計，換供應商要重新驗證電力鏈；SST 屬 15-20 年壽命的設施建設。但 NVIDIA 生態列了 6 家電源系統商，議價力可能被稀釋</p></div>
+    </div>
+    <p class="insight"><b>最硬的瓶頸在哪一層：</b>近期（2026-2027）是<b>上游電源 IC 與 GaN/SiC</b>——台達電已明說出貨被晶片卡住，系統廠自己的產能不是問題；中期（2027-2029）是<b>法規與路線選擇</b>，決定電源櫃需求何時兌現。最好卡位的是同時具備 800V＋±400V、並進入 NVIDIA 與 OCP 兩個生態的電源櫃整合商（台達電 > 光寶科）；BBU 屬跟隨型位置，SST 路線未收斂、護城河言之過早。</p>
+
+    <div class="chart-card">
+      <div class="chart-title">為什麼一定要換：各階段系統端到端效率</div>
+      <div class="chart-caption">SemiAnalysis 估算；⚠️ 縱軸從 80% 起算以凸顯差距。1GW IT 負載下，階段 2 省約 58MW、階段 4 省約 69MW</div>
+      <svg class="chart" viewBox="0 0 360 200" role="img" aria-label="系統效率：傳統 AC 82.0%、Sidecar 83.7%、集中整流 86.9%、SST 87.4%">
+        <line class="axis-line" x1="46" y1="170" x2="330" y2="170"/>
+        <line class="axis-line" x1="46" y1="95" x2="330" y2="95" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="20" x2="330" y2="20" stroke-dasharray="2 3"/>
+        <text x="40" y="173" text-anchor="end" font-size="10">80%</text>
+        <text x="40" y="98" text-anchor="end" font-size="10">85%</text>
+        <text x="40" y="23" text-anchor="end" font-size="10">90%</text>
+        <rect x="60" y="140" width="50" height="30" rx="3" fill="#CBD5E1"/>
+        <text class="val-label" x="85" y="132" text-anchor="middle">82.0%</text>
+        <text class="grp-label" x="85" y="188" text-anchor="middle">傳統 AC</text>
+        <rect x="130" y="114.5" width="50" height="55.5" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="155" y="106.5" text-anchor="middle">83.7%</text>
+        <text class="grp-label" x="155" y="188" text-anchor="middle">Sidecar</text>
+        <rect x="200" y="66.5" width="50" height="103.5" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="225" y="58.5" text-anchor="middle">86.9%</text>
+        <text class="grp-label" x="225" y="188" text-anchor="middle">集中整流</text>
+        <rect x="270" y="59" width="50" height="111" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="295" y="51" text-anchor="middle">87.4%</text>
+        <text class="grp-label" x="295" y="188" text-anchor="middle">SST 終局</text>
+      </svg>
+    </div>
+
+    <!-- ============ 04 追蹤指標 ============ -->
+    <h2 class="section" id="indicators">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
+    <p><b>領先順序</b>：上游功率/電源 IC 營收與交期（最快、但最受題材情緒干擾）→ 設施電力商訂單（Vertiv/Eaton，領先營收 2-4 季）→ 台廠電源櫃量產里程碑（二元事件）→ 台廠月營收（落後、驗證用）。</p>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>指標</th><th>目前讀數（2026-09-23）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
+      <tbody>
+        <tr><td>1. 800V 電源櫃量產時程</td><td>台達 800V 2027Q1 小量、2027 主要貢獻；光寶 800V Power Rack 2026-11 小量、2027Q1 放量</td><td class="trig">任一家把放量延到 2027 H2 以後；或光寶 11 月小量延後超過 1 季</td></tr>
+        <tr><td>2. NVIDIA 800VDC 路線</td><td>Kyber（Rubin Ultra）首個原生 800VDC，2027 全面量產</td><td class="trig">NVIDIA 官方宣布 Kyber 延後或改以 ±400V 為主；反向：宣布提前或 Rubin 大量採 800V</td></tr>
+        <tr><td>3. Eaton SST／800V 訂單</td><td>近 20 個試點、10 台原型訂單，800V 訂單預期 H2 2026</td><td class="trig">2026 Q4 財報仍無正式 800V/SST 訂單；或宣布首筆超大型業者正式訂單</td></tr>
+        <tr><td>4. Vertiv 積壓訂單／B2B</td><td>150 億美元、2.9 倍（2026 Q2）</td><td class="trig">book-to-bill &lt; 1.2 倍，或積壓訂單季減</td></tr>
+        <tr><td>5. 電源 IC／功率元件缺料</td><td>PMIC 交期 35-40 週；台達電：缺料持續多季</td><td class="trig">交期 &lt; 20 週或台達/光寶明說缺料緩解；反向：交期 &gt; 52 週或台達電下修 Q4 雙位數季增指引</td></tr>
+        <tr><td>6. Infineon AI 資料中心電源營收</td><td>FY26 &gt;16 億歐元、FY27 &gt;25 億歐元</td><td class="trig">FY27 目標下修，或再上修超過 10%</td></tr>
+        <tr><td>7. 台達電 FactSet 2027 EPS 共識</td><td>中位數 59 元（2026-05-02）</td><td class="trig">較基準變動超過 ±8%（約 ±5 元）</td></tr>
+        <tr><td>8. 台達電單月營收 YoY</td><td>2026/08 +35%（7 月 +47.7%）</td><td class="trig">連續兩個月 YoY &lt; +20%</td></tr>
+        <tr><td>9. 高壓 BBU 量產進度</td><td>順達 800V BBU 2027 量產；新盛力 UL9540A 認證中</td><td class="trig">新盛力取得 UL9540A；或任一家宣布 800V BBU 延後</td></tr>
+        <tr><td>10. 法規（NEC/UL/IEC）</td><td>NEC 2029 才完整涵蓋；IEC 60947-10 2026 年初發布</td><td class="trig">UL/NFPA 發布 800VDC 資料中心專屬標準，或 NEC 時程提前</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="sub">財務數字驗證</h3>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>指標</th><th>台達電 2308</th><th>光寶科 2301</th><th>Vertiv VRT</th></tr></thead>
+      <tbody>
+        <tr><td>最新單季營收</td><td>2026 Q2 1,832 億元（新高）</td><td>2026 Q2 527 億元（新高）</td><td>2026 Q2 32.74 億美元（YoY +24%）</td></tr>
+        <tr><td>最新月營收</td><td>2026/08 645.86 億元，YoY +35%、MoM -3.7%</td><td>2026/08 195.92 億元，YoY +25.2%</td><td>—</td></tr>
+        <tr><td>毛利率</td><td>2026 Q2 35.6%（Q3 預期約 35%）</td><td>2026 Q2 27.2% <span class="g-flag">⚠️ 含一次性因素</span></td><td>—</td></tr>
+        <tr><td>EPS</td><td>2026 H1 17.59 元</td><td>2026 Q2 3.14 元（新高）、H1 4.8 元</td><td>Q2 調整後 1.52 美元（+60%）</td></tr>
+        <tr><td>訂單能見度</td><td>Q3 受缺料壓抑；Q4 預期雙位數季增</td><td>取得北美 CSP 新單</td><td>積壓 150 億美元、B2B 2.9 倍</td></tr>
+        <tr><td>本淨比 P/B</td><td>約 16.27 倍（2026/07）</td><td>約 6.6 倍（2026-09-17 回推）</td><td>—</td></tr>
+        <tr><td>FactSet 共識（分析師預估）</td><td>2026 EPS 39.3 元、2027 EPS 59 元、2028 EPS 93.3 元（2026-05-02）；目標價 2,565 元（2026-07-31）</td><td>2026 EPS 8.55→8.8 元、2027 EPS 11.44 元；目標價 250 元（2026-08-03）</td><td>2026 調整後 EPS 公司指引 6.70 美元</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">台達電 FactSet EPS 共識：2027 是放量年</div>
+      <div class="chart-caption">FactSet 分析師預估中位數（非實際財報），23 位分析師，2026-05-02 調查；單位：元</div>
+      <svg class="chart" viewBox="0 0 360 200" role="img" aria-label="台達電 FactSet EPS 預估中位數：2026 年 39.3 元、2027 年 59 元、2028 年 93.3 元">
+        <line class="axis-line" x1="46" y1="170" x2="330" y2="170"/>
+        <line class="axis-line" x1="46" y1="95" x2="330" y2="95" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="20" x2="330" y2="20" stroke-dasharray="2 3"/>
+        <text x="40" y="173" text-anchor="end" font-size="10">0</text>
+        <text x="40" y="98" text-anchor="end" font-size="10">50</text>
+        <text x="40" y="23" text-anchor="end" font-size="10">100</text>
+        <rect x="80" y="111" width="55" height="59" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="107" y="103" text-anchor="middle">39.3</text>
+        <text class="grp-label" x="107" y="188" text-anchor="middle">2026E</text>
+        <rect x="170" y="81.5" width="55" height="88.5" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="197" y="73.5" text-anchor="middle">59.0（+50%）</text>
+        <text class="grp-label" x="197" y="188" text-anchor="middle">2027E</text>
+        <rect x="260" y="30" width="55" height="140" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="287" y="22" text-anchor="middle">93.3（+58%）</text>
+        <text class="grp-label" x="287" y="188" text-anchor="middle">2028E</text>
+      </svg>
+    </div>
+
+    <h3 class="sub">情境失效測試：什麼數據出現代表現在的判斷是錯的</h3>
+    <div class="falsify-box">
+      <b>誠實面對反方證據，不是只找支持論點的資料。</b>目前的判斷是「導入初期、2027 年兌現、元件層供不應求」，以下任一情況出現就要承認判斷錯誤：
+      <ul>
+        <li><b>「2027 放量」錯了：</b>台達電、光寶科、順達、Eaton 中有 ≥2 家在 2027Q1 之前把量產／放量延到 2027 H2 以後</li>
+        <li><b>「元件層供不應求」錯了：</b>PMIC／功率元件交期兩季內降到 20 週以下，而且台達電 Q4 營收沒有達到雙位數季增——代表 Q3 的營收壓抑不是缺料，而是需求放緩</li>
+        <li><b>「800V 是終局」錯了：</b>≥3 家 CSP 宣布以 ±400V（Mt. Diablo）為標準且不規劃轉 800V——SST／800V 專屬環節的 TAM 要大幅下修（電源櫃廠兩種都有做，影響有限）</li>
+      </ul>
+    </div>
+
+    <!-- ============ 05 讀數紀錄 ============ -->
+    <h2 class="section" id="changelog">讀數紀錄<span>CHANGELOG</span></h2>
+    <p>以下逐次列出每次追蹤查證的讀數，內容取自 tracker 檔案 <code>trackers/ai_hvdc_power.md</code> 的「歷史讀數紀錄」，最新一筆在最上面，不覆蓋舊紀錄。</p>
+    <div class="log-card latest">
+      <div class="log-date">2026-09-23（首次建檔，基準值）</div>
+      <ul>
+        <li>800V 時程：台達電 ±400V/800V 已陸續出貨但 2026 規模有限，800V 2027Q1 小量、2027 主要貢獻；光寶 800V Power Rack 11 月小量、2027Q1 放量</li>
+        <li>NVIDIA：Kyber 為首個原生 800VDC 機櫃，2027 全面量產；6 月延後傳聞被解讀為「400V 先行」；台達電稱兩家客戶先上 ±400V、三家超大型業者評估 400V</li>
+        <li>Eaton：資料中心營收 +65%、電氣積壓 +43%；SST 近 20 個試點、10 台原型訂單，800V 訂單預期 H2 2026</li>
+        <li>Vertiv：Q2 營收 32.74 億美元（+24%），積壓 150 億美元，book-to-bill 2.9 倍</li>
+        <li>缺料：PMIC 交期 35-40 週；台達電 Q3 受電源 IC 缺料壓抑、Q4 預期雙位數季增</li>
+        <li>Infineon：FY26 AI 資料中心電源 >16 億歐元、FY27 >25 億歐元</li>
+        <li>FactSet：台達電 2027 EPS 59 元、目標價 2,565 元；光寶科 2027 EPS 11.44 元、目標價 250 元</li>
+        <li>BBU：順達 800V BBU 2027 量產；新盛力 UL9540A 認證中；法規：NEC 2029 才完整涵蓋</li>
+        <li><b>本次無指標觸發</b>（基準建檔）</li>
+      </ul>
+    </div>
+
+    <!-- ============ 06 資料缺口 ============ -->
+    <h2 class="section" id="gaps">資料缺口<span>DATA GAPS</span></h2>
+    <div class="gap-box">
+      <ul>
+        <li>台達電、光寶科 HVDC 產品營收金額與毛利率：兩家只說「2026 規模有限、2027 放量」，沒有揭露金額</li>
+        <li>單一 800V 電源櫃 ASP：媒體「10 倍均價、約 5,000 萬美元/MW」與 SemiAnalysis「約 $0.5M/MW」差兩個數量級 ⚠️</li>
+        <li>SST 實際 ASP 與量產良率（SemiAnalysis $1.0-1.5M/MW 為估算）</li>
+        <li>台達電 FactSet 2027 EPS 最新共識（完整分年數字停在 2026-05-02）</li>
+        <li>NVIDIA 是否正式澄清「800VDC 電源櫃 2026 Q3 量產」（只有二手報導，列 IV 級）</li>
+        <li>全球 800V 電源櫃／高壓 BBU 市佔率；AES-KY、順達、新盛力的 FactSet 覆蓋</li>
+        <li>電源櫃從送樣到 CSP 量產認證的具體月數；UL 針對 800VDC 資料中心設備的專屬標準編號</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ============ 07 參考來源 ============ -->
+  <footer class="foot" id="sources">
+    <p style="margin-bottom:10px;"><b>參考來源（部分）：</b></p>
+    <p class="src-legend">可信度分級：<span class="src-tier t1">I</span>公司原始揭露（財報/年報/官網）　<span class="src-tier t2">II</span>官方機構/海關/產業公協會統計　<span class="src-tier t3">III</span>券商研報/媒體報導　<span class="src-tier t4">IV</span>供應鏈訪查/市場傳言（未證實，需自行進一步查證）</p>
+    <ul class="src-list">
+      <li><span class="src-tier t1">I</span><a href="https://developer.nvidia.com/blog/building-the-800-vdc-ecosystem-for-efficient-scalable-ai-factories/" target="_blank">Building the 800 VDC Ecosystem | NVIDIA Technical Blog</a></li>
+      <li><span class="src-tier t1">I</span><a href="https://developer.nvidia.com/blog/nvidia-800-v-hvdc-architecture-will-power-the-next-generation-of-ai-factories/" target="_blank">NVIDIA 800 VDC Architecture | NVIDIA</a></li>
+      <li><span class="src-tier t1">I</span><a href="https://www.infineon.com/press-release/2026/infpr202608-125" target="_blank">Q3 FY2026 record sales | Infineon</a></li>
+      <li><span class="src-tier t1">I</span><a href="https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-Second-Quarter-2026-with-Diluted-EPS-Growth-of-53-Adjusted-Diluted-EPS-Growth-of-60-Raises-Full-Year-2026-Guidance-Across-All-Key-Metrics/default.aspx" target="_blank">Vertiv Q2 2026 Results | Vertiv IR</a></li>
+      <li><span class="src-tier t1">I</span><a href="https://navitassemi.com/navitas-unveils-breakthrough-10-kw-dc-dc-platform-delivering-98-5-efficiency-for-800-vdc-next-gen-ai-data-centers/" target="_blank">Navitas 10 kW 800 VDC DC-DC Platform | Navitas</a></li>
+      <li><span class="src-tier t1">I</span><a href="https://www.eaton.com/us/en-us/products/medium-voltage-power-distribution-control-systems/transformers/eaton-and-resilient-power.html" target="_blank">Eaton and Resilient Power | Eaton</a></li>
+      <li><span class="src-tier t1">I</span><a href="https://flex.com/resources/higher-voltage-higher-stakes-prioritizing-worker-safety-in-ai-data-centers" target="_blank">Prioritizing worker safety in AI data centers | Flex</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://newsletter.semianalysis.com/p/inside-the-800vdc-revolution-part" target="_blank">Inside the 800VDC Revolution – Part 1 | SemiAnalysis</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.ctee.com.tw/news/20260919700132-439901" target="_blank">台達電HVDC出貨 樂觀Q4營運 | 工商時報 2026-09-19</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.digitimes.com.tw/tech/dt/n/shwnws.asp?id=0000763679_DZG5L86T80SHGS8Q02IWJ" target="_blank">HVDC邁入出貨期 台達電800V架構2027年放量 | DIGITIMES</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://technews.tw/2026/08/26/vdc-ai-delta-gpu/" target="_blank">800 VDC 是開端！台達揭密 AI 資料中心電力革命 | TechNews</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://technews.tw/2026/06/10/800v-hvdc-is-going-to-be-postpone/" target="_blank">市場傳 800V HVDC 延後導入 | TechNews 2026-06-10</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://money.udn.com/money/story/5607/9575342/" target="_blank">解密800VDC延後傳聞 | 經濟日報 2026-06-18</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://money.udn.com/money/story/12040/9546457" target="_blank">10檔800VDC四階段推進的受惠股 | 經濟日報 2026-06-04</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.cmoney.tw/notes/note-detail.aspx?nid=1243563" target="_blank">光寶科 2026 Q2 財報法說 | CMoney</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://news.cnyes.com/news/id/6440141" target="_blank">Factset：台達電EPS預估上修至39.3元 | 鉅亨網 2026-05-02</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://news.cnyes.com/news/id/6554155" target="_blank">Factset：台達電目標價調降至2565元 | 鉅亨網 2026-07-31</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.sinotrade.com.tw/richclub/news/6a26454ade5d6e5504097d85" target="_blank">Factset：光寶科EPS預估上修至8.55元 | 豐雲學堂</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://udn.com/news/story/7251/9655178" target="_blank">台達電一度重挫跌停 | 聯合新聞網 2026-07-28</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.ctee.com.tw/news/20260910701295-430201" target="_blank">台達電重挫逾6％ 失守1,700元 | 工商時報 2026-09-10</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://tw.stock.yahoo.com/news/%E7%AE%97%E5%8A%9B%E6%80%AA%E7%8D%B8%E7%9A%84-%E7%B2%BE%E5%AF%86%E9%96%A5%E9%96%80-%E5%A4%A7%E7%BC%BA%E8%B2%A8-%E4%BA%A4%E6%9C%9F%E5%BE%97%E7%AD%8940%E9%80%B1-%E9%80%99%E7%BE%A4%E4%BA%BA%E6%AD%A3%E9%BB%98%E9%BB%98%E5%88%86%E9%A3%9F%E7%99%BE%E5%84%84%E8%82%A5%E8%82%89-015600455.html" target="_blank">算力怪獸的「精密閥門」大缺貨 交期得等40週 | Yahoo 股市</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://electroneconomics.substack.com/p/eaton-is-trying-to-become-schneider" target="_blank">Eaton is trying to become Schneider | Substack</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.investing.com/news/stock-market-news/navitas-stock-soars-as-company-advances-800v-tech-for-nvidia-ai-platforms-93CH-4284596" target="_blank">Navitas stock soars on 800V tech | Investing.com</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.fool.com/investing/2026/01/14/why-navitas-semiconductors-doubled-in-2025/" target="_blank">Why Navitas Doubled in 2025 | The Motley Fool</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.thepaper.cn/newsDetail_forward_32935639" target="_blank">中恒电气一字涨停背后 | 澎湃新闻</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.ctee.com.tw/news/20260223700189-439901" target="_blank">BBU價量雙增 台廠今年獲利唱旺 | 工商時報</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://adikumar.co/dc-dc-transition-10-standards-evolution/" target="_blank">800V DC standards: OCP + IEC + UL evolution | adikumar.co</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://cloud.google.com/blog/topics/systems/enabling-1-mw-it-racks-and-liquid-cooling-at-ocp-emea-summit" target="_blank">Enabling 1 MW IT racks | Google Cloud Blog</a></li>
+      <li><span class="src-tier t4">IV</span><a href="https://www.sinotrade.com.tw/richclub/news/6a2a1dadde5d6e55045979f2" target="_blank">800V DC 與 CPO 會延後？外資破謠言 | 豐雲學堂</a></li>
+    </ul>
+    <p style="margin-top:12px;">本報告為產業研究框架整理，非投資建議。FactSet 數字為分析師共識預估，非公司實際財報。</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var wrap = document.getElementById('mapFilters');
+  if(!wrap) return;
+  wrap.addEventListener('click', function(e){
+    var btn = e.target.closest('.tbl-filter-btn');
+    if(!btn) return;
+    wrap.querySelectorAll('.tbl-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    var f = btn.dataset.filter;
+    document.querySelectorAll('#mapTable tbody tr').forEach(function(tr){
+      tr.style.display = (f === 'all' || tr.dataset.stage === f) ? '' : 'none';
+    });
+  });
+})();
+</script>
+</body>
+</html>
