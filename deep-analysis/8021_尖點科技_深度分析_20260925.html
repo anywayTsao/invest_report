@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>8021 尖點科技　投資邏輯深度分析</title>
+  <meta property="og:title" content="8021 尖點科技　投資邏輯深度分析">
+  <meta property="og:description" content="尖點科技：AI高層數PCB缺針潮量價齊揚受惠股，Q2 EPS 2.08元年增285%，基本面優質；但現價480元約95倍本益比、PEG約1.3–1.8，估值偏高，技術面剛突破多頭底部，建議1–2%試單倉，長期等約360元合理價再分批。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="8021 尖點科技　投資邏輯深度分析">
+  <meta name="twitter:description" content="尖點科技：AI高層數PCB缺針潮量價齊揚受惠股，Q2 EPS 2.08元年增285%，基本面優質；但現價480元約95倍本益比、PEG約1.3–1.8，估值偏高，技術面剛突破多頭底部，建議1–2%試單倉，長期等約360元合理價再分批。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>8021 尖點科技 — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：480（2026-09-24收盤） TWD　|　當前 PE：約95倍（近4季EPS 5.06）　|　52 週區間：88.6（2025-09-25） – 627（2026-06-12盤中）</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-09-25</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：3 多頭底部</span>
+        <span class="badge">建議戰略：分批進場</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>尖點是AI高層數PCB缺針潮裡的「量價齊揚」受惠股，2026年Q2 EPS 2.08元，年增285%，基本面屬優質。但現價480約等於95倍近4季本益比，PEG約1.3–1.8，已先反映2027年的爆發，估值偏高。技術面剛帶量突破多頭底部區間，只適合用1–2%試單倉、停損7%順勢操作；長期布局等回到約360元的合理價以下再分批。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">優質</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">偏高</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">3 多頭底部</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">試單倉 1–2%</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>優質</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>偏高（PEG ≈ 1.3–1.8）</td><td>中</td></tr>
+            <tr><td>股價階段</td><td>3 多頭底部</td><td>中</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill pos">分批進場</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>試單倉 1–2%</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>鎢粉（APT）報價從2026年Q1高點明顯回落，下半年ASP成長動能放緩，法人已把2026E/2027E EPS從9.88/20.01元下修到8.83/16.83元</li><li>中國鼎泰高科（市佔28.9%）、金洲（18%）大擴產，2027–2028年缺針緩解後可能出現價格競爭</li><li>資本支出約36億元，約占營收45%，自由現金流轉負；新廠折舊與稼動率不如預期會壓縮毛利率，加上本益比95倍，股價波動大（6–7月曾回檔約48%）</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>月產能從3,500萬支擴到2026年底4,500萬支，2027年中壢新廠加800萬支，2028年底目標9,000萬支</li><li>高階鍍膜鑽針占比從56%往60%以上提升，帶動毛利率維持在40%以上</li><li>2026年Q3財報（11月中）與每月營收（8月7.71億元，年增98%）延續年增80%以上的成長</li></ul>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>算透明。法說會固定揭露月產能（3,100萬→3,500萬→年底4,500萬支）、高階鍍膜鑽針的銷量占比（2025年48%→2026上半年56%），以及產品營收比重（鑽針67%、鑽孔服務33%）。經營層（林若萍）也會說明毛利率變化的原因（產品組合、P×Q）和漲價機制（依成本與供需逐案滾動調整）。負面資訊講得較少：鎢粉報價下滑對下半年ASP的影響，是法人報告點出來的，公司沒有主動量化。</li>
+          <li><b>言行一致性：</b>近幾季說到有做到。2025年Q3喊出「月產能2026年1月到3,500萬支、年底4,500萬支」，3,500萬如期達成。2026年資本支出從年初的逾16億元上修到約36億元，並把目標拉長到2028年底月產能9,000萬支。獲利連三季創新高：2025年EPS 2.75元（年增90%），2026年Q1 1.17元、Q2 2.08元。戰略一直都是「擴產＋拉高高階比重」，沒有改變。</li>
+          <li><b>資本配置：</b>以本業擴產為主，對應資本配置順位第1名，成長空間最大。2026年資本支出約36億元，大約是營收的45%。同時私募約6億元，引進欣興（上限2.1億）、臻鼎（上限1.9億）等三家關鍵客戶入股，綁住長約與產能，稀釋約3–4%。2025年配發現金股利2元，配發率約73%。沒有庫藏股或併購。代價是自由現金流短期轉負（2026年Q1 FCF約−8.45億元）。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>放量成長期。AI伺服器主板和ABF/BT載板的層數從8–24層拉升到30–40層以上，板厚超過5mm，高縱橫比讓單位鑽針耗用量增加約4–5倍。這是耗材型需求，同時放量又漲價；業者普遍說缺針缺口延續到2026年以後，還看不到供過於求。</li>
+          <li><b>市場規模：</b>TAM 全球PCB鑽針（含鑽孔服務）市場約數百億新台幣／人民幣百億元等級（中國券商2026年估算，未經一手驗證），隨AI板材升級每年成長約20%以上 ／ SAM 高階鍍膜／微小徑／高縱橫比鑽針，供AI伺服器主板、HDI與IC載板使用，是市場裡成長最快、最缺貨的一段 ／ SOM 尖點2026E營收約75–80億新台幣（上半年31.66億，8月單月7.71億）。全球市佔估計約一成，排在鼎泰高科（28.9%）、金洲（18%）之後，是非中系的主要供應商</li>
+          <li><b>競爭格局：</b>寡占。第一名是中國鼎泰高科，全球市佔28.9%，設備95%自製。第二名是中鎢高新旗下的金洲，市佔18%，並有50倍縱橫比AI鑽針。其次是尖點、佳友（Union Tool）等日台廠。目前全產業都缺針，大家搶擴產，競爭強度中等偏低；等2027–2028年中國兩大廠產能大量開出後，競爭可能變激烈。尖點的差異在於身處台灣、日本、韓國的非中供應鏈，並有台灣載板四雄與韓國客戶的認證。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>提供PCB與載板廠高階鍍膜微鑽針，加上代客鑽孔服務，一次解決「鑽針耗材＋鑽孔產能」兩件事。在AI高層數板的良率與孔品質要求下，是不可或缺、會重複購買的耗材。</li>
+          <li><b>目標客群與通路：</b>台灣載板四雄（欣興、南電、景碩、臻鼎）、金像電等AI伺服器PCB廠，以及新增的韓國重要客戶。直接B2B銷售，台灣與中國大陸兩地設廠供貨；欣興、臻鼎並透過私募入股，綁定長期產能。</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>28.08%（2026年Q2）；2026年Q1約20%（含金量 高）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>偏低，約0.1–0.5（2026年Q1營業現金流約0.24億元，淨利1.69億元，營運資金大增；2025全年FCF為正2.74億元）</td></tr>
+            <tr><td>資本支出／營收</td><td>約45%（2026年資本支出約36億元，營收估約78億元）；2025年約12–14%（5–6億/44.1億）</td></tr>
+            <tr><td>現金循環天數</td><td>資料不足（未取得應收、存貨、應付天數明細）</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>經濟規模、轉換成本（客戶認證＋私募綁定）、製程專利／Know-how（鍍膜技術）</li>
+          <li><b>強度與期間：</b>中等。高階鑽針需要客戶逐料號認證，換供應商的成本高；欣興、臻鼎入股後關係更穩固。鍍膜與微小徑研磨需要製程經驗，新進者至少要2–3年才能擴產並通過認證。但鼎泰、金洲的規模與成本優勢更大，鑽針本身也不是獨家專利產品。估計優勢可維持2–3年（缺貨週期期間），缺貨緩解後會回到規模與成本的競爭。</li>
+          <li><b>ROE 軌跡：</b>ROE快速上升：2024年EPS 1.45元、ROE約5%；2025年EPS 2.75元、ROE約8–10%（估）；2026年Q2單季ROE 5.62%，年化約22%。P/B 11.2倍，每股淨值約43元。2025年股利2元，保留盈餘率只約27%；2026年大擴產，靠私募與借款補足資金。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>營收＝量（Q）×價（P）同步往上。量：月產能3,500萬支，年底4,500萬支，2027年中壢新廠再加800萬支，2028年底目標9,000萬支，產能約2.6倍。價：高階鍍膜占比從48%升到56%以上，再加上依成本逐案漲價，ASP持續墊高。結構：鑽針67%、鑽孔服務33%；客戶以台灣載板四雄與AI伺服器PCB廠為主，已擴展到韓國。營收：2026年Q2 18.26億元（年增80%），8月7.71億元（年增98%）。</li>
+          <li><b>毛利率改善動能：</b>毛利率從2025年Q2的29.44%升到2026年Q1的36.59%，再到Q2的41.77%，主要來自三點：(1) 產品組合往高階鍍膜移動；(2) 缺貨下的訂價權，有漲價並轉嫁鎢粉成本；(3) 稼動率滿載帶來規模效應。反向壓力：新廠折舊（36億資本支出）、調薪，以及鎢粉報價從Q1高點回落會讓ASP動能放緩。</li>
+          <li><b>EPS 三大引擎：</b>淨利率從2025年約12%升到2026年Q2的19.9%，ROE年化約22%；股東權益因私募約6億元加上獲利保留而增加。流通股數約1.45–1.51億股，私募稀釋約3–4%，對EPS影響有限。EPS主要靠營收倍增加上利潤率擴張，而不是財務槓桿。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>約10%（2026E 8.8元→2029E約11.7元）</td><td>2027–2028年中國鼎泰、金洲大量擴產，缺針緩解，鎢價下跌讓ASP回落，毛利率退回30%附近；擴產折舊壓縮獲利。這個情境下企業價值只算平庸，現價遠高於價值。</td></tr>
+            <tr><td>高機率</td><td>約30%（2026E 8.8元→2029E約19–20元）</td><td>產能如期在2028年擴到9,000萬支，高階占比60%以上，毛利率維持35–40%。2027E EPS約15–17元（法人預估16.83元），之後成長放緩。企業價值屬優質。</td></tr>
+            <tr><td>樂觀</td><td>約45%（2026E 8.8元→2029E約27元）</td><td>AI板層數與載板需求持續升級，缺貨延續到2028年，漲價持續，韓國與新客戶放量，毛利率上看45%。企業價值接近頂尖。</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：5.06元（2025年Q3約0.76＋Q4約1.05＋2026年Q1 1.17＋Q2 2.08）</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：約30%（2026E–2029E EPS CAGR） — 依據：以2026E EPS約8.8元為基期（法人預估8.83元；上半年3.25元，下半年月營收7.5億元以上），2027E約15–17元（法人預估16.83元，年增91%）。2028–2029年產能擴到9,000萬支，但缺貨可能緩解、ASP回落，成長會降到15–20%，所以三年CAGR取約30%。2027年的爆發大部分已經算在2026到2027這一段；若拿近4季EPS 5.06元當基期，CAGR會被高估到50%以上，不適合拿來算PEG。</li>
+          <li><b>靜態 PE：</b>約95倍（480 ÷ 近4季EPS 5.06）</li>
+          <li><b>動態 PE：</b>約54倍（2026E EPS 8.8）；約38倍（未來12個月EPS約12.5）；約29倍（2027E EPS 16.8）</li>
+          <li><b>PEG：</b>1.3–1.8</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr><td>貪婪興奮</td><td>1.5–2.0</td><td></td></tr><tr class="current"><td>樂觀開心</td><td>1.2–1.5</td><td>✓</td></tr><tr><td>過渡階段</td><td>0.8–1.2</td><td></td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">樂觀開心</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：18倍（PEG 0.6 × G 30%） – 45倍（PEG 1.5 × G 30%）</li>
+          <li>對應股價區間：約215元（18倍 × 未來12個月EPS約12） – 約540元（45倍 × 未來12個月EPS約12）</li>
+          <li>便宜價：約215元（PEG 0.6）；偏低價約290元（PEG 0.8）　|　合理價：約360元（PEG 1.0，30倍 × 未來12個月EPS約12）　|　偏高價：約430元（PEG 1.2）　|　昂貴價：約540元以上（PEG 1.5以上）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>約−120元（合理價360 − 現價480，約−25%）：沒有市場估值的安全邊際</td></tr>
+            <tr><td>企業價值 MOS</td><td>約+100元（3年後企業價值約2029E EPS 19.5 × 30倍 ≈ 585元 − 現價480，約+22%，年化約7%）：企業價值的安全邊際偏薄</td></tr>
+            <tr><td>投資組合 MOS</td><td>屬於高β的AI PCB耗材週期股，只適合放試單倉，單檔不超過投組2–3%；AI PCB族群（載板、CCL、鑽孔）合計不宜超過15%</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：股價480，高於50DMA約417、150DMA約403、200DMA約349。150DMA與200DMA排列成多頭且持續上揚（200DMA一個月內從317升到349），50DMA則從453下滑到417，正在走平。</li>
+          <li>200 DMA 趨勢：上揚</li>
+          <li>近 6 個月波段高低點：墊高</li>
+          <li>量價型態：7月底到8月中是量增價跌（從532跌到323，跌幅約48%）。8月底起轉為量增價漲：8/28成交量約1.57萬張、上漲7%；9/17–9/22帶量（0.8–1.3萬張，高於50日均量約0.58萬張）突破約462的區間上緣。最近兩天量縮，股價在480附近整理。</li>
+          <li>股價乖離（季線）：約+10.6%（季線60MA約434）</li>
+          <li>是否出現特定型態：6/12高點627後大幅回檔（約−48%），之後在約374–465區間打底，型態類似W底加箱型整理，9月中已帶量突破箱頂。日K勉強有兩個收縮波（−13%、−11%），但收縮沒有遞減，不算標準VCP。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">3 多頭底部</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：高</li>
+          <li>錯失機會風險：中</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <h3 class="sub">4.1 VCP 結構檢視</h3><ul><li><b>適用級別：</b>日K（低勝率級別，週K尚未形成收縮）</li><li><b>收縮次數：</b>2T（8/18高452→8/25低373.5，約−17%；9/7高462→9/16低410.5，約−11%）。6–7月從627跌到323，跌幅約48%，超過40%，不算作1T</li><li><b>跌幅是否遞減：</b>否。第二波約−11%，高於上波的一半（約8.5%），收縮不夠明顯</li><li><b>最後一次收縮 &lt; 5%：</b>否（最後一個T約−11%）</li><li><b>凹洞量能：</b>部分符合。9/16在區間低檔出現約0.82萬張的上漲量，明顯高於前幾日的量縮水準（約0.05–0.1萬張），可以視為凹洞量</li><li><b>是否創新高：</b>否（現價480，距離歷史高點627約−23%）</li><li><b>量價型態：</b>大致符合。8月底到9月是量增價漲，9/9–9/15回檔時量縮價跌，但日K量能資料有雜訊</li></ul><h3 class="sub">4.2 可能進場點</h3><div class="tbl-wrap"><table><tr><th>進場點</th><th>條件是否成立</th><th>對應停損</th><th>建議下注</th></tr><tr><td>凹洞量能點</td><td>部分成立：9/16在約411的區間低檔帶量收紅（約0.82萬張），但第二波收縮約11%，超過托盤區10%的條件，屬於低勝率</td><td>跌破9/16低點410.5（從現價算約−14%，已超過10%的上限，所以現在不適合用這個進場點）</td><td>約20%（目前不建議執行）</td></tr><tr><td>帶量突破點</td><td>已成立（日K）：9/17–9/22帶量突破約462–465的區間頸線，收在466–478，成交量高於50日均量</td><td>大盤或產業逆風時，跌破頸線約460（約−4%）；順風時跌破9/22紅K低點460即停損；最多不超過−7%，約445</td><td>約50%（只用試單倉1–2%的一半，而且現價已偏離突破點約3–4%）</td></tr><tr><td>回測成功點</td><td>尚未成立：要等股價回測頸線460–465附近，量縮守住後再帶量站穩</td><td>跌破回測區三天內的最低點（預估約455），約−3%到−5%</td><td>約30%</td></tr></table></div><h3 class="sub">4.3 七大供需轉折訊號</h3><ul class="checklist"><li>極限大量</li><li>超買反轉（季線乖離 &gt;50% / 80%）</li><li>產業逆風</li><li>利多不漲</li><li>利空下跌</li><li>量價背離</li><li>大量黑K</li></ul>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>試單倉</li>
+          <li><b>建議週期：</b>3–8個月（波段），前提是缺針週期延續</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：約40%</li>
+          <li>估計賠率：約3（上檔回到前高約627，約+30%；停損約−7%到−10%）</li>
+          <li>1/4 凱利公式下的最大下注比重：約5%（凱利 = 0.4 − 0.6/3 = 20%，1/4凱利約5%；再依估值偏高下修到實際最多3%）</li>
+          <li><b>目前建議買入：</b>現價480介於偏高價430和昂貴價540之間，已高於合理價360，不符合金字塔「合理價2%起布局」的原則。長期逆向投資先不買，等回到合理價約360再買2%，偏低價約290加到3%，便宜價約215加到5%。順向波段可用日K帶量突破的條件開試單倉1%，停損約445（−7%）；若回測460–465成功再加到2%，上限3%。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>月營收連兩個月年增低於30%，或單季毛利率跌回35%以下，代表缺針或漲價的邏輯看錯了，全部出場</td></tr><tr><td>買進理由消失</td><td>公司在法說會說缺口已緩解、ASP下修，或月產能擴充（年底4,500萬支）明顯延後；或鼎泰、金洲擴產後報價戰開打，導致單季EPS比上季衰退超過20%</td></tr><tr><td>市場估值過高</td><td>股價超過約540元（PEG約1.5以上，約45倍未來12個月EPS），或季線乖離超過50%，分批賣出</td></tr><tr><td>機會成本過高</td><td>同一個AI PCB族群裡出現PEG低於1、G相當的標的（例如鑽孔設備或CCL廠拉回到合理價），分批換股</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>欣興、臻鼎等客戶透過私募入股、包下新產能，長期訂單的能見度提高</li><li>AI伺服器主板與載板層數往40層以上、板厚超過5mm演進，單位鑽針耗用量增加4–5倍</li><li>新增韓國重要客戶，打進非中系高階載板供應鏈</li><li>漲價機制改為依成本與供需逐案滾動調整，訂價權提升</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告（過去是5/14、8/14，推估2026年11月中旬）</li>
+          <li>下次財報公布：2026年9月營收在10/10前公布；Q3財報在2026-11-14法定期限前公布</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>月營收年增率（目前約98%；低於30%是警訊）</li><li>單季毛利率（Q2 41.77%；守住38%以上）</li><li>高階鍍膜鑽針銷量占比（56%，目標60%以上）</li><li>月產能達成進度（年底4,500萬支）</li><li>APT／碳化鎢粉報價走勢</li><li>單季EPS（2026E全年約8.8元；Q3需在2.2元以上）</li><li>營業現金流／淨利比率回升到0.7以上</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>收盤跌破445元（突破失敗，停損）或跌破200DMA約350元（多頭底部失敗，改判空頭）</li><li>股價漲破540元，或帶量突破627的前高、創歷史新高（重新評估估值與VCP新高條件）</li><li>股價跌到360元合理價以下（啟動長期逆向布局評估）</li><li>Q3毛利率低於38%，或法說會下修產能、漲價計畫</li><li>鼎泰高科或金洲宣布降價，或出現缺針緩解的報導</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>財報狗 statementdog.com（EPS、毛利率、現金流、股利）、Yahoo奇摩股市 tw.stock.yahoo.com（Q2獲利新聞、法人目標價505元與EPS預估下修、歷史股價）、鉅亨網 cnyes.com（股價、本益比、52週區間、林若萍談缺口與擴產）、富果 blog.fugle.tw（2026-05-14法說會重點）、方格子 vocus.cc（2026-08法說會重點：資本支出36億、2028年月產能9,000萬支）、永豐金豐雲學堂 sinotrade.com.tw（私募6億、客戶包產能、2025年財報）、經濟日報 money.udn.com（欣興、臻鼎參與私募）、工商時報 ctee.com.tw（法人買賣超）、FinLab finlab.finance（近60/240日漲跌、融資使用率）、新浪財經／網易（鼎泰高科28.9%、金洲18%市佔）、中鎢在線 chinatungsten.com／Mysteel（APT鎢價走勢）</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-09-25</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
