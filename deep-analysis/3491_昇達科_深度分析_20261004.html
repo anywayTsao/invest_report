@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3491 昇達科　投資邏輯深度分析</title>
+  <meta property="og:title" content="3491 昇達科　投資邏輯深度分析">
+  <meta property="og:description" content="昇達科（3491）深度分析：企業價值優質、G 約 40%，但現價 1485 對應 PEG 約 2–3 屬貪婪興奮區，估值昂貴；建議暫不買進，待回到約 1,000–1,100 元再分批布局。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="3491 昇達科　投資邏輯深度分析">
+  <meta name="twitter:description" content="昇達科（3491）深度分析：企業價值優質、G 約 40%，但現價 1485 對應 PEG 約 2–3 屬貪婪興奮區，估值昂貴；建議暫不買進，待回到約 1,000–1,100 元再分批布局。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>3491 昇達科 — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：1485（2026-10-02 收盤，連 5 跌累計 -5.1%） TWD　|　當前 PE：約 118 倍（近 4 季 EPS 約 12.6 元）　|　52 週區間：408.5 – 2200（2026-05-29 收盤）</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-10-04</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：5 多頭出貨</span>
+        <span class="badge">建議戰略：分批出場</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>（資料不足：1) 營業現金流、應收/存貨/應付天數、合約負債等現金流與營運效率數據未能取得，OCF/NI 與現金循環天數無法量化判斷；2) 50/150/200 DMA 實際數值未能從公開頁面取得，均線位置是用已知價格軌跡推估（年初約 700、5/29 2200、7/14 1195、9/19 1565、10/2 1485），可信度中低；3) 2026 年 9 月營收（10/10 前公布）與第三季財報尚未公布；4) 昇達科三（第三次 CB）發行金額與轉換價格未查得，稀釋幅度無法精算；5) 2027–2029 EPS 是依公司質化指引（2027 優於 2026、2028–29 成長更明顯）加上外資預估推算，不確定性高。）昇達科是台灣最純的低軌衛星射頻元件股，企業價值優質（毛利率 57%→60%、EPS 2026E 約 18 元、G 約 40%），但現價 1485 對應靜態 PE 118、動態 PE 約 82、PEG 約 2–3，屬貪婪興奮區；股價從 2,200 腰斬後只反彈到半年線附近，籌碼轉弱。建議暫不買進，等股價回到約 1,000–1,100 元（PEG 約 1）再分批布局（非投資建議，請自行判斷）。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">優質</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">昂貴</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">5 多頭出貨</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">暫不買進（列觀察名單）</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>優質</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>昂貴（PEG ≈ 2.0–3.0（靜態約 2.9，動態約 2.0；以 2027E 計約 1.3））</td><td>中</td></tr>
+            <tr><td>股價階段</td><td>5 多頭出貨</td><td>低</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill warn">分批出場</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>暫不買進（列觀察名單）</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>客戶高度集中：Starlink 與 Kuiper 合計約占營收 75–80%，客戶改版、延遲發射（如 2026 年第二季）或導入第二供應商、自製，會直接衝擊營收</li><li>估值透支：靜態 PE 約 118 倍、PEG 2–3，若 2027 年 EPS 低於外資樂觀預估（41.55 元），股價有向合理價約 1,000 元修正的風險</li><li>股本稀釋與併購整合：第三次 CB 轉換、以不超過 17 億收購巨頻 51% 的資金需求，以及併表後的毛利率稀釋；加上 2026 年第二季含一次性補償業外收益，經常性 EPS 被高估</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>2026 年 9–12 月營收逐月成長、第四季營收突破 10.2 億新高，加上下半年毛利率站上 60%</li><li>Starship V3 量產與 Kuiper 放量發射，加上新一代衛星單顆元件數從約 8 顆提升到約 30 顆</li><li>巨頻併表（預計 2026 年 8 月交割）帶來 AIDC、太赫茲高頻互連新營收，以及 OISL 光鏈路通訊量產出貨</li></ul>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>中高。公司每月公布營收時，會主動揭露低軌（LEO）營收占比（例如 2025 年 9 月 58.3%）、新增訂單（2025 年 8–9 月合計逾 4 億）、毛利率目標（下半年約 60%，董事長另設 62–64% 的中期目標）與資本支出規模（2026 年逾 10 億）。2026 年第二季營收季減時，也主動說明原因是客戶新一代衛星改版、發射與測試時程調整，並揭露第二季獲利有客戶訂單調整的備料補償（業外收益）。缺點是：客戶名稱與單一客戶占比沒有正式揭露，市場只能推測是 Starlink/Kuiper；第三季前三個月營收先連續季減，公司事先的預警有限。</li>
+          <li><b>言行一致性：</b>大致兌現。2025 年喊出的低軌放量成真：第四季營收 8.34 億（季增 72%），全年 EPS 7.83 元，LEO 占比從 43% 升到 59%。2026 年初稱在手訂單 18 億、上半年交貨完畢，結果上半年營收 19.22 億（年增 70%）、EPS 8.15 元，已超過 2025 年全年。毛利率從 2025 年 51.1% 升到 2026 年上半年 56.9%，方向符合「邁向 60%」的指引。戰略一直維持「LEO 與毫米波本業加上擴產（台灣新廠、越南二廠）」不變。瑕疵是第二季營收 9.02 億，低於第一季的 10.2 億，季度節奏受客戶時程影響，與年初「季季新高」的預期有落差。</li>
+          <li><b>資本配置：</b>以本業擴產為主，並在 2026 年轉向「併購加股利」：(1) 本業：2025 年資本支出 8 億，2026 年逾 10 億，用於台灣新廠與越南二廠，屬成長空間最大的配置；(2) 併購：2026/7/15 宣布以不超過 17 億取得巨頻科技逾 51% 股權（巨頻 2025 年營收約 6 億，做 RF、毫米波互連與高速模組），用來擴大到 AIDC 與太赫茲應用，成長空間大，但有整合風險；(3) 股利：2025 年配 6.8 元，配發率 86.9%，保留盈餘偏低，所以擴產與併購部分靠第三次 CB 籌資，股數有攤薄壓力；(4) 未見庫藏股。整體是成長型配置，只是 EPS 會被 CB 轉換稀釋。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>放量成長期（成長期中段）。低軌衛星已從商業化初期進入放量部署：Starlink 2025 年單年發射逾 3,000 顆，2026 年 8 月單月 261 顆（月增 13%）；Amazon Kuiper 2025 年開始發射，2026 年後放量；Starship V3 若量產，每次發射可載運的數量還會再跳升。需求還在加速，供給端是少數通過認證的元件廠在擴產，屬「賭優勢、供穩」的格局。直連手機（D2C）、光鏈路通訊（OISL）、太赫茲等是下一階段的成長延伸。</li>
+          <li><b>市場規模：</b>TAM 全球衛星通訊與衛星製造市場，數千億美元等級（含地面設備與服務，屬泡沫參考值，未精確查證） ／ SAM 低軌星系酬載、閘道站與用戶終端使用的微波/毫米波被動射頻元件（波導、濾波器、雙工器、天線饋源），加上巨頻的高頻互連；估計每年數百億台幣等級（推估，未查得權威數字） ／ SOM 昇達科 2026 年營收約 42–46 億元（上半年 19.2 億，下半年預期逐月成長，外資估全年約 46 億），LEO 占比約 75–80%；加計巨頻併表後，2027 年有機會到 60–70 億</li>
+          <li><b>競爭格局：</b>高頻波導與濾波器在國際上的競爭對手是歐美航太 RF 元件廠（如 Smiths Interconnect、Teledyne、Cobham/CAES 等）與 SpaceX 自製；台灣同一族群（不同元件）有啟碁（衛星終端/路由器）、同欣電（射頻模組）、華通（衛星 PCB）、台燿（高頻 CCL）等，彼此多為互補，不是直接競爭。昇達科同時打進 Starlink 與 Kuiper 兩套星系，並採 Co-design 共同設計，單顆衛星供應的元件數量由約 8 顆增加到約 30 顆（外資報告）。目前在波導這個利基環節競爭強度中等偏低，最大威脅是客戶自製或第二供應商導入，以及客戶集中度過高。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>提供低軌衛星酬載、星間鏈路、閘道站與用戶端使用的高頻矩形波導、濾波器、雙工器、天線饋源等精密被動射頻元件。產品必須通過太空等級環境驗證，並與客戶共同設計（Co-design），解決高頻訊號低損耗傳輸與輕量化的需求。</li>
+          <li><b>目標客群與通路：</b>全球低軌衛星營運商（市場普遍認為是 SpaceX Starlink 與 Amazon Kuiper，兩者合計占營收約 75–80%），以及地面閘道站與微波回傳的電信設備商；採直接銷售、共同設計的 B2B 模式，越南廠與美國子公司貼近客戶供應鏈。</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>約 26.6%（2026 年第二季，營業利益 2.4 億／營收 9.02 億）；2026 年上半年約 28.9%，第一季約 31%（含金量 中）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>資料不足（未查得 2025 年與 2026 年上半年營業現金流）；第二季淨利含客戶補償型業外收益，淨利率 34% 高於營益率 26.6%，盈餘品質需打折看待</td></tr>
+            <tr><td>資本支出／營收</td><td>約 25–33%（2025 年資本支出 8 億／營收 24.5 億約 33%；2026 年逾 10 億／預估營收 42–46 億約 22–24%），落在中到高含金量的邊界</td></tr>
+            <tr><td>現金循環天數</td><td>資料不足（未查得存貨、應收、應付天數）</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>轉換成本（太空等級認證加上 Co-design 綁定設計）、專利/製程 know-how（高頻波導精密加工）、經濟規模（雙星系量產擴產）</li>
+          <li><b>強度與期間：</b>中強，持續期約 3–5 年。衛星元件要經過長時間太空等級驗證並與客戶共同設計，進入新一代衛星平台後，客戶在該世代內換供應商的成本高；昇達科同時取得 Starlink 與 Kuiper 認證，量產規模領先同業。不過護城河是綁在「客戶平台世代」上：客戶改版時（例如 2026 年第二季的改版）可能重新分配份額，SpaceX 也有垂直整合、自製的傾向，所以強度屬中強，不算頂尖。</li>
+          <li><b>ROE 軌跡：</b>2025 年 ROE 約 18.7%（EPS 7.83）。2026 年上半年 EPS 8.15，年化 ROE 約 35–40%，大幅躍升。2025 年配發率 86.9%，保留盈餘率只有約 13%，長期每股淨值自然成長率約 18.7%×13%≈2.4%，股東權益成長主要靠 CB 轉換與獲利跳升；股價淨值比約 22.5 倍，反映市場已預期高 ROE 會長期維持。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>營收＝衛星發射顆數 × 單顆衛星元件價值（ASP×顆數）＋ 地面閘道與終端。銷量面：Starlink 發射節奏（2026 年 8 月 261 顆）、Kuiper 2026 年後放量、Starship V3 提升每次運載量；ASP 面：新一代衛星規格升級，單顆搭載元件從約 8 顆提升到約 30 顆，加上 OISL、D2C 新品。結構面：LEO 占比從 2024 年 43% → 2025 年 59% → 2026 年約 75–80%，客戶高度集中在兩大星系；巨頻併入（2025 年營收約 6 億）後，增加資料中心、AIDC 與半導體高頻互連的多元化。月營收：2026 年 7 月 2.3 億（年增 82%）、8 月 3.21 億（年增 93%，創同期新高）；公司預期 9–12 月逐月成長。</li>
+          <li><b>毛利率改善動能：</b>產品組合優化（高毛利的 LEO 酬載元件占比提升）＋ 規模經濟與稼動率（越南二廠、台灣新廠量產爬坡）＋ 訂價權（新一代衛星規格升級，元件價值提升）。毛利率從 2025 年上半年 47.3% → 2025 年全年 51.1% → 2026 年上半年 56.9%，公司指引下半年約 60%，中期目標 62–64%。注意兩點：巨頻併表後毛利率較低，會稀釋合併毛利率；新產能折舊增加，短期可能壓抑營益率（第二季營益率 26.6%，低於第一季約 31%）。</li>
+          <li><b>EPS 三大引擎：</b>ROE↑：從 2025 年 18.7% 躍升到 2026 年年化 35–40%，是主要引擎；股東權益↑：獲利增加加上 CB 轉換增資，但配發率約 87%，保留盈餘貢獻有限；流通股數↑（負向）：股本約 6.9 億元（約 6,880 萬股），第三次 CB（昇達科三，2026 年 6 月發行完成）未來轉換會攤薄 EPS，加上併購巨頻約 17 億的資金需求，可能進一步稀釋股權。另外第二季含客戶補償型業外收益，經常性 EPS 比帳面略低。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>約 15–20%（2026E EPS 約 16 元 → 2029E 約 26–28 元；假設客戶改版延誤或第二供應商導入，LEO 成長放緩，巨頻整合效益有限，CB 稀釋）</td><td>防守線：企業價值仍成長，但以 PE 25–30 計，2029 年合理價約 650–850 元，遠低於現價 1485，下檔空間約 -45%</td></tr>
+            <tr><td>高機率</td><td>約 35–40%（2026E EPS 約 18 元 → 2027E 約 28 元 → 2029E 約 45–50 元；兩大星系持續放量、毛利率站穩 60%、巨頻併表）</td><td>基準線：屬優質成長股，3 年後若 G 降到約 25%、PE 約 25–30，2029 年企業價值約 1,150–1,450 元，與現價相當，代表現價已大致反映 3 年成長</td></tr>
+            <tr><td>樂觀</td><td>約 55–60%（2026E 約 18.4 元 → 2027E 約 41.6 元〔美系外資預估〕→ 2029E 約 70 元；Starship V3 放量、OISL/D2C/太赫茲 AIDC 都成功）</td><td>攻擊線：2029 年以 PE 30 計，企業價值約 2,100 元，相對現價約 +40%（美系外資目標價 2,513 元屬此情境）</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：約 12.6 元（2025 年第三季加第四季約 4.4 元 ＋ 2026 年第一季 3.68 ＋ 第二季 4.47）</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：約 40%（悲觀 15–20% / 高機率 35–40% / 樂觀 55–60%） — 依據：2025 年 EPS 7.83 → 2026E 約 18 元（上半年 8.15 元；第三季營收預期優於第二季的 9.02 億，7 月 2.3 億、8 月 3.21 億，9 月預期續增；第四季拚超越第一季的 10.2 億；毛利率約 60%。美系外資估 2026E 18.39 元、2027E 41.55 元）。公司質化指引是 2027 年優於 2026 年、2028–2029 年成長更明顯，因此高機率情境取 2027E 約 28 元（保守取外資預估的約 2/3），2029E 約 45–50 元，2026–2029 年 CAGR 約 37–40%。依框架經驗法則，成長中期 G 約 30–60%，40% 落在其中。要扣除的因素：第二季含一次性補償業外收益、巨頻併表的毛利率稀釋、CB 轉換稀釋。</li>
+          <li><b>靜態 PE：</b>約 118 倍（1485 / 12.6）</li>
+          <li><b>動態 PE：</b>約 82 倍（以 2026E EPS 18 計）；以 2027E EPS 28 計約 53 倍</li>
+          <li><b>PEG：</b>2.0–3.0（靜態約 2.9，動態約 2.0；以 2027E 計約 1.3）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr class="current"><td>貪婪興奮</td><td>1.5–2.0</td><td>✓</td></tr><tr><td>樂觀開心</td><td>1.2–1.5</td><td></td></tr><tr><td>過渡階段</td><td>0.8–1.2</td><td></td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">貪婪興奮</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：24 倍（PEG 0.6 × G 40） – 60 倍（PEG 1.5 × G 40）</li>
+          <li>對應股價區間：約 600 元（未來 12 個月 EPS 約 25 元 × 24 倍） – 約 1,500 元（未來 12 個月 EPS 約 25 元 × 60 倍）</li>
+          <li>便宜價：約 600–700 元（PE 24–28，PEG 0.6–0.7）　|　合理價：約 1,000 元（PE 40，PEG 1.0；可上調至 1,100–1,200 元作為成長中期的寬鬆合理區）　|　偏高價：約 1,200–1,500 元（PE 48–60，PEG 1.2–1.5）　|　昂貴價：≥1,500 元（PE &gt;60，PEG &gt;1.5）；現價 1485 已在昂貴區邊緣</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>約 -485 元（-33%）：目前企業價值約 1,000 元，低於現價 1485，無市場估值安全邊際</td></tr>
+            <tr><td>企業價值 MOS</td><td>高機率情境下 2029 年企業價值約 1,150–1,450 元，相對現價 -2% 到 -23%，無安全邊際；只有樂觀情境（約 2,100 元）有約 +40% 的空間</td></tr>
+            <tr><td>投資組合 MOS</td><td>單一個股客戶集中在兩大星系，且屬高 β 題材股，持股上限建議不超過投組 2–3%，並避免同時重押華通、台燿、啟碁等低軌衛星族群（同產業風險高度相關）</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：推估：股價 1485 約在 50 DMA（約 1,450–1,500，7 月下旬後 1,200–1,565 區間整理）附近；低於 150 DMA（約 1,600，涵蓋 3–5 月的 1,500–2,200 高檔）；略高於 200 DMA（約 1,400–1,450，涵蓋年初 700–1,000 的低基期）。均線排列 150 &gt; 50 ≈ 價 &gt; 200，多頭排列已破壞（實際數值未取得，屬推估）。</li>
+          <li>200 DMA 趨勢：走平</li>
+          <li>近 6 個月波段高低點：盤整</li>
+          <li>量價型態：5/29 創 2,200 新高後，量增價跌急殺到 7/14 的 1,195（約 -46%）；7/16 併購消息帶量漲停，7/20 又跌停（1,220），屬震盪加劇。8–9 月隨營收回溫反彈到 9/19 的 1,565，但未能挑戰前高；近期外資連 5 日、自營商連 7 日賣超，股價連 5 跌，量縮價跌，買盤力道不足。</li>
+          <li>股價乖離（季線）：約 0% 到 +5%（股價約在季線 60MA 附近，季線推估約 1,420–1,480）</li>
+          <li>是否出現特定型態：頭部後的寬幅整理（5 月 2,200 頂部 → 7 月 1,195 低點 → 9 月 1,565 反彈高點較低），形成高點下移的寬幅箱型，非 VCP（第一段跌幅 46% 已超過 40%，不計為 1T）；尚未出現 W 底確認</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">5 多頭出貨</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：高</li>
+          <li>錯失機會風險：低</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <p>目前處於「5 多頭出貨」，非多頭底部/上漲階段，VCP 型態分析暫不適用。</p>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>暫不投資</li>
+          <li><b>建議週期：</b>不適合（目前）；若回到合理價以下，可用 18–36 個月逆向長期持有</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：約 40%（企業成長確定性中高，但估值已透支，股價上漲取決於 2027 年 EPS 能否接近外資樂觀預估）</li>
+          <li>估計賠率：約 1.5（上檔回到 2,200 前高約 +48%；下檔回到合理價 1,000 約 -33%）</li>
+          <li>1/4 凱利公式下的最大下注比重：0%（凱利值 = 0.40 − 0.60/1.5 = 0，1/4 凱利也是 0%，不建議下注）</li>
+          <li><b>目前建議買入：</b>0%。現價 1485 已在昂貴區（PEG 約 2–3），暫不買進。金字塔布局參考：股價跌至合理價約 1,000–1,100 元（PEG 約 1）試單 2%；偏低價約 800 元（PEG 0.8）加到 3%；便宜價約 600–700 元（PEG 0.6–0.7）加到 5%。已持有者依「市場估值過高」理由分批減碼，並以跌破 7/14 低點 1,195 作為波段出場警戒線。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>主要客戶導入第二供應商或改為自製波導/濾波器，使昇達科在新一代衛星平台的單顆元件數不升反降；或 2026 年第三、四季毛利率跌破 52%（低於 2025 年全年 51.1% 加緩衝），證明訂價權與 Co-design 綁定不如預期</td></tr><tr><td>買進理由消失</td><td>2026 年第四季營收未能超過第一季的 10.2 億，或 2027 年上半年 EPS 年增低於 25%（G 從 40% 明顯下修）；或巨頻併購後合併營益率連續兩季低於 22%</td></tr><tr><td>市場估值過高</td><td>以未來 12 個月 EPS 計算的 PEG &gt; 1.5（約對應股價 &gt;1,500 元，以 EPS 25 元、G 40% 計），目前已觸及，建議分批減碼；若再回到 2,000 元以上（PE 約 80 倍）應大幅減碼</td></tr><tr><td>機會成本過高</td><td>同一低軌衛星族群或其他成長股出現 G 相近（30–40%）但 PEG &lt; 1 的標的時，應換股；目前昇達科 PEG 約 2–3，機會成本偏高</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>直連手機（D2C）衛星商轉，打開用戶端與閘道站新需求</li><li>新增第三家以上低軌星系客戶（如歐洲 IRIS²、中國以外的其他星系）認證成功，降低客戶集中度</li><li>太赫茲產品成功導入 AI 資料中心（AIDC），讓公司評價從衛星題材擴大到 AI 基礎建設</li><li>越南二廠與美國子公司投產，符合非紅色供應鏈要求，提升接單上限</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告（預期 2026 年 11 月第三季財報公布後）</li>
+          <li>下次財報公布：2026 年 9 月營收：2026-10-10 前；2026 年第三季財報：2026-11-14 前（法定期限）</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>月營收月增率：公司指引 2026 年 9–12 月逐月成長（外資估月增 17–19%）</li><li>單季毛利率：是否站上 60%（2026 年上半年 56.9%）</li><li>LEO 營收占比與新增訂單金額</li><li>單季營益率：是否回到 30% 以上（第二季 26.6%）；並排除業外補償收益看經常性 EPS</li><li>巨頻併表後的合併營收、毛利率與綜效</li><li>Starlink、Kuiper 每月發射顆數與 Starship V3 進度</li><li>第三次 CB 轉換進度與流通股數變化</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>股價跌至 1,000–1,100 元（PEG 約 1）：啟動金字塔試單 2% 評估</li><li>股價跌破 7/14 低點 1,195 元：確認進入空頭急跌，維持現金為王</li><li>股價帶量突破 1,565 元前高並站穩 150 DMA，且 200 DMA 翻揚：重新評估是否轉為多頭底部、是否出現 VCP</li><li>2026 年第三季財報毛利率低於 55% 或第四季營收低於 10 億：下修 G</li><li>主要客戶宣布新增供應商或自製射頻元件</li><li>外資大幅調整 2027 年 EPS 預估（目前 41.55 元）上修或下修 20% 以上</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>工商時報 ctee.com.tw（2026-06-01、07-16、07-28、08-06 報導）、旺得富 wantrich.chinatimes.com（2026-07-14、07-28、08-06、09-14）、經濟日報 money.udn.com／udn.com（併購巨頻、外資目標價 2,513 元、上半年財報）、優分析 uanalyze.com.tw（上半年自結、8 月營收 3.21 億、法說重點）、今周刊 businesstoday.com.tw（2026-07-15 停牌與巨頻併購）、鉅亨網 cnyes.com（股價、52 週高低 408.5–2,200、本益比、併購交割）、Yahoo 奇摩股市 tw.stock.yahoo.com（現價 1,485、連 5 跌）、HiStock 嗨投資 histock.tw（年初至今 +113%、法人買賣超、第三次 CB）、玩股網 wantgoo.com（股價淨值比 22.5、市值）、TechNews 科技新報 technews.tw（低軌衛星波導供應鏈）、永豐金證券 sinotrade.com.tw（法說重點）</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-10-04</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
