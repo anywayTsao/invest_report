@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>7873 瑞峰半導體　投資邏輯深度分析</title>
+  <meta property="og:title" content="7873 瑞峰半導體　投資邏輯深度分析">
+  <meta property="og:description" content="瑞峰半導體：利基記憶體RDL龍頭兼具Fabrinet入股CPO題材，2026H1毛利率34%、EPS 1.30元；但股價162.5元對應PE約88倍、PEG約2–2.5，已透支成長，建議現金為王，等候約105元合理價或CPO訂單驗證。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="7873 瑞峰半導體　投資邏輯深度分析">
+  <meta name="twitter:description" content="瑞峰半導體：利基記憶體RDL龍頭兼具Fabrinet入股CPO題材，2026H1毛利率34%、EPS 1.30元；但股價162.5元對應PE約88倍、PEG約2–2.5，已透支成長，建議現金為王，等候約105元合理價或CPO訂單驗證。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>7873 瑞峰半導體 — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：162.5（2026-10-07 興櫃收盤） TWD　|　當前 PE：約88倍（近4季EPS約1.85元）　|　52 週區間：約100元（由「自今年低點漲幅+61.7%」反推；2026/5/29 才登錄興櫃，非完整52週） – 約360元（由「自今年高點跌幅-54.8%」反推；6/29 盤中振幅43%、收278.48元時被列注意股）</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-10-08</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：1 空頭底部</span>
+        <span class="badge">建議戰略：現金為王</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>（資料不足：1) 2026/5/29 才登錄興櫃，交易僅約4個月，沒有150/200 DMA，也沒有足夠週K，生命週期與VCP判斷可信度低；52週高低點是從 HiStock 的漲跌幅百分比反推，不是官方數值。2) 興櫃公司只公告半年報，沒有逐季損益：2026Q1/Q3 EPS、各季營益率、營業現金流、資本支出、存貨/應付天數都沒有公開數字，OCF/NI、資本支出/營收、現金循環天數都是推估。3) 近4季EPS各來源不一（鉅亨1.85元、玩股網本益比61.88倍反推約2.6元），本報告採1.85元。4) 產品比重只有2025年「晶圓封裝88%/其他12%」與內銷82%，主要客戶名稱與CPO營收貢獻沒有揭露。5) 沒有法說會逐字稿、正式財測與股利政策（累積虧損-3.94億元，尚未打消）。）瑞峰是利基型記憶體 RDL 龍頭（市佔超過50%），又有 Fabrinet 入股的 CPO 題材，2026H1 毛利率34%、EPS 1.30元，營運轉機明確；但162.5元換算靜態 PE 約88倍、PEG 約2–2.5，已透支約3年成長，加上興櫃流動性差、掛牌後從約360元急殺，現在應以現金為王，等股價接近約105元合理價、或 CPO 訂單被證實後再評估。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">平庸</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">昂貴</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">1 空頭底部</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">暫不買進 0%</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>平庸</td><td>低</td></tr>
+            <tr><td>市場估值</td><td>昂貴（PEG ≈ 1.9–2.5）</td><td>中</td></tr>
+            <tr><td>股價階段</td><td>1 空頭底部</td><td>低</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill neg">現金為王</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>暫不買進 0%</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>估值與流動性風險：興櫃無漲跌幅限制，靜態 PE 約88倍、股價淨值比約23倍，掛牌後已從約360元跌到約100元（約-72%），波動極大</li><li>景氣與營運槓桿風險：重資產（固定資產超過營收），2023年毛利率曾為-2.25%；利基記憶體循環反轉會讓毛利率與 EPS 快速下滑，加上虧損扣抵用完後開始課稅</li><li>CPO 題材兌現風險：CPO 仍在導入期，台積電/日月光可能主導 PIC 前段，瑞峰的營收貢獻時程與規模都還沒驗證；轉上市櫃或擴產增資也有股本稀釋風險</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>CPO 放量：台積電2027Q1 PIC 月產能1萬片、Fabrinet（持股13.35%）導入 PIC 前段凸塊/RDL 訂單</li><li>月營收連續創新高（9月1.44億元、YoY +50%），2026全年 EPS 有機會約2.5元，打消累積虧損後轉上櫃、配息</li><li>BIS 白名單 OSAT 認證帶來美系客戶轉單、厚銅 RDL/IVR 新應用、功率/車用 WLP</li></ul>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>中。每月公告營收，也公告半年度個別財報（2026H1：營收6.79億、毛利2.33億、營益1.77億、EPS 1.30元），2026/5/25 參加元大興櫃前法說，並主動揭露 BIS 白名單 OSAT 認證、Fabrinet 入股、與工研院及法國 NcodiN 合作 CPO 等事項。但產品/客戶比重、CPO 營收貢獻、資本支出計畫與量化指引都沒有揭露。興櫃階段的資訊密度低於上市櫃公司，負面資訊主動揭露的紀錄也還不夠長，無法判斷。</li>
+          <li><b>言行一致性：</b>難以完整驗證（興櫃前沒有公開指引）。營運上，2022–2023 年連續虧損（EPS -0.47/-0.82），2024 年轉盈（0.31），2025 年 1.31 元，2026H1 1.30 元。轉型方向（避開金凸塊/覆晶等標準化封裝，專注利基 RDL/銅柱凸塊/WLCSP，延伸到 CPO 與功率 WLP）從資料上看一直沒變，Fabrinet 結盟和 BIS 認證都是這個方向的具體成果。近8季沒有公開財測可以對照。</li>
+          <li><b>資本配置：</b>以「專注本業、強化優勢」為主：資本主要投入 RDL/凸塊產能與 CPO 製程研發，2025 年底固定資產約12.1億元，比全年營收10.53億元還高，屬於重資產。2026 年引進 Fabrinet 為第三大股東（持股13.35%），屬策略結盟型資本配置。因為累積虧損-3.94億元，沒有配發股利，也沒有庫藏股。2025 年負債比約55%、流動比約110%，財務彈性普通，未來擴產可能需要增資，有股本稀釋風險。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>雙軌：(1) 利基記憶體/邏輯 WLCSP、RDL、凸塊屬成熟期，需求跟著利基型 DRAM/NOR Flash 循環走；(2) 矽光子 CPO 的 PIC 前段凸塊/RDL 屬導入期進入商業化初期。TrendForce 估 CPO/NPO 市場從2025年約1億美元成長到2030年390億美元以上，台積電規劃2027Q1 PIC 月產能1萬片。公司營收目前大部分還是來自軌道(1)。</li>
+          <li><b>市場規模：</b>TAM 全球先進封裝市場數百億美元級別（WLP/扇出型為其中數十億美元子市場）；CPO/NPO 2030 年市場規模預估超過390億美元（TrendForce）——此為 TAM，僅供參考 ／ SAM 利基型記憶體/邏輯/功率元件的 RDL、銅柱凸塊、WLCSP 委外封裝，加上 CPO PIC 前段凸塊/RDL 製程服務。公司自稱在利基型記憶體 RDL 全球市佔超過50%，推估現有 SAM 約新台幣20–30億元級別（推估） ／ SOM 2025年營收10.53億元，2026年1–9月10.94億元（YoY +42%），全年推估約15億元；短期 SOM 約15–20億元</li>
+          <li><b>競爭格局：</b>標準化 WLCSP/凸塊有日月光、南茂、精材（TSV/WLCSP）、頎邦、中國晶方科技等大廠，瑞峰規模遠小於這些對手。瑞峰避開金凸塊/覆晶這類紅海，在利基型記憶體 RDL（線寬/線距5μm）自稱市佔超過50%。CPO 領域由台積電 COUPE 主導，日月光、矽品、Fabrinet 生態系也都在卡位，瑞峰靠 Fabrinet 結盟承接 PIC 前段製程，未來競爭者可能增加。競爭強度：利基段中等，CPO 段高。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>為利基型記憶體（DRAM/NOR Flash）、FPGA、通訊安全晶片、功率電晶體提供一站式晶圓級封裝（RDL 重佈線、銅柱/無鉛凸塊、正背面金屬鍍膜、WLCSP），解決小量多樣、高客製化，以及厚銅 RDL 抗翹曲（IVR 整合穩壓器）等痛點；另外為矽光子 PIC 提供 CPO 前段凸塊/RDL，並有 BIS 白名單 OSAT 認證，可承接美系供應鏈訂單。</li>
+          <li><b>目標客群與通路：</b>國內利基型記憶體與 IC 設計公司（2025年內銷82.11%，客戶名稱沒有揭露），外銷17.89%；新客群為光通訊 EMS（Fabrinet）與其 CPO 終端客戶、車用/功率半導體廠。B2B 直接銷售，以晶圓計價代工。</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>26.0%（2026H1：營益1.765億/營收6.786億）；2025全年約16.2%（含金量 中）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>未揭露；重資產（固定資產12.1億、折舊高），推估明顯高於100%（推估值，可信度低）</td></tr>
+            <tr><td>資本支出／營收</td><td>未揭露；固定資產/營收約115%，推估近年資本支出/營收約20–40%（推估值）</td></tr>
+            <tr><td>現金循環天數</td><td>應收帳款天數由2023年110天降到2025年70天；代工服務存貨低，現金循環推估約50–70天（應付天數未揭露）</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>轉換成本（利基 RDL 製程客製認證）、專利（多層厚銅 RDL、TSV）、特許（BIS 白名單 OSAT 認證）、策略結盟（Fabrinet 入股13.35%）</li>
+          <li><b>強度與期間：</b>中等偏弱（約5–6/10）。利基型記憶體 RDL 市佔超過50%、客戶產品認證週期長，形成轉換成本，可維持約3–5年；但整體規模小（年營收約15億元），缺乏規模經濟，2022–2023 年毛利率曾掉到-2%，代表對景氣與稼動率高度敏感。CPO 優勢建立在 Fabrinet 關係上，但台積電/日月光可能直接吃下 PIC 前段，優勢期間不確定。</li>
+          <li><b>ROE 軌跡：</b>2023 年 ROE 為負（EPS -0.82），2024 年約5%，2025 年約18–20%（淨利1.585億/淨值約8.7億），2026H1 單半年 ROE 約16%（年化約30%以上）。累積虧損-3.94億，保留盈餘率100%（不配息），先用來打消累積虧損。每股淨值約5.8元（2025年底），到2026H1約7.1元。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>營收 = 晶圓片數 × 每片 ASP。2025 年晶圓封裝收入9.29億（88%），其他1.24億（12%）。2026 年月營收從5月1.22億、6月1.27億、8月1.38億，到9月1.44億，連續創新高；1–9月10.94億，YoY +42%。動能包括：利基 DRAM/NOR 景氣回升帶動稼動率提升、厚銅 RDL/IVR 新應用、功率/車用 WLP、CPO 樣品與小量（尚未明顯貢獻）。結構集中在內銷記憶體客戶，多元化程度低。</li>
+          <li><b>毛利率改善動能：</b>毛利率從2023年-2.25%、2024年16.81%、2025年24.83%、2026年1–4月31.95%，提升到2026H1的34.35%。主因是稼動率提升（重資產、固定折舊攤提，營運槓桿大），其次是產品組合往厚銅 RDL、高階凸塊優化，記憶體報價回升也帶來一定議價力。後續 CPO 量產若放量，可再改善產品組合；反過來說，景氣反轉時毛利率也會快速下滑。</li>
+          <li><b>EPS 三大引擎：</b>ROE 大幅改善（約5%→約30%年化），是主要引擎。股東權益從約8.7億回升（獲利先打消累積虧損），仍是低基期。流通股數約1.4985億股，持平；轉上市櫃時若承銷增資、或為擴產現增，有稀釋風險。另外累積虧損期間有虧損扣抵，有效稅率接近0（2026H1 稅前=稅後），扣抵用完後 EPS 會被稅率（約20%）壓低。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>約5–10%（2026E EPS 約2.3元 → 2029E 約2.7–3.0元；記憶體循環反轉、CPO 遞延、開始課稅）</td><td>平庸：回到成熟利基封裝廠，合理 PE 15–20 倍，企業價值約每股40–60元</td></tr>
+            <tr><td>高機率</td><td>約30–35%（2026E EPS 約2.5元 → 2029E 約5.5–6元；利基封裝穩定成長加上 CPO 2027–2028 年開始貢獻，扣除稅率與可能稀釋）</td><td>優質小型成長股：合理 PEG 約1，對應 PE 約30–35倍，按2027E EPS 約3.0–3.3元估算，每股企業價值約100–115元</td></tr>
+            <tr><td>樂觀</td><td>約50%以上（CPO 隨台積電/輝達 2027 年放量，Fabrinet 導入大單，2029E EPS 約8元以上）</td><td>頂尖利基卡位者：PE 40–50倍，以2028E EPS 約5元以上估算，每股價值200–250元以上，但目前沒有訂單證據支撐</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：約1.85元（2025H2 約0.55元 + 2026H1 1.30元；鉅亨網近4季EPS 1.85元）</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：約30–35%（高機率情境 3 年 EPS CAGR） — 依據：2026年1–9月營收YoY +42%，9月單月1.44億元創新高。Q3 營收約4.15億（10.94-6.79），以約26%淨利率推估 Q3 EPS 約0.7元，2026E EPS 約2.5元（YoY +90%，大部分來自毛利率從25%拉到34%的營運槓桿與零稅率，屬一次性跳升）。2027 年起毛利率擴張空間收斂，加上虧損扣抵用完後開始課稅（約20%），營收成長假設20–25%，CPO 2027–2028 年小量貢獻，因此3年 EPS CAGR 取30–35%。如果只看2025→2026的高基期效果會高估 G。</li>
+          <li><b>靜態 PE：</b>約88倍（162.5 / 近4季EPS 1.85）</li>
+          <li><b>動態 PE：</b>約65倍（2026E EPS 2.5）；約50倍（2027E EPS 約3.2）</li>
+          <li><b>PEG：</b>1.9–2.5</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr class="current"><td>貪婪興奮</td><td>1.5–2.0</td><td>✓</td></tr><tr><td>樂觀開心</td><td>1.2–1.5</td><td></td></tr><tr><td>過渡階段</td><td>0.8–1.2</td><td></td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">貪婪興奮</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：21倍（PEG 0.6 × G 35） – 70倍（PEG 2.0 × G 35）</li>
+          <li>對應股價區間：約63元 – 約210元</li>
+          <li>便宜價：約63元（PE 21倍 × 未來4季EPS 約3.0元，PEG 0.6）　|　合理價：約105元（PE 35倍 × 3.0元，PEG 1.0）　|　偏高價：約158元（PE 52.5倍 × 3.0元，PEG 1.5）　|　昂貴價：約210元（PE 70倍 × 3.0元，PEG 2.0）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>負：目前企業價值約105元 − 股價162.5元 ≈ -57元（股價高於合理價約55%），沒有市場估值安全邊際</td></tr>
+            <tr><td>企業價值 MOS</td><td>小：高機率情境下，3年後（2029E EPS 約5.5–6元 × 成長後期 PE 25–30倍）企業價值約140–180元，相對目前162.5元只有約-14%~+11%，等於已透支約3年的成長；只有樂觀 CPO 情境才有明顯空間</td></tr>
+            <tr><td>投資組合 MOS</td><td>興櫃、無漲跌幅限制、流動性低、單一題材（CPO）。最多只適合放在投組的衛星/試單部位，且不超過2%，應與其他產業分散；目前建議0%</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：掛牌僅約4個月，沒有150/200 DMA。股價162.5元，從約360元高點回落約55%，再從約100元低點反彈約62%；8月底在135–140元區間，近期站上約1個月均線區（推估），但遠低於掛牌初期約278元的均價</li>
+          <li>200 DMA 趨勢：走平</li>
+          <li>近 6 個月波段高低點：盤整</li>
+          <li>量價型態：掛牌初期爆量急漲（6/29 盤中振幅43%、被列注意股），之後量增價跌急殺，近期量縮後溫和量增價漲（10/7 成交約839張、+3.3%）</li>
+          <li>股價乖離（季線）：約+10~+15%（以近60日均價約140–148元推估，資料不完整）</li>
+          <li>是否出現特定型態：無（新股掛牌炒作後急跌，正在嘗試築底，W底還沒成形）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">1 空頭底部</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：高</li>
+          <li>錯失機會風險：低</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <p>目前處於「1 空頭底部」，非多頭底部/上漲階段，VCP 型態分析暫不適用。</p>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>暫不投資</li>
+          <li><b>建議週期：</b>不適合（等估值回到合理價附近，或轉上櫃後走出空多轉折，再以18–36個月週期評估）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：約35%</li>
+          <li>估計賠率：約0.8（上檔到昂貴價約210元，+29%；下檔到合理價約105元，-35%）</li>
+          <li>1/4 凱利公式下的最大下注比重：0%（凱利值 = 0.35 − 0.65/0.8 ≈ -0.46，為負值，不下注）</li>
+          <li><b>目前建議買入：</b>目前0%。股價162.5元落在偏高價（約158元）到昂貴價（約210元）之間，PEG 1.9–2.5。若之後要用試單倉分批：合理價約105元以下買2%、偏低價約85元買3%（PEG 0.8）、便宜價約63元買5%，且總部位上限不超過試單倉8%。前提是 CPO 訂單或毛利率維持30%以上得到驗證。興櫃流動性低，下單要分散，避免追價。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>利基 RDL 市佔或 CPO 前段製程被證實沒有獨特性：例如 Fabrinet 減持持股（低於13.35%）、或 CPO PIC 前段由台積電/日月光自行承接，瑞峰到2027年底仍沒有量產營收</td></tr><tr><td>買進理由消失</td><td>毛利率連續兩期（半年報）跌破25%，或月營收連續3個月 YoY 轉負（利基記憶體循環反轉），或 G 下修到15%以下</td></tr><tr><td>市場估值過高</td><td>PEG 超過2（以2027E EPS 約3.2元、G 35% 計，股價高於約210–225元），或靜態 PE 超過80倍、且掛牌/轉上櫃題材再度推升超過250元時分批賣出</td></tr><tr><td>機會成本過高</td><td>同屬 CPO/先進封裝、PEG 低於1且 G 高於30% 的上市櫃標的（如精材、旺矽等）出現更好的價格時，換股</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>Fabrinet 或其 CPO 終端客戶（如輝達生態系）正式量產下單瑞峰 PIC 前段製程</li><li>申請轉上櫃/上市並公布承銷計畫（提升流動性與資訊揭露）</li><li>與工研院、法國 NcodiN 合作的奈米雷射光電共封裝技術進入客戶驗證</li><li>擴產計畫或增資案（產能 vs 稀釋的權衡）</li><li>利基型 DRAM/NOR Flash 報價與稼動率循環變化</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告</li>
+          <li>下次財報公布：2026年10月營收：2026-11-10前；2026年度財報：2027年3月底前（興櫃公司只公告半年報與年報）</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>月營收 YoY（是否維持30%以上，月營收能否站穩1.4億元以上）</li><li>半年報毛利率是否維持30%以上、營益率25%以上</li><li>CPO/矽光子相關營收占比與量產時程</li><li>Fabrinet 持股比例與合作訂單揭露</li><li>累積虧損打消進度與有效稅率變化</li><li>股本變化（轉上櫃承銷、現增、員工認股）</li><li>應收帳款天數（2025年70天）與負債比（約55%）</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>股價跌到約105元合理價（PEG 約1）以下：啟動試單倉分批評估</li><li>股價跌破約100元前低：確認空頭底部失守，持續觀望</li><li>股價帶量站上約200元、且 6 個月高低點墊高：重新判定是否進入空多轉折</li><li>2026年度財報 EPS 明顯偏離2.5元（低於2.0元或高於3.0元）：修正 G 與估值</li><li>公告 CPO 量產訂單、或轉上櫃送件</li><li>月營收連續2個月 YoY 低於15%，或半年報毛利率跌破28%</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>nstock.tw（瑞峰做什麼、月營收與2026Q2財務比率）、cnyes.com 鉅亨網（股價、近4季EPS 1.85、本益比87.76）、money-link.com.tw（2021–2025年營收與EPS、基本資料）、tw.stock.yahoo.com（2026上半年財報公告：營收6.79億、EPS 1.30元；6月營收公告）、vocus.cc 瑞峰半導體深度分析報告（2025營收結構、財務比率、認購參考價60元、同業估值）、histock.tw（自今年高低點漲跌幅、半年報酬）、wantgoo.com 玩股網（本益比河流圖、本益比61.88）、udn.com 聯合新聞網 2026-06-29（工研院串聯瑞峰與 NcodiN，TrendForce CPO 市場預估）、blog.fugle.tw 富果研究（Fabrinet 持股13.35%、利基記憶體 RDL 市佔超過50%、BIS 白名單）、ctee.com.tw 工商時報（矽格2026Q2，作為封測同業景氣參考）、tpex.org.tw 櫃買中心興櫃登錄資料</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-10-08</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
