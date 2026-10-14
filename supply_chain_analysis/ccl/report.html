@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CCL（銅箔基板）產業追蹤報告</title>
 <style>
+  /* ============================================================
+     這一整個 <style> 區塊是固定設計系統（navy/orange），不要更改顏色、字體、間距。
+     只有正文（<body> 內容）依產業內容替換；CSS 逐字沿用即可。
+     ============================================================ */
   :root{
     --navy:#1F3A5F; --navy-d:#15233B; --orange:#E8853B;
     --text:#1E293B; --text-dim:#64748B; --border:#E2E8F0;
@@ -109,8 +113,28 @@
   .src-list a{color:var(--navy);text-decoration:none;}
   .src-list a:hover{text-decoration:underline;}
 
+  /* ---- 資料來源分級（可信度標籤，I 最可信 → IV 最需自行查證）---- */
+  .src-tier{display:inline-block;font-size:9.5px;font-weight:800;padding:1px 6px;border-radius:3px;margin-right:6px;vertical-align:1px;}
+  .src-tier.t1{background:var(--green-bg);color:var(--green-d);}
+  .src-tier.t2{background:#EEF2FF;color:#3730A3;}
+  .src-tier.t3{background:var(--amber-bg);color:var(--amber-d);}
+  .src-tier.t4{background:var(--red-bg);color:var(--red-d);}
+  .src-legend{font-size:11px;color:var(--text-dim);margin-bottom:10px;line-height:1.8;}
+
+  /* ---- 情境失效測試（追蹤指標章節內的子區塊）---- */
+  .falsify-box{background:#F5F3FF;border:1px solid #DDD6FE;border-left:4px solid #6D28D9;border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#4C1D95;}
+  .falsify-box b{color:#5B21B6;}
+  .falsify-box ul{margin:6px 0 0;}
+  .falsify-box li{margin-bottom:6px;}
+
+  /* ---- 公司地圖篩選表（可選：供應鏈地圖章節公司數量多時使用，見 SKILL.md 說明）---- */
+  .tbl-filters{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px;}
+  .tbl-filter-btn{font-size:11.5px;font-weight:700;color:var(--text-dim);background:#F1F5F9;border:1px solid var(--border);border-radius:14px;padding:5px 13px;cursor:pointer;font-family:inherit;}
+  .tbl-filter-btn.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+
   footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;scroll-margin-top:54px;}
 
+  /* ---- 讀數紀錄（Changelog）---- */
   .log-card{background:#F8FAFC;border:1px solid var(--border);border-left:4px solid var(--navy);border-radius:8px;padding:16px 20px;margin-bottom:16px;}
   .log-card.latest{border-left-color:var(--orange);}
   .log-date{font-size:12.5px;font-weight:800;color:var(--navy-d);margin-bottom:8px;}
@@ -118,6 +142,7 @@
   .log-card li{font-size:12.5px;line-height:1.7;color:var(--text);margin-bottom:4px;}
   .log-trigger{display:inline-block;background:var(--red-bg);color:var(--red-d);font-weight:800;font-size:11.5px;padding:3px 10px;border-radius:12px;margin-bottom:8px;}
 
+  /* ---- 圖表卡（比較數字時用來輔助閱讀，取代/補充純表格）---- */
   .chart-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:18px 22px;margin:14px 0 20px;}
   .chart-card .chart-title{font-size:13px;font-weight:800;color:var(--navy-d);margin-bottom:2px;}
   .chart-card .chart-caption{font-size:11.5px;color:var(--text-dim);margin-bottom:10px;}
@@ -160,9 +185,9 @@
   <div class="banner">
     <div class="label">INDUSTRY TRACKER · 產業追蹤</div>
     <h1>CCL（銅箔基板）產業追蹤報告</h1>
-    <div class="sub">AI 伺服器材料規格升級周期（M7→M9）——供應鏈地圖、歷史復盤、門檻評估、追蹤指標</div>
+    <div class="sub">AI 伺服器材料規格升級周期（M7→M9）＋一般材料供給收縮——供應鏈地圖、歷史復盤、門檻評估、追蹤指標</div>
     <div class="badges">
-      <span class="badge">產出日期 2026-09-17</span>
+      <span class="badge">建檔 2026-09-17 · 最後更新 2026-10-14</span>
       <span class="badge">框架：地圖 → 歷史 → 門檻 → 指標</span>
       <span class="badge">目前階段：供不應求</span>
     </div>
@@ -187,13 +212,13 @@
     <h2 class="section" id="overview">總覽<span>OVERVIEW</span></h2>
     <div class="exec">
       <div class="exec-label">EXECUTIVE SUMMARY · 摘要</div>
-      <p>2026 年，CCL 產業第三次進入漲價周期——但這一次的驅動力不是庫存回補，而是<b>AI 伺服器材料規格從 M7 一路推向 M9</b>，逼著上游銅箔／玻纖布／樹脂同步吃緊。年內已完成四輪統一調價，通用 FR-4 現貨價刷新 2021 年前高，台廠三雄台光電、台燿 8 月營收年增率分別達 <b>+129.85%／+132.48%</b>，Q2 毛利率同步創高。真正的硬約束在上游：HVLP3+ 高階銅箔被三井金屬與金居開發寡占，兩者合計未來三年僅能滿足產業總需求的 <b>50%-60%</b>，高盛估計此結構性缺口將延續至 2028 年。<b>最大長期不確定性</b>是市場傳言：若 CPO（共同封裝光學）普及，交換器電性走線大幅縮短，材料規格需求可能不必衝到 M9——查證後發現這個說法被過度簡化，至少一份產業媒體認為 CPO 反而會拉高高速 CCL 的單機價值，且 CPO 商轉時程本身在市場上仍高度分歧，尚不足以推翻現有多頭論點，但值得持續追蹤。</p>
+      <p>2026 年，CCL 產業第三次進入漲價周期——驅動力是 <b>AI 伺服器材料規格由 M7 推向 M9</b>，而非庫存回補。年內已多輪統一調價（建滔至少四次、松下 4/6/8 月三度），<b>2026/09 營收台光電 +168.9%、台燿 +114.8%、聯茂 +110.7%、騰輝 +201.7%</b>，四家皆創單月新高；上游 HVLP3+ 銅箔被三井金屬與金居開發寡占，高盛估計 2026-2028 缺口 28%/39%/38%，是比 CCL 廠資本支出更難加速的硬約束。<b>10/14 新增變數</b>：傳松下一般多層板 CCL 自 2027/1/1 起漲 <b>200%</b>（官方公告尚未確認），法人解讀為淡出一般材料市場，騰輝、聯茂等一般材料占比高的廠商潛在受惠，但轉單不保證流向台廠。<b>最大長期不確定性</b>：10 月出現 CPO「光進銅退」降規疑慮（單一報導），若主要客戶 M8/M9 放量延後或降規，材料升級周期假設需重估；另 200% 一案的成本依據目前不明，不宜當成確認的供給收縮。</p>
     </div>
     <div class="stats">
-      <div class="stat"><div class="v">+129.85%</div><div class="l">台光電(2383) 2026/08 營收 YoY</div></div>
-      <div class="stat"><div class="v">+132.48%</div><div class="l">台燿(6274) 2026/08 營收 YoY</div></div>
+      <div class="stat"><div class="v">+168.9%</div><div class="l">台光電(2383) 2026/09 營收 YoY（8月 +129.85%）</div></div>
+      <div class="stat"><div class="v">+201.7%</div><div class="l">騰輝-KY(6672) 2026/09 營收 YoY（創高）</div></div>
       <div class="stat"><div class="v">39%</div><div class="l">上游 HVLP3+ 銅箔供給缺口（2027峰值，高盛估計）</div></div>
-      <div class="stat"><div class="v">230-240元</div><div class="l">FR-4 現貨價／張（人民幣，刷新2021前高）</div></div>
+      <div class="stat"><div class="v">×3</div><div class="l">松下一般 CCL 2027/1/1 起調價（傳聞，待官方確認）</div></div>
     </div>
 
     <!-- ============ 01 供應鏈地圖（Step 1）============ -->
@@ -219,6 +244,14 @@
         <div style="width:17.5%;background:var(--orange);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">樹脂 15-20%</div>
         <div style="width:15%;background:#CBD5E1;color:var(--text);font-size:11px;display:flex;align-items:center;justify-content:center;">矽微粉/其他</div>
       </div>
+      <p style="font-size:11.5px;color:var(--text-dim);margin:14px 0 4px;">資料來源 C（凱基，2026/04）：銅箔 &gt; 樹脂 &gt; 玻纖布</p>
+      <div style="display:flex;height:26px;border-radius:5px;overflow:hidden;border:1px solid var(--border);">
+        <div style="width:40%;background:var(--navy);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">銅箔 40%</div>
+        <div style="width:25%;background:var(--orange);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">樹脂 25%</div>
+        <div style="width:20%;background:#0369A1;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">玻纖布 20%</div>
+        <div style="width:15%;background:#CBD5E1;color:var(--text);font-size:11px;display:flex;align-items:center;justify-content:center;">其他 15%</div>
+      </div>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">⚠️ 口徑 C（凱基分析，2026/04）與 A 接近但無法交叉驗證；玻纖布自 2025/4 累計漲幅約 200%（引述自騰輝相關報導，口徑未驗證）。以口徑 C 粗估：玻纖布單項漲 200% 約使 CCL 成本上升 40%，加上銅價高檔與樹脂/阻燃劑漲價，足以解釋 2026 年多輪 10-30% 調價，但<b>無法</b>解釋松下傳聞的 200%（價格變 3 倍）——此為作者推論，非公司或機構說法。</p>
     </div>
 
     <h3 class="sub">上中下游基本結構</h3>
@@ -267,6 +300,42 @@
       </div>
     </div>
 
+    
+    <h3 class="sub">公司地圖總表（可篩選）</h3>
+    <div class="tbl-filters" id="mapFilters">
+      <button class="tbl-filter-btn active" data-filter="all">全部環節</button><button class="tbl-filter-btn" data-filter="上游銅箔">上游銅箔</button><button class="tbl-filter-btn" data-filter="上游玻纖布">上游玻纖布</button><button class="tbl-filter-btn" data-filter="上游樹脂">上游樹脂</button><button class="tbl-filter-btn" data-filter="設備">設備</button><button class="tbl-filter-btn" data-filter="CCL">CCL</button><button class="tbl-filter-btn" data-filter="PCB">PCB</button><button class="tbl-filter-btn" data-filter="系統/終端">系統/終端</button>
+    </div>
+    <div class="tbl-wrap">
+    <table id="mapTable">
+      <thead><tr><th>公司</th><th>環節</th><th>地區</th><th>供應鏈地位</th></tr></thead>
+      <tbody>
+        <tr data-stage="上游銅箔"><td>三井金屬 (日)</td><td>上游銅箔</td><td>國際</td><td>HVLP 銅箔龍頭；HVLP 月產能規劃 FY2025 620噸→FY2028 1,200噸</td></tr>
+        <tr data-stage="上游銅箔"><td>古河電工 (日)</td><td>上游銅箔</td><td>國際</td><td>電解銅箔／HVLP 供應商（日）</td></tr>
+        <tr data-stage="上游銅箔"><td>金居開發 8358.TW</td><td>上游銅箔</td><td>台灣</td><td>HVLP3+ 第二大供應商；三廠量產延至 2027Q1</td></tr>
+        <tr data-stage="上游銅箔"><td>諾德股份 (中)</td><td>上游銅箔</td><td>中國</td><td>中國電解銅箔廠</td></tr>
+        <tr data-stage="上游玻纖布"><td>中國巨石 600176.SH</td><td>上游玻纖布</td><td>中國</td><td>電子玻纖布全球市占24%第一，Low-Dk 特種布尚未形成收入</td></tr>
+        <tr data-stage="上游玻纖布"><td>台玻</td><td>上游玻纖布</td><td>台灣</td><td>全球第三家掌握 Low-Dk 技術</td></tr>
+        <tr data-stage="上游樹脂"><td>三菱瓦斯化學 (日)</td><td>上游樹脂</td><td>國際</td><td>低損耗樹脂(PPE)，與聯茂合資</td></tr>
+        <tr data-stage="上游樹脂"><td>東材科技／圣泉集團</td><td>上游樹脂</td><td>中國</td><td>中國 PPE 樹脂廠</td></tr>
+        <tr data-stage="設備"><td>北川精機 6327.TSE</td><td>設備</td><td>國際</td><td>CCL 真空壓合機，全球市佔領先</td></tr>
+        <tr data-stage="CCL"><td>台光電 2383.TW</td><td>CCL</td><td>台灣</td><td>全球最大 CCL 廠，高速 CCL 龍頭</td></tr>
+        <tr data-stage="CCL"><td>台燿 6274.TW</td><td>CCL</td><td>台灣</td><td>高階 CCL、800G 交換器材料領先者</td></tr>
+        <tr data-stage="CCL"><td>聯茂 6213.TW</td><td>CCL</td><td>台灣</td><td>M9 已通過美系 GPU 大廠認證，2027 起貢獻營收</td></tr>
+        <tr data-stage="CCL"><td>騰輝-KY 6672.TW</td><td>CCL</td><td>台灣</td><td>一般材料 47.4%＋特殊材料 45.5%；產能主在中國；松下調價潛在承接者</td></tr>
+        <tr data-stage="CCL"><td>南亞塑膠 1303.TW</td><td>CCL</td><td>台灣</td><td>CCL/PP 2026/9/1 再調漲 20-25%</td></tr>
+        <tr data-stage="CCL"><td>生益科技 600183.SH</td><td>CCL</td><td>中國</td><td>中國 CCL 龍頭，高端 AI 覆銅板已通過頭部客戶認證</td></tr>
+        <tr data-stage="CCL"><td>建滔積層板 1888.HK</td><td>CCL</td><td>中國</td><td>2026 年內多次調價，M6 產品年底進頭部驗證</td></tr>
+        <tr data-stage="CCL"><td>Panasonic (日)</td><td>CCL</td><td>國際</td><td>MEGTRON 高階龍頭；傳一般多層板 CCL 2027/1 漲價200%</td></tr>
+        <tr data-stage="CCL"><td>Doosan (韓)</td><td>CCL</td><td>國際</td><td>泰國新廠 2028 下半年量產</td></tr>
+        <tr data-stage="CCL"><td>Isola／Ventec</td><td>CCL</td><td>國際</td><td>國際高頻材料指標廠商</td></tr>
+        <tr data-stage="PCB"><td>欣興／臻鼎／華通／金像電</td><td>PCB</td><td>台灣</td><td>下游 PCB 龍頭</td></tr>
+        <tr data-stage="PCB"><td>TTM／深南電路</td><td>PCB</td><td>國際</td><td>國際/中國 PCB 廠</td></tr>
+        <tr data-stage="系統/終端"><td>鴻海／廣達／緯創／緯穎</td><td>系統/終端</td><td>台灣</td><td>ODM 系統整合</td></tr>
+        <tr data-stage="系統/終端"><td>NVIDIA／AWS／Google／Meta</td><td>系統/終端</td><td>國際</td><td>終端客戶，M9 放量時點的關鍵</td></tr>
+      </tbody>
+    </table>
+    </div>
+
     <!-- ============ 02 歷史周期（Step 2）============ -->
     <h2 class="section" id="history">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
     <ul class="timeline">
@@ -275,39 +344,44 @@
       <li><div class="t">2019 Q4起</div><div class="d">庫存去化壓力與擴產壓力同步緩解，5G題材浮現，市場預期回溫，下游PCB廠回補庫存，需求止跌回穩。</div></li>
       <li><div class="t">2020-2021</div><div class="d"><b>第二輪漲價潮，衝上約230元/張</b>：原物料供需缺口疊加終端旺季需求，通用FR-4板材現貨價格刷新歷史高點。見頂後下行的精確時間點與跌幅同樣未查到數字。</div></li>
       <li><div class="t">2026-現在</div><div class="d"><b>第三輪，結構性供不應求</b>：驅動力從「原物料成本轉嫁」變成「材料規格升級」（M7→M8→M9）。年內四輪統一調價，FR-4累計漲幅突破40%，現貨價刷新2021前高；單台AI伺服器PCB價值量從3.51萬美元飆升至11.67萬美元（+233%）。多家機構估計缺口延續至2028年——這是過去兩輪都沒有的性質。</div></li>
+      <li><div class="t">2026/10/14</div><div class="d"><b>松下一般 CCL 傳漲 200%</b>：一般多層板 4 個系列（R-1705 全規格、R-1766／R-1566／R-1755 ≥1.1mm）2027/1/1 起出貨價格變 3 倍；松下今年 4/6/8 月已三度調價，同時擴 MEGTRON 高階產能。⚠️ 官網未見公告、原因未說明，僅媒體/供應鏈傳達。</div></li>
     </ul>
     <p class="insight"><b>與過去兩輪周期最大的差異：</b>2016-17、2020-21兩輪都在1-2年內見頂回落，驅動力是原物料成本轉嫁與消費電子庫存周期；2026這一輪是結構性材料升級，高盛等機構估計缺口將持續到2028年，性質上更接近「材料世代轉換」而非單純庫存周期。</p>
+    <p class="insight"><b>松下 200% 的解讀（推論，非確認）：</b>漲幅遠超成本端可解釋的範圍（見成本結構估算），更像是「以價格淡出一般材料市場、資源轉向 MEGTRON 高階」；若屬實，一般材料供給收縮、台廠議價力與稼動率上升，騰輝、聯茂等一般材料占比高者受惠較直接，台光電（以 AI 高階材料為主）關聯較小。<b>三個保留</b>：①官方公告未見、2027/1/1 才生效；②轉單不保證流向台廠，取決於規格、驗證與供貨能力；③仍可能調整或撤回。已列入追蹤指標 10。</p>
 
     <div class="chart-card">
-      <div class="chart-title">台廠雙雄營收年增率比較</div>
-      <div class="chart-caption">2026年8月單月 vs. 前8月累計，年增率（%）</div>
-      <svg class="chart" viewBox="0 0 480 220" role="img" aria-label="台光電與台燿的8月單月與前8月累計營收年增率長條圖">
+      <div class="chart-title">台廠 CCL 三雄營收年增率：8月 vs 9月</div>
+      <div class="chart-caption">2026年單月營收年增率（%）；9月數字為 2026/10/05 公告</div>
+      <svg class="chart" viewBox="0 0 480 220" role="img" aria-label="台光電、台燿、聯茂 2026年8月與9月單月營收年增率長條圖">
         <line class="axis-line" x1="50" y1="180" x2="450" y2="180"/>
-        <line class="axis-line" x1="50" y1="142.5" x2="450" y2="142.5" stroke-dasharray="2 3"/>
-        <line class="axis-line" x1="50" y1="105" x2="450" y2="105" stroke-dasharray="2 3"/>
-        <line class="axis-line" x1="50" y1="67.5" x2="450" y2="67.5" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="130" x2="450" y2="130" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="50" y1="80" x2="450" y2="80" stroke-dasharray="2 3"/>
         <line class="axis-line" x1="50" y1="30" x2="450" y2="30" stroke-dasharray="2 3"/>
         <text x="45" y="183" text-anchor="end" font-size="10">0%</text>
-        <text x="45" y="145.5" text-anchor="end" font-size="10">35%</text>
-        <text x="45" y="108" text-anchor="end" font-size="10">70%</text>
-        <text x="45" y="70.5" text-anchor="end" font-size="10">105%</text>
-        <text x="45" y="33" text-anchor="end" font-size="10">140%</text>
-        <rect x="80" y="40.9" width="40" height="139.1" rx="3" fill="var(--navy)"/>
-        <text class="val-label" x="100" y="34" text-anchor="middle">+129.85%</text>
-        <rect x="125" y="78.0" width="40" height="102.0" rx="3" fill="var(--orange)"/>
-        <text class="val-label" x="145" y="71" text-anchor="middle">+95.18%</text>
+        <text x="45" y="133" text-anchor="end" font-size="10">60%</text>
+        <text x="45" y="83" text-anchor="end" font-size="10">120%</text>
+        <text x="45" y="33" text-anchor="end" font-size="10">180%</text>
+        <rect x="80" y="71.8" width="40" height="108.2" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="100" y="65.8" text-anchor="middle">+129.85%</text>
+        <rect x="125" y="39.2" width="40" height="140.8" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="145" y="33.2" text-anchor="middle">+168.9%</text>
         <text class="grp-label" x="122" y="198" text-anchor="middle">台光電 2383</text>
-        <rect x="270" y="38.1" width="40" height="141.9" rx="3" fill="var(--navy)"/>
-        <text class="val-label" x="290" y="32" text-anchor="middle">+132.48%</text>
-        <rect x="315" y="76.1" width="40" height="103.9" rx="3" fill="var(--orange)"/>
-        <text class="val-label" x="335" y="69" text-anchor="middle">+97.01%</text>
-        <text class="grp-label" x="312" y="198" text-anchor="middle">台燿 6274</text>
+        <rect x="210" y="69.6" width="40" height="110.4" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="230" y="63.6" text-anchor="middle">+132.48%</text>
+        <rect x="255" y="84.3" width="40" height="95.7" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="275" y="78.3" text-anchor="middle">+114.8%</text>
+        <text class="grp-label" x="252" y="198" text-anchor="middle">台燿 6274</text>
+        <rect x="340" y="98.4" width="40" height="81.6" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="360" y="92.4" text-anchor="middle">+97.93%</text>
+        <rect x="385" y="87.8" width="40" height="92.2" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="405" y="81.8" text-anchor="middle">+110.7%</text>
+        <text class="grp-label" x="382" y="198" text-anchor="middle">聯茂 6213</text>
       </svg>
       <div class="chart-legend">
-        <span><i class="chart-swatch" style="background:var(--navy)"></i>2026/08 單月 YoY</span>
-        <span><i class="chart-swatch" style="background:var(--orange)"></i>2026 前8月累計 YoY</span>
+        <span><i class="chart-swatch" style="background:var(--orange)"></i>2026/08 單月 YoY</span>
+        <span><i class="chart-swatch" style="background:var(--navy)"></i>2026/09 單月 YoY</span>
       </div>
-      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">聯茂（6213）僅查到2026 Q1單季YoY +20.6%，與上兩家公司期間口徑不同，未併入此圖以避免誤導比較。</p>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">騰輝(6672) 9月 YoY +201.68% 超出此圖刻度，且 8 月 YoY 未取得，故不併入圖表，見「財務數字驗證」表。台燿 9月 YoY 較 8月降約 17.7 個百分點，仍遠低於指標5的 40 個百分點觸發線。</p>
     </div>
 
     <p style="margin-top:16px;">目前供需階段判定：</p>
@@ -315,7 +389,7 @@
     <ul>
       <li>配額供貨制全面實行，交期從8個月拉長至近2年，訂單能見度到2028年Q1</li>
       <li>上游玻纖布近乎零庫存，即產即銷；低Dk玻纖布交期30週以上</li>
-      <li>台廠三雄月營收年增率均在95%-132%區間，創歷史新高，量價齊揚——符合供不應求階段的典型財務特徵</li>
+      <li>台廠 2026/09 單月營收年增率：台光電 +168.9%、台燿 +114.8%、聯茂 +110.7%、騰輝 +201.7%，皆創單月新高，量價齊揚——符合供不應求階段的典型財務特徵</li>
     </ul>
 
     <!-- ============ 03 供應鏈門檻（Step 3）============ -->
@@ -358,17 +432,19 @@
     <h2 class="section" id="indicators">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
     <div class="tbl-wrap">
     <table>
-      <thead><tr><th>指標</th><th>目前讀數（2026-09-17）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
+      <thead><tr><th>指標</th><th>目前讀數（2026-10-14）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
       <tbody>
-        <tr><td>上游HVLP3+供給缺口</td><td>2026-28：28%/39%/38%；三井+金居合計滿足50%-60%需求</td><td class="trig">缺口下修至20%以下 或 新增大型產能開出</td></tr>
-        <tr><td>FR-4現貨報價</td><td>約230-240元人民幣/張</td><td class="trig">再創新高 或 跌破200元/張</td></tr>
-        <tr><td>HVLP3+銅箔設備交期</td><td>近2年，能見度到2028Q1</td><td class="trig">縮短至1年內 或 繼續拉長</td></tr>
-        <tr><td>低Dk玻纖布/T-Glass交期</td><td>30週以上</td><td class="trig">降到20週以下</td></tr>
-        <tr><td>台光電/台燿單月營收YoY</td><td>+129.85%／+132.48%（2026/08）</td><td class="trig">任一家較基準下滑超過40個百分點</td></tr>
-        <tr><td>台光電/台燿Q2毛利率</td><td>33.85%／29.7%</td><td class="trig">連續兩季下滑超過5個百分點</td></tr>
+        <tr><td>上游HVLP3+供給缺口</td><td>高盛 2026-28：28%/39%/38%；三井金屬 HVLP 月產能規劃 FY2025 620噸→FY2028 1,200噸，2026/9 擴至840噸<b>尚未確認開出</b>；金居三廠量產延至 2027Q1</td><td class="trig">缺口下修至20%以下 或 新增大型產能開出</td></tr>
+        <tr><td>FR-4現貨報價</td><td>約230-240元人民幣/張（9/17基準）；建滔 8/28 再漲 FR-4 +10%／薄型PP +20%；10月絕對報價未取得</td><td class="trig">再創新高 或 跌破200元/張</td></tr>
+        <tr><td>HVLP3+銅箔設備交期</td><td>近2年，能見度到2028Q1（高精度表面處理設備交期 18-24 個月）</td><td class="trig">縮短至1年內 或 繼續拉長</td></tr>
+        <tr><td>低Dk玻纖布/T-Glass交期</td><td>30週以上；產線擴充週期 18-24 個月</td><td class="trig">降到20週以下</td></tr>
+        <tr><td>台光電/台燿單月營收YoY</td><td>+168.9%／+114.8%（2026/09）；基準 8月 +129.85%／+132.48%</td><td class="trig">任一家較基準下滑超過40個百分點</td></tr>
+        <tr><td>台光電/台燿Q2毛利率</td><td>33.85%／29.7%（Q3 財報待 10 月底至 11 月公布）</td><td class="trig">連續兩季下滑超過5個百分點</td></tr>
         <tr><td>聯茂M7/M8/M9認證進度</td><td>對第二家雲端服務商送樣中，2027年上半年起逐步放量</td><td class="trig">公開宣布通過認證出貨 或 認證延遲</td></tr>
-        <tr><td>M9/1.6T交換器材料放量時點</td><td>預期2026下半年至2027年</td><td class="trig">主要客戶提前或延後放量</td></tr>
-        <tr><td>三家本淨比(P/B)</td><td>台光電&gt;30倍；台燿約22.6-27倍(來源落差大)；聯茂約3.49倍</td><td class="trig">任一家較基準下滑超過30% 或 再創新高</td></tr>
+        <tr><td>M9/1.6T交換器材料放量時點</td><td>預期2026下半年至2027年；10月出現CPO降規疑慮（單一報導）</td><td class="trig">主要客戶提前或延後放量</td></tr>
+        <tr><td>三家本淨比(P/B)</td><td>台光電約30.8倍（股價5,020元／淨值162.80元）；台燿約22.6-27倍(來源落差大)；聯茂約3.49倍</td><td class="trig">任一家較基準下滑超過30% 或 再創新高</td></tr>
+        <tr><td>松下一般多層板CCL退場/轉單（10/14新增）</td><td>傳 2027/1/1 起漲200%（價格變3倍）；官網未見公告；2026年已4/6/8月三度調價</td><td class="trig">松下官方正式公告或宣布退出／台廠確認承接轉單／松下撤回或縮小調幅</td></tr>
+        <tr><td>騰輝(6672)月營收／毛利率（10/14新增）</td><td>9月 10.21億元（YoY +201.68%）；Q2毛利率 35.98%；10/12收598元</td><td class="trig">單月YoY較基準下滑超過40個百分點／連續兩季毛利率降超過5個百分點／Q3一般材料占比反降</td></tr>
       </tbody>
     </table>
     </div>
@@ -376,63 +452,177 @@
     <h3 class="sub">財務數字驗證</h3>
     <div class="tbl-wrap">
     <table>
-      <thead><tr><th>指標</th><th>台光電 (2383.TW)</th><th>台燿 (6274.TW)</th><th>聯茂 (6213.TW)</th></tr></thead>
+      <thead><tr><th>指標</th><th>台光電 (2383.TW)</th><th>台燿 (6274.TW)</th><th>聯茂 (6213.TW)</th><th>騰輝-KY (6672.TW)</th></tr></thead>
       <tbody>
-        <tr><td>2026/08單月營收 YoY</td><td>201.46億元（+129.85%）</td><td>59.15億元（+132.48%）</td><td>未查到（Q1營收91.43億元，+20.6%）</td></tr>
-        <tr><td>2026前8月累計營收 YoY</td><td>1,196.95億元（+95.18%）</td><td>361.78億元（+97.01%）</td><td>未查到</td></tr>
-        <tr><td>Q2毛利率</td><td>33.85%（創40季新高）</td><td>29.7%</td><td>22.02%</td></tr>
-        <tr><td>EPS/其他</td><td>H1 EPS 42.46元</td><td>Q2 EPS 8.04元（QoQ+84%，YoY+241%）</td><td>Q2 EPS 3.52元</td></tr>
+        <tr><td>2026/09單月營收 YoY</td><td>215.32億元（+168.9%）</td><td>61.26億元（+114.8%）</td><td>58.24億元（+110.7%）</td><td>10.21億元（+201.68%）</td></tr>
+        <tr><td>2026前9月累計 YoY</td><td>1,412.27億元（+103.7%）</td><td>約423.03億元（+99.4%）</td><td>362.90億元（+50.07%）<span class="g-flag">來源不一</span></td><td>53.52億元（+69.46%）</td></tr>
+        <tr><td>Q2毛利率</td><td>33.85%（創40季新高）</td><td>29.7%</td><td>22.02%</td><td>35.98%（歷史新高）</td></tr>
+        <tr><td>EPS/其他</td><td>H1 EPS 42.46元</td><td>Q2 EPS 8.04元（QoQ+84%，YoY+241%）</td><td>Q2 EPS 3.52元</td><td>2025全年 EPS 4.85元；Q2營益率 16.78%</td></tr>
+        <tr><td>法人預估 EPS 2026/2027</td><td>124.7／231.9元（數位時代）；FactSet 2026E 114.67元（2026/08/12）</td><td>FactSet 2026E 36.05元（9/18記錄）；10/14 查得另一版 23.63元疑為舊版，不採用</td><td>FactSet 目標價中位數 570元（2026/08/20）；EPS 未取得</td><td>19.5／40.7元（數位時代，未標明是否 FactSet）</td></tr>
       </tbody>
     </table>
     </div>
 
     <div class="chart-card">
       <div class="chart-title">Q2 毛利率比較</div>
-      <div class="chart-caption">2026年第二季，%</div>
-      <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="台光電與台燿2026年第二季毛利率比較長條圖">
-        <line class="axis-line" x1="46" y1="130" x2="240" y2="130"/>
-        <line class="axis-line" x1="46" y1="102.5" x2="240" y2="102.5" stroke-dasharray="2 3"/>
-        <line class="axis-line" x1="46" y1="75" x2="240" y2="75" stroke-dasharray="2 3"/>
-        <line class="axis-line" x1="46" y1="47.5" x2="240" y2="47.5" stroke-dasharray="2 3"/>
-        <line class="axis-line" x1="46" y1="20" x2="240" y2="20" stroke-dasharray="2 3"/>
+      <div class="chart-caption">2026年第二季，%（騰輝以一般材料為主，毛利率不來自產品組合全面轉向高毛利材料）</div>
+      <svg class="chart" viewBox="0 0 260 150" role="img" aria-label="台光電、台燿、聯茂、騰輝2026年第二季毛利率比較長條圖">
+        <line class="axis-line" x1="46" y1="130" x2="250" y2="130"/>
+        <line class="axis-line" x1="46" y1="102.5" x2="250" y2="102.5" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="75" x2="250" y2="75" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="47.5" x2="250" y2="47.5" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="20" x2="250" y2="20" stroke-dasharray="2 3"/>
         <text x="40" y="133" text-anchor="end" font-size="10">0%</text>
         <text x="40" y="105.5" text-anchor="end" font-size="10">10%</text>
         <text x="40" y="78" text-anchor="end" font-size="10">20%</text>
         <text x="40" y="50.5" text-anchor="end" font-size="10">30%</text>
         <text x="40" y="23" text-anchor="end" font-size="10">40%</text>
-        <rect x="70" y="36.9" width="48" height="93.1" rx="3" fill="var(--navy)"/>
-        <text class="val-label" x="94" y="30" text-anchor="middle">33.85%</text>
-        <text class="grp-label" x="94" y="145" text-anchor="middle">台光電</text>
-        <rect x="150" y="48.3" width="48" height="81.7" rx="3" fill="var(--orange)"/>
-        <text class="val-label" x="174" y="41.5" text-anchor="middle">29.7%</text>
-        <text class="grp-label" x="174" y="145" text-anchor="middle">台燿</text>
+        <rect x="54" y="36.9" width="38" height="93.1" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="73" y="30.9" text-anchor="middle">33.85%</text>
+        <text class="grp-label" x="73" y="145" text-anchor="middle">台光電</text>
+        <rect x="100" y="48.3" width="38" height="81.7" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="119" y="42.3" text-anchor="middle">29.7%</text>
+        <text class="grp-label" x="119" y="145" text-anchor="middle">台燿</text>
+        <rect x="146" y="69.4" width="38" height="60.6" rx="3" fill="var(--green)"/>
+        <text class="val-label" x="165" y="63.4" text-anchor="middle">22.02%</text>
+        <text class="grp-label" x="165" y="145" text-anchor="middle">聯茂</text>
+        <rect x="192" y="31.1" width="38" height="98.9" rx="3" fill="#0369A1"/>
+        <text class="val-label" x="211" y="25.1" text-anchor="middle">35.98%</text>
+        <text class="grp-label" x="211" y="145" text-anchor="middle">騰輝</text>
       </svg>
+    </div>
+<h3 class="sub">情境失效測試：什麼數據出現代表現在的判斷是錯的</h3>
+    <div class="falsify-box">
+      <b>誠實面對反方證據，不是只找支持論點的資料。</b>若出現以下任一情境，就該承認「結構性供不應求、AI 驅動漲價」的判斷錯了或過度樂觀：
+      <ul>
+        <li><b>漲價周期見頂：</b>台光電或台燿單月營收 YoY 連續兩個月較 2026/09 讀數（+168.9%／+114.8%）下滑超過 40 個百分點，或建滔／南亞等主要廠商出現連續兩次「降價」通知，或 FR-4 現貨價跌破 200 元人民幣/張。</li>
+        <li><b>上游瓶頸被繞過：</b>主要機構把 HVLP3+ 缺口下修至 20% 以下，或三井金屬／金居新產能實際開出、HVLP4 設備交期縮短到 1 年以內。</li>
+        <li><b>規格升級延後或降規：</b>NVIDIA VR200／AWS Trainium 3 等主要客戶公開宣布放量延後到 2027 下半年以後，或正式採用降規方案（例如因 CPO「光進銅退」把 M9 需求降回 M7/M8），代表 M7→M9 升級周期的時程假設錯誤。</li>
+      </ul>
     </div>
 
     <!-- ============ 05 讀數紀錄（Changelog）============ -->
     <h2 class="section" id="changelog">讀數紀錄<span>CHANGELOG</span></h2>
+    <p>以下逐次列出每次追蹤查證的讀數，內容直接取自追蹤檔「歷史讀數紀錄」區塊（機械轉換、未改寫），最新一筆在最上面，不覆蓋舊紀錄。</p>
     <div class="log-card latest">
+      <div class="log-date">2026-10-14（加入騰輝 6672＋松下漲價事件專題）</div>
+      
+      <ul>
+        <li><b>本次無指標觸發</b>（新增指標 10、11 於此建立基準值）</li>
+        <li>【指標10 松下】數位時代（2026/10/14）：松下機電電子材料事業部通知客戶，一般多層板用 CCL 4 個系列自 2027/1/1 起出貨<b>調漲 200%</b>；生產據點含日本郡山、中國廣州/蘇州、台灣、泰國。松下<b>未說明 200% 原因</b>，官網截至 10/14 未見公告（⚠️ 僅媒體/供應鏈傳達，Ⅲ～Ⅳ級來源）；法人解讀為「形同淡出一般材料市場」，松下並未正式宣布退出。對照：2026/4/9 官方公告 MEGTRON 系 CCL +20%、PP +15%（5/1 起）；8 月通知一般 CCL/PP +30%、MEGTRON/XPEDION +15%（9/1 起），理由為銅箔加工費、玻纖布、能源物流成本上升；同時擴 MEGTRON 產能（廣州 2027/4、泰國 2027/11）。</li>
+        <li>【指標11 騰輝 6672】9 月營收 10.21 億元（YoY +201.68%、MoM +26.68%，創高），前 9 月 53.52 億元（YoY +69.46%）；2026Q2 毛利率 35.98%、營益率 16.78%；2025 全年 EPS 4.85 元（營收 42.6 億、毛利率 32%、配息 3.35 元）；10/7 漲停 505 元，10/12 收 598 元；法人預估 EPS 2026/2027 為 19.5／40.7 元（數位時代，⚠️ 未標明是否 FactSet）；FactSet 鉅亨速報查無 6672。</li>
+        <li>【一般性】玻纖布自 2025/4 累計漲幅約 200%（⚠️ 騰輝相關報導引述，口徑未驗證）；高盛預估台光電/台燿 Q3 毛利率 36.5%/32.3%（各季增 2.4pp，預測值非實際）；10 月出現 CPO「光進銅退」降規疑慮（M8/M9 需求風險，⚠️ 單一報導）。</li>
+      </ul>
+    </div>
+    <div class="log-card">
+      <div class="log-date">2026-10-14（第五次追蹤查證）</div>
+      
+      <ul>
+        <li><b>本次無指標觸發</b>（各項數值未跨過門檻；9 月營收為首個新月份，動能反向加速）</li>
+        <li>【指標5 單月營收YoY｜新數據】9 月營收三家皆創歷史新高（經濟日報/UDN、優分析、中時 2026/10/06 報導，10/05 盤後公告）：<b>台光電 215.32 億元，MoM +6.9%、YoY +168.9%</b>（8 月 +129.85%），前 9 月累計 1,412.27 億元、YoY +103.7%；<b>台燿 61.26 億元，MoM +3.6%、YoY +114.8%</b>（8 月 +132.48%，YoY 較 8 月降約 17.7 個百分點，仍遠低於「較基準下滑超過 40pp」門檻），前 9 月累計約 423.03 億元、YoY +99.4%；<b>聯茂 58.24 億元，MoM +15.5%、YoY +110.7%</b>（8 月 +97.93%），前 9 月累計 ⚠️來源不一（一則報導 362.9 億元、YoY +50.07%，與 9/24 記錄的 1-8 月 304.66 億元＋9 月 58.24 億元＝362.90 億元吻合，視為可信）→ <b>未觸發</b></li>
+        <li>【指標1 上游供給缺口】未見機構下修至 20% 以下。三井金屬規劃 HVLP 月產能由 FY2025 的 620 噸提高至 FY2028 的 1,200 噸，FY2027 起新增產能轉向 HVLP4 以上（工商時報）；<b>仍無「9 月已如期開出 840 噸」的確認</b>，1(b) 持續待確認。金居：2026/06 股東會稱 HVLP3/4 月產能已超過 100 噸、年底 150 噸，三廠量產時程<b>後延至 2027 Q1</b>（2025/10 曾報導提前至 2026 Q4），HVLP4 四條產線 2027 Q4 月產能可達 600 噸，訂單能見度到 2027 年底（⚠️ 與 9/24 記錄的「訂單到 2028」、「2026 年底月產 200 噸」口徑不一，各來源落差）；HVLP4 缺口 1,500→2,500 噸（優分析，與 9/24 一致）→ <b>未觸發</b></li>
+        <li>【指標2 FR-4 報價】本次未查得 10 月調價或絕對報價（元人民幣/張）；僅確認 2026 年內建滔已調價至少四次（4 月初、4 月底各 +10% 等），Resonac 銅箔基板/膠片調漲 30% 以上，台燿 4/25 起部分系列 +20-40% → 資料缺口，<b>未確認觸發</b></li>
+        <li>【指標3/4 設備交期、玻纖布交期】本次無新數字；低 Dk 玻纖布產線擴充週期 18-24 個月、寡占供應緊張持續；HVLP4 高精度表面處理設備交期可達 18-24 個月（⚠️ 此為「設備」交期的新口徑，與基準「近 2 年」大致一致）→ <b>未觸發</b></li>
+        <li>【指標6 毛利率】Q3 財報尚未公布（預計 10 月底至 11 月）→ 無新數據</li>
+        <li>【指標7/8 聯茂認證、M9 放量】本次未查到新消息 → <b>未觸發</b></li>
+        <li>【指標9 本淨比】聯茂股價「連七漲」續創高、台光電挑戰 6,000 元（UDN 2026/10 上旬）；較 9/16 的 5,085 元續升，未取得新淨值以重算 P/B，無下滑跡象 → <b>未觸發</b></li>
+        <li>【FactSet 台燿】WebSearch 彙整出的最新一篇鉅亨速報顯示 2026E EPS 中位數 23.63 元、目標價 900 元（2027E 36.31、2028E 81.76）⚠️ <b>與 9/18 記錄的 36.05 元／2,032.5 元明顯不一致，且發布日期無法確認，疑為舊版本，不採用為新基準</b>；台燿最新版 FactSet 仍為資料缺口</li>
+      </ul>
+    </div>
+    <div class="log-card">
+      <div class="log-date">2026-10-11（第五次追蹤查證）</div>
+      
+      <ul>
+        <li><b>本次無指標確認觸發</b>（9月營收已公布，三雄 YoY 皆維持 &gt;100%；指標1(b) 三井金屬擴產仍為⚠️待確認）</li>
+        <li>【指標5 單月營收YoY】9月營收三雄同步創歷史新高：<b>台光電9月215.32億元、MoM +6.9%、YoY +168.9%，前9月1,412.27億元、YoY +103.7%</b>（[TechNews 2026/10/05](https://finance.technews.tw/2026/10/05/emc-2383-202609-financial-report/)，Ⅱ級）；<b>台燿9月61.26億元、MoM +3.6%、YoY +114.8%，前9月423.04億元、YoY +99.4%</b>；<b>聯茂9月58.24億元、MoM +15.5%、YoY +110.7%，前9月362.9億元、YoY +50.07%</b>（[經濟日報「CCL三雄9月營收攀峰」](https://money.udn.com/money/amp/story/5607/9796400)、[優分析](https://uanalyze.com.tw/articles/6130156556)，Ⅱ/Ⅲ級）。⚠️聯茂YoY另有凱基版本寫+10.74%，判斷為漏字筆誤，以+110.7%為準。比對基準：台光電 +168.9% vs 基準 +129.85%（<b>上升</b> 39pp）；台燿 +114.8% vs 基準 +132.48%（下滑 17.7pp，未達40pp觸發線）→ <b>未觸發</b></li>
+        <li>【指標1 上游供給缺口】未見機構將缺口下修至20%以下；HVLP4 缺口 2026/2027 年仍有 48%/43%、短缺約1,500→2,500噸（引述 Digitimes，[優分析](https://uanalyze.com.tw/articles/8838156013)、[36Kr](https://eu.36kr.com/en/p/3984081016470532)，Ⅲ級 ⚠️二手轉述）。⚠️<b>三井金屬</b>：原訂2026年9月底VSP月產能達840噸（較2025/8的620噸+35%），2025/11追加60億日圓、目標2027/9達1,000噸、2028/9達1,200噸；<b>2026/8 另宣布馬來西亞新廠，2031年投產、VSP月產+1,200噸，2033財年總月產能2,600噸</b>（[EE Times Japan 2026/08/24](https://eetimes.itmedia.co.jp/ee/articles/2608/24/news043.html)、[優分析](https://uanalyze.com.tw/articles/5513853560)，Ⅱ/Ⅲ級）。屬「新增大型產能公開計畫」，但投產在2031年、對2026-2028缺口無即時影響；840噸是否如期達成仍<b>未查到確認</b> → <b>1(b) 維持⚠️待確認，不判定觸發</b>。另：金居因標準HTE/RTF銅箔供過於求通知客戶停產部分產品（產品組合往高階集中，非HVLP供給增加）</li>
+        <li>【指標2 FR-4現貨報價】建滔年內第四度調價、累計漲幅逾40%，7628電子布自2025Q4累計漲近50%（[世界日報](https://www.worldjournal.com/wj/amp/story/121347/9529990)、[經濟日報](https://money.udn.com/money/amp/story/5607/9469076)，Ⅱ級）；未見10月新調價公告，亦<b>仍未取得絕對報價（元人民幣/張）</b> → 漲價動能延續但無法確認「再創新高」，<b>未確認觸發</b>，資料缺口</li>
+        <li>【指標3 HVLP3+銅箔設備交期】本次仍未查到新數字 → 資料缺口，維持基準近2年</li>
+        <li>【指標4 玻纖布/T-Glass交期】Low DK／T-Glass 交期仍在<b>30週以上</b>（[優分析](https://uanalyze.com.tw/articles/8838156013)，Ⅲ級）；建滔低介電玻纖紗新線2026下半年陸續投產、RTF/HVLP銅箔新增2.1萬噸產能2027年中才加入 → 遠高於20週觸發線，<b>未觸發</b></li>
+        <li>【指標6 毛利率】Q3財報尚未公布 → 無新數據，<b>未觸發</b></li>
+        <li>【指標7 聯茂認證進度】本次未查到通過認證／延遲新聞；報導將9月營收創高歸因於AI伺服器、M9等高階CCL出貨及漲價 → <b>未觸發</b></li>
+        <li>【指標8 M9/1.6T放量時點】本次未查到 VR200／Trainium 3 提前或延後消息 → <b>未觸發</b></li>
+        <li>【指標9 本淨比】本次未取得新股價與每股淨值 → 資料缺口，<b>無法比對</b></li>
+        <li>【FactSet共識（鉅亨速報）】台燿查得一篇 FactSet（15位分析師）2026E EPS中位數23.63元、目標價900元（[Yahoo/鉅亨速報](https://tw.stock.yahoo.com/news/%E9%89%85%E4%BA%A8%E9%80%9F%E5%A0%B1-factset-%E6%9C%80%E6%96%B0%E8%AA%BF%E6%9F%A5-%E5%8F%B0%E7%87%BF-6274-001029314.html)，Ⅱ級），⚠️文章無日期、數字明顯低於9/18記錄的36.05元/2,032.5元，判斷為較舊版本，<b>不採用為最新共識</b>；台光電、聯茂本次未查得新一版 FactSet → 維持9/24記錄</li>
+        <li>【海外同業】生益科技、建滔積層板本次未查得股價／營運新數據；三井金屬2026/8/17公布擴產計畫後股價先漲後回落（[マネーポスト](https://www.moneypost.jp/1436064)，Ⅲ級）→ 資料缺口</li>
+      </ul>
+    </div>
+    <div class="log-card">
+      <div class="log-date">2026-09-24（第四次追蹤查證）</div>
+      
+      <ul>
+        <li><b>本次無指標確認觸發</b>（各項數值未跨過門檻；惟指標1(b)「三井金屬新增大型產能」出現⚠️待確認訊號，見下）</li>
+        <li>【指標1 上游供給缺口】未見任何機構把缺口下修至20%以下，反而有市場估計更緊：HVLP4 因良率不穩，2026/2027年供需缺口約48%/43%，短缺量2026年約1,500噸、2027年擴大至約2,500噸（WebSearch 彙整之市場報導，原始媒體與日期未能逐篇確認 ⚠️）；工商時報（2026/09/20）引法人估HVLP4需求2026年1.23萬噸→2027年3.92萬噸（YoY+218%）→2028年5.2萬噸，金居2026年底HVLP4月產能約200噸、2027年HVLP3+HVLP4平均月產約700噸、東南亞新廠最快2029年，法人目標價645元（⚠️擷取工具回傳單位為「萬噸/月」，應為「噸/月」之誤；另需求1.23萬噸與9/21記錄的「2026年全球需求約24,000噸」口徑不一致，疑為HVLP4 vs HVLP3+全品項之差）。⚠️<b>三井金屬</b>：工商時報（2025/11/05）報導其台馬兩地VSP月產能約580噸，原訂<b>2026年9月擴至840噸</b>、內部研議再提前建置月產逾1,000噸體系——時程正落在本月，但本次<b>未查到「已實際開出」的公開確認</b>，暫不判定觸發，下次追蹤優先查證 → <b>未觸發（1b 待確認）</b></li>
+        <li>【指標2 FR-4現貨報價】新一輪調價：建滔於2026/08/28再發漲價通知，FR-4 +10%、薄型PP +20%（工商時報 2026/08/29），繼7/6 FR-4 +15%後年內再漲，工商時報稱「CCL第三季漲價力道比原先預期更強」；惟仍<b>未取得絕對報價（元人民幣/張）</b> → 方向屬漲價動能延續，但無法確認是否「再創新高」數字，<b>未確認觸發</b>，維持資料缺口</li>
+        <li>【指標3 HVLP3+銅箔設備交期】本次仍未查到設備交期的新數字 → 資料缺口，維持基準近2年</li>
+        <li>【指標4 玻纖布/T-Glass交期】高階玻纖布交期仍在<b>30週以上</b>；T-Glass 短缺未解、LowDK二代布全年漲幅估20-30%，CCL配額供貨、交期拉長至約6個月（WebSearch 彙整之市場報導，原始媒體與日期未逐篇確認 ⚠️）→ 遠高於20週觸發線，<b>未觸發</b></li>
+        <li>【指標5 單月營收YoY】8月為最新公告月（9月營收約10/10公布）：台光電8月201.45億元、YoY約+129%（經濟日報／鉅亨網 2026/09 上旬，與基準一致）；台燿8月59.15億元、YoY +132.48%、MoM +0.11%（鉅亨網、TechNews 2026/09/04）；<b>聯茂8月50.44億元、YoY +97.93%、MoM +6.21%，1-8月累計304.66億元、YoY +42.25%</b>（鉅亨網營收速報 2026/09）→ 無新月份可比對，<b>未觸發</b></li>
+        <li>【指標6 毛利率】Q3財報尚未公布 → 無新數據，<b>未觸發</b></li>
+        <li>【指標7 聯茂認證進度】本次未查到通過認證/認證延遲新聞 → <b>未觸發</b></li>
+        <li>【指標8 M9/1.6T放量時點】Vera Rubin 系統量產出貨仍規劃於2026下半年、NVIDIA 已送出首批 VR200 機櫃樣品（Windows Report）；大摩（2026/05/22）拆解 Rubin PCB 價值量+233%、材料由M7升級至M8/M9 → 未見提前/延後消息，<b>未觸發</b></li>
+        <li>【指標9 本淨比】台光電：股價約5,020元、每股淨值162.80元 → P/B約30.8倍（WebSearch 彙整，日期未確認 ⚠️），與基準「&gt;30倍」一致；財報狗另列24.29倍（以2025Q4每股淨值140.81元計，口徑較舊）⚠️。台燿、聯茂本次未取得新淨值 → <b>未觸發</b></li>
+        <li>【FactSet共識（鉅亨速報）】台光電（2026/08/12，19位分析師）：2026E EPS中位數114.67元（前值114.01）、2027E 216.47元、2028E 339.96元，目標價7,200元（較9/18記錄的8/04版本 113.55/217.73/340.7元、7,100元小幅調整）；<b>聯茂（2026/08/20，7位分析師）：目標價中位數由515元上修至570元（+10.68%，區間134-610元），6家看多、1中立、1看空</b>，8/19收盤484元；另查得較早版本聯茂 EPS 預估8.54元、目標價421元（鉅亨速報，日期較早）。台燿本次未查得新一版 FactSet</li>
+      </ul>
+    </div>
+    <div class="log-card">
+      <div class="log-date">2026-09-21（第三次追蹤查證）</div>
+      
+      <ul>
+        <li><b>本次無指標觸發</b>（各項數值與 2026-09-18 相較未跨過門檻，詳見逐項比對）</li>
+        <li>【指標1 上游供給缺口】高盛估計仍為 2026-2028 缺口 28%/39%/38%，未見機構下修至20%以下；另查得 HVLP4 供需缺口的絕對數量框架：2026年全球需求約24,000噸、實際有效產能僅約18,000-20,000噸，供給方僅三井金屬、金居開發（8358）、盧森堡一家廠商三家掌握高階量產技術；金居雲林三廠仍規劃2026年底完工、非「已開出」新產能 → <b>與基準一致，未觸發</b></li>
+        <li>【指標2 FR-4現貨報價】查得南亞塑膠已於2026/9/1起對CCL、半固化片(PP)再調漲20%-25%（基準建檔後的新一輪調價動作），但未查得截至9/21的絕對報價數字（人民幣/張）以確認是否已突破240元或跌破200元 → <b>維持資料缺口</b>，僅新增本次調價動作記錄</li>
+        <li>【指標3 HVLP3+銅箔設備交期】本次查得的「7天→15-20天/20-30天」交期資訊經比對疑似為一般PCB板材/普通CCL交期，非追蹤指標定義的「HVLP3+銅箔設備近2年訂單能見度」口徑 → <b>維持資料缺口</b>，與9/18同樣問題</li>
+        <li>【指標4 玻纖布交期】本次未查得新的交期週數更新 → 資料缺口，維持基準30週以上</li>
+        <li>【指標5/6 台光電、台燿單月營收YoY、Q2毛利率】2026年9月營收尚未公告（月營收慣例次月10日前後公布），本次查得的僅為已知的Q1/Q2舊數字 → <b>與基準一致，無新數據可比對</b></li>
+        <li>【指標7 聯茂認證進度】法說會佐證AMD Venice已於Q2季末出貨，帶動CCL由M6升級至M7（M7單價較M6高30%-50%）；另有一家非微軟的重要新客戶正進行M7~M9認證，惟未查得該客戶是否即為基準所指「第二家雲端服務商」，也未查得「已通過認證並開始出貨」的明確公開消息 → <b>與基準方向一致，未觸發</b>，新增AMD Venice出貨細節</li>
+        <li>【指標8 M9/1.6T放量時點】本次未查得NVIDIA VR200／AWS Trainium 3放量時程提前或延後的新消息 → 與基準「2027年上半年起」<b>一致，未觸發</b></li>
+        <li>【指標9 本淨比】查得台燿(6274)最新股價約1,370元（較基準查證時的1,415元小幅回落約3.2%），惟本次未查得同步更新的每股淨值以重新換算精確P/B，且回落幅度遠低於「下滑超過30%」的觸發門檻 → <b>未觸發</b>，維持資料缺口（需股價+淨值同步更新才能精確重算）</li>
+        <li>【FactSet共識預估】本次搜尋未查得台光電(2383)/台燿(6274)/聯茂(6213)新一輪FactSet共識數字更新 → 維持9/18記錄的版本，資料缺口未補齊</li>
+        <li>【補充】高盛對金居（8358）首次覆蓋給予買進評等、目標價900元，並估計HVLP3+市場2025-2028年CAGR達122%（先前僅知高盛估計供給缺口%數，此為首次補齊高盛對金居個股評等與目標價的具體數字）</li>
+      </ul>
+    </div>
+    <div class="log-card">
+      <div class="log-date">2026-09-18（第二次追蹤查證）</div>
+      
+      <ul>
+        <li><b>本次無指標觸發</b>（各項數值與 2026-09-17 基準相較未跨過門檻，詳見逐項比對）</li>
+        <li>【指標1 上游供給缺口】高盛估計 2026-2028 缺口仍為 28%/39%/38%，未見機構下修至20%以下；金居 HVLP4 市佔約10.3%進全球前三，雲林三廠仍是 2027年上半年量產時程，未見「新增大型產能已開出」的公開消息 → <b>與基準一致，未觸發</b></li>
+        <li>【指標2 FR-4現貨報價】僅查到建滔7月初曾對FR4/PP再度調漲15%、電子布(7628)價格7月初再度上調，但此為7/6生效、早於9/17基準建檔時間，應已反映在基準「230-240元人民幣/張」內；本次<b>未取得截至9/18的最新絕對報價數字</b>，無法確認是否已再創新高或跌破200元 → 暫列<b>資料缺口</b>，非確認觸發</li>
+        <li>【指標3 HVLP3+銅箔設備交期】本次查得的「7-30天」交期資訊經比對應屬其他材料/一般PCB板交期，與基準所指「近2年訂單能見度」性質不同，<b>未取得可比對的新數字</b> → 資料缺口，維持基準</li>
+        <li>【指標4 玻纖布交期】本次僅查得電子布<b>報價</b>上調，未查得交期週數更新 → 資料缺口，維持基準30週以上</li>
+        <li>【指標5/6 台光電、台燿單月營收YoY、Q2毛利率】2026年9月營收尚未公告（TWSE月營收慣例於次月10日前後公布），Q3財報尚未公布 → <b>與基準一致，無新數據可比對</b></li>
+        <li>【指標7 聯茂認證進度】法說會(2026/05/28)重申：M9已通過美系GPU大廠認證但「明年才貢獻營收」；對<b>第二家雲端服務商</b>的M7/M8/M9送樣認證「預計明年開始貢獻營收」→ 與基準（對第二家雲端服務商送樣認證中，預計明年貢獻營收）<b>完全一致，未觸發</b></li>
+        <li>【指標8 M9/1.6T放量時點】法說會佐證2027年為M9放量年、2027年新增動能另含新AI ASIC客戶與低軌衛星業務 → 與基準「2027年上半年起」<b>一致，未觸發</b></li>
+        <li>【指標9 本淨比／存貨／合約負債】本次未取得9/18最新股價與每股淨值以重新換算P/B，亦未查得存貨/合約負債絕對金額 → <b>維持資料缺口，無法比對</b></li>
+        <li>【新增：FactSet共識預估，首次補齊】台光電(2383) FactSet共識（2026/08/04，18位分析師）：EPS中位數2026E 113.55元／2027E 217.73元／2028E 340.7元，目標價7100元；台燿(6274) FactSet EPS上修至36.05元，目標價2032.5元。⚠️另有外資報告數字與FactSet版本有落差（台光電外資上修2026-2028 EPS至118/250/457元；台燿外資版本38.8/93.5/168.7元），口徑疑似不同（FactSet中位數 vs 個別外資報告），下次追蹤需標明來源版本並固定只取FactSet鉅亨速報數字作為基準比對，避免混用</li>
+        <li>聯茂(6213) 未查到明確標示「FactSet」來源的共識數字，僅查到法人預估2026年EPS約6-8元（來源不明確標示FactSet），列為資料缺口，下次追蹤需用「factset 6213」關鍵字專門查證</li>
+      </ul>
+    </div>
+    <div class="log-card">
       <div class="log-date">2026-09-17（同日追蹤查證，補齊資料缺口）</div>
+      
       <ul>
         <li><b>本次無指標觸發</b>（同日內查證，數字與基準值一致，僅補齊缺口資料）</li>
-        <li>【補齊第9項缺口】本淨比（P/B）基準值已建立：台光電 &gt;30倍；台燿約23-27倍（不同來源落差大，以股價1,415元÷每股淨值62.54元換算約22.6倍為主要參考）；聯茂約3.49倍。存貨/合約負債絕對金額仍查無資料（僅取得台光電2026Q1存貨周轉天數73.84天、台燿2026Q2存貨周轉天數90.27天、合約負債/股本比2.1%）</li>
-        <li>上游供給：金居（8358）HVLP3/4現況月產能約100噸，2026下半年目標提升至150噸；雲林三廠陸續開出、預計2027上半年量產，全開後月產能上看800-1,000噸；訂單能見度已到2028年——與基準一致，缺口尚無緩解訊號；三井金屬本次仍查無財報數字</li>
-        <li>台光電、台燿2026年9月單月營收尚未公布（週期未到），Q2數字與基準一致：台光電Q2毛利率33.85%（創40季新高）、上半年EPS 42.46元；台燿Q2 EPS 8.04元（QoQ+84%、YoY+241%）</li>
+        <li>【補齊第9項缺口】本淨比（P/B）基準值已建立：台光電 &gt;30倍；台燿約23-27倍（不同來源落差大，以股價1,415元÷每股淨值62.54元換算約22.6倍為主要參考）；聯茂約3.49倍。存貨/合約負債<b>絕對金額</b>仍查無資料（僅取得台光電2026Q1存貨周轉天數73.84天、台燿2026Q2存貨周轉天數90.27天、合約負債/股本比2.1%），需財報狗登入權限或MOPS財報明細才能補齊</li>
+        <li>上游供給：金居（8358）HVLP3/4現況月產能約100噸，2026下半年目標提升至150噸；雲林三廠2026下半年起陸續開出、預計2027年上半年量產，三廠全開後月產能上看800-1,000噸；訂單能見度已到2028年——與基準一致，缺口尚無緩解訊號；三井金屬本次仍查無財報/產能公開數字</li>
+        <li>台光電、台燿2026年9月單月營收/毛利率尚未公布（月報告週期未到），Q2數字與基準一致：台光電Q2毛利率33.85%（創40季新高）、上半年EPS 42.46元；台燿Q2 EPS 8.04元（QoQ+84%、YoY+241%）</li>
         <li>聯茂M9材料放量時點更新為「2027年上半年起逐步放量出貨予美系AI GPU大廠」（原基準僅寫「明年」），Q2毛利率回升至22.02%、EPS 3.52元；8月單月營收數字本次仍未查到</li>
-        <li>CCL三雄股價持續走高：台光電2026/09/16收5,085元、台燿收1,415元，反映評價持續擴張，非追蹤指標定義的觸發項目，僅供參考</li>
+        <li>CCL三雄股價持續走高：台光電2026/09/16收5,085元（先前基準建檔時提及約突破3,000元關卡）、台燿收1,415元，反映評價持續擴張，非追蹤指標定義的觸發項目，僅供參考</li>
       </ul>
     </div>
     <div class="log-card">
       <div class="log-date">2026-09-17（首次建檔，基準值）</div>
+      
       <ul>
-        <li>上游供給缺口：高盛估計2026-2028缺口28%/39%/38%，三井金屬＋金居合計僅滿足未來三年50%-60%需求</li>
-        <li>FR-4現貨報價：約230-240元人民幣/張，刷新2021前高</li>
-        <li>HVLP3+銅箔設備交期：近2年，訂單能見度到2028Q1；低Dk玻纖布交期30週以上</li>
-        <li>台光電2026/08營收201.46億元（YoY+129.85%）；前8月累計1,196.95億元（YoY+95.18%）；Q2毛利率33.9%</li>
-        <li>台燿2026/08營收59.15億元（YoY+132.48%）；前8月累計361.78億元（YoY+97.01%）；Q2毛利率29.7%、營業利益率23.5%（歷史高點）</li>
-        <li>聯茂2026Q1營收91.43億元（YoY+20.6%）；正對第二家雲端服務商進行M7/M8/M9送樣認證</li>
-        <li>建滔M6產品預計2026年底進入頭部PCB廠驗證</li>
-        <li><b>本次無指標觸發</b>（此為基準建檔，無前值可比較）</li>
+        <li>上游供給缺口：高盛估計 2026-2028 缺口 28%/39%/38%，三井金屬＋金居合計僅滿足未來三年 50%-60% 需求</li>
+        <li>FR-4 現貨報價：約 230-240 元人民幣/張，刷新 2021 前高</li>
+        <li>HVLP3+ 銅箔設備交期：近 2 年，訂單能見度到 2028 Q1</li>
+        <li>低 Dk 玻纖布交期：30 週以上</li>
+        <li>台光電 2026/08 營收 201.46 億元（YoY +129.85%）；2026 前 8 月累計 1,196.95 億元（YoY +95.18%）；Q2 毛利率 33.9%</li>
+        <li>台燿 2026/08 營收 59.15 億元（YoY +132.48%）；2026 前 8 月累計 361.78 億元（YoY +97.01%）；Q2 毛利率 29.7%、營業利益率 23.5%（歷史高點）</li>
+        <li>聯茂 2026 Q1 營收 91.43 億元（YoY +20.6%）；正對第二家雲端服務商進行 M7/M8/M9 送樣認證</li>
+        <li>建滔 M6 產品預計 2026 年底進入頭部 PCB 廠驗證</li>
+        <li><b>本次無指標觸發</b>（此為基準建檔，無「前值」可比較）</li>
       </ul>
     </div>
 
@@ -440,12 +630,32 @@
     <h2 class="section" id="gaps">資料缺口<span>DATA GAPS</span></h2>
     <div class="gap-box">
       <ul>
-        <li>聯茂（6213）2026年8月單月營收數字，本次僅查到Q1/Q2季度數字</li>
-        <li>台光電、台燿、聯茂三家存貨、合約負債的絕對金額（千元），僅補到部分周轉天數/比率</li>
-        <li>台燿本淨比在不同來源間落差極大（22.6～76.28倍），下次追蹤需以官方財報每股淨值重新換算校正</li>
-        <li>三井金屬（Mitsui Kinzoku）財報數字（營收、毛利率、HVLP產能）本次完全查無公開資料</li>
-        <li>2018-2019年跌價周期、2021年前波高點後下行周期的精確反轉時間點與跌幅未查到數字</li>
-        <li>台光電市占率「18.9%」與「16.2%」兩種數字的口徑差異來源</li>
+        <li>聯茂（6213）2026 年 8 月單月營收數字（本次僅查到 Q1/Q2 季度數字，8 月單月數字仍查無）→ 2026-09-24 已補：8月50.44億元、YoY +97.93%、1-8月304.66億元（鉅亨網營收速報）</li>
+        <li>台光電、台燿、聯茂三家存貨、合約負債的<b>絕對金額（千元）</b>（本次僅補到部分周轉天數/比率：台光電 Q1 存貨周轉天數 73.84 天、台燿 Q2 存貨周轉天數 90.27 天、合約負債/股本比 2.1%，仍需財報狗登入權限或 MOPS 財報明細才能取得絕對金額）</li>
+        <li>台燿本淨比（P/B）在不同來源間落差極大（22.6～76.28 倍），下次追蹤需以官方財報每股淨值＋當日股價重新換算校正</li>
+        <li>三井金屬（Mitsui Kinzoku）的財報數字（營收、毛利率、HVLP 產能），本次仍完全查無公開資料，僅金居開發本次有補到產能推估更新 → 2026-09-24 部分補：VSP月產能約580噸、原訂2026/9擴至840噸（工商時報 2025/11/05）；財報營收/毛利率仍缺</li>
+        <li>2021 年前波高點後的下行周期精確反轉時間點與跌幅（供作本輪見頂時的歷史參照基準）</li>
+        <li>（2026-09-18新增）FR-4 現貨報價截至查證當下的最新絕對數字（元人民幣/張）——本次僅查到7月初建滔調漲15%的舊聞，未取得可比對的當前報價</li>
+        <li>（2026-09-18新增）HVLP3+ 銅箔設備交期、低Dk玻纖布交期的最新週數/年數——本次查到的交期數字疑似指其他材料/一般PCB板，與追蹤指標定義的口徑不符，需下次改用更精確關鍵字（如「HVLP 電解銅箔 設備 訂單 交期」）查證</li>
+        <li>（2026-09-18新增）聯茂（6213）明確標示來源為 FactSet 的共識EPS數字——本次僅查到未標明來源的法人預估（2026年EPS約6-8元），下次追蹤建議直接搜尋「factset 6213」→ 2026-09-24 部分補：FactSet目標價中位數570元（2026/08/20，7位分析師）；最新版EPS中位數仍未取得（較早版本為8.54元）</li>
+        <li>（2026-09-18新增）台光電、台燿目前最新股價與每股淨值，用以重新換算本淨比（P/B）——本次未取得9/18當日數據 → 2026-09-24 部分補：台光電股價約5,020元／每股淨值162.80元≈30.8倍（日期未確認⚠️）；台燿仍缺</li>
+        <li>（2026-09-21新增）南亞塑膠9/1調漲20-25%後，FR-4/PP的絕對報價數字（元人民幣/張）——本次僅查到調漲百分比消息，未取得反映調漲後的實際報價</li>
+        <li>（2026-09-21新增）台燿最新每股淨值（本次僅取得股價1,370元，缺淨值無法重新換算P/B校正22.6～76.28倍的落差）</li>
+        <li>（2026-09-21新增）聯茂認證新客戶身份確認——查到「一家非微軟的重要新客戶正進行M7~M9認證」，但無法確認是否即為基準所指「第二家雲端服務商」，需下次追蹤時交叉核對</li>
+        <li>（2026-09-24新增）三井金屬是否已於2026年9月如期將VSP月產能擴至840噸（指標1(b)觸發判斷關鍵）——本次僅有2025/11舊報導的計畫時程，無實際開出確認</li>
+        <li>（2026-09-24新增）HVLP4供需缺口48%/43%、短缺1,500/2,500噸的原始出處與日期，以及需求口徑（1.23萬噸 vs 24,000噸）不一致的校正</li>
+        <li>（2026-09-24新增）建滔8/28調漲FR-4 10%後的絕對報價（元人民幣/張），用以判斷指標2是否「再創新高」</li>
+        <li>（2026-09-24新增）台燿（6274）最新一版FactSet鉅亨速報（EPS/目標價）</li>
+        <li>（2026-10-14新增）三井金屬 2026 年 9 月 VSP 月產能 840 噸是否實際開出——仍無確認，下次優先查三井金屬官網/日經</li>
+        <li>（2026-10-14新增）金居產能與訂單能見度口徑落差（2026 年底月產 150 vs 200 噸；訂單到 2027 底 vs 2028；三廠 2027 Q1 vs 2027 上半年）——需以金居法說會原文校正</li>
+        <li>（2026-10-14新增）台光電/台燿/聯茂 Q3 財報與毛利率（預計 10 月底至 11 月公布）、台燿 FactSet 最新版（日期可確認者）</li>
+        <li>（2026-10-14新增）松下官網正式公告（調價/退出一般 CCL）、200% 的成本或策略依據——僅有媒體傳達，需查松下官網 news</li>
+        <li>（2026-10-14新增）騰輝 FactSet 共識、Q3 一般/特殊材料占比、泰國新廠實際量產狀況、對松下轉單的實際承接量</li>
+        <li>（2026-10-14新增）CCL 原料占成本比（銅箔/玻纖布/樹脂約 40%/20%/25%）僅取自凱基單一分析（2026/04），需以法說會校正</li>
+        <li>（2026-09-24新增）台燿（6274）最新一版FactSet鉅亨速報（EPS/目標價）→ 2026-10-11 僅查到無日期舊版（23.63元／900元），最新版仍缺</li>
+        <li>（2026-10-11新增）三井金屬2026/8宣布的馬來西亞新廠（2031投產、VSP+1,200噸/月）是否應視為指標1(b)「新增大型產能」——需使用者確認判定口徑；840噸目標達成與否仍待公司公告確認</li>
+        <li>（2026-10-11新增）生益科技（600183.SH）、建滔積層板（1888.HK）近期股價與營運數據</li>
+        <li>2018-2019年跌價周期、2021年前波高點後下行周期的精確反轉時間點與跌幅未查到數字；台光電市占率「18.9%」與「16.2%」兩種數字的口徑差異來源</li>
       </ul>
     </div>
 
@@ -454,22 +664,52 @@
   <!-- ============ 07 參考來源 ============ -->
   <footer class="foot" id="sources">
     <p style="margin-bottom:10px;"><b>參考來源（部分）：</b></p>
+    <p class="src-legend">可信度分級：<span class="src-tier t1">I</span>公司原始揭露（財報/年報/官網）　<span class="src-tier t2">II</span>官方機構/海關/產業公協會統計　<span class="src-tier t3">III</span>券商研報/媒體報導　<span class="src-tier t4">IV</span>供應鏈訪查/市場傳言（未證實，需自行進一步查證）</p>
     <ul class="src-list">
-      <li><a href="https://www.ctee.com.tw/news/20251206700151-439901" target="_blank">AI伺服器帶旺 台系CCL全面起飛 | 工商時報</a></li>
-      <li><a href="https://news.cnyes.com/news/id/6447232" target="_blank">台光電CCL拿下全球近19%市占 | 鉅亨網</a></li>
-      <li><a href="https://www.ftnn.com.tw/news/566505" target="_blank">銅箔基板大廠市占率攀升至16.2% | FTNN</a></li>
-      <li><a href="https://news.cnyes.com/news/id/6597599" target="_blank">台光電8月營收201.46億元 | 鉅亨網</a></li>
-      <li><a href="https://news.cnyes.com/news/id/6597745" target="_blank">台燿8月營收59.15億元 | 鉅亨網</a></li>
-      <li><a href="https://www.jiepei.com/design/10806.html" target="_blank">覆銅板年內四輪漲價累計超40% | 捷配</a></li>
-      <li><a href="https://finance.sina.com.cn/stock/aigc/agcbld/2026-08-15/doc-ininikcc2628248.shtml" target="_blank">生益科技上半年淨利暴增130.42% | 新浪財經</a></li>
-      <li><a href="https://www.163.com/dy/article/KTD6OIER05198NMR.html" target="_blank">高盛：高端銅箔供應缺口成三年新常態 | 網易</a></li>
-      <li><a href="https://www.atlaspcb.com/news/news-doosan-ccl-thailand-ai-2026/" target="_blank">Doosan投資1800億韓元泰國CCL新廠 | AtlasPCB</a></li>
-      <li><a href="https://blog.fugle.tw/post/earnings-call-6213-2026-05-28" target="_blank">聯茂法說會重點備忘 | 富果直送</a></li>
-      <li><a href="https://www.digitimes.com.tw/tech/dt/n/shwnws.asp?id=0000752161_RDH29R6Z5HB6AU2JTPU13" target="_blank">CCL漲勢未完待續 | DigiTimes</a></li>
-      <li><a href="https://www.businessweekly.com.tw/business/blog/3021651" target="_blank">CPO故事破滅了？要不要砍光通訊部位 | 商周</a></li>
+      <li><span class="src-tier t1">I</span><a href="https://industrial.panasonic.com/sa/electronic-materials/news/2026-04-09-em-ccl" target="_blank">Price Revision of Circuit Board Materials（MEGTRON +20%/PP +15%）| Panasonic Industry</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.bnext.com.tw/article/92634/panasonic-ccl-price-hike-200-percent" target="_blank">松下CCL銅箔基板漲200%！台光電、騰輝、聯茂誰受惠？| 數位時代</a></li>
+      <li><span class="src-tier t4">IV</span><a href="https://www.bnext.com.tw/article/92634/panasonic-ccl-price-hike-200-percent" target="_blank">松下 200% 調價內容與生效日（原因松下未說明、官網未見公告，視為傳聞）| 數位時代轉述</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://technews.tw/2026/08/28/panasonic-industry-august-raised-money" target="_blank">玻纖布、銅箔成本飆！Panasonic 子公司 9 月喊漲 | TechNews</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://uanalyze.com.tw/articles/6130156556" target="_blank">AI高階CCL需求全面升溫 台光電、聯茂、台燿9月營收同步創高 | 優分析</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://money.udn.com/money/amp/story/5607/9796400" target="_blank">CCL 三雄9月營收攀峰 | 經濟日報</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://money.udn.com/money/amp/story/5607/9639601" target="_blank">外資驚爆高階 CCL 將掀第二波漲價潮 | 經濟日報</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://ctee.com.tw/news/20260415700867-430201" target="_blank">建滔第四度漲價、台燿調價 2-4 成 | 工商時報</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.ctee.com.tw/news/20260608701135-430201" target="_blank">三井金屬／金居 HVLP 擴產與缺口 | 工商時報</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://uanalyze.com.tw/articles/6521355913" target="_blank">HVLP4供需缺口擴大 金居搶攻Rubin高階銅箔商機 | 優分析</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://news.cnyes.com/news/id/6426189" target="_blank">鉅亨速報 Factset 台燿(6274) | 鉅亨網（日期未確認，疑為舊版）</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://udn.com/news/story/7253/9060092" target="_blank">騰輝營收／9月 特殊材料續成長 | 經濟日報</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.ctee.com.tw/news/20251206700151-439901" target="_blank">AI伺服器帶旺 台系CCL全面起飛 | 工商時報</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://news.cnyes.com/news/id/6447232" target="_blank">台光電CCL拿下全球近19%市占 | 鉅亨網</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.ftnn.com.tw/news/566505" target="_blank">銅箔基板大廠市占率攀升至16.2% | FTNN</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://news.cnyes.com/news/id/6597599" target="_blank">台光電8月營收201.46億元 | 鉅亨網</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://news.cnyes.com/news/id/6597745" target="_blank">台燿8月營收59.15億元 | 鉅亨網</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.jiepei.com/design/10806.html" target="_blank">覆銅板年內四輪漲價累計超40% | 捷配</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://finance.sina.com.cn/stock/aigc/agcbld/2026-08-15/doc-ininikcc2628248.shtml" target="_blank">生益科技上半年淨利暴增130.42% | 新浪財經</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.163.com/dy/article/KTD6OIER05198NMR.html" target="_blank">高盛：高端銅箔供應缺口成三年新常態 | 網易</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.atlaspcb.com/news/news-doosan-ccl-thailand-ai-2026/" target="_blank">Doosan投資1800億韓元泰國CCL新廠 | AtlasPCB</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://blog.fugle.tw/post/earnings-call-6213-2026-05-28" target="_blank">聯茂法說會重點備忘 | 富果直送</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.digitimes.com.tw/tech/dt/n/shwnws.asp?id=0000752161_RDH29R6Z5HB6AU2JTPU13" target="_blank">CCL漲勢未完待續 | DigiTimes</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.businessweekly.com.tw/business/blog/3021651" target="_blank">CPO故事破滅了？要不要砍光通訊部位 | 商周</a></li>
     </ul>
   </footer>
 
 </div>
+
+<script>
+(function(){
+  var wrap = document.getElementById('mapFilters');
+  if(!wrap) return;
+  wrap.addEventListener('click', function(e){
+    var btn = e.target.closest('.tbl-filter-btn');
+    if(!btn) return;
+    wrap.querySelectorAll('.tbl-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    var f = btn.dataset.filter;
+    document.querySelectorAll('#mapTable tbody tr').forEach(function(tr){
+      tr.style.display = (f === 'all' || tr.dataset.stage === f) ? '' : 'none';
+    });
+  });
+})();
+</script>
 </body>
 </html>
