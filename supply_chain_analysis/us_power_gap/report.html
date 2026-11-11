@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>美股電力缺口 產業追蹤報告</title>
+<style>
+  /* ============================================================
+     這一整個 <style> 區塊是固定設計系統（navy/orange），不要更改顏色、字體、間距。
+     只有正文（<body> 內容）依產業內容替換；CSS 逐字沿用即可。
+     ============================================================ */
+  :root{
+    --navy:#1F3A5F; --navy-d:#15233B; --orange:#E8853B;
+    --text:#1E293B; --text-dim:#64748B; --border:#E2E8F0;
+    --bg:#EEF1F5; --paper:#fff;
+    --green:#16A34A; --green-d:#15803D; --green-bg:#F0FDF4;
+    --red:#DC2626; --red-d:#B91C1C; --red-bg:#FEF2F2;
+    --amber:#F59E0B; --amber-d:#92400E; --amber-bg:#FFF8E1;
+    --thead:#EDEEF1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei","Helvetica Neue",Arial,sans-serif;
+    color:var(--text); line-height:1.7; font-size:14px; background:var(--bg);
+  }
+  .page{max-width:1080px;margin:24px auto;background:var(--paper);padding:0 0 40px;}
+  a{color:var(--navy);}
+
+  .banner{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-d) 100%);color:#fff;padding:36px 44px 30px;}
+  .banner .label{font-size:11px;letter-spacing:2.5px;color:#9DB2CE;font-weight:700;}
+  .banner h1{font-size:26px;font-weight:800;margin:8px 0 10px;line-height:1.4;}
+  .banner .sub{font-size:13px;color:#C9D6E8;line-height:1.8;}
+  .banner .badges{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
+  .badge{display:inline-block;font-size:11.5px;font-weight:700;background:rgba(255,255,255,0.12);color:#fff;padding:4px 12px;border-radius:12px;}
+
+  /* 錨點導覽列：黏在頂部，方便使用者跳到任一章節 */
+  nav.subnav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 44px;}
+  nav.subnav a{white-space:nowrap;color:var(--text-dim);text-decoration:none;font-size:12.5px;font-weight:700;padding:13px 12px;border-bottom:2px solid transparent;}
+  nav.subnav a:hover{color:var(--navy);border-bottom-color:var(--orange);}
+  nav.subnav a.home-link{color:var(--navy);border-right:1px solid var(--border);margin-right:6px;padding-right:16px;}
+  nav.subnav a.home-link:hover{color:var(--orange);border-bottom-color:var(--orange);}
+
+  .body-wrap{padding:32px 44px 0;}
+
+  .exec{background:var(--amber-bg);border-left:5px solid var(--amber);border-radius:6px;padding:20px 26px;margin-bottom:8px;}
+  .exec .exec-label{font-size:11px;font-weight:700;color:var(--amber-d);letter-spacing:1.5px;margin-bottom:8px;}
+  .exec p{font-size:14.5px;line-height:1.85;color:#1F2937;}
+  .exec b{color:var(--amber-d);}
+
+  h2.section{font-size:20px;font-weight:800;color:var(--navy);border-left:5px solid var(--navy);padding-left:14px;margin:44px 0 18px;scroll-margin-top:54px;}
+  h2.section span{display:block;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-dim);margin-top:2px;}
+  h3.sub{font-size:15px;font-weight:800;color:var(--navy-d);margin:26px 0 12px;}
+
+  p{margin-bottom:10px;text-align:justify;}
+  ul{padding-left:20px;margin-bottom:14px;}
+  ul li{margin-bottom:6px;line-height:1.7;}
+
+  .card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin-bottom:20px;}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0 20px;}
+  .stat{background:#fff;border:1px solid var(--border);border-top:3px solid var(--navy);border-radius:7px;padding:12px 14px;text-align:center;}
+  .stat .v{font-size:18px;font-weight:800;color:var(--navy);line-height:1.2;}
+  .stat .l{font-size:11px;color:var(--text-dim);margin-top:5px;line-height:1.4;}
+
+  table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:12.8px;}
+  thead th{background:var(--thead);color:var(--text);font-weight:700;text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);white-space:nowrap;}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6;}
+  tbody tr:last-child td{border-bottom:none;}
+  .tbl-wrap{overflow-x:auto;}
+
+  .geo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:10px 0 8px;}
+  .geo-card{border:1px solid var(--border);border-top:4px solid var(--navy);border-radius:8px;padding:16px 18px;background:#F8FAFC;}
+  .geo-card.china{border-top-color:#B91C1C;}
+  .geo-card.intl{border-top-color:#0369A1;}
+  .geo-card h4{font-size:13.5px;font-weight:800;color:var(--navy-d);margin-bottom:8px;}
+  .geo-card ul{padding-left:16px;margin-bottom:0;}
+  .geo-card li{font-size:12.5px;line-height:1.65;}
+
+  .g-pos{color:var(--green-d);font-weight:800;}
+  .g-neg{color:var(--red-d);font-weight:800;}
+  .g-flag{background:#FEF3C7;color:var(--amber-d);padding:1px 6px;border-radius:3px;font-size:11px;font-weight:700;margin-left:4px;}
+
+  .timeline{list-style:none;margin:8px 0 4px;padding:0;}
+  .timeline li{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:12px 0;border-bottom:1px dashed var(--border);}
+  .timeline li:last-child{border-bottom:none;}
+  .timeline .t{font-size:12.5px;font-weight:800;color:var(--navy);white-space:nowrap;}
+  .timeline .d{font-size:13px;line-height:1.7;}
+
+  .stage-pill{display:inline-block;background:#FEF3C7;color:var(--amber-d);border:1px solid #FDE68A;font-weight:800;font-size:13px;padding:6px 16px;border-radius:20px;}
+
+  .barrier-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:10px 0 6px;}
+  .barrier{background:#F8FAFC;border:1px solid var(--border);border-radius:7px;padding:12px 13px;}
+  .barrier .b-h{font-size:12px;font-weight:800;color:var(--navy);margin-bottom:6px;}
+  .barrier .b-v{font-size:12px;font-weight:700;margin-bottom:4px;}
+  .barrier .b-v.high{color:var(--red-d);}
+  .barrier .b-v.mid{color:var(--amber-d);}
+  .barrier p{font-size:11.5px;color:var(--text-dim);margin:0;line-height:1.55;}
+
+  .trig{font-size:12px;color:var(--red-d);}
+
+  .insight{background:#EEF2FF;border-left:4px solid #4338CA;border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#312E81;}
+  .insight b{color:#3730A3;}
+
+  .warn-box{background:#FEF2F2;border:1px solid #FECACA;border-left:4px solid var(--red);border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#7F1D1D;}
+  .warn-box b{color:var(--red-d);}
+
+  .gap-box{background:#FFFBEB;border:1px solid #FDE68A;border-radius:6px;padding:14px 18px;margin:10px 0;}
+  .gap-box ul{margin-bottom:0;}
+  .gap-box li{font-size:12.5px;color:#78350F;}
+
+  .src-list{list-style:none;padding:0;margin:0;columns:2;column-gap:24px;}
+  .src-list li{font-size:12px;line-height:1.8;break-inside:avoid;}
+  .src-list a{color:var(--navy);text-decoration:none;}
+  .src-list a:hover{text-decoration:underline;}
+
+  /* ---- 資料來源分級（可信度標籤，I 最可信 → IV 最需自行查證）---- */
+  .src-tier{display:inline-block;font-size:9.5px;font-weight:800;padding:1px 6px;border-radius:3px;margin-right:6px;vertical-align:1px;}
+  .src-tier.t1{background:var(--green-bg);color:var(--green-d);}
+  .src-tier.t2{background:#EEF2FF;color:#3730A3;}
+  .src-tier.t3{background:var(--amber-bg);color:var(--amber-d);}
+  .src-tier.t4{background:var(--red-bg);color:var(--red-d);}
+  .src-legend{font-size:11px;color:var(--text-dim);margin-bottom:10px;line-height:1.8;}
+
+  /* ---- 情境失效測試（追蹤指標章節內的子區塊）---- */
+  .falsify-box{background:#F5F3FF;border:1px solid #DDD6FE;border-left:4px solid #6D28D9;border-radius:6px;padding:14px 18px;margin:10px 0 18px;font-size:13px;line-height:1.75;color:#4C1D95;}
+  .falsify-box b{color:#5B21B6;}
+  .falsify-box ul{margin:6px 0 0;}
+  .falsify-box li{margin-bottom:6px;}
+
+  /* ---- 公司地圖篩選表（可選：供應鏈地圖章節公司數量多時使用，見 SKILL.md 說明）---- */
+  .tbl-filters{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px;}
+  .tbl-filter-btn{font-size:11.5px;font-weight:700;color:var(--text-dim);background:#F1F5F9;border:1px solid var(--border);border-radius:14px;padding:5px 13px;cursor:pointer;font-family:inherit;}
+  .tbl-filter-btn.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+
+  footer.foot{margin-top:40px;padding:20px 44px;border-top:1px solid var(--border);font-size:11px;color:var(--text-dim);line-height:1.8;scroll-margin-top:54px;}
+
+  /* ---- 讀數紀錄（Changelog）---- */
+  .log-card{background:#F8FAFC;border:1px solid var(--border);border-left:4px solid var(--navy);border-radius:8px;padding:16px 20px;margin-bottom:16px;}
+  .log-card.latest{border-left-color:var(--orange);}
+  .log-date{font-size:12.5px;font-weight:800;color:var(--navy-d);margin-bottom:8px;}
+  .log-card ul{margin:0;padding-left:18px;}
+  .log-card li{font-size:12.5px;line-height:1.7;color:var(--text);margin-bottom:4px;}
+  .log-trigger{display:inline-block;background:var(--red-bg);color:var(--red-d);font-weight:800;font-size:11.5px;padding:3px 10px;border-radius:12px;margin-bottom:8px;}
+
+  /* ---- 圖表卡（比較數字時用來輔助閱讀，取代/補充純表格）---- */
+  .chart-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:18px 22px;margin:14px 0 20px;}
+  .chart-card .chart-title{font-size:13px;font-weight:800;color:var(--navy-d);margin-bottom:2px;}
+  .chart-card .chart-caption{font-size:11.5px;color:var(--text-dim);margin-bottom:10px;}
+  .chart-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  svg.chart{width:100%;height:auto;display:block;overflow:visible;}
+  svg.chart text{font-family:"Noto Sans TC",Arial,sans-serif;fill:var(--text-dim);}
+  svg.chart .axis-line{stroke:var(--border);stroke-width:1;}
+  svg.chart .val-label{fill:var(--navy-d);font-weight:700;font-size:11px;}
+  svg.chart .grp-label{fill:var(--text-dim);font-size:11px;}
+  .chart-legend{display:flex;gap:16px;font-size:11.5px;color:var(--text-dim);margin-top:8px;}
+  .chart-legend span{display:inline-flex;align-items:center;gap:6px;}
+  .chart-swatch{width:10px;height:10px;border-radius:2px;display:inline-block;}
+
+  @media (max-width:900px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .geo-grid{grid-template-columns:1fr;}
+    .barrier-grid{grid-template-columns:1fr 1fr;}
+    .chart-row{grid-template-columns:1fr;}
+  }
+  @media (max-width:640px){
+    .banner,.body-wrap{padding-left:20px;padding-right:20px;}
+    nav.subnav{padding-left:20px;padding-right:20px;}
+    footer.foot{padding-left:20px;padding-right:20px;}
+    .stats{grid-template-columns:1fr 1fr;}
+    .barrier-grid{grid-template-columns:1fr;}
+    table{font-size:11.5px;}
+    .src-list{columns:1;}
+    .timeline li{grid-template-columns:90px 1fr;gap:8px;}
+  }
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;max-width:100%;}
+    nav.subnav{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="banner">
+    <div class="label">INDUSTRY TRACKER · 產業追蹤</div>
+    <h1>美股電力缺口（AI 資料中心供電） 產業追蹤報告</h1>
+    <div class="sub">資料中心上線速度快於電力供給：燃氣機、獨立發電商、燃料電池、核能與電網設備的卡位與觀察指標</div>
+    <div class="badges">
+      <span class="badge">產出日期 2026-11-11</span>
+      <span class="badge">框架：地圖 → 歷史 → 門檻 → 指標</span>
+      <span class="badge">目前階段：供不應求（情緒去風險中）</span>
+    </div>
+  </div>
+
+  <nav class="subnav">
+    <a class="home-link" href="../../index.html">← 回首頁</a>
+    <a href="#overview">總覽</a>
+    <a href="#map">供應鏈地圖</a>
+    <a href="#history">歷史周期</a>
+    <a href="#barriers">供應鏈門檻</a>
+    <a href="#indicators">追蹤指標</a>
+    <a href="#changelog">讀數紀錄</a>
+    <a href="#gaps">資料缺口</a>
+    <a href="#sources">參考來源</a>
+  </nav>
+
+  <div class="body-wrap">
+
+    <h2 class="section" id="overview">總覽<span>OVERVIEW</span></h2>
+    <div class="exec">
+      <div class="exec-label">EXECUTIVE SUMMARY · 摘要</div>
+      <p>實體供需仍是<b>供不應求</b>：PJM 2028/29 容量拍賣連三次以價格上限 <b>$325/MW-day</b> 成交，全區低於可靠度要求 <b>6,831 MW</b>；GE Vernova 氣機 backlog＋保留位 <b>122 GW</b>，已接 <b>2032</b> 年交付位；大型變壓器交期超過 <b>160 週</b>。但自 2026-10 起板塊因政策（選後國會、德州許可暫停）與 AI 債務疑慮去風險，基本面與指引並未惡化。邊際訊號是 GEV 單季新增合約降至 +6 GW。⚠️ 「44 GW 缺口」口徑不一（44／43／57／約 70 GW 皆有出處），只作量級參考。</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="v">6,831 MW</div><div class="l">PJM 2028/29 拍賣短缺（以上限成交）</div></div>
+      <div class="stat"><div class="v">122 GW</div><div class="l">GEV 氣機 backlog＋保留位（Q3'26）</div></div>
+      <div class="stat"><div class="v">&gt;160 週</div><div class="l">GSU 變壓器交期（2024 年均 143 週）</div></div>
+      <div class="stat"><div class="v">253 GW</div><div class="l">PJM 2046 夏季尖峰預測（2025：160 GW）</div></div>
+    </div>
+
+    <h2 class="section" id="map">供應鏈地圖<span>STEP 1 · SUPPLY CHAIN MAP</span></h2>
+    <h3 class="sub">缺口與補法拆解</h3>
+    <p>文章（美股老司機，2026-11-10）稱 2028 年美國資料中心電力淨缺口 44 GW，補法如下；四項加總 48 GW，與標題不符，文中未解釋。<span class="g-flag">⚠️ 口徑存疑</span></p>
+    <div class="chart-card">
+      <div class="chart-title">補法占比（GW）</div>
+      <div class="chart-caption">現場燃氣 20、電網增容 21、燃料電池 5、核能 2（文章數字，加總 48 GW）</div>
+      <div style="display:flex;height:26px;border-radius:5px;overflow:hidden;border:1px solid var(--border);">
+        <div style="width:41.7%;background:var(--navy);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">現場燃氣 20</div>
+        <div style="width:43.8%;background:var(--orange);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">電網增容 21</div>
+        <div style="width:10.4%;background:var(--green);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;">SOFC 5</div>
+        <div style="width:4.1%;background:#CBD5E1;"></div>
+      </div>
+      <div class="chart-caption" style="margin-top:6px;">最右小段為核能 2 GW。Morgan Stanley（2025-11）列：氣機 15–20 GW、Bloom 5–8 GW、核能 5–15 GW。</div>
+    </div>
+
+    <h3 class="sub">供給路徑與標的</h3>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>路徑</th><th>代表標的</th><th>角色</th></tr></thead>
+      <tbody>
+        <tr><td>A. 現場燃氣（BTM）</td><td>GEV、SMNEY、7011（MHI）、CAT、INIO</td><td>大型氣機、航改機、往復式引擎</td></tr>
+        <tr><td>B. 電網增容＋獨立發電商</td><td>CEG、VST、TLN、NRG、NEE</td><td>既有核電／氣電長約直供</td></tr>
+        <tr><td>C. 固態氧化物燃料電池</td><td>BE</td><td>現場、可快速部署</td></tr>
+        <tr><td>D. 核能（延役／重啟／SMR）</td><td>CEG、VST；OKLO、SMR（NuScale）、BWXT</td><td>SMR 為遠期選擇權</td></tr>
+        <tr><td>E. 電網設備與施工</td><td>ETN、HUBB、POWL、PWR；Hitachi Energy（非美股）</td><td>變壓器、開關設備、輸電工程</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="insight"><b>需求源頭：</b>付錢方是 hyperscaler（MSFT、GOOGL、AMZN、META、ORCL、CRWV），詳見 hyperscaler_capex 追蹤器。2026 指引：AMZN 約 $220B、GOOGL $195–205B、MSFT CY26 約 $170B（因第三方機房延誤下修）、META $130–145B（區間各來源不一）；AMZN、GOOGL 稱 2027 將顯著增加。</p>
+
+    <h3 class="sub">各環節現況</h3>
+    <div class="geo-grid">
+      <div class="geo-card">
+        <h4>氣機／引擎</h4>
+        <ul><li>GEV 122 GW；客戶約 80% 傳統、20% 資料中心</li><li>SMNEY firm 約 69 GW（⚠️ 另有 €154B／€162B 總 backlog 口徑）</li><li>INIO 設備 backlog $8.0B（+142%）</li></ul>
+      </div>
+      <div class="geo-card china">
+        <h4>發電商與燃料電池</h4>
+        <ul><li>CEG：Amazon 690 MW、Google 890 MW＋2,700 MW</li><li>VST：Comanche Peak 1,200 MW 已簽；Beaver Valley 未簽</li><li>TLN：6 GW 基載＋4 GW 待簽；BE：FY26 營收指引 $4.4–4.6B</li></ul>
+      </div>
+      <div class="geo-card intl">
+        <h4>電網設備</h4>
+        <ul><li>GSU 變壓器 &gt;160 週</li><li>高壓斷路器約 125 週</li><li>Eaton、Hitachi 擴產 2027–2028 才到位</li></ul>
+      </div>
+    </div>
+
+    <h2 class="section" id="history">歷史周期<span>STEP 2 · HISTORY & CURRENT STAGE</span></h2>
+    <ul class="timeline">
+      <li><div class="t">2025-11</div><div class="d">Morgan Stanley 估 2028 年需求 69 GW、措施前缺口 44 GW。</div></li>
+      <li><div class="t">2026-07</div><div class="d">PJM 2028/29 容量拍賣以上限成交，全 RTO 首度低於可靠度要求 6,831 MW；INIO 6 月以 $27 上市。</div></li>
+      <li><div class="t">2026-09~10</div><div class="d">CEG 與 Amazon、Google 簽 20 年約；GEV 訂單＋保留位 116→122 GW。</div></li>
+      <li><div class="t">2026-10-06 起</div><div class="d">CEG 高點 $309.80，之後 AI 建設股回檔。</div></li>
+      <li><div class="t">2026-11-05</div><div class="d"><b>選後單日</b>：GEV −7.5~10%、VST −12%、CEG 低點 $231.30；Vistra 提及德州資料中心審查與許可暫停（⚠️ 未查原始文件）。</div></li>
+    </ul>
+    <p class="insight"><b>基本面與股價背離：</b>訂單、指引、長約仍上行，股價自 10 月初回檔：GEV 近一月約 −22%、CEG 約 −17~−25%、INIO 自高點 −45~−60%。屬政策與 AI 債務疑慮驅動的去風險，不是訂單惡化。</p>
+    <p style="margin-top:16px;">目前供需階段判定：</p>
+    <p><span class="stage-pill">⚠ 供不應求（實體）；市場情緒由追價轉為去風險</span></p>
+    <ul>
+      <li>PJM 容量市場連三次以價格上限成交，缺口 6.8 GW。</li>
+      <li>GEV 新簽放緩（+6 GW，前幾季雙位數），但管理層稱無 slot 退出；分析師稱「正常化、非見頂」（未證實）。</li>
+      <li>氣機實際單價無可靠數字，僅有 William Blair 二手說法「每 kW 偏軟、歸因組合」。</li>
+    </ul>
+
+    <h2 class="section" id="barriers">供應鏈門檻<span>STEP 3 · BARRIERS TO ENTRY</span></h2>
+    <div class="barrier-grid">
+      <div class="barrier"><div class="b-h">加入門檻</div><div class="b-v high">高</div><p>大型氣機僅 GEV、SMNEY、MHI；瓶頸在上游特殊零組件</p></div>
+      <div class="barrier"><div class="b-h">擴產週期</div><div class="b-v high">2–5 年</div><p>新產能多落在 2027–2028 之後</p></div>
+      <div class="barrier"><div class="b-h">資本/技術門檻</div><div class="b-v high">高</div><p>核電／SMR 受 NRC 審批；BE 量產需資金（FCF −$181M）</p></div>
+      <div class="barrier"><div class="b-h">客戶認證／長約</div><div class="b-v mid">15–20 年長約</div><p>CEG、VST 與 hyperscaler 簽長約；氣機以 slot reservation 鎖產能</p></div>
+      <div class="barrier"><div class="b-h">轉單成本</div><div class="b-v high">高</div><p>氣機與變壓器轉單需重排交期；slot 可退出（GEV Q3 稱無退出）</p></div>
+    </div>
+    <p class="insight"><b>最硬的瓶頸在變壓器與大型氣機：</b>時間常數最長（GSU &gt;160 週；氣機交期 2029–2032），2027 年前缺口不易收斂。最難卡位的是 SMR（無商轉、無獲利）與競爭者較多的往復式引擎。</p>
+    <div class="chart-card">
+      <div class="chart-title">GSU 變壓器交期（週）</div>
+      <div class="chart-caption">2024 年平均 vs 2026 Q1（Reuters／WoodMac 引述，III 級）</div>
+      <svg class="chart" viewBox="0 0 360 200" role="img" aria-label="GSU 變壓器交期 2024 年 143 週、2026 Q1 超過 160 週">
+        <line class="axis-line" x1="46" y1="170" x2="330" y2="170"/>
+        <line class="axis-line" x1="46" y1="120" x2="330" y2="120" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="70" x2="330" y2="70" stroke-dasharray="2 3"/>
+        <line class="axis-line" x1="46" y1="20" x2="330" y2="20" stroke-dasharray="2 3"/>
+        <text x="40" y="173" text-anchor="end" font-size="10">0</text>
+        <text x="40" y="123" text-anchor="end" font-size="10">60</text>
+        <text x="40" y="73" text-anchor="end" font-size="10">120</text>
+        <text x="40" y="23" text-anchor="end" font-size="10">180</text>
+        <rect x="100" y="52" width="70" height="118" rx="3" fill="var(--orange)"/>
+        <text class="val-label" x="135" y="44" text-anchor="middle">143</text>
+        <text class="grp-label" x="135" y="188" text-anchor="middle">2024 平均</text>
+        <rect x="220" y="37" width="70" height="133" rx="3" fill="var(--navy)"/>
+        <text class="val-label" x="255" y="29" text-anchor="middle">&gt;160</text>
+        <text class="grp-label" x="255" y="188" text-anchor="middle">2026 Q1</text>
+      </svg>
+    </div>
+
+    <h2 class="section" id="indicators">追蹤指標<span>STEP 4 · TRACKING INDICATORS</span></h2>
+    <p>方向：🔴 =「缺口論述轉弱／風險升高」；🟢 =「缺口論述強化」。</p>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>#</th><th>指標</th><th>目前讀數（2026-11-11）</th><th>觸發閾值（任一即觸發）</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>PJM 容量拍賣（2029/30，2026-12）</td><td>$325/MW-day（上限）；短缺 6,831 MW</td><td class="trig">🔴 成交價低於上限 10% 以上（&lt; $292）或缺口歸零；🟢 以上限成交且短缺擴大</td></tr>
+        <tr><td>2</td><td>PJM 負載預測（final 2027-01）</td><td>2046 尖峰 253 GW（2025：160 GW）</td><td class="trig">🔴 資料中心貢獻或 2046 尖峰下修超過 10%；🟢 上修</td></tr>
+        <tr><td>3</td><td>GEV 氣機 backlog＋保留位（Q4）</td><td>122 GW（firm 64＋reservation 58）；年底目標 ≥130 GW</td><td class="trig">🔴 季減或年底 &lt; 125 GW；任何 slot 退出；🟢 ≥130 GW</td></tr>
+        <tr><td>4</td><td>其他 OEM backlog（SMNEY／MHI）</td><td>SMNEY firm 約 69 GW；MHI 約 32–35 GW</td><td class="trig">🔴 任一家 firm backlog 季減，或 SMNEY 單季新簽 &lt; 6 GW</td></tr>
+        <tr><td>5</td><td>變壓器／高壓設備交期與價格</td><td>GSU &gt;160 週；斷路器約 125 週</td><td class="trig">🔴 GSU 降至 130 週以下，或主要廠商降價／交期縮短 20% 以上；🟢 再上升</td></tr>
+        <tr><td>6</td><td>IPP 資料中心長約（CEG／VST／TLN）</td><td>CEG：Amazon 690 MW、Google 890＋2,700 MW；VST Beaver Valley 未簽；TLN 6 GW 待簽</td><td class="trig">🟢 任一家新增 ≥500 MW、≥15 年約；🔴 三家連續 2 季無新簽 ≥500 MW，或約被取消／延後</td></tr>
+        <tr><td>7</td><td>hyperscaler 2027 資本支出方向</td><td>2026：AMZN 約 $220B、GOOGL $195–205B、MSFT 約 $170B、META $130–145B</td><td class="trig">🔴 任一家 2027 指引持平或下修</td></tr>
+        <tr><td>8</td><td>BE／INIO 基本面</td><td>BE 指引 $4.4–4.6B、預收款 $309M；INIO backlog $8.0B</td><td class="trig">🔴 BE 下修指引或預收款 &lt; $309M；INIO backlog 季減或指引下修</td></tr>
+        <tr><td>9</td><td>政策與監管</td><td>德州暫停許可（未查原文）；民主黨掌國會</td><td class="trig">🔴 PJM／ERCOT 出現新的大用戶併網暫停或強制 curtailment，影響 ≥1 GW；🟢 加速許可或 DOE 貸款定案</td></tr>
+        <tr><td>10</td><td>板塊價格訊號（情緒）</td><td>CEG $250（11/6）；GEV 約 $774、前瞻 P/E 約 37x</td><td class="trig">🔴 CEG 收盤跌破 $231.30，或 GEV 前瞻 P/E &lt; 30x；🟢 CEG 站回 $274</td></tr>
+        <tr><td>11</td><td>INIO 鎖定期與供給</td><td>鎖定期約 2026-12-01（單一來源）；AI Alpine 持 646.5M 股</td><td class="trig">🔴 鎖定期後大宗減持或 secondary &gt;5% 流通股；🟢 賣壓有序、不破 $13.77</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="sub">財務數字驗證</h3>
+    <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>公司</th><th>最新一季</th><th>指引／展望</th></tr></thead>
+      <tbody>
+        <tr><td>GEV</td><td>Q3 營收 $12.6B（+27%）；訂單 $29B</td><td>積壓約 $197B；2026 FCF $16–17B</td></tr>
+        <tr><td>CEG</td><td>Q3 調整後 EPS $5.06</td><td>2026 EPS $12.50–12.80；2026–27 FCF 展望 $8.4B</td></tr>
+        <tr><td>VST</td><td>Q3 營運調整後 EBITDA $2.378B</td><td>2026 $7.1–7.5B；2027 $7.7–8.5B</td></tr>
+        <tr><td>TLN</td><td>Q3 調整後 EBITDA $669M</td><td>2027 $2.5–2.85B；庫藏股 $3.0B</td></tr>
+        <tr><td>BE</td><td>Q3 營收 $1,235.8M（+138%）；FCF −$181M</td><td>FY26 營收 $4.4–4.6B</td></tr>
+        <tr><td>INIO</td><td>Q3 營收約 $1.17B（+57%）；EBITDA $245.4M</td><td>FY26 EBITDA $780–800M；設備 backlog $8.0B</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="insight"><b>FactSet 共識查無：</b>鉅亨 FactSet 對 VST、CEG、GEV、BE 本次查無，僅有第三方聚合（VST 2027 EPS $11.14，日期不詳；另一來源 $9.08；CEG 2027 EPS 成長約 11–16%）。不可視為 FactSet 讀數。</p>
+
+    <h3 class="sub">情境失效測試：什麼數據出現代表現在的判斷是錯的</h3>
+    <div class="falsify-box">
+      <b>誠實面對反方證據，不是只找支持論點的資料。</b>
+      <ul>
+        <li><b>「缺口是真的」錯了：</b>PJM 2029/30 容量拍賣顯著低於上限且缺口歸零，或 PJM 2027-01 final 預測下修資料中心尖峰超過 10%。</li>
+        <li><b>「需求會持續」錯了：</b>任一 hyperscaler 2027 年資本支出指引持平或下修。</li>
+        <li><b>「設備瓶頸」錯了：</b>GEV 揭露 slot 退出或 backlog 連兩季下降；或 GSU 交期降至 130 週以下。</li>
+      </ul>
+    </div>
+
+    <h2 class="section" id="changelog">讀數紀錄<span>CHANGELOG</span></h2>
+    <p>逐次列出追蹤讀數，最新一筆在最上面，不覆蓋舊紀錄。</p>
+    <div class="log-card latest">
+      <div class="log-date">2026-11-11（首次建檔，基準值）</div>
+      <ul>
+        <li>PJM：2028/29 拍賣 $325/MW-day（上限）、清得 138,318 MW、短缺 6,831 MW；2046 尖峰 253 GW；2026-05 排隊 811 案／220 GW；Cycle 1 Phase I 2026-09-28 啟動。</li>
+        <li>氣機：GEV 122 GW（firm 64／reservation 58），Q3 新簽 +6 GW；SMNEY firm 約 69 GW；MHI 約 32–35 GW；交期 2029–2032。</li>
+        <li>變壓器：GSU &gt;160 週；高壓斷路器約 125 週；資料中心級開關設備 52–84+ 週。</li>
+        <li>IPP／BE／INIO：見上方財務數字驗證表。價格：CEG $250（11/6）、GEV 約 $774（11/9）、INIO 約 $18（報價矛盾）、BE 約 $214（推算）。</li>
+        <li>本次無指標觸發：基準建檔，沒有前值可比。優先觀察第 1、3、11 項。</li>
+      </ul>
+    </div>
+
+    <h2 class="section" id="gaps">資料缺口<span>DATA GAPS</span></h2>
+    <div class="gap-box">
+      <ul>
+        <li>鉅亨 FactSet 對 VST、CEG、GEV、BE 的個股共識查無（僅有第三方聚合）。</li>
+        <li>ETN、HUBB、POWL、PWR、CAT、NRG、NEE、BWXT 的 backlog 與財報未查；台灣電力設備廠未納入。</li>
+        <li>氣機實際單價無可靠數字；德州暫停許可的原始規定與時程未查。</li>
+        <li>PJM 2029/30 拍賣確切日期未查；INIO 鎖定期以招股書確認；INIO、BE 現價為推算或報價矛盾。</li>
+        <li>Vistra Q3 營收有兩個互相矛盾的數字（$6.347B vs $4.97B），本報告未採用營收。</li>
+        <li>Morgan Stanley 原始報告未開啟；44 GW 口徑未能釐清。</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="foot" id="sources">
+    <p style="margin-bottom:10px;"><b>參考來源（部分）：</b></p>
+    <p class="src-legend">可信度分級：<span class="src-tier t1">I</span>公司原始揭露（財報/年報/官網）　<span class="src-tier t2">II</span>官方機構/海關/產業公協會統計　<span class="src-tier t3">III</span>券商研報/媒體報導　<span class="src-tier t4">IV</span>供應鏈訪查/市場傳言（未證實，需自行進一步查證）</p>
+    <ul class="src-list">
+      <li><span class="src-tier t1">I</span><a href="https://www.sec.gov/Archives/edgar/data/0001996810/000199681026000162/gevpressrelease3q26.htm" target="_blank">GE Vernova Q3 2026 8-K | SEC</a></li>
+      <li><span class="src-tier t1">I</span><a href="https://finviz.com/news/414066/talen-energy-reports-third-quarter-2026-results-reaffirms-2026-guidance-and-introduces-2027-guidance" target="_blank">Talen Q3 2026 results | Finviz 轉載新聞稿</a></li>
+      <li><span class="src-tier t2">II</span><a href="https://insidelines.pjm.com/pjm-capacity-auction-procures-138318-mw-of-generation-resources-as-work-continues-to-address-growing-electricity-demand/" target="_blank">PJM 2028/29 Capacity Auction | PJM Inside Lines</a></li>
+      <li><span class="src-tier t2">II</span><a href="https://www.pjm.com/-/media/DotCom/committees-groups/subcommittees/las/2026/20261102/20261102-item-03---charles-river-associates-review-of-data-center-forecast.pdf" target="_blank">CRA 資料中心預測審閱（2026-11-02）| PJM</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://skilleddriver.substack.com/p/cc1" target="_blank">〈電力缺口〉| 美股老司機</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://fourweekmba.com/ai-morgan-stanleys-net-us-data-center-power-gap-hits-43-gw/" target="_blank">MS Net US Data Center Power Gap | FourWeekMBA</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.utilitydive.com/news/ge-vernova-in-9b-deal-to-buy-high-voltage-manufacturer-as-gas-turbine-orde/873223/" target="_blank">GEV Q3 orders | Utility Dive</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.turbomachinerymag.com/view/steam-turbines-gas-turbine-bottleneck-siemens-energy" target="_blank">Siemens Energy 氣機瓶頸 | Turbomachinery</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.powermag.com/mitsubishi-will-double-gas-turbine-production-as-demand-grows/" target="_blank">MHI 產能倍增 | POWER</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://pv-magazine-usa.com/2026/05/11/u-s-transformer-market-faces-severe-supply-constraints-as-lead-times-extend-to-four-years/" target="_blank">變壓器交期 | PV Magazine USA</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://finviz.com/news/418842/constellation-reports-third-quarter-2026-results" target="_blank">Constellation Q3 2026 | Finviz</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://finviz.com/news/418966/vistra-beats-on-a-record-ebitda-quarter-and-sets-2027-guidance-but-texas-policy-risk-now-drives-the-stock" target="_blank">Vistra Q3 與德州政策 | Finviz</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.renewable-energy-industry.com/news/world/article-7722-bloom-energy-posts-138-percent-revenue-growth-in-q3-profit-jumps-and-guidance-raised-shares-initially-under-pressure" target="_blank">Bloom Energy Q3 | renewable-energy-industry</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.tikr.com/blog/innio-soars-10-on-first-1-billion-quarter-and-raised-guidance-amid-accelerating-demand-from-ai" target="_blank">INIO Q3 | TIKR</a></li>
+      <li><span class="src-tier t3">III</span><a href="https://www.tikr.com/blog/ge-vernova-sinks-10-vistra-down-12-as-democrats-win-congress-incrementally-more-negative-sentiment" target="_blank">選後 GEV／VST | TIKR</a></li>
+    </ul>
+  </footer>
+
+</div>
+</body>
+</html>
