@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>6274 台燿　投資邏輯深度分析</title>
+  <meta property="og:title" content="6274 台燿　投資邏輯深度分析">
+  <meta property="og:description" content="台燿（6274）：26Q3 EPS 12.88元、毛利率36.9%基本面創高，但股價自1920元腰斬至974元，屬空頭急跌，框架上先現金為王，等站穩897元低點再重評。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="6274 台燿　投資邏輯深度分析">
+  <meta name="twitter:description" content="台燿（6274）：26Q3 EPS 12.88元、毛利率36.9%基本面創高，但股價自1920元腰斬至974元，屬空頭急跌，框架上先現金為王，等站穩897元低點再重評。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    /* ---- 投資重點快照（簡易分析區塊）專用樣式 ---- */
+    .snap-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .snap-hero .snap-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    .snap-hero .snap-desc {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-top: 4px;
+      line-height: 1.7;
+    }
+
+    .snap-eps {
+      text-align: right;
+    }
+
+    .snap-eps .v {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .snap-eps .v.pos {
+      color: var(--green-d);
+    }
+
+    .snap-eps .v.neg {
+      color: var(--red-d);
+    }
+
+    .snap-eps .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    .snap-hist {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .kpi {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid #94A3B8;
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .kpi.pos {
+      border-top-color: var(--green);
+    }
+
+    .kpi.neg {
+      border-top-color: var(--red);
+    }
+
+    .kpi.warn {
+      border-top-color: var(--amber);
+    }
+
+    .kpi .v {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .kpi .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-top: 5px;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 8px 0 20px;
+    }
+
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .pillar .ptype {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--orange);
+    }
+
+    .pillar .ptitle {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 4px 0;
+    }
+
+    .pillar .pkey {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .pillar ul {
+      padding-left: 18px;
+      margin-bottom: 0;
+      font-size: 12.8px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      background: var(--amber-bg);
+      padding: 1px 8px;
+      border-radius: 10px;
+      margin-left: 6px;
+    }
+
+    .note {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: -8px;
+    }
+
+    @media (max-width: 900px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .snap-eps {
+        text-align: left;
+      }
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>6274 台燿 — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：974 TWD　|　當前 PE：33.6x（近4季EPS 29.02元）　|　52 週區間：384 – 1920</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-11-14</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：6 空頭急跌</span>
+        <span class="badge">建議戰略：現金為王</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#snapshot">投資重點快照</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>26Q3 EPS 12.88元、毛利率36.9%基本面創高，但股價自1920元腰斬至974元，屬空頭急跌，框架上先現金為王，等站穩897元低點再重評。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">優質</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">合理</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">6 空頭急跌</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">暫不投資（觀察名單，0%）</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>優質</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>合理（PEG ≈ 0.86-1.12）</td><td>低</td></tr>
+            <tr><td>股價階段</td><td>6 空頭急跌</td><td>中</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill neg">現金為王</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>暫不投資（觀察名單，0%）</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>AWS/ASIC高階訂單被搶、CPO技術減少高階CCL用量等消息面造成估值壓縮</li><li>毛利率36.9%處景氣高點，原料成本與漲價回吐使EPS不如共識</li><li>營業現金流為負、應收130天、CB 100億元與擴產稀釋與槓桿</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>泰國廠Q4全產能、常熟與泰國新產能2027Q3貢獻</li><li>M7/M8新價格11月起生效，Q4毛利率法人預估37.4%到39.1%</li><li>M9材料隨1.6T交換器與Rubin平台導入</li></ul>
+      </div>
+
+      <!-- ============ 投資重點快照（原「簡易分析」報告的全部內容） ============ -->
+      <h2 class="section" id="snapshot">投資重點快照<span>SNAPSHOT · 簡易分析完整內容</span></h2>
+
+      <div class="card">
+        <div class="snap-hero">
+          <div>
+            <div class="snap-title">台燿 · 高階銅箔基板（CCL）· AI伺服器M7/M8漲價與擴產，但股價自高點腰斬</div>
+            <div class="snap-desc">CCL產業 · 銅箔基板約63%／膠片約33%／多層壓合板約3% · AI伺服器、ASIC、交換器客戶 · 放量成長期</div>
+          </div>
+          <div class="snap-eps">
+            <div class="v pos">12.13</div>
+            <div class="l">2025 EPS（元）· 截至 2026-11-14</div>
+          </div>
+        </div>
+        <div class="snap-hist">2024 EPS 9.56｜26Q3 EPS 12.88｜2025 營收 +31.5%</div>
+      </div>
+
+      <div class="exec">
+        <div class="exec-label">THESIS · 核心論述</div>
+        <p>台燿為台灣高階CCL供應商，<b>26Q3營收179.48億元、毛利率36.9%、單季EPS 12.88元</b>，前三季累計約25.3元，遠超2025全年12.13元。成長來自<span class='g'>漲價、M7/M8佔比提升與泰國廠轉盈</span>；核心張力是<span class='r'>股價自6月高點1920元跌至974元（-49%），市場擔心ASIC訂單、CPO與毛利率高點</span>，且上半年營業現金流為負。成敗關鍵在Q4毛利率能否守住37%以上與2027Q3新產能貢獻。管理層指引達成率中等偏高，但現金流改善與泰國廠進度有落差。</p>
+      </div>
+
+      <div class="kpis"><div class="kpi pos"><div class="v">179.48億</div><div class="l">26Q3 營收<br>季增 +25.5%</div></div><div class="kpi pos"><div class="v">36.9%</div><div class="l">26Q3 毛利率<br>較26Q1 +11.7pp</div></div><div class="kpi pos"><div class="v">12.88元</div><div class="l">26Q3 單季EPS<br>前三季約25.3元</div></div><div class="kpi warn"><div class="v">33.6x</div><div class="l">靜態PE<br>近4季EPS 29.02元</div></div><div class="kpi neg"><div class="v">-49%</div><div class="l">距6/22高點1920<br>股價974元</div></div><div class="kpi neg"><div class="v">-22.8億</div><div class="l">26H1 營業現金流<br>應收130天</div></div></div>
+
+      <h3 class="sub">KEY SWING FACTORS · 三大支柱</h3>
+      <div class="pillars"><div class="pillar"><div class="ptype">GROWTH</div><div class="ptitle">成長動能</div><div class="pkey">26Q3營收約為去年同期2.2倍，10月營收64.78億元年增127%</div><ul><li>漲價最高約40%（4月起），M7/M8新價格11月起生效</li><li>M7/M8佔營收38-39%，Others（厚銅電源）由8%升至14%</li><li>泰國廠7月少量產出、Q4全產能；常熟與泰國新產能2027Q3貢獻</li></ul></div><div class="pillar"><div class="ptype">MOAT</div><div class="ptitle">護城河</div><div class="pkey">高階CCL認證門檻高，毛利率36.9%與台光電37.7%接近</div><ul><li>規模與認證形成轉換成本，台灣廠月產能約85萬張</li><li>2025年底約230萬張，規劃2029年達575萬張</li><li>無專利與網絡效應，優勢取決於規格與漲價持續性</li></ul></div><div class="pillar"><div class="ptype">RISK</div><div class="ptitle">風險</div><div class="pkey">股價腰斬反映訂單與景氣高點疑慮，財務面現金流為負</div><ul><li>傳AWS下一代AI晶片高階訂單被搶（10/27跌停）</li><li>營業現金流26H1合計-22.84億元，存貨約100.8億元</li><li>擴產195萬張與100億元CB，產能過剩與稀釋風險</li></ul></div></div>
+
+      <div class="card">
+        <h3 class="sub">損益軌跡 （2023–2025 與 26Q3；營收單位：億元）</h3>
+        <div class="tbl-wrap"><table><tr><th>項目</th><th>2023</th><th>2024</th><th>2025</th><th>26Q3</th></tr><tr><td>營收(億元)</td><td>160.02</td><td>230.70</td><td>303.44</td><td>179.48</td></tr><tr><td>毛利率</td><td>N/A</td><td>N/A</td><td>22.7%</td><td>36.9%</td></tr><tr><td>營益率</td><td>N/A</td><td>N/A</td><td>14.3%</td><td>約31.0%</td></tr><tr><td>EPS(元)</td><td>N/A</td><td>9.56</td><td>12.13</td><td>12.88</td></tr><tr><td>ROE</td><td>N/A</td><td>N/A</td><td>N/A</td><td>—</td></tr></table></div>
+        <p class="note">Goodinfo回傳403未能雙源比對，2025 EPS 12.13與季度加總2.43+2.36+3.58+3.76吻合；2025毛利率/營益率取自財報狗。26Q3 EPS為單一來源，TradingView近4季推算約12.1（稀釋）待官方確認；26Q3營益率為推算。季ROE：24Q4 19.7%、25Q4 26.3%、26Q2 33.7%。</p>
+        <h3 class="sub">近 5 季損益</h3>
+        <div class="tbl-wrap"><table><tr><th>季別</th><th>營收(億元)</th><th>毛利率</th><th>EPS(元)</th></tr><tr><td>25Q3</td><td>約80.6</td><td>23.8%</td><td>3.58</td></tr><tr><td>25Q4</td><td>91.25</td><td>22.1%</td><td>3.76</td></tr><tr><td>26Q1</td><td>100.54</td><td>25.2%</td><td>4.36</td></tr><tr><td>26Q2</td><td>143.01</td><td>29.7%</td><td>8.02</td></tr><tr><td>26Q3</td><td>179.48</td><td>36.9%</td><td>12.88</td></tr></table></div>
+        <p class="note">25Q3營收由25Q4季增13.2%反推約80.6億元；Q4法人預估營收約206億元（季增15%）、毛利率約37.4%（大摩）至39.1%，非公司指引。</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">KEY WATCH 關鍵觀察點</h3>
+        <ul><li>26Q3毛利率36.9%，連續三季由25.2%、29.7%上升，單季EPS 12.88元已高於2025全年12.13元</li><li>10月營收64.78億元，月增5.8%、年增127.0%，前10月累計487.82億元、年增102.7%</li><li>股價自6/22高點1920元跌至11/9低點897元，現974元，PE由高點近60x降至約33.6x（近4季）</li><li>26H1營業現金流-22.84億元、資本支出16.33億元，應收130天、存貨約100.8億元，擴產與CB使財務槓桿上升</li><li>近3場法說會指引達成率約3/5（毛利率走升超標、泰國廠Q3轉盈達標、擴產戰略一致達標；泰國廠量產延後約2個月未達、現金流回正未達）；管理層可信度：中高</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">催化劑 CATALYSTS</h3>
+        <ul><li>泰國廠Q4達全產能，Q3已轉盈<span class="tag">（進行中）</span></li><li>M7/M8新價格11月起生效，Q4毛利率法人預估37.4%-39.1%<span class="tag">（待驗證）</span></li><li>常熟與泰國新增各60萬張月產能，2027Q3貢獻營收<span class="tag">（結構性）</span></li><li>M9材料隨1.6T交換器與Rubin平台導入，提升ASP<span class="tag">（醞釀中）</span></li><li>松下湖口廠停工數月，高階板材轉單台廠<span class="tag">（醞釀中）</span></li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">主要風險 KEY RISKS</h3>
+        <ul><li>10/27傳AWS下一代AI晶片高階訂單遭搶，台燿盤中跌停1280元，後續仍待證實</li><li>CPO技術若減少高階CCL需求，CCL族群曾單日下跌逾6%</li><li>毛利率36.9%為景氣高點，Q4預估已37%以上，原料玻纖布與銅箔成本上漲將壓縮</li><li>26H1營業現金流-22.84億元，應收130天，客戶集中與信用風險</li><li>擴產195萬張月產能（2028-2029）加CB 100億元，供給過剩與股本稀釋</li><li>技術面空頭急跌：股價在50/150/200DMA下方，11/9創低897元</li></ul>
+        <p class="note">估值提醒：靜態PE約33.6x、動態PE約25.9x（2026E），PEG約0.9，屬過渡階段，但EPS處高點、G信心低，估值僅供參考。｜ 生命週期：產業處放量成長期，但股價生命週期為第6階段空頭急跌（高點1920元起跌-49%）</p>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>法說簡報主動揭露產品別結構、現金流量表與資本支出，也坦承泰國廠量產較原計畫晚約兩個月、上半年營業現金流為負；但客戶名單與全年財測不揭露。</li>
+          <li><b>言行一致性：</b>近3場法說：毛利率走升（25.2%到29.7%到36.9%）超出市場預期、泰國廠Q3轉盈兌現；泰國廠量產延後2個月、現金流預期回正未兌現；擴產戰略一致（常熟、泰國、中山）。</li>
+          <li><b>資本配置：</b>專注本業擴產：常熟約人民幣9.5億、泰國約泰銖60餘億各加60萬張月產能，另通過中山120萬與泰國二期75萬張，並擬發行100億元CB；股數增加、現金流為負、成長空間大但稀釋與槓桿上升。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>成長初期到放量成長：AI伺服器/ASIC帶動M7/M8高階CCL供不應求，漲價與缺料推升毛利，但屬景氣與規格驅動，波動大。</li>
+          <li><b>市場規模：</b>TAM 查無可靠公開數字（全球CCL市場規模未取得有來源數值） ／ SAM 高階低損耗CCL（M7/M8以上）；FactSet共識台燿2026營收約609.5億元，2028約1,709.9億元 ／ SOM 台燿現有月產能約85萬張（台灣廠，美系外資估算），規劃2029年全公司約575萬張；SOM以產能與認證進度為限</li>
+          <li><b>競爭格局：</b>同業有台光電、聯茂、騰輝-KY、生益科技與日系松下。台光電26Q3毛利率37.7%、台燿36.9%；松下湖口廠11/4爆炸停工，市場原預期轉單但股價反而跌停。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>提供AI伺服器與高階交換器所需低損耗銅箔基板與膠片（M7/M8佔營收約38-39%），並跨台灣、常熟、泰國三地供貨以分散關稅與供應風險。</li>
+          <li><b>目標客群與通路：</b>AI伺服器、ASIC（美系雲端CSP）、高階交換器與電源板之PCB廠與系統客戶；客戶名單公司不揭露，透過PCB廠間接供貨。</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>約31.0%（26Q3，由9M 25.42%與H1 21.29%推算）；26Q2為23.5%（含金量 高）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>為負：26H1營業現金流-22.84億元 vs 稅後淨利約36.0億元（應收款成長、存貨約100.8億元）</td></tr>
+            <tr><td>資本支出／營收</td><td>約6.7%（26H1資本支出16.33億元 / 營收243.55億元），但進行中擴產大幅加碼</td></tr>
+            <tr><td>現金循環天數</td><td>應收130天+存貨91天=221天（26Q2，應付天數未揭露）</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>經濟規模、轉換成本（認證）</li>
+          <li><b>強度與期間：</b>高階CCL需通過PCB與終端客戶長天期認證，具轉換成本與規模優勢；但同業台光電毛利略高、無專利或網絡效應，優勢期間視M8/M9規格與漲價能否維持，約2-4年。</li>
+          <li><b>ROE 軌跡：</b>26Q1 27.5%、26Q2 33.7%（年化），25Q4 26.3%，24Q4 19.7%；近年大幅走高，26Q2保留盈餘率高但CB轉換使股本與權益增加。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>銷量x ASP：2026年漲價最高約40%（4月起）、M7/M8佔比38%到39%、Others（厚銅電源）8%到14%；產品別為CCL約63%、膠片約33%、多層壓合板約3%。</li>
+          <li><b>毛利率改善動能：</b>訂價權（漲價與成本轉嫁）、產品組合往M7/M8、稼動率與泰國廠轉盈；26Q3毛利率36.9%，法人預估Q4約37.4-39.1%，但玻纖布與銅箔成本上漲為壓力。</li>
+          <li><b>EPS 三大引擎：</b>EPS=ROE x權益/股數：ROE 27%到34%，權益由26Q1 180.6億元增至26Q2 241.5億元（含CB轉換）；流通股數26/6/30為2.90億股且增加，稀釋抵銷部分EPS。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>約0%（2026E約37.5元，2029E約38元）</td><td>漲價回吐、毛利率回落至25%、ASIC掉單或CPO減少高階CCL用量；企業價值約PE15x，約570元。</td></tr>
+            <tr><td>高機率</td><td>約30%（2029E約82元）</td><td>漲價維持、泰國常熟擴產2027Q3貢獻、毛利率約35%；以PE20x估，企業價值約1,640元。</td></tr>
+            <tr><td>樂觀</td><td>約50%（2029E約126元）</td><td>接近FactSet共識2028年EPS 125.9元，M9放量與產能倍增；以PE20x估，企業價值約2,500元。</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：29.02元（25Q4 3.76+26Q1 4.36+26Q2 8.02+26Q3 12.88）</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：約30% — 依據：以2026E EPS約37.5元（FactSet中位37.64）為基期，2029E約82元；FactSet隱含2026-28年CAGR約83%，本報告因景氣循環與毛利率高點風險大幅折價。</li>
+          <li><b>靜態 PE：</b>33.6x</li>
+          <li><b>動態 PE：</b>25.9x（2026E 37.64）；12.6x（2027E共識77.5）</li>
+          <li><b>PEG：</b>0.86-1.12</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr><td>貪婪興奮</td><td>1.5–2.0</td><td></td></tr><tr><td>樂觀開心</td><td>1.2–1.5</td><td></td></tr><tr class="current"><td>過渡階段</td><td>0.8–1.2</td><td>✓</td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">過渡階段</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：24x – 36x</li>
+          <li>對應股價區間：900 – 1,355</li>
+          <li>便宜價：約564元（PE15x、PEG約0.5）　|　合理價：約1,128元（PE30x、PEG約1.0）　|　偏高價：約1,500元（PE40x、PEG約1.35）　|　昂貴價：約1,950元（PE52x、PEG約1.75，接近歷史高1,920）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>約+154元（合理價1,128 - 974，約+16%），但EPS落在景氣高點、信心低</td></tr>
+            <tr><td>企業價值 MOS</td><td>可能情境約+666元（2029企業價值約1,640 - 974，約+68%）；悲觀情境約-404元</td></tr>
+            <tr><td>投資組合 MOS</td><td>單檔高Beta CCL族群，宜與其他產業分散；建議不超過組合5%</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card"><h3 class="sub">2.5 FactSet 共識估值</h3><div class="tbl-wrap"><table><tr><th>指標</th><th>期間</th><th>數值</th></tr><tr><td>EPS 共識中位數（13位分析師，均值37.48、高40.35、低32.01、前值37.3）</td><td>FY2026</td><td>37.64元</td></tr><tr><td>EPS 共識中位數（均值78.77、高100.07、低59.39）</td><td>FY2027</td><td>77.5元</td></tr><tr><td>EPS 共識中位數（均值133.17、高178.48、低81.47）</td><td>FY2028</td><td>125.91元</td></tr><tr><td>營收共識中位數（60,950,000千元）</td><td>FY2026</td><td>609.5億元</td></tr><tr><td>營收共識中位數（112,263,070千元）</td><td>FY2027</td><td>1,122.6億元</td></tr><tr><td>營收共識中位數（170,992,000千元）</td><td>FY2028</td><td>1,709.9億元</td></tr><tr><td>目標價</td><td>12個月</td><td>2,170元</td></tr></table></div><p class="note">來源：<a href="https://news.cnyes.com/news/id/6639335">鉅亨網〈鉅亨速報 - Factset 最新調查：台燿(6274-TW)EPS預估上修至37.64元，預估目標價為2170元〉（2026-10-28 12:10，轉載 FactSet）</a>｜資料日期：2026-10-28</p><p class="note">限制：共識發布於Q3財報與法說之前且距snapshotDate已17天，可能已更新；目標價2,170元為頁面單一數字，現價僅974元且股價自共識發布後下跌約44%；頁面未揭露評級分布與FY2027/2028分析師人數。</p><p>與本報告推估的差異：2026E EPS 37.64元與本報告約37.5元一致；但2027/2028共識77.5/125.9元隱含2026-28年CAGR約83%，本報告取G約30%（2029E約82元），合理價約1,128元，遠低於共識目標價2,170元。</p></div>
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：股價974 vs 50DMA 1394.6（-30.2%）／150DMA 1388.3（-29.8%）／200DMA 1173.5（-17.0%），三條均線皆在股價之上</li>
+          <li>200 DMA 趨勢：上揚</li>
+          <li>近 6 個月波段高低點：創低</li>
+          <li>量價型態：量價中性，10日均量/50日均量=1.34，10/21與11/4出現大量下跌</li>
+          <li>股價乖離（季線）：-31.1%（季線60MA 1414.2）</li>
+          <li>是否出現特定型態：雙重頂</li>
+        </ul>
+        <p class="note"><b>TradingView 實測數據</b>（TPEX:6274｜截至 2026-11-13 收盤）</p><ul><li>距歷史新高：-49.3%</li><li>52週高低位置：距52週高 -49.3%／距52週低 +153.6%（TradingView 52週低384）</li><li>50DMA 1394.6（-30.2%）／150DMA 1388.3（-29.8%）／200DMA 1173.5（-17.0%）</li><li>200DMA 斜率：+7.14%（上揚）</li><li>趨勢模板通過 4/7（未通過：股價高於150與200DMA、股價高於50DMA、股價距52週高點25%以內）</li><li>RSI 33.8、ADX 33.7</li><li>10日相對量：0.79</li></ul><p class="note">資料來源：TradingView；最後一根已收盤日K為2026-11-13，currentPrice採該日收盤974元；價格僅還原分割、不還原現金股利；資料依TradingView方案可能延遲；台股成交量單位為股；腳本以260根K線計算的52週低為356，本報告採TradingView欄位384</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">6 空頭急跌</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：高</li>
+          <li>錯失機會風險：中</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <p>目前處於「6 空頭急跌」，非多頭底部/上漲階段，VCP 型態分析暫不適用。</p>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>暫不投資</li>
+          <li><b>建議週期：</b>不適用（現階段）；若日後進場，規劃18-36個月</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：40%</li>
+          <li>估計賠率：約2.5（期望獲利+50%至1,460元 vs 期望虧損-20%）</li>
+          <li>1/4 凱利公式下的最大下注比重：約4%（full Kelly 16%，現階段不啟用）</li>
+          <li><b>目前建議買入：</b>股價在均線下方且創低，屬空頭急跌，暫不買進。若日後止跌：偏低價約790元以下2%到3%、便宜價約564元以下加到5%，合理價1,128元以上不追。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>月營收YoY由+127%降至+50%以下，或26Q4毛利率低於33%，顯示漲價與缺料邏輯失效，全數出場</td></tr><tr><td>買進理由消失</td><td>確認ASIC/AWS高階訂單遭取代、或CPO導入明顯減少高階CCL用量，且連續2季EPS低於共識，全數出場</td></tr><tr><td>市場估值過高</td><td>股價漲至約1,950元以上（PEG大於1.75或PE大於50x），分批賣出</td></tr><tr><td>機會成本過高</td><td>出現PEG低於0.7且股價處上升階段的更佳標的時，分批換股</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>確認AWS/ASIC次世代專案送樣與認證通過（摩根士丹利提到台燿正測試次世代AI專案樣品）</li><li>松下湖口廠停工數月，轉單台廠的實際規模</li><li>CPO與Rubin材料規格（M8或M9）的最終定案</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告（上一場Q4法說為2026-03-12，預期2027年3月）</li>
+          <li>下次財報公布：2027-03-31前（2026全年財報）；11月營收約12/5公布</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>月營收YoY（10月+127.0%）與MoM</li><li>單季毛利率（26Q3 36.9%，Q4預估37.4%-39.1%）</li><li>營業現金流與應收帳款天數（26Q2 130天）</li><li>泰國廠與常熟廠稼動率與2027Q3投產進度</li><li>股價是否守住897元低點與站回200DMA 1173元</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>收盤跌破897元（11/9低點）代表空頭延續，暫不考慮買進</li><li>收盤站回200DMA（約1173元）且連續量縮止跌，視為階段轉為空多轉折，重新評估</li><li>股價落至約790元以下（PEG約0.7）且月營收YoY仍高於+80%，可考慮2%試單</li><li>證實AWS/ASIC掉單或26Q4毛利率低於33%，下修G並降評</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>TradingView（日K／週K 價量，tv_technicals.py 計算）、鉅亨網轉載FactSet最新調查（2026-10-28）、台燿法說會簡報（2026-07-29，MOPS）與MOPS法說簡報清單、富果研究法說會備忘錄（news 2026-03-12、2026-07-30）、優分析（uanalyze.com.tw，26Q3，2026-10-29）、TechNews（月營收，finance.technews.tw）、財報狗（stockfeel.com.tw）、工商時報（ctee.com.tw，2026-10-30）、今周刊（businesstoday.com.tw，2026-11-05）</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-11-14</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
