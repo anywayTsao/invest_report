@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NVO Novo Nordisk　投資邏輯深度分析</title>
+  <meta property="og:title" content="NVO Novo Nordisk　投資邏輯深度分析">
+  <meta property="og:description" content="Novo Nordisk：以約 10 倍 PE 反映獲利谷底與價格戰，企業價值優質，宜 2% 試單倉分批。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="NVO Novo Nordisk　投資邏輯深度分析">
+  <meta name="twitter:description" content="Novo Nordisk：以約 10 倍 PE 反映獲利谷底與價格戰，企業價值優質，宜 2% 試單倉分批。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>NVO Novo Nordisk — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：約 39–40（最近可驗證收盤價 2026-10-15 為 39.22；11 月即時報價未能查證） USD（ADR；財報以 DKK 計價，1 ADR = 1 股 B 股）　|　當前 PE：約 10–11 倍（以近4季調整後 EPS 約 DKK 23–25、約 USD 3.6–3.9 估算）　|　52 週區間：35.12 – 64.16</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-11-14</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：1 空頭底部</span>
+        <span class="badge">建議戰略：分批進場</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>NVO 以約 10 倍 PE 反映獲利谷底與價格戰，企業價值仍優質但股價尚未站回 200 DMA，適合以 2% 試單倉分批、等 2027 指引與 CagriSema 驗證後再加碼。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">優質</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">合理</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">1 空頭底部</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">試單倉 2%</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>優質</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>合理（PEG ≈ 1.0–1.2）</td><td>低</td></tr>
+            <tr><td>股價階段</td><td>1 空頭底部</td><td>低</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill pos">分批進場</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>試單倉 2%</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>美國 GLP-1 價格侵蝕（Q3 約 30–35%）與 Lilly 口服 Foundayo / 注射劑競爭，壓縮量增效益</li><li>2026 年無明確 2027 指引、CFO 異動，且多國 semaglutide 專利到期與複方藥衝擊</li><li>減損與重組反覆（Q3 認列 DKK 87 億非現金減損），報告 EPS 品質與可預測性較差</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>口服 Wegovy 持續放量（Q3 銷售 DKK 54 億優於預期 DKK 45.5 億）與歐洲上市</li><li>CagriSema 美國上市（預計 2027 年初，待核准）</li><li>FCF 指引上修至 DKK 600–700 億，支持庫藏股 DKK 150 億與股利</li></ul>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>Q3'26 同時揭露調整後與報告口徑營業利益（調整後 DKK 317 億 vs 報告 DKK 230 億），主動說明 DKK 87 億非現金減損（ziltivekimab、製造網路調整）與 DKK 35 億一次性成本；也直言 Wegovy 價格侵蝕約 30–35%。但未提供 2027 指引，且 CFO 異動引發市場討論，透明度中上。</li>
+          <li><b>言行一致性：</b>近8季指引多次下修後又上修：2026 年初指引為調整後營收/營業利益 -5% 至 -13%（CER），8 月上修，11 月再上修至 -2% 至 +2%；2025 年亦有重組與裁員、指引下修紀錄。戰略（GLP-1 肥胖/糖尿病、口服 Wegovy、CagriSema）方向一致，但承諾兌現度偏弱，近期轉為『超預期』，信用度在修復中。</li>
+          <li><b>資本配置：</b>優先順序為本業（GLP-1 擴產，2024 年以 USD 116 億收購 Catalent 三座工廠）→ 股利（2025 年每股 DKK 11.70，配息率約 51%）→ 庫藏股（新一輪最高 DKK 150 億）。現金流由 2024 年 -DKK 147 億回升至 2025 年 DKK 283 億，2026 年指引上修至 DKK 600–700 億，具備回收股本與維持股利的能力；成長資本支出高峰已過，對 EPS 成長空間意涵為『由擴產轉向回收』，中等。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>放量成長期（肥胖症 GLP-1 滲透率仍低，口服劑型擴大可及性）但進入『量增價跌』的競爭整合階段：美國價格侵蝕 30–35%、Lilly 雙寡占競爭、semaglutide 在部分市場專利到期、複方藥與學名藥衝擊。產業屬成長中期，但單一公司的獲利成長斜率已明顯低於 2022–2024 年。</li>
+          <li><b>市場規模：</b>TAM 肥胖與代謝疾病藥物長期被預期達數千億美元級（部分機構預測 2030 年約 1,000–1,500 億美元以上，屬樂觀估計，僅供參考，易有泡沫） ／ SAM GLP-1 肥胖＋糖尿病處方藥市場；GlobalData 預估 Wegovy 組合銷售 2026 年約 135 億美元、2031 年約 189 億美元（僅 Wegovy 一線，口服劑型約 27.6 億美元） ／ SOM 2026 年 Novo 調整後營收約 DKK 3,000 億級（Q3 單季 DKK 792 億，約 120 億美元），Wegovy 口服錠 Q3 單季 DKK 54 億（約 8 億美元）；短期可取得市場取決於美國現金自費通路與口服錠放量</li>
+          <li><b>競爭格局：</b>全球 GLP-1 肥胖症市場呈 Novo 與 Eli Lilly 雙寡占，Lilly（Zepbound、Mounjaro、口服 Foundayo/orforglipron）近兩年市佔與股價動能領先；Lilly 小分子口服製造成本低，可承受較低價格。其他威脅包括 Pfizer、Amgen、Roche 等後進者、複方藥（compounded）與 semaglutide 學名藥。競爭強度高，美國價格戰為主要壓力。Novo 優勢為先行者與口服 Wegovy 首發（處方量五個月超過 300 萬張、逾 80% 為 GLP-1 新患者）。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>提供有臨床證據的減重與血糖控制 GLP-1 藥物（Wegovy/Ozempic/口服 Wegovy/CagriSema），同時降低心血管風險；以現金自費價 USD 149 起的口服錠擴大可及性。</li>
+          <li><b>目標客群與通路：</b>肥胖症與第 2 型糖尿病患者；通路為美國藥局（PBM/保險）、直接面向消費者的自費通路（如 NovoCare、合作電商）、國際市場醫院與藥局；美國占營收約半，國際營運（International Operations）Q3 成長 8%。</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>調整後營業利益 DKK 317 億 / 營收 DKK 792 億 ≈ 40%（Q3'26）；報告口徑 DKK 230 億 ≈ 29%；2025 全年報告營業利益率 41.3%（2023/2024 為 44.2%）（含金量 高）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>約 100% 以上（2025 年自由現金流 DKK 283 億，被 Catalent 擴產資本支出壓低；2026 年自由現金流指引 DKK 600–700 億，約為淨利 DKK 約 700–800 億的 80–90%，營業現金流/淨利估計高於 100%）</td></tr>
+            <tr><td>資本支出／營收</td><td>近年約 15–25%（2024–2025 擴產高峰，含 Catalent 收購；2026 年起預期下降，詳細數字未能完整查證）</td></tr>
+            <tr><td>現金循環天數</td><td>未能完整查證；製藥業典型為存貨與應收偏高，推估現金循環天數約 100–150 天（估計值）</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>專利 / 經濟規模 / 品牌（可複選）</li>
+          <li><b>強度與期間：</b>GLP-1 製造與臨床規模、醫師處方慣性與 semaglutide 品牌力構成中高強度護城河，優勢期間約 5–10 年；但 Lilly 在效價、口服成本上同樣具備優勢，護城河已從『近乎壟斷』降為『雙寡占』，且定價權正被美國政策與自費通路壓縮。專利：semaglutide 在中國、加拿大、巴西、印度等市場陸續到期。</li>
+          <li><b>ROE 軌跡：</b>ROE 長期高於 60–80%（2022–2024 年，因股東權益基礎小、獲利高）；2025 年起因減損、重組與股本擴張略有下滑，仍屬全球製藥業頂尖水準。保留盈餘率約 50%（配息率約 51%）。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>營收 = 銷量 × ASP：量端為 Wegovy/口服 Wegovy 與國際市場擴張（Q3 國際營運 +8%、美國 +1%）；價端為美國價格侵蝕 30–35%。結構上 GLP-1 肥胖症占比持續上升，糖尿病（Ozempic）則受學名藥與價格壓力。多元性中等，依賴 semaglutide 單一分子。</li>
+          <li><b>毛利率改善動能：</b>效率與重組為主：2025 年重組（約 9,000 人裁員，成本約 DKK 80–90 億）後 2026 年銷管費用下降；口服錠規模化、產能利用率回升；產品組合轉向口服與 CagriSema。逆風為降價導致的訂價權下降，毛利率受稀釋。</li>
+          <li><b>EPS 三大引擎：</b>EPS = ROE × 股東權益 / 流通股數：ROE 高但因價格下滑與減損承壓、股東權益隨保留盈餘緩增（約每年 +5–8%）、流通股數受庫藏股（DKK 150 億，約市值 1.5%）微幅下降。EPS 成長主力為淨利恢復，而非股數。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>-3%</td><td>Lilly 口服與注射劑持續搶市、美國價格再降 20% 以上、CagriSema 失敗；EPS 3年內陰跌，企業價值偏弱（平庸），合理股價約 USD 30–35，接近目前 52 週低點。</td></tr>
+            <tr><td>高機率</td><td>8–10%</td><td>2026 為獲利谷底，2027 起量增（口服錠、國際市場）抵銷價格下降，成本節省貢獻；3年後 EPS 約 USD 4.7–4.9，企業價值優質，合理股價約 USD 55–60。</td></tr>
+            <tr><td>樂觀</td><td>15%</td><td>口服 Wegovy 與 CagriSema（2027 年初美國上市）放量超預期、美國降價趨穩、庫藏股加大；EPS 3年後約 USD 5.5+，企業價值頂尖，合理股價約 USD 70–80。</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：約 USD 3.6–3.9（約 DKK 23–25：Q4'25 約 6.0 + Q1'26 10.91（含 340B 回沖一次性）+ Q2'26 4.75 + Q3'26 約 3.8（報告口徑）；調整後口徑約 DKK 23）</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：約 8–10%（未來 3 年 EPS CAGR，基期為 2026 獲利谷底） — 依據：基準情境：2026 年調整後營業利益指引 -2% 至 +2%（CER），視為獲利低點；2027 年起口服 Wegovy（Q3 單季 DKK 54 億，優於預期 DKK 45.5 億）與國際市場擴張帶動量成長，重組後費用率下降、庫藏股 DKK 150 億提供約 1–2% 的 EPS 加成，但被美國價格侵蝕（30–35%）與 Lilly 競爭抵銷；2027 年未提供指引，G 不確定性高，屬轉機＋成熟混合型，PEG 參考性有限。</li>
+          <li><b>靜態 PE：</b>約 10–11 倍（股價 / 近4季 EPS）</li>
+          <li><b>動態 PE：</b>約 9–10 倍（以 2026 全年估計 EPS 約 USD 4.0 估算；3 年後動態 PE 約 7–8 倍）</li>
+          <li><b>PEG：</b>1.0–1.2</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr><td>貪婪興奮</td><td>1.5–2.0</td><td></td></tr><tr><td>樂觀開心</td><td>1.2–1.5</td><td></td></tr><tr class="current"><td>過渡階段</td><td>0.8–1.2</td><td>✓</td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">過渡階段</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：9 – 16</li>
+          <li>對應股價區間：32 – 58</li>
+          <li>便宜價：約 USD 32 以下（PE ≈ 9）　|　合理價：約 USD 45（PE ≈ 12）　|　偏高價：約 USD 55（PE ≈ 14–15）　|　昂貴價：約 USD 65 以上（PE ≥ 17，約 52 週高點）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>目前企業價值（約 USD 45）− 目前股價（約 USD 40）≈ +12%，安全邊際小</td></tr>
+            <tr><td>企業價值 MOS</td><td>未來企業價值（3 年後約 USD 55–60）− 目前股價（約 USD 40）≈ +40–50%，企業價值 MOS 中等</td></tr>
+            <tr><td>投資組合 MOS</td><td>美股大型製藥，與台股半導體/電子為主的組合低相關，可提供產業分散；但需與 LLY 等 GLP-1 部位合併計算同題材曝險</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：股價約 39 低於 200 DMA（約 45.1，低約 15%）；50 DMA 亦低於 200 DMA（死亡交叉）；150 DMA 推估亦高於現價（以上為 2026-10 資料，11 月精確值未查證）</li>
+          <li>200 DMA 趨勢：下彎</li>
+          <li>近 6 個月波段高低點：創低</li>
+          <li>量價型態：股價在 52 週低點（35.1）上方約 10–12% 處築底，Q3 財報後有利多反應但持續性未確認；量能型態無法精確判斷，大致為量縮價跌轉量縮盤整</li>
+          <li>股價乖離（季線）：約 -12% 至 -15%（相對 200 DMA / 季線），尚未達 -50% 超賣門檻</li>
+          <li>是否出現特定型態：無</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">1 空頭底部</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：中</li>
+          <li>錯失機會風險：中</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <p>目前處於「1 空頭底部」，非多頭底部/上漲階段，VCP 型態分析暫不適用。</p>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>試單倉</li>
+          <li><b>建議週期：</b>18–36個月（需待 2027 年 Q1–Q2 驗證獲利落底，期間分批）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：約 50%</li>
+          <li>估計賠率：約 2（期望獲利約 +40%、期望虧損約 -20%，停損參考 USD 32–35）</li>
+          <li>1/4 凱利公式下的最大下注比重：約 6%（全凱利 0.5 − 0.5/2 = 25%，取 1/4 約 6%）</li>
+          <li><b>目前建議買入：</b>合理價偏下緣：先以 2% 試單，跌至偏低價（約 USD 36–38）加 3%，便宜價（約 USD 32 以下）再加 5%，總計不超過 6–10%；因股價仍在 200 DMA 下方且 2027 指引缺席，不建議一次進場。非投資建議，請自行判斷。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>2027 年 Q1 起調整後營業利益持續年減，或口服 Wegovy 季銷售連續兩季低於 DKK 50 億，顯示『2026 為獲利谷底』判斷錯誤。</td></tr><tr><td>買進理由消失</td><td>CagriSema 美國核准失敗或延後，或美國 Wegovy 價格侵蝕擴大至 40% 以上、Lilly 美國肥胖症市佔再顯著擴大。</td></tr><tr><td>市場估值過高</td><td>股價回升至 USD 55–65 且 PEG &gt; 1.5（動態 PE &gt; 15 倍而 G 仍 &lt; 10%）。</td></tr><tr><td>機會成本過高</td><td>出現 PEG &lt; 0.8 且企業價值 MOS 明顯更高的標的（例如 LLY 回檔或其他 GLP-1/醫療標的），或本標的資金效率明顯落後。</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>2027 年全年指引（預計隨 FY2026 財報公布）是否呈現 EPS 回升</li><li>CagriSema 美國 FDA 核准與定價</li><li>美國藥價政策（CMS/Medicare 肥胖症給付、TrumpRx 直接面向消費者通路）</li><li>口服 Wegovy 對 Lilly Foundayo 的市佔爭奪（USD 149 起自費價）</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告（FY2026 年報預計 2027 年 2 月上旬，歷史慣例約 2 月 3–5 日；未查證到官方日期）</li>
+          <li>下次財報公布：待公告（FY2026 全年財報預計 2027 年 2 月上旬）</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>Wegovy 口服錠季銷售（DKK）與處方量（週 TRx）</li><li>美國 Wegovy/Ozempic 淨價變化（ASP 年減幅 30–35% 是否收斂）</li><li>調整後營業利益率（目前約 40%）與年度指引</li><li>自由現金流（DKK 600–700 億指引）與庫藏股執行進度</li><li>國際營運（International Operations）成長率（Q3 +8%）</li><li>股價相對 200 DMA（約 USD 45）與 52 週低點 USD 35.1</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>股價跌破 USD 35.1（52 週低點）：確認空頭未結束，暫停加碼並重新檢視買進理由</li><li>股價站上 200 DMA（約 USD 45）且 200 DMA 翻揚、量增：判斷進入空多轉折，可轉為順向波段加碼</li><li>FY2026 財報（2027 年 2 月）給出 2027 營收/營業利益正成長指引：上調 G 至 10%+</li><li>CagriSema 美國核准時程延後或 Lilly 取得顯著處方量領先：下修 G 至 3% 以下並降倉</li><li>美國 Wegovy 價格再下調超過 20%：重新估算 EPS CAGR</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>Novo Nordisk 2026 Q3 財報與新聞稿（經 alpha-sense.com、quartr.com、stockanalysis.com、chemxplore.com、finimize.com 彙整）、Novo Nordisk 2025 年報五年概覽 annualreport.novonordisk.com、Novo Nordisk Q1/Q2 2026 公司公告（filings.xbrl.org、via.ritzau.dk、novonordisk.com）、BioSpace、Zacks、Pharmaceutical Technology（口服 Wegovy 與 Lilly Foundayo 競爭分析）、equibles.com、vcpscanner.com、twelvedata.com（NVO 價格、52 週區間、200 DMA）、MarketScreener 財報日曆</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-11-14</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>

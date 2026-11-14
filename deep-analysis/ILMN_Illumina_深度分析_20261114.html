@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ILMN Illumina　投資邏輯深度分析</title>
+  <meta property="og:title" content="ILMN Illumina　投資邏輯深度分析">
+  <meta property="og:description" content="Illumina：企業品質優質且指引連續上修，但PEG約4屬昂貴，暫不買進，等回到約150以下再分批。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ILMN Illumina　投資邏輯深度分析">
+  <meta name="twitter:description" content="Illumina：企業品質優質且指引連續上修，但PEG約4屬昂貴，暫不買進，等回到約150以下再分批。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>ILMN Illumina — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：約228-236（11/2盤中228.41；未取得11/14即時價） USD　|　當前 PE：約44x（推估）　|　52 週區間：約90-110（未查證） – 約290（財報前收盤290.06）</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-11-14</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：5 多頭出貨</span>
+        <span class="badge">建議戰略：分批出場</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>Illumina企業品質優質且指引連續上修，但股價約230對應PEG約4屬昂貴，財報後大量黑K，暫不買進，等回到約150以下再分批。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">優質</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">昂貴</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">5 多頭出貨</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">暫不買進，持股者分批減碼</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>優質</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>昂貴（PEG ≈ 約4.0-4.4）</td><td>中</td></tr>
+            <tr><td>股價階段</td><td>5 多頭出貨</td><td>中</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill warn">分批出場</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>暫不買進，持股者分批減碼</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>估值過高，PEG約4，成長10%卻給44倍PE</li><li>中國本土替代與出口限制</li><li>研究端需求疲弱與定價壓力</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>FY26指引連續上修，2027年指引於Q4法說公布</li><li>臨床基因體耗材持續兩位數成長</li><li>SomaLogic與多體學放量</li></ul>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>中高：財報同時列示含/不含關稅退款數字，分區域說明，2027指引待Q4法說。</li>
+          <li><b>言行一致性：</b>FY26 EPS指引自5.05-5.20連續上修至5.40-5.45；FY25 EPS 4.84達標；戰略一致，早期曾有下修與中國風險。</li>
+          <li><b>資本配置：</b>以本業與小型併購為主（SomaLogic現金3.5億美元），庫藏股小（Q4 2025僅約4,200萬），FCF約9.3億；成長空間中等。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>放量成長期偏成熟：臨床驅動穩定成長，研究端疲弱、定價壓力存在。</li>
+          <li><b>市場規模：</b>TAM 基因體/多體學TAM數百億美元，僅供參考 ／ SAM 定序儀+耗材+臨床約百億美元級（FY26營收指引46.4-46.6億） ／ SOM Q3定序耗材7.92億美元；臨床耗材有機成長14%；短期有機增量約3-6%/年</li>
+          <li><b>競爭格局：</b>短讀長龍頭；對手含Thermo、PacBio、Oxford Nanopore、Roche、中國MGI；競爭中高，中國本土替代為主要威脅。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>高通量、低單位成本的定序平台加耗材與軟體，降低基因資料取得成本。</li>
+          <li><b>目標客群與通路：</b>藥廠生技、學研、臨床實驗室與診斷公司、政府人口基因體計畫；直銷加經銷，耗材為經常性收入。</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>non-GAAP約23.6%（FY26指引）（含金量 中）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>約100%（FY25 OCF約11億）</td></tr>
+            <tr><td>資本支出／營收</td><td>約4%（估算）</td></tr>
+            <tr><td>現金循環天數</td><td>未查證，估約100-130天</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>專利、轉換成本、經濟規模</li>
+          <li><b>強度與期間：</b>裝機基數與耗材綁定、工作流程轉換成本高，期間約5-10年，但中國與新平台侵蝕中。</li>
+          <li><b>ROE 軌跡：</b>GAAP ROE近年由虧損回正，FY25 GAAP EPS 5.45，股數幾無縮減。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>銷量（NovaSeq X裝機、耗材）x ASP；臨床占比過半且成長快，研究與中國拖累，SomaLogic貢獻1.5-2點成長。</li>
+          <li><b>毛利率改善動能：</b>NovaSeq X產品組合、規模與費用效率；非GAAP營益率由23.1%升至約23.6-25%；訂價權受限。</li>
+          <li><b>EPS 三大引擎：</b>EPS成長主要來自利潤率與淨利，ROE緩升，股東權益溫和成長，流通股數大致持平。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>約3%</td><td>中國受限擴大、研究需求弱，企業價值約持平</td></tr>
+            <tr><td>高機率</td><td>約10%</td><td>臨床成長加利潤率微升，優質但成長中等</td></tr>
+            <tr><td>樂觀</td><td>約15%</td><td>多體學放量、中國復甦，企業價值明顯提升</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：約5.2（推估，non-GAAP）</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：約10%（區間8-13%） — 依據：FY25 4.84至FY26指引5.40-5.45約+12%，臨床耗材+14%，但研究與中國拖累，後續趨緩至約10%。</li>
+          <li><b>靜態 PE：</b>約44x</li>
+          <li><b>動態 PE：</b>約42x（FY26E 5.43）</li>
+          <li><b>PEG：</b>約4.0-4.4</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr class="current"><td>貪婪興奮</td><td>1.5–2.0</td><td>✓</td></tr><tr><td>樂觀開心</td><td>1.2–1.5</td><td></td></tr><tr><td>過渡階段</td><td>0.8–1.2</td><td></td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">貪婪興奮</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：20x – 30x</li>
+          <li>對應股價區間：約108 – 約163</li>
+          <li>便宜價：約110以下　|　合理價：約135-150　|　偏高價：約165-190　|　昂貴價：約200以上（現價約230）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>約-35%至-40%（合理價約140-150對現價約230）</td></tr>
+            <tr><td>企業價值 MOS</td><td>約-20%（3年後EPS約7.2x25倍約180對現價約230）</td></tr>
+            <tr><td>投資組合 MOS</td><td>單一醫療工具股，需與其他產業分散，比重宜低</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：股價約230，高於200DMA（約165-170，推估）與150DMA，接近50DMA（約225-235）</li>
+          <li>200 DMA 趨勢：上揚</li>
+          <li>近 6 個月波段高低點：墊高</li>
+          <li>量價型態：10/30財報後大量黑K跳空約-18.6%，量增價跌，近期反彈無量。</li>
+          <li>股價乖離（季線）：約+35%（對200DMA推估）</li>
+          <li>是否出現特定型態：無</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">5 多頭出貨</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：高</li>
+          <li>錯失機會風險：低</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <p>目前處於「5 多頭出貨」，非多頭底部/上漲階段，VCP 型態分析暫不適用。</p>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>暫不投資</li>
+          <li><b>建議週期：</b>不適合</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：約30%</li>
+          <li>估計賠率：約0.8-1（向下至合理價約-35%，向上約+15%）</li>
+          <li>1/4 凱利公式下的最大下注比重：0%（凱利值為負）</li>
+          <li><b>目前建議買入：</b>暫不買進；待價格回到約150（合理價）起以2%試單，約125以下加至3%，約110以下至5%，需基本面不變。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>臨床耗材有機成長由14%降至低於8%，或FY26指引被下修</td></tr><tr><td>買進理由消失</td><td>中國再度受限或本土替代擴大，營益率跌破22%</td></tr><tr><td>市場估值過高</td><td>PEG大於1.5（目前約4），股價高於約190者分批賣出</td></tr><tr><td>機會成本過高</td><td>出現PEG約1且G高於15%的更佳標的</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>2027年營收與EPS指引優於市場</li><li>中國恢復成長且無新增限制</li><li>多體學與蛋白體學訂單加速</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：約2027年2月上旬（待公告）</li>
+          <li>下次財報公布：約2027年2月上旬，Q4/FY26財報（待公告）</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>臨床定序耗材有機成長率（目前14%）</li><li>非GAAP營益率（目標約25%）</li><li>中國營收年增</li><li>NovaSeq X裝機數（Q3逾80台）</li><li>FY27 EPS指引</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>股價跌破約150且基本面不變，轉為分批買進評估</li><li>股價跌破200DMA約170，確認空頭，現金為王</li><li>FY27指引EPS高於6.2且臨床成長維持，上調G重估</li><li>中國新增制裁或指引下修，重新檢視買進理由</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>SEC 8-K（sec.gov）Q3 FY2026財報、Illumina投資人關係FY2025財報、MarketBeat（分析師目標價、股價）、Zacks與StockStory（Q3法說摘要）、StockAnalysis與Swing Trade Bot（股價、均線）</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-11-14</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
