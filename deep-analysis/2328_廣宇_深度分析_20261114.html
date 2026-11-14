@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2328 廣宇　投資邏輯深度分析</title>
+  <meta property="og:title" content="2328 廣宇　投資邏輯深度分析">
+  <meta property="og:description" content="廣宇：廣宇Q3轉盈但前三季EPS僅0.03元，靜態PE約125倍已預支AI伺服器與AFM轉型，毛利率回雙位數前建議觀望。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="2328 廣宇　投資邏輯深度分析">
+  <meta name="twitter:description" content="廣宇：廣宇Q3轉盈但前三季EPS僅0.03元，靜態PE約125倍已預支AI伺服器與AFM轉型，毛利率回雙位數前建議觀望。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    /* ---- 投資重點快照（簡易分析區塊）專用樣式 ---- */
+    .snap-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .snap-hero .snap-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    .snap-hero .snap-desc {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-top: 4px;
+      line-height: 1.7;
+    }
+
+    .snap-eps {
+      text-align: right;
+    }
+
+    .snap-eps .v {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .snap-eps .v.pos {
+      color: var(--green-d);
+    }
+
+    .snap-eps .v.neg {
+      color: var(--red-d);
+    }
+
+    .snap-eps .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    .snap-hist {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .kpi {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid #94A3B8;
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .kpi.pos {
+      border-top-color: var(--green);
+    }
+
+    .kpi.neg {
+      border-top-color: var(--red);
+    }
+
+    .kpi.warn {
+      border-top-color: var(--amber);
+    }
+
+    .kpi .v {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .kpi .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-top: 5px;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 8px 0 20px;
+    }
+
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .pillar .ptype {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--orange);
+    }
+
+    .pillar .ptitle {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 4px 0;
+    }
+
+    .pillar .pkey {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .pillar ul {
+      padding-left: 18px;
+      margin-bottom: 0;
+      font-size: 12.8px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      background: var(--amber-bg);
+      padding: 1px 8px;
+      border-radius: 10px;
+      margin-left: 6px;
+    }
+
+    .note {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: -8px;
+    }
+
+    @media (max-width: 900px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .snap-eps {
+        text-align: left;
+      }
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>2328 廣宇 — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：47.4 TWD　|　當前 PE：約124.7x（近4季EPS 0.38元，轉機期失真）　|　52 週區間：38.65 – 64.5</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-11-14</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：1 空頭底部</span>
+        <span class="badge">建議戰略：現金為王</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#snapshot">投資重點快照</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>廣宇Q3轉盈但前三季EPS僅0.03元，靜態PE約125倍已預支AI伺服器與AFM轉型，毛利率回雙位數前建議觀望。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">平庸</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">昂貴</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">1 空頭底部</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">暫不買進</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>平庸</td><td>低</td></tr>
+            <tr><td>市場估值</td><td>昂貴（PEG ≈ 約3-4（轉機股，參考性低））</td><td>低</td></tr>
+            <tr><td>股價階段</td><td>1 空頭底部</td><td>中</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill neg">現金為王</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>暫不買進</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>毛利率前三季約8.6%，AI伺服器放量可能進一步稀釋</li><li>全年雙位數營收成長需Q4至少約77億元，放量延後風險高</li><li>股價47.4元高於推估合理價21-35元，且趨勢模板僅1/7</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>AI伺服器10月放量，Q4營收與毛利率回升</li><li>AFM馬達Q4出貨並於2027年放量</li><li>2026-11-19法說會說明Q4與2027年展望</li></ul>
+      </div>
+
+      <!-- ============ 投資重點快照（原「簡易分析」報告的全部內容） ============ -->
+      <h2 class="section" id="snapshot">投資重點快照<span>SNAPSHOT · 簡易分析完整內容</span></h2>
+
+      <div class="card">
+        <div class="snap-hero">
+          <div>
+            <div class="snap-title">廣宇 · 線纜連接器與PCB · AI伺服器與AFM馬達轉型押注</div>
+            <div class="snap-desc">電子零組件 · 消費電子約53%、車用17%、通訊15%、工控13%、AI+Robotics約2%(2026Q1) · 鴻海集團成員、客戶以消費電子與車用為主 · 成熟期、嘗試切入成長新賽道</div>
+          </div>
+          <div class="snap-eps">
+            <div class="v pos">1.56</div>
+            <div class="l">2025 EPS（元）· 截至 2026-11-14</div>
+          </div>
+        </div>
+        <div class="snap-hist">2023 EPS 2.42｜26Q3 EPS 0.28｜2025 營收 217.7億 YoY -0.2%</div>
+      </div>
+
+      <div class="exec">
+        <div class="exec-label">THESIS · 核心論述</div>
+        <p>廣宇是鴻海集團的線纜、連接器、PCB供應商，傳統本業進入成熟期，<span class='r'>2026年前三季累計EPS僅0.03元</span>，26Q3單季轉盈EPS 0.28元、營收66.5億元YoY +23.8%。公司押注AI伺服器(馬來西亞廠、非紅供應鏈)與AFM軸向磁通馬達兩大引擎，但<b>AI伺服器毛利率預期低於傳統12-13%</b>，成長不等於獲利。<span class='r'>目前股價47.4元，近4季EPS僅0.38元，靜態PE約125倍</span>，市場已先反映轉型。成敗關鍵是Q4 AI伺服器放量速度與毛利率能否回到雙位數。管理層近3場指引多數延後或未達，可信度中低。</p>
+      </div>
+
+      <div class="kpis"><div class="kpi neg"><div class="v">0.38元</div><div class="l">近4季EPS合計<br>2025年為1.56元</div></div><div class="kpi pos"><div class="v">66.47億</div><div class="l">26Q3營收<br>YoY +23.8%、QoQ +23.5%</div></div><div class="kpi warn"><div class="v">9.2%</div><div class="l">26Q3毛利率<br>2025年12.2%、26Q1低點7.8%</div></div><div class="kpi warn"><div class="v">1.7%</div><div class="l">26Q3營益率<br>2025年5.2%</div></div><div class="kpi neg"><div class="v">約124.7x</div><div class="l">靜態PE<br>股價47.4元</div></div><div class="kpi pos"><div class="v">約60億</div><div class="l">現金水位<br>負債比率低於27%</div></div></div>
+
+      <h3 class="sub">KEY SWING FACTORS · 三大支柱</h3>
+      <div class="pillars"><div class="pillar"><div class="ptype">GROWTH</div><div class="ptitle">成長動能</div><div class="pkey">Q3營收創3年新高但全年雙位數成長需Q4爆發</div><ul><li>前三季營收162.8億元YoY約-3.2%，全年雙位數成長需Q4至少約77億元(Q3為66.5億元)</li><li>AI伺服器2026年10月放量、AFM發電廠空冷島Q4出貨、2027年貢獻較大，2026Q1 AI+Robotics僅占約2%</li><li>10月營收19.96億元YoY +27.8%，但MoM -18.2%；累計1-10月182.8億元YoY -0.7%</li></ul></div><div class="pillar"><div class="ptype">MOAT</div><div class="ptitle">護城河</div><div class="pkey">規模與客戶認證為主，議價力弱於銅價波動</div><ul><li>鴻海集團成員，馬來西亞廠為集團唯一海外據點，可提供非中國產能給歐美客戶</li><li>長年穩定毛利率11-15%(2023-2025)，但2026Q1因銅價與稼動率僅約50%降至7.8%</li><li>對新單改浮動報價並收包線費，顯示轉嫁成本能力正在重建而非已確立</li></ul></div><div class="pillar"><div class="ptype">RISK</div><div class="ptitle">主要風險</div><div class="pkey">本業低稼動加新業務低毛利使估值缺乏安全邊際</div><ul><li>26Q1為近20年首次單季營業虧損，前三季EPS 0.03元</li><li>AI伺服器代工毛利率預期低於傳統12-13%，放量可能稀釋整體毛利率</li><li>股價跌回200DMA附近，趨勢模板僅通過1/7，技術面無多頭結構</li></ul></div></div>
+
+      <div class="card">
+        <h3 class="sub">損益軌跡 （2023–2025 與 26Q3；營收單位：億元）</h3>
+        <div class="tbl-wrap"><table><tr><th>項目</th><th>2023</th><th>2024</th><th>2025</th><th>26Q3</th></tr><tr><td>營收(億元)</td><td>256.34</td><td>218.21</td><td>217.71</td><td>66.47</td></tr><tr><td>毛利率</td><td>12.4%</td><td>13.5%</td><td>12.2%</td><td>9.2%</td></tr><tr><td>營益率</td><td>6.3%</td><td>5.9%</td><td>5.2%</td><td>1.7%</td></tr><tr><td>EPS(元)</td><td>2.42</td><td>2.01</td><td>1.56</td><td>0.28</td></tr><tr><td>ROE</td><td>N/A</td><td>N/A</td><td>N/A</td><td>—</td></tr></table></div>
+        <p class="note">年度毛利率與營益率由各季數字依營收加權計算；EPS為四季加總(wearn)，Yahoo列2024年為2.00元；ROE查無可信來源。2025年股利0.90元(Yahoo)，配發率約58%。</p>
+        <h3 class="sub">近 5 季損益</h3>
+        <div class="tbl-wrap"><table><tr><th>季別</th><th>營收(億元)</th><th>毛利率</th><th>EPS(元)</th></tr><tr><td>25Q3</td><td>53.71</td><td>12.8%</td><td>0.33</td></tr><tr><td>25Q4</td><td>49.52</td><td>12.5%</td><td>0.34</td></tr><tr><td>26Q1</td><td>42.52</td><td>7.8%</td><td>-0.16</td></tr><tr><td>26Q2</td><td>53.81</td><td>8.6%</td><td>-0.08</td></tr><tr><td>26Q3</td><td>66.47</td><td>9.2%</td><td>0.28</td></tr></table></div>
+        <p class="note">26Q3財報於2026-11-12至13日公告，營益率1.72%、稅後淨利率2.54%；毛利率較26Q1回升1.4個百分點但仍低於2025年的12%以上。數字取自wearn與HiStock整理，未逐項核對公開資訊觀測站。</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">KEY WATCH 關鍵觀察點</h3>
+        <ul><li>26Q3營收66.47億元創3年新高(YoY +23.8%)，毛利率9.2%、EPS 0.28元，但前三季累計EPS僅0.03元</li><li>2026年Q1毛利率7.8%、營益率-0.3%為近20年首次單季營業虧損，主因銅價上漲與客戶拉貨延後使稼動率約50%</li><li>全年雙位數營收成長目標需Q4營收至少約77億元，10月19.96億元YoY +27.8%但MoM -18.2%，11-12月需合計約57億元</li><li>AI伺服器2026年10月放量(原預期Q3末)、AFM Q4出貨、2027年貢獻較大，2026Q1 AI+Robotics僅占約2%，AI代工毛利率低於傳統12-13%</li><li>近3場法說會指引達成率 0/3 已驗證達標：Q2回獲利(營益轉正但稅後仍虧=部分未達)、全年毛利率雙位數(前三季約8.6%=未達)、AI伺服器Q3末出貨(延至10月=延遲)；營收雙位數成長與AFM Q4出貨待驗證；管理層可信度：中低</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">催化劑 CATALYSTS</h3>
+        <ul><li>AI伺服器2026年10月放量，Q4為全年成長最大的一季(馬來西亞廠、非紅供應鏈)<span class="tag">（進行中）</span></li><li>AFM軸向磁通馬達用於發電廠空冷島，Q4出貨、2027年貢獻較大<span class="tag">（待驗證）</span></li><li>稼動率由Q1約50%回升，公司預期下半年80-90%，可攤薄固定成本<span class="tag">（進行中）</span></li><li>人形機器人關節與馬達，目標2030年全球市占5%以上、新業務占營收與獲利50%以上<span class="tag">（醞釀中）</span></li><li>2026-11-19法說會預定說明Q4放量與毛利率路徑<span class="tag">（待驗證）</span></li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">主要風險 KEY RISKS</h3>
+        <ul><li>毛利率低於預期：前三季約8.6%，遠低於全年雙位數目標與2025年12.2%</li><li>AI伺服器代工毛利率預期低於傳統12-13%，放量可能稀釋整體毛利率</li><li>銅價上漲與浮動報價轉嫁不完全，26Q1曾因此使毛利下降4.7個百分點</li><li>客戶拉貨波動：虛擬貨幣礦機等客戶延後拉貨，使Q1稼動率僅約50%</li><li>估值透支：靜態PE約125倍、2027E動態PE約34倍，股價較52週高點64.5元低26.5%但仍高於合理區間</li><li>執行與匯兌風險：馬來西亞廠低稼動持續虧損，26Q1另有匯兌損失，新品放量時程已多次延後</li></ul>
+        <p class="note">估值提醒：近4季EPS僅0.38元使靜態PE失真，PEG不適用於轉機股；以2027E EPS約1.4元與PE 15-25倍推估合理價約21-35元，目前47.4元偏昂貴，需Q4毛利率回雙位數才有重評空間。｜ 生命週期：產業為成熟期的連接器與線纜零組件，公司嘗試切入AI伺服器與馬達新賽道；股價生命週期處於空頭底部盤整(1)，未見多頭結構。</p>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>法說會會量化提供營收成長目標、稼動率、資本支出、現金與負債比，主動揭露26Q1近20年首次營業虧損與銅價、匯兌原因；但未揭露AI伺服器營收與客戶名稱。</li>
+          <li><b>言行一致性：</b>近3場法說會指引多數延後或未達：Q2回獲利僅營益轉正、全年毛利率雙位數目前約8.6%、AI伺服器由Q3末出貨延至10月放量；長期戰略(AI伺服器加AFM與機器人)則保持一致。</li>
+          <li><b>資本配置：</b>以本業與新廠擴產為主：2026年資本支出約8-10億元(蕪湖新廠、馬來西亞AI伺服器與AFM產線)，並承諾現金股利配發率50%以上，2025年股利0.90元；資本支出上升壓縮自由現金流與成長加速空間。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>成熟期：傳統線纜連接器與PCB需求穩定但缺乏成長，2024年營收年減兩位數；新業務AI伺服器約導入至成長初期、AFM與機器人屬導入期，目前合計占比僅約2%。</li>
+          <li><b>市場規模：</b>TAM AI伺服器與機器人TAM龐大但僅供參考，查無廣宇專屬可信數字 ／ SAM 馬來西亞非紅供應鏈AI伺服器連接器線纜與發電廠空冷島AFM馬達，規模未見可信揭露 ／ SOM 公司目標2028年營收500億元(董事長說法)，2026年為雙位數成長目標；2025年營收217.7億元</li>
+          <li><b>競爭格局：</b>連接器與線纜領域競爭者眾，包括貿聯、嘉澤、正崴等台廠與陸廠，廣宇憑鴻海集團關係與馬來西亞產能切入非紅供應鏈；市占數字查無可信來源。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>提供連接器、線纜、PCB等零組件與整合製造，並以馬來西亞廠供應歐美客戶非中國產能；新業務為AI伺服器線材與AFM軸向磁通馬達。</li>
+          <li><b>目標客群與通路：</b>消費電子、車用、通訊、工控客戶，AI伺服器客戶為在馬來西亞柔佛設資料中心的業者，另有中國機器人品牌客戶；經由直接銷售與集團供應鏈。</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>1.7%（26Q3）（含金量 很低）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>查無可信數字，未揭露</td></tr>
+            <tr><td>資本支出／營收</td><td>2026年資本支出約8-10億元，約占營收3-4%（以2025年營收估算）</td></tr>
+            <tr><td>現金循環天數</td><td>查無可信數字，未揭露</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>經濟規模、轉換成本（客戶認證）</li>
+          <li><b>強度與期間：</b>優勢強度中等：鴻海集團關係與客戶認證可維持穩定毛利率11-15%，但2026Q1跌至7.8%顯示議價力受銅價與稼動率影響，預估可維持數年但缺乏定價權。</li>
+          <li><b>ROE 軌跡：</b>查無可信ROE數據；2022至2025年EPS由2.55降至1.56元、配發率約58%，保留盈餘率偏低，ROE呈下降趨勢。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>傳統產品銷量由消費電子與車用客戶拉貨決定，2024年起年減；新增動能為AI伺服器線材(Q4放量)與AFM馬達，ASP與毛利率尚無揭露。產品結構26Q1：消費電子53%、車用17%、通訊15%、工控13%。</li>
+          <li><b>毛利率改善動能：</b>稼動率由Q1約50%回升至下半年80-90%、對新單浮動報價與重新議價、客戶包線費、AFM高毛利產品；逆風為銅價與AI代工低毛利組合。</li>
+          <li><b>EPS 三大引擎：</b>EPS = ROE x 權益 / 股數：ROE因毛利下滑而降，權益增長受配息拖累，518,346,282股流通股未見庫藏股減少，三大引擎目前皆偏弱。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>-10%（2025年EPS 1.56元為基期、至2028年約1.14元）</td><td>AI伺服器放量延後且毛利率低於10%，企業價值明顯低於現價</td></tr>
+            <tr><td>高機率</td><td>+8%（至2028年約1.97元）</td><td>2027年營收成長20%但毛利率約11%，EPS回到1.4元，2028年接近2元，企業價值約28-35元</td></tr>
+            <tr><td>樂觀</td><td>+20%（至2028年約2.70元）</td><td>AI伺服器與AFM順利放量且毛利率回12%以上，企業價值可支撐現價以上</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：0.38</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：8%（以2025年EPS 1.56元為基期，未來3年） — 依據：公司目標2026年起年均營收成長20%以上，但AI伺服器毛利率較低、2026年前三季EPS僅0.03元；以2025年EPS 1.56元為基期，抓2028年約1.97元，G約8%，轉機股不確定性高。</li>
+          <li><b>靜態 PE：</b>約124.7x</li>
+          <li><b>動態 PE：</b>約34x（2027E EPS約1.4元）</li>
+          <li><b>PEG：</b>約3-4（轉機股，參考性低）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr class="current"><td>貪婪興奮</td><td>1.5–2.0</td><td>✓</td></tr><tr><td>樂觀開心</td><td>1.2–1.5</td><td></td></tr><tr><td>過渡階段</td><td>0.8–1.2</td><td></td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">貪婪興奮</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：15x – 25x</li>
+          <li>對應股價區間：21 – 35</li>
+          <li>便宜價：21　|　合理價：28　|　偏高價：35　|　昂貴價：42以上</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>約-19元（合理價28元 - 現價47.4元，現價高出約69%）</td></tr>
+            <tr><td>企業價值 MOS</td><td>約-13元（3年後企業價值約34元 - 現價47.4元）</td></tr>
+            <tr><td>投資組合 MOS</td><td>單一轉機股不建議集中，若有也僅屬試單部位，不納入核心倉</td></tr>
+          </table>
+        </div>
+      </div>
+
+      
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：股價47.4元；50DMA 48.22(-1.7%)、150DMA 48.73(-2.7%)、200DMA 48.70(-2.7%)，三線糾結且股價在下方</li>
+          <li>200 DMA 趨勢：走平</li>
+          <li>近 6 個月波段高低點：盤整</li>
+          <li>量價型態：量價中性（近10日均量為50日均量的1.32倍，20日上漲量比下跌量0.95）</li>
+          <li>股價乖離（季線）：-0.7%（季線60MA 47.75）</li>
+          <li>是否出現特定型態：無</li>
+        </ul>
+        <p class="note"><b>TradingView 實測數據</b>（TWSE:2328｜截至 2026-11-13 收盤）</p><ul><li>距歷史新高：-63.7%</li><li>52週位置：距高點 -26.5%、距低點 +22.6%</li><li>50DMA 48.22（-1.7%）／150DMA 48.73（-2.7%）／200DMA 48.70（-2.7%）</li><li>200DMA 斜率：+0.45%（走平）</li><li>趨勢模板通過：1/7（未通過：股價高於150與200DMA、200DMA上升、50DMA高於150與200DMA、股價高於50DMA、股價高於52週低點30%、股價距52週高點25%內）</li><li>RSI 47.1／ADX 23.1</li><li>10日相對量：0.81</li></ul><p class="note">資料來源：TradingView；價格僅還原分割、不還原現金股利；TradingView依使用者方案可能為延遲報價；currentPrice為2026-11-13最後一根已收盤收盤價；台股成交量單位為股；K線已通過完整性核對；週K VCP未計算（階段非3或4）</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">1 空頭底部</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：高</li>
+          <li>錯失機會風險：低</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <p>目前處於「1 空頭底部」，非多頭底部/上漲階段，VCP 型態分析暫不適用。</p>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>暫不投資</li>
+          <li><b>建議週期：</b>不適合</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：30%</li>
+          <li>估計賠率：約1.5</li>
+          <li>1/4 凱利公式下的最大下注比重：0%（凱利值為負）</li>
+          <li><b>目前建議買入：</b>暫不買進；若股價回到合理價28元附近(PEG區間合理)才以2%試單，偏低價21元再加碼3%，且須先確認Q4毛利率回雙位數</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>Q4營收低於約70億元或AI伺服器放量再度延後至2027年，證明成長動能看錯</td></tr><tr><td>買進理由消失</td><td>26Q4毛利率仍低於10%或單季EPS回到負值，顯示轉機失敗</td></tr><tr><td>市場估值過高</td><td>股價高於42元而2027E EPS未上修超過1.4元，動態PE超過30倍</td></tr><tr><td>機會成本過高</td><td>出現3年EPS CAGR大於15%且PEG小於1.2的標的時，轉換持股</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>取得AI伺服器大客戶長約或第二家客戶，提高2027年G</li><li>AFM發電廠空冷島訂單金額與毛利率揭露</li><li>機器人關節馬達取得歐美客戶認證</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：2026-11-19（市場報導預定，待公司確認）</li>
+          <li>下次財報公布：2026年度財報約2027年3月中（2025年度財報為2026-03-11前後公布）</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>Q4營收是否達約77億元以上</li><li>月營收11、12月合計是否達約57億元</li><li>單季毛利率是否回到10%以上</li><li>稼動率是否達80%</li><li>AI+Robotics占營收比重是否由2%明顯提升</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>股價回到28元以下(合理價)且Q4毛利率大於10%時重新評估買進</li><li>Q4單季EPS大於0.40元且2027E EPS上修至1.6元以上時調高G</li><li>股價跌破38.65元(52週低點)代表轉機失敗，或站上64.5元(52週高點)需重新檢視趨勢</li><li>AI伺服器放量再度延後至2027年時下修所有情境</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>TradingView（日K 價量，tv_technicals.py 計算）、鉅亨網 news.cnyes.com（10月營收速報 2026-11-06）、Yahoo股市 tw.stock.yahoo.com（115年Q3損益表、公司資料）、玩股網 wantgoo.com（季度損益表）、HiStock histock.tw（利潤比率）、wearn stock.wearn.com（季度財務數據）、經濟日報 money.udn.com（2025財報與2026指引）、優分析 uanalyze.com.tw（2026-08-18法說會）、富果研究 blog.fugle.tw（2026-05-14、2026-03-12法說會）、工商時報 chinatimes.com、ctee.com.tw（2026-07-14法說）</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-11-14</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
