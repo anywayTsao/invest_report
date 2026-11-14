@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BE Bloom Energy　投資邏輯深度分析</title>
+  <meta property="og:title" content="BE Bloom Energy　投資邏輯深度分析">
+  <meta property="og:description" content="Bloom Energy（BE）：AI電力受惠者但估值偏高（PEG約2），現金流轉負、股價跌破主要均線，建議暫不買進、現金為王。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="BE Bloom Energy　投資邏輯深度分析">
+  <meta name="twitter:description" content="Bloom Energy（BE）：AI電力受惠者但估值偏高（PEG約2），現金流轉負、股價跌破主要均線，建議暫不買進、現金為王。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>BE Bloom Energy — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：約 $202（11/12 約 $202.37；11/11 收 $209.47，來源略有出入） USD　|　當前 PE：約 78x（近4季 non-GAAP EPS $2.61）　|　52 週區間：$75.70 – $351.28</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-11-14</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：5 多頭出貨</span>
+        <span class="badge">建議戰略：現金為王</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>（資料不足：查無可靠資料：(1)最新流通股數與可轉債稀釋（僅知約$1.15B可轉債本金，2028/2029到期，為舊資料；股數由市值$60-62B反推約2.9億股，屬推算）；(2)現金循環天數與合約負債；(3)公司今年已停止公布訂單積壓；(4)50/150/200 DMA與乖離僅有未標日期的二手數字，未經券商圖表驗證；(5)無週K資料可判VCP；(6)無獨立市占率數據。以上欄位以保守推估或註明不足處理。）Bloom是AI電力短缺的優質受惠者，Q3營收+138%、指引三度上修；但股價約78倍近4季EPS、PEG約2、現金流為負、股價已跌破主要均線，目前估值與階段皆不利，建議暫不買進，等回到合理價區或確認出貨訊號解除。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">優質</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">昂貴</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">5 多頭出貨</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">暫不買進（0%），觀察是否回到PEG 1.0-1.2區間</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>優質</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>昂貴（PEG ≈ 1.8–2.2）</td><td>低</td></tr>
+            <tr><td>股價階段</td><td>5 多頭出貨</td><td>低</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill neg">現金為王</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>暫不買進（0%），觀察是否回到PEG 1.0-1.2區間</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>AI資本支出放緩或德州等地暫停資料中心建設，導致大單延遲或取消，估值快速收縮</li><li>客戶高度集中(Oracle、AEP、NTT DATA)，加上營業現金流轉負與可轉債稀釋，融資壓力</li><li>估值極高(PE約78x、PEG約2)，增速一旦低於預期將出現戴維斯雙殺</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>2026年底年產能倍增至2GW及5GW路線圖具體化</li><li>Oracle、AEP、NTT DATA等大單轉為營收，毛利率持續提升</li><li>Brookfield融資與公用事業新客戶，擴大資料中心以外的需求</li></ul>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>普通偏弱。每季提供營收、毛利率、營益與EPS指引，並拆出產品毛利率(Q3 non-GAAP 38.4%)與安裝毛利率(-3.5%)，負面項目有揭露。但今年已停止公布訂單積壓與正式自由現金流指引，Q3營業現金流轉負(約-$27M)說明有限，Q3法說未更新產能GW與Brookfield細節。</li>
+          <li><b>言行一致性：</b>近期指引屢次上修且兌現：年初營收指引$3.1-3.3B、non-GAAP EPS $1.33-1.48 → Q2上修$3.9-4.2B、EPS $2.55-2.85 → Q3再上修$4.4-4.6B、EPS $3.10-3.40；Q3實際non-GAAP EPS $0.94 vs 共識約$0.69，營收$1.24B vs 約$1.06B。戰略(SOFC供AI資料中心與公用事業、擴產)一致。扣分：2025年GAAP仍虧損(EPS約-$0.37)，獲利紀錄僅近4季，長期兌現紀錄偏短。</li>
+          <li><b>資本配置：</b>以本業擴產為主(Fremont年產能約1GW倍增至2GW，管理層稱5GW為後續里程碑但未給時程，未能驗證)；Brookfield最高$5B合作融資客戶部署；以可轉債籌資，無庫藏股與股利，流通股數持續增加(稀釋)。成長空間大，但以稀釋換成長，需自由現金流轉正才能降低融資依賴。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>放量成長期(商業化初期轉放量)。AI資料中心電力短缺帶動場內自備發電(behind-the-meter)需求，2026營收預計成長約122%。需求有Oracle(最高2.8GW，二手來源)、AEP(約1GW/$2.65B)、NTT DATA(900MW，11/5公布)等大單；但高度綁定AI資本支出，近期因德州暫停資料中心建設傳聞與科技股修正劇烈波動，屬景氣循環敏感成長。</li>
+          <li><b>市場規模：</b>TAM 全球AI資料中心與電力基建場內發電市場，電力需求以數百GW計且快速成長(粗估，無單一權威數字，僅供參考)。 ／ SAM 需要24/7、快速部署、不依賴電網的大型資料中心與工商業客戶，粗估數十GW級(無可靠第三方數字)。 ／ SOM 短期取決於產能：2026年底年產能約2GW，2026營收指引$4.4-4.6B；以Oracle、AEP、NTT DATA等數GW大單為主，SOM目前受製造產能而非需求限制。</li>
+          <li><b>競爭格局：</b>燃料電池同業(FuelCell Energy、Doosan HyAxiom、Plug Power)規模遠小於Bloom，Wood Mackenzie認為尚未規模化。實際競爭來自燃氣輪機與往復式引擎(GE Vernova、Caterpillar等)：成本通常較低但交期長、需較多備援(Bloom自稱燃料電池僅需約10%超額，輪機20-50%，為公司自述)。大型500MW以上園區多用複循環燃氣輪機。無獨立市占率數據。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>提供固態氧化物燃料電池(SOFC)場內發電：部署快、免等電網併網、可用天然氣或氫、效率高、排放低、模組化擴充，解決AI資料中心『等不到電』的痛點。</li>
+          <li><b>目標客群與通路：</b>超大規模雲端與AI業者(Oracle等)、公用事業(AEP)、資料中心營運商(NTT DATA、Equinix)、工商業客戶；以直接銷售加Brookfield融資/專案夥伴通路。</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>Q3 2026 non-GAAP 23.1%（GAAP約18.2%：營業利益$225.4M/營收$1,235.8M）（含金量 中）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>明顯低於100%：Q3營業現金流約-$27M vs GAAP淨利約$0.2B；Q1曾為+$73.6M，TTM營業現金流約$300M（Q1時點，推算）。盈餘品質低。</td></tr>
+            <tr><td>資本支出／營收</td><td>約3-4%（Q1 2026資本支出$26.2M/營收$751M）；擴產中預期上升，含金量目前高但需追蹤。</td></tr>
+            <tr><td>現金循環天數</td><td>資料不足（未查到存貨/應收/應付數據）</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>專利(SOFC核心技術與製造know-how)＋經濟規模(已量產GW級)＋轉換成本(部署後綁定)</li>
+          <li><b>強度與期間：</b>優勢中等偏強：目前是唯一規模化的SOFC供應商，領先同業數年，且2GW擴產拉大規模差距。但相對燃氣輪機只是『更快交期』而非成本優勢，若輪機交期縮短或客戶自建，優勢可能收斂；預估持續期間3-5年。</li>
+          <li><b>ROE 軌跡：</b>2025年GAAP仍虧損(ROE為負)；2026近4季GAAP轉盈，TTM ROE估約20-25%(淨利約$0.45B+/股東權益$1.96B，為推估)。保留盈餘率100%(無股利)，但股數增加稀釋每股淨值。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>銷量×ASP：產品營收Q3 $1,074M(占87%)，由資料中心大單驅動，客戶集中(Oracle、AEP、NTT DATA)；服務與安裝占其餘。2025全年$2.02B(+37%)，2026指引$4.4-4.6B(+122%)。結構集中於少數大客戶與AI資本支出。</li>
+          <li><b>毛利率改善動能：</b>規模經濟與稼動率(2GW擴產)、產品組合(產品毛利率38.4%)、訂價權；但安裝毛利率仍為-3.5%拖累整體，2026整體non-GAAP毛利率指引約34%。</li>
+          <li><b>EPS 三大引擎：</b>EPS主要靠ROE上升與股東權益成長(淨利累積)；流通股數持續增加是逆風(可轉債與股權稀釋)。2026 non-GAAP EPS指引$3.10-3.40，遠高於2025的$0.76，基期極低使成長率失真。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>約10%（2026為高峰，AI資本支出放緩、價格壓力與稀釋）</td><td>企業價值約$100-130，股價有明顯下檔</td></tr>
+            <tr><td>高機率</td><td>約30-35%（以FY26E $3.25為基期，3年後約$7-8）</td><td>未來企業價值約$210-240（以PE約30x計），僅小幅高於現價</td></tr>
+            <tr><td>樂觀</td><td>約50%（5GW產能落地、公用事業擴大、毛利持續提升）</td><td>未來企業價值約$320-400，上行空間存在但需完美執行</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：$2.61（non-GAAP：Q4'25 $0.45 + Q1 $0.44 + Q2 $0.78 + Q3 $0.94）</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：約30-35%（以FY26指引中位數EPS $3.25為基期） — 依據：FY25→FY26 EPS成長超過300%，基期失真不能直接外推。改以2GW產能、毛利率約34%、營益率約23%、客戶大單與稀釋後推估，2026後3年EPS CAGR約30-35%。不確定性高，PEG僅供方向參考。</li>
+          <li><b>靜態 PE：</b>約78x（$202/$2.61）</li>
+          <li><b>動態 PE：</b>約62x（$202/FY26E $3.25）</li>
+          <li><b>PEG：</b>1.8–2.2</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr class="current"><td>貪婪興奮</td><td>1.5–2.0</td><td>✓</td></tr><tr><td>樂觀開心</td><td>1.2–1.5</td><td></td></tr><tr><td>過渡階段</td><td>0.8–1.2</td><td></td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">貪婪興奮</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：35x – 52x</li>
+          <li>對應股價區間：$114 – $154</li>
+          <li>便宜價：約$57以下（PEG 0.5）　|　合理價：約$114（PEG 1.0）　|　偏高價：約$154（PEG 1.35）　|　昂貴價：約$199以上（PEG 1.75+）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>約-$50~-90（目前企業價值$114-154 − 股價$202），無安全邊際</td></tr>
+            <tr><td>企業價值 MOS</td><td>約+$10~40（高機率情境3年後企業價值約$210-240 − $202），安全邊際薄</td></tr>
+            <tr><td>投資組合 MOS</td><td>產業集中度高(AI電力題材、與NVDA、VRT等相關度高)，高Beta；單一標的比重宜控制在試單倉以內</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：股價低於50/150/200 DMA（未標日期二手資料：低於50日線約23.5%、低於200日線約14.6%，未驗證）；200 DMA約$237，50 DMA約$264（反推）</li>
+          <li>200 DMA 趨勢：上揚</li>
+          <li>近 6 個月波段高低點：盤整</li>
+          <li>量價型態：量增價跌（11/5單日跌約16%、一個月下跌約20-42%，11/11反彈約15%）</li>
+          <li>股價乖離（季線）：約-15%（季線乖離，二手推估）</li>
+          <li>是否出現特定型態：無</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">5 多頭出貨</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：高</li>
+          <li>錯失機會風險：中</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <p>目前處於「5 多頭出貨」，非多頭底部/上漲階段，VCP 型態分析暫不適用。</p>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>暫不投資</li>
+          <li><b>建議週期：</b>不適合（目前估值與階段不支持建倉）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：約35%</li>
+          <li>估計賠率：約0.5–1（上行約+20~40%，下行約-35~-50%）</li>
+          <li>1/4 凱利公式下的最大下注比重：約0%（凱利值接近或低於0，1/4凱利不建議下注）</li>
+          <li><b>目前建議買入：</b>暫不建倉。若股價回落至約$154（偏高）以下可試單2%，$114（合理）加至3%，$57-80（偏低至便宜）再加至5%；且需基本面未惡化。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>2026Q4或2027Q1營收年增率明顯低於指引($4.4-4.6B)隱含水準，或大單(Oracle/AEP/NTT DATA)出貨延遲、取消</td></tr><tr><td>買進理由消失</td><td>產品non-GAAP毛利率跌破30%、營益率低於15%，或Q4營業現金流持續為負且融資依賴加重</td></tr><tr><td>市場估值過高</td><td>PEG回到1.5以上（以FY26E EPS計股價約高於$170-200）或動態PE超過55x，分批賣出</td></tr><tr><td>機會成本過高</td><td>出現PEG約1.0、成長確定性更高的AI電力或電網設備標的，或持股報酬明顯落後</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>管理層確認5GW產能擴張時程</li><li>新增超大規模雲端客戶或公用事業大單</li><li>天然氣價格與政策(燃料電池稅收抵免、併網規則)有利變化</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告（依去年慣例約2027年2月初）</li>
+          <li>下次財報公布：待公告（Q4與全年財報約2027年2月初，10-K同期）</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>季度營收與產品non-GAAP毛利率(目標34%以上)</li><li>營業現金流與自由現金流是否轉正</li><li>產能達產進度(2GW)與安裝毛利率是否轉正</li><li>流通股數與可轉債轉換稀釋</li><li>大客戶出貨與新單公布</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>股價回落至$154以下（PEG約1.35）或$114以下（合理價）重新評估建倉</li><li>股價重新站上200 DMA（約$237）並帶量，且FY27指引顯示EPS成長高於30%</li><li>2027Q1營業現金流轉正且毛利率維持34%以上</li><li>若跌破52週低點區間或單季指引下修，轉為重新檢討買進理由</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>SEC 8-K Q3 2026 press release (sec.gov)、Bloom Energy investor relations (bloomenergy.com)、Zacks / Benzinga / Newsquawk 財報與法說摘要、Trefis / Motley Fool / Nasdaq 股價與走勢報導、StockAnalysis / Investing.com / Fox Business 報價、Panabee / Utility Dive / Fortune / Data Center Frontier 產業與融資、CSIMarket / SEC 10-Q 資產負債表</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-11-14</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
