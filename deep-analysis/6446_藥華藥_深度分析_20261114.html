@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>6446 藥華藥　投資邏輯深度分析</title>
+  <meta property="og:title" content="6446 藥華藥　投資邏輯深度分析">
+  <meta property="og:description" content="藥華藥：基本面優質、獲利高速成長，但股價已充分反映，宜2%試單，等回測季線或975再加碼">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="6446 藥華藥　投資邏輯深度分析">
+  <meta name="twitter:description" content="藥華藥：基本面優質、獲利高速成長，但股價已充分反映，宜2%試單，等回測季線或975再加碼">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>6446 藥華藥 — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：1280（11/10收） TWD　|　當前 PE：約57倍　|　52 週區間：約600-690（推估） – 1600（8/26盤中）</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-11-14</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：3 多頭底部</span>
+        <span class="badge">建議戰略：分批進場</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>（資料不足：缺11/11後股價與法人買賣超、精確52週低點、ROE/資本支出/現金循環、11月券商預估、週K VCP細節（推估））基本面優質、獲利高速成長，但股價已充分反映，宜以2%試單，等回測季線或975再加碼</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">優質</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">偏高</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">3 多頭底部</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">試單倉 2%</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>優質</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>偏高（PEG ≈ 1.3-2.3）</td><td>中</td></tr>
+            <tr><td>股價階段</td><td>3 多頭底部</td><td>中</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill pos">分批進場</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>試單倉 2%</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>估值偏高（2027E PE約33倍）</li><li>Jakafi學名藥(2028)與rusfertide競爭</li><li>美國營收占76%集中且ET放量不確定</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>美國ET放量與健保/保險給付</li><li>日本、中韓、新加坡ET取證</li><li>PMF三期2027完成、2028送件</li></ul>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>每季法說並揭露區域營收與取證進度，負面資訊較少主動量化</li>
+          <li><b>言行一致性：</b>營收逐季成長，前三季EPS 18.43元，ET取證如期，戰略一致</li>
+          <li><b>資本配置：</b>專注本業（擴廠、適應症臨床、設荷蘭子公司），股利低（殖利率約0.2%）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>成長初期至放量成長：PV已商業化，ET 2026年才取證，PMF三期中</li>
+          <li><b>市場規模：</b>TAM 美國PV約15萬人、日本ET約6.3萬人，全球數十億美元（粗估） ／ SAM ET放寬至全成人後約20-30億美元（推估） ／ SOM 2026營收約270-290億台幣（推估）</li>
+          <li><b>競爭格局：</b>對手Jakafi（專利2028到期）、rusfertide；Besremi具孤兒藥獨占，競爭中等，無市占率資料</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>長效干擾素，疾病修飾，低頻給藥，解決傳統藥不改變疾病進程之痛點</li>
+          <li><b>目標客群與通路：</b>血液腫瘤專科醫師與MPN患者；美國專科藥局、歐洲子公司、日本夥伴</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>前三季42.4%（Q3約40.3%）（含金量 很高）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>約95%（Q2推估，資料不全）</td></tr>
+            <tr><td>資本支出／營收</td><td>未查得，新廠期偏高</td></tr>
+            <tr><td>現金循環天數</td><td>未查得</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>專利 / 特許（孤兒藥獨占）/ 轉換成本</li>
+          <li><b>強度與期間：</b>毛利率93-97%佐證，期間約7-10年，但2028後Jakafi學名藥與新藥侵蝕</li>
+          <li><b>ROE 軌跡：</b>ROE快速上升（淨利2025年50.5億、2026前三季76億），完整數據未查得</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>銷量（美國為主76%）× ASP（美國PV年費約18萬美元）；ET、日本與歐洲帶來新增量</li>
+          <li><b>毛利率改善動能：</b>規模經濟與產品組合，毛利率由89%升至96.8%，營運槓桿大</li>
+          <li><b>EPS 三大引擎：</b>ROE與股東權益同步上升；股票股利略增流通股數</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>約10%</td><td>ET滲透慢、競爭加劇，企業價值約800-900元</td></tr>
+            <tr><td>高機率</td><td>約25%</td><td>2029 EPS約49元，企業價值約1300-1400元</td></tr>
+            <tr><td>樂觀</td><td>約40%</td><td>PMF/ET順利，企業價值約1800-2000元</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：約22.4元（推算）</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：約25% — 依據：2026E約25元到2027E約39元，之後放緩；依ET放量與基期墊高保守取25%</li>
+          <li><b>靜態 PE：</b>約57倍</li>
+          <li><b>動態 PE：</b>約33倍（2027E）</li>
+          <li><b>PEG：</b>1.3-2.3</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr><td>貪婪興奮</td><td>1.5–2.0</td><td></td></tr><tr class="current"><td>樂觀開心</td><td>1.2–1.5</td><td>✓</td></tr><tr><td>過渡階段</td><td>0.8–1.2</td><td></td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">樂觀開心</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：20 – 40</li>
+          <li>對應股價區間：780 – 1560</li>
+          <li>便宜價：約780　|　合理價：約975　|　偏高價：約1250　|　昂貴價：1560以上</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>約-24%（合理價975 vs 1280）</td></tr>
+            <tr><td>企業價值 MOS</td><td>約+7%（未來企業價值約1370）</td></tr>
+            <tr><td>投資組合 MOS</td><td>單一生技股，建議集中度受限</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：股價1280約等於季線1279，高於年線約900</li>
+          <li>200 DMA 趨勢：上揚</li>
+          <li>近 6 個月波段高低點：盤整</li>
+          <li>量價型態：11/9量增價漲後11/10大量收黑（-6.6%）</li>
+          <li>股價乖離（季線）：約+0.1%</li>
+          <li>是否出現特定型態：無</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">3 多頭底部</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：中</li>
+          <li>錯失機會風險：中</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <h3 class="sub">4.1 VCP結構檢視</h3><ul><li>觀察級別：週K（推估）</li><li>收縮次數：約2T（1600至約1200，再回1400）</li><li>回檔幅度遞減：未能確認</li><li>最後一次回檔小於5%：否（11/10單日跌6.6%）</li><li>凹洞量：未見明確凹洞量</li><li>是否創新高：否（距高點1600約-20%）</li><li>量價型態：部分符合，波動仍大</li></ul><h3 class="sub">4.2 可能進場點</h3><div class="tbl-wrap"><table><tr><th>進場點</th><th>條件是否成立</th><th>對應停損</th><th>建議下注</th></tr><tr><td>凹洞量能點</td><td>未成立，未見凹洞量</td><td>跌破凹洞量當日低點</td><td>約20%</td></tr><tr><td>帶量突破點</td><td>未成立，須帶量突破約1400-1600</td><td>跌破頸線或紅K低點，不超過10%</td><td>約50%</td></tr><tr><td>回測成功點</td><td>待觀察，回測季線約1280與月線約1210</td><td>跌破三盤最低點</td><td>約30%</td></tr></table></div><h3 class="sub">4.3 七大供需轉折訊號</h3><ul class="checklist"><li>極限大量</li><li>超買反轉（季線乖離 >50% / 80%）</li><li>產業逆風</li><li>利多不漲</li><li>利空下跌</li><li>量價背離</li><li>大量黑K</li></ul>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>試單倉</li>
+          <li><b>建議週期：</b>18-36個月</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：約45%</li>
+          <li>估計賠率：約1.5</li>
+          <li>1/4 凱利公式下的最大下注比重：約2%</li>
+          <li><b>目前建議買入：</b>偏高價區，僅試單2%；回到975合理價加碼至3%，780便宜價至5%</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>ET美國放量不如預期，單季營收年增低於40%</td></tr><tr><td>買進理由消失</td><td>季營收連兩季衰退或毛利率低於90%</td></tr><tr><td>市場估值過高</td><td>股價高於1560（2027E PE 40倍）而EPS無上修</td></tr><tr><td>機會成本過高</td><td>出現PEG明顯更低的同級成長標的</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>ET適應症全球取證</li><li>歐洲荷蘭子公司效益</li><li>新藥管線擴充</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告（預計2027年3月）</li>
+          <li>下次財報公布：待公告（Q4預計2027年3月初）</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>月營收（10月28.4億）</li><li>毛利率是否維持93%以上</li><li>美國ET新病患數</li><li>2026Q4 EPS是否高於約6.5元</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>跌破季線1280並下探月線約1210</li><li>帶量突破1400-1600創新高</li><li>月營收連兩個月年增低於50%</li><li>ET美國放量數據公布</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>Goodinfo、經濟日報 udn、鉅亨網 cnyes、MoneyWeekly、uanalyze、中時 wantrich、wantgoo、DelveInsight</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-11-14</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
