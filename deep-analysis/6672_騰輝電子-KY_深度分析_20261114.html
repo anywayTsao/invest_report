@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>6672 騰輝電子-KY　投資邏輯深度分析</title>
+  <meta property="og:title" content="6672 騰輝電子-KY　投資邏輯深度分析">
+  <meta property="og:description" content="騰輝電子-KY：Q3 EPS 6元、毛利率43%創高，但本益比42倍已透支漲價週期，股價自677回檔後呈頭部訊號，新倉等350元附近再議。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="6672 騰輝電子-KY　投資邏輯深度分析">
+  <meta name="twitter:description" content="騰輝電子-KY：Q3 EPS 6元、毛利率43%創高，但本益比42倍已透支漲價週期，股價自677回檔後呈頭部訊號，新倉等350元附近再議。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    /* ---- 投資重點快照（簡易分析區塊）專用樣式 ---- */
+    .snap-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .snap-hero .snap-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    .snap-hero .snap-desc {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-top: 4px;
+      line-height: 1.7;
+    }
+
+    .snap-eps {
+      text-align: right;
+    }
+
+    .snap-eps .v {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .snap-eps .v.pos {
+      color: var(--green-d);
+    }
+
+    .snap-eps .v.neg {
+      color: var(--red-d);
+    }
+
+    .snap-eps .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    .snap-hist {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .kpi {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid #94A3B8;
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .kpi.pos {
+      border-top-color: var(--green);
+    }
+
+    .kpi.neg {
+      border-top-color: var(--red);
+    }
+
+    .kpi.warn {
+      border-top-color: var(--amber);
+    }
+
+    .kpi .v {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .kpi .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-top: 5px;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 8px 0 20px;
+    }
+
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .pillar .ptype {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--orange);
+    }
+
+    .pillar .ptitle {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 4px 0;
+    }
+
+    .pillar .pkey {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .pillar ul {
+      padding-left: 18px;
+      margin-bottom: 0;
+      font-size: 12.8px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      background: var(--amber-bg);
+      padding: 1px 8px;
+      border-radius: 10px;
+      margin-left: 6px;
+    }
+
+    .note {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: -8px;
+    }
+
+    @media (max-width: 900px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .snap-eps {
+        text-align: left;
+      }
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>6672 騰輝電子-KY — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：510 TWD　|　當前 PE：42.2x（近4季EPS 12.08）　|　52 週區間：82.7 – 677</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-11-14</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：5 多頭出貨</span>
+        <span class="badge">建議戰略：分批出場</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#snapshot">投資重點快照</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>（資料不足：FactSet 共識查無（已查鉅亨網）；2023-2024 年毛利率/營益率與多數年度 ROE 查無可靠來源；前三季 EPS 10.97 與單季加總 10.69 有出入（Q2 EPS 2.96 或 3.02 兩說），以官方 10.97 為準；TAM/SAM 查無可靠數字；Goodinfo/財報狗未能取得，改以玩股網、鉅亨網、經濟日報交叉。）Q3 EPS 6元、毛利率43%創高，但本益比42倍已透支漲價週期，股價自677回檔後呈頭部訊號，新倉等350元附近再議。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">優質</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">昂貴</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">5 多頭出貨</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">暫不買進新倉；已持有者分批減碼</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>優質</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>昂貴（PEG ≈ 2.3-3.3）</td><td>低</td></tr>
+            <tr><td>股價階段</td><td>5 多頭出貨</td><td>中</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill warn">分批出場</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>暫不買進新倉；已持有者分批減碼</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>缺料漲價紅利消退，毛利率43%回落</li><li>估值昂貴：PE 42x、PEG 2.3以上，高檔大量長黑</li><li>高速材料認證與泰國廠、崑山廠爬坡不如預期</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>高速材料M7-M9認證結果（2027Q1後）與800V電源材料量產</li><li>崑山與泰國新產能於2027年陸續開出</li><li>同業轉單效應預計11月底後更明顯</li></ul>
+      </div>
+
+      <!-- ============ 投資重點快照（原「簡易分析」報告的全部內容） ============ -->
+      <h2 class="section" id="snapshot">投資重點快照<span>SNAPSHOT · 簡易分析完整內容</span></h2>
+
+      <div class="card">
+        <div class="snap-hero">
+          <div>
+            <div class="snap-title">騰輝電子-KY · 特殊 CCL 與 PI 材料 · AI 缺料漲價週期的最大受惠題材</div>
+            <div class="snap-desc">印刷電路板材料 · 一般 CCL/黏合片約七成、PI/散熱/不流膠PP等特殊材料約三成 · 軍工航太、韓系半導體、AI 伺服器供應鏈 · 放量成長期</div>
+          </div>
+          <div class="snap-eps">
+            <div class="v pos">4.85</div>
+            <div class="l">2025 EPS（元）· 截至 2026-11-14</div>
+          </div>
+        </div>
+        <div class="snap-hist">2024 EPS 5.01｜2026Q3 EPS 6.00｜2025 營收 +0.8%</div>
+      </div>
+
+      <div class="exec">
+        <div class="exec-label">THESIS · 核心論述</div>
+        <p>騰輝是 <b>PI 與特殊 CCL 利基廠</b>，受惠 AI 帶動的玻纖布缺料漲價，<span class='g'>2026Q3 營收24.92億（年增141%）、毛利率43.2%、EPS 6.00元</span>，前三季 EPS 10.97元已超過一個股本。核心張力在於Q3毛利含漲價與缺料溢價，<span class='r'>本益比42倍已透支週期高點</span>；成敗關鍵是高速材料認證與新產能能否在缺料緩解後接棒。管理層近期指引多數兌現，可信度偏高。</p>
+      </div>
+
+      <div class="kpis"><div class="kpi pos"><div class="v">24.92億</div><div class="l">2026Q3 營收<br>年增 +141%</div></div><div class="kpi pos"><div class="v">43.2%</div><div class="l">Q3 毛利率<br>季增 +7.3pp</div></div><div class="kpi pos"><div class="v">27.5%</div><div class="l">Q3 營益率<br>2025年約9.4%</div></div><div class="kpi pos"><div class="v">10.97元</div><div class="l">前三季 EPS<br>年增約 +244%</div></div><div class="kpi neg"><div class="v">42.2x</div><div class="l">本益比（近4季）<br>PB 7.8x</div></div><div class="kpi warn"><div class="v">-24.7%</div><div class="l">距高點677<br>高檔大量長黑</div></div></div>
+
+      <h3 class="sub">KEY SWING FACTORS · 三大支柱</h3>
+      <div class="pillars"><div class="pillar"><div class="ptype">GROWTH</div><div class="ptitle">成長動能</div><div class="pkey">Q3營收年增141%，10月再創11.73億</div><ul><li>漲價：一般材料至3月累計+20-25%，Q4與2027Q1仍有空間</li><li>PI 2026年成長約70%，韓系半導體探針板量產再增10%以上</li><li>黏合片占比升至30%，崑山增設上膠機產能+30-40%</li></ul></div><div class="pillar"><div class="ptype">MOAT</div><div class="ptitle">護城河</div><div class="pkey">PI 毛利近七成，軍工認證門檻高</div><ul><li>軍工航太 PI 全球第二大主板供應商，自有樹脂合成</li><li>不流膠PP毛利六至七成，競爭對手退出</li><li>AS9100、Lockheed Martin、Rockwell 稽核通過形成轉換成本</li></ul></div><div class="pillar"><div class="ptype">RISK</div><div class="ptitle">主要風險</div><div class="pkey">毛利率43%含缺料溢價，估值已高</div><ul><li>PE 42x、PEG 2.3以上，股價自677回檔24.7%</li><li>玻纖布缺口預計到2028年，緩解後漲價回吐</li><li>泰國廠量產已延後兩次，高速材料認證待2027Q1後</li></ul></div></div>
+
+      <div class="card">
+        <h3 class="sub">損益軌跡 （2023–2025 與 26Q3；營收單位：億元）</h3>
+        <div class="tbl-wrap"><table><tr><th>項目</th><th>2023</th><th>2024</th><th>2025</th><th>26Q3</th></tr><tr><td>營收(億元)</td><td>47.40</td><td>42.26</td><td>42.60</td><td>24.92</td></tr><tr><td>毛利率</td><td>N/A</td><td>約33.6%</td><td>32.2%</td><td>43.2%</td></tr><tr><td>營益率</td><td>N/A</td><td>N/A</td><td>約9.4%</td><td>27.5%</td></tr><tr><td>EPS(元)</td><td>6.08</td><td>5.01</td><td>4.85</td><td>6.00</td></tr><tr><td>ROE</td><td>約14.1%（2023Q4近4季）</td><td>N/A</td><td>N/A</td><td>—</td></tr></table></div>
+        <p class="note">2025營益率由四季營益加總除以營收自行計算；2024毛利率由2025年年減1.35pp回推；前三季EPS 10.97與單季加總10.69有出入，Q2 EPS兩說（2.96與3.02）；Goodinfo/財報狗未取得，以玩股網與經濟日報交叉，2025年EPS 4.85一致。</p>
+        <h3 class="sub">近 5 季損益</h3>
+        <div class="tbl-wrap"><table><tr><th>季別</th><th>營收(億元)</th><th>毛利率</th><th>EPS(元)</th></tr><tr><td>25Q3</td><td>10.33</td><td>32.7%</td><td>1.17</td></tr><tr><td>25Q4</td><td>11.07</td><td>32.1%</td><td>1.39</td></tr><tr><td>26Q1</td><td>12.46</td><td>34.0%</td><td>1.73</td></tr><tr><td>26Q2</td><td>16.14</td><td>36.0%</td><td>2.96</td></tr><tr><td>26Q3</td><td>24.92</td><td>43.2%</td><td>6.00</td></tr></table></div>
+        <p class="note">營收連4季成長，Q3季增54%；毛利率由32%升至43%，營業費用率由19.2%降至15.8%，EPS由1.17元升至6.00元。10月營收11.73億、年增224%。</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">KEY WATCH 關鍵觀察點</h3>
+        <ul><li>2026Q3 營收24.92億元，年增141.4%，毛利率43.23%創高，營益率27.45%，EPS 6.00元，前三季累計10.97元。</li><li>黏合片占營收由約20%升至約30%，PI 2026年成長約70%且毛利近七成，產品組合是毛利率上升主因之一。</li><li>前10月累計營收65.24億元，年增85.38%；8至10月單月營收8.06、10.21、11.73億，逐月創高。</li><li>崑山廠15億元預算改建、黏合片產能+30-40%，2027Q2量產；泰國廠初期3-5萬張/月，2027Q2後貢獻明顯。</li><li>近 4 場法說會指引達成率 5/6（營收雙位數成長超標、7月營收常態超標、PI成長30%以上超標、漲價延續達標、Q2毛利率改善達標；泰國廠時程由Q2底延至年底未達）；400V/800V電源材料Q4量產待驗證；管理層可信度：高</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">催化劑 CATALYSTS</h3>
+        <ul><li>一般材料漲價延續到2027Q1，2027Q1產量預計成長約10%<span class="tag">（進行中）</span></li><li>M7/M8/M9高速材料與COWOP載板材料認證，結果預計2027Q1後出爐<span class="tag">（待驗證）</span></li><li>韓系兩大半導體廠PI探針與老化板量產，預計再增10%以上營收<span class="tag">（進行中）</span></li><li>AI電機定子以厚銅板取代銅線，預計2027年貢獻約10%營收成長<span class="tag">（醞釀中）</span></li><li>崑山與泰國新廠擴產，競爭對手放棄不流膠PP與散熱薄膜帶來市占提升<span class="tag">（結構性）</span></li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">主要風險 KEY RISKS</h3>
+        <ul><li>估值：本益比42.2x、PB 7.8x，殖利率僅0.66%，股價自677回檔24.7%</li><li>毛利率43.2%含缺料漲價溢價，玻纖布缺口緩解後可能回落至33-35%</li><li>高速材料M7/M8轉單機會有限，認證若失敗影響2027年成長</li><li>泰國廠量產已延後兩次，新廠爬坡與缺工影響獲利貢獻時間</li><li>同業復產或回頭搶單，不流膠PP與PI市占提升空間縮小</li><li>高檔技術面：週量放大至5,500萬至6,400萬股後長黑回檔，量價背離，短線賣壓大</li></ul>
+        <p class="note">估值提醒：近4季EPS 12.08元、PE 42倍；以2026E EPS 17.5元與G約12%計PEG約2.3，落在貪婪興奮區，合理價約350元，現價510元昂貴，非投資建議。｜ 生命週期：放量成長期：AI 伺服器帶動 CCL 缺貨與漲價，騰輝特殊材料占比提升；股價生命週期處於多頭出貨（階段5）。</p>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>法說會每季按時舉行並附簡報，主動揭露產品別成長（PI 年增約70%、黏合片三倍）、毛利率變動原因（漲價與產品組合）；但未提供 Q4 或全年營收與毛利率量化指引，資本支出金額也未明講，透明度中上。</li>
+          <li><b>言行一致性：</b>近4場指引多數兌現：3月指引營收至少雙位數成長，實際前10月累計 +85%；7月營收6.6億將成常態，8-10月升至8.06/10.21/11.73億；Q2毛利率改善達標。唯泰國廠量產時程由Q2底延至年底，兩度延後。</li>
+          <li><b>資本配置：</b>偏重專注本業擴產：發行約10.8億元公司債，一半用於泰國廠；董事會通過15億元崑山租賃廠改建預算；股利配發率約50-60%（2025年配息3.35元），無庫藏股；擴產屬成長空間最大的配置，但高點擴產有週期風險。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>成長初期至放量成長：AI 伺服器帶動 CCL/PP 供不應求，玻纖布缺口預計延續至2028年；騰輝特殊材料（PI、散熱、不流膠PP）處於收割期，一般材料處於漲價高階晉升期。</li>
+          <li><b>市場規模：</b>TAM 查無可靠來源（全球 CCL 與 PI 市場規模數字未取得） ／ SAM 查無可靠來源；可服務範圍為軍工航太PI、半導體測試PI、高階黏合片、散熱鋁基板與車用HDI等特殊材料 ／ SOM 近4季營收約64.6億元（Q4 25 11.07 + Q1 12.46 + Q2 16.14 + Q3 24.92），為現有可取得市場的實績下限</li>
+          <li><b>競爭格局：</b>一般 CCL 競爭者包括建滔、生益、台光電、聯茂、台燿與日系 Resonac，缺料使同業稼動受限；PI 軍工航太版全球供應商有限，騰輝自述為亞洲少數通過 AS9100 者，全球市占約20%（2025年說法，數字較舊）；競爭對手近期放棄不流膠PP與散熱薄膜等小量特殊材料。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>以配方與塗布工藝為核心，提供軍工航太、半導體測試、AI伺服器、車用與散熱應用的特殊 CCL、黏合片與 PI 材料，協助客戶突破材料限制。</li>
+          <li><b>目標客群與通路：</b>軍工航太客戶（含 Lockheed Martin、Rockwell 稽核通過）、韓系兩大半導體廠（探針與老化板）、AI伺服器供應鏈 PCB 廠、雲端 ASIC 專案；通路以直銷與 PCB 廠為主。</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>27.45%（2026Q3）（含金量 中）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>未取得（查無現金流量表數字）</td></tr>
+            <tr><td>資本支出／營收</td><td>約15-20%（估計：崑山15億預算加泰國約5億，對2026E營收約90億）</td></tr>
+            <tr><td>現金循環天數</td><td>未取得</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>轉換成本 + 配方工藝（類專利）；部分特許（AS9100、軍工認證）</li>
+          <li><b>強度與期間：</b>PI 與不流膠PP 具認證門檻，PI 毛利近七成，優勢可持續數年；但一般材料毛利受缺料漲價推升，屬週期性而非護城河，缺料緩解後可能回吐。</li>
+          <li><b>ROE 軌跡：</b>2023Q4 近4季 ROE 約14.1%；2025年EPS 4.85元、淨利約3.5億元，ROE 估約10%；2026Q3 單季淨利4.94億對淨值約54億，年化ROE約37%；保留盈餘率約30-50%（配息率50-60%）。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>營收=銷量×ASP：2026年漲價（一般材料至3月累計+20-25%，特殊材料+5-15%）加上稼動率由約50%上升；產品結構：黏合片占比由20%升至約30%，PI 年增約70%，國防航太占比約20%並朝30%邁進。</li>
+          <li><b>毛利率改善動能：</b>訂價權（缺料漲價）、產品組合（黏合片、high-TG、不流膠PP毛利六至七成、PI近七成）、稼動率與規模效益（費用率由19.2%降至15.8%）。</li>
+          <li><b>EPS 三大引擎：</b>EPS=ROE×股東權益/股數：ROE 由約10%升至年化30%以上為主引擎；股東權益每股淨值65.42元；股數約8,200萬股（由淨利與EPS回推），無庫藏股，稀釋為輕微逆風。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>-20%（以2026E EPS約17.5元為基期，3年後約9元）</td><td>漲價回吐、毛利率回33%、AI需求降溫，企業價值明顯低於現價，防守線約200-250元。</td></tr>
+            <tr><td>高機率</td><td>+10-13%（2029E約24-26元）</td><td>2027年續漲價與新產能挹注，2028-29毛利率回落到35-38%，企業價值約350-450元，低於或接近現價。</td></tr>
+            <tr><td>樂觀</td><td>+25%（2029E約34-36元）</td><td>高速材料M7-M9認證成功、800V電源材料與AI定子放量，企業價值約600-720元。</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：12.08元（Q4 25 1.39 + Q1 1.73 + Q2 2.96 + Q3 6.00）</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：10-13%（以2026E EPS約17.5元為基期之3年CAGR） — 依據：2026E EPS=前三季10.97加Q4約6.5；2027E約22-26元，2028-29因缺料緩解與產能擴張，毛利率自43%回落至35-38%，EPS在24-26元持平；原因是Q3高毛利含漲價與缺料溢價，難視為常態。</li>
+          <li><b>靜態 PE：</b>42.2x</li>
+          <li><b>動態 PE：</b>約29x（2026E EPS 17.5）；以Q3年化24元計約21x</li>
+          <li><b>PEG：</b>2.3-3.3</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr class="current"><td>貪婪興奮</td><td>1.5–2.0</td><td>✓</td></tr><tr><td>樂觀開心</td><td>1.2–1.5</td><td></td></tr><tr><td>過渡階段</td><td>0.8–1.2</td><td></td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">貪婪興奮</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：15x – 22x</li>
+          <li>對應股價區間：330 – 480</li>
+          <li>便宜價：240（PE約11x，PEG約0.8）　|　合理價：350（PE約16x，EPS 22）　|　偏高價：450（PE約20x）　|　昂貴價：570（PE約26x）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>-160元（合理價350減現價510，約-31%）</td></tr>
+            <tr><td>企業價值 MOS</td><td>-110元（高機率情境3年後企業價值約400減現價510）；樂觀情境約+150至+200元</td></tr>
+            <tr><td>投資組合 MOS</td><td>建議單一標的不超過總資產2%，與其他 CCL 與 AI 供應鏈持股相關性高，需控制同產業合計比重</td></tr>
+          </table>
+        </div>
+      </div>
+
+      
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：收盤510 > 50DMA 431.4（+18.2%）> 150DMA 296.7（+71.9%）> 200DMA 248.7（+105.1%）</li>
+          <li>200 DMA 趨勢：上揚</li>
+          <li>近 6 個月波段高低點：墊高</li>
+          <li>量價型態：量價中性（10日均量為50日均量1.59倍；近20日上漲量/下跌量0.95）</li>
+          <li>股價乖離（季線）：+25.6%（季線60MA 405.9）</li>
+          <li>是否出現特定型態：無</li>
+        </ul>
+        <p class="note"><b>TradingView 實測數據</b>（TWSE:6672｜截至 2026-11-13 收盤）</p><ul><li>距歷史新高：-24.7%</li><li>52週高低位置：距52週高 -24.7%／距52週低 +516.7%</li><li>均線：50DMA 431.4（+18.2%）／150DMA 296.7（+71.9%）／200DMA 248.7（+105.1%）</li><li>200DMA 斜率：+21.75%（上揚）</li><li>趨勢模板通過：7/7</li><li>RSI 52.1、ADX 37.0</li><li>10日相對量：0.94</li></ul><p class="note">資料來源：TradingView；價格僅還原分割，不還原現金股利；資料依TradingView方案可能延遲；最後一根日K為2026-11-13收盤，週K最後一根為2026-11-09週；VCP欄位僅供參考，生命週期判定為5，故vcpApplicable=false；台股成交量單位為股</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">5 多頭出貨</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：高</li>
+          <li>錯失機會風險：中</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <p>目前處於「5 多頭出貨」，非多頭底部/上漲階段，VCP 型態分析暫不適用。</p><h3 class="sub">七大供需轉折訊號（參考）</h3><ul class="checklist"><li class="checked">極限大量</li><li class="checked">超買反轉（季線乖離 >50% / 80%）</li><li>產業逆風</li><li>利多不漲</li><li>利空下跌</li><li class="checked">量價背離</li><li class="checked">大量黑K</li></ul>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>暫不投資</li>
+          <li><b>建議週期：</b>不適合（新倉）；已持有者以供需訊號決定去留</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：35%</li>
+          <li>估計賠率：約1.4（上檔約620，下檔約429）</li>
+          <li>1/4 凱利公式下的最大下注比重：0%（凱利值為負，不下注）</li>
+          <li><b>目前建議買入：</b>0%：PEG 超過2.3、價格高於偏高價450；等回到合理價350附近才試單2%，便宜價240附近才加碼到5%。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>Q4毛利率跌破38%或單月營收連兩月低於8億元，代表漲價與缺料邏輯看錯</td></tr><tr><td>買進理由消失</td><td>玻纖布缺料提前緩解、同業大幅復產，或M7-M9認證於2027Q1後失敗</td></tr><tr><td>市場估值過高</td><td>動態PE高於25x、PEG高於2；現價510已落在貪婪興奮區，宜分批賣出</td></tr><tr><td>機會成本過高</td><td>其他 CCL 同業PEG低於1.2且趨勢更佳時，換股</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>韓系兩大半導體廠PI探針板量產，預計增加10%以上營收</li><li>AI電機定子取代銅線，預計2027年貢獻約10%營收成長</li><li>競爭對手放棄不流膠PP與散熱薄膜，市占上升</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告（預估2027年3月中旬，2026Q4）</li>
+          <li>下次財報公布：待公告（預估2027年3月中旬）</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>月營收是否維持11億元以上（10月11.73億）</li><li>單季毛利率是否維持40%以上</li><li>PI與黏合片占營收比重</li><li>產能稼動率與泰國廠、崑山廠進度</li><li>玻纖布與銅價報價走勢</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>收盤跌破429（11月第2週低點）則確認頭部下跌</li><li>週收盤站上577且量大於50週均量1.4倍，重新計算VCP</li><li>股價回到350附近且Q4毛利率仍高於40%</li><li>Q4財報毛利率低於38%或M7-M9認證失敗</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>TradingView（日K／週K 價量，tv_technicals.py 計算）、玩股網 wantgoo（損益表、EPS）、鉅亨網 cnyes（營收速報、估值頁）、聯合新聞網 udn（Q3財報、擴產）、工商時報 ctee、富果研究 Fugle 法說會備忘錄（2026-03-17、05-08、08-07、11-13）、AlphaMemo 法說會簡報（2026-05、08、11）、HiStock（年度營收）、優分析 uanalyze（CCL同業）</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-11-14</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
