@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>市場數據</title>
+<style>
+  :root{
+    color-scheme:light;
+    --bg:#f7f7f5; --surface:#fcfcfb; --ink:#0b0b0b; --ink-soft:#52514e; --muted:#7b7a76;
+    --line:#e3e2de; --grid:#ecebe7; --accent:#2b5fa8;
+    --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:where(:not([data-theme="light"])){
+      color-scheme:dark;
+      --bg:#15161a; --surface:#1a1a19; --ink:#f0efec; --ink-soft:#c3c2b7; --muted:#8d8c86;
+      --line:#2c2e35; --grid:#2a2a28; --accent:#7aa8e0;
+      --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --bg:#15161a; --surface:#1a1a19; --ink:#f0efec; --ink-soft:#c3c2b7; --muted:#8d8c86;
+    --line:#2c2e35; --grid:#2a2a28; --accent:#7aa8e0;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif; line-height:1.6;}
+  .wrap{max-width:860px; margin:0 auto; padding:56px 16px 60px;}
+  a.home-link{position:fixed; top:14px; left:14px; z-index:10; font-size:.82rem; color:var(--accent);
+    background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:4px 12px; text-decoration:none;}
+  h1{font-size:1.5rem; margin:0 0 6px;}
+  h2{font-size:1.05rem; margin:30px 0 8px;}
+  .sub{color:var(--ink-soft); font-size:.9rem; margin:0 0 20px;}
+  footer{margin-top:40px; font-size:.78rem; color:var(--muted);}
+
+  .list{display:grid; gap:14px;}
+  a.card{display:block; background:var(--surface); border:1px solid var(--line); border-radius:10px;
+    padding:18px 22px; text-decoration:none; color:inherit;}
+  a.card:hover{border-color:var(--accent);}
+  .card .name{font-weight:600; font-size:1.1rem; margin-bottom:4px;}
+  .card .name::after{content:" →"; color:var(--accent);}
+  .card .desc{font-size:.85rem; color:var(--ink-soft);}
+  .card .path{font-size:.78rem; color:var(--muted); font-family:ui-monospace,monospace; margin-top:6px;}
+  .empty{color:var(--muted);}
+</style>
+</head>
+<body>
+<a class="home-link" href="../index.html">← 回首頁</a>
+<div class="wrap">
+  <h1>市場數據</h1>
+  <p class="sub">市場數據的圖表呈現，只放數據與來源，不含分析。數字以各來源當時揭露為準，僅供研究參考。</p>
+  <div class="list">
+<!-- MARKET_DATA:START -->
+    <a class="card" href="gpu-rental-trend.html">
+      <div class="name">GPU 租金趨勢</div>
+      <div class="desc">各型號 GPU 雲端租金（美元／每顆 GPU／每小時）的歷史讀數與各追蹤站隨選中位數。僅呈現數據，不含分析。</div>
+      <div class="path">2026-11-15 · market-data/gpu-rental-trend.html</div>
+    </a>
+<!-- MARKET_DATA:END -->
+  </div>
+  <footer>最後更新：2026-11-15</footer>
+</div>
+</body>
+</html>
