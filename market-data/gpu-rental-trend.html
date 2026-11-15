@@ -36,7 +36,18 @@
   .sub{color:var(--ink-soft); font-size:.9rem; margin:0 0 20px;}
   footer{margin-top:40px; font-size:.78rem; color:var(--muted);}
 
-  .chartbox{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 14px 8px;}
+  .chartbox{position:relative; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 14px 8px;}
+  .hit{cursor:pointer; outline:none;}
+  .hit:hover,.hit:focus{fill:var(--grid);}
+  #tip{position:absolute; z-index:5; pointer-events:none; min-width:150px; max-width:260px; background:var(--surface);
+    border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-size:.8rem; box-shadow:0 2px 10px rgba(0,0,0,.18);}
+  #tip[hidden]{display:none;}
+  #tip .t-h{color:var(--ink-soft); display:flex; align-items:center; gap:6px;}
+  #tip .t-h i{display:inline-block; width:8px; height:8px; border-radius:50%;}
+  #tip .t-v{font-size:1.05rem; font-weight:600; font-variant-numeric:tabular-nums; margin:2px 0;}
+  #tip .t-c{color:var(--ink-soft);}
+  #tip .t-c .up{color:var(--ink);} #tip .t-c .dn{color:var(--ink);}
+  #tip .t-n{color:var(--muted); margin-top:3px; font-size:.75rem;}
   .legend{display:flex; flex-wrap:wrap; gap:14px; font-size:.82rem; color:var(--ink-soft); margin:0 0 6px 4px;}
   .legend .lg{display:inline-flex; align-items:center; gap:6px;}
   .legend i{display:inline-block; width:14px; height:3px; border-radius:2px;}
@@ -89,48 +100,48 @@
 <line x1="640.7" y1="262.5" x2="657.9" y2="259.2" stroke="var(--s1)" stroke-width="2" stroke-linecap="round"/>
 <line x1="657.9" y1="259.2" x2="700.0" y2="247.3" stroke="var(--s1)" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 4"/>
 <circle cx="48.0" cy="301.0" r="4.5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
-<circle cx="48.0" cy="301.0" r="11" fill="transparent"><title>H100　2025-12-09　US$2.00</title></circle>
+<circle class="hit" cx="48.0" cy="301.0" r="11" fill="transparent" tabindex="0" data-name="H100" data-date="2025-12-09" data-val="US$2.00" data-chg="首筆讀數" data-note="" data-col="var(--s1)"/>
 <circle cx="101.5" cy="291.5" r="4.5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
-<circle cx="101.5" cy="291.5" r="11" fill="transparent"><title>H100　2026-01-06　US$2.20</title></circle>
+<circle class="hit" cx="101.5" cy="291.5" r="11" fill="transparent" tabindex="0" data-name="H100" data-date="2026-01-06" data-val="US$2.20" data-chg="+10.0%" data-note="" data-col="var(--s1)"/>
 <circle cx="202.9" cy="281.5" r="4.5" fill="var(--surface)" stroke="var(--s1)" stroke-width="2"/>
-<circle cx="202.9" cy="281.5" r="11" fill="transparent"><title>H100　2026-02-28　US$2.41（2月底前讀數，日期為近似）</title></circle>
+<circle class="hit" cx="202.9" cy="281.5" r="11" fill="transparent" tabindex="0" data-name="H100" data-date="2026-02-28" data-val="US$2.41" data-chg="+9.5%" data-note="2月底前讀數，日期為近似" data-col="var(--s1)"/>
 <circle cx="327.2" cy="273.9" r="4.5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
-<circle cx="327.2" cy="273.9" r="11" fill="transparent"><title>H100　2026-05-04　US$2.57</title></circle>
+<circle class="hit" cx="327.2" cy="273.9" r="11" fill="transparent" tabindex="0" data-name="H100" data-date="2026-05-04" data-val="US$2.57" data-chg="+6.6%" data-note="" data-col="var(--s1)"/>
 <circle cx="487.8" cy="265.4" r="4.5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
-<circle cx="487.8" cy="265.4" r="11" fill="transparent"><title>H100　2026-07-27　US$2.75</title></circle>
+<circle class="hit" cx="487.8" cy="265.4" r="11" fill="transparent" tabindex="0" data-name="H100" data-date="2026-07-27" data-val="US$2.75" data-chg="+7.0%" data-note="" data-col="var(--s1)"/>
 <circle cx="640.7" cy="262.5" r="4.5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
-<circle cx="640.7" cy="262.5" r="11" fill="transparent"><title>H100　2026-10-15　US$2.81</title></circle>
+<circle class="hit" cx="640.7" cy="262.5" r="11" fill="transparent" tabindex="0" data-name="H100" data-date="2026-10-15" data-val="US$2.81" data-chg="+2.2%" data-note="" data-col="var(--s1)"/>
 <circle cx="657.9" cy="259.2" r="4.5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
-<circle cx="657.9" cy="259.2" r="11" fill="transparent"><title>H100　2026-10-24　US$2.88</title></circle>
+<circle class="hit" cx="657.9" cy="259.2" r="11" fill="transparent" tabindex="0" data-name="H100" data-date="2026-10-24" data-val="US$2.88" data-chg="+2.5%" data-note="" data-col="var(--s1)"/>
 <circle cx="700.0" cy="247.3" r="4.5" fill="var(--surface)" stroke="var(--s1)" stroke-width="2"/>
-<circle cx="700.0" cy="247.3" r="11" fill="transparent"><title>H100　2026-11-15　US$3.13（官網指數頁即時讀數，頁面未標日期，2026-11-15 擷取）</title></circle>
+<circle class="hit" cx="700.0" cy="247.3" r="11" fill="transparent" tabindex="0" data-name="H100" data-date="2026-11-15" data-val="US$3.13" data-chg="+8.7%" data-note="官網指數頁即時讀數，頁面未標日期，2026-11-15 擷取" data-col="var(--s1)"/>
 <line x1="327.2" y1="267.8" x2="438.1" y2="258.2" stroke="var(--s2)" stroke-width="2" stroke-linecap="round"/>
 <line x1="438.1" y1="258.2" x2="487.8" y2="249.2" stroke="var(--s2)" stroke-width="2" stroke-linecap="round"/>
 <line x1="487.8" y1="249.2" x2="657.9" y2="230.7" stroke="var(--s2)" stroke-width="2" stroke-linecap="round"/>
 <circle cx="327.2" cy="267.8" r="4.5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
-<circle cx="327.2" cy="267.8" r="11" fill="transparent"><title>H200　2026-05-04　US$2.70</title></circle>
+<circle class="hit" cx="327.2" cy="267.8" r="11" fill="transparent" tabindex="0" data-name="H200" data-date="2026-05-04" data-val="US$2.70" data-chg="首筆讀數" data-note="" data-col="var(--s2)"/>
 <circle cx="438.1" cy="258.2" r="4.5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
-<circle cx="438.1" cy="258.2" r="11" fill="transparent"><title>H200　2026-07-01　US$2.90</title></circle>
+<circle class="hit" cx="438.1" cy="258.2" r="11" fill="transparent" tabindex="0" data-name="H200" data-date="2026-07-01" data-val="US$2.90" data-chg="+7.4%" data-note="" data-col="var(--s2)"/>
 <circle cx="487.8" cy="249.2" r="4.5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
-<circle cx="487.8" cy="249.2" r="11" fill="transparent"><title>H200　2026-07-27　US$3.09</title></circle>
+<circle class="hit" cx="487.8" cy="249.2" r="11" fill="transparent" tabindex="0" data-name="H200" data-date="2026-07-27" data-val="US$3.09" data-chg="+6.6%" data-note="" data-col="var(--s2)"/>
 <circle cx="657.9" cy="230.7" r="4.5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
-<circle cx="657.9" cy="230.7" r="11" fill="transparent"><title>H200　2026-10-24　US$3.48</title></circle>
+<circle class="hit" cx="657.9" cy="230.7" r="11" fill="transparent" tabindex="0" data-name="H200" data-date="2026-10-24" data-val="US$3.48" data-chg="+12.6%" data-note="" data-col="var(--s2)"/>
 <line x1="436.1" y1="141.4" x2="495.4" y2="126.7" stroke="var(--s3)" stroke-width="2" stroke-linecap="round"/>
 <line x1="495.4" y1="126.7" x2="556.6" y2="129.1" stroke="var(--s3)" stroke-width="2" stroke-linecap="round"/>
 <line x1="556.6" y1="129.1" x2="568.1" y2="125.7" stroke="var(--s3)" stroke-width="2" stroke-linecap="round"/>
 <line x1="568.1" y1="125.7" x2="700.0" y2="62.1" stroke="var(--s3)" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 4"/>
 <circle cx="436.1" cy="141.4" r="4.5" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
-<circle cx="436.1" cy="141.4" r="11" fill="transparent"><title>B200　2026-06-30　US$5.36（6月底）</title></circle>
+<circle class="hit" cx="436.1" cy="141.4" r="11" fill="transparent" tabindex="0" data-name="B200" data-date="2026-06-30" data-val="US$5.36" data-chg="首筆讀數" data-note="6月底" data-col="var(--s3)"/>
 <circle cx="495.4" cy="126.7" r="4.5" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
-<circle cx="495.4" cy="126.7" r="11" fill="transparent"><title>B200　2026-07-31　US$5.67（7月底）</title></circle>
+<circle class="hit" cx="495.4" cy="126.7" r="11" fill="transparent" tabindex="0" data-name="B200" data-date="2026-07-31" data-val="US$5.67" data-chg="+5.8%" data-note="7月底" data-col="var(--s3)"/>
 <circle cx="556.6" cy="129.1" r="4.5" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
-<circle cx="556.6" cy="129.1" r="11" fill="transparent"><title>B200　2026-09-01　US$5.62（8月底（9/1 讀數））</title></circle>
+<circle class="hit" cx="556.6" cy="129.1" r="11" fill="transparent" tabindex="0" data-name="B200" data-date="2026-09-01" data-val="US$5.62" data-chg="-0.9%" data-note="8月底（9/1 讀數）" data-col="var(--s3)"/>
 <circle cx="568.1" cy="125.7" r="4.5" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
-<circle cx="568.1" cy="125.7" r="11" fill="transparent"><title>B200　2026-09-07　US$5.69（9/7 現貨）</title></circle>
+<circle class="hit" cx="568.1" cy="125.7" r="11" fill="transparent" tabindex="0" data-name="B200" data-date="2026-09-07" data-val="US$5.69" data-chg="+1.2%" data-note="9/7 現貨" data-col="var(--s3)"/>
 <circle cx="700.0" cy="62.1" r="4.5" fill="var(--surface)" stroke="var(--s3)" stroke-width="2"/>
-<circle cx="700.0" cy="62.1" r="11" fill="transparent"><title>B200　2026-11-15　US$7.03（官網指數頁即時讀數，頁面未標日期，2026-11-15 擷取）</title></circle>
+<circle class="hit" cx="700.0" cy="62.1" r="11" fill="transparent" tabindex="0" data-name="B200" data-date="2026-11-15" data-val="US$7.03" data-chg="+23.6%" data-note="官網指數頁即時讀數，頁面未標日期，2026-11-15 擷取" data-col="var(--s3)"/>
 <circle cx="202.9" cy="330.4" r="4.5" fill="var(--surface)" stroke="var(--s4)" stroke-width="2"/>
-<circle cx="202.9" cy="330.4" r="11" fill="transparent"><title>A100　2026-02-28　US$1.38（2026-02 底前讀數，日期為近似；僅此一筆）</title></circle>
+<circle class="hit" cx="202.9" cy="330.4" r="11" fill="transparent" tabindex="0" data-name="A100" data-date="2026-02-28" data-val="US$1.38" data-chg="首筆讀數" data-note="2026-02 底前讀數，日期為近似；僅此一筆" data-col="var(--s4)"/>
 <circle cx="714" cy="62.1" r="4" fill="var(--s3)"/>
 <text x="724" y="66.1" font-size="12" fill="var(--ink)">B200 7.03</text>
 <circle cx="714" cy="230.7" r="4" fill="var(--s2)"/>
@@ -139,7 +150,7 @@
 <text x="724" y="251.3" font-size="12" fill="var(--ink)">H100 3.13</text>
 <circle cx="714" cy="330.4" r="4" fill="var(--s4)"/>
 <text x="724" y="334.4" font-size="12" fill="var(--ink)">A100 1.38</text>
-</svg></div>
+</svg><div id="tip" role="tooltip" hidden></div></div>
 <p class="note">實心點為來源標示日期的讀數；空心點為日期為近似或頁面未標日期的讀數（虛線連接）。</p>
 <h2>資料表</h2>
 <details open><summary>H100　<span class="basis">Silicon Data 指數 SDH100RT（新雲商 on-demand）</span></summary><table><thead><tr><th>日期</th><th class="num">US$ / GPU / 小時</th><th>備註</th></tr></thead><tbody><tr><td>2025-12-09</td><td class="num">2.00</td><td></td></tr><tr><td>2026-01-06</td><td class="num">2.20</td><td></td></tr><tr><td>2026-02-28</td><td class="num">2.41</td><td>2月底前讀數，日期為近似（空心點）</td></tr><tr><td>2026-05-04</td><td class="num">2.57</td><td></td></tr><tr><td>2026-07-27</td><td class="num">2.75</td><td></td></tr><tr><td>2026-10-15</td><td class="num">2.81</td><td></td></tr><tr><td>2026-10-24</td><td class="num">2.88</td><td></td></tr><tr><td>2026-11-15</td><td class="num">3.13</td><td>官網指數頁即時讀數，頁面未標日期，2026-11-15 擷取（空心點）</td></tr></tbody></table><p class="src">來源：<a href="https://www.silicondata.com/products/silicon-index?gpu=h100" target="_blank" rel="noopener">Silicon Data H100 指數頁</a> ・ <a href="https://explainx.ai/blog/nvidia-h100-gpu-rental-price-45-percent-since-december-silicon-data-chamath-claimed-vs-verified-2026" target="_blank" rel="noopener">explainx</a> ・ <a href="https://officechai.com/ai/surging-rental-costs-of-older-gpus-signals-robust-ai-demand" target="_blank" rel="noopener">OfficeChai 2026-03</a></p></details>
@@ -149,5 +160,34 @@
 <h2>各追蹤站隨選中位數對照（口徑不同，不可與上圖指數互比）</h2><table><thead><tr><th>GPU</th><th>GetDeploying</th><th>AIMultiple</th></tr></thead><tbody><tr><td>H100</td><td>3.96（2026-11-09 週，44 家供應商）</td><td>3.92（2026-11）</td></tr><tr><td>H200</td><td>5.40（未標日期）</td><td>4.61（2026-11）</td></tr><tr><td>B200</td><td>8.55（未標日期）</td><td>7.99（2026-11）</td></tr><tr><td>A100</td><td>2.00（未標日期）</td><td>1.94（2026-11）</td></tr><tr><td>MI300X</td><td>—</td><td>2.92（2026-11）</td></tr></tbody></table><p class="src">單位：US$ / GPU / 小時　來源：<a href="https://getdeploying.com/gpu-price-index" target="_blank" rel="noopener">GetDeploying GPU Price Index</a> ・ <a href="https://aimultiple.com/gpu-index" target="_blank" rel="noopener">AIMultiple GPU Index</a></p>
 <footer>資料彙整自：assets/market_research/AI伺服器產業研究報告_20261115.md（2.5 GPU 算力租金趨勢）。僅供研究參考，非投資建議。</footer>
 </div>
+<script>
+(function(){
+  var box=document.querySelector('.chartbox'), tip=document.getElementById('tip');
+  if(!box||!tip) return;
+  function show(el){
+    var chg=el.dataset.chg, cls=chg.charAt(0)==='+'?'up':(chg.charAt(0)==='-'?'dn':'');
+    tip.innerHTML='<div class="t-h"><i style="background:'+el.dataset.col+'"></i>'+el.dataset.name+'　'+el.dataset.date+'</div>'
+      +'<div class="t-v">'+el.dataset.val+'</div>'
+      +'<div class="t-c">較前一筆 <b class="'+cls+'">'+chg+'</b></div>'
+      +(el.dataset.note?'<div class="t-n">'+el.dataset.note+'</div>':'');
+    tip.hidden=false;
+    var b=box.getBoundingClientRect(), r=el.getBoundingClientRect();
+    var x=r.left-b.left+r.width/2, y=r.top-b.top;
+    var w=tip.offsetWidth, h=tip.offsetHeight;
+    var left=Math.min(Math.max(8,x-w/2),b.width-w-8);
+    var top=y-h-10; if(top<4) top=y+r.height+8;
+    tip.style.left=left+'px'; tip.style.top=top+'px';
+  }
+  function hide(){tip.hidden=true;}
+  box.querySelectorAll('.hit').forEach(function(el){
+    el.addEventListener('mouseenter',function(){show(el);});
+    el.addEventListener('mouseleave',hide);
+    el.addEventListener('focus',function(){show(el);});
+    el.addEventListener('blur',hide);
+    el.addEventListener('touchstart',function(e){show(el);},{passive:true});
+  });
+  document.addEventListener('touchstart',function(e){if(!e.target.classList||!e.target.classList.contains('hit'))hide();},{passive:true});
+})();
+</script>
 </body>
 </html>
