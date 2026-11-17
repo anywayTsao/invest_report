@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DHR Danaher　投資邏輯深度分析</title>
+  <meta property="og:title" content="DHR Danaher　投資邏輯深度分析">
+  <meta property="og:description" content="Danaher：DHR 是優質複利股，但 27 倍 PE 對應約 9-10% 的 EPS 成長，已反映復甦；建議 2% 試單、等回到 190-210 再加碼。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DHR Danaher　投資邏輯深度分析">
+  <meta name="twitter:description" content="Danaher：DHR 是優質複利股，但 27 倍 PE 對應約 9-10% 的 EPS 成長，已反映復甦；建議 2% 試單、等回到 190-210 再加碼。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    /* ---- 投資重點快照（簡易分析區塊）專用樣式 ---- */
+    .snap-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .snap-hero .snap-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    .snap-hero .snap-desc {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-top: 4px;
+      line-height: 1.7;
+    }
+
+    .snap-eps {
+      text-align: right;
+    }
+
+    .snap-eps .v {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .snap-eps .v.pos {
+      color: var(--green-d);
+    }
+
+    .snap-eps .v.neg {
+      color: var(--red-d);
+    }
+
+    .snap-eps .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    .snap-hist {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .kpi {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid #94A3B8;
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .kpi.pos {
+      border-top-color: var(--green);
+    }
+
+    .kpi.neg {
+      border-top-color: var(--red);
+    }
+
+    .kpi.warn {
+      border-top-color: var(--amber);
+    }
+
+    .kpi .v {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .kpi .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-top: 5px;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 8px 0 20px;
+    }
+
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .pillar .ptype {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--orange);
+    }
+
+    .pillar .ptitle {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 4px 0;
+    }
+
+    .pillar .pkey {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .pillar ul {
+      padding-left: 18px;
+      margin-bottom: 0;
+      font-size: 12.8px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      background: var(--amber-bg);
+      padding: 1px 8px;
+      border-radius: 10px;
+      margin-left: 6px;
+    }
+
+    .note {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: -8px;
+    }
+
+    @media (max-width: 900px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .snap-eps {
+        text-align: left;
+      }
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>DHR Danaher — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：229.91（2026-11-16 收盤） USD　|　當前 PE：27.6x（近四季調整後 EPS 8.34）　|　52 週區間：160.93 – 242.80</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-11-17</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：2 空多轉折</span>
+        <span class="badge">建議戰略：繼續持有</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#snapshot">投資重點快照</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>DHR 是優質複利股，但 27 倍 PE 對應約 9-10% 的 EPS 成長，已反映復甦；建議 2% 試單、等回到 190-210 再加碼。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">優質</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">偏高</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">2 空多轉折</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">試單倉 2%</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>優質</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>偏高（PEG ≈ 2.7-2.9）</td><td>中</td></tr>
+            <tr><td>股價階段</td><td>2 空多轉折</td><td>中</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill ">繼續持有</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>試單倉 2%</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>呼吸道檢測與中國診斷政策使核心營收再度下修</li><li>Masimo 整合與槓桿風險，淨負債本次未取得</li><li>估值偏高，2027 指引若低於 4% 將觸發估值下修</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>2027 年 1 月正式指引與剔除呼吸道核心 +4-5% 的兌現</li><li>生物製程訂單與設備需求持續復甦</li><li>Masimo 綜效與 Q4 營益率約 29.5%</li></ul>
+      </div>
+
+      <!-- ============ 投資重點快照（原「簡易分析」報告的全部內容） ============ -->
+      <h2 class="section" id="snapshot">投資重點快照<span>SNAPSHOT · 簡易分析完整內容</span></h2>
+
+      <div class="card">
+        <div class="snap-hero">
+          <div>
+            <div class="snap-title">Danaher (DHR) · 生技工具與診斷平台 · Masimo 併購後的呼吸道週期落底與生物製程復甦</div>
+            <div class="snap-desc">生命科學與診斷 · 生物製程/生技 + 研究工具 + 診斷(Cepheid、Beckman、Radiometer、Masimo) · 全球製藥/醫院/實驗室 · 成熟期龍頭、處於週期復甦</div>
+          </div>
+          <div class="snap-eps">
+            <div class="v pos">7.80</div>
+            <div class="l">2025 EPS（USD）· 截至 2026-11-17</div>
+          </div>
+        </div>
+        <div class="snap-hist">2024 調整後 EPS 7.48｜2026Q3 調整後 EPS 2.11｜2025 營收 +3%</div>
+      </div>
+
+      <div class="exec">
+        <div class="exec-label">THESIS · 核心論述</div>
+        <p>Danaher 是以 DBS 營運系統驅動的生技工具與診斷龍頭，<b>2025 調整後 EPS 7.80、FCF 53 億美元（轉換率約 145%）</b>。2026Q3 剔除呼吸道的核心營收 +5.5%、生物製程訂單回升，<span class='g'>EPS 指引上調至 8.57-8.62</span>。但全年核心營收指引由 3-6% 降至約 2.5%，且股價約 27 倍近四季 EPS，<span class='r'>成長 G 僅約 9-10%，PEG 約 2.8</span>。成敗關鍵在 2027 年核心成長能否回到 4-5% 並消化 99 億美元 Masimo。</p>
+      </div>
+
+      <div class="kpis"><div class="kpi pos"><div class="v">8.57-8.62</div><div class="l">FY2026 調整後 EPS 指引<br>(Q3 上調，+10% YoY)</div></div><div class="kpi pos"><div class="v">+5.5%</div><div class="l">2026Q3 核心營收<br>(剔除呼吸道)</div></div><div class="kpi pos"><div class="v">53 億</div><div class="l">2025 自由現金流<br>(約淨利 145%)</div></div><div class="kpi warn"><div class="v">27.6x</div><div class="l">靜態 PE<br>(近四季調整後 EPS 8.34)</div></div><div class="kpi neg"><div class="v">約 2.5%</div><div class="l">FY2026 核心營收指引<br>(原 3-6% 已下修)</div></div><div class="kpi"><div class="v">99 億</div><div class="l">Masimo 併購 EV<br>(2026-06-10 完成)</div></div></div>
+
+      <h3 class="sub">KEY SWING FACTORS · 三大支柱</h3>
+      <div class="pillars"><div class="pillar"><div class="ptype">GROWTH</div><div class="ptitle">成長動能：生物製程復甦 + 診斷擴張</div><div class="pkey">Q3 核心營收 +3.0%，剔除呼吸道 +5.5%，連兩季加速</div><ul><li>生物科技核心 +5.0%，生物製程訂單中段雙位數成長（公司說法）</li><li>2027 起點框架：剔除呼吸道核心 +4-5%，正式指引 2027 年 1 月</li><li>Masimo 帶來 1.25 億成本綜效 + 5000 萬營收綜效（第五年）</li></ul></div><div class="pillar"><div class="ptype">MOAT</div><div class="ptitle">護城河：規模 + 轉換成本 + DBS</div><div class="pkey">連續 34 年 FCF 轉換率 >100%，調整後營益率約 28%</div><ul><li>耗材/試劑搭配儀器裝機的轉換成本，生物製程法規驗證鎖定客戶</li><li>Cepheid、Beckman、Radiometer、Leica 等多品牌規模經濟</li><li>DBS 持續改善成本與效率，Q4 營益率指引約 29.5%</li></ul></div><div class="pillar"><div class="ptype">RISK</div><div class="ptitle">風險：呼吸道週期、中國、估值</div><div class="pkey">呼吸道拖累 Q3 核心約 250bp，股價隱含高預期</div><ul><li>Cepheid 呼吸道檢測 2026Q1 年減約 25%，拖累延續到 Q4 約 150bp</li><li>中國診斷受帶量採購與給付政策衝擊（Q1 高個位數衰退）</li><li>PE 約 27 倍、G 約 9-10%，估值對指引失望敏感（7/21 財報日單日 -11%）</li></ul></div></div>
+
+      <div class="card">
+        <h3 class="sub">損益軌跡 （2023–2025 與 26Q3；營收單位：百萬美元）</h3>
+        <div class="tbl-wrap"><table><tr><th>項目</th><th>2023</th><th>2024</th><th>2025</th><th>26Q3</th></tr><tr><td>營收(百萬美元)</td><td>N/A</td><td>23,880</td><td>24,570</td><td>6,554</td></tr><tr><td>毛利率</td><td>N/A</td><td>N/A</td><td>約 58-59%</td><td>約 58.5%</td></tr><tr><td>營益率</td><td>N/A</td><td>N/A</td><td>28.2%（調整後）</td><td>N/A（Q4 指引約 29.5%）</td></tr><tr><td>EPS(USD)</td><td>N/A（GAAP 5.65）</td><td>7.48</td><td>7.80</td><td>2.11</td></tr><tr><td>ROE</td><td>N/A</td><td>N/A</td><td>約 6.9%（自估）</td><td>—</td></tr></table></div>
+        <p class="note">EPS 為調整後；2025 GAAP EPS 5.03、2024 為 5.29。ROE 以 2025 淨利 36.1 億 / 年底權益約 525 億自行估算，非公司揭露。毛利率各彙整來源口徑不一（Q3 稿件推算 58.5%，StockAnalysis 60.6%），營益率亦有出入，已以公司稿為準。2023 營收與調整後 EPS 本次未查證。</p>
+        <h3 class="sub">近 5 季損益</h3>
+        <div class="tbl-wrap"><table><tr><th>季別</th><th>營收(百萬美元)</th><th>毛利率</th><th>EPS(USD)</th></tr><tr><td>25Q3</td><td>6,053</td><td>58.2%</td><td>1.89</td></tr><tr><td>25Q4</td><td>6,838</td><td>58.2%</td><td>2.23</td></tr><tr><td>26Q1</td><td>5,951</td><td>60.3%</td><td>2.06</td></tr><tr><td>26Q2</td><td>6,265</td><td>57.6%</td><td>1.94</td></tr><tr><td>26Q3</td><td>6,554</td><td>約 58.5%</td><td>2.11</td></tr></table></div>
+        <p class="note">EPS 為調整後；25Q3 由 Q3 2026 +11.5% 反推、25Q4 由全年 7.80 扣除前三季推算，屬推估值。毛利率來源口徑不一（Q2 公司稿 57.6%、StockAnalysis 58.4%），僅供方向參考。26Q1 起含 Masimo（06-10 完成，Q2 起併入）。</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">KEY WATCH 關鍵觀察點</h3>
+        <ul><li>Q3 2026 營收 65.5 億美元（+8.5%，含併購貢獻），核心 +3.0%，剔除呼吸道 +5.5%，較 Q2 的 +4.5% 加速 100bp</li><li>調整後 EPS 2.11（+11.5%）優於共識 1.92；FY2026 指引由 8.35-8.50 一路上調至 8.57-8.62</li><li>Q3 營運現金流 18.9 億、FCF 16.3 億美元；加權稀釋股數 706.8M，較去年同期 713.7M 減少約 1%</li><li>Diagnostics 剔除呼吸道核心 +7%、生物科技核心 +5%；2026Q1 生物製程訂單年增逾 30%（單一來源）</li><li>近 3 場財報指引達成率 EPS 3/3 超標、核心營收 0/3 下修（FY26 核心由 3-6% 降至約 2.5%）；管理層可信度：中</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">催化劑 CATALYSTS</h3>
+        <ul><li>2027 年 1 月公布正式指引，公司以剔除呼吸道核心 +4-5% 為起點<span class="tag">（待驗證）</span></li><li>生物製程訂單與資本設備復甦，帶動生物科技核心成長<span class="tag">（進行中）</span></li><li>Masimo 整合，成本綜效 1.25 億美元與營收綜效 5000 萬美元（第五年）<span class="tag">（醞釀中）</span></li><li>Cepheid 呼吸道基期下降，拖累由 Q3 約 250bp 縮至 Q4 約 150bp<span class="tag">（進行中）</span></li><li>Q4 調整後營益率指引約 29.5%，DBS 驅動利潤率擴張<span class="tag">（待驗證）</span></li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">主要風險 KEY RISKS</h3>
+        <ul><li>呼吸道測試持續疲弱：Cepheid 呼吸道 Q1 年減約 25%，Q3 拖累核心約 250bp</li><li>核心營收指引連續下修：FY26 由 3-6% 降至約 2.5%，信任度受損</li><li>中國診斷受帶量採購與給付政策衝擊，Q1 為高個位數衰退</li><li>Masimo 99 億美元併購整合與商譽風險，淨負債與槓桿本次未取得</li><li>估值偏高：PE 約 27 倍，G 約 9-10%，指引失望時回檔幅度大（7/21 單日 -11%）</li><li>生物製藥客戶資本支出與關稅、美國藥價政策不確定性</li></ul>
+        <p class="note">估值提醒：近四季調整後 EPS 約 8.34、靜態 PE 約 27.6x，G 僅約 9-10%，PEG 約 2.8 屬偏高；優質複利股的溢價需靠 2027 核心成長回到 4-5% 支撐。｜ 生命週期：公司層面屬成熟期龍頭，處於呼吸道週期落底與生物製程復甦階段；股價層面為空多轉折（W 底後反彈 +40%）</p>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>財報稿主動拆解呼吸道拖累與剔除呼吸道的核心成長，並揭露併購貢獻 6.5 點，透明度佳；但未提供 Q3 調整後營益率，淨負債未揭露。</li>
+          <li><b>言行一致性：</b>EPS 指引 2026 年內連續上調（8.35-8.50 到 8.57-8.62）並每季優於共識；但核心營收指引由 3-6% 降至約 2.5%，營收面言行一致性中等。</li>
+          <li><b>資本配置：</b>偏好併購（99 億美元 Masimo）+ 本業再投資 + 小幅買回（股數年減約 1%）；已連續多年有股利。併購延伸診斷版圖，但短期壓縮財務彈性。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>成熟期的龍頭，生物製程處於週期復甦（庫存去化結束、訂單轉正），診斷受呼吸道與中國政策擾動；整體為穩定供給、成長中低個位數到中個位數。</li>
+          <li><b>市場規模：</b>TAM N/A（未取得可驗證來源，生技工具加診斷屬千億美元級，僅供方向） ／ SAM N/A（本次未查證） ／ SOM N/A（本次未查證）</li>
+          <li><b>競爭格局：</b>生物製程對手有 Thermo Fisher、Sartorius、Merck KGaA；診斷對手有 Roche、Abbott、Siemens Healthineers、bioMerieux；競爭強度中高，但驗證與裝機基礎形成進入門檻。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>提供從生物製程到臨床診斷的關鍵儀器與耗材，客戶為製藥與醫院，以速度、品質與法規驗證換取黏著度。</li>
+          <li><b>目標客群與通路：</b>製藥與生技公司、學研機構、醫院與臨床實驗室；通路以直銷與經銷並行，Masimo 進入醫院監測。</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>27.1%（2026Q2 調整後；Q3 未揭露，Q4 指引約 29.5%）（含金量 中）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>FCF / 淨利約 145%（2025），Q3 OCF 18.9 億美元，明顯高於 100%</td></tr>
+            <tr><td>資本支出／營收</td><td>約 3-4%（推估，未取得 10-K 逐項）</td></tr>
+            <tr><td>現金循環天數</td><td>N/A（本次未取得）</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>經濟規模 + 轉換成本 + 品牌（可複選）</li>
+          <li><b>強度與期間：</b>裝機基礎與耗材重複購買、法規驗證鎖定客戶，DBS 提供成本優勢；優勢強度高，期間預期 10 年以上，但診斷面臨價格與政策壓力。</li>
+          <li><b>ROE 軌跡：</b>GAAP ROE 偏低（2025 約 6.9%，自估），因商譽與併購使權益膨脹；保留盈餘率高，每股淨值成長靠盈餘再投資與小幅買回。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>營收 = 銷量 x ASP，結構為生物科技 + 生命科學 + 診斷三大塊；Q3 併購貢獻約 6.5 點、核心 +3.0%，呼吸道為單一最大擾動項。</li>
+          <li><b>毛利率改善動能：</b>DBS 效率、規模、Masimo 成本綜效、非呼吸道高毛利耗材比重回升，以及產品組合優化；Q4 營益率指引約 29.5%。</li>
+          <li><b>EPS 三大引擎：</b>EPS 靠淨利成長（核心 +4-5% 加槓桿）與每年約 1% 股數減少；ROE 受商譽攤薄，股東權益隨併購膨脹。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>約 5%</td><td>核心成長停在 2-3%、Masimo 綜效不及預期，企業價值僅能追上盈餘，估值下修到 22 倍以下。</td></tr>
+            <tr><td>高機率</td><td>約 9-10%</td><td>核心 +4-5%、營益率逐年擴張約 50bp、買回減股，屬優質複利，企業價值約每年成長 9-10%。</td></tr>
+            <tr><td>樂觀</td><td>約 13%</td><td>生物製程強勢復甦且 Masimo 綜效提前，呼吸道落底後回升，EPS 加速並支撐 28 倍以上估值。</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：8.34（調整後，25Q4 至 26Q3 合計，含推算）</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：約 9-10% — 依據：FY26 指引中點 8.60 較 2025 的 7.80 約 +10%；2027 核心 +4-5% 加營益率擴張與減股，推估 G 約 9-10%；未達 PEG 黃金適用區間 15-30%，僅供參考。</li>
+          <li><b>靜態 PE：</b>27.6x</li>
+          <li><b>動態 PE：</b>26.7x（以 FY26 指引中點 8.60）</li>
+          <li><b>PEG：</b>2.7-2.9</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr class="current"><td>貪婪興奮</td><td>1.5–2.0</td><td>✓</td></tr><tr><td>樂觀開心</td><td>1.2–1.5</td><td></td></tr><tr><td>過渡階段</td><td>0.8–1.2</td><td></td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">貪婪興奮</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：22x – 28x</li>
+          <li>對應股價區間：約 190 – 約 240</li>
+          <li>便宜價：約 165-175（約 19-20x FY26 EPS）　|　合理價：約 190-210（約 22-24x）　|　偏高價：約 230-245（約 27-28x）　|　昂貴價：高於約 260（約 30x 以上）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>約 -$20（合理價約 210 對現價 230，約 -9%）</td></tr>
+            <tr><td>企業價值 MOS</td><td>約 +$40（3 年後約 270 對現價 230，約 +17%，年化約 5%）</td></tr>
+            <tr><td>投資組合 MOS</td><td>維持 10-30 檔分散；DHR 屬醫療保健與工具類，勿與同類過度集中。</td></tr>
+          </table>
+        </div>
+      </div>
+
+      
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：50DMA 222.95（+3.1%）／150DMA 201.12（+14.3%）／200DMA 201.05（+14.4%）；多頭排列</li>
+          <li>200 DMA 趨勢：走平</li>
+          <li>近 6 個月波段高低點：墊高</li>
+          <li>量價型態：量價背離（10 日均量為 50 日均量 0.80x，20 日上漲量/下跌量 0.86）</li>
+          <li>股價乖離（季線）：+3.9%</li>
+          <li>是否出現特定型態：W底</li>
+        </ul>
+        <p class="note"><b>TradingView 實測數據</b>（NYSE:DHR｜截至 2026-11-16 收盤）</p><ul><li>距歷史新高：-22.3%</li><li>52週高低位置：距 52 週高點 -5.3%、較 52 週低點 +42.9%</li><li>50DMA 222.95（+3.1%）／150DMA 201.12（+14.3%）／200DMA 201.05（+14.4%）</li><li>200DMA 斜率：近 20 日 -0.12%，趨勢標籤走平</li><li>趨勢模板通過 6/7（未通過：200DMA 上揚）</li><li>RSI 47.6、ADX 22.3</li><li>10日相對量：0.07（為盤中未收盤快照，不具參考性）</li></ul><p class="note">資料來源：TradingView；價格僅還原分割、不還原現金股利；資料依 TradingView 方案可能延遲；最後一根未收盤日K 已剔除，currentPrice 採 2026-11-16 收盤 229.91；歷史新高 296.02 取自 TradingView High.All；RSI、ADX 與相對量為 2026-11-17 盤中快照</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">2 空多轉折</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：中</li>
+          <li>錯失機會風險：中</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <p>目前處於「2 空多轉折」，非多頭底部/上漲階段，VCP 型態分析暫不適用。</p>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>試單倉</li>
+          <li><b>建議週期：</b>18-36個月</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：約 55%</li>
+          <li>估計賠率：約 1.1（上行約 +17% 對下行約 -15%）</li>
+          <li>1/4 凱利公式下的最大下注比重：約 3.5%</li>
+          <li><b>目前建議買入：</b>估值偏高，僅建議 2% 試單；回到合理價約 190-210 加至 3%，便宜價約 165-175 加至 5%。已持有者續抱，非投資建議。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>2027 年 1 月指引剔除呼吸道核心成長低於 3%，代表復甦判斷錯誤</td></tr><tr><td>買進理由消失</td><td>生物製程訂單連兩季轉負，或 Masimo 整合後 Diagnostics 營益率明顯下滑</td></tr><tr><td>市場估值過高</td><td>股價高於約 260（PE 約 30x 以上）而 EPS 預期未上修，分批賣出</td></tr><tr><td>機會成本過高</td><td>有 PEG 低於 1.2 且 G 高於 15% 的標的出現時，分批換股</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>生物製藥客戶資本支出恢復與庫存去化結束</li><li>Cepheid 非呼吸道組合（如院內感染、女性健康）占比提高</li><li>併購後的資本配置，包括買回庫藏股與去槓桿</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告（預計 2027 年 1 月下旬，同時公布 2027 正式指引）</li>
+          <li>下次財報公布：待公告（預計 2027 年 1 月下旬 Q4 與全年財報，10-K 約 2 月）</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>剔除呼吸道核心營收成長是否維持 4-5%</li><li>生物製程訂單與出貨比</li><li>調整後營益率（Q4 指引約 29.5%）</li><li>FCF 轉換率是否維持 100% 以上</li><li>Masimo 營收與綜效進度、淨負債 / EBITDA</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>股價跌破 200DMA 約 201 且量增，視為空多轉折失敗，重新評估</li><li>股價回到 190-210 合理價區，加碼至 3%</li><li>2027 年 1 月指引剔除呼吸道核心低於 3% 或 EPS 指引中點低於 9.2</li><li>股價創新高站上 242.8 且量增，改檢視 VCP 與多頭上漲階段</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>Danaher 財報新聞稿 Q1/Q2/Q3 2026（biospace.com 轉載、SEC 8-K）、Danaher Q4 與全年 2025 財報（seekingalpha.com、marketchameleon.com）、Danaher 投資人關係：Masimo 併購公告（investors.danaher.com）與併購完成報導（ocbj.com）、StockAnalysis 季度損益（stockanalysis.com）、MarketBeat、StockAnalysis 分析師共識（非 FactSet）、TradingView（日K 價量，tv_technicals.py 計算）</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-11-17</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>

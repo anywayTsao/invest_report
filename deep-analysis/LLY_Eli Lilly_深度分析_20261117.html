@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LLY Eli Lilly　投資邏輯深度分析</title>
+  <meta property="og:title" content="LLY Eli Lilly　投資邏輯深度分析">
+  <meta property="og:description" content="Eli Lilly(LLY)：企業價值頂尖、趨勢強勁，但 PEG 約 1.8 已預支成長，建議既有持股續抱、新資金等回落至合理價約 1,200 美元分批布局。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="LLY Eli Lilly　投資邏輯深度分析">
+  <meta name="twitter:description" content="Eli Lilly(LLY)：企業價值頂尖、趨勢強勁，但 PEG 約 1.8 已預支成長，建議既有持股續抱、新資金等回落至合理價約 1,200 美元分批布局。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    /* ---- 投資重點快照（簡易分析區塊）專用樣式 ---- */
+    .snap-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .snap-hero .snap-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    .snap-hero .snap-desc {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-top: 4px;
+      line-height: 1.7;
+    }
+
+    .snap-eps {
+      text-align: right;
+    }
+
+    .snap-eps .v {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .snap-eps .v.pos {
+      color: var(--green-d);
+    }
+
+    .snap-eps .v.neg {
+      color: var(--red-d);
+    }
+
+    .snap-eps .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    .snap-hist {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .kpi {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid #94A3B8;
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .kpi.pos {
+      border-top-color: var(--green);
+    }
+
+    .kpi.neg {
+      border-top-color: var(--red);
+    }
+
+    .kpi.warn {
+      border-top-color: var(--amber);
+    }
+
+    .kpi .v {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .kpi .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-top: 5px;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 8px 0 20px;
+    }
+
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .pillar .ptype {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--orange);
+    }
+
+    .pillar .ptitle {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 4px 0;
+    }
+
+    .pillar .pkey {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .pillar ul {
+      padding-left: 18px;
+      margin-bottom: 0;
+      font-size: 12.8px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      background: var(--amber-bg);
+      padding: 1px 8px;
+      border-radius: 10px;
+      margin-left: 6px;
+    }
+
+    .note {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: -8px;
+    }
+
+    @media (max-width: 900px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .snap-eps {
+        text-align: left;
+      }
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>LLY Eli Lilly — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：1431.67 USD　|　當前 PE：44.5x(近4季非GAAP EPS 31.95)　|　52 週區間：850.51 – 1475.25</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-11-17</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：4 多頭上漲</span>
+        <span class="badge">建議戰略：繼續持有</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#snapshot">投資重點快照</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>企業價值頂尖、趨勢強勁，但 PEG 約 1.8 已預支成長，建議既有持股續抱、新資金等回落至合理價約 1,200 美元分批布局。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">頂尖</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">偏高</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">4 多頭上漲</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">暫不新增；既有持股續抱</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>頂尖</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>偏高（PEG ≈ 1.8–2.0）</td><td>中</td></tr>
+            <tr><td>股價階段</td><td>4 多頭上漲</td><td>高</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill ">繼續持有</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>暫不新增；既有持股續抱</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>降價與醫保壓力壓縮 tirzepatide 實際售價</li><li>估值高：動態 PE 約 40x、PEG 約 1.8</li><li>IPR&D 費用與債務上升侵蝕 EPS 與現金流</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>Foundayo 口服放量與 Medicare Bridge</li><li>retatrutide 2027Q1 送件</li><li>26Q4 財報與 2027 指引</li></ul>
+      </div>
+
+      <!-- ============ 投資重點快照（原「簡易分析」報告的全部內容） ============ -->
+      <h2 class="section" id="snapshot">投資重點快照<span>SNAPSHOT · 簡易分析完整內容</span></h2>
+
+      <div class="card">
+        <div class="snap-hero">
+          <div>
+            <div class="snap-title">Eli Lilly (LLY) · GLP-1/GIP 減重與糖尿病龍頭 · Mounjaro/Zepbound 驅動超高速成長</div>
+            <div class="snap-desc">大型製藥 · Mounjaro 約44%+Zepbound 約22%(26Q3 營收占比) · 全球處方藥與 Lilly Direct 直售 · 放量成長期</div>
+          </div>
+          <div class="snap-eps">
+            <div class="v pos">22.95</div>
+            <div class="l">2025 EPS（USD）· 截至 2026-11-17</div>
+          </div>
+        </div>
+        <div class="snap-hist">2024 EPS 11.71｜26Q3 EPS 7.22｜2025 營收 +45%</div>
+      </div>
+
+      <div class="exec">
+        <div class="exec-label">THESIS · 核心論述</div>
+        <p>禮來以 tirzepatide(Mounjaro/Zepbound)主導 GLP-1 市場，26Q3 營收 <b>243.97 億美元 <span class='g'>+39% YoY</span></b>，2026 營收指引三度上調至 910–920 億美元。口服 Foundayo 與 retatrutide(預計 2027Q1 送件)延伸成長，但股價已創高，PEG 約 1.8，<span class='r'>降價/醫保壓力與估值透支</span>是主要張力；管理層指引屢次上修，可信度高。</p>
+      </div>
+
+      <div class="kpis"><div class="kpi pos"><div class="v">243.97億美元</div><div class="l">26Q3 營收<br>YoY +39%</div></div><div class="kpi pos"><div class="v">83.9%</div><div class="l">26Q3 毛利率<br>(非GAAP 84.4%)</div></div><div class="kpi warn"><div class="v">35.3%</div><div class="l">26Q3 營益率<br>含 41.8 億 IPR&D 費用</div></div><div class="kpi"><div class="v">31.95</div><div class="l">近4季非GAAP EPS<br>(報告值合計 30.81)</div></div><div class="kpi neg"><div class="v">44.5x</div><div class="l">靜態 PE<br>(動態 2026E 約 40x)</div></div><div class="kpi pos"><div class="v">7/7</div><div class="l">趨勢模板通過數<br>距歷史高 -3.0%</div></div></div>
+
+      <h3 class="sub">KEY SWING FACTORS · 三大支柱</h3>
+      <div class="pillars"><div class="pillar"><div class="ptype">GROWTH</div><div class="ptitle">成長動能</div><div class="pkey">26Q3 營收 +39%，YTD +46%；2026 指引 910–920 億美元</div><ul><li>Mounjaro 26Q3 107.2 億美元 +65%；Zepbound 53.5 億美元 +49%</li><li>口服 Foundayo 26Q3 已貢獻 1.84 億美元，Medicare Bridge 自 2026-07 起擴大可及性</li><li>retatrutide 多項 Phase 3 達標，預計 2027Q1 向 FDA 送件</li></ul></div><div class="pillar"><div class="ptype">MOAT</div><div class="ptitle">護城河</div><div class="pkey">專利+經濟規模+品牌，毛利率 83.9%</div><ul><li>tirzepatide 專利與製劑/注射裝置規模化製造門檻高</li><li>產能擴張領先(美國新增多座廠，H1 2026 資本支出 52.6 億美元)</li><li>醫師處方慣性與 Lilly Direct 直售通路形成黏著度</li></ul></div><div class="pillar"><div class="ptype">RISK</div><div class="ptitle">風險</div><div class="pkey">價格下行與估值已高：PE 44x、PEG 約 1.8</div><ul><li>實際售價下滑，Q1 毛利率曾較去年同期降 0.6pp</li><li>IPR&D 費用重 (26Q3 每股 4.57 美元)，非GAAP EPS 指引被下修至 35.0–36.0</li><li>債務由 425 億增至約 495–549 億美元(來源口徑不一)，FCF 被資本支出吃緊</li></ul></div></div>
+
+      <div class="card">
+        <h3 class="sub">損益軌跡 （2023–2025 與 26Q3；營收單位：十億美元）</h3>
+        <div class="tbl-wrap"><table><tr><th>項目</th><th>2023</th><th>2024</th><th>2025</th><th>26Q3</th></tr><tr><td>營收(十億美元)</td><td>34.1</td><td>45.0</td><td>65.2</td><td>24.4</td></tr><tr><td>毛利率</td><td>79.2%</td><td>81.3%</td><td>83.0%</td><td>83.9%</td></tr><tr><td>營益率</td><td>18.9%</td><td>28.6%</td><td>40.4%</td><td>35.3%</td></tr><tr><td>EPS(USD)</td><td>5.80</td><td>11.71</td><td>22.95</td><td>7.22</td></tr><tr><td>ROE</td><td>N/A</td><td>N/A</td><td>N/A</td><td>—</td></tr></table></div>
+        <p class="note">EPS 為報告值(GAAP)；2025 非GAAP EPS 24.21。2023–2025 毛利率與營益率由 stockanalysis/macrotrends 摘要的毛利與營業利益除以營收計算，來源間營業利益有出入，建議以 10-K 核對。ROE 未取得可核對數據。</p>
+        <h3 class="sub">近 5 季損益</h3>
+        <div class="tbl-wrap"><table><tr><th>季別</th><th>營收(十億美元)</th><th>毛利率</th><th>EPS(USD)</th></tr><tr><td>25Q3</td><td>17.6</td><td>82.9%</td><td>6.21</td></tr><tr><td>25Q4</td><td>19.3</td><td>83.2%</td><td>7.39</td></tr><tr><td>26Q1</td><td>19.8</td><td>81.9%</td><td>8.26</td></tr><tr><td>26Q2</td><td>23.0</td><td>85.8%</td><td>7.94</td></tr><tr><td>26Q3</td><td>24.4</td><td>83.9%</td><td>7.22</td></tr></table></div>
+        <p class="note">EPS 為報告值，各季含 IPR&D 費用(26Q1 0.52、26Q2 3.03、26Q3 4.57 美元/股)；非GAAP EPS 依序 7.54/8.55/8.38/7.48(25Q4–26Q3)。26Q3 營收含約 9 億美元一次性有利項目(含 4.1 億 Jardiance 里程碑)。</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">KEY WATCH 關鍵觀察點</h3>
+        <ul><li>26Q3 營收 243.97 億美元 +39% YoY，YTD 671.7 億 +46%，Mounjaro+Zepbound 合計占約 66%</li><li>2026 營收指引由 800–830 億，歷經兩次上調至 910–920 億美元；績效利潤率指引升至 52.0–52.5%</li><li>26Q3 營業利益率 35.3% 對比去年同期 41.8%，主因 IPR&D 費用由 6.6 億增至 41.8 億美元</li><li>FactSet 共識(2026-08-06, 28 位) 2027 EPS 中位數 45.66、2028 為 52.56 美元，隱含 2026–28 EPS CAGR 約 21%</li><li>近 3 場財報指引達成率 3/4(營收指引 Q1/Q2/Q3 皆上調，非GAAP EPS 指引 Q3 由 35.50–36.50 下修至 35.00–36.00 因 IPR&D)；管理層可信度：高</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">催化劑 CATALYSTS</h3>
+        <ul><li>Foundayo(orforglipron)口服減重放量與 Medicare Bridge($50/月，2026-07 至 2027-12)<span class="tag">（進行中）</span></li><li>retatrutide 預計 2027Q1 向 FDA 送件，涵蓋減重/膝骨關節炎/睡眠中止<span class="tag">（待驗證）</span></li><li>Mounjaro/Zepbound 全球放量，2026 營收指引 910–920 億美元<span class="tag">（進行中）</span></li><li>美國新廠與產能擴張支撐供給(賓州 35 億美元注射劑廠等)<span class="tag">（結構性）</span></li><li>26Q4 財報與 2027 年度指引(預期 2027 年 2 月初)<span class="tag">（待驗證）</span></li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">主要風險 KEY RISKS</h3>
+        <ul><li>價格壓力：Mounjaro/Zepbound 實際售價下滑，直售、TrumpRx 與 Medicare $50 月費壓縮單價</li><li>估值：靜態 PE 約 44.5x、動態約 40x，PEG 約 1.8 落於貪婪興奮區間</li><li>IPR&D 與併購：26Q3 EPS 內含 4.57 美元費用，EPS 指引反被下修</li><li>槓桿：總債務由 2025 年底約 425 億美元升至約 495–549 億美元(來源口徑不一)</li><li>競爭：Novo 口服 Wegovy 已先上市，競爭加劇且法規政策不確定</li><li>集中度：tirzepatide 兩品牌約占營收 66%，單一產品線風險高</li></ul>
+        <p class="note">估值提醒：PEG 約 1.8 屬貪婪興奮區間，已預支未來成長；以 2027E EPS 約 45 美元計合理價約 1,200 美元，現價高於合理價約 19%。｜ 生命週期：產業處於放量成長期；股價為階段 4 多頭上漲(7/7 趨勢模板、200DMA 上揚、近 6 個月高低點墊高)</p>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>按季揭露各產品營收、IPR&D 費用與一次性項目(例：26Q3 約 9 億美元有利項目與 4.1 億 Jardiance 里程碑)，並主動說明非GAAP 與報告值差異，透明度高。</li>
+          <li><b>言行一致性：</b>2026 年三度上調營收指引(800–830 → 850–870 → 910–920 億美元)，績效利潤率指引同步上調；唯 26Q3 非GAAP EPS 指引因 IPR&D 下修，整體言行一致。</li>
+          <li><b>資本配置：</b>以本業與產能為先(10 座以上新廠)，輔以 IPR&D 授權併購與股利(季息 1.73 美元)；近 12 個月股利加買回約 118 億美元約等於 FCF，債務上升，成長空間仍大但財務彈性下降。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>放量成長期：GLP-1/GIP 減重與糖尿病處方快速滲透，口服劑型與 Medicare 擴大可及性，但價格逐步下行。</li>
+          <li><b>市場規模：</b>TAM GLP-1 減重與代謝市場，券商預測 2030 年約 1,000–1,500 億美元(預測值，未逐一核實) ／ SAM 美國與主要已開發市場的肥胖與第二型糖尿病處方可服務族群，含自費與保險給付 ／ SOM 26Q3 tirzepatide 兩品牌合計約 160 億美元季營收；2026 全年公司營收指引 910–920 億美元</li>
+          <li><b>競爭格局：</b>雙頭壟斷：Lilly 與 Novo(Wegovy/Ozempic，口服 Wegovy 先上市)，後進者含 Pfizer、Amgen 等及複方藥；競爭強度升高，價格為主要戰場。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>目前最有效的減重與血糖控制藥物，單劑型針劑與新口服選項降低使用門檻。</li>
+          <li><b>目標客群與通路：</b>肥胖與第二型糖尿病患者，透過保險給付、Medicare、Lilly Direct 直售與藥局通路。</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>35.3%(26Q3，含 IPR&D 費用；2025 全年約 40.4%)（含金量 高）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>約 177%(26Q3 營業現金流 114 億美元對淨利 64.5 億美元)</td></tr>
+            <tr><td>資本支出／營收</td><td>約 12–30%(H1 2026 資本支出 52.6 億對營收 428 億；26Q3 約 72 億對 244 億)</td></tr>
+            <tr><td>現金循環天數</td><td>未取得可核對數據</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>專利 / 經濟規模 / 品牌 / 特許(可複選)</li>
+          <li><b>強度與期間：</b>tirzepatide 專利期長，加上注射筆與製劑產能規模化，同時多代產品管線(口服、三重 agonist)延續優勢，預計 10 年以上。</li>
+          <li><b>ROE 軌跡：</b>未取得可核對 ROE；2023–2025 淨利 52.4/105.9/206.4 億美元快速上升，股利支付率僅約 21%，保留盈餘率高。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>銷量×ASP：量(處方人數與新適應症)成長強勁，ASP 因直售與醫保折扣下滑；產品結構高度集中於 Mounjaro/Zepbound，並新增 Foundayo/Inluriyo。</li>
+          <li><b>毛利率改善動能：</b>規模效應與產品組合推升毛利率(26Q2 85.8%)，訂價權受壓；營益率受 IPR&D 費用與研發(26Q3 研發 +23%)擾動。</li>
+          <li><b>EPS 三大引擎：</b>ROE 大幅上升主導 EPS；流通股數約 8.94 億股變化小，股東權益隨淨利累積成長。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>約 8%</td><td>降價與競爭壓縮 ASP，2028 EPS 約 40 美元，企業價值約 800–1,000 美元</td></tr>
+            <tr><td>高機率</td><td>約 21%</td><td>對齊 FactSet 2028 EPS 約 52.5 美元，企業價值約 1,300–1,450 美元</td></tr>
+            <tr><td>樂觀</td><td>約 28%</td><td>retatrutide 與口服成功，2028 EPS 約 59 美元，企業價值約 1,700–1,900 美元</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：31.95 美元(近4季非GAAP；報告值 30.81)</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：約 22%(2026E–2028E EPS CAGR) — 依據：FactSet 2026E 35.58 至 2028E 52.56 美元，兩年 CAGR 約 21.5%；扣除降價與 IPR&D 不確定性後取約 22%。</li>
+          <li><b>靜態 PE：</b>44.5x</li>
+          <li><b>動態 PE：</b>約 40x(2026E 35.5)；2027E 45.66 約 31x</li>
+          <li><b>PEG：</b>1.8–2.0</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr class="current"><td>貪婪興奮</td><td>1.5–2.0</td><td>✓</td></tr><tr><td>樂觀開心</td><td>1.2–1.5</td><td></td></tr><tr><td>過渡階段</td><td>0.8–1.2</td><td></td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">貪婪興奮</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：22x – 35x</li>
+          <li>對應股價區間：1005 – 1598</li>
+          <li>便宜價：約 900　|　合理價：約 1,200　|　偏高價：約 1,450　|　昂貴價：1,650 以上</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>約 -232 美元(合理價 1,200 對現價 1,432，約 -16%)</td></tr>
+            <tr><td>企業價值 MOS</td><td>約 -8% 至 +3%(2028E EPS 52.5 美元乘 25–28x 為 1,310–1,470)</td></tr>
+            <tr><td>投資組合 MOS</td><td>單檔不宜超過組合 5%；GLP-1 主題與醫藥股需分散</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card"><h3 class="sub">2.5 FactSet 共識估值</h3><div class="tbl-wrap"><table><tr><th>指標</th><th>期間</th><th>數值</th></tr><tr><td>EPS 共識中位數(最高/最低)</td><td>FY2026</td><td>35.58 美元(37.77/32.53)，28 位分析師</td></tr><tr><td>EPS 共識中位數(最高/最低)</td><td>FY2027</td><td>45.66 美元(50.74/40.17)</td></tr><tr><td>EPS 共識中位數(最高/最低)</td><td>FY2028</td><td>52.56 美元(59.26/44.80)</td></tr><tr><td>目標價</td><td>12 個月</td><td>1,317 美元</td></tr></table></div><p class="note">來源：<a href="https://news.cnyes.com/news/id/6561530">鉅亨網〈Factset 最新調查：禮來(LLY-US)EPS預估上修至35.58元，預估目標價為1,317.00元〉(2026-08-06，轉載 FactSet)</a>｜資料日期：2026-08-06</p><p class="note">限制：共識早於最新財報(2026-10-29)且已超過 100 天，可能已更新；頁面未揭露評級分布，FY2027/FY2028 分析師人數未揭露。</p><p>與本報告推估的差異：共識 2028 EPS 52.56 與本報告 G 約 22% 一致；FactSet 目標價 1,317 低於現價 1,432，與本報告合理價約 1,200 同向，皆顯示現價偏高。</p></div>
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：收盤 1431.67 高於 50DMA 1246.7(+14.8%)、150DMA 1154.5(+24.0%)、200DMA 1111.3(+28.8%)</li>
+          <li>200 DMA 趨勢：上揚</li>
+          <li>近 6 個月波段高低點：墊高</li>
+          <li>量價型態：量價中性(10 日均量為 50 日均量 1.23 倍，20 日上漲日/下跌日量比 0.96)</li>
+          <li>股價乖離（季線）：+15.9%</li>
+          <li>是否出現特定型態：無</li>
+        </ul>
+        <p class="note"><b>TradingView 實測數據</b>（NYSE:LLY｜截至 2026-11-16 收盤）</p><ul><li>距歷史新高 -3.0%／52週高低位置：距52週高 -3.0%、較52週低 +68.3%</li><li>50DMA 1246.7(+14.8%)／150DMA 1154.5(+24.0%)／200DMA 1111.3(+28.8%)</li><li>200DMA 斜率 +2.83%(上揚)</li><li>趨勢模板通過 7/7</li><li>RSI 64.6、ADX 38.3</li><li>10日相對量 0.18(當日盤中，參考性低)</li></ul><p class="note">資料來源：TradingView；價格僅還原分割、不還原股利；資料依 TradingView 方案可能延遲；最後一根未收盤日K已剔除，收盤價採 2026-11-16；週K VCP 因 TradingView 額度冷卻未取得，VCP 未機械計算</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">4 多頭上漲</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：高</li>
+          <li>錯失機會風險：低</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <h3 class="sub">4.1 VCP結構檢視</h3><ul><li>層級：週K(資料不足)</li><li>收縮次數：資料不足，無法機械計算(週K額度受限)</li><li>回檔幅度遞減：資料不足，無法機械計算</li><li>最後一次回檔 &lt;5%：資料不足，無法機械計算</li><li>口袋支點／凹洞量：資料不足，無法機械計算</li><li>新高狀態：接近：2026-11 創高 1475.25，目前距歷史高 -3.0%</li><li>量價型態：日K 量價中性，週K 未計算</li></ul><p class="note">週K VCP 因 TradingView 額度冷卻未取得，未機械計算；以上日K數據截至 2026-11-16。</p><h3 class="sub">4.2 可能進場點</h3><div class="tbl-wrap"><table><tr><th>進場點</th><th>條件是否成立</th><th>對應停損</th><th>建議下注</th></tr><tr><td>凹洞量能點</td><td>資料不足，無法機械計算</td><td>跌破凹洞量當日最低點(待週K計算)；最大停損不超過 10%</td><td>約20%</td></tr><tr><td>帶量突破點</td><td>未成立：收盤 1431.67 低於歷史高 1475.25，尚未帶量突破；10 日相對量 1.23 倍</td><td>跌破頸線或突破紅K最低價；停損 5–7%，最高 10%</td><td>約50%</td></tr><tr><td>回測成功點</td><td>未成立：尚無回測後帶量三盤過</td><td>跌破三盤最低點；最高 10%</td><td>約30%</td></tr></table></div><h3 class="sub">4.3 七大供需轉折訊號</h3><ul class="checklist"><li>極限大量</li><li>超買反轉（季線乖離 >50% / 80%）</li><li>產業逆風</li><li>利多不漲</li><li>利空下跌</li><li>量價背離</li><li>大量黑K</li></ul>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>暫不投資</li>
+          <li><b>建議週期：</b>18–36個月(既有持股)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：約 55%</li>
+          <li>估計賠率：約 0.8–1.0(上檔至樂觀情境約 +10~30%，下檔回到合理價/悲觀約 -16~-40%)</li>
+          <li>1/4 凱利公式下的最大下注比重：約 0–3%(凱利值接近 0，1/4 凱利後偏低)</li>
+          <li><b>目前建議買入：</b>現價高於合理價 1,200 約 19%，暫不新增；等待回落至合理價附近(1,200，下注 2%)、偏低價(約 1,050，3%)或便宜價(約 900，5%)分批布局</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>tirzepatide 單季營收年增率跌破 20%，或 2026–28 EPS CAGR 明顯低於 15%</td></tr><tr><td>買進理由消失</td><td>毛利率連兩季低於 80%，或 retatrutide/Foundayo 送件延誤超過 2 季</td></tr><tr><td>市場估值過高</td><td>PEG 持續高於 2.0(動態 PE 高於 45x)且季線乖離超過 50%，分批減碼</td></tr><tr><td>機會成本過高</td><td>出現 PEG 低於 1.0 且成長相近的標的，或持股報酬風險比明顯落後</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>retatrutide 取得優於 tirzepatide 的上市資料</li><li>Foundayo 於自費與保險通路放量優於預期</li><li>Medicare 或政策降價幅度低於市場擔憂</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告(預期 2027 年 2 月初)</li>
+          <li>下次財報公布：待公告(預期 2027 年 2 月初，含 FY2026 10-K)</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>Mounjaro/Zepbound 季營收與 YoY</li><li>毛利率是否維持 82% 以上</li><li>每股 IPR&D 費用與非GAAP EPS 指引</li><li>Foundayo 季營收</li><li>營業現金流減資本支出之 FCF</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>股價回落至 1,200 美元附近(合理價)</li><li>收盤跌破 50DMA 約 1,247 美元且量增</li><li>tirzepatide 季營收年增率跌破 20%</li><li>股價帶量站上 1,475 美元創高(進入帶量突破點檢核)</li><li>2027 年度營收或 EPS 指引低於 FactSet 共識</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>SEC 8-K Lilly Q3 2026 財報新聞稿(sec.gov)、Lilly 投資人關係 Q4 2025 / Q1 2026 / Q2 2026 新聞稿、鉅亨網 Factset 最新調查(news.cnyes.com)、Zacks、24/7 Wall St.、Trefis、sec-api.io、stockanalysis.com、macrotrends(年度財報)、TradingView(日K 價量，tv_technicals.py 計算)</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-11-17</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>

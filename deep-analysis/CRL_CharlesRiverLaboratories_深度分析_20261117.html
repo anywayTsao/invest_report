@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRL CharlesRiverLaboratories　投資邏輯深度分析</title>
+  <meta property="og:title" content="CRL CharlesRiverLaboratories　投資邏輯深度分析">
+  <meta property="og:description" content="CharlesRiverLaboratories：基本面復甦確立（有機成長4.7%、訂單比1.09x、EPS指引上修），但股價較年低翻倍、PE約32倍、PEG約2.8，建議持有者續抱、新增資金等回檔至US$275以下再分批。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="CRL CharlesRiverLaboratories　投資邏輯深度分析">
+  <meta name="twitter:description" content="CharlesRiverLaboratories：基本面復甦確立（有機成長4.7%、訂單比1.09x、EPS指引上修），但股價較年低翻倍、PE約32倍、PEG約2.8，建議持有者續抱、新增資金等回檔至US$275以下再分批。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    /* ---- 投資重點快照（簡易分析區塊）專用樣式 ---- */
+    .snap-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .snap-hero .snap-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    .snap-hero .snap-desc {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-top: 4px;
+      line-height: 1.7;
+    }
+
+    .snap-eps {
+      text-align: right;
+    }
+
+    .snap-eps .v {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .snap-eps .v.pos {
+      color: var(--green-d);
+    }
+
+    .snap-eps .v.neg {
+      color: var(--red-d);
+    }
+
+    .snap-eps .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    .snap-hist {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .kpi {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid #94A3B8;
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .kpi.pos {
+      border-top-color: var(--green);
+    }
+
+    .kpi.neg {
+      border-top-color: var(--red);
+    }
+
+    .kpi.warn {
+      border-top-color: var(--amber);
+    }
+
+    .kpi .v {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .kpi .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-top: 5px;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 8px 0 20px;
+    }
+
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .pillar .ptype {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--orange);
+    }
+
+    .pillar .ptitle {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 4px 0;
+    }
+
+    .pillar .pkey {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .pillar ul {
+      padding-left: 18px;
+      margin-bottom: 0;
+      font-size: 12.8px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      background: var(--amber-bg);
+      padding: 1px 8px;
+      border-radius: 10px;
+      margin-left: 6px;
+    }
+
+    .note {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: -8px;
+    }
+
+    @media (max-width: 900px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .snap-eps {
+        text-align: left;
+      }
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>CRL CharlesRiverLaboratories — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：335.52（2026-11-16收盤） USD　|　當前 PE：31.8x（TTM非GAAP EPS 10.56）　|　52 週區間：146.20 – 379.63</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-11-17</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：4 多頭上漲</span>
+        <span class="badge">建議戰略：繼續持有</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#snapshot">投資重點快照</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>基本面復甦確立（有機成長4.7%、訂單比1.09x、EPS指引上修），但股價較年低翻倍、PE約32倍、PEG約2.8，建議持有者續抱、新增資金等回檔至US$275以下再分批。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">優質</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">昂貴</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">4 多頭上漲</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">暫不投資（持有者續抱，新增資金等回檔）</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>優質</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>昂貴（PEG ≈ 2.7–2.9）</td><td>中</td></tr>
+            <tr><td>股價階段</td><td>4 多頭上漲</td><td>中</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill ">繼續持有</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>暫不投資（持有者續抱，新增資金等回檔）</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>估值透支：TTM PE約32倍，PEG約2.8</li><li>復甦漸進：RMS仍弱，訂價效益2027下半年才出現，5–7%目標延至2028</li><li>資產負債表：長期負債US$2.44B、9M營運現金流年減約19%</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>DSA淨訂單比與訂價回升</li><li>2027年利潤率擴張高於年均75bp</li><li>生技資金回溫與庫藏股持續</li></ul>
+      </div>
+
+      <!-- ============ 投資重點快照（原「簡易分析」報告的全部內容） ============ -->
+      <h2 class="section" id="snapshot">投資重點快照<span>SNAPSHOT · 簡易分析完整內容</span></h2>
+
+      <div class="card">
+        <div class="snap-hero">
+          <div>
+            <div class="snap-title">Charles River Laboratories · 前臨床CRO與研究模型 · 生技資金回溫與利潤率修復</div>
+            <div class="snap-desc">醫藥研發外包 · DSA安全評估約60%／RMS研究模型約21%／Manufacturing約19% · 大型藥廠與生技客戶 · 成長初期復甦</div>
+          </div>
+          <div class="snap-eps">
+            <div class="v pos">10.28</div>
+            <div class="l">2025 EPS（USD）· 截至 2026-11-17</div>
+          </div>
+        </div>
+        <div class="snap-hist">2024 EPS 10.32｜26Q3 EPS 3.09｜2025 營收 -0.9%</div>
+      </div>
+
+      <div class="exec">
+        <div class="exec-label">THESIS · 核心論述</div>
+        <p>CRL是全球前臨床CRO龍頭，<b>26Q3有機成長4.7%為三年新高</b>，DSA淨訂單比1.09倍連四季大於1，FY26非GAAP EPS指引上修至11.35–11.55。<span class='g'>需求觸底與剝離低毛利CDMO使利潤率回升</span>，但<span class='r'>股價自年低146.2漲逾129%，TTM本益比約32倍，已預支2027–2028復甦</span>。成敗關鍵在2027下半年訂價回升與5–7%有機成長能否在2028兌現。</p>
+      </div>
+
+      <div class="kpis"><div class="kpi pos"><div class="v">4.7%</div><div class="l">26Q3 有機營收成長<br>三年新高</div></div><div class="kpi pos"><div class="v">1.09x</div><div class="l">DSA 淨訂單比<br>連四季大於1</div></div><div class="kpi pos"><div class="v">US$2.03B</div><div class="l">DSA 未完成訂單<br>26Q3</div></div><div class="kpi pos"><div class="v">23.0%</div><div class="l">26Q3 非GAAP營益率<br>年增330bp</div></div><div class="kpi warn"><div class="v">31.8x</div><div class="l">TTM 非GAAP PE<br>EPS 10.56</div></div><div class="kpi warn"><div class="v">US$2.44B</div><div class="l">長期負債<br>較年初2.14B增加</div></div></div>
+
+      <h3 class="sub">KEY SWING FACTORS · 三大支柱</h3>
+      <div class="pillars"><div class="pillar"><div class="ptype">GROWTH</div><div class="ptitle">成長動能</div><div class="pkey">26Q3 有機成長4.7%，淨訂單US$652M年增32%</div><ul><li>DSA有機成長5.9%，未完成訂單升至US$2.03B</li><li>管理層5–7%有機成長目標延後至2028</li><li>訂價效益最快2027下半年才出現</li></ul></div><div class="pillar"><div class="ptype">MOAT</div><div class="ptitle">護城河</div><div class="pkey">全球最大前臨床CRO，轉換成本與規模優勢</div><ul><li>GLP法規認證與客戶長期專案造成轉換成本</li><li>RMS研究模型為少數具規模的供應商，毛利高</li><li>非GAAP營益率2025為19.8%，剝離後26Q3達23.0%</li></ul></div><div class="pillar"><div class="ptype">RISK</div><div class="ptitle">風險</div><div class="pkey">估值已高而復甦仍屬漸進</div><ul><li>TTM PE約32倍，PEG約2.7–2.9</li><li>RMS有機營收26Q3仍下滑0.6%</li><li>26Q3後負債升至US$2.44B，OCF 9M年減</li></ul></div></div>
+
+      <div class="card">
+        <h3 class="sub">損益軌跡 （2023–2025 與 26Q3；營收單位：百萬美元）</h3>
+        <div class="tbl-wrap"><table><tr><th>項目</th><th>2023</th><th>2024</th><th>2025</th><th>26Q3</th></tr><tr><td>營收(百萬美元)</td><td>4129</td><td>4050</td><td>4015</td><td>982.7</td></tr><tr><td>毛利率</td><td>37.0%</td><td>34.8%</td><td>35.0%</td><td>37.1%</td></tr><tr><td>營益率</td><td>15.7%</td><td>13.5%</td><td>12.4%</td><td>23.4%</td></tr><tr><td>EPS(USD)</td><td>10.67</td><td>10.32</td><td>10.28</td><td>3.09</td></tr><tr><td>ROE</td><td>14.4%</td><td>0.7%</td><td>-4.2%</td><td>—</td></tr></table></div>
+        <p class="note">營收與毛利率、營益率為GAAP（StockAnalysis）；EPS為非GAAP，GAAP EPS 為9.22／0.20／-2.91，2024與2025受商譽與無形資產減損拖累，26Q3 GAAP EPS 6.86含稅務準備金迴轉5.06。非GAAP營益率2024為19.9%、2025為19.8%、26Q3為23.0%。ROE為GAAP基礎。</p>
+        <h3 class="sub">近 5 季損益</h3>
+        <div class="tbl-wrap"><table><tr><th>季別</th><th>營收(百萬美元)</th><th>毛利率</th><th>EPS(USD)</th></tr><tr><td>25Q3</td><td>1005.0</td><td>35.0%</td><td>2.43</td></tr><tr><td>25Q4</td><td>994.2</td><td>33.1%</td><td>2.39</td></tr><tr><td>26Q1</td><td>995.8</td><td>32.4%</td><td>2.06</td></tr><tr><td>26Q2</td><td>1004.0</td><td>37.8%</td><td>3.02</td></tr><tr><td>26Q3</td><td>982.7</td><td>37.1%</td><td>3.09</td></tr></table></div>
+        <p class="note">EPS為非GAAP；25Q3由26Q3年增27.2%反推為2.43。26Q2起CDMO與歐洲部分Discovery據點已於2026年5月剝離，營收年減屬剝離效應，有機成長為正。</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">KEY WATCH 關鍵觀察點</h3>
+        <ul><li>26Q3 營收US$982.7M年減2.2%（剝離），但有機成長4.7%高於管理層先前1%–3%展望，為三年來最佳</li><li>FY26 非GAAP EPS指引三度上修至US$11.35–11.55（年初10.70–11.20），有機成長指引至少1.5%（年初-1%至持平）</li><li>DSA 26Q3 淨訂單US$652M、淨訂單比1.09x（26Q2為1.19x），未完成訂單US$2.03B；RMS有機營收-0.6%仍弱</li><li>非GAAP營益率23.0%（Manufacturing剝離CDMO後38.6%、DSA 26.8%、RMS 24.4%），管理層預期2027年利潤率擴張高於年均75bp</li><li>管理層目標達成率：FY26 EPS指引由10.70–11.20上修至11.35–11.55、有機成長由-1%至持平上修至至少1.5%，近3場財報皆超越共識（26Q2 3.02 vs 2.72、26Q3 3.09 vs 約2.97）；5–7%有機成長目標已由2027延至2028；管理層可信度：中高（財報達標但長期目標時程延後）</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">催化劑 CATALYSTS</h3>
+        <ul><li>DSA訂單與訂價：淨訂單比連四季大於1，折扣已開始縮減，訂價效益預計2027下半年顯現<span class="tag">（進行中）</span></li><li>2027年利潤率擴張高於年均75bp，並以剝離低毛利CDMO墊高結構性毛利<span class="tag">（進行中）</span></li><li>生技資金與藥廠前臨床預算回溫，支撐DSA需求<span class="tag">（待驗證）</span></li><li>2028年達成5–7%有機成長目標<span class="tag">（醞釀中）</span></li><li>持續庫藏股（2026年1–2季合計US$300M，26Q2均價約US$174）<span class="tag">（進行中）</span></li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">主要風險 KEY RISKS</h3>
+        <ul><li>估值：TTM非GAAP PE約31.8x、FY26E PE約29x，PEG約2.7–2.9，遠高於框架合理區間</li><li>26Q3財報後單日下跌約7.3%（利多不漲），自10/29高點379.63回檔至低點約313</li><li>RMS研究模型有機營收26Q3仍-0.6%，未見復甦</li><li>九個月營運現金流US$475M較去年US$590M下滑（應收增加），長期負債升至US$2.44B</li><li>訂價效益最快2027下半年、有機成長5–7%目標延後至2028，復甦節奏偏慢</li><li>NHP與動物實驗政策（FDA減少動物試驗路線）、生技融資環境反覆為長期不確定性</li></ul>
+        <p class="note">估值提醒：目前股價已反映2027–2028復甦：TTM非GAAP PE 31.8x，PEG約2.7–2.9（貪婪興奮區間之上），安全邊際為負。｜ 生命週期：產業為成長初期的復甦階段：需求自2023–2025低谷回升，DSA連四季淨訂單比大於1，但訂價與有機成長目標2028才全面回到5–7%。</p>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>財報與電話會議主動揭露訂單、訂單比、未完成訂單與各分部利潤率，並坦承RMS仍弱、將5–7%有機成長目標延後至2028，透明度中高。</li>
+          <li><b>言行一致性：</b>2026年指引連續上修（26Q1至26Q3），近3季EPS均高於共識；但長期5–7%有機成長目標由2027延至2028，且2024–2025大額減損，言行一致性中等偏正面。</li>
+          <li><b>資本配置：</b>偏好本業優化與庫藏股：2025年買回US$360.7M、2026年1–2季合計US$300M，並剝離CDMO等低毛利業務、持續投資優勢業務；長期負債升至US$2.44B需留意。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>成長初期的復甦階段：前臨床CRO需求經歷2023–2025生技融資寒冬後觸底，DSA訂單比連四季大於1，但訂價尚未回升。</li>
+          <li><b>市場規模：</b>TAM 未查得可靠公開數字 ／ SAM 未查得可靠公開數字 ／ SOM CRL 2025年營收US$4.02B（剝離後年化規模約US$3.7B，剝離約占2025營收7%）</li>
+          <li><b>競爭格局：</b>前臨床CRO競爭者包括Inotiv、Labcorp Drug Development、Medpace旗下前臨床資源與亞洲CRO；CRL在GLP安全評估與研究模型具規模領先，近年因客戶預算緊縮出現折扣競爭，26Q3起折扣開始縮減。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>為藥廠與生技提供從探索、安全評估到研究模型與微生物檢測的一站式前臨床服務，縮短新藥進入臨床的時間並降低法規風險。</li>
+          <li><b>目標客群與通路：</b>全球大型製藥、生技新創、學術與政府機構，主要透過直銷與長期合約專案。</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>非GAAP 23.0%（26Q3）；2025全年19.8%（含金量 中）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>2025 OCF US$737.6M，約為非GAAP淨利（約US$5.1億）的1.4倍；GAAP淨損不適用</td></tr>
+            <tr><td>資本支出／營收</td><td>約5.5%（2025 資本支出US$219.2M／營收US$4.02B）</td></tr>
+            <tr><td>現金循環天數</td><td>資料不足，未取得；9M26營運現金流下滑與應收增加相關</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>轉換成本、經濟規模、特許（GLP法規認證）</li>
+          <li><b>強度與期間：</b>GLP資格與長期客戶專案使轉換成本高，規模與RMS供應優勢預期可維持5–10年，但近三年訂價權受折扣競爭削弱</li>
+          <li><b>ROE 軌跡：</b>GAAP ROE 2021 16.8%、2022 17.5%、2023 14.4%、2024 0.7%、2025 -4.2%，減損拖累；非GAAP獲利基本持平，保留盈餘率偏高（不配息）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>DSA約60%（訂單量×單價，量先回升、價後回升）、RMS約21%（動物模型供應，仍弱）、Manufacturing約19%（微生物檢測，持續成長）；剝離CDMO後結構更偏高毛利。</li>
+          <li><b>毛利率改善動能：</b>剝離低毛利CDMO（Manufacturing利潤率升至38.6%）、成本與效率計畫、DSA稼動率回升、2027下半年起訂價回升、產品組合優化</li>
+          <li><b>EPS 三大引擎：</b>EPS＝ROE×股東權益／股數：非GAAP ROE回升、庫藏股使稀釋股數由約52M降至約49M，股東權益因減損與買回而偏低</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>約3%</td><td>生技融資再惡化、訂價未回升，EPS停滯，企業價值弱於現價</td></tr>
+            <tr><td>高機率</td><td>約11%</td><td>2028有機成長5–7%、利潤率年增75bp以上，企業價值優質但現價已大致反映</td></tr>
+            <tr><td>樂觀</td><td>約16%</td><td>訂價與需求雙升、利潤率快速修復，企業價值頂尖級復甦</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：10.56（非GAAP，25Q4至26Q3合計：2.39+2.06+3.02+3.09）</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：約11%（10–12%） — 依據：以FY26指引中位11.45為基期：2028有機成長5–7%、年利潤率擴張75bp以上、庫藏股約1–2%貢獻，三年EPS約15.7；Zacks單家FY27 EPS估12.11可旁證</li>
+          <li><b>靜態 PE：</b>31.8x（335.52／10.56）</li>
+          <li><b>動態 PE：</b>29.3x（對FY26E中位11.45）</li>
+          <li><b>PEG：</b>2.7–2.9</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr class="current"><td>貪婪興奮</td><td>1.5–2.0</td><td>✓</td></tr><tr><td>樂觀開心</td><td>1.2–1.5</td><td></td></tr><tr><td>過渡階段</td><td>0.8–1.2</td><td></td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">貪婪興奮</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：16x – 24x</li>
+          <li>對應股價區間：約US$183 – 約US$275</li>
+          <li>便宜價：約US$185（PE 16x）　|　合理價：約US$230（PE 20x）　|　偏高價：約US$275（PE 24x）　|　昂貴價：US$320以上（PE 28x以上，現價屬此區）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>約-31%（合理價US$230減現價335.5，市場估值無安全邊際）</td></tr>
+            <tr><td>企業價值 MOS</td><td>約-6%至+10%（三年後EPS約15.7×PE 20x約US$314，相對現價）</td></tr>
+            <tr><td>投資組合 MOS</td><td>建議持股分散於10–30檔、避免與其他醫療與生技標的同產業高度重疊；CRL單檔不超過2%</td></tr>
+          </table>
+        </div>
+      </div>
+
+      
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：股價335.52 > 50DMA 312.0（+7.5%）> 150DMA 247.6（+35.5%）> 200DMA 228.3（+46.9%）</li>
+          <li>200 DMA 趨勢：上揚</li>
+          <li>近 6 個月波段高低點：墊高</li>
+          <li>量價型態：量價中性（10日均量／50日均量1.0，20日上漲量／下跌量0.98）；財報後出現大量下殺</li>
+          <li>股價乖離（季線）：+8.7%（季線60MA）</li>
+          <li>是否出現特定型態：無</li>
+        </ul>
+        <p class="note"><b>TradingView 實測數據</b>（NYSE:CRL｜截至 2026-11-16 收盤）</p><ul><li>距歷史新高：-27.1%（ATH 460.21，2021-09-24，取自StockScan）</li><li>52週高低位置：距52週高 -11.6%／距52週低 +129.5%</li><li>50DMA 312.0（+7.5%）／150DMA 247.6（+35.5%）／200DMA 228.3（+46.9%）</li><li>200DMA斜率：+5.9%（上揚）</li><li>趨勢模板通過：7/7</li></ul><p class="note">資料來源：TradingView；價格僅還原分割、不還原現金股利；最後一根未收盤K線已剔除，收盤價用2026-11-16；TradingView額度用盡，未取得RSI／ADX／相對成交量與週K，VCP未計算；日K已通過完整性核對</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">4 多頭上漲</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：高</li>
+          <li>錯失機會風險：低</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <h3 class="sub">4.1 VCP結構檢視</h3><ul><li>週K級別：週K（資料不足，無法機械計算）</li><li>收縮次數（T）：資料不足，無法機械計算（TradingView額度用盡未取得週K）</li><li>回檔幅度遞減：資料不足，無法機械計算</li><li>最後一次回檔小於5%：資料不足，無法機械計算</li><li>凹洞量／口袋支點：資料不足，無法機械計算</li><li>是否創新高：未創歷史新高：收盤距歷史高點460.21約-27.1%（52週高點379.63於2026-10-29）</li><li>量價型態：日K量價中性，週K未計算</li></ul><h3 class="sub">4.2 可能進場點</h3><div class="tbl-wrap"><table><tr><th>進場點</th><th>條件是否成立</th><th>對應停損</th><th>建議下注</th></tr><tr><td>凹洞量能點</td><td>資料不足，無法機械計算（週K未取得）</td><td>跌破凹洞量當日最低點（待週K資料）</td><td>約20%</td></tr><tr><td>帶量突破點</td><td>未成立：收盤335.52低於10/29高點379.63（-11.6%），尚未帶量突破</td><td>進場價-7%，或跌破50DMA約312.0</td><td>約50%</td></tr><tr><td>回測成功點</td><td>未成立：回測50DMA約312.0未見帶量三盤過（11/4後低點約313）</td><td>跌破回測低點約313，最高不超過-10%</td><td>約30%</td></tr></table></div><h3 class="sub">4.3 七大供需轉折訊號</h3><ul class="checklist"><li>極限大量</li><li>超買反轉（季線乖離 >50% / 80%）</li><li>產業逆風</li><li class="checked">利多不漲</li><li>利空下跌</li><li>量價背離</li><li class="checked">大量黑K</li></ul>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>暫不投資</li>
+          <li><b>建議週期：</b>不適合（等待PEG回到2以下或股價回到US$275以下再評估，目標18–36個月）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：40%</li>
+          <li>估計賠率：約1.9（上檔至前高379.63約+13%，對應停損-7%）</li>
+          <li>1/4 凱利公式下的最大下注比重：約2%</li>
+          <li><b>目前建議買入：</b>現價屬昂貴價，暫不新增；持有者續抱不加碼。偏高價US$275以下可試單2%，合理價US$230附近加至3%，便宜價US$185附近再加至5%</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>2027年上半年DSA淨訂單比跌破1.0且有機成長轉負，代表復甦判斷錯誤</td></tr><tr><td>買進理由消失</td><td>FY27指引低於共識EPS約12，或2027下半年訂價效益未出現，5–7%有機成長目標再度延後</td></tr><tr><td>市場估值過高</td><td>PEG大於2（現約2.7–2.9）且股價高於US$320，持有者分批減碼</td></tr><tr><td>機會成本過高</td><td>出現PEG小於1.2且G大於15%的同產業或其他標的時，換股</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>訂價策略改變（縮減折扣）顯示議價權回升</li><li>FDA減少動物試驗的政策走向與NAMs佈局成效</li><li>投資組合優化與進一步剝離低毛利業務</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告（預期2027年2月中旬，Q4與FY2026）</li>
+          <li>下次財報公布：待公告（預期2027年2月，FY2026 10-K）</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>DSA淨訂單比與未完成訂單（目前1.09x／US$2.03B）</li><li>有機營收成長（目標：FY26至少1.5%，2028達5–7%）</li><li>非GAAP營益率（26Q3 23.0%）</li><li>RMS有機營收是否轉正</li><li>營運現金流與FY26自由現金流目標US$400–420M</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>股價回落至US$275以下（PE 24x）或US$230以下（PE 20x）時重新評估加碼</li><li>股價收盤跌破50DMA約312並帶量，檢視是否轉入多頭出貨</li><li>股價帶量突破379.63新高且財報EPS續升，重新計算週K VCP</li><li>DSA淨訂單比連兩季低於1.0或FY27指引不如預期</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>Charles River Laboratories IR與SEC 8-K（FY2025與2026年Q1至Q3財報新聞稿，ir.criver.com／sec.gov）、Finviz／247WallSt／Chartmill／Quartr（26Q3財報摘要與電話會議）、StockAnalysis.com（季度與年度財報、ROE）、Business Wire／Barchart／BioSpace（2025Q4與2026Q1、Q2新聞稿）、StockScan／Macrotrends（歷史高點）、MarketBeat／Tickflow（分析師目標價與Zacks估值）、TradingView（日K，tv_technicals.py計算）</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-11-17</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
