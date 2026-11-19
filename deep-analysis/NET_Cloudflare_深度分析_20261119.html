@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NET Cloudflare　投資邏輯深度分析</title>
+  <meta property="og:title" content="NET Cloudflare　投資邏輯深度分析">
+  <meta property="og:description" content="Cloudflare（NET）營收年增39%、指引連續上修，企業價值優質，但動態PE約223x、PEG超過5，估值嚴重透支，建議列入觀察名單不追價。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="NET Cloudflare　投資邏輯深度分析">
+  <meta name="twitter:description" content="Cloudflare（NET）營收年增39%、指引連續上修，企業價值優質，但動態PE約223x、PEG超過5，估值嚴重透支，建議列入觀察名單不追價。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    /* ---- 投資重點快照（簡易分析區塊）專用樣式 ---- */
+    .snap-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .snap-hero .snap-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    .snap-hero .snap-desc {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-top: 4px;
+      line-height: 1.7;
+    }
+
+    .snap-eps {
+      text-align: right;
+    }
+
+    .snap-eps .v {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .snap-eps .v.pos {
+      color: var(--green-d);
+    }
+
+    .snap-eps .v.neg {
+      color: var(--red-d);
+    }
+
+    .snap-eps .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    .snap-hist {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .kpi {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid #94A3B8;
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .kpi.pos {
+      border-top-color: var(--green);
+    }
+
+    .kpi.neg {
+      border-top-color: var(--red);
+    }
+
+    .kpi.warn {
+      border-top-color: var(--amber);
+    }
+
+    .kpi .v {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .kpi .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-top: 5px;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 8px 0 20px;
+    }
+
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .pillar .ptype {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--orange);
+    }
+
+    .pillar .ptitle {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 4px 0;
+    }
+
+    .pillar .pkey {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .pillar ul {
+      padding-left: 18px;
+      margin-bottom: 0;
+      font-size: 12.8px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      background: var(--amber-bg);
+      padding: 1px 8px;
+      border-radius: 10px;
+      margin-left: 6px;
+    }
+
+    .note {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: -8px;
+    }
+
+    @media (max-width: 900px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .snap-eps {
+        text-align: left;
+      }
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>NET Cloudflare — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：300.91 USD　|　當前 PE：約223x（FY2026指引非GAAP EPS 1.35）　|　52 週區間：158.83 – 370.35</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-11-19</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：3 多頭底部</span>
+        <span class="badge">建議戰略：現金為王</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#snapshot">投資重點快照</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>Cloudflare 營收年增39%、指引連續上修，企業價值屬優質，但非GAAP動態PE約223x、PEG超過5，估值嚴重透支，建議觀察不追價。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">優質</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">昂貴</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">3 多頭底部</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">暫不投資（觀察名單）</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>優質</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>昂貴（PEG ≈ 5.6-7.4）</td><td>中</td></tr>
+            <tr><td>股價階段</td><td>3 多頭底部</td><td>中</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill neg">現金為王</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>暫不投資（觀察名單）</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>估值風險：動態PE約223x，成長稍不如預期即大幅修正</li><li>毛利率由78.7%（FY2024）降至72.4%（2026Q3），AI與網路投資稀釋獲利</li><li>GAAP仍虧損、長期可轉債約44.4億美元與股數稀釋</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>營收與cRPO持續加速（Q4指引845-846百萬美元）</li><li>AI推論與企業大單帶動多年期合約</li><li>非GAAP營益率由17.5%持續擴張</li></ul>
+      </div>
+
+      <!-- ============ 投資重點快照（原「簡易分析」報告的全部內容） ============ -->
+      <h2 class="section" id="snapshot">投資重點快照<span>SNAPSHOT · 簡易分析完整內容</span></h2>
+
+      <div class="card">
+        <div class="snap-hero">
+          <div>
+            <div class="snap-title">Cloudflare · 全球邊緣網路／資安與AI推論平台 · 高成長但估值極高</div>
+            <div class="snap-desc">雲端基礎設施與網路資安 · 訂閱制平台（安全、效能、開發者與零信任） · 企業與中小客戶 · 放量成長</div>
+          </div>
+          <div class="snap-eps">
+            <div class="v pos">0.93</div>
+            <div class="l">2025 EPS（USD）· 截至 2026-11-19</div>
+          </div>
+        </div>
+        <div class="snap-hist">2024 EPS 0.75｜2026Q3 EPS 0.38｜2025 營收 +30%（2,167.9百萬美元）</div>
+      </div>
+
+      <div class="exec">
+        <div class="exec-label">THESIS · 核心論述</div>
+        <p>Cloudflare 以<b>單一全球網路整合資安、效能與開發者平台</b>，2026Q3 營收782.5百萬美元、年增<span class='g'>39%</span>，連續兩季大幅超越指引，全年EPS指引上修至1.35。核心張力在於<span class='r'>動態PE約223x、PEG超過5</span>，且非GAAP毛利率降至72.4%。成敗關鍵是營收維持30%以上、毛利率止跌並兌現營益槓桿。</p>
+      </div>
+
+      <div class="kpis"><div class="kpi pos"><div class="v">782.5百萬</div><div class="l">2026Q3 營收<br>年增39%</div></div><div class="kpi pos"><div class="v">17.5%</div><div class="l">非GAAP營益率<br>去年同期15.3%</div></div><div class="kpi warn"><div class="v">72.4%</div><div class="l">非GAAP毛利率<br>去年同期75.3%</div></div><div class="kpi"><div class="v">10%</div><div class="l">自由現金流率<br>Q3 82.1百萬美元</div></div><div class="kpi pos"><div class="v">37%</div><div class="l">cRPO 年增<br>成長能見度</div></div><div class="kpi neg"><div class="v">223x</div><div class="l">動態PE<br>FY2026指引EPS 1.35</div></div></div>
+
+      <h3 class="sub">KEY SWING FACTORS · 三大支柱</h3>
+      <div class="pillars"><div class="pillar"><div class="ptype">GROWTH</div><div class="ptitle">成長動能</div><div class="pkey">營收年增39%，近4年最快</div><ul><li>Q4指引845-846百萬美元，EPS指引0.43</li><li>全年營收指引由2,805-2,813上調至2,963-2,964百萬美元</li><li>AI推論、零信任與企業大單推升cRPO年增37%</li></ul></div><div class="pillar"><div class="ptype">MOAT</div><div class="ptitle">競爭優勢</div><div class="pkey">全球網路規模加多產品整合</div><ul><li>單一網路整合資安、CDN與開發者平台，轉換成本高</li><li>流量規模提供威脅偵測資料優勢</li><li>帳面現金與證券51.3億美元，資金實力強</li></ul></div><div class="pillar"><div class="ptype">RISK</div><div class="ptitle">主要風險</div><div class="pkey">估值透支且毛利率下滑</div><ul><li>非GAAP毛利率由78.7%降至72.4%</li><li>GAAP仍虧損，可轉債約44.4億美元</li><li>基本股數由351.1M增至357.1M，持續稀釋</li></ul></div></div>
+
+      <div class="card">
+        <h3 class="sub">損益軌跡 （2023–2025 與 26Q3；營收單位：百萬美元）</h3>
+        <div class="tbl-wrap"><table><tr><th>項目</th><th>2023</th><th>2024</th><th>2025</th><th>26Q3</th></tr><tr><td>營收(百萬美元)</td><td>1296.7</td><td>1669.6</td><td>2167.9</td><td>782.5</td></tr><tr><td>毛利率</td><td>N/A</td><td>78.7%</td><td>75.8%</td><td>72.4%</td></tr><tr><td>營益率</td><td>9.4%</td><td>13.8%</td><td>14.0%</td><td>17.5%</td></tr><tr><td>EPS(USD)</td><td>0.49</td><td>0.75</td><td>0.93</td><td>0.38</td></tr><tr><td>ROE</td><td>N/A</td><td>約-7%</td><td>約-7%</td><td>—</td></tr></table></div>
+        <p class="note">毛利率、營益率與EPS均為非GAAP；FY2023毛利率未查得；ROE為GAAP淨損除以期末權益的粗估；GAAP EPS為 -0.55／-0.23／-0.29。</p>
+        <h3 class="sub">近 5 季損益</h3>
+        <div class="tbl-wrap"><table><tr><th>季別</th><th>營收(百萬美元)</th><th>毛利率</th><th>EPS(USD)</th></tr><tr><td>25Q3</td><td>562.0</td><td>75.3%</td><td>0.27</td></tr><tr><td>25Q4</td><td>614.5</td><td>74.9%</td><td>0.28</td></tr><tr><td>26Q1</td><td>639.8</td><td>72.8%</td><td>0.25</td></tr><tr><td>26Q2</td><td>696.1</td><td>73.1%</td><td>0.29</td></tr><tr><td>26Q3</td><td>782.5</td><td>72.4%</td><td>0.38</td></tr></table></div>
+        <p class="note">毛利率與EPS為非GAAP；營收單位百萬美元；Q4 2026指引營收845-846百萬美元、非GAAP EPS 0.43。</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">KEY WATCH 關鍵觀察點</h3>
+        <ul><li>2026Q3 營收782.5百萬美元年增39%，高於自家指引上緣736-737百萬美元約6%</li><li>非GAAP營益率17.5%，較去年同期15.3%提升2.2pp，營運槓桿開始顯現</li><li>非GAAP毛利率由2024年78.7%降至2026Q3 72.4%，三季內下滑約2.9pp</li><li>Q3資本支出約133百萬美元，自由現金流率僅10%，低於FY2025全年12%</li><li>近 2 場法說會指引達成率 6/6（Q2、Q3 的營收、非GAAP營益、非GAAP EPS 皆超標）；Q4指引待驗證；管理層可信度：高</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">催化劑 CATALYSTS</h3>
+        <ul><li>Q4指引營收845-846百萬美元，EPS 0.43<span class="tag">（待驗證）</span></li><li>AI推論與邊緣運算新產品商業化<span class="tag">（進行中）</span></li><li>企業大額多年期合約推升cRPO<span class="tag">（進行中）</span></li><li>營益率由17.5%持續擴張<span class="tag">（醞釀中）</span></li><li>全年營收指引自Q1起兩度上修至2,963百萬美元<span class="tag">（已兌現）</span></li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">主要風險 KEY RISKS</h3>
+        <ul><li>動態PE約223x、PEG 5.6-7.4，估值嚴重透支</li><li>非GAAP毛利率72.4%，較2024年78.7%低約6.3pp</li><li>GAAP營業虧損67.9百萬美元（-8.7%），股權激勵費用高</li><li>長期可轉債約44.4億美元，稀釋與再融資風險</li><li>股價自高點370.35回檔18.75%，波動大（近一年低點158.83）</li><li>資安與科技股同步賣壓，近期曾單日下跌8.3%</li></ul>
+        <p class="note">估值提醒：動態PE約223x、PEG超過5，位於貪婪興奮區，合理價約135美元，現價高於昂貴價250美元，不追價。｜ 生命週期：產業為放量成長期；股價處於階段3多頭底部（200DMA上揚、6/7趨勢模板通過，但仍在高點回檔的整理中）</p>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>新聞稿與電話會議提供營收、非GAAP營益、FCF、cRPO 成長，並每季給出下季與全年指引；但大客戶數、淨留存率、RPO 絕對金額在新聞稿中未揭露，GAAP 虧損與股權激勵費用需自行對照。</li>
+          <li><b>言行一致性：</b>近2場可驗證季度：Q2 指引營收664-665百萬美元實際696.1、Q3 指引736-737實際782.5，營益與EPS皆超標；全年營收指引由2805-2813上調至2963-2964。戰略（平台擴張、AI推論與邊緣）維持一致。</li>
+          <li><b>資本配置：</b>以本業與資本支出為主（Q3 資本支出約133百萬美元含資本化軟體，約占營收17%），資金來源為可轉債（長期約44.4億美元）與51.3億美元現金及證券；無庫藏股與股利，股數持續稀釋，EPS 成長主要靠營收與營益率。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>放量成長：營收年增39%為近4年最快，邊緣雲、零信任安全、開發者平台與 AI 推論三線並進，cRPO 年增37%。</li>
+          <li><b>市場規模：</b>TAM 未查到公司最新官方 TAM 揭露，僅供參考；以年化營收已超過30億美元為現況基準 ／ SAM 網路安全（WAF／DDoS／零信任）、CDN、邊緣運算與 AI 推論，屬資安與雲基礎設施交集（粗估數百億至千億美元級，待查證） ／ SOM 目前年化營收約31億美元，Q3營收782.5百萬美元；FY2026指引29.63億美元</li>
+          <li><b>競爭格局：</b>CDN／邊緣：Akamai、Fastly、AWS CloudFront；資安與零信任：Zscaler、Palo Alto Networks、CrowdStrike 等；差異在單一全球網路整合多產品，與雲巨頭對手兼夥伴（依一般產業認知，市占數字未查證）。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>在同一全球網路上提供安全、效能、網路連線與開發者平台，客戶以一份合約整合多家供應商，並以邊緣就近執行 AI 推論。</li>
+          <li><b>目標客群與通路：</b>從自助式中小客戶到大型企業與政府，經直銷、合作夥伴與自助網站成交；近期強調大額企業合約與 AI 公司客戶。</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>非GAAP 17.5%（GAAP -8.7%），2026Q3（含金量 低）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>GAAP淨損；FY2025 營業現金流603.1百萬美元，Q3 2026 為215.4百萬美元，對非GAAP淨利143.7約1.5x</td></tr>
+            <tr><td>資本支出／營收</td><td>FY2025約14.6%（315.6/2167.9）；Q3 2026約17%（含資本化軟體）</td></tr>
+            <tr><td>現金循環天數</td><td>新聞稿未揭露存貨與應收天數；SaaS 預收模式，cRPO 年增37%</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>經濟規模、網絡效應、轉換成本</li>
+          <li><b>強度與期間：</b>全球網路規模與多產品整合提高轉換成本，網絡流量資料強化資安偵測；但非GAAP毛利率由78.7%降至72.4%，顯示 AI 與基礎設施投入正在稀釋規模優勢，期間預期5年以上。</li>
+          <li><b>ROE 軌跡：</b>GAAP 持續淨損，粗估 FY2024 與 FY2025 ROE 約 -7%；保留盈餘率為負，成長靠外部融資（可轉債）與股權激勵，非內生 ROE。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>營收由企業大單、用量與新產品（零信任、開發者平台、AI 推論）驅動；Q3 年增39%，cRPO 年增37%；客戶、產品、地區多元，美國約占58%（2025Q3）。</li>
+          <li><b>毛利率改善動能：</b>營益率靠規模與營運槓桿提升（非GAAP 14.0%到17.5%），但毛利率因 GPU 與網路容量下滑；改善需靠稼動率提升與高毛利軟體產品組合。</li>
+          <li><b>EPS 三大引擎：</b>EPS 以營收成長與營益槓桿為主；ROE 為負、權益靠增資與股權激勵增加；基本股數Q3 2026 為357.1M（2025Q4 351.1M），稀釋股數約376.5M，流通股數上升是逆風。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>約15%</td><td>營收成長降至25%、毛利率續降至70%、資本支出吃掉FCF，企業價值遠低於現價。</td></tr>
+            <tr><td>高機率</td><td>約30%</td><td>營收維持30%以上成長、營益率每年擴張1-2pp，企業價值穩定成長但仍低於目前市價。</td></tr>
+            <tr><td>樂觀</td><td>約40%</td><td>AI 推論與企業大單加速、毛利率止跌，EPS 三年約3.7美元，仍需高倍數支撐現價。</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：1.20（非GAAP，近4季：0.28+0.25+0.29+0.38）</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：約30%（範圍25%-40%） — 依據：FY2023至FY2026指引非GAAP EPS 由0.49到1.35，三年CAGR約40%；營收成長36-39%、營益率擴張中，但毛利率下滑與股數稀釋，保守取30%；2027共識EPS約1.69（TIKR）。</li>
+          <li><b>靜態 PE：</b>約251x（300.91/1.20）</li>
+          <li><b>動態 PE：</b>約223x（FY2026指引1.35）；約178x（FY2027共識1.69）</li>
+          <li><b>PEG：</b>5.6-7.4</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr class="current"><td>貪婪興奮</td><td>1.5–2.0</td><td>✓</td></tr><tr><td>樂觀開心</td><td>1.2–1.5</td><td></td></tr><tr><td>過渡階段</td><td>0.8–1.2</td><td></td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">貪婪興奮</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：50x – 80x</li>
+          <li>對應股價區間：85 – 135</li>
+          <li>便宜價：85　|　合理價：135　|　偏高價：190　|　昂貴價：250</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>約 -166 美元（合理價135 減現價301，約 -55%）</td></tr>
+            <tr><td>企業價值 MOS</td><td>約 -150 美元（三年後EPS約2.97乘50x約148 減301）</td></tr>
+            <tr><td>投資組合 MOS</td><td>單檔上限2%試單，目前建議0%；與其他資安與雲端股相關性高，需控管題材集中度</td></tr>
+          </table>
+        </div>
+      </div>
+
+      
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：50DMA 320.07（-6.0%）／150DMA 275.23（+9.3%）／200DMA 255.02（+18.0%）；收盤300.91（2026-11-18）</li>
+          <li>200 DMA 趨勢：上揚</li>
+          <li>近 6 個月波段高低點：墊高</li>
+          <li>量價型態：量增價漲／量縮價跌；近10日均量為50日均量的1.44倍，財報後出現大量</li>
+          <li>股價乖離（季線）：-4.58%（季線60MA 315.37）</li>
+          <li>是否出現特定型態：無</li>
+        </ul>
+        <p class="note"><b>TradingView 實測數據</b>（NYSE:NET｜截至 2026-11-18 收盤）</p><ul><li>距歷史新高 -18.75%</li><li>52週位置：距高點 -18.75%／距低點 +89.45%</li><li>50DMA 320.07（-6.0%）／150DMA 275.23（+9.3%）／200DMA 255.02（+18.0%）</li><li>200DMA 斜率：+4.61%（上揚）</li><li>趨勢模板通過 6/7（未通過：收盤價高於50DMA）</li><li>RSI 49.6／ADX 18.2</li><li>10日相對量 0.78</li></ul><p class="note">資料來源：TradingView；價格僅還原分割，不還原股利；資料依TradingView方案可能延遲；最後一根未收盤週K已剔除；currentPrice為2026-11-18收盤價</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">3 多頭底部</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：很高</li>
+          <li>錯失機會風險：低</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <h3 class="sub">4.1 VCP結構檢視</h3><ul><li>分析級別：週K</li><li>收縮結構：1T（跌幅36.92%，高點370.35於2026-10-05，谷底233.62於2026-11-02，已確認）；尚未形成2T以上</li><li>每波跌幅是否遞減（小於上波50%）：不成立（僅1T，無法比較每波是否小於上波50%）</li><li>最後一波跌幅是否小於5%：否（最後一波跌幅36.92%，非小於5%）</li><li>凹洞量能點：否（dry_up.found=false；高點週量13.16M為50週均量0.73倍，非52週最低量）</li><li>是否創新高：否（低於歷史新高370.35約17.43%）</li><li>量價型態：不符合（13週上漲量/下跌量0.90，volume_price_ok=false）</li><li>回檔深度序列：36.92%（僅1T，已確認）</li><li>基準價與突破狀態：基準價325（2026-11-09週）；收盤300.91未站上；最後一週量為50週均量1.28倍</li><li>停損參考價：凹洞量當週低點337／最近谷底233.62／基準價減7%約302.25</li></ul><p class="note">週K資料截至 2026-11-09，由 TradingView K 線機械計算</p><h3 class="sub">4.2 可能進場點</h3><div class="tbl-wrap"><table><tr><th>進場點</th><th>條件是否成立</th><th>對應停損</th><th>建議下注</th></tr><tr><td>凹洞量能點</td><td>未成立（週K無凹洞量，且僅1T）</td><td>參考凹洞量當週低點337，現價已低於此位階，僅作參考</td><td>約20%</td></tr><tr><td>帶量突破點</td><td>未成立（收盤300.91低於基準價325；最後一週量為50週均量1.28倍；未創高）</td><td>基準價減7%約302.25；最近谷底233.62距現價約-22%，超過10%上限</td><td>約50%</td></tr><tr><td>回測成功點</td><td>未成立（尚無有效突破可回測）</td><td>跌破回測當日三盤低點，且虧損不超過10%</td><td>約30%</td></tr></table></div><h3 class="sub">4.3 七大供需轉折訊號</h3><ul class="checklist"><li>極限大量</li><li>超買反轉（季線乖離 &gt;50% / 80%）</li><li>產業逆風</li><li>利多不漲</li><li>利空下跌</li><li>量價背離</li><li>大量黑K</li></ul>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>暫不投資</li>
+          <li><b>建議週期：</b>不適合</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：約30%</li>
+          <li>估計賠率：技術面約3:1（停損約7%、目標20%以上）；估值面約0.4:1（上行約20%、下行約50%）</li>
+          <li>1/4 凱利公式下的最大下注比重：0%（估值面賠率不足）；僅VCP帶量突破試單時約3%</li>
+          <li><b>目前建議買入：</b>現價301遠高於昂貴價250，不建議買進；合理價約135（2%）、偏低價約100-110（3%）、便宜價約85（5%）才依金字塔分批；若出現週K帶量突破並創高，可評估2%以內波段試單。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>營收年增跌破25%或cRPO年增跌破25%，代表成長動能被高估</td></tr><tr><td>買進理由消失</td><td>非GAAP營益率連續兩季低於15%，或非GAAP毛利率跌破70%且無回升跡象</td></tr><tr><td>市場估值過高</td><td>動態PE超過150x或PEG大於2；目前已達約223x與5.6-7.4，持有者應分批減碼</td></tr><tr><td>機會成本過高</td><td>出現PEG低於1.5且G大於25%的同類標的，可輪換</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>大型AI公司或政府成為多年期客戶</li><li>邊緣AI推論產品商業化</li><li>資本支出效率改善帶動毛利率止跌</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告（通常為2027年2月初）</li>
+          <li>下次財報公布：待公告（FY2026年報預計2027年2月）</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>營收年增率（Q3 39%，須維持30%以上）</li><li>cRPO年增率（Q3 37%）</li><li>非GAAP毛利率（72.4%，須止跌）</li><li>非GAAP營益率（17.5%）</li><li>自由現金流率（10%）</li><li>基本股數（357.1M）</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>週K收盤站上325並帶量創高，重新評估VCP試單</li><li>股價跌至250以下（PEG仍高但賠率改善）</li><li>回到135以下進入合理價金字塔</li><li>營收年增率低於30%或毛利率低於70%則降級</li><li>Q4財報（2027年2月）非GAAP EPS超過指引0.43且全年指引上修</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>Cloudflare 8-K 財報新聞稿（SEC：Q4 2025、Q1/Q2/Q3 2026）、cloudflare.net 新聞稿 2026Q3、Cloudflare 2025Q3 與FY2023 新聞稿、TradingView（日K／週K 價量，tv_technicals.py 計算）、Benzinga、Investing.com、Invezz、TIKR（分析師目標價與共識，非FactSet）</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-11-19</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>

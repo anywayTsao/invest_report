@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PANW Palo Alto Networks　投資邏輯深度分析</title>
+  <meta property="og:title" content="PANW Palo Alto Networks　投資邏輯深度分析">
+  <meta property="og:description" content="Palo Alto Networks：企業價值優質（NGS ARR +66%、FCF率38%），但PEG約5.5、PE約86x屬昂貴，週K VCP未成形，暫列觀察名單。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="PANW Palo Alto Networks　投資邏輯深度分析">
+  <meta name="twitter:description" content="Palo Alto Networks：企業價值優質（NGS ARR +66%、FCF率38%），但PEG約5.5、PE約86x屬昂貴，週K VCP未成形，暫列觀察名單。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    /* ---- 投資重點快照（簡易分析區塊）專用樣式 ---- */
+    .snap-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .snap-hero .snap-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    .snap-hero .snap-desc {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-top: 4px;
+      line-height: 1.7;
+    }
+
+    .snap-eps {
+      text-align: right;
+    }
+
+    .snap-eps .v {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .snap-eps .v.pos {
+      color: var(--green-d);
+    }
+
+    .snap-eps .v.neg {
+      color: var(--red-d);
+    }
+
+    .snap-eps .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    .snap-hist {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .kpi {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid #94A3B8;
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .kpi.pos {
+      border-top-color: var(--green);
+    }
+
+    .kpi.neg {
+      border-top-color: var(--red);
+    }
+
+    .kpi.warn {
+      border-top-color: var(--amber);
+    }
+
+    .kpi .v {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .kpi .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-top: 5px;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 8px 0 20px;
+    }
+
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .pillar .ptype {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--orange);
+    }
+
+    .pillar .ptitle {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 4px 0;
+    }
+
+    .pillar .pkey {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .pillar ul {
+      padding-left: 18px;
+      margin-bottom: 0;
+      font-size: 12.8px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      background: var(--amber-bg);
+      padding: 1px 8px;
+      border-radius: 10px;
+      margin-left: 6px;
+    }
+
+    .note {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: -8px;
+    }
+
+    @media (max-width: 900px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .snap-eps {
+        text-align: left;
+      }
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>PANW Palo Alto Networks — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：339.92（TradingView最後一根日K，2026-11-18；財報前收盤309.29，財報後漲幅約+7至+10%，可能含延長交易） USD　|　當前 PE：約86x（non-GAAP近4季EPS 3.95）　|　52 週區間：139.57 – 432.33</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-11-19</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：3 多頭底部</span>
+        <span class="badge">建議戰略：現金為王</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#snapshot">投資重點快照</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>企業價值優質（NGS ARR +66%、FCF率38%），但PEG約5.5、PE約86x屬昂貴，週K VCP未成形，暫列觀察名單。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">優質</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">昂貴</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">3 多頭底部</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">暫不投資（觀察名單）</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>優質</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>昂貴（PEG ≈ 5.3–5.7）</td><td>中</td></tr>
+            <tr><td>股價階段</td><td>3 多頭底部</td><td>中</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill neg">現金為王</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>暫不投資（觀察名單）</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>估值昂貴：PE約86x、PEG約5.5，成長不及預期易殺估值</li><li>併購整合與稀釋：股數增18%、GAAP毛利率降至68.0%</li><li>Microsoft等巨頭捆綁與AI新創的競爭壓力</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>NGS ARR與RPO持續高成長（FY27指引114.8–115.3億美元）</li><li>CyberArk身分安全與平台交叉銷售</li><li>AI安全需求與Applied Compute延伸至模型安全</li></ul>
+      </div>
+
+      <!-- ============ 投資重點快照（原「簡易分析」報告的全部內容） ============ -->
+      <h2 class="section" id="snapshot">投資重點快照<span>SNAPSHOT · 簡易分析完整內容</span></h2>
+
+      <div class="card">
+        <div class="snap-hero">
+          <div>
+            <div class="snap-title">Palo Alto Networks · 資安平台化龍頭 · NGS ARR高成長與併購整合</div>
+            <div class="snap-desc">網路資安 · 訂閱及支持占80%、產品20% · 大型企業與政府 · 放量成長期</div>
+          </div>
+          <div class="snap-eps">
+            <div class="v pos">3.84</div>
+            <div class="l">FY2026（non-GAAP） EPS（USD）· 截至 2026-11-19</div>
+          </div>
+        </div>
+        <div class="snap-hist">FY2025 non-GAAP EPS 3.34｜Q1 FY27 non-GAAP EPS 1.05｜FY2026 營收 +25%</div>
+      </div>
+
+      <div class="exec">
+        <div class="exec-label">THESIS · 核心論述</div>
+        <p><b>PANW</b>以平台化整併資安工具，Q1 FY27營收<span class='g'>+39%至34.45億美元</span>、NGS ARR <span class='g'>+66%</span>，全年指引上調至145.2–145.7億美元。核心張力在<span class='r'>PE約86x、PEG約5.5</span>，且GAAP毛利率降至68.0%、股數增18%。成敗關鍵是CyberArk整合與ARR能否維持高成長。管理層近期指引屢次超標，可信度高。</p>
+      </div>
+
+      <div class="kpis"><div class="kpi pos"><div class="v">3,445百萬</div><div class="l">Q1 FY27 營收<br>YoY +39%</div></div><div class="kpi pos"><div class="v">97.3億</div><div class="l">NGS ARR（美元）<br>YoY +66%</div></div><div class="kpi warn"><div class="v">30.7%</div><div class="l">Q1 non-GAAP營益率<br>GAAP僅2.8%</div></div><div class="kpi neg"><div class="v">68.0%</div><div class="l">Q1 GAAP毛利率<br>去年同期74.2%</div></div><div class="kpi neg"><div class="v">約86x</div><div class="l">PE（non-GAAP近4季）<br>PEG約5.5</div></div><div class="kpi pos"><div class="v">38%</div><div class="l">FY27指引調整後FCF率<br>FY26 FCF 41.1億美元</div></div></div>
+
+      <h3 class="sub">KEY SWING FACTORS · 三大支柱</h3>
+      <div class="pillars"><div class="pillar"><div class="ptype">GROWTH</div><div class="ptitle">成長動能</div><div class="pkey">Q1 FY27營收+39%，FY27指引+26–27%</div><ul><li>NGS ARR 97.3億美元，Q2指引102.0–102.2億（+61%）</li><li>RPO 210億美元（+35%），營收能見度高</li><li>Applied Compute切入模型安全，第二成長曲線</li></ul></div><div class="pillar"><div class="ptype">MOAT</div><div class="ptitle">護城河</div><div class="pkey">平台整合帶來高轉換成本</div><ul><li>客戶平均使用45種資安工具，整併趨勢有利平台廠</li><li>CyberArk補齊身分安全，完整平台</li><li>合約負債約146億美元，先收錢後交貨</li></ul></div><div class="pillar"><div class="ptype">RISK</div><div class="ptitle">風險</div><div class="pkey">PE約86x，GAAP獲利薄</div><ul><li>GAAP營益率2.8%，FY26 GAAP EPS僅0.40</li><li>股數709M增至838M，稀釋約18%</li><li>Microsoft捆綁與AI新創競爭</li></ul></div></div>
+
+      <div class="card">
+        <h3 class="sub">損益軌跡 （FY2024–FY2026 與 FY27 Q1；營收單位：百萬美元）</h3>
+        <div class="tbl-wrap"><table><tr><th>項目</th><th>FY2024</th><th>FY2025</th><th>FY2026</th><th>FY27 Q1</th></tr><tr><td>營收(百萬美元)</td><td>約8,030</td><td>9,221</td><td>11,480</td><td>3,445</td></tr><tr><td>毛利率</td><td>N/A</td><td>73.4%</td><td>70.4%</td><td>68.0%</td></tr><tr><td>營益率</td><td>N/A</td><td>13.5%</td><td>6.1%</td><td>2.8%</td></tr><tr><td>EPS(USD)</td><td>N/A</td><td>3.34</td><td>3.84</td><td>1.05</td></tr><tr><td>ROE</td><td>N/A</td><td>14.5%</td><td>1.1%</td><td>—</td></tr></table></div>
+        <p class="note">毛利率與營益率為GAAP；non-GAAP營益率FY25 28.8%、FY26 29.2%、Q1 FY27 30.7%；EPS為non-GAAP，GAAP EPS FY25 1.60、FY26 0.40、Q1 FY27 0.57；ROE以期末權益計；FY24細部未查證；數字以SEC 8-K為準，單一來源未交叉比對。</p>
+        <h3 class="sub">近 5 季損益</h3>
+        <div class="tbl-wrap"><table><tr><th>季別</th><th>營收(百萬美元)</th><th>毛利率</th><th>EPS(USD)</th></tr><tr><td>FY26 Q1</td><td>2,474</td><td>74.2%</td><td>0.93</td></tr><tr><td>FY26 Q2</td><td>約2,595</td><td>約73.6%</td><td>1.03</td></tr><tr><td>FY26 Q3</td><td>約3,001</td><td>約67.5%</td><td>0.85</td></tr><tr><td>FY26 Q4</td><td>3,410</td><td>67.6%</td><td>1.02</td></tr><tr><td>FY27 Q1</td><td>3,445</td><td>68.0%</td><td>1.05</td></tr></table></div>
+        <p class="note">營收與毛利率為GAAP，EPS為non-GAAP；FY26 Q2與Q3的營收和毛利率由全年數字推算（標約）；Chronosphere自Q2、CyberArk自Q3併入，毛利率因此下台階。</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">KEY WATCH 關鍵觀察點</h3>
+        <ul><li>Q1 FY27營收3,445百萬美元（+39%），高於共識3,310；non-GAAP EPS 1.05 vs 共識0.97</li><li>FY27指引由14.10–14.20十億上調至14.52–14.57十億美元，non-GAAP EPS 4.26–4.30</li><li>GAAP毛利率由74.2%（FY26 Q1）降至68.0%，GAAP營益率僅2.8%（去年同期12.5%）</li><li>Q1調整後FCF率56.2%（去年69.2%），FY27全年指引38%</li><li>近3項指引達成率3/3（Q1 FY27共識超標、FY26 Q3營收約3,001 vs 指引2,941–2,945、FY26全年11,480 vs 初始10.50–10.54十億，後兩者含併購貢獻）；管理層可信度：高</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">催化劑 CATALYSTS</h3>
+        <ul><li>NGS ARR Q2指引102.0–102.2億美元，持續高成長<span class="tag">（進行中）</span></li><li>CyberArk身分安全與平台交叉銷售<span class="tag">（結構性）</span></li><li>Applied Compute 45億美元全股票併購，延伸至AI模型安全<span class="tag">（待驗證）</span></li><li>AI攻擊事件推升企業資安預算與虛擬修補需求<span class="tag">（醞釀中）</span></li><li>Q1 FY27大幅超標並上調全年指引<span class="tag">（已兌現）</span></li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">主要風險 KEY RISKS</h3>
+        <ul><li>估值：PE約86x、PEG約5.5，成長放緩易殺估值</li><li>GAAP營益率2.8%，FY26 GAAP EPS僅0.40，獲利品質存疑</li><li>流通股由709M增至838M，稀釋約18%</li><li>GAAP毛利率降至68.0%，併購攤銷與訂閱組合壓抑</li><li>Applied Compute 45億美元全股票併購，整合與稀釋風險再增</li><li>Microsoft捆綁與CrowdStrike等競爭，價格壓力</li></ul>
+        <p class="note">估值提醒：PE約86x、PEG約5.5，處貪婪興奮區，合理價約195美元，現價高出約70%，不宜追高。｜ 生命週期：產業為成長期放量階段；股價處於多頭底部（200DMA上揚、距高點-21%、VCP未成形）。</p>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>每季揭露NGS ARR、RPO、調整後FCF率並給全年與下季指引，但GAAP與non-GAAP落差大（FY26 GAAP EPS 0.40 vs non-GAAP 3.84），負面項如GAAP毛利率下滑需讀表才見。</li>
+          <li><b>言行一致性：</b>Q1 FY27營收3,445 vs 共識3,310並上調全年指引至14.52–14.57十億美元；FY26 Q3營收約3,001 vs 指引2,941–2,945；平台化與併購戰略近8季一致，但近期達標多含併購貢獻。</li>
+          <li><b>資本配置：</b>偏好大型併購（CyberArk約250億美元、Chronosphere 33.5億美元、Applied Compute 45億美元全股票），未見庫藏股；流通股由709M增至838M，稀釋EPS成長，成長空間來自併購整合成敗。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>成長期（放量成長）：全球資安支出Omdia 1Q26年增11.9%，AI攻擊與客戶整併工具（平均45種）推升平台化需求。</li>
+          <li><b>市場規模：</b>TAM 全球資安市場（Omdia：1Q26支出年增11.9%，總額未查證） ／ SAM 平台化機會約1,050億美元（Pitchgrade估，來源未證實，僅供參考） ／ SOM PANW NGS ARR 97.3億美元（FY27 Q1）；FY27指引114.8–115.3億美元</li>
+          <li><b>競爭格局：</b>對手含CrowdStrike、Zscaler、Fortinet、Microsoft、Cloudflare；CrowdStrike、PANW、Fortinet整併證據最明確；Microsoft捆綁為長期威脅；無可靠市佔數字。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>以防火牆、SASE、雲端與SOC及CyberArk身分安全組成單一平台，降低客戶工具數量與營運複雜度。</li>
+          <li><b>目標客群與通路：</b>大型企業、政府與金融客戶，經直銷與合作夥伴及雲市集銷售；訂閱合約為主（RPO 210億美元）。</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>Q1 FY27 GAAP 2.8%／non-GAAP 30.7%（FY26 GAAP 6.1%／non-GAAP 29.2%）（含金量 中）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>FY26 OCF 4,553百萬 / GAAP淨利307百萬，約14.8倍（GAAP被併購與SBC壓低，失真）</td></tr>
+            <tr><td>資本支出／營收</td><td>約3.8%（FY26 OCF 4,553減FCF 4,113 = 440百萬，占營收11,480）</td></tr>
+            <tr><td>現金循環天數</td><td>不適用（訂閱制，合約負債約146億美元，先收錢後交貨，含金量高）</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>轉換成本、經濟規模、網絡效應（資料）</li>
+          <li><b>強度與期間：</b>平台整合與多產品綁定使轉換成本高，NGS ARR年增66%與RPO年增35%佐證，預期可維持5年以上；但Microsoft捆綁與AI新創是長期變數。</li>
+          <li><b>ROE 軌跡：</b>以期末權益計：FY25 GAAP ROE約14.5%（1,134/7,824），FY26約1.1%（307/27,492，權益因CyberArk換股暴增）；ROE在整合期被稀釋。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>NGS ARR（FY27 Q1 97.3億，+66%）含CyberArk與Chronosphere併購貢獻；硬體與訂閱結構中訂閱及支持占FY26營收80%（9,200/11,480）。</li>
+          <li><b>毛利率改善動能：</b>平台交叉銷售、規模與AI自動化可抬non-GAAP營益率（指引29.5%），但併購攤銷與訂閱組合使GAAP毛利率由74.2%降至68.0%。</li>
+          <li><b>EPS 三大引擎：</b>EPS = ROE x 權益 / 股數：權益由78億增至275億但ROE降低；流通股增加約18%（709M至838M）為逆風，non-GAAP EPS靠營運槓桿支撐。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>約8%</td><td>整合不順、競爭加劇，non-GAAP EPS FY29約4.8美元，企業價值偏弱。</td></tr>
+            <tr><td>高機率</td><td>約15%</td><td>FY27指引4.26–4.30後維持高個位至十餘%，FY29約5.8美元，屬優質但估值已高。</td></tr>
+            <tr><td>樂觀</td><td>約22%</td><td>AI安全需求與交叉銷售超預期，FY29約7.0美元，企業價值頂尖。</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：3.95 USD（non-GAAP近4季：1.03+0.85+1.02+1.05；GAAP約0.50）</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：約15%（non-GAAP EPS，未來3年） — 依據：FY27指引EPS 4.26–4.30（較FY26的3.84約+11%，受股數增加壓抑）；營收指引+26–27%含併購，併購效益遞減後假設回到15%上下；來源為公司8-K。</li>
+          <li><b>靜態 PE：</b>約86x（339.92 / 3.95）</li>
+          <li><b>動態 PE：</b>約79x（339.92 / FY27指引中位4.28）</li>
+          <li><b>PEG：</b>5.3–5.7</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr class="current"><td>貪婪興奮</td><td>1.5–2.0</td><td>✓</td></tr><tr><td>樂觀開心</td><td>1.2–1.5</td><td></td></tr><tr><td>過渡階段</td><td>0.8–1.2</td><td></td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">貪婪興奮</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：30x – 50x</li>
+          <li>對應股價區間：約150 – 約245</li>
+          <li>便宜價：約150（30x FY28E EPS約4.9）　|　合理價：約195（40x）　|　偏高價：約245（50x）　|　昂貴價：約320以上（65x以上）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>約-43%（合理價195 vs 現價340）</td></tr>
+            <tr><td>企業價值 MOS</td><td>約-31%（FY29E EPS 5.8 x 40x約234 vs 340）</td></tr>
+            <tr><td>投資組合 MOS</td><td>單一資安標的，建議與其他產業合計10–30檔分散，單檔不超過2%試單。</td></tr>
+          </table>
+        </div>
+      </div>
+
+      
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：收盤339.92；50DMA 366.7（-7.3%）／150DMA 319.2（+6.5%）／200DMA 279.5（+21.6%）</li>
+          <li>200 DMA 趨勢：上揚</li>
+          <li>近 6 個月波段高低點：墊高</li>
+          <li>量價型態：量增價漲/量縮價跌（10日均量/50日均量=1.22；20日上漲量/下跌量1.13）；週K 13週上漲量/下跌量0.95偏弱</li>
+          <li>股價乖離（季線）：-6.6%（季線60MA 363.98）</li>
+          <li>是否出現特定型態：無明確型態：2026-10-05高點432.3後兩波回檔約23%，未收縮</li>
+        </ul>
+        <p class="note"><b>TradingView 實測數據</b>（NASDAQ:PANW｜截至 2026-11-18 收盤）</p><ul><li>距歷史新高：-21.4%</li><li>52週高低位置：距52週高 -21.4%／距52週低 +143.6%</li><li>均線：50DMA 366.7（-7.3%）／150DMA 319.2（+6.5%）／200DMA 279.5（+21.6%）</li><li>200DMA斜率：+6.2%（近20日，上揚）</li><li>趨勢模板通過：6/7（未通過：收盤價高於50DMA）</li><li>RSI 47.7、ADX 22.2</li><li>10日相對量：2.65</li></ul><p class="note">資料來源：TradingView；價格僅還原分割不還原股利；資料依TradingView方案可能延遲；日K最後一根收盤339.92與財報後漲幅吻合，可能含延長交易報價；週K僅取104根（有效103根）而非260根；最近週K成交量為50週均量比較</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">3 多頭底部</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：高</li>
+          <li>錯失機會風險：低</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <h3 class="sub">4.1 VCP結構檢視</h3><ul><li>層級：週K</li><li>收縮結構：2T（22.6% → 23.3%），尚未形成有效收縮；2026-11-16週為未收盤週已剔除</li><li>回檔是否遞減：否（each_under_half_of_prev=false，strictly_decreasing=false）</li><li>最後一波跌幅是否&lt;5%：否（最後一波跌幅23.29%）</li><li>凹洞量能點（Pocket Pivot）：否（2026-09-08週量19.9M為50週均量0.54倍，但非52週最低量，found=false）</li><li>是否創新高：否（距歷史新高-25.5%，以最後收盤週K計）</li><li>量價型態：否（13週上漲量/下跌量0.95，量未收縮）</li><li>回檔深度序列：22.6% → 23.3%（2T未收縮；11/16週未收盤已剔除）</li><li>基準價與突破狀態：基準價341.80（2026-11-09週高）；收盤週K322.24未站上；最後週量為50週均量0.73倍</li><li>停損參考價：凹洞量週低325.32／最近谷底312.12／基準價-7% 317.87</li></ul><p class="note">週K資料截至 2026-11-09，由 TradingView K 線機械計算</p><h3 class="sub">4.2 可能進場點</h3><div class="tbl-wrap"><table><tr><th>進場點</th><th>條件是否成立</th><th>對應停損</th><th>建議下注</th></tr><tr><td>凹洞量能點</td><td>未成立：9/8週量縮至50週均量0.54倍但非52週最低量</td><td>凹洞量週低點325.32（約-4%）</td><td>約20%</td></tr><tr><td>帶量突破點</td><td>未成立：週K收盤322.24未站上基準價341.80；最後週量為50週均量0.73倍；日K最新339.92逼近基準價，需帶量收盤確認</td><td>最近谷底312.12或基準價-7%即317.87</td><td>約50%</td></tr><tr><td>回測成功點</td><td>未成立：尚無有效突破可供回測</td><td>回測三盤最低點，最大不超過-10%</td><td>約30%</td></tr></table></div><h3 class="sub">4.3 七大供需轉折訊號</h3><ul class="checklist"><li>極限大量</li><li>超買反轉（季線乖離 >50% / 80%）</li><li>產業逆風</li><li>利多不漲</li><li>利空下跌</li><li>量價背離</li><li>大量黑K</li></ul>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>暫不投資</li>
+          <li><b>建議週期：</b>不適用；若日後進場以18–36個月計</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：35%</li>
+          <li>估計賠率：約2.5（目標+25% / 停損-10%）</li>
+          <li>1/4 凱利公式下的最大下注比重：約2%（35% - 65%/2.5 = 9%，取1/4）</li>
+          <li><b>目前建議買入：</b>0%；PEG約5.5屬貪婪興奮，等回到合理價約195美元或週K VCP成形後再議，試單上限2%</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>若進場後FY27 EPS指引被下修至4.2以下或NGS ARR年增率跌破50%</td></tr><tr><td>買進理由消失</td><td>CyberArk整合失敗致NGS ARR季增停滯，或non-GAAP營益率低於27%</td></tr><tr><td>市場估值過高</td><td>PEG持續高於2且動態PE高於60x，或股價高於約320分批減碼</td></tr><tr><td>機會成本過高</td><td>出現PEG低於1.2且G大於20%的更佳標的</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>Applied Compute整合後模型安全產品成形</li><li>CyberArk與Prisma/Cortex交叉銷售加速</li><li>AI攻擊事件推升企業資安預算</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告（預計2027年2月中下旬，FY27 Q2）</li>
+          <li>下次財報公布：待公告（Q1 FY27 10-Q近期提交，下季約2027年2月）</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>NGS ARR（Q2指引102.0–102.2億美元）</li><li>RPO（Q2指引215–216億美元）</li><li>non-GAAP營益率（FY27指引29.5%）</li><li>GAAP毛利率（Q1 FY27 68.0%）</li><li>調整後FCF率（FY27指引38%）</li><li>流通股數（約838M）</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>股價回落至195美元附近（合理價）可重新評估分批布局</li><li>週K收盤帶量站上341.8並出現3T以上收縮才視為VCP突破</li><li>跌破312.12（最近谷底）則型態失敗，重新計算T</li><li>GAAP毛利率回升至70%以上或non-GAAP EPS指引再上調</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>Palo Alto Networks Q1 FY2027 8-K新聞稿（SEC）、Palo Alto Networks Q4 FY2026 8-K新聞稿（SEC）、CNBC 2026-11-18、Chartmill、Trefis、TIKR、Yahoo Finance、ITPro（CyberArk交割）、Omdia引述、247WallSt、Webull（競爭格局）、TradingView（日K／週K 價量，tv_technicals.py 計算）</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-11-19</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
