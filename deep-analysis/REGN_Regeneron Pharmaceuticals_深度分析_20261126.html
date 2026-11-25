@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>REGN Regeneron Pharmaceuticals　投資邏輯深度分析</title>
+  <meta property="og:title" content="REGN Regeneron Pharmaceuticals　投資邏輯深度分析">
+  <meta property="og:description" content="Regeneron Pharmaceuticals：企業價值優質，但PEG約1.3-1.5偏高、VCP未成，建議2%試單倉等待回測898或帶量突破972。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="REGN Regeneron Pharmaceuticals　投資邏輯深度分析">
+  <meta name="twitter:description" content="Regeneron Pharmaceuticals：企業價值優質，但PEG約1.3-1.5偏高、VCP未成，建議2%試單倉等待回測898或帶量突破972。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    /* ---- 投資重點快照（簡易分析區塊）專用樣式 ---- */
+    .snap-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .snap-hero .snap-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    .snap-hero .snap-desc {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-top: 4px;
+      line-height: 1.7;
+    }
+
+    .snap-eps {
+      text-align: right;
+    }
+
+    .snap-eps .v {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .snap-eps .v.pos {
+      color: var(--green-d);
+    }
+
+    .snap-eps .v.neg {
+      color: var(--red-d);
+    }
+
+    .snap-eps .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    .snap-hist {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .kpi {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid #94A3B8;
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .kpi.pos {
+      border-top-color: var(--green);
+    }
+
+    .kpi.neg {
+      border-top-color: var(--red);
+    }
+
+    .kpi.warn {
+      border-top-color: var(--amber);
+    }
+
+    .kpi .v {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .kpi .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-top: 5px;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 8px 0 20px;
+    }
+
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .pillar .ptype {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--orange);
+    }
+
+    .pillar .ptitle {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 4px 0;
+    }
+
+    .pillar .pkey {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .pillar ul {
+      padding-left: 18px;
+      margin-bottom: 0;
+      font-size: 12.8px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      background: var(--amber-bg);
+      padding: 1px 8px;
+      border-radius: 10px;
+      margin-left: 6px;
+    }
+
+    .note {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: -8px;
+    }
+
+    @media (max-width: 900px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .snap-eps {
+        text-align: left;
+      }
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>REGN Regeneron Pharmaceuticals — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：980.09 USD　|　當前 PE：17.7x　|　52 週區間：591.52 – 991.83</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-11-26</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：4 多頭上漲</span>
+        <span class="badge">建議戰略：繼續持有</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#snapshot">投資重點快照</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>企業價值優質且Sanofi餘額還清與Livsayis核准帶來利多，但PEG約1.3-1.5已偏高、VCP型態未成，宜以2%試單倉等待回測898或帶量突破972再加碼。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">優質</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">偏高</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">4 多頭上漲</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">試單倉 2%</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>優質</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>偏高（PEG ≈ 1.3-1.5）</td><td>中</td></tr>
+            <tr><td>股價階段</td><td>4 多頭上漲</td><td>中</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill ">繼續持有</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>試單倉 2%</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>EYLEA生物相似藥自2026-12至2027-01陸續上市，傳統EYLEA已年減41%</li><li>獲利含Sanofi餘額還清與10億美元前期款等一次性效益，EPS不宜年化</li><li>估值偏高(PEG約1.3-1.5)且股價近一年+43%，距52週高僅-1.2%</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>Livsayis(cemdisiran)2026-11-18獲FDA核准，新增gMG與神經科成長腿</li><li>Sanofi聯盟擴大10億美元前期款於26Q4認列，加上開發餘額還清利潤釋放</li><li>27年2-3月Odronextamab與Libtayo sBLA目標日，及CIDEB、肥胖、Factor XI管線進展</li></ul>
+      </div>
+
+      <!-- ============ 投資重點快照（原「簡易分析」報告的全部內容） ============ -->
+      <h2 class="section" id="snapshot">投資重點快照<span>SNAPSHOT · 簡易分析完整內容</span></h2>
+
+      <div class="card">
+        <div class="snap-hero">
+          <div>
+            <div class="snap-title">Regeneron · Dupixent利潤分成+EYLEA HD+Libtayo · Sanofi聯盟擴大 vs EYLEA生物相似藥衝擊</div>
+            <div class="snap-desc">生物科技(單株抗體/RNAi) · 協作營收59%(Sanofi 53%)/淨產品銷售35%/其他6% · Sanofi、Bayer、美國眼科與腫瘤通路 · 成長後期</div>
+          </div>
+          <div class="snap-eps">
+            <div class="v pos">44.31</div>
+            <div class="l">2025 EPS（USD）· 截至 2026-11-26</div>
+          </div>
+        </div>
+        <div class="snap-hist">2024 EPS 45.62｜26Q3 EPS 20.07｜2025 營收 +1% YoY</div>
+      </div>
+
+      <div class="exec">
+        <div class="exec-label">THESIS · 核心論述</div>
+        <p><b>Regeneron</b>由Dupixent利潤分成(Sanofi協作營收27.2億美元，佔26Q3營收53%)、EYLEA HD(美國+62%)與Libtayo(+51%)驅動，26Q3營收51.2億美元(+36%)、non-GAAP EPS 20.07美元(+70%)、營業利益率40.0%。<span class='g'>Sanofi開發餘額已於26Q2還清，聯盟擴大另帶來10億美元前期款(26Q4認列)</span>，使近期獲利躍升但含一次性因素；<span class='r'>傳統EYLEA美國銷售年減41%，多家生物相似藥將於26Q4至27年1月陸續可上市</span>。股價近一年+43%、距52週高僅-1.2%，PEG約1.3-1.5已進入偏高區，成敗關鍵在Dupixent延伸適應症與管線(肥胖、CIDEB、Factor XI)能否在2027年後接棒EYLEA。</p>
+      </div>
+
+      <div class="kpis"><div class="kpi pos"><div class="v">51.2億美元</div><div class="l">26Q3營收<br>YoY +36%</div></div><div class="kpi pos"><div class="v">20.07美元</div><div class="l">26Q3 non-GAAP EPS<br>YoY +70%</div></div><div class="kpi pos"><div class="v">40.0%</div><div class="l">26Q3營業利益率<br>(25Q3 27.3%)</div></div><div class="kpi pos"><div class="v">188.6億美元</div><div class="l">現金及有價證券<br>2026-09-30</div></div><div class="kpi warn"><div class="v">17.7x</div><div class="l">靜態PE(non-GAAP 4Q)<br>PEG約1.3-1.5</div></div><div class="kpi neg"><div class="v">-41%</div><div class="l">26Q3傳統EYLEA美國銷售<br>YoY(HD +62%)</div></div></div>
+
+      <h3 class="sub">KEY SWING FACTORS · 三大支柱</h3>
+      <div class="pillars"><div class="pillar"><div class="ptype">GROWTH</div><div class="ptitle">成長動能</div><div class="pkey">26Q3營收+36%，EPS +70%，Dupixent全球銷售65億美元(+35%)</div><ul><li>Dupixent全球淨銷售(Sanofi認列)26Q1/Q2/Q3分別+33%/+38%/+35%，協作營收27.2億美元</li><li>EYLEA HD美國銷售26Q3 6.99億美元(+62%)，Libtayo全球5.5億美元(+51%)</li><li>Sanofi開發餘額26Q2還清，自26Q3起不再扣減協作營收；聯盟再納入4個長效抗體</li></ul></div><div class="pillar"><div class="ptype">MOAT</div><div class="ptitle">護城河</div><div class="pkey">專利抗體平台+Sanofi共同開發，非GAAP產品毛利率約86%</div><ul><li>VelociSuite平台自研抗體，Dupixent與EYLEA HD為專利/特許型優勢</li><li>26Q3營業利益率40.0%，高於2025全年24.9%</li><li>與Sanofi利潤對半分攤的聯盟綁定，2026-10擴大且和解舊訴訟</li></ul></div><div class="pillar"><div class="ptype">RISK</div><div class="ptitle">風險</div><div class="pkey">EYLEA生物相似藥陸續上市+獲利含一次性因素</div><ul><li>Celltrion可於2026-12-31上市，Sandoz與Alvotech/Teva Q4 2026，Samsung Bioepis 2027-01</li><li>26Q3 EPS含Sanofi餘額還清效益，26Q4再含10億美元前期款，不宜年化外推</li><li>股價近一年+43%，PEG約1.3-1.5，估值已不便宜</li></ul></div></div>
+
+      <div class="card">
+        <h3 class="sub">損益軌跡 （2023–2025 與 26Q3；營收單位：百萬美元）</h3>
+        <div class="tbl-wrap"><table><tr><th>項目</th><th>2023</th><th>2024</th><th>2025</th><th>26Q3</th></tr><tr><td>營收(百萬美元)</td><td>13,117</td><td>14,202</td><td>14,343</td><td>5,116</td></tr><tr><td>毛利率</td><td>N/A</td><td>88%</td><td>85%</td><td>約86%(全年指引)</td></tr><tr><td>營益率</td><td>N/A</td><td>28.1%</td><td>24.9%</td><td>40.0%</td></tr><tr><td>EPS(USD)</td><td>43.79</td><td>45.62</td><td>44.31</td><td>20.07</td></tr><tr><td>ROE</td><td>N/A</td><td>N/A</td><td>約14.9%</td><td>—</td></tr></table></div>
+        <p class="note">毛利率為non-GAAP之淨產品銷售毛利率(非整體營收毛利率)；EPS為non-GAAP，GAAP EPS分別為34.77/38.34/41.48；ROE以2025 GAAP淨利45.05億除以期初期末平均權益約303億自行估算；2023營益率與ROE未取得可驗證來源。</p>
+        <h3 class="sub">近 5 季損益</h3>
+        <div class="tbl-wrap"><table><tr><th>季別</th><th>營收(百萬美元)</th><th>毛利率</th><th>EPS(USD)</th></tr><tr><td>25Q3</td><td>3,754</td><td>86%(產品)</td><td>11.83</td></tr><tr><td>25Q4</td><td>3,884</td><td>N/A</td><td>11.44</td></tr><tr><td>26Q1</td><td>3,605</td><td>N/A</td><td>9.47</td></tr><tr><td>26Q2</td><td>4,291</td><td>N/A</td><td>14.29</td></tr><tr><td>26Q3</td><td>5,116</td><td>約86%(全年指引)</td><td>20.07</td></tr></table></div>
+        <p class="note">25Q4營收為全年14,342.9減前三季推算；各季EPS含收購IPR&D一次性扣減(26Q1約0.80、26Q2約0.99美元)；26Q3 non-GAAP EPS較市場共識約16美元大幅超標。</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">KEY WATCH 關鍵觀察點</h3>
+        <ul><li>26Q3 non-GAAP EPS 20.07美元(+70%)，近4季合計55.27美元，較FY2025的44.31美元高出25%，但含Sanofi餘額還清的結構性利多</li><li>26Q3營業利益率40.0%(25Q3 27.3%)，營業利益20.48億美元，協作營收30.0億美元(+52%)是主因</li><li>2026年非GAAP R&D指引上調至60.5-61.5億美元(原59.5-60.5億)，SG&A下調至24.0-25.0億美元，支出紀律與研發投入並進</li><li>EYLEA美國合計銷售26Q3約11億美元(-1%)：HD 6.99億美元(+62%)抵消傳統EYLEA 4.0億美元(-41%)，上市前的生物相似藥衝擊尚未完全反映</li><li>近3場財報指引達成率 4/5(非GAAP產品毛利率指引由83-84%上調至約86%、SG&A下調、EYLEA HD全年成長逾50%達標、資本支出下修至10.5-11.0億美元；未達：EYLEA HD預填針因Catalent檢查問題反覆延宕)；管理層可信度：中</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">催化劑 CATALYSTS</h3>
+        <ul><li>Livsayis(cemdisiran)於2026-11-18獲FDA核准，為Regeneron首個神經科藥物與首個gMG siRNA療法(EU決議預計2H 2027)<span class="tag">（已兌現）</span></li><li>Sanofi聯盟擴大10億美元前期款於26Q4認列為協作營收，26Q4 EPS將明顯墊高<span class="tag">（進行中）</span></li><li>Odronextamab(DLBCL)BLA目標日2027-02、Libtayo替代給藥sBLA目標日2027-03<span class="tag">（待驗證）</span></li><li>CIDEB RNAi於AASLD公布中期數據並於26Q4啟動MASH/MASLD Phase 3；肥胖Phase 3計畫26Q4啟動<span class="tag">（醞釀中）</span></li><li>Dupixent持續高成長且Sanofi餘額還清後利潤貢獻全面釋放；Factor XI關鍵數據自2027年起<span class="tag">（結構性）</span></li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">主要風險 KEY RISKS</h3>
+        <ul><li>EYLEA生物相似藥：Biocon Yesafili已於2026-08-03上市，Celltrion可於2026-12-31、Sandoz與Alvotech/Teva於Q4 2026、Samsung Bioepis於2027-01上市，傳統EYLEA 26Q3已年減41%</li><li>26Q3協作營收中Sanofi占27.24億美元(約53%營收)，對Dupixent單一產品與單一夥伴高度依賴</li><li>獲利含一次性因素：26Q4含10億美元前期款，26Q1/Q2各有約0.80/0.99美元IPR&D扣減，EPS波動大、不宜年化</li><li>2026年非GAAP R&D指引再上調至60.5-61.5億美元，肥胖與多項Phase 3啟動將壓縮營益率</li><li>EYLEA HD預填針核准因Catalent Indiana廠檢查問題反覆延宕，影響HD對生物相似藥的差異化防禦</li><li>估值與籌碼：股價近一年+43%、距52週高-1.2%，PEG約1.3-1.5，若2027年EPS成長不及預期易回檔</li></ul>
+        <p class="note">估值提醒：靜態PE(non-GAAP近4季55.27美元)約17.7x，扣除約189億美元現金後約14.5x，但PEG約1.3-1.5落在樂觀開心/偏高區；26Q3與26Q4含一次性效益，宜用正常化EPS約62美元衡量，勿以單季年化。｜ 生命週期：公司層面為成長後期：Dupixent處於放量成長，EYLEA進入成熟轉衰退；新成長腿(Libtayo、Livsayis、CIDEB、肥胖、Factor XI)仍待驗證，EPS成長由基期墊高與利潤分成釋放而非全面性成長。</p>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>每季揭露產品銷售、Sanofi/Bayer協作營收拆分、IPR&D對EPS的影響(如26Q2約0.99美元)並逐項更新全年指引；對EYLEA HD預填針的Catalent檢查問題持續揭露，透明度高。</li>
+          <li><b>言行一致性：</b>近3場指引多數兌現：EYLEA HD全年成長逾50%與前9個月+52%一致、非GAAP產品毛利率指引由83-84%上調至約86%、SG&A下調；未兌現者為HD預填針核准時程反覆延後，戰略(專注本業+抗體平台+聯盟)保持一致。</li>
+          <li><b>資本配置：</b>以本業研發為首(2026非GAAP R&D約60.5-61.5億美元)，其次股票買回(前9個月23億美元，2026-04新增30億美元授權，剩餘約22億美元)與每季股利0.94美元；併購以授權與聯盟為主，成長空間來自本業與聯盟擴大。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>放量成長(免疫Dupixent)與成熟轉衰退(眼科EYLEA)並存：Dupixent全球季銷售65億美元(+35%)仍高成長，EYLEA面臨多家生物相似藥。</li>
+          <li><b>市場規模：</b>TAM Dupixent全球季銷售65億美元(Sanofi認列，年化約260億美元)；整體生技抗體市場規模本次未取得可驗證來源，TAM僅供參考。 ／ SAM EYLEA美國年銷售2025年約44億美元(全年-27%)，HD 2025年約16億美元(+36%)；SAM以眼科抗VEGF與免疫適應症為主。 ／ SOM 26Q3 Dupixent協作營收27.2億美元、EYLEA HD 6.99億美元、Libtayo全球5.5億美元，合計構成短期可取得市場。</li>
+          <li><b>競爭格局：</b>眼科：Amgen Pavblu已上市，Biocon Yesafili 2026-08上市，Celltrion、Sandoz、Alvotech/Teva、Samsung Bioepis於2026-12至2027-01可上市；gMG市場擁擠(C5抑制劑、FcRn藥物、Alexion Klygefa)；Dupixent同類競品市占本次未取得來源。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>以專利抗體與RNAi藥物解決免疫發炎、眼科、腫瘤與罕病痛點；Dupixent同時涵蓋多個type 2適應症，EYLEA HD延長給藥間隔至最長5個月。</li>
+          <li><b>目標客群與通路：</b>Dupixent經Sanofi全球通路；EYLEA與Libtayo在美國為眼科醫師與腫瘤科通路；協作夥伴為Sanofi與Bayer。</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>40.0%(26Q3)；2025全年24.9%（含金量 高）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>2025前9個月營業現金流38.1億美元；與淨利比未精確計算，資料不足</td></tr>
+            <tr><td>資本支出／營收</td><td>約7%(2026年指引10.5-11.0億美元 / 2025營收143億美元)</td></tr>
+            <tr><td>現金循環天數</td><td>資料不足，未取得存貨與應收應付完整數據</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>專利 / 特許 / 轉換成本(與Sanofi利潤分成聯盟、抗體平台)</li>
+          <li><b>強度與期間：</b>Dupixent與EYLEA HD具專利型優勢，26Q3非GAAP產品毛利率約86%、營益率40.0%；但EYLEA 2mg已受生物相似藥侵蝕，優勢期間需靠新管線接棒。</li>
+          <li><b>ROE 軌跡：</b>2025年ROE約14.9%(自行估算)；權益由2024年末293.5億升至2026-09-30的335.0億美元，保留盈餘率高，並持續買回股票。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>26Q3營收51.2億=協作營收30.0億(Sanofi 27.2億、Bayer 2.7億)+淨產品銷售18.05億(+14%)+其他3.1億；銷量×ASP：EYLEA HD放量取代傳統EYLEA，Dupixent靠適應症與地區擴張。</li>
+          <li><b>毛利率改善動能：</b>Sanofi開發餘額還清、EYLEA HD與Libtayo產品組合、SG&A下調使26Q3營益率由27.3%升至40.0%；產品毛利率指引由83-84%上調至約86%。</li>
+          <li><b>EPS 三大引擎：</b>ROE由約15%回升帶動淨利；權益335億美元(+14%自2024年末)；流通股數由2024年115.1百萬降至26Q3 105.6百萬(約-8%)，買回為EPS第三引擎。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>-2%</td><td>生物相似藥侵蝕加速、Dupixent競爭加劇、R&D費用上升，EPS由正常化基期回落，企業價值平庸。</td></tr>
+            <tr><td>高機率</td><td>約12%</td><td>Dupixent維持雙位數成長、EYLEA HD抵銷傳統EYLEA衰退、買回減少股數，企業價值優質。</td></tr>
+            <tr><td>樂觀</td><td>約18%</td><td>新管線(CIDEB、肥胖、Factor XI)與Livsayis提前貢獻，企業價值頂尖。</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：55.27 USD(non-GAAP，25Q4至26Q3合計：11.44+9.47+14.29+20.07；GAAP約45.29)</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：約12%(10-16%) — 依據：以近4季non-GAAP EPS 55.27美元為基期：Dupixent高成長+Sanofi餘額還清利潤釋放+買回約3-4%/年，減去EYLEA生物相似藥侵蝕與R&D上升；26Q4含10億美元前期款不計入基期。屬估算，無FactSet共識可核對。</li>
+          <li><b>靜態 PE：</b>17.7x(non-GAAP近4季)；GAAP約21.6x</li>
+          <li><b>動態 PE：</b>約15x(以2026E約65美元估算，含一次性因素)；正常化EPS約62美元則約15.8x</li>
+          <li><b>PEG：</b>1.3-1.5</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr><td>貪婪興奮</td><td>1.5–2.0</td><td></td></tr><tr class="current"><td>樂觀開心</td><td>1.2–1.5</td><td>✓</td></tr><tr><td>過渡階段</td><td>0.8–1.2</td><td></td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">樂觀開心</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：10x – 18x</li>
+          <li>對應股價區間：600 – 1,115</li>
+          <li>便宜價：約600以下(PEG≤0.8，PE≤10x)　|　合理價：約600-890(PEG 0.8-1.2)　|　偏高價：約890-1,115(PEG 1.2-1.5)　|　昂貴價：約1,115以上(PEG>1.5)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>約-10%(以合理價上緣約890計，目前股價高於企業價值)</td></tr>
+            <tr><td>企業價值 MOS</td><td>約+19%(3年後EPS約78美元x合理PE約15x=約1,165，減現價980)</td></tr>
+            <tr><td>投資組合 MOS</td><td>生技單一產業建議不超過組合10%，整體10-30檔分散；單一個股不逾5%</td></tr>
+          </table>
+        </div>
+      </div>
+
+      
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：收盤980.09 > 50DMA 841.1(+16.5%) > 200DMA 754.36(+29.9%)，150DMA 751.2(+30.5%)；50DMA高於150/200DMA，但150DMA略低於200DMA</li>
+          <li>200 DMA 趨勢：上揚</li>
+          <li>近 6 個月波段高低點：墊高</li>
+          <li>量價型態：量增價漲/量縮價跌；近10日均量/50日均量0.97，20日上漲量/下跌量1.44</li>
+          <li>股價乖離（季線）：+17.4%(季線60MA 835.22)</li>
+          <li>是否出現特定型態：無(自2026-06低點591.52反彈65.7%後高檔整理，未成標準VCP)</li>
+        </ul>
+        <p class="note"><b>TradingView 實測數據</b>（NASDAQ:REGN｜截至 2026-11-25 收盤）</p><ul><li>距歷史新高：-19.1%</li><li>52週高低位置：距52週高 -1.2%／高於52週低 +65.7%</li><li>均線：50DMA 841.1(+16.5%)／150DMA 751.2(+30.5%)／200DMA 754.36(+29.9%)</li><li>200DMA斜率：+2.44%(近20日)，上揚</li><li>趨勢模板通過：6/7（未通過：150DMA高於200DMA(150DMA 751.2 低於 200DMA 754.36)）</li><li>RSI 66.5／ADX 40.1</li><li>10日相對量：0.30(最後一根日K可能尚未收盤)</li></ul><p class="note">資料來源：TradingView；價格僅還原分割、不還原現金股利；資料依TradingView方案可能延遲；日K最後一根(2026-11-25)成交量僅約27萬股，疑似未收盤，收盤價980.09以該根為準；週K為使用110根(約2年)計算，歷史高點採日K快照High.All 1,211.2；週K最後一根未收盤已剔除；日K與週K皆通過完整性核對</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">4 多頭上漲</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：中</li>
+          <li>錯失機會風險：中</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <h3 class="sub">4.1 VCP結構檢視</h3><ul><li>VCP級別：週K</li><li>收縮結構：1T，depth 9.42%(2026-11-02高點991.73至2026-11-09低點898.29，已確認)；未達2-4T</li><li>每波跌幅遞減：不成立：僅1T，無法比較每波跌幅是否小於上波的50%</li><li>最後一波跌幅<5%：否：最後一波跌幅9.42%，大於5%</li><li>凹洞量／口袋支點：否：dry_up.found=false(2026-10-05週量290萬股，為50週均量0.68倍，未達0.5倍且非52週最低量)</li><li>創新高：否：距歷史高點1,211.2約-24.0%(週K計算)，日K計算-19.1%</li><li>量價型態：不符：volume_price_ok=false，13週上漲量/下跌量0.96，量能未收縮</li><li>回檔深度序列：9.42%(僅1T，2026-11-02高點991.73至11-09低點898.29，已確認)</li><li>基準價與突破狀態：基準價972.24(2026-11-16週)；最後一根已收盤週K收盤920.69未站上；最後一週量為50週均量0.92倍</li><li>停損參考價：凹洞量當週最低722.02／最近一波谷底898.29／基準價-7%為904.18</li></ul><p class="note">週K資料截至 2026-11-16，由 TradingView K 線機械計算</p><h3 class="sub">4.2 可能進場點</h3><div class="tbl-wrap"><table><tr><th>進場點</th><th>條件是否成立</th><th>對應停損</th><th>建議下注</th></tr><tr><td>凹洞量能點</td><td>不成立：2026-10-05週量為50週均量0.68倍(未達0.5倍)，非52週最低量</td><td>凹洞量當週最低點722.02(距現價約-26%，已超過10%上限，不適用)</td><td>約20%</td></tr><tr><td>帶量突破點</td><td>尚未確認：基準價972.24(2026-11-16週高)，最後一根已收盤週K收盤920.69未站上；最新日K收盤980.09雖高於基準價，但近一週量為50週均量0.92倍、不屬帶量</td><td>基準價-7%約904.18；最近一波谷底898.29</td><td>約50%</td></tr><tr><td>回測成功點</td><td>不成立：尚未出現突破後量縮回測再帶量收復的型態</td><td>跌破最近一波谷底898.29(約-8%)</td><td>約30%</td></tr></table></div><h3 class="sub">4.3 七大供需轉折訊號</h3><ul class="checklist"><li>極限大量</li><li>超買反轉（季線乖離 >50% / 80%）</li><li>產業逆風</li><li>利多不漲</li><li>利空下跌</li><li>量價背離</li><li>大量黑K</li></ul>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>試單倉</li>
+          <li><b>建議週期：</b>6-12個月</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：45%</li>
+          <li>估計賠率：約1.9(目標約1,130，+15% / 停損約904，-8%)</li>
+          <li>1/4 凱利公式下的最大下注比重：約4%</li>
+          <li><b>目前建議買入：</b>PEG 1.3-1.5屬偏高區，不追價；以試單2%為上限，回到合理價(約890以下)加至3%，便宜價(約600以下)才到5%；站不穩基準價972或跌破898.29即停損。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>27年上半年Dupixent全球銷售成長降至20%以下，或正常化EPS低於約55美元，代表12%成長假設錯誤</td></tr><tr><td>買進理由消失</td><td>EYLEA美國合計銷售(HD加傳統)連續兩季年減超過10%，或協作營收成長無法抵銷生物相似藥侵蝕</td></tr><tr><td>市場估值過高</td><td>股價上漲至約1,115以上(PEG>1.5)且基本面無上修，或季線乖離逼近+50%</td></tr><tr><td>機會成本過高</td><td>出現PEG低於1.0且G高於15%的同業標的，或持股報酬明顯落後而PEG更高</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>Sanofi聯盟擴大納入4個長效抗體，延長Dupixent後續價值</li><li>Livsayis上市進度與gMG市占</li><li>EYLEA HD預填針核准與給藥間隔延長至5個月</li><li>肥胖Phase 3啟動與CIDEB Phase 3啟動</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告(預期2027年1月底至2月初發布FY2026與26Q4結果)</li>
+          <li>下次財報公布：待公告(10-K預期2027年2月)</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>Dupixent全球季銷售成長率(26Q3為+35%)</li><li>EYLEA HD與傳統EYLEA美國季銷售(26Q3為6.99億/4.0億美元)</li><li>non-GAAP營業利益率與EPS(扣除前期款與IPR&D)</li><li>生物相似藥上市後EYLEA美國合計銷售年增率</li><li>每季股票買回金額與流通股數(26Q3稀釋股數105.6百萬)</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>週K收盤站上972.24且量逾50週均量1.4倍(帶量突破，提高部位)</li><li>收盤跌破898.29(最近一波谷底)或904.18(基準價-7%)則停損</li><li>股價回到約890以下(PEG約1.2)可加碼至3%</li><li>26Q4或27Q1 EYLEA美國合計銷售年減逾10%，重新評估成長假設</li><li>股價逾1,115而EPS預估未上修，啟動分批減碼</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>Regeneron IR新聞稿 26Q3/26Q2/26Q1/FY2025/FY2023財報(investor.regeneron.com，經Finviz/SEC 8-K轉載)、Zacks、Newsquawk、Benzinga、Quartr(26Q3業績與共識)、FiercePharma、Goodwin Law、Ophthalmology Times、Healio(EYLEA生物相似藥時程)、AJMC、PharmExec、Zacks、pharmaphorum(Livsayis核准)、STAT News、Goodwin Law、Stocktwits(Sanofi聯盟擴大)、Stockanalysis、TIKR、Chartmill(聚合共識，僅供參考非FactSet)、TradingView（日K／週K 價量，tv_technicals.py 計算）</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-11-26</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
