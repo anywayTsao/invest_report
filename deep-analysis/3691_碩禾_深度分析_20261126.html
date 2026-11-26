@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3691 碩禾　投資邏輯深度分析</title>
+  <meta property="og:title" content="3691 碩禾　投資邏輯深度分析">
+  <meta property="og:description" content="碩禾(3691)深度分析：碩禾已由三年虧損轉盈，但 Q1 的高 EPS 靠銀價庫存利得、營業現金流近乎零、股價處空頭急跌階段，建議等股價回到 83 元以下且站回 150DMA 再議，暫不買進。">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="3691 碩禾　投資邏輯深度分析">
+  <meta name="twitter:description" content="碩禾(3691)深度分析：碩禾已由三年虧損轉盈，但 Q1 的高 EPS 靠銀價庫存利得、營業現金流近乎零、股價處空頭急跌階段，建議等股價回到 83 元以下且站回 150DMA 再議，暫不買進。">
+  <style>
+    /* ============================================================
+       Design system 沿用 industry-tracker 的 navy/orange 風格
+       （.claude/skills/industry-tracker/resource/report_template.html），
+       只把正文換成 deep-analysis 自己的章節內容。
+       ============================================================ */
+    :root {
+      --navy: #1F3A5F;
+      --navy-d: #15233B;
+      --orange: #E8853B;
+      --text: #1E293B;
+      --text-dim: #64748B;
+      --border: #E2E8F0;
+      --bg: #fff;
+      --paper: #fff;
+      --green: #16A34A;
+      --green-d: #15803D;
+      --green-bg: #F0FDF4;
+      --red: #DC2626;
+      --red-d: #B91C1C;
+      --red-bg: #FEF2F2;
+      --amber: #F59E0B;
+      --amber-d: #92400E;
+      --amber-bg: #FFF8E1;
+      --thead: #EDEEF1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 14px;
+      background: var(--bg);
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 24px auto;
+      background: var(--paper);
+      padding: 0 0 40px;
+    }
+
+    a {
+      color: var(--navy);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-d) 100%);
+      color: #fff;
+      padding: 36px 44px 30px;
+    }
+
+    .banner .label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: #9DB2CE;
+      font-weight: 700;
+    }
+
+    .banner h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 8px 0 10px;
+      line-height: 1.4;
+    }
+
+    .banner .sub {
+      font-size: 13px;
+      color: #C9D6E8;
+      line-height: 1.8;
+    }
+
+    .banner .badges {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    /* 錨點導覽列 */
+    nav.subnav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 0 44px;
+    }
+
+    nav.subnav a {
+      white-space: nowrap;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 13px 12px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav.subnav a:hover {
+      color: var(--navy);
+      border-bottom-color: var(--orange);
+    }
+
+    nav.subnav a.home-link {
+      color: var(--navy);
+      border-right: 1px solid var(--border);
+      margin-right: 6px;
+      padding-right: 16px;
+    }
+
+    nav.subnav a.home-link:hover {
+      color: var(--orange);
+      border-bottom-color: var(--orange);
+    }
+
+    .body-wrap {
+      padding: 32px 44px 0;
+    }
+
+    .exec {
+      background: var(--amber-bg);
+      border-left: 5px solid var(--amber);
+      border-radius: 6px;
+      padding: 20px 26px;
+      margin-bottom: 20px;
+    }
+
+    .exec .exec-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .exec p {
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: #1F2937;
+    }
+
+    .exec b {
+      color: var(--amber-d);
+    }
+
+    h2.section {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      border-left: 5px solid var(--navy);
+      padding-left: 14px;
+      margin: 44px 0 18px;
+      scroll-margin-top: 54px;
+    }
+
+    h2.section span {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    h3.sub {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy-d);
+      margin: 26px 0 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 2px;
+    }
+
+    ul.checklist li::before {
+      content: "⬜ ";
+      color: var(--text-dim);
+    }
+
+    ul.checklist li.checked::before {
+      content: "✅ ";
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .card h3.sub:first-child {
+      margin-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy);
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat .v {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-top: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 18px;
+      font-size: 12.8px;
+    }
+
+    thead th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td,
+    tr td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    tr th {
+      background: var(--thead);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.current td {
+      background: var(--amber-bg);
+      font-weight: 700;
+      color: var(--amber-d);
+    }
+
+    .tbl-wrap {
+      overflow-x: auto;
+    }
+
+    /* 建議戰略 / 情緒判斷 用色語意膠囊（pos=綠／warn=橘／neg=紅／空字串=中性navy） */
+    .pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 14px;
+      background: #F1F5F9;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .pill.pos {
+      background: var(--green-bg);
+      color: var(--green-d);
+      border-color: transparent;
+    }
+
+    .pill.neg {
+      background: var(--red-bg);
+      color: var(--red-d);
+      border-color: transparent;
+    }
+
+    .pill.warn {
+      background: var(--amber-bg);
+      color: var(--amber-d);
+      border-color: transparent;
+    }
+
+    span.g {
+      color: var(--green-d);
+      font-weight: 700;
+    }
+
+    span.r {
+      color: var(--red-d);
+      font-weight: 700;
+    }
+
+    span.w {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    .warn-box {
+      background: var(--red-bg);
+      border: 1px solid #FECACA;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 10px 0 18px;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #7F1D1D;
+    }
+
+    .warn-box b {
+      color: var(--red-d);
+    }
+
+    /* ---- 投資重點快照（簡易分析區塊）專用樣式 ---- */
+    .snap-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .snap-hero .snap-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    .snap-hero .snap-desc {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-top: 4px;
+      line-height: 1.7;
+    }
+
+    .snap-eps {
+      text-align: right;
+    }
+
+    .snap-eps .v {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .snap-eps .v.pos {
+      color: var(--green-d);
+    }
+
+    .snap-eps .v.neg {
+      color: var(--red-d);
+    }
+
+    .snap-eps .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    .snap-hist {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .kpi {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid #94A3B8;
+      border-radius: 7px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .kpi.pos {
+      border-top-color: var(--green);
+    }
+
+    .kpi.neg {
+      border-top-color: var(--red);
+    }
+
+    .kpi.warn {
+      border-top-color: var(--amber);
+    }
+
+    .kpi .v {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .kpi .l {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      margin-top: 5px;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 8px 0 20px;
+    }
+
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+
+    .pillar .ptype {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--orange);
+    }
+
+    .pillar .ptitle {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 4px 0;
+    }
+
+    .pillar .pkey {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .pillar ul {
+      padding-left: 18px;
+      margin-bottom: 0;
+      font-size: 12.8px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--amber-d);
+      background: var(--amber-bg);
+      padding: 1px 8px;
+      border-radius: 10px;
+      margin-left: 6px;
+    }
+
+    .note {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: -8px;
+    }
+
+    @media (max-width: 900px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .kpis,
+      .pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .snap-eps {
+        text-align: left;
+      }
+    }
+
+    footer.foot {
+      margin-top: 40px;
+      padding: 20px 44px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.8;
+      scroll-margin-top: 54px;
+    }
+
+    @media (max-width: 900px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .banner,
+      .body-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav.subnav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      footer.foot {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 11.5px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+      }
+
+      nav.subnav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="banner">
+      <div class="label">DEEP ANALYSIS · 深度分析</div>
+      <h1>3691 碩禾 — 投資邏輯深度分析</h1>
+      <div class="sub">當前股價：94.6（2026-11-25 收盤；盤中最新 104） TWD　|　當前 PE：約 21.9 倍（近4季EPS 4.31）　|　52 週區間：63.99 – 174.43</div>
+      <div class="badges">
+        <span class="badge">分析日期 2026-11-26</span>
+        <span class="badge">框架：五大商業邏輯＋PE/PEG＋生命週期＋VCP＋凱利</span>
+        <span class="badge">目前階段：6 空頭急跌</span>
+        <span class="badge">建議戰略：現金為王</span>
+      </div>
+    </div>
+
+    <nav class="subnav">
+      <a class="home-link" href="../index.html">← 回首頁</a>
+      <a href="#summary">結論摘要</a>
+      <a href="#snapshot">投資重點快照</a>
+      <a href="#enterprise">企業價值</a>
+      <a href="#valuation">市場估值</a>
+      <a href="#lifecycle">生命週期</a>
+      <a href="#vcp">VCP進出場</a>
+      <a href="#portfolio">投資組合</a>
+      <a href="#watch">後續觀測</a>
+      <a href="#disclaimer">重要提醒</a>
+      <a href="#sources">資料來源</a>
+    </nav>
+
+    <div class="body-wrap">
+
+      <!-- ============ 結論摘要 ============ -->
+      <h2 class="section" id="summary">結論摘要<span>SUMMARY</span></h2>
+      <div class="exec">
+        <div class="exec-label">EXECUTIVE SUMMARY · 一句話總結</div>
+        <p>碩禾已由三年虧損轉盈，但 Q1 的高 EPS 靠銀價庫存利得、營業現金流近乎零、股價處空頭急跌階段，建議等股價回到 83 元以下且站回 150DMA 再議，暫不買進。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="l">企業價值</div><div class="v">平庸</div></div>
+        <div class="stat"><div class="l">市場估值</div><div class="v">合理</div></div>
+        <div class="stat"><div class="l">股價階段</div><div class="v">6 空頭急跌</div></div>
+        <div class="stat"><div class="l">建議倉位</div><div class="v">暫不投資</div></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>維度</th><th>結論</th><th>信心度</th></tr>
+            <tr><td>企業價值</td><td>平庸</td><td>中</td></tr>
+            <tr><td>市場估值</td><td>合理（PEG ≈ 1.05–1.4）</td><td>低</td></tr>
+            <tr><td>股價階段</td><td>6 空頭急跌</td><td>中</td></tr>
+            <tr><td>建議戰略</td><td><span class="pill neg">現金為王</span></td><td>—</td></tr>
+            <tr><td>建議倉位</td><td>暫不投資</td><td>—</td></tr>
+          </table>
+        </div>
+        <h3 class="sub">主要風險</h3>
+        <ul><li>銀價回落造成庫存跌價，毛利率在 10% 與 18% 間劇烈擺盪</li><li>獲利品質差：營業現金流約為淨利 6%，並靠融資擴產</li><li>少數股權比例高，合併成長無法完整轉為歸屬母公司 EPS</li></ul>
+        <h3 class="sub">主要催化劑</h3>
+        <ul><li>美國 1GW 模組廠第四季量產並於 2027 完整貢獻</li><li>被動元件漿料受 AI 伺服器帶動年增三成以上</li><li>出口退稅取消使中國漿料價格優勢減弱，海外訂單轉向</li></ul>
+      </div>
+
+      <!-- ============ 投資重點快照（原「簡易分析」報告的全部內容） ============ -->
+      <h2 class="section" id="snapshot">投資重點快照<span>SNAPSHOT · 簡易分析完整內容</span></h2>
+
+      <div class="card">
+        <div class="snap-hero">
+          <div>
+            <div class="snap-title">碩禾 · 太陽能導電銀漿 + 美國模組 + AI液冷 · 銀價與政策驅動的轉虧為盈</div>
+            <div class="snap-desc">電子材料（太陽能導電漿約6成以上、被動元件漿料15%以上、AI液冷管件、美國模組廠）· 主要客戶含隆基 · 成長初期至放量成長（景氣循環性強）</div>
+          </div>
+          <div class="snap-eps">
+            <div class="v neg">-7.62</div>
+            <div class="l">2025 EPS（元）· 截至 2026-11-26</div>
+          </div>
+        </div>
+        <div class="snap-hist">2024 EPS -5.61｜26Q3 EPS 0.43｜2026前三季營收 77.15億 年增112%（前三季EPS 3.77）</div>
+      </div>
+
+      <div class="exec">
+        <div class="exec-label">THESIS · 核心論述</div>
+        <p><b>碩禾是台灣太陽能導電漿龍頭，2023-2025 連三年虧損（EPS -8.82／-5.61／-7.62），2026 年因中國取消出口退稅、美國與印度在地供應、被動元件漿料與液冷題材而轉盈。</b>前三季營收 <span class='g'>77.15億（年增112%）</span>、EPS 3.77，但 Q1 的 2.97 元含銀價上漲帶來的低成本庫存利得，Q2 毛利率回落至 10.6%、Q3 EPS 僅 0.43 元，且歸屬母公司比例受少數股權稀釋。<span class='r'>營業現金流前三季僅 0.35億，獲利品質偏低</span>，成敗關鍵在銀價穩定度、美國1GW產線爬坡與液冷放量。管理層因法規未提供財測，指引以定性為主，可信度中等。</p>
+      </div>
+
+      <div class="kpis"><div class="kpi pos"><div class="v">77.15億</div><div class="l">2026前三季營收<br>年增 +112%</div></div><div class="kpi warn"><div class="v">17.8%</div><div class="l">26Q3 毛利率<br>Q2 僅 10.6%，隨銀價波動</div></div><div class="kpi warn"><div class="v">4.31元</div><div class="l">近4季EPS<br>Q1 2.97 含庫存利得</div></div><div class="kpi warn"><div class="v">8.8%</div><div class="l">26Q3 營業利益率<br>前三季 6.3%，仍偏低</div></div><div class="kpi neg"><div class="v">0.35億</div><div class="l">前三季營業現金流<br>約為淨利 6%</div></div><div class="kpi neg"><div class="v">-45.8%</div><div class="l">距52週高點<br>收盤 94.6 元</div></div></div>
+
+      <h3 class="sub">KEY SWING FACTORS · 三大支柱</h3>
+      <div class="pillars"><div class="pillar"><div class="ptype">GROWTH</div><div class="ptitle">成長動能</div><div class="pkey">前三季營收 +112%，由虧轉盈</div><ul><li>N型TOPCon與BC背金屬化漿料，加上中國出口退稅取消，海外導電漿出貨增加</li><li>美國加州500MW模組廠已獲利，1GW 擴產案第四季量產，2027 為首個完整年度</li><li>被動元件漿料每年成長三成以上，占營收15%以上；碩通液冷管件切入AI伺服器</li></ul></div><div class="pillar"><div class="ptype">MOAT</div><div class="ptitle">競爭優勢</div><div class="pkey">轉換成本型，但強度中等偏弱</div><ul><li>漿料需通過電池廠驗證，BC電池N區漿料已通過主要電池廠驗證</li><li>與隆基簽署長期供應協議，客戶黏著度尚可</li><li>對手聚和與帝科規模遠大（2025營收約146億與180億人民幣），碩禾無規模優勢</li></ul></div><div class="pillar"><div class="ptype">RISK</div><div class="ptitle">主要風險</div><div class="pkey">銀價與庫存損益主導單季獲利</div><ul><li>銀價回落造成庫存跌價，Q2 毛利率由18.3%降至10.6%</li><li>營業現金流近乎零，投資現金流-12.1億、融資+15.3億，靠外部資金擴張</li><li>股價近期暴漲暴跌，單日曾跌停至84.7元，量價波動極大</li></ul></div></div>
+
+      <div class="card">
+        <h3 class="sub">損益軌跡 （2023–2025 與 26Q3；營收單位：億元）</h3>
+        <div class="tbl-wrap"><table><tr><th>項目</th><th>2023</th><th>2024</th><th>2025</th><th>26Q3</th></tr><tr><td>營收(億元)</td><td>N/A</td><td>63.5</td><td>58.12</td><td>25.65</td></tr><tr><td>毛利率</td><td>N/A</td><td>4.3%</td><td>8.6%</td><td>17.8%</td></tr><tr><td>營益率</td><td>N/A</td><td>-10.3%</td><td>-7.9%</td><td>8.8%</td></tr><tr><td>EPS(元)</td><td>-8.82</td><td>-5.61</td><td>-7.62</td><td>0.43</td></tr><tr><td>ROE</td><td>N/A</td><td>N/A</td><td>N/A</td><td>—</td></tr></table></div>
+        <p class="note">2024 與 2025 的毛利率、營益率為依營收、毛利、營業損失換算；2023 全年營收與利潤率未能自可信來源取得。2025 含菲律賓電廠拆除工程損失約1.7億。Goodinfo 無法連線（403），EPS 以 HiStock 與 MoneyDJ 為準，二者一致；2026前三季 ROE 約10.8%（ifa.ai 年化前口徑）。</p>
+        <h3 class="sub">近 5 季損益</h3>
+        <div class="tbl-wrap"><table><tr><th>季別</th><th>營收(億元)</th><th>毛利率</th><th>EPS(元)</th></tr><tr><td>25Q3</td><td>15.14</td><td>11.5%</td><td>-1.14</td></tr><tr><td>25Q4</td><td>21.68</td><td>10.5%</td><td>0.53</td></tr><tr><td>26Q1</td><td>25.07</td><td>18.3%</td><td>2.97</td></tr><tr><td>26Q2</td><td>26.43</td><td>10.6%</td><td>0.38</td></tr><tr><td>26Q3</td><td>25.65</td><td>17.8%</td><td>0.43</td></tr></table></div>
+        <p class="note">25Q4 營收由全年58.12億減前三季36.44億換算；Q3 歸屬母公司淨利僅0.39億，合併淨利2.27億多數歸少數股權。10月營收8.57億（年增59%）。</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">KEY WATCH 關鍵觀察點</h3>
+        <ul><li>26Q3 營收 25.65億（年增69%）、毛利率 17.8%，前三季毛利率 15.5%，對比去年同期 7.6%，本業由虧轉盈</li><li>銀價回落使 Q2 毛利率由 Q1 的 18.3% 掉到 10.6%，單季獲利對銀價與庫存成本高度敏感，Q1 EPS 2.97 不具可複製性</li><li>前三季營業現金流 0.35億（去年同期 3.10億）、資本支出 7.0億，淨利轉盈但現金未跟上，靠融資 15.3億支應</li><li>美國 1GW 模組廠 2026年第四季量產、500MW 廠已獲利；被動元件漿料占營收 15% 以上且年增三成以上</li><li>近 1 場法說會指引達成率 2/2（明年營運成長必然：前三季營收 +112%，超標；印度新廠與美國擴產：美國1GW 第四季量產，進度符合）；公司因法規未給量化財測，管理層可信度：中</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">催化劑 CATALYSTS</h3>
+        <ul><li>美國 1GW 模組廠第四季量產，2027 年起完整貢獻<span class="tag">（進行中）</span></li><li>被動元件漿料受 AI 伺服器 MLCC 與電感需求帶動，每年成長三成以上<span class="tag">（結構性）</span></li><li>碩通液冷管件（Parker 代理）放量，碩通於 2026年6月登錄興櫃<span class="tag">（待驗證）</span></li><li>中國太陽能出口退稅取消，海外導電漿訂單轉向台廠<span class="tag">（進行中）</span></li><li>印度新漿料廠與 BC電池 N區漿料通過驗證後出貨<span class="tag">（醞釀中）</span></li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">主要風險 KEY RISKS</h3>
+        <ul><li>銀價波動：Q1 毛利率 18.3% 與 Q2 10.6% 差距近 8 個百分點，銀價下跌即產生庫存跌價損失</li><li>獲利品質：前三季營業現金流 0.35億，僅約稅後淨利 5.77億的 6%</li><li>少數股權稀釋：Q3 合併淨利 2.27億，歸屬母公司僅 0.39億（約17%），EPS 對合併成長的轉化率低</li><li>競爭：聚和與帝科 2025 年營收約 146 億與 180 億人民幣，規模與議價能力遠勝碩禾</li><li>政策與題材：出口退稅、美國關稅與液冷題材都是政策或情緒因素，股價近期自 174 元跌至 77 元低點</li><li>財務槓桿：2026前三季融資流入 15.3億、投資流出 12.1億，擴產失敗或爬坡不順將侵蝕權益（9月底權益 75.1億）</li></ul>
+        <p class="note">估值提醒：以 94.6 元計近4季 PE 約 21.9 倍，但 Q1 EPS 含庫存利得，正常化 EPS 約 4.5 元，PE 約 21 倍；PEG 約 1.05–1.4，屬合理偏高，需 EPS 持續兌現。｜ 生命週期：產業為太陽能材料的成熟與重整期（中國去內捲、退稅取消）疊加AI材料的成長初期；公司由多年虧損轉盈，景氣循環與政策驅動色彩強。</p>
+      </div>
+
+      <!-- ============ 企業價值分析（五大商業邏輯） ============ -->
+      <h2 class="section" id="enterprise">企業價值分析<span>FIVE-PILLAR BUSINESS LOGIC</span></h2>
+
+      <div class="card">
+        <h3 class="sub">1.1 經營團隊</h3>
+        <ul>
+          <li><b>資訊透明度：</b>中：每月自結並因警示股主動公布9月獲利，說明獲利來源為美國模組廠與被動元件漿料；但未提供量化財測，毛利率變化原因多由媒體而非公司主動說明。</li>
+          <li><b>言行一致性：</b>中：2025年12月法說會稱明年成長必然，2026前三季營收 +112% 兌現；美國1GW 廠規劃 2026年10月量產，第四季量產符合；但 2023-2025 連續虧損，Q2 毛利率落至 10.6% 顯示庫存管理對銀價回落準備不足。</li>
+          <li><b>資本配置：</b>專注本業並擴產為主（前三季資本支出 7.0億）：美國模組廠、印度新廠、泰國電廠、液冷轉投資碩通；未見庫藏股，股利不具意義；靠融資擴張，成長空間大但槓桿與執行風險同步上升。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.2 產業趨勢</h3>
+        <ul>
+          <li><b>產業生命週期：</b>太陽能導電漿處於成熟至重整期（全球銀漿市場約35億美元、年增約2%，中國去內捲與退稅取消帶來重整），被動元件漿料與AI液冷處於成長初期（漿料年增三成以上、液冷年增約25-35%的市場估計）。</li>
+          <li><b>市場規模：</b>TAM 全球光伏金屬化銀漿約 35.3 億美元（2026，市場報告，年增約 2%，可信度有限） ／ SAM 台灣與海外非中國供應鏈漿料市場（印度、美國、東南亞）；印度電池需求預估由 30GW 倍增至 60GW（公司法說會引述） ／ SOM 2026 年前三季合併營收 77.15億元；導電漿占 6 成以上，被動元件漿料 15% 以上</li>
+          <li><b>競爭格局：</b>中國聚和材料（2025 營收約 146 億人民幣）與帝科股份（約 180 億人民幣）為全球頭部，碩禾為台灣龍頭但規模遠小；競爭強度高，漿料與銀價連動、議價能力有限。碩禾優勢在非中國供應鏈（美國、印度）與台灣被動元件客戶。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.3 商業模式</h3>
+        <ul>
+          <li><b>價值主張：</b>提供 TOPCon、BC 電池導電漿與被動元件漿料，並以美國在地模組廠與印度漿料廠切入關稅保護市場，加上 AI 液冷管件延伸材料應用。</li>
+          <li><b>目標客群與通路：</b>太陽能電池廠（含隆基）、台灣被動元件廠、美國與印度在地模組與電池廠、AI 伺服器液冷客戶（經碩通）</li>
+        </ul>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>含金量指標</th><th>數值</th></tr>
+            <tr><td>營業利益率</td><td>8.8%（26Q3；前三季 6.3%）（含金量 很低）</td></tr>
+            <tr><td>營業現金流／稅後淨利</td><td>約 6%（前三季營業現金流 0.35億 / 淨利約 5.77億）</td></tr>
+            <tr><td>資本支出／營收</td><td>約 9%（前三季資本支出約 7.0億 / 營收 77.15億）</td></tr>
+            <tr><td>現金循環天數</td><td>資料不足，未取得存貨、應收與應付天數</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.4 競爭優勢</h3>
+        <ul>
+          <li><b>類型：</b>轉換成本（電池廠驗證）、部分規模經濟（區域在地供應）</li>
+          <li><b>強度與期間：</b>中偏弱：漿料驗證週期給予短中期黏著，但全球頭部規模大兩倍以上且銀價可轉嫁程度有限，3 年虧損與 Q2 毛利率 10.6% 顯示優勢不穩，預估期間約 2-3 年。</li>
+          <li><b>ROE 軌跡：</b>2023-2025 因連年虧損為負；2026 前三季 ROE 約 10.8%（ifa.ai 口徑）；9月底權益 75.1億，每股淨值 66.18 元；保留盈餘率因虧損與少數股權而不穩定。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.5 成長動能</h3>
+        <ul>
+          <li><b>營收驅動：</b>導電漿約 6 成以上（銷量 × 銀價連動 ASP，銀價上漲抬高營收但毛利率不一定提升）；被動元件漿料 15% 以上；美國模組廠、液冷管件、半導體再生晶圓（華旭）。美國模組售價約 30 美分/瓦，遠高於國際約 8 美分。</li>
+          <li><b>毛利率改善動能：</b>產品組合（美國高單價模組、被動元件漿料、液冷）、稼動率（海外漿料出貨）、訂價權（出口退稅取消後中國漿料報價優勢減弱）；對沖銀價庫存損益是最大變數。</li>
+          <li><b>EPS 三大引擎：</b>EPS = ROE × 權益 / 股數：2026 轉盈使 ROE 由負轉正；權益 75.1億（較2025年9月底 67億成長）；流通股數由約 0.92 億股增至約 1.02 億股（ifa.ai），稀釋為負向；少數股權比例高，歸屬母公司 EPS 低於合併成長。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">1.6 經營假設（三情境）</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>情境</th><th>未來 3 年 EPS CAGR</th><th>對應企業價值</th></tr>
+            <tr><td>悲觀</td><td>-10%（2026E EPS 約 4.5 元 → 2029E 約 3.3 元）</td><td>銀價下跌與出口退稅效應消退，毛利率回到 10% 以下，企業價值平庸偏弱</td></tr>
+            <tr><td>高機率</td><td>15%（2026E 約 4.5 元 → 2029E 約 6.8 元）</td><td>美國1GW 滿載與被動元件漿料、液冷穩定貢獻，毛利率 13-16%，企業價值平庸偏優</td></tr>
+            <tr><td>樂觀</td><td>30%（2026E 約 4.5 元 → 2029E 約 9.9 元）</td><td>BC 漿料放量、液冷與美國模組同步高成長，企業價值優質</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 市場估值（PEG / PE） ============ -->
+      <h2 class="section" id="valuation">市場估值<span>PEG / PE VALUATION</span></h2>
+
+      <div class="card">
+        <h3 class="sub">2.1 估值現況</h3>
+        <ul>
+          <li>近 4 季 EPS：4.31 元（25Q4 0.53 + 26Q1 2.97 + Q2 0.38 + Q3 0.43）</li>
+          <li>預估 G（未來 3–5 年 EPS CAGR）：15-20%（EPS CAGR，以 2026E 約 4.5 元為基期） — 依據：美國1GW 於 2027 首個完整年度、被動元件漿料年增三成以上、液冷成長；扣除銀價庫存利得、少數股權稀釋與毛利率均值回歸，採保守區間。媒體估 2027 EPS 7-8.5 元為分析師推估，非公司財測，未採用。</li>
+          <li><b>靜態 PE：</b>約 21.9 倍（94.6 / 4.31）</li>
+          <li><b>動態 PE：</b>約 21 倍（94.6 / 2026E 4.5）</li>
+          <li><b>PEG：</b>1.05–1.4</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.2 PEG 區間對照</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>市場情緒</th><th>PEG 區間</th><th>目前是否符合</th></tr>
+            <tr><td>貪婪興奮</td><td>1.5–2.0</td><td></td></tr><tr><td>樂觀開心</td><td>1.2–1.5</td><td></td></tr><tr class="current"><td>過渡階段</td><td>0.8–1.2</td><td>✓</td></tr><tr><td>悲觀失望</td><td>0.6–0.8</td><td></td></tr><tr><td>恐懼絕望</td><td>0.4–0.6</td><td></td></tr>
+          </table>
+        </div>
+        <p>→ <b>市場情緒判斷：</b><span class="pill">過渡階段</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.3 PE 預估區間</h3>
+        <ul>
+          <li>合理 PE 區間：15 – 25</li>
+          <li>對應股價區間：68 – 112</li>
+          <li>便宜價：68 元以下（PE 約 15 倍）　|　合理價：約 83 元（PE 約 18.5 倍）　|　偏高價：約 99 元（PE 約 22 倍）　|　昂貴價：112 元以上（PE 約 25 倍）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">2.4 安全邊際三層級</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>層級</th><th>評估</th></tr>
+            <tr><td>市場估值 MOS</td><td>目前企業價值約 83 元 − 股價 94.6 元 = 約 -11.6 元（-12%），無安全邊際</td></tr>
+            <tr><td>企業價值 MOS</td><td>未來企業價值（2029E EPS 約 6.8 元 × PE 18 約 122 元）− 94.6 元 = 約 +27 元（+29%），3 年約有 29% 空間，但 EPS 可信度中低</td></tr>
+            <tr><td>投資組合 MOS</td><td>最多以試單倉 2% 以內參與，並與其他太陽能與銀價相關持股合計設上限，避免同一因子集中</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card"><h3 class="sub">2.5 FactSet 共識估值</h3><div class="tbl-wrap"><table><tr><th>指標</th><th>期間</th><th>數值</th></tr><tr><td>目標價（中位數／最高／最低／平均）</td><td>12 個月</td><td>NT$83.29（僅 1 位分析師）</td></tr><tr><td>綜合評級分布</td><td>2023-08-23</td><td>買進0／優於大盤0／持有1／劣於大盤0／賣出0</td></tr></table></div><p class="note">來源：<a href="https://www.cnyes.com/twstock/3691/research/finirating">鉅亨網個股預估頁（FactSet）</a>｜資料日期：2023-11-06</p><p class="note">限制：目標估值與評級皆為約三年前的單一分析師資料，嚴重過時，不具參考價值；鉅亨預估頁僅取得目標估值與評級，EPS 與營收預估未取得，備援搜尋也查無碩禾的 Factset 速報文章。</p><p>與本報告推估的差異：該目標價 83.29 元與本報告合理價約 83 元相近，但屬巧合且資料過時，不作為估值依據。</p></div>
+
+      <!-- ============ 股價生命週期定位 ============ -->
+      <h2 class="section" id="lifecycle">股價生命週期定位<span>SWING LIFECYCLE STAGE</span></h2>
+
+      <div class="card">
+        <h3 class="sub">3.1 技術面快照</h3>
+        <ul>
+          <li>股價 vs 50 / 150 / 200 DMA：50DMA 111.6（-15.2%）／150DMA 122.2（-22.6%）／200DMA 120.0（-21.2%）</li>
+          <li>200 DMA 趨勢：上揚</li>
+          <li>近 6 個月波段高低點：創低</li>
+          <li>量價型態：量價中性（近10日均量為50日均量 2.04 倍，20日上漲量/下跌量 1.02）</li>
+          <li>股價乖離（季線）：-13.4%</li>
+          <li>是否出現特定型態：無</li>
+        </ul>
+        <p class="note"><b>TradingView 實測數據</b>（TPEX:3691｜截至 2026-11-25 收盤）</p><ul><li>距歷史新高：-86.9%</li><li>52週高低位置：距高點 -45.8%／距低點 +47.8%</li><li>50DMA 111.6（-15.2%）／150DMA 122.2（-22.6%）／200DMA 120.0（-21.2%）</li><li>200DMA 斜率：+2.7%（20日，上揚）</li><li>趨勢模板通過：3/7（未通過：股價高於150與200DMA；50DMA高於150與200DMA；股價高於50DMA；股價在52週高點25%內）</li><li>RSI 45.5／ADX 23.8</li><li>相對量：0.28（盤中未收盤口徑）；近10日均量為50日均量 2.04 倍</li></ul><p class="note">資料來源：TradingView；價格僅還原分割、不還原現金股利；歷史高點 724 的口徑疑似未完整還原，僅供參考；資料依使用者 TradingView 方案可能延遲；最後一根未收盤 K 線已剔除；台股成交量單位為股；生命週期階段為人工判斷：6m 低點 77.1（2026-11-23）已創低，已反彈約 22.7%，也可能為 W 底雛形，信心中等；K 線已通過完整性核對</p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.2 階段判定</h3>
+        <p>→ <b>目前處於：</b><span class="pill">6 空頭急跌</span></p>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">3.3 主要風險識別</h3>
+        <ul>
+          <li>永久虧損風險：中</li>
+          <li>錯失機會風險：中</li>
+        </ul>
+      </div>
+
+      <!-- ============ VCP 型態與進出場 ============ -->
+      <h2 class="section" id="vcp">VCP 型態與進出場<span>VCP PATTERN &amp; ENTRY/EXIT</span></h2>
+      <div class="card">
+        <p>目前處於「6 空頭急跌」，非多頭底部/上漲階段，VCP 型態分析暫不適用。</p>
+      </div>
+
+      <!-- ============ 投資組合建議（凱利公式） ============ -->
+      <h2 class="section" id="portfolio">投資組合建議<span>KELLY POSITION SIZING</span></h2>
+
+      <div class="card">
+        <h3 class="sub">5.1 倉位定位</h3>
+        <ul>
+          <li><b>類型：</b>暫不投資</li>
+          <li><b>建議週期：</b>不適合（現階段不建議持有）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.2 下注比重（金字塔分批）</h3>
+        <ul>
+          <li>估計勝率：35%</li>
+          <li>估計賠率：約 2（上檔約 125 元 / 下檔至 77 元低點約 -18%，粗估）</li>
+          <li>1/4 凱利公式下的最大下注比重：約 0.6%（勝率35%、賠率2，凱利 2.5% 的 1/4）</li>
+          <li><b>目前建議買入：</b>暫不投資。若後續股價回到偏低價 68-83 元，且重新站回 150DMA 並出現週K底部收縮型態，才可考慮試單：合理價 2%、偏低價 3%、便宜價 5% 的金字塔分批，合計不超過凱利上限的放大版，並預設停損 10% 內。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">5.3 預先設定的賣出條件</h3>
+        <div class="tbl-wrap">
+          <table>
+            <tr><th>賣出理由</th><th>觸發條件</th></tr>
+            <tr><td>錯判買進理由</td><td>若買進後 Q4 毛利率低於 10% 且歸屬母公司 EPS 低於 0.3 元，代表盈利仰賴銀價庫存而非結構性成長</td></tr><tr><td>買進理由消失</td><td>美國1GW 廠 2027Q1 前未達量產滿載，或被動元件漿料與液冷營收占比未持續提升</td></tr><tr><td>市場估值過高</td><td>股價高於 112 元（PE 約 25 倍）而 2026E EPS 無上修，PEG 大於 1.6，分批賣出</td></tr><tr><td>機會成本過高</td><td>出現 PEG 低於 0.8 且處於多頭底部階段的更佳標的，或持有 18 個月報酬不及大盤，分批換股</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- ============ 後續觀測重點 ============ -->
+      <h2 class="section" id="watch">後續觀測重點<span>FORWARD WATCHLIST</span></h2>
+
+      <div class="card">
+        <h3 class="sub">質化催化劑</h3>
+        <ul><li>碩通液冷管件取得 Tier 1 客戶並放量，改變成長軌跡</li><li>BC 電池 N 區漿料通過主要電池廠驗證並成為主力出貨</li><li>印度新漿料廠滿載與美國模組售價維持高檔</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">量化催化劑</h3>
+        <ul>
+          <li>下次法說會：待公告（上次為 2025-12-22，可能於年底前後再辦）</li>
+          <li>下次財報公布：2026 全年財報預計 2027-03 底前公布；11 月營收約 2026-12-10 前</li>
+        </ul>
+        <p><b>關鍵觀測指標：</b></p>
+        <ul><li>單季毛利率是否維持 13% 以上</li><li>歸屬母公司單季 EPS 是否站穩 0.8 元以上</li><li>營業現金流 / 淨利是否回到 80% 以上</li><li>月營收是否維持在 8 億元以上（10月 8.57億）</li><li>美國 1GW 廠稼動率與被動元件漿料營收占比</li></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="sub">觸發重新評估的條件</h3>
+        <ul><li>股價跌破 77 元前低（11/23 低點）：重新評估停損與基本面</li><li>股價站上 122 元（150DMA 與 200DMA）並帶量：重新判斷是否進入多頭底部</li><li>Q4 毛利率回到 15% 以上且 OCF 轉為淨流入：上修企業價值</li><li>銀價再度大跌導致 Q4 出現庫存跌價損失：降低 EPS 預期</li><li>鉅亨 FactSet 或券商出現新的 EPS 共識：重新對照估值</li></ul>
+      </div>
+
+      <!-- ============ 重要提醒 ============ -->
+      <h2 class="section" id="disclaimer">重要提醒<span>IMPORTANT NOTES</span></h2>
+      <div class="warn-box">
+        <p>本報告依「投資邏輯」框架建構，內容包含對企業價值、市場估值、技術面之分析判斷，<b>僅供投資邏輯思考之用，並非個別投資建議</b>。實際投資決策請依個人財務狀況、風險承受度與獨立判斷為準。</p>
+      </div>
+
+    </div>
+
+    <footer class="foot" id="sources">
+      <p style="margin-bottom:10px;"><b>資料來源：</b>MoneyDJ（115年第3季綜合損益表、9月自結獲利，2026-11）、HiStock 嗨投資（歷年每季 EPS）、ifa.ai（2026前三季現金流、資本支出、權益、ROE）、工商時報（2026-10-23 液冷題材、2026-11-03 9月獲利）、理財周刊（2026-05 Q1 營收年增181%）、財報狗（Q1、Q2 毛利率 18.28%、10.61%）、碩禾 2025Q4 法說會簡報（2025-12-22）與富果研究法說摘要、鉅亨網個股預估頁（FactSet，2023 年資料）、UDN／中時（2025 全年財報、2025年12月自結）、TradingView（日K，tv_technicals.py 計算）</p>
+      <p>分析框架：投資邏輯（企業價值 × 市場估值 × 波段順向 × 投資組合）　|　由 deep-analysis workflow（stock-analysis skill 完整框架）產出　|　最後更新 2026-11-26</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
